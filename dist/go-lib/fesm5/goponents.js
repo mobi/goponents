@@ -1,8 +1,8 @@
-import { BehaviorSubject } from 'rxjs';
 import { CdkTableModule } from '@angular/cdk/table';
-import { ToastrService } from 'ngx-toastr';
-import { Component, EventEmitter, Input, Output, NgModule, ViewEncapsulation, Injectable, defineInjectable, inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output, NgModule, ViewEncapsulation, Injectable, defineInjectable, inject } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * @fileoverview added by tsickle
@@ -447,12 +447,41 @@ var GoMessageModule = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var GoSharedModule = /** @class */ (function () {
+    function GoSharedModule() {
+    }
+    GoSharedModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        GoButtonModule,
+                        GoCardModule,
+                        GoIconModule,
+                        GoTableModule,
+                        GoMessageModule
+                    ],
+                    declarations: [],
+                    exports: [
+                        GoButtonModule,
+                        GoCardModule,
+                        GoIconModule,
+                        GoTableModule,
+                        GoMessageModule
+                    ]
+                },] }
+    ];
+    return GoSharedModule;
+}());
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+export { GoSharedModule, GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule };
 
 //# sourceMappingURL=goponents.js.map

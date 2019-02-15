@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs'), require('@angular/cdk/table'), require('ngx-toastr'), require('@angular/core'), require('@angular/common')) :
-    typeof define === 'function' && define.amd ? define('goponents', ['exports', 'rxjs', '@angular/cdk/table', 'ngx-toastr', '@angular/core', '@angular/common'], factory) :
-    (factory((global.goponents = {}),global.rxjs,global.ng.cdk.table,global.i1,global.ng.core,global.ng.common));
-}(this, (function (exports,rxjs,table,i1,i0,common) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/cdk/table'), require('rxjs'), require('@angular/common'), require('@angular/core'), require('ngx-toastr')) :
+    typeof define === 'function' && define.amd ? define('goponents', ['exports', '@angular/cdk/table', 'rxjs', '@angular/common', '@angular/core', 'ngx-toastr'], factory) :
+    (factory((global.goponents = {}),global.ng.cdk.table,global.rxjs,global.ng.common,global.ng.core,global.i1));
+}(this, (function (exports,table,rxjs,common,i0,i1) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -454,12 +454,42 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var GoSharedModule = /** @class */ (function () {
+        function GoSharedModule() {
+        }
+        GoSharedModule.decorators = [
+            { type: i0.NgModule, args: [{
+                        imports: [
+                            GoButtonModule,
+                            GoCardModule,
+                            GoIconModule,
+                            GoTableModule,
+                            GoMessageModule
+                        ],
+                        declarations: [],
+                        exports: [
+                            GoButtonModule,
+                            GoCardModule,
+                            GoIconModule,
+                            GoTableModule,
+                            GoMessageModule
+                        ]
+                    },] }
+        ];
+        return GoSharedModule;
+    }());
 
     /**
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
 
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+
+    exports.GoSharedModule = GoSharedModule;
     exports.GoButtonComponent = GoButtonComponent;
     exports.GoButtonModule = GoButtonModule;
     exports.GoCardComponent = GoCardComponent;

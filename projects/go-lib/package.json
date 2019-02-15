@@ -1,8 +1,9 @@
 {
   "name": "goponents",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "ngx-toastr": "^9.1.2"
   }
 }
