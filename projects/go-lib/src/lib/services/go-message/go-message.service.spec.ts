@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GoLibService } from './go-lib.service';
+import { GoMessageService } from './go-message.service';
 
-describe('GoLibService', () => {
+describe('GoMessageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GoLibService = TestBed.get(GoLibService);
+    const service: GoMessageService = TestBed.get(GoMessageService);
     expect(service).toBeTruthy();
   });
 });

@@ -1,0 +1,32 @@
+// Fonts
+$weight-light: 300;
+$weight-regular: 400;
+$weight-bold: 700;
+
+// UI Details
+$global-radius: 4px;
+$global-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+// Colors
+$base-dark: #313536;
+$base-dark-secondary: #202626;
+$base-light: #fff;
+$base-light-secondary: #b1b1b1;
+$base-primary: #93989d;
+
+// Light Theme
+$theme-light-app-bg: #F0F0F0;
+$theme-light-bg: $base-light;
+$theme-light-bg-active: darken($base-light, 4);
+$theme-light-bg-hover: darken($base-light, 7);
+$theme-light-color: $base-dark;
+$theme-light-color-hover: lighten($base-dark, 20);
+$theme-light-border: $base-light-secondary;
+
+// Dark Theme
+$theme-dark-bg: $base-dark;
+$theme-dark-bg-active: darken($base-dark, 4);
+$theme-dark-bg-hover: darken($base-dark, 7);
+$theme-dark-color: $base-light;
+$theme-dark-color-hover: darken($base-light, 20);
+$theme-dark-border: $base-dark-secondary;

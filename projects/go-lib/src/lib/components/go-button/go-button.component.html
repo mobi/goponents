@@ -1,0 +1,7 @@
+<button class="button"
+        (click)="clicked()"
+        [disabled]="isProcessing"
+        [ngClass]="classList()">
+  <go-icon [icon]="buttonIcon"></go-icon>
+  <ng-content></ng-content>
+</button>

@@ -1,2 +1,2 @@
-export declare class GoLibModule {
+export declare class GoSharedModule {
 }

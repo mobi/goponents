@@ -1,0 +1,36 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.card { 
+  background: $theme-light-bg;
+  border-radius: $global-radius;
+  box-shadow: $global-box-shadow;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.card__action-list {
+  display: flex;
+
+  li {
+    cursor: pointer;
+    padding: 0 0.4rem;
+    user-select: none;
+    @include transition(all);
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:hover {
+      color: $base-primary;
+    }
+  }
+}

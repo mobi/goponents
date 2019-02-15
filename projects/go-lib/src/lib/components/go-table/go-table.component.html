@@ -1,0 +1,29 @@
+<table cdk-table
+       class="tablesaw tablesaw-sortable tablesaw-swipe"
+       [dataSource]="tableDataSource$">
+
+  <ng-container *ngFor="let col of columns" cdkColumnDef="{{col}}">
+    <ng-container *ngIf="col !== 'actions'; else renderActions">
+      <th cdk-header-cell
+          *cdkHeaderCellDef
+          [ngClass]="sortClass(col)"
+          (click)="sortByColumn(col)">{{col | titlecase}}</th>
+      <td cdk-cell *cdkCellDef="let row">{{row[col]}}</td>
+    </ng-container>
+
+    <ng-template #renderActions>
+      <th cdk-header-cell *cdkHeaderCellDef>Actions</th>
+      <td cdk-cell *cdkCellDef="let row">
+        <a *ngIf="actions.edit" (click)="actions.edit(row.id)">
+          <go-icon icon="edit" class="mr2"></go-icon>
+        </a>
+        <a *ngIf="actions.delete" class="false">
+          <go-icon icon="delete" (click)="actions.delete(row.id)"></go-icon>
+        </a>
+      </td>
+    </ng-template>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="columns"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: columns;"></tr>
+</table>
