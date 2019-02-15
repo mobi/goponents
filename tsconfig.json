@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "go-lib": [
+        "dist/go-lib"
+      ],
+      "go-lib/*": [
+        "dist/go-lib/*"
+      ]
+    }
   }
 }

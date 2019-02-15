@@ -1,0 +1,25 @@
+{
+  "name": "go-ponents",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobi/tangoe_ui_components.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  },
+  "main": "bundles/go-ponents.umd.js",
+  "module": "fesm5/go-ponents.js",
+  "es2015": "fesm2015/go-ponents.js",
+  "esm5": "esm5/go-ponents.js",
+  "esm2015": "esm2015/go-ponents.js",
+  "fesm5": "fesm5/go-ponents.js",
+  "fesm2015": "fesm2015/go-ponents.js",
+  "typings": "go-ponents.d.ts",
+  "metadata": "go-ponents.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
