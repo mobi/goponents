@@ -1,6 +1,12 @@
 {
   "name": "goponents",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwagz/tangoe-shared.git"
+  },
+  "author": "Tangoe GoMobile",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

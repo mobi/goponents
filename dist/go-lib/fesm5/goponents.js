@@ -1,8 +1,8 @@
-import { CdkTableModule } from '@angular/cdk/table';
 import { BehaviorSubject } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, NgModule, ViewEncapsulation, Injectable, defineInjectable, inject } from '@angular/core';
+import { CdkTableModule } from '@angular/cdk/table';
 import { ToastrService } from 'ngx-toastr';
+import { Component, EventEmitter, Input, Output, NgModule, ViewEncapsulation, Injectable, defineInjectable, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
@@ -447,41 +447,12 @@ var GoMessageModule = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-var GoSharedModule = /** @class */ (function () {
-    function GoSharedModule() {
-    }
-    GoSharedModule.decorators = [
-        { type: NgModule, args: [{
-                    declarations: [],
-                    imports: [
-                        GoButtonModule,
-                        GoCardModule,
-                        GoIconModule,
-                        GoTableModule,
-                        GoMessageModule
-                    ],
-                    exports: [
-                        GoButtonModule,
-                        GoCardModule,
-                        GoIconModule,
-                        GoTableModule,
-                        GoMessageModule
-                    ]
-                },] }
-    ];
-    return GoSharedModule;
-}());
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+export { GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule };
 
-export { GoSharedModule, GoButtonComponent as ɵb, GoButtonModule as ɵa, GoCardComponent as ɵf, GoCardModule as ɵe, GoIconComponent as ɵd, GoIconModule as ɵc, GoTableComponent as ɵh, GoTableModule as ɵg, GoMessageModule as ɵi, GoMessageService as ɵj };
-
-//# sourceMappingURL=go-ponents.js.map
+//# sourceMappingURL=goponents.js.map

@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
-import { GoButtonModule } from './components/go-button/go-button.module';
-import { GoCardModule } from './components/go-card/go-card.module';
-import { GoIconModule } from './components/go-icon/go-icon.module';
-import { GoTableModule } from './components/go-table/go-table.module';
-import { GoMessageModule } from './services/go-message/go-message.module';
+import { GoButtonComponent } from './components/go-button/go-button.component';
+import { GoCardComponent } from './components/go-card/go-card.component';
+import { GoIconComponent } from './components/go-icon/go-icon.component';
+import { GoTableComponent } from './components/go-table/go-table.component';
+import { GoMessageService } from './services/go-message/go-message.service';
 
 @NgModule({
-  declarations: [],
   imports: [
-    GoButtonModule,
-    GoCardModule,
-    GoIconModule,
-    GoTableModule,
-    GoMessageModule
+  ],
+  declarations: [
+    GoButtonComponent,
+    GoCardComponent,
+    GoIconComponent,
+    GoTableComponent
   ],
   exports: [
-    GoButtonModule,
-    GoCardModule,
-    GoIconModule,
-    GoTableModule,
-    GoMessageModule
+    GoButtonComponent,
+    GoCardComponent,
+    GoIconComponent,
+    GoTableComponent
+  ],
+  providers: [
+    GoMessageService
   ]
 })
 
