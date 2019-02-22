@@ -8,6 +8,187 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var GoAccordionPanelComponent = /** @class */ (function () {
+        function GoAccordionPanelComponent() {
+            this.expanded = false;
+            this.icon = null;
+            this.toggle = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        GoAccordionPanelComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.expanded = this.expanded || false;
+            };
+        GoAccordionPanelComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'go-accordion-panel',
+                        template: "<div class=\"go-accordion-panel\" [ngClass]=\"{ 'go-accordion-panel--active': expanded, 'go-accordion-panel--inactive': !expanded }\">\n  <header class=\"go-accordion-panel__title-bar\" (click)=\"toggle.emit()\" aria-expanded=\"expanded\">\n    <span class=\"go-accordion-panel__title\">\n      <span *ngIf=\"icon\" class=\"material-icons go-accordion-panel__title-icon\">{{ icon }}</span>\n      <span class=\"go-accordion-panel__title-text\" [innerHtml]=\"title\"></span>\n      <!-- <span class='clipboard' ng-if=\"$ctrl.copyText\">\n        <button type='button' class='copy-to-clipboard icon-button' data-clipboard-text='{{$ctrl.copyText}}'></button>\n      </span> -->\n    </span>\n    <span class=\"go-accordion-panel__control\">\n      <span class=\"material-icons go-accordion-panel__control-icon\">expand_more</span>\n    </span>\n  </header>\n  <div class=\"go-accordion-panel__content-container\">\n    <div class=\"go-accordion-panel__content\">\n      <ng-content></ng-content>\n    </div>\n  </div>\n</div>",
+                        encapsulation: i0.ViewEncapsulation.None,
+                        styles: [".go-accordion-panel__title-bar{cursor:pointer;display:flex;font-size:1.2rem;padding:1.2rem 0;position:relative;transition:.25s cubic-bezier(.25,.8,.25,1)}.go-accordion-panel__title{align-items:center;display:flex;flex-grow:1}.go-accordion-panel__title-icon{display:flex;flex-direction:column;justify-content:center;padding-left:1rem;text-align:center}.go-accordion-panel__title-text{padding-left:1rem}.go-accordion-panel__control{display:flex;flex-direction:column;justify-content:center;padding:0 1rem;text-align:center}.go-accordion-panel__control-icon{transition:.25s cubic-bezier(.25,.8,.25,1)}.go-accordion-panel__content-container{max-height:0;opacity:0;overflow:hidden;visibility:hidden}.go-accordion-panel__content{display:block;padding:0 1rem;transition:.25s cubic-bezier(.25,.8,.25,1)}.go-accordion--theme-light{background:#fff;border:1px solid #b1b1b1;color:#313536}.go-accordion--theme-light .go-accordion-panel--border-top .go-accordion-panel__title-bar,.go-accordion--theme-light go-accordion-panel:last-of-type .go-accordion-panel__title-bar,.go-accordion--theme-light go-accordion-panel:not(:first-of-type) .go-accordion-panel__title-bar{border-top:1px solid #b1b1b1}.go-accordion--theme-light .go-accordion-panel--active .go-accordion-panel__title-bar{background:#f5f5f5}.go-accordion--theme-light .go-accordion-panel--inactive .go-accordion-panel__title-bar{background:#fff}.go-accordion--theme-light .go-accordion-panel__title-bar:hover{background:#ededed}.go-accordion--theme-light .go-accordion-panel__content{color:#313536}.go-accordion--theme-dark{background:#313536;border:1px solid #202626;color:#fff;font-weight:300}.go-accordion--theme-dark .go-accordion-panel--border-top .go-accordion-panel__title-bar,.go-accordion--theme-dark go-accordion-panel:last-of-type .go-accordion-panel__title-bar,.go-accordion--theme-dark go-accordion-panel:not(:first-of-type) .go-accordion-panel__title-bar{border-top:1px solid #202626}.go-accordion--theme-dark .go-accordion-panel--active .go-accordion-panel__title-bar{background:#272b2b}.go-accordion--theme-dark .go-accordion-panel--inactive .go-accordion-panel__title-bar{background:#313536}.go-accordion--theme-dark .go-accordion-panel__title-bar:hover{background:#202323}.go-accordion--theme-dark .go-accordion-panel__content{color:#fff;font-weight:300}go-accordion-panel:last-of-type .go-accordion-panel::before{border-bottom-left-radius:calc(4px - 1px)}go-accordion-panel:last-of-type .go-accordion-panel__title-bar{border-radius:0 0 4px 4px;overflow:hidden}go-accordion-panel:first-of-type .go-accordion-panel::before{border-top-left-radius:calc(4px - 1px)}go-accordion-panel:first-of-type .go-accordion-panel__title-bar{border-radius:4px 4px 0 0;overflow:hidden}.go-accordion-panel{position:relative}.go-accordion-panel::before{background:linear-gradient(to right,#65b360,#52a24d);background-color:#65b360;content:\" \";height:100%;left:0;opacity:0;position:absolute;transition:.25s ease-in;width:4px;z-index:1}.go-accordion-panel.go-accordion-panel--active::before{opacity:1}.go-accordion-panel.go-accordion-panel--active .go-accordion-panel__control .material-icons{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.go-accordion-panel.go-accordion-panel--active .go-accordion-panel__content-container{max-height:1000000px;opacity:1;visibility:visible}.go-accordion-panel.go-accordion-panel--active .go-accordion-panel__content{padding:1.5rem 1rem}.go-accordion-panel.go-accordion-panel--inactive::before{opacity:0}.go-accordion-panel.go-accordion-panel--inactive .go-accordion-panel__control .material-icons{-webkit-transform:rotate(0);transform:rotate(0)}.go-accordion-panel.go-accordion-panel--inactive .go-accordion-panel__content-container{max-height:0;opacity:0;visibility:hidden}.go-accordion--slim .go-accordion-panel__title-bar{font-size:1rem}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        GoAccordionPanelComponent.ctorParameters = function () { return []; };
+        GoAccordionPanelComponent.propDecorators = {
+            expanded: [{ type: i0.Input }],
+            icon: [{ type: i0.Input }],
+            title: [{ type: i0.Input }],
+            toggle: [{ type: i0.Output }]
+        };
+        return GoAccordionPanelComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoAccordionComponent = /** @class */ (function () {
+        function GoAccordionComponent() {
+            this.expandAll = false;
+            this.multiExpand = false;
+            this.showIcons = false;
+            this.theme = 'light';
+        }
+        /**
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                this.setActiveTheme();
+                this.multiExpand = this.expandAll || this.multiExpand;
+            };
+        /**
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.ngAfterContentInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.panels.toArray().forEach(( /**
+                 * @param {?} p
+                 * @return {?}
+                 */function (p) {
+                    p.toggle.subscribe(( /**
+                     * @return {?}
+                     */function () {
+                        if (!p.expanded && _this.multiExpand) {
+                            _this.openPanel(p);
+                        }
+                        else if (!p.expanded && !_this.multiExpand) {
+                            _this.openPanelCloseOthers(p);
+                        }
+                        else {
+                            _this.closePanel(p);
+                        }
+                    }));
+                    p.expanded = _this.expandAll || p.expanded;
+                    p.icon = !_this.showIcons ? null : p.icon;
+                }));
+            };
+        /**
+         * @param {?} panel
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.openPanelCloseOthers = /**
+         * @param {?} panel
+         * @return {?}
+         */
+            function (panel) {
+                var _this = this;
+                this.panels.toArray().forEach(( /**
+                 * @param {?} p
+                 * @return {?}
+                 */function (p) {
+                    _this.closePanel(p);
+                }));
+                this.openPanel(panel);
+            };
+        /**
+         * @param {?} panel
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.openPanel = /**
+         * @param {?} panel
+         * @return {?}
+         */
+            function (panel) {
+                panel.expanded = true;
+            };
+        /**
+         * @param {?} panel
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.closePanel = /**
+         * @param {?} panel
+         * @return {?}
+         */
+            function (panel) {
+                panel.expanded = false;
+            };
+        /**
+         * @return {?}
+         */
+        GoAccordionComponent.prototype.setActiveTheme = /**
+         * @return {?}
+         */
+            function () {
+                this.activeTheme = 'go-accordion--theme-' + this.theme;
+            };
+        GoAccordionComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'go-accordion',
+                        template: "<div class=\"go-accordion\" [ngClass]=\"[activeTheme]\">\n  <ng-content></ng-content>\n</div>\n",
+                        styles: [".go-accordion{border-radius:4px;display:flex;flex-direction:column;min-width:200px}.go-accordion--theme-light{background:#fff;border:1px solid #b1b1b1;color:#313536}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        GoAccordionComponent.ctorParameters = function () { return []; };
+        GoAccordionComponent.propDecorators = {
+            expandAll: [{ type: i0.Input }],
+            multiExpand: [{ type: i0.Input }],
+            showIcons: [{ type: i0.Input }],
+            theme: [{ type: i0.Input }],
+            panels: [{ type: i0.ContentChildren, args: [GoAccordionPanelComponent,] }]
+        };
+        return GoAccordionComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoAccordionModule = /** @class */ (function () {
+        function GoAccordionModule() {
+        }
+        GoAccordionModule.decorators = [
+            { type: i0.NgModule, args: [{
+                        declarations: [
+                            GoAccordionComponent,
+                            GoAccordionPanelComponent
+                        ],
+                        imports: [
+                            common.CommonModule
+                        ],
+                        exports: [
+                            GoAccordionComponent,
+                            GoAccordionPanelComponent
+                        ]
+                    },] }
+        ];
+        return GoAccordionModule;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var GoButtonComponent = /** @class */ (function () {
         function GoButtonComponent() {
             this.handleClick = new i0.EventEmitter();
@@ -71,6 +252,7 @@
             { type: i0.Component, args: [{
                         selector: 'go-icon',
                         template: "<i class=\"material-icons\">{{icon}}</i>\n",
+                        encapsulation: i0.ViewEncapsulation.None,
                         styles: [""]
                     }] }
         ];
@@ -125,15 +307,19 @@
      */
     var GoCardComponent = /** @class */ (function () {
         function GoCardComponent() {
+            this.showHeader = true;
         }
         GoCardComponent.decorators = [
             { type: i0.Component, args: [{
                         encapsulation: i0.ViewEncapsulation.None,
                         selector: 'go-card',
-                        template: "<div class=\"card\">\n  <header class=\"card__header\">\n    <ng-content select=\"[go-card-header]\"></ng-content>\n  </header>\n  <div class=\"card_content\">\n    <ng-content select=\"[go-card-content]\"></ng-content>\n  </div>\n</div>\n",
-                        styles: [".card{background:#fff;border-radius:4px;box-shadow:0 3px 6px rgba(0,0,0,.2);display:flex;flex-direction:column;padding:1rem}.card__header{display:flex;justify-content:space-between;padding-bottom:1rem}.card__action-list{display:flex}.card__action-list li{cursor:pointer;padding:0 .4rem;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;transition:.25s cubic-bezier(.25,.8,.25,1)}.card__action-list li:last-child{padding-right:0}.card__action-list li:hover{color:#93989d}"]
+                        template: "<div class=\"card\">\n  <header class=\"card__header\" *ngIf=\"showHeader\">\n    <ng-content select=\"[go-card-header]\"></ng-content>\n  </header>\n  <div class=\"card_content\">\n    <ng-content select=\"[go-card-content]\"></ng-content>\n  </div>\n</div>\n",
+                        styles: [".card{background:#fff;border-radius:4px;box-shadow:0 3px 6px rgba(0,0,0,.2);display:flex;flex-direction:column;padding:1rem}.card__header{display:flex;justify-content:space-between;padding-bottom:1rem}.card__action-list{display:flex}.card__action-list li{cursor:pointer;padding:0 .4rem;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;transition:.25s cubic-bezier(.25,.8,.25,1)}.card__action-list li:last-child{padding-right:0}.card__action-list li:hover{color:#65b360}"]
                     }] }
         ];
+        GoCardComponent.propDecorators = {
+            showHeader: [{ type: i0.Input }]
+        };
         return GoCardComponent;
     }());
 
@@ -460,6 +646,7 @@
         GoSharedModule.decorators = [
             { type: i0.NgModule, args: [{
                         imports: [
+                            GoAccordionModule,
                             GoButtonModule,
                             GoCardModule,
                             GoIconModule,
@@ -468,6 +655,7 @@
                         ],
                         declarations: [],
                         exports: [
+                            GoAccordionModule,
                             GoButtonModule,
                             GoCardModule,
                             GoIconModule,
@@ -490,6 +678,9 @@
      */
 
     exports.GoSharedModule = GoSharedModule;
+    exports.GoAccordionPanelComponent = GoAccordionPanelComponent;
+    exports.GoAccordionComponent = GoAccordionComponent;
+    exports.GoAccordionModule = GoAccordionModule;
     exports.GoButtonComponent = GoButtonComponent;
     exports.GoButtonModule = GoButtonModule;
     exports.GoCardComponent = GoCardComponent;

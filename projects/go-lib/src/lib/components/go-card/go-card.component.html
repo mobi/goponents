@@ -1,5 +1,5 @@
 <div class="card">
-  <header class="card__header">
+  <header class="card__header" *ngIf="showHeader">
     <ng-content select="[go-card-header]"></ng-content>
   </header>
   <div class="card_content">

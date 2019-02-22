@@ -1,4 +1,3 @@
-// Fonts
 $weight-light: 300;
 $weight-regular: 400;
 $weight-bold: 700;
@@ -12,7 +11,8 @@ $base-dark: #313536;
 $base-dark-secondary: #202626;
 $base-light: #fff;
 $base-light-secondary: #b1b1b1;
-$base-primary: #93989d;
+$base-primary: #65B360;
+$gradient-primary-horizontal: linear-gradient(to right, $base-primary, darken($base-primary, 7%));
 
 // Light Theme
 $theme-light-app-bg: #F0F0F0;
@@ -30,3 +30,7 @@ $theme-dark-bg-hover: darken($base-dark, 7);
 $theme-dark-color: $base-light;
 $theme-dark-color-hover: darken($base-light, 20);
 $theme-dark-border: $base-dark-secondary;
+
+// Breakpoints
+$breakpoint_mobile: 768px;
+$breakpoint_tablet: 1024px;
