@@ -1,0 +1,206 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.go-accordion-panel__title-bar {
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2rem;
+  padding: 1.2rem 0;
+  position: relative;
+  @include transition(all);
+}
+
+.go-accordion-panel__title {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+}
+
+.go-accordion-panel__title-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  text-align: center;
+}
+
+.go-accordion-panel__title-text {
+  padding-left: 1rem;
+}
+
+.go-accordion-panel__control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.go-accordion-panel__control-icon {
+  @include transition(all);
+}
+
+.go-accordion-panel__content-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  @include transition(max-height opacity);
+}
+
+.go-accordion-panel__content {
+  display: block;
+  padding: 0 1rem;
+  @include transition(all);
+}
+
+// ----- Light Theme Classes
+.go-accordion--theme-light {
+  background: $theme-light-bg;
+  border: 1px solid $theme-light-border;
+  color: $theme-light-color;
+
+  go-accordion-panel:not(:first-of-type) .go-accordion-panel__title-bar,
+  go-accordion-panel:last-of-type .go-accordion-panel__title-bar {
+    border-top: 1px solid $theme-light-border;
+  }
+
+  .go-accordion-panel--border-top .go-accordion-panel__title-bar {
+    border-top: 1px solid $theme-light-border;
+  }
+
+  .go-accordion-panel--active .go-accordion-panel__title-bar {
+    background: $theme-light-bg-active;
+  }
+
+  .go-accordion-panel--inactive .go-accordion-panel__title-bar {
+    background: $theme-light-bg;
+  }
+
+  .go-accordion-panel__title-bar:hover {
+    background: $theme-light-bg-hover;
+  }
+
+  .go-accordion-panel__content {
+    color: $theme-light-color;
+  }
+}
+
+// ----- Dark Theme Classes
+.go-accordion--theme-dark {
+  background: $theme-dark-bg;
+  border: 1px solid $theme-dark-border;
+  color: $theme-dark-color;
+  font-weight: 300;
+
+  go-accordion-panel:not(:first-of-type) .go-accordion-panel__title-bar,
+  go-accordion-panel:last-of-type .go-accordion-panel__title-bar {
+    border-top: 1px solid $theme-dark-border;
+  }
+
+  .go-accordion-panel--border-top .go-accordion-panel__title-bar {
+    border-top: 1px solid $theme-dark-border;
+  }
+
+  .go-accordion-panel--active .go-accordion-panel__title-bar {
+    background: $theme-dark-bg-active;
+  }
+
+  .go-accordion-panel--inactive .go-accordion-panel__title-bar {
+    background: $theme-dark-bg;
+  }
+
+  .go-accordion-panel__title-bar:hover {
+    background: $theme-dark-bg-hover;
+  }
+
+  .go-accordion-panel__content {
+    color: $theme-dark-color;
+    font-weight: 300;
+  }
+}
+
+go-accordion-panel {
+  &:last-of-type {
+    .go-accordion-panel::before {
+      border-bottom-left-radius: calc(#{$global-radius} - 1px);
+    }
+
+    .go-accordion-panel__title-bar {
+      border-radius: 0 0 $global-radius $global-radius;
+      overflow: hidden;
+    }
+  }
+
+  &:first-of-type {
+    .go-accordion-panel::before {
+      border-top-left-radius: calc(#{$global-radius} - 1px);
+    }
+
+    .go-accordion-panel__title-bar {
+      border-radius: $global-radius $global-radius 0 0 ;
+      overflow: hidden;
+    }
+  }
+}
+
+.go-accordion-panel {
+  position: relative;
+
+  &::before {
+    background: $gradient-primary-horizontal;
+    background-color: $base-primary;
+    content: " ";
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.25s ease-in;
+    width: 4px;
+    z-index: 1;
+  }
+
+  &.go-accordion-panel--active {
+
+    &::before {
+      opacity: 1;
+    }
+
+    .go-accordion-panel__control .material-icons {
+      transform: rotate(180deg);
+    }
+
+    .go-accordion-panel__content-container {
+      max-height: 1000000px; // this is arbitrary, used for animation
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .go-accordion-panel__content {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  &.go-accordion-panel--inactive {
+    &::before {
+      opacity: 0;
+    }
+
+    .go-accordion-panel__control .material-icons {
+      transform: rotate(0deg);
+    }
+
+    .go-accordion-panel__content-container {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+// ----- Utility Classes
+.go-accordion--slim {
+  .go-accordion-panel__title-bar {
+    font-size: 1rem;
+  }
+}

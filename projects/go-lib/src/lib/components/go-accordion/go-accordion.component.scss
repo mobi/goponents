@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+
+.go-accordion {
+  border-radius: $global-radius;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.go-accordion--theme-light {
+  background: $theme-light-bg;
+  border: 1px solid $theme-light-border;
+  color: $theme-light-color;
+}

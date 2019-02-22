@@ -1,0 +1,16 @@
+<div class="go-accordion-panel" [ngClass]="{ 'go-accordion-panel--active': expanded, 'go-accordion-panel--inactive': !expanded }">
+  <header class="go-accordion-panel__title-bar" (click)="toggle.emit()" aria-expanded="expanded">
+    <span class="go-accordion-panel__title">
+      <span *ngIf="icon" class="material-icons go-accordion-panel__title-icon">{{ icon }}</span>
+      <span class="go-accordion-panel__title-text" [innerHtml]="title"></span>
+    </span>
+    <span class="go-accordion-panel__control">
+      <span class="material-icons go-accordion-panel__control-icon">expand_more</span>
+    </span>
+  </header>
+  <div class="go-accordion-panel__content-container">
+    <div class="go-accordion-panel__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

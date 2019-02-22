@@ -5,6 +5,9 @@
 export * from './lib/go-shared.module';
 
 // Components
+export * from './lib/components/go-accordion/go-accordion-panel.component';
+export * from './lib/components/go-accordion/go-accordion.component';
+export * from './lib/components/go-accordion/go-accordion.module';
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
 export * from './lib/components/go-card/go-card.component';
