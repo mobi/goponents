@@ -1,107 +1,129 @@
-.button {
-  background-color: #65B360;
-  border-radius: 2px;
-  color: #ffffff;
-  font-size: 14px;
-  height: 44px;
-  padding: 14px;
-  text-align: center;
-  transition: all .3s;
-}
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
 
-.button:hover {
-  background-color: #448640;
-}
-
-.button__loading {
-  background-color: #65B360;
+.go-button {
+  background-color: $base-primary;
+  border-radius: $global-radius;
+  border: none;
+  color: $base-light;
+  cursor: pointer;
+  font-size: 0.75rem;
+  height: 2.5rem;
+  letter-spacing: 1.25pt;
+  overflow: hidden;
+  outline: none;
+  padding: 0.75rem 1rem;
   position: relative;
+  text-transform: uppercase;
+  @include transition(all);
+
+  &::after {
+    border-bottom-left-radius: $global-radius;
+    border-bottom-right-radius: $global-radius;
+    bottom: -5px;
+    content: '';
+    display: block;
+    height: 5px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    @include transition(all);
+  }
 }
 
-.button__loading::after {
-  animation: loading .8s infinite;
-  animation-timing-function: ease-in-out;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+.go-button:hover {
+  background-color: $primary-hover;
+}
+
+.go-button__icon {
+  font-size: 1rem;
+  padding-right: 0.5rem;
+  vertical-align: text-top;
+}
+
+.go-button__loading {
+  background-color: $base-primary;
+  cursor: not-allowed;
+}
+
+.go-button__loading::after {
+  animation: loading .8s infinite ease-in-out;
   bottom: 0;
-  content: '';
-  display: block;
-  height: 5px;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
+  opacity: 1;
 }
 
-.button__loading.button__alert {
-  background-color: #ED232B;
-}
-
-.button__loading.button__alert::after {
+.go-button__loading.go-button__alert::after {
   animation: loading-red .8s infinite;
 }
 
-.button__disabled {
-  background-color: #cccccc;
-  color: #000000;
+.go-button__disabled {
+  background-color: $base-light-secondary;
+  color: $theme-light-color;
 }
 
-.button__disabled:hover {
-  background-color: #999999;
+.go-button__disabled:hover {
+  cursor: not-allowed;
+  background-color: $base-light-secondary;
 }
 
-.button__alert {
-  background-color: #DB1F26;
+.go-button__alert {
+  background-color: $alert;
 }
 
-.button__alert:hover {
-  background-color: #9D161B;
+.go-button__alert:hover {
+  background-color: $alert-hover;
+}
+
+.go-button__alert.go-button__loading {
+  background-color: $alert;
 }
 
 @keyframes loading {
-  0% { background: linear-gradient(to right, #488044 0%, #579952 0%); }
-  5% { background: linear-gradient(to right, #488044 10%, #579952 10%); }
-  10% { background: linear-gradient(to right, #488044 20%, #579952 20%); }
-  15% { background: linear-gradient(to right, #488044 30%, #579952 30%); }
-  20% { background: linear-gradient(to right, #488044 40%, #579952 40%); }
-  25% { background: linear-gradient(to right, #488044 50%, #579952 50%); }
-  30% { background: linear-gradient(to right, #488044 60%, #579952 60%); }
-  35% { background: linear-gradient(to right, #488044 70%, #579952 70%); }
-  40% { background: linear-gradient(to right, #488044 80%, #579952 80%); }
-  45% { background: linear-gradient(to right, #488044 90%, #579952 90%); }
-  50% { background: linear-gradient(to right, #579952 0%, #488044 0%); }
-  55% { background: linear-gradient(to right, #579952 10%, #488044 10%); }
-  60% { background: linear-gradient(to right, #579952 20%, #488044 20%); }
-  65% { background: linear-gradient(to right, #579952 30%, #488044 30%); }
-  70% { background: linear-gradient(to right, #579952 40%, #488044 40%); }
-  75% { background: linear-gradient(to right, #579952 50%, #488044 50%); }
-  80% { background: linear-gradient(to right, #579952 60%, #488044 60%); }
-  85% { background: linear-gradient(to right, #579952 70%, #488044 70%); }
-  90% { background: linear-gradient(to right, #579952 80%, #488044 80%); }
-  95% { background: linear-gradient(to right, #579952 90%, #488044 90%); }
-  100% { background: linear-gradient(to right, #579952 100%, #488044 100%); }
+  0% { background: linear-gradient(to right, $primary-darker 0%, $primary-dark 0%); }
+  5% { background: linear-gradient(to right, $primary-darker 10%, $primary-dark 10%); }
+  10% { background: linear-gradient(to right, $primary-darker 20%, $primary-dark 20%); }
+  15% { background: linear-gradient(to right, $primary-darker 30%, $primary-dark 30%); }
+  20% { background: linear-gradient(to right, $primary-darker 40%, $primary-dark 40%); }
+  25% { background: linear-gradient(to right, $primary-darker 50%, $primary-dark 50%); }
+  30% { background: linear-gradient(to right, $primary-darker 60%, $primary-dark 60%); }
+  35% { background: linear-gradient(to right, $primary-darker 70%, $primary-dark 70%); }
+  40% { background: linear-gradient(to right, $primary-darker 80%, $primary-dark 80%); }
+  45% { background: linear-gradient(to right, $primary-darker 90%, $primary-dark 90%); }
+  50% { background: linear-gradient(to right, $primary-dark 0%, $primary-darker 0%); }
+  55% { background: linear-gradient(to right, $primary-dark 10%, $primary-darker 10%); }
+  60% { background: linear-gradient(to right, $primary-dark 20%, $primary-darker 20%); }
+  65% { background: linear-gradient(to right, $primary-dark 30%, $primary-darker 30%); }
+  70% { background: linear-gradient(to right, $primary-dark 40%, $primary-darker 40%); }
+  75% { background: linear-gradient(to right, $primary-dark 50%, $primary-darker 50%); }
+  80% { background: linear-gradient(to right, $primary-dark 60%, $primary-darker 60%); }
+  85% { background: linear-gradient(to right, $primary-dark 70%, $primary-darker 70%); }
+  90% { background: linear-gradient(to right, $primary-dark 80%, $primary-darker 80%); }
+  95% { background: linear-gradient(to right, $primary-dark 90%, $primary-darker 90%); }
+  100% { background: linear-gradient(to right, $primary-dark 100%, $primary-darker 100%); }
 }
 
 @keyframes loading-red {
-  0% { background: linear-gradient(to right, #6A0F12 0%, #DB1F26 0%); }
-  5% { background: linear-gradient(to right, #6A0F12 10%, #DB1F26 10%); }
-  10% { background: linear-gradient(to right, #6A0F12 20%, #DB1F26 20%); }
-  15% { background: linear-gradient(to right, #6A0F12 30%, #DB1F26 30%); }
-  20% { background: linear-gradient(to right, #6A0F12 40%, #DB1F26 40%); }
-  25% { background: linear-gradient(to right, #6A0F12 50%, #DB1F26 50%); }
-  30% { background: linear-gradient(to right, #6A0F12 60%, #DB1F26 60%); }
-  35% { background: linear-gradient(to right, #6A0F12 70%, #DB1F26 70%); }
-  40% { background: linear-gradient(to right, #6A0F12 80%, #DB1F26 80%); }
-  45% { background: linear-gradient(to right, #6A0F12 90%, #DB1F26 90%); }
-  50% { background: linear-gradient(to right, #DB1F26 0%, #6A0F12 0%); }
-  55% { background: linear-gradient(to right, #DB1F26 10%, #6A0F12 10%); }
-  60% { background: linear-gradient(to right, #DB1F26 20%, #6A0F12 20%); }
-  65% { background: linear-gradient(to right, #DB1F26 30%, #6A0F12 30%); }
-  70% { background: linear-gradient(to right, #DB1F26 40%, #6A0F12 40%); }
-  75% { background: linear-gradient(to right, #DB1F26 50%, #6A0F12 50%); }
-  80% { background: linear-gradient(to right, #DB1F26 60%, #6A0F12 60%); }
-  85% { background: linear-gradient(to right, #DB1F26 70%, #6A0F12 70%); }
-  90% { background: linear-gradient(to right, #DB1F26 80%, #6A0F12 80%); }
-  95% { background: linear-gradient(to right, #DB1F26 90%, #6A0F12 90%); }
-  100% { background: linear-gradient(to right, #DB1F26 100%, #6A0F12 100%); }
+  0% { background: linear-gradient(to right, $alert-darker 0%, $alert-dark 0%); }
+  5% { background: linear-gradient(to right, $alert-darker 10%, $alert-dark 10%); }
+  10% { background: linear-gradient(to right, $alert-darker 20%, $alert-dark 20%); }
+  15% { background: linear-gradient(to right, $alert-darker 30%, $alert-dark 30%); }
+  20% { background: linear-gradient(to right, $alert-darker 40%, $alert-dark 40%); }
+  25% { background: linear-gradient(to right, $alert-darker 50%, $alert-dark 50%); }
+  30% { background: linear-gradient(to right, $alert-darker 60%, $alert-dark 60%); }
+  35% { background: linear-gradient(to right, $alert-darker 70%, $alert-dark 70%); }
+  40% { background: linear-gradient(to right, $alert-darker 80%, $alert-dark 80%); }
+  45% { background: linear-gradient(to right, $alert-darker 90%, $alert-dark 90%); }
+  50% { background: linear-gradient(to right, $alert-dark 0%, $alert-darker 0%); }
+  55% { background: linear-gradient(to right, $alert-dark 10%, $alert-darker 10%); }
+  60% { background: linear-gradient(to right, $alert-dark 20%, $alert-darker 20%); }
+  65% { background: linear-gradient(to right, $alert-dark 30%, $alert-darker 30%); }
+  70% { background: linear-gradient(to right, $alert-dark 40%, $alert-darker 40%); }
+  75% { background: linear-gradient(to right, $alert-dark 50%, $alert-darker 50%); }
+  80% { background: linear-gradient(to right, $alert-dark 60%, $alert-darker 60%); }
+  85% { background: linear-gradient(to right, $alert-dark 70%, $alert-darker 70%); }
+  90% { background: linear-gradient(to right, $alert-dark 80%, $alert-darker 80%); }
+  95% { background: linear-gradient(to right, $alert-dark 90%, $alert-darker 90%); }
+  100% { background: linear-gradient(to right, $alert-dark 100%, $alert-darker 100%); }
 }

@@ -6,30 +6,32 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['go-button.component.scss']
 })
 export class GoButtonComponent {
+  @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
   @Input() buttonType: string;
+  @Input() useLoader: boolean;
   @Output() handleClick = new EventEmitter<boolean>();
 
-  public isProcessing: boolean;
+  isProcessing: boolean = false;
 
-  constructor() {
+  constructor() {}
+
+  clicked() : void {
+    if (this.isProcessing || this.buttonDisabled) { return; }
+
+    this.isProcessing = this.useLoader;
+    this.handleClick.emit(this.isProcessing);
+  }
+  
+  reset() : void {
     this.isProcessing = false;
   }
 
-  // Public Methods
-
-  public clicked(): void {
-    if (this.isProcessing) { return; }
-
-    this.isProcessing = true;
-    this.handleClick.emit(this.isProcessing);
-  }
-
-  public classList(): any {
+  classList() : any {
     return {
-      'button__loading': this.isProcessing,
-      'button__disabled': (this.buttonType === 'disabled'),
-      'button__alert': (this.buttonType === 'alert')
+      'go-button__loading': this.isProcessing,
+      'go-button__disabled': this.buttonDisabled,
+      'go-button__alert': (this.buttonType === 'alert')
     };
   }
 }

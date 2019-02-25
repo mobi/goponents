@@ -12,7 +12,18 @@ $base-dark-secondary: #202626;
 $base-light: #fff;
 $base-light-secondary: #b1b1b1;
 $base-primary: #65B360;
-$gradient-primary-horizontal: linear-gradient(to right, $base-primary, darken($base-primary, 7%));
+
+// Statuses
+$alert: #EA5252;
+$alert-hover: darken($alert, 7%);
+$alert-dark: darken($alert, 10%);
+$alert-darker: darken($alert, 20%);
+
+// Branding
+$primary-hover: darken($base-primary, 7%);
+$primary-dark: darken($base-primary, 10%);
+$primary-darker: darken($base-primary, 20%);
+$gradient-primary-horizontal: linear-gradient(to right, $base-primary, $primary-dark);
 
 // Light Theme
 $theme-light-app-bg: #F0F0F0;

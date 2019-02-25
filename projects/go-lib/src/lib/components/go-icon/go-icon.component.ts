@@ -1,11 +1,10 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'go-icon',
   templateUrl: 'go-icon.component.html',
-  styleUrls: ['go-icon.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['go-icon.component.scss']
 })
 export class GoIconComponent {
-  @Input() icon: String;
+  @Input() icon: string;
 }
