@@ -16,18 +16,18 @@ export class GoButtonComponent {
 
   constructor() {}
 
-  clicked() : void {
+  public clicked() : void {
     if (this.isProcessing || this.buttonDisabled) { return; }
 
     this.isProcessing = this.useLoader;
     this.handleClick.emit(this.isProcessing);
   }
   
-  reset() : void {
+  public reset() : void {
     this.isProcessing = false;
   }
 
-  classList() : any {
+  public classList() : any {
     return {
       'go-button__loading': this.isProcessing,
       'go-button__disabled': this.buttonDisabled,
