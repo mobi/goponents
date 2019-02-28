@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/cdk/table'), require('rxjs'), require('@angular/common'), require('@angular/core'), require('ngx-toastr')) :
-    typeof define === 'function' && define.amd ? define('goponents', ['exports', '@angular/cdk/table', 'rxjs', '@angular/common', '@angular/core', 'ngx-toastr'], factory) :
-    (factory((global.goponents = {}),global.ng.cdk.table,global.rxjs,global.ng.common,global.ng.core,global.i1));
-}(this, (function (exports,table,rxjs,common,i0,i1) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/cdk/table'), require('rxjs'), require('ngx-toastr'), require('@angular/common'), require('@angular/core'), require('rxjs/internal/Subject')) :
+    typeof define === 'function' && define.amd ? define('goponents', ['exports', '@angular/cdk/table', 'rxjs', 'ngx-toastr', '@angular/common', '@angular/core', 'rxjs/internal/Subject'], factory) :
+    (factory((global.goponents = {}),global.ng.cdk.table,global.rxjs,global.i1,global.ng.common,global.ng.core,global.rxjs['internal/Subject']));
+}(this, (function (exports,table,rxjs,i1,common,i0,Subject) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -646,6 +646,219 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var GoModalDirective = /** @class */ (function () {
+        function GoModalDirective(viewContainerRef) {
+            this.viewContainerRef = viewContainerRef;
+        }
+        GoModalDirective.decorators = [
+            { type: i0.Directive, args: [{
+                        selector: '[go-modal-host]',
+                    },] }
+        ];
+        /** @nocollapse */
+        GoModalDirective.ctorParameters = function () {
+            return [
+                { type: i0.ViewContainerRef }
+            ];
+        };
+        return GoModalDirective;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoModalItem = /** @class */ (function () {
+        function GoModalItem(component, bindings) {
+            this.component = component;
+            this.bindings = bindings;
+        }
+        return GoModalItem;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoModalService = /** @class */ (function () {
+        function GoModalService() {
+            this.activeModalComponent = new Subject.Subject();
+            this.modalOpen = new Subject.Subject();
+            this.modalOpen.next(false);
+        }
+        /**
+         * @param {?} component
+         * @param {?} bindings
+         * @return {?}
+         */
+        GoModalService.prototype.openModal = /**
+         * @param {?} component
+         * @param {?} bindings
+         * @return {?}
+         */
+            function (component, bindings) {
+                this.setComponent(component, bindings);
+                this.toggleModal(true);
+            };
+        /**
+         * @param {?} component
+         * @param {?} bindings
+         * @return {?}
+         */
+        GoModalService.prototype.setComponent = /**
+         * @param {?} component
+         * @param {?} bindings
+         * @return {?}
+         */
+            function (component, bindings) {
+                this.activeModalComponent.next(new GoModalItem(component, bindings));
+            };
+        /**
+         * @param {?=} open
+         * @return {?}
+         */
+        GoModalService.prototype.toggleModal = /**
+         * @param {?=} open
+         * @return {?}
+         */
+            function (open) {
+                if (open === void 0) {
+                    open = true;
+                }
+                this.modalOpen.next(open);
+            };
+        GoModalService.decorators = [
+            { type: i0.Injectable }
+        ];
+        /** @nocollapse */
+        GoModalService.ctorParameters = function () { return []; };
+        return GoModalService;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoModalComponent = /** @class */ (function () {
+        function GoModalComponent(componentFactoryResolver, goModalService) {
+            this.componentFactoryResolver = componentFactoryResolver;
+            this.goModalService = goModalService;
+            this.opened = false;
+        }
+        /**
+         * @return {?}
+         */
+        GoModalComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                this.goModalService.activeModalComponent.subscribe(( /**
+                 * @param {?} value
+                 * @return {?}
+                 */function (value) {
+                    _this.currentComponent = value;
+                    _this.loadComponent();
+                }));
+                this.goModalService.modalOpen.subscribe(( /**
+                 * @param {?} value
+                 * @return {?}
+                 */function (value) {
+                    _this.opened = value;
+                }));
+            };
+        /**
+         * @return {?}
+         */
+        GoModalComponent.prototype.loadComponent = /**
+         * @return {?}
+         */
+            function () {
+                var _this = this;
+                /** @type {?} */
+                var componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
+                /** @type {?} */
+                var viewContainerRef = this.goModalHost.viewContainerRef;
+                viewContainerRef.clear();
+                /** @type {?} */
+                var componentRef = viewContainerRef.createComponent(componentFactory);
+                Object.keys(this.currentComponent.bindings).forEach(( /**
+                 * @param {?} key
+                 * @return {?}
+                 */function (key) {
+                    componentRef.instance[key] = _this.currentComponent.bindings[key];
+                }));
+            };
+        /**
+         * @param {?} event
+         * @return {?}
+         */
+        GoModalComponent.prototype.closeModalContainer = /**
+         * @param {?} event
+         * @return {?}
+         */
+            function (event) {
+                if (!this.goModalContainer.nativeElement.contains(event.target)) {
+                    this.closeModal();
+                }
+            };
+        /**
+         * @return {?}
+         */
+        GoModalComponent.prototype.closeModal = /**
+         * @return {?}
+         */
+            function () {
+                this.goModalService.toggleModal(false);
+            };
+        GoModalComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'go-modal',
+                        template: "<div class=\"go-modal\" [ngClass]=\"{ 'go-modal--visible': opened }\" (click)=\"closeModalContainer($event)\">\n  <div class=\"go-modal__container\" #goModalContainer>\n    <div class=\"go-modal__close\" (click)=\"closeModal()\">\n      <go-icon icon=\"close\"></go-icon>\n    </div>\n    <ng-template go-modal-host>\n    </ng-template>\n  </div>\n</div>",
+                        styles: [".go-modal{align-items:center;background:rgba(49,53,54,.9);display:flex;height:100%;justify-content:center;left:0;opacity:0;position:absolute;top:0;visibility:hidden;width:100%;z-index:400;transition:.25s cubic-bezier(.25,.8,.25,1)}.go-modal__container{background:#fff;border-radius:4px;box-shadow:0 3px 6px rgba(0,0,0,.2);color:#313536;max-height:80%;max-width:32.5rem;padding:2rem 1rem 1rem;position:relative;overflow-x:hidden;overflow-y:auto;-webkit-transform:scale(1.1);transform:scale(1.1);transition:.25s cubic-bezier(.25,.8,.25,1)}.go-modal.go-modal--visible{visibility:visible;opacity:1}.go-modal.go-modal--visible .go-modal__container{-webkit-transform:scale(1);transform:scale(1)}.go-modal__close{color:#313536;cursor:pointer;padding:.5rem;position:absolute;right:0;top:0}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        GoModalComponent.ctorParameters = function () {
+            return [
+                { type: i0.ComponentFactoryResolver },
+                { type: GoModalService }
+            ];
+        };
+        GoModalComponent.propDecorators = {
+            goModalHost: [{ type: i0.ViewChild, args: [GoModalDirective,] }],
+            goModalContainer: [{ type: i0.ViewChild, args: ['goModalContainer',] }]
+        };
+        return GoModalComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var GoModalModule = /** @class */ (function () {
+        function GoModalModule() {
+        }
+        GoModalModule.decorators = [
+            { type: i0.NgModule, args: [{
+                        declarations: [
+                            GoModalComponent,
+                            GoModalDirective
+                        ],
+                        imports: [
+                            common.CommonModule,
+                            GoIconModule
+                        ],
+                        exports: [GoModalComponent]
+                    },] }
+        ];
+        return GoModalModule;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var GoSharedModule = /** @class */ (function () {
         function GoSharedModule() {
         }
@@ -657,16 +870,17 @@
                             GoCardModule,
                             GoIconModule,
                             GoTableModule,
-                            GoMessageModule
+                            GoMessageModule,
+                            GoModalModule
                         ],
-                        declarations: [],
                         exports: [
                             GoAccordionModule,
                             GoButtonModule,
                             GoCardModule,
                             GoIconModule,
                             GoTableModule,
-                            GoMessageModule
+                            GoMessageModule,
+                            GoModalModule
                         ]
                     },] }
         ];
@@ -693,10 +907,14 @@
     exports.GoCardModule = GoCardModule;
     exports.GoIconComponent = GoIconComponent;
     exports.GoIconModule = GoIconModule;
+    exports.GoModalComponent = GoModalComponent;
+    exports.GoModalModule = GoModalModule;
+    exports.GoModalService = GoModalService;
     exports.GoTableComponent = GoTableComponent;
     exports.GoTableModule = GoTableModule;
     exports.GoMessageService = GoMessageService;
     exports.GoMessageModule = GoMessageModule;
+    exports.ɵa = GoModalDirective;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
