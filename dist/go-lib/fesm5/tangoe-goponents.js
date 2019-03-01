@@ -893,4 +893,4 @@ var GoSharedModule = /** @class */ (function () {
 
 export { GoSharedModule, GoAccordionPanelComponent, GoAccordionComponent, GoAccordionModule, GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoModalComponent, GoModalModule, GoModalService, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule, GoModalDirective as ɵa };
 
-//# sourceMappingURL=goponents.js.map
+//# sourceMappingURL=tangoe-goponents.js.map

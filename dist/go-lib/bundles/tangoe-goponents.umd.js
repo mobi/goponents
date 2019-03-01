@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/cdk/table'), require('rxjs'), require('ngx-toastr'), require('@angular/common'), require('@angular/core'), require('rxjs/internal/Subject')) :
-    typeof define === 'function' && define.amd ? define('goponents', ['exports', '@angular/cdk/table', 'rxjs', 'ngx-toastr', '@angular/common', '@angular/core', 'rxjs/internal/Subject'], factory) :
-    (factory((global.goponents = {}),global.ng.cdk.table,global.rxjs,global.i1,global.ng.common,global.ng.core,global.rxjs['internal/Subject']));
+    typeof define === 'function' && define.amd ? define('@tangoe/goponents', ['exports', '@angular/cdk/table', 'rxjs', 'ngx-toastr', '@angular/common', '@angular/core', 'rxjs/internal/Subject'], factory) :
+    (factory((global.tangoe = global.tangoe || {}, global.tangoe.goponents = {}),global.ng.cdk.table,global.rxjs,global.i1,global.ng.common,global.ng.core,global.rxjs['internal/Subject']));
 }(this, (function (exports,table,rxjs,i1,common,i0,Subject) { 'use strict';
 
     /**
@@ -920,4 +920,4 @@
 
 })));
 
-//# sourceMappingURL=goponents.umd.js.map
+//# sourceMappingURL=tangoe-goponents.umd.js.map
