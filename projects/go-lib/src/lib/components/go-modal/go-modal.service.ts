@@ -5,7 +5,6 @@ import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable()
 export class GoModalService {
-
   activeModalComponent: Subject<GoModalItem> = new Subject<GoModalItem>();
   modalOpen: Subject<boolean> = new Subject<boolean>();
 

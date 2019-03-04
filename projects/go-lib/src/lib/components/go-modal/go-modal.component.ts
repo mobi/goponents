@@ -9,7 +9,6 @@ import { GoModalService } from './go-modal.service';
   styleUrls: ['./go-modal.component.scss']
 })
 export class GoModalComponent implements OnInit {
-
   currentComponent: any;
   opened: boolean = false;
 
@@ -30,12 +29,12 @@ export class GoModalComponent implements OnInit {
 
     this.goModalService.modalOpen.subscribe((value) => {
       this.opened = value;
-    })
+    });
   }
 
   loadComponent() {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
-    let viewContainerRef = this.goModalHost.viewContainerRef;
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
+    const viewContainerRef = this.goModalHost.viewContainerRef;
     viewContainerRef.clear();
 
     let componentRef = viewContainerRef.createComponent(componentFactory);
@@ -53,5 +52,9 @@ export class GoModalComponent implements OnInit {
 
   closeModal() {
     this.goModalService.toggleModal(false);
+  }
+
+  goModalClasses() {
+    return { 'go-modal--visible': this.opened }
   }
 }
