@@ -1,20 +1,20 @@
 {
-  "name": "goponents",
-  "version": "0.2.1",
+  "name": "@tangoe/goponents",
+  "version": "0.3.1",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "ngx-toastr": "^9.1.2"
   },
-  "main": "bundles/goponents.umd.js",
-  "module": "fesm5/goponents.js",
-  "es2015": "fesm2015/goponents.js",
-  "esm5": "esm5/goponents.js",
-  "esm2015": "esm2015/goponents.js",
-  "fesm5": "fesm5/goponents.js",
-  "fesm2015": "fesm2015/goponents.js",
-  "typings": "goponents.d.ts",
-  "metadata": "goponents.metadata.json",
+  "main": "bundles/tangoe-goponents.umd.js",
+  "module": "fesm5/tangoe-goponents.js",
+  "es2015": "fesm2015/tangoe-goponents.js",
+  "esm5": "esm5/tangoe-goponents.js",
+  "esm2015": "esm2015/tangoe-goponents.js",
+  "fesm5": "fesm5/tangoe-goponents.js",
+  "fesm2015": "fesm2015/tangoe-goponents.js",
+  "typings": "tangoe-goponents.d.ts",
+  "metadata": "tangoe-goponents.metadata.json",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^1.9.0"

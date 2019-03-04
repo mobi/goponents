@@ -1,8 +1,9 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { BehaviorSubject } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, ViewEncapsulation, ContentChildren, NgModule, Injectable, defineInjectable, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation, ContentChildren, NgModule, Injectable, Directive, ViewContainerRef, ComponentFactoryResolver, ViewChild, defineInjectable, inject } from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 /**
  * @fileoverview added by tsickle
@@ -522,6 +523,190 @@ GoMessageModule.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+class GoModalDirective {
+    /**
+     * @param {?} viewContainerRef
+     */
+    constructor(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+    }
+}
+GoModalDirective.decorators = [
+    { type: Directive, args: [{
+                selector: '[go-modal-host]',
+            },] }
+];
+/** @nocollapse */
+GoModalDirective.ctorParameters = () => [
+    { type: ViewContainerRef }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class GoModalItem {
+    /**
+     * @param {?} component
+     * @param {?} bindings
+     */
+    constructor(component, bindings) {
+        this.component = component;
+        this.bindings = bindings;
+    }
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class GoModalService {
+    constructor() {
+        this.activeModalComponent = new Subject();
+        this.modalOpen = new Subject();
+        this.modalOpen.next(false);
+    }
+    /**
+     * @param {?} component
+     * @param {?} bindings
+     * @return {?}
+     */
+    openModal(component, bindings) {
+        this.setComponent(component, bindings);
+        this.toggleModal(true);
+    }
+    /**
+     * @param {?} component
+     * @param {?} bindings
+     * @return {?}
+     */
+    setComponent(component, bindings) {
+        this.activeModalComponent.next(new GoModalItem(component, bindings));
+    }
+    /**
+     * @param {?=} open
+     * @return {?}
+     */
+    toggleModal(open = true) {
+        this.modalOpen.next(open);
+    }
+}
+GoModalService.decorators = [
+    { type: Injectable }
+];
+/** @nocollapse */
+GoModalService.ctorParameters = () => [];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class GoModalComponent {
+    /**
+     * @param {?} componentFactoryResolver
+     * @param {?} goModalService
+     */
+    constructor(componentFactoryResolver, goModalService) {
+        this.componentFactoryResolver = componentFactoryResolver;
+        this.goModalService = goModalService;
+        this.opened = false;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.goModalService.activeModalComponent.subscribe((/**
+         * @param {?} value
+         * @return {?}
+         */
+        (value) => {
+            this.currentComponent = value;
+            this.loadComponent();
+        }));
+        this.goModalService.modalOpen.subscribe((/**
+         * @param {?} value
+         * @return {?}
+         */
+        (value) => {
+            this.opened = value;
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    loadComponent() {
+        /** @type {?} */
+        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
+        /** @type {?} */
+        let viewContainerRef = this.goModalHost.viewContainerRef;
+        viewContainerRef.clear();
+        /** @type {?} */
+        let componentRef = viewContainerRef.createComponent(componentFactory);
+        Object.keys(this.currentComponent.bindings).forEach((/**
+         * @param {?} key
+         * @return {?}
+         */
+        key => {
+            componentRef.instance[key] = this.currentComponent.bindings[key];
+        }));
+    }
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    closeModalContainer(event) {
+        if (!this.goModalContainer.nativeElement.contains(event.target)) {
+            this.closeModal();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    closeModal() {
+        this.goModalService.toggleModal(false);
+    }
+}
+GoModalComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'go-modal',
+                template: "<div class=\"go-modal\" [ngClass]=\"{ 'go-modal--visible': opened }\" (click)=\"closeModalContainer($event)\">\n  <div class=\"go-modal__container\" #goModalContainer>\n    <div class=\"go-modal__close\" (click)=\"closeModal()\">\n      <go-icon icon=\"close\"></go-icon>\n    </div>\n    <ng-template go-modal-host>\n    </ng-template>\n  </div>\n</div>",
+                styles: [".go-modal{align-items:center;background:rgba(49,53,54,.9);display:flex;height:100%;justify-content:center;left:0;opacity:0;position:absolute;top:0;visibility:hidden;width:100%;z-index:400;transition:.25s cubic-bezier(.25,.8,.25,1)}.go-modal__container{background:#fff;border-radius:4px;box-shadow:0 3px 6px rgba(0,0,0,.2);color:#313536;max-height:80%;max-width:32.5rem;padding:2rem 1rem 1rem;position:relative;overflow-x:hidden;overflow-y:auto;-webkit-transform:scale(1.1);transform:scale(1.1);transition:.25s cubic-bezier(.25,.8,.25,1)}.go-modal.go-modal--visible{visibility:visible;opacity:1}.go-modal.go-modal--visible .go-modal__container{-webkit-transform:scale(1);transform:scale(1)}.go-modal__close{color:#313536;cursor:pointer;padding:.5rem;position:absolute;right:0;top:0}"]
+            }] }
+];
+/** @nocollapse */
+GoModalComponent.ctorParameters = () => [
+    { type: ComponentFactoryResolver },
+    { type: GoModalService }
+];
+GoModalComponent.propDecorators = {
+    goModalHost: [{ type: ViewChild, args: [GoModalDirective,] }],
+    goModalContainer: [{ type: ViewChild, args: ['goModalContainer',] }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class GoModalModule {
+}
+GoModalModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [
+                    GoModalComponent,
+                    GoModalDirective
+                ],
+                imports: [
+                    CommonModule,
+                    GoIconModule
+                ],
+                exports: [GoModalComponent]
+            },] }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 class GoSharedModule {
 }
 GoSharedModule.decorators = [
@@ -532,16 +717,17 @@ GoSharedModule.decorators = [
                     GoCardModule,
                     GoIconModule,
                     GoTableModule,
-                    GoMessageModule
+                    GoMessageModule,
+                    GoModalModule
                 ],
-                declarations: [],
                 exports: [
                     GoAccordionModule,
                     GoButtonModule,
                     GoCardModule,
                     GoIconModule,
                     GoTableModule,
-                    GoMessageModule
+                    GoMessageModule,
+                    GoModalModule
                 ]
             },] }
 ];
@@ -556,6 +742,6 @@ GoSharedModule.decorators = [
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { GoSharedModule, GoAccordionPanelComponent, GoAccordionComponent, GoAccordionModule, GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule };
+export { GoSharedModule, GoAccordionPanelComponent, GoAccordionComponent, GoAccordionModule, GoButtonComponent, GoButtonModule, GoCardComponent, GoCardModule, GoIconComponent, GoIconModule, GoModalComponent, GoModalModule, GoModalService, GoTableComponent, GoTableModule, GoMessageService, GoMessageModule, GoModalDirective as ɵa };
 
-//# sourceMappingURL=goponents.js.map
+//# sourceMappingURL=tangoe-goponents.js.map

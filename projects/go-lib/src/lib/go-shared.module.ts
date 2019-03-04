@@ -5,6 +5,7 @@ import { GoCardModule } from './components/go-card/go-card.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
 import { GoTableModule } from './components/go-table/go-table.module';
 import { GoMessageModule } from './services/go-message/go-message.module';
+import { GoModalModule } from './components/go-modal/go-modal.module';
 
 @NgModule({
   imports: [
@@ -13,16 +14,17 @@ import { GoMessageModule } from './services/go-message/go-message.module';
     GoCardModule,
     GoIconModule,
     GoTableModule,
-    GoMessageModule
+    GoMessageModule,
+    GoModalModule
   ],
-  declarations: [],
   exports: [
     GoAccordionModule,
     GoButtonModule,
     GoCardModule,
     GoIconModule,
     GoTableModule,
-    GoMessageModule
+    GoMessageModule,
+    GoModalModule
   ]
 })
 

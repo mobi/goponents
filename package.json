@@ -19,7 +19,8 @@
     "test_lib": "ng test go-lib",
     "test_app": "ng test go-tester",
     "npm_pack": "cd dist/go-lib && npm pack",
-    "package": "npm run build_lib && npm run npm_pack"
+    "package": "npm run build_lib && npm run npm_pack",
+    "publish": "npm run package && cd dist/go-lib && npm publish"
   },
   "private": true,
   "dependencies": {
