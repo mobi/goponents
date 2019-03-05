@@ -13,17 +13,31 @@ $base-light: #fff;
 $base-light-secondary: #b1b1b1;
 $base-primary: #65B360;
 
-// Statuses
-$alert: #EA5252;
-$alert-hover: darken($alert, 7%);
-$alert-dark: darken($alert, 10%);
-$alert-darker: darken($alert, 20%);
+// UI Colors
+$ui-color-negative: #DD4C4C;
+$ui-color-negative-active: #BA3F3F;
+$ui-color-negative-hover: #A83939;
+$ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
+$ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
+$ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
+
+$ui-color-positive: #4EDED2;
+$ui-color-positive-active: #47CCC1;
+$ui-color-positive-hover: #41BAB0;
+$ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+
+$ui-color-neutral: #8A4EDE;
+$ui-color-neutral-active: #7F47CC;
+$ui-color-neutral-hover: #7441BA;
+$ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
 
 // Branding
-$primary-hover: darken($base-primary, 7%);
-$primary-dark: darken($base-primary, 10%);
-$primary-darker: darken($base-primary, 20%);
-$gradient-primary-horizontal: linear-gradient(to right, $base-primary, $primary-dark);
+$brand-color: $base-primary;
+$brand-color-active: darken($base-primary, 7%);
+$brand-color-hover: darken($base-primary, 10%);
+$brand-color-dark: darken($base-primary, 15%);
+$brand-color-darker: darken($base-primary, 20%);
+$brand-color-gradient: linear-gradient(to right, $base-primary, $brand-color-hover);
 
 // Light Theme
 $theme-light-app-bg: #F0F0F0;

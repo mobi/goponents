@@ -148,8 +148,8 @@ go-accordion-panel {
   position: relative;
 
   &::before {
-    background: $gradient-primary-horizontal;
-    background-color: $base-primary;
+    background: $brand-color-gradient;
+    background-color: $brand-color;
     content: " ";
     height: 100%;
     left: 0;

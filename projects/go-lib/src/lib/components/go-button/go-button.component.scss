@@ -34,7 +34,7 @@
 }
 
 .go-button:hover {
-  background-color: $primary-hover;
+  background-color: $brand-color-hover;
 }
 
 .go-button__icon {
@@ -44,7 +44,7 @@
 }
 
 .go-button__loading {
-  background-color: $base-primary;
+  background-color: $brand-color;
   cursor: not-allowed;
 }
 
@@ -69,61 +69,61 @@
 }
 
 .go-button__alert {
-  background-color: $alert;
+  background-color: $ui-color-negative;
 }
 
 .go-button__alert:hover {
-  background-color: $alert-hover;
+  background-color: $ui-color-negative-hover;
 }
 
 .go-button__alert.go-button__loading {
-  background-color: $alert;
+  background-color: $ui-color-negative;
 }
 
 @keyframes loading {
-  0% { background: linear-gradient(to right, $primary-darker 0%, $primary-dark 0%); }
-  5% { background: linear-gradient(to right, $primary-darker 10%, $primary-dark 10%); }
-  10% { background: linear-gradient(to right, $primary-darker 20%, $primary-dark 20%); }
-  15% { background: linear-gradient(to right, $primary-darker 30%, $primary-dark 30%); }
-  20% { background: linear-gradient(to right, $primary-darker 40%, $primary-dark 40%); }
-  25% { background: linear-gradient(to right, $primary-darker 50%, $primary-dark 50%); }
-  30% { background: linear-gradient(to right, $primary-darker 60%, $primary-dark 60%); }
-  35% { background: linear-gradient(to right, $primary-darker 70%, $primary-dark 70%); }
-  40% { background: linear-gradient(to right, $primary-darker 80%, $primary-dark 80%); }
-  45% { background: linear-gradient(to right, $primary-darker 90%, $primary-dark 90%); }
-  50% { background: linear-gradient(to right, $primary-dark 0%, $primary-darker 0%); }
-  55% { background: linear-gradient(to right, $primary-dark 10%, $primary-darker 10%); }
-  60% { background: linear-gradient(to right, $primary-dark 20%, $primary-darker 20%); }
-  65% { background: linear-gradient(to right, $primary-dark 30%, $primary-darker 30%); }
-  70% { background: linear-gradient(to right, $primary-dark 40%, $primary-darker 40%); }
-  75% { background: linear-gradient(to right, $primary-dark 50%, $primary-darker 50%); }
-  80% { background: linear-gradient(to right, $primary-dark 60%, $primary-darker 60%); }
-  85% { background: linear-gradient(to right, $primary-dark 70%, $primary-darker 70%); }
-  90% { background: linear-gradient(to right, $primary-dark 80%, $primary-darker 80%); }
-  95% { background: linear-gradient(to right, $primary-dark 90%, $primary-darker 90%); }
-  100% { background: linear-gradient(to right, $primary-dark 100%, $primary-darker 100%); }
+  0% { background: linear-gradient(to right, $brand-color-darker 0%, $brand-color-dark 0%); }
+  5% { background: linear-gradient(to right, $brand-color-darker 10%, $brand-color-dark 10%); }
+  10% { background: linear-gradient(to right, $brand-color-darker 20%, $brand-color-dark 20%); }
+  15% { background: linear-gradient(to right, $brand-color-darker 30%, $brand-color-dark 30%); }
+  20% { background: linear-gradient(to right, $brand-color-darker 40%, $brand-color-dark 40%); }
+  25% { background: linear-gradient(to right, $brand-color-darker 50%, $brand-color-dark 50%); }
+  30% { background: linear-gradient(to right, $brand-color-darker 60%, $brand-color-dark 60%); }
+  35% { background: linear-gradient(to right, $brand-color-darker 70%, $brand-color-dark 70%); }
+  40% { background: linear-gradient(to right, $brand-color-darker 80%, $brand-color-dark 80%); }
+  45% { background: linear-gradient(to right, $brand-color-darker 90%, $brand-color-dark 90%); }
+  50% { background: linear-gradient(to right, $brand-color-dark 0%, $brand-color-darker 0%); }
+  55% { background: linear-gradient(to right, $brand-color-dark 10%, $brand-color-darker 10%); }
+  60% { background: linear-gradient(to right, $brand-color-dark 20%, $brand-color-darker 20%); }
+  65% { background: linear-gradient(to right, $brand-color-dark 30%, $brand-color-darker 30%); }
+  70% { background: linear-gradient(to right, $brand-color-dark 40%, $brand-color-darker 40%); }
+  75% { background: linear-gradient(to right, $brand-color-dark 50%, $brand-color-darker 50%); }
+  80% { background: linear-gradient(to right, $brand-color-dark 60%, $brand-color-darker 60%); }
+  85% { background: linear-gradient(to right, $brand-color-dark 70%, $brand-color-darker 70%); }
+  90% { background: linear-gradient(to right, $brand-color-dark 80%, $brand-color-darker 80%); }
+  95% { background: linear-gradient(to right, $brand-color-dark 90%, $brand-color-darker 90%); }
+  100% { background: linear-gradient(to right, $brand-color-dark 100%, $brand-color-darker 100%); }
 }
 
 @keyframes loading-red {
-  0% { background: linear-gradient(to right, $alert-darker 0%, $alert-dark 0%); }
-  5% { background: linear-gradient(to right, $alert-darker 10%, $alert-dark 10%); }
-  10% { background: linear-gradient(to right, $alert-darker 20%, $alert-dark 20%); }
-  15% { background: linear-gradient(to right, $alert-darker 30%, $alert-dark 30%); }
-  20% { background: linear-gradient(to right, $alert-darker 40%, $alert-dark 40%); }
-  25% { background: linear-gradient(to right, $alert-darker 50%, $alert-dark 50%); }
-  30% { background: linear-gradient(to right, $alert-darker 60%, $alert-dark 60%); }
-  35% { background: linear-gradient(to right, $alert-darker 70%, $alert-dark 70%); }
-  40% { background: linear-gradient(to right, $alert-darker 80%, $alert-dark 80%); }
-  45% { background: linear-gradient(to right, $alert-darker 90%, $alert-dark 90%); }
-  50% { background: linear-gradient(to right, $alert-dark 0%, $alert-darker 0%); }
-  55% { background: linear-gradient(to right, $alert-dark 10%, $alert-darker 10%); }
-  60% { background: linear-gradient(to right, $alert-dark 20%, $alert-darker 20%); }
-  65% { background: linear-gradient(to right, $alert-dark 30%, $alert-darker 30%); }
-  70% { background: linear-gradient(to right, $alert-dark 40%, $alert-darker 40%); }
-  75% { background: linear-gradient(to right, $alert-dark 50%, $alert-darker 50%); }
-  80% { background: linear-gradient(to right, $alert-dark 60%, $alert-darker 60%); }
-  85% { background: linear-gradient(to right, $alert-dark 70%, $alert-darker 70%); }
-  90% { background: linear-gradient(to right, $alert-dark 80%, $alert-darker 80%); }
-  95% { background: linear-gradient(to right, $alert-dark 90%, $alert-darker 90%); }
-  100% { background: linear-gradient(to right, $alert-dark 100%, $alert-darker 100%); }
+  0% { background: linear-gradient(to right, $ui-color-negative-darker 0%, $ui-color-negative-dark 0%); }
+  5% { background: linear-gradient(to right, $ui-color-negative-darker 10%, $ui-color-negative-dark 10%); }
+  10% { background: linear-gradient(to right, $ui-color-negative-darker 20%, $ui-color-negative-dark 20%); }
+  15% { background: linear-gradient(to right, $ui-color-negative-darker 30%, $ui-color-negative-dark 30%); }
+  20% { background: linear-gradient(to right, $ui-color-negative-darker 40%, $ui-color-negative-dark 40%); }
+  25% { background: linear-gradient(to right, $ui-color-negative-darker 50%, $ui-color-negative-dark 50%); }
+  30% { background: linear-gradient(to right, $ui-color-negative-darker 60%, $ui-color-negative-dark 60%); }
+  35% { background: linear-gradient(to right, $ui-color-negative-darker 70%, $ui-color-negative-dark 70%); }
+  40% { background: linear-gradient(to right, $ui-color-negative-darker 80%, $ui-color-negative-dark 80%); }
+  45% { background: linear-gradient(to right, $ui-color-negative-darker 90%, $ui-color-negative-dark 90%); }
+  50% { background: linear-gradient(to right, $ui-color-negative-dark 0%, $ui-color-negative-darker 0%); }
+  55% { background: linear-gradient(to right, $ui-color-negative-dark 10%, $ui-color-negative-darker 10%); }
+  60% { background: linear-gradient(to right, $ui-color-negative-dark 20%, $ui-color-negative-darker 20%); }
+  65% { background: linear-gradient(to right, $ui-color-negative-dark 30%, $ui-color-negative-darker 30%); }
+  70% { background: linear-gradient(to right, $ui-color-negative-dark 40%, $ui-color-negative-darker 40%); }
+  75% { background: linear-gradient(to right, $ui-color-negative-dark 50%, $ui-color-negative-darker 50%); }
+  80% { background: linear-gradient(to right, $ui-color-negative-dark 60%, $ui-color-negative-darker 60%); }
+  85% { background: linear-gradient(to right, $ui-color-negative-dark 70%, $ui-color-negative-darker 70%); }
+  90% { background: linear-gradient(to right, $ui-color-negative-dark 80%, $ui-color-negative-darker 80%); }
+  95% { background: linear-gradient(to right, $ui-color-negative-dark 90%, $ui-color-negative-darker 90%); }
+  100% { background: linear-gradient(to right, $ui-color-negative-dark 100%, $ui-color-negative-darker 100%); }
 }
