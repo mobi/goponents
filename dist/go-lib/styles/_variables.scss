@@ -59,3 +59,8 @@ $theme-dark-border: $base-dark-secondary;
 // Breakpoints
 $breakpoint_mobile: 768px;
 $breakpoint_tablet: 1024px;
+
+// Fonts
+$roboto: 'Roboto', 'Arial', sans-serif;
+$base-font-family: $roboto;
+$heading-font-family: $roboto;
