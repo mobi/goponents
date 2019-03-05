@@ -13,4 +13,7 @@ export declare class GoModalComponent implements OnInit {
     loadComponent(): void;
     closeModalContainer(event: any): void;
     closeModal(): void;
+    goModalClasses(): {
+        'go-modal--visible': boolean;
+    };
 }
