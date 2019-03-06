@@ -1,7 +1,14 @@
 {
   "name": "@tangoe/goponents",
-  "version": "0.3.1",
-  "peerDependencies": {
+  "version": "0.4.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mwagz/tangoe-shared.git"
+  },
+  "author": "Tangoe GoMobile",
+  "description": "A library of UI components for Angular v7+.",
+  "license": "MIT",
+  "devDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "ngx-toastr": "^9.1.2"
