@@ -1,7 +1,8 @@
 <button class="go-button"
         (click)="clicked()"
         [disabled]="isProcessing"
-        [ngClass]="classList()">
+        [ngClass]="classList()"
+        [type]="buttonVariant">
   <go-icon [icon]="buttonIcon" class="go-button__icon" *ngIf="buttonIcon"></go-icon>
   <ng-content></ng-content>
 </button>
