@@ -8,9 +8,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class GoButtonComponent {
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
+  @Input() buttonType: string = 'button';
   @Input() buttonVariant: string;
   @Input() useLoader: boolean;
-  @Input() buttonType: string = 'button';
+
   @Output() handleClick = new EventEmitter<boolean>();
 
   isProcessing: boolean = false;
