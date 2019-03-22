@@ -8,8 +8,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class GoButtonComponent {
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
-  @Input() buttonType: string;
+  @Input() buttonType: string = 'button';
+  @Input() buttonVariant: string;
   @Input() useLoader: boolean;
+
   @Output() handleClick = new EventEmitter<boolean>();
 
   isProcessing: boolean = false;
@@ -31,7 +33,7 @@ export class GoButtonComponent {
     return {
       'go-button__loading': this.isProcessing,
       'go-button__disabled': this.buttonDisabled,
-      'go-button__alert': (this.buttonType === 'alert')
+      'go-button__alert': (this.buttonVariant === 'alert')
     };
   }
 }
