@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 
-import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableComponent } from './go-table.component';
 
 @NgModule({
-  declarations: [GoTableComponent],
-  imports: [
-    CdkTableModule,
-    CommonModule,
-    GoIconModule
+  declarations: [
+    GoTableColumnComponent,
+    GoTableComponent
   ],
-  exports: [GoTableComponent]
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    GoTableColumnComponent,
+    GoTableComponent
+  ]
 })
 
 export class GoTableModule { }
