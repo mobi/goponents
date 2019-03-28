@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of tableConfig.tableData" class="go-table__tr">
+      <tr *ngFor="let item of localTableConfig.tableData" class="go-table__tr">
         <td *ngFor="let col of columns" class="go-table__td" width="{{ col.width || 'auto' }}">
           <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">{{ col.getFieldData(item) }}</ng-container>
           <ng-template #columnCellOutlet>

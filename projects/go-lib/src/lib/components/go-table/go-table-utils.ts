@@ -12,9 +12,11 @@ export function sortBy(key: string, reverse: boolean) {
     if (aFieldData < bFieldData) {
       return reverse ? -1 : 1;
     }
+    
     if (aFieldData > bFieldData) {
       return reverse ? 1 : -1;
     }
+
     return 0;
   }
 }

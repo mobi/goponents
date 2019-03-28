@@ -18,5 +18,4 @@ export class GoTableColumnComponent {
   getFieldData(item: any) {
     return extractFieldData(this.field, item);
   }
-
 }

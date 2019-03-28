@@ -14,29 +14,32 @@ export class GoTableComponent implements OnChanges {
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
 
+  localTableConfig: GoTableConfig;
+
   ngOnChanges() {
     this.renderTable();
   }
 
   renderTable() {
     if (this.tableConfig!.tableData) {
+      this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
       this.handleSort();
     }
   }
 
   columnClasses(columnField: string) : object {
     return {
-      'go-table__th--sort-up': (this.tableConfig!.sort.column === columnField && this.tableConfig!.sort.direction === SortDirection.ascending),
-      'go-table__th--sort-down': (this.tableConfig!.sort.column === columnField && this.tableConfig!.sort.direction === SortDirection.descending)
+      'go-table__th--sort-up': (this.localTableConfig!.sort.column === columnField && this.localTableConfig!.sort.direction === SortDirection.ascending),
+      'go-table__th--sort-down': (this.localTableConfig!.sort.column === columnField && this.localTableConfig!.sort.direction === SortDirection.descending)
     }
   }
 
   toggleSort(columnField: string) {
-    if (this.tableConfig!.tableData && this.tableConfig.sortable) {
-      if (this.tableConfig!.sort.column == columnField) {
-        this.tableConfig.sort.direction = this.tableConfig.sort.direction == SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
+    if (this.localTableConfig!.tableData && this.localTableConfig.sortable) {
+      if (this.localTableConfig!.sort.column == columnField) {
+        this.localTableConfig.sort.direction = this.localTableConfig.sort.direction == SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
       } else {
-        this.tableConfig.sort = { column: columnField, direction: SortDirection.ascending };
+        this.localTableConfig.sort = { column: columnField, direction: SortDirection.ascending };
       }
       this.handleSort();
     }
@@ -44,8 +47,7 @@ export class GoTableComponent implements OnChanges {
   
   /** Private Methods **/
   private handleSort() {
-    if (this.tableConfig!.sort && this.tableConfig!.sortable && this.tableConfig!.tableData) {
-      this.tableConfig.tableData.sort(sortBy(this.tableConfig.sort.column, Boolean(this.tableConfig.sort.direction)));
+    if (this.localTableConfig!.sort && this.localTableConfig!.sortable && this.localTableConfig!.tableData) {
     }
   }
 
