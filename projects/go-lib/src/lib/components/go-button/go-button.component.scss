@@ -4,23 +4,19 @@
 
 .go-button {
   background-color: $base-primary;
-  border-radius: $global-radius;
   border: none;
   color: $base-light;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   height: 2.5rem;
-  letter-spacing: 1.25pt;
   overflow: hidden;
   outline: none;
   padding: 0.75rem 1rem;
   position: relative;
-  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
   @include transition(all);
 
   &::after {
-    border-bottom-left-radius: $global-radius;
-    border-bottom-right-radius: $global-radius;
     bottom: -5px;
     content: '';
     display: block;
@@ -39,9 +35,9 @@
 }
 
 .go-button__icon {
-  font-size: 1rem;
-  padding-right: 0.5rem;
-  vertical-align: text-top;
+  font-size: 0.9rem;
+  padding-right: 0.35rem;
+  vertical-align: middle;
 }
 
 .go-button__loading {
