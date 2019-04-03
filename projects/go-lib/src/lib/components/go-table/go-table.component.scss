@@ -3,7 +3,7 @@
 @import '../../../styles/mixins';
 
 .go-table {
-  border-radius: $global-radius;
+  // border-radius: $global-radius;
   border-spacing: 0;
   width: 100%;
 }
@@ -19,11 +19,11 @@
   text-align: left;
   
   &:first-child {
-    border-radius: $global-radius 0 0 0;
+    // border-radius: $global-radius 0 0 0;
   }
 
   &:last-child {
-    border-radius: 0 $global-radius 0 0;
+    // border-radius: 0 $global-radius 0 0;
     border-right: 0;
   }
 }
@@ -57,11 +57,11 @@
   }
 
   &:last-child .go-table__td:first-child {
-    border-radius: 0 0 0 $global-radius;
+    // border-radius: 0 0 0 $global-radius;
   }
 
   &:last-child .go-table__td:last-child {
-    border-radius: 0 0 $global-radius 0;
+    // border-radius: 0 0 $global-radius 0;
   }
 
   &:last-child .go-table__td {
