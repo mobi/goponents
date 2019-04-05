@@ -21,7 +21,8 @@
     "test_app": "ng test go-tester",
     "npm_pack": "cd dist/go-lib && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "publish": "npm run package && cd dist/go-lib && npm publish"
+    "publish": "npm run package && cd dist/go-lib && npm publish",
+    "publish_local": "npm run package && node ./local_install.js"
   },
   "private": true,
   "dependencies": {
@@ -34,9 +35,11 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@tangoe/goponents": "file:dist/go-lib/tangoe-goponents-0.4.2.tgz",
     "@tangoe/gosheets": "^0.5.0",
     "core-js": "^2.5.4",
     "ngx-toastr": "^9.1.2",
+    "npm": "^6.9.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
