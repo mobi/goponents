@@ -3,5 +3,5 @@
  * to expose all table-based classes or interfaces
  */
 
-export * from './go-table-config';
-export * from './go-table-sort';
+export { GoTableConfig } from './go-table-config';
+export { GoTableSortConfig, SortDirection } from './go-table-sort';

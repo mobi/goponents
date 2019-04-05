@@ -29,15 +29,17 @@ export class GoTableComponent implements OnChanges {
 
   columnClasses(columnField: string) : object {
     return {
-      'go-table__th--sort-up': (this.localTableConfig!.sort.column === columnField && this.localTableConfig!.sort.direction === SortDirection.ascending),
-      'go-table__th--sort-down': (this.localTableConfig!.sort.column === columnField && this.localTableConfig!.sort.direction === SortDirection.descending)
+      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.ascending),
+      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.descending)
     }
   }
 
   toggleSort(columnField: string) {
-    if (this.localTableConfig!.tableData && this.localTableConfig.sortable) {
-      if (this.localTableConfig!.sort.column == columnField) {
-        this.localTableConfig.sort.direction = this.localTableConfig.sort.direction == SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
+    let { sort, sortable, tableData } = this.localTableConfig;
+
+    if (tableData && sortable) {
+      if (sort && sort.column === columnField) {
+        sort.direction = this.toggleSortDir(sort.direction);
       } else {
         this.localTableConfig.sort = { column: columnField, direction: SortDirection.ascending };
       }
@@ -46,9 +48,22 @@ export class GoTableComponent implements OnChanges {
   }
   
   /** Private Methods **/
-  private handleSort() {
-    if (this.localTableConfig!.sort && this.localTableConfig!.sortable && this.localTableConfig!.tableData) {
+  private handleSort() : void {
+    let { sort, sortable, tableData } = this.localTableConfig;
+
+    if (sort && sortable && tableData && sort.column) {
+      this.localTableConfig.tableData.sort(sortBy(sort.column, Boolean(sort.direction)));
     }
+  }
+
+  private toggleSortDir(currDir: SortDirection) : SortDirection {
+    return currDir === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
+  }
+
+  private sortClasses(columnField: string, direction: SortDirection) : boolean {
+    let { sort } = this.localTableConfig;
+
+    return sort && sort.column === columnField && sort.direction === direction;
   }
 
 }
