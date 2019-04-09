@@ -39,8 +39,8 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   hasData() : boolean {
-    if (this.localTableConfig) {
-      return this.localTableConfig.tableData ? this.localTableConfig.tableData.length > 0 : false;
+    if (this.localTableConfig && this.localTableConfig.tableData) {
+      return Boolean(this.localTableConfig.tableData.length);
     }
 
     return false;
