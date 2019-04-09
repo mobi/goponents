@@ -32,11 +32,10 @@ export class GoTableComponent implements OnInit, OnChanges {
   renderTable() {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
-      this.showTable = true;
       this.handleSort();
-    } else {
-      this.showTable = false;
     }
+    
+    this.showTable = Boolean(this.tableConfig);
   }
 
   hasData() : boolean {
