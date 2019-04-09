@@ -62,3 +62,20 @@
     border-right: 1px solid $theme-light-border;  
   }
 }
+
+/***** Placeholder Table *****/
+.go-table-placeholder {
+  border-spacing: 0;
+  width: 100%;
+
+  tr:nth-child(odd) {
+    background: $theme-light-bg-active;
+  }
+
+  td {
+    color: $theme-light-color;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+}

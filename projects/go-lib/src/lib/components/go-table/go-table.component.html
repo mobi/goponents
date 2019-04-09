@@ -1,5 +1,5 @@
-<div class="go-table-container">
-  <table class="go-table">
+<div class="go-table-container" *ngIf="showTable">
+  <table class="go-table" *ngIf="hasData(); else noDataTable">
     <thead>
       <tr>
         <th *ngFor="let col of columns" class="go-table__th" [ngClass]="columnClasses(col.field)" (click)="toggleSort(col.field)">
@@ -21,4 +21,13 @@
       </tr>
     </tbody>
   </table>
+  <ng-template #noDataTable>
+    <table class="go-table-placeholder">
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>{{ localTableConfig.noDataText }}</td></tr>
+      <tr><td>&nbsp;</td></tr>
+      <tr><td>&nbsp;</td></tr>
+    </table>
+  </ng-template>
 </div>

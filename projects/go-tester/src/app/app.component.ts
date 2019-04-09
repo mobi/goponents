@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GoTableConfig, GoTableSortConfig } from '../../../go-lib/src/public_api';
+import { GoTableConfig } from '../../../go-lib/src/public_api';
 import data from '../assets/MOCK_DATA_1000.json';
 
 @Component({
@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'go-tester';
 
   tableConfig = new GoTableConfig({
+    noDataText: 'Not a single data.',
     tableData: data
   });
 

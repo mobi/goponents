@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnChanges, QueryList } from '@angular/core';
+import { Component, ContentChildren, Input, OnChanges, QueryList, OnInit } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableConfig, SortDirection } from './index';
 import { sortBy } from './go-table-utils';
@@ -8,23 +8,42 @@ import { sortBy } from './go-table-utils';
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
 })
-export class GoTableComponent implements OnChanges {
+export class GoTableComponent implements OnInit, OnChanges {
 
   @Input() tableConfig: GoTableConfig;
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
 
   localTableConfig: GoTableConfig;
+  showTable: boolean = false;
+
+  ngOnInit() {
+    if (!this.tableConfig) {
+      throw new Error("GoTableComponent: tableConfig is a required Input");
+    } else {
+      this.renderTable();
+    }
+  }
 
   ngOnChanges() {
     this.renderTable();
   }
 
   renderTable() {
-    if (this.tableConfig!.tableData) {
+    if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
       this.handleSort();
     }
+    
+    this.showTable = Boolean(this.tableConfig);
+  }
+
+  hasData() : boolean {
+    if (this.localTableConfig && this.localTableConfig.tableData) {
+      return Boolean(this.localTableConfig.tableData.length);
+    }
+
+    return false;
   }
 
   columnClasses(columnField: string) : object {
