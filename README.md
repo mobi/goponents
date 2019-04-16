@@ -1,28 +1,52 @@
 # Goponents
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.1.
+This project houses a set of UI components for Angular and designed around the 'Go' design system.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run publish_local` to compile the `go-lib` project, and run a local `npm install` into the repo for `go-tester` to use.
+_then_
+Run `ng serve --project=go-tester` to run the test project.
 
-## Code scaffolding
+### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate lib/components/component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
 Run `npm run package` to build and pack the the library locally.
 Run `npm run publish` to build and pack the library locally and also to push the package to npm.
 
-## Running unit tests
+## Other Useful Things
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Components Available
 
-## Running end-to-end tests
+| Component    | Notes                                  |
+|--------------|----------------------------------------|
+| accordion    | Available                              |
+| button       | Available                              |
+| card         | Available                              |
+| icon         | Available                              |
+| modal        | Available                              |
+| table        | Available                              |
+|--------------|----------------------------------------|
+| autocomplete | Priority                               |
+| combobox     | Priority                               |
+| tabs         | Priority                               |
+| badge        | Priority                               |
+| tooltip      | Priority                               |
+| masked input | Priority                               |
+| checkbox     | Idea                                   |
+| datepicker   | Idea                                   |
+| radio        | Idea                                   |
+| slide toggle | Idea                                   |
+| timepicker   | Idea                                   |
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Properly Exposing Files for Importing
 
-## Further help
+The `projects/go-lib/src/public_api.ts` file exposes files to the root of the node module. This allows for importing like:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`import { GoTableConfig } from '@tangoe/goponents';`
+
+To do this properly, you must export each individual file within the `public_api.ts` file.
+
