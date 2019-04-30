@@ -1,6 +1,14 @@
-import { Component, ContentChildren, Input, OnChanges, QueryList, OnInit } from '@angular/core';
+import { Component,
+         ContentChildren,
+         EventEmitter,
+         Input,
+         OnChanges,
+         OnInit,
+         Output,
+         QueryList } from '@angular/core';
+
 import { GoTableColumnComponent } from './go-table-column.component';
-import { GoTableConfig, SortDirection } from './index';
+import { GoTableConfig, GoTableDataMode, SortDirection } from './index';
 import { sortBy } from './go-table-utils';
 
 @Component({
@@ -11,6 +19,8 @@ import { sortBy } from './go-table-utils';
 export class GoTableComponent implements OnInit, OnChanges {
 
   @Input() tableConfig: GoTableConfig;
+
+  @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
 
@@ -29,13 +39,16 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.renderTable();
   }
 
-  renderTable() {
+  renderTable() : void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
+
+      this.setTotalCount();
       this.handleSort();
     }
     
     this.showTable = Boolean(this.tableConfig);
+    this.localTableConfig.loadingData = false;
   }
 
   hasData() : boolean {
@@ -46,23 +59,123 @@ export class GoTableComponent implements OnInit, OnChanges {
     return false;
   }
 
+  showPaging() : boolean {
+    return this.hasData() && this.localTableConfig.pageable;
+  }
+
   columnClasses(columnField: string) : object {
     return {
-      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.ascending),
-      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.descending)
+      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.ascending),
+      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.descending)
     }
   }
 
-  toggleSort(columnField: string) {
+  toggleSort(columnField: string) : void {
     let { sort, sortable, tableData } = this.localTableConfig;
 
+    this.localTableConfig.loadingData = true;
     if (tableData && sortable) {
       if (sort && sort.column === columnField) {
         sort.direction = this.toggleSortDir(sort.direction);
       } else {
         this.localTableConfig.sort = { column: columnField, direction: SortDirection.ascending };
       }
-      this.handleSort();
+
+      if (this.isServerMode()) {
+        this.tableChange.emit(this.localTableConfig);
+      } else {
+        this.handleSort();
+        this.localTableConfig.loadingData = false;
+      }
+    }
+  }
+
+  nextPage() : void {
+    this.localTableConfig.loadingData = true;
+    this.localTableConfig.paging.skip = this.localTableConfig.paging.skip + this.localTableConfig.paging.perPage;
+
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.localTableConfig.loadingData = false;
+    }
+  }
+
+  isLastPage() : boolean {
+    let { paging, tableData, totalCount } = this.localTableConfig;
+
+    return ((paging.skip + paging.perPage) >= tableData.length) && ((paging.skip + paging.perPage) >= totalCount);
+  }
+
+  setLastPage() : void {
+    let { totalCount, paging } = this.localTableConfig;
+
+    this.localTableConfig.loadingData = true;
+    let offset = totalCount - (totalCount % paging.perPage);
+    paging.skip = offset === totalCount ? totalCount - paging.perPage : offset;
+
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.localTableConfig.loadingData = false;
+    }
+  }
+
+  prevPage() : void {
+    this.localTableConfig.loadingData = true;
+    this.localTableConfig.paging.skip = this.localTableConfig.paging.skip - this.localTableConfig.paging.perPage;
+
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.localTableConfig.loadingData = false;
+    }
+  }
+
+  isFirstPage() : boolean {
+    return this.localTableConfig.paging.skip === 0;
+  }
+
+  setFirstPage() : void {
+    this.localTableConfig.loadingData = true;
+    this.localTableConfig.paging.skip = 0;
+
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.localTableConfig.loadingData = false;
+    }
+  }
+
+  setPerPage(e) : void {
+    this.localTableConfig.loadingData = true;
+    this.localTableConfig.paging.perPage = Number(e.target.value);
+    this.localTableConfig.paging.skip = 0;
+
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.localTableConfig.loadingData = false;
+    }
+  }
+
+  outputResultsPerPage() : string {
+    let { paging, totalCount } = this.localTableConfig;
+
+    let beginning = this.localTableConfig.paging.skip + 1;
+    let endingEstimate = paging.skip + paging.perPage;
+    let ending = endingEstimate <= totalCount ? endingEstimate : totalCount - paging.skip;
+
+    return beginning + " - " + ending;
+  }
+
+  setDisplayData() : any[] {
+    let { dataMode, paging, tableData } = this.localTableConfig;
+
+    if (this.isServerMode()) {
+      return tableData;
+    } else {
+      return tableData.slice(paging.skip, paging.skip + paging.perPage);
     }
   }
   
@@ -85,4 +198,13 @@ export class GoTableComponent implements OnInit, OnChanges {
     return sort && sort.column === columnField && sort.direction === direction;
   }
 
+  private setTotalCount() : void {
+    let { totalCount, tableData } = this.localTableConfig; 
+
+    this.localTableConfig.totalCount = totalCount !== undefined && totalCount !== null ? totalCount : tableData.length;
+  }
+
+  private isServerMode() : boolean {
+    return this.localTableConfig.dataMode === GoTableDataMode.server;
+  }
 }

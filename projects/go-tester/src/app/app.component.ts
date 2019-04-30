@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { GoTableConfig } from '../../../go-lib/src/public_api';
-import data from '../assets/MOCK_DATA_1000.json';
+import { GoTableConfig, GoTableDataMode } from '../../../go-lib/src/public_api';
+
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,31 @@ import data from '../assets/MOCK_DATA_1000.json';
 export class AppComponent {
   title = 'go-tester';
 
-  tableConfig = new GoTableConfig({
-    noDataText: 'Not a single data.',
-    tableData: data
-  });
+  tableConfig: GoTableConfig;
 
-  constructor() { }
+  constructor(private appService: AppService) { }
+
+  ngOnInit() {
+    this.appService.getMockData(new GoTableConfig()).subscribe(data => {
+      this.tableConfig = new GoTableConfig({
+        dataMode: GoTableDataMode.server,
+        tableData: data.results,
+        totalCount: data.totalCount
+      });
+    })
+  }
+
+  handleTableChange(currentTableConfig: GoTableConfig) : void {
+    if (this.tableConfig.dataMode === GoTableDataMode.server) {
+      this.appService.getMockData(currentTableConfig).subscribe(data => {
+        setTimeout(() => {
+          currentTableConfig.tableData = data.results;
+          currentTableConfig.totalCount = data.totalCount;
+          currentTableConfig.loadingData = false;
+    
+          this.tableConfig = currentTableConfig;
+        }, 1000);
+      });
+    }
+  }
 }

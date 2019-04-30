@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { GoTableConfig, GoTablePagingConfig } from '@tangoe/goponents';
+import { GoTableSortConfig } from 'projects/go-lib/src/public_api';
+
+// Only using this to emulate sorting for server side
+import { sortBy } from '../../../go-lib/src/lib/components/go-table/go-table-utils';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AppService {
+
+  constructor (private http: HttpClient) { }
+
+  getMockData(params?: GoTableConfig) {
+    return this.http.get<any>("../assets/MOCK_DATA_1000.json").pipe(map(data => {
+      let formattedData = { totalCount: 0, results: [] };
+
+      formattedData.totalCount = data.length;
+
+      if (params) {
+        formattedData.results = params.sort ? this.sortData(params.sort, data) : formattedData.results;
+        formattedData.results = params.paging ? this.paginateData(params.paging, data) : formattedData.results;
+      } else {
+        formattedData.results = data;
+      }
+
+      return formattedData;
+    }));
+  }
+
+  /***** Private Methods *****/
+  private paginateData(paging: GoTablePagingConfig, results: any[]) : any[] {
+    return results.slice(paging.skip, paging.skip + paging.perPage);
+  }
+
+  private sortData(sort: GoTableSortConfig, results: any[]) : any[] {
+    return results.sort(sortBy(sort.column, Boolean(sort.direction)));
+  }
+
+
+}

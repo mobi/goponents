@@ -1,26 +1,51 @@
 <div class="go-table-container" *ngIf="showTable">
-  <table class="go-table" *ngIf="hasData(); else noDataTable">
-    <thead>
-      <tr>
-        <th *ngFor="let col of columns" class="go-table__th" [ngClass]="columnClasses(col.field)" (click)="toggleSort(col.field)">
-          <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
-          <ng-template #columnHeaderOutlet>
-            <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
-          </ng-template>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of localTableConfig.tableData" class="go-table__tr">
-        <td *ngFor="let col of columns" class="go-table__td" width="{{ col.width || 'auto' }}">
-          <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">{{ col.getFieldData(item) }}</ng-container>
-          <ng-template #columnCellOutlet>
-            <ng-container *ngTemplateOutlet="col.goTableCell; context: { $implicit: item }"></ng-container>
-          </ng-template>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="go-table__table">
+    <table class="go-table" *ngIf="hasData(); else noDataTable">
+      <thead>
+        <tr>
+          <th *ngFor="let col of columns" class="go-table__th" [ngClass]="columnClasses(col.field)" (click)="toggleSort(col.field)">
+            <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
+            <ng-template #columnHeaderOutlet>
+              <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
+            </ng-template>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of setDisplayData()" class="go-table__tr">
+          <td *ngFor="let col of columns" class="go-table__td" width="{{ col.width || 'auto' }}">
+            <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">{{ col.getFieldData(item) }}</ng-container>
+            <ng-template #columnCellOutlet>
+              <ng-container *ngTemplateOutlet="col.goTableCell; context: { $implicit: item }"></ng-container>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="go-table-toolbar go-table-toolbar--bottom" *ngIf="showPaging()">
+    <div class="go-table-page-size">
+      <select class="go-form__select" (change)="setPerPage($event)">
+        <ng-container *ngFor="let size of localTableConfig.paging.pageSizes">
+          <option value="{{ size }}">{{ size }}</option>
+        </ng-container>
+      </select>
+      <label class="go-form__label go-form__label--table-toolbar">Page Size</label>
+    </div>
+    <div class="go-table-totals">
+      {{ outputResultsPerPage() }} /
+      {{ localTableConfig.totalCount | number : '1.0-0' }} Results
+    </div>
+    <div class="go-table-page-controls">
+      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isFirstPage() }" (click)="setFirstPage()" icon="first_page"></go-icon>
+      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isFirstPage() }" (click)="prevPage()" icon="chevron_left"></go-icon>
+      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isLastPage() }" (click)="nextPage()" icon="chevron_right"></go-icon>
+      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isLastPage() }" (click)="setLastPage()" icon="last_page"></go-icon>
+    </div>
+  </div>
+  <div class="go-table-loader" [ngClass]="{ 'go-table-loader--enabled': localTableConfig.loadingData, 'go-table-loader--disabled': !localTableConfig.loadingData }">
+    Loading...
+  </div>
   <ng-template #noDataTable>
     <table class="go-table-placeholder">
       <tr><td>&nbsp;</td></tr>

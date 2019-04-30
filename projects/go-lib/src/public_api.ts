@@ -21,6 +21,7 @@ export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
 export * from './lib/components/go-table/go-table-config';
 export * from './lib/components/go-table/go-table-sort';
+export * from './lib/components/go-table/go-table-paging';
 
 // Services
 export * from './lib/services/go-message/go-message.service';

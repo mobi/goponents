@@ -2,8 +2,19 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+.go-table-container {
+  position: relative;
+}
+
+.go-table__table {
+  border: 1px solid $theme-light-border;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .go-table {
   border-spacing: 0;
+  color: $theme-light-color;
   width: 100%;
 }
 
@@ -16,6 +27,10 @@
   padding: 0.5rem 1rem;
   position: relative;
   text-align: left;
+
+  &:last-child {
+    border-right: 0;
+  }
 }
 
 .go-table__th--sort-up::after,
@@ -45,22 +60,83 @@
   &:nth-child(2n) {
     background: $theme-light-bg-active;
   }
-
-  &:last-child .go-table__td {
-    border-bottom: 1px solid $theme-light-border;
-  }
 }
 
 .go-table__td {
   padding: 0.5rem 1rem;
+}
 
-  &:first-child {
-    border-left: 1px solid $theme-light-border;
-  }
+.go-table-toolbar {
+  align-items: center;
+  border: 1px solid $theme-light-border;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
 
-  &:last-child {
-    border-right: 1px solid $theme-light-border;  
+.go-table-toolbar--bottom {
+  border-radius: 0 0 $global-radius $global-radius;
+  border-top: 0;
+}
+
+.go-table-page-controls {
+  align-items: center;
+  display: flex;
+}
+
+.go-table-page-controls__icon {
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.25rem;
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+  user-select: none;
+  @include transition(all);
+
+  &:hover {
+    background: $theme-light-bg-hover;
   }
+}
+
+.go-table-page-controls__icon--disabled {
+  color: lighten($theme-light-color, 40);
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:hover {
+    background: none;
+  }
+}
+
+.go-form__label--table-toolbar {
+  display: inline-block;
+  font-weight: normal;
+  padding: 0 0.5rem;
+}
+
+/***** Loader *****/
+.go-table-loader {
+  align-items: center;
+  background: transparentize($theme-light-bg-hover, 0.3);
+  border-radius: $global-radius;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+
+  @include transition(opacity);
+}
+
+.go-table-loader--enabled {
+  opacity: 1;
+  z-index: 1;
 }
 
 /***** Placeholder Table *****/
@@ -78,4 +154,11 @@
     padding: 0.5rem 1rem;
     text-align: center;
   }
+}
+
+@keyframes loaderOverlay {
+  0% { display: none; }
+  1% { display: flex; opacity: 0; }
+  50% { display: flex; opacity: 0.3; }
+  100% { display: flex; opacity: 1; }
 }
