@@ -7,6 +7,8 @@ import { GoButtonModule, GoIconModule, GoTableModule } from '../../../go-lib/src
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 
+import { GoOffCanvasModule } from 'projects/go-lib/src/lib/components/go-off-canvas/go-off-canvas.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +18,8 @@ import { AppService } from './app.service';
     HttpClientModule,
     GoButtonModule,
     GoIconModule,
-    GoTableModule
+    GoTableModule,
+    GoOffCanvasModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

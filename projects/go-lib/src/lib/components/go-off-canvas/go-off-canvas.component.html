@@ -1,0 +1,13 @@
+<div
+  class="go-off-canvas-backdrop"
+  (click)="closeOffCanvas()"
+  [@fade]="opened ? 'in' : 'out'"
+>
+</div>
+<div
+  class="go-off-canvas"
+  [@slide]="opened ? 'in' : 'out'"
+>
+  <ng-template go-off-canvas-host>
+  </ng-template>
+</div>

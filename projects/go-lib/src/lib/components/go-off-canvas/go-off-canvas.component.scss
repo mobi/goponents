@@ -1,0 +1,21 @@
+@import '~@tangoe/gosheets/base/variables';
+
+.go-off-canvas-backdrop {
+  background: rgba($base-dark, .5);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity .5s cubic-bezier(.25, .8, .25, 1);
+  width: 100vw;
+}
+
+.go-off-canvas {
+  background-color: $base-dark;
+  bottom: 0;
+  color: $base-light;
+  left: 100%;
+  position: fixed;
+  top: 0;
+  width: 300px;
+}
