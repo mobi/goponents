@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { GoButtonModule, GoIconModule, GoTableModule } from '@tangoe/goponents';
+import { GoButtonModule, GoIconModule, GoTableModule } from '../../../go-lib/src/public_api';
 
 import { AppComponent } from './app.component';
 
