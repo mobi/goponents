@@ -1,12 +1,12 @@
-export class GoTablePagingConfig {
+export class GoTablePageConfig {
+  offset: number = 0;
   pageSizes: number[] = [20, 50, 100];
   perPage: number = 20;
-  skip: number = 0;
 
   constructor(fields?: {
-    pageSizes: number[];
-    perPage?: number,
-    skip?: number
+    offset?: number,
+    pageSizes: number[],
+    perPage?: number
   }) {
     if (fields) Object.assign(this, fields);
   }

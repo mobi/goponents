@@ -3,6 +3,6 @@
  * to expose all table-based classes or interfaces
  */
 
-export { GoTableConfig, GoTableDataMode } from './go-table-config';
-export { GoTablePagingConfig } from './go-table-paging';
+export { GoTableConfig, GoTableDataSource } from './go-table-config';
+export { GoTablePageConfig } from './go-table-paging';
 export { GoTableSortConfig, SortDirection } from './go-table-sort';

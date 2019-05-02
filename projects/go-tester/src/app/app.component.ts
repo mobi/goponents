@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GoTableConfig, GoTableDataMode } from '../../../go-lib/src/public_api';
+import { GoTableConfig, GoTableDataSource } from '../../../go-lib/src/public_api';
 
 import { AppService } from './app.service';
 
@@ -19,7 +19,7 @@ export class AppComponent {
   ngOnInit() {
     this.appService.getMockData(new GoTableConfig()).subscribe(data => {
       this.tableConfig = new GoTableConfig({
-        dataMode: GoTableDataMode.server,
+        dataMode: GoTableDataSource.server,
         tableData: data.results,
         totalCount: data.totalCount
       });
@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   handleTableChange(currentTableConfig: GoTableConfig) : void {
-    if (this.tableConfig.dataMode === GoTableDataMode.server) {
+    if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.appService.getMockData(currentTableConfig).subscribe(data => {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;

@@ -1,22 +1,22 @@
-import { GoTablePagingConfig } from './go-table-paging';
+import { GoTablePageConfig } from './go-table-paging';
 import { GoTableSortConfig } from './go-table-sort';
 
 export class GoTableConfig {
-  dataMode: GoTableDataMode = GoTableDataMode.client;
+  dataMode: GoTableDataSource = GoTableDataSource.client;
   noDataText: string = 'No Data';
   pageable: boolean = true;
-  paging: GoTablePagingConfig = new GoTablePagingConfig();
-  sort?: GoTableSortConfig;
+  pageConfig: GoTablePageConfig = new GoTablePageConfig();
+  sortConfig?: GoTableSortConfig;
   sortable: boolean = true;
   tableData: any[];
   totalCount?: number;
 
   constructor(fields?: {
-    dataMode?: GoTableDataMode,
+    dataMode?: GoTableDataSource,
     noDataText?: string,
     pageable?: boolean,
-    paging?: GoTablePagingConfig,
-    sort?: GoTableSortConfig,
+    pageConfig?: GoTablePageConfig,
+    sortConfig?: GoTableSortConfig,
     sortable?: boolean,
     tableData: any[],
     totalCount?: number
@@ -25,7 +25,7 @@ export class GoTableConfig {
   }
 }
 
-export enum GoTableDataMode {
+export enum GoTableDataSource {
   client,
   server
 }
