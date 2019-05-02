@@ -95,11 +95,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage;
 
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
-      this.loadingData = false;
-    }
+    this.tableChangeOutcome();
   }
 
   isLastPage() : boolean {
@@ -115,22 +111,14 @@ export class GoTableComponent implements OnInit, OnChanges {
     let offset = totalCount - (totalCount % pageConfig.perPage);
     pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
 
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
-      this.loadingData = false;
-    }
+    this.tableChangeOutcome();
   }
 
   prevPage() : void {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage;
 
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
-      this.loadingData = false;
-    }
+    this.tableChangeOutcome();
   }
 
   isFirstPage() : boolean {
@@ -141,11 +129,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = 0;
 
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
-      this.loadingData = false;
-    }
+    this.tableChangeOutcome();
   }
 
   setPerPage(event: any) : void {
@@ -153,11 +137,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.localTableConfig.pageConfig.perPage = Number(event.target.value);
     this.localTableConfig.pageConfig.offset = 0;
 
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
-      this.loadingData = false;
-    }
+    this.tableChangeOutcome();
   }
 
   outputResultsPerPage() : string {
@@ -207,5 +187,13 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   private isServerMode() : boolean {
     return this.localTableConfig.dataMode === GoTableDataSource.server;
+  }
+
+  private tableChangeOutcome() : void {
+    if (this.isServerMode()) {
+      this.tableChange.emit(this.localTableConfig);
+    } else {
+      this.loadingData = false;
+    }
   }
 }
