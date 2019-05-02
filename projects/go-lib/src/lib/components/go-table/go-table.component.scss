@@ -155,10 +155,3 @@
     text-align: center;
   }
 }
-
-@keyframes loaderOverlay {
-  0% { display: none; }
-  1% { display: flex; opacity: 0; }
-  50% { display: flex; opacity: 0.3; }
-  100% { display: flex; opacity: 1; }
-}
