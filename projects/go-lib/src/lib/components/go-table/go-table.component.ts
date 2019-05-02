@@ -21,7 +21,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   @Input() tableConfig: GoTableConfig;
   @Input() loadingData: boolean = false;
 
-  @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter();
+  @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
 
@@ -148,9 +148,9 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  setPerPage(e) : void {
+  setPerPage(event: any) : void {
     this.loadingData = true;
-    this.localTableConfig.pageConfig.perPage = Number(e.target.value);
+    this.localTableConfig.pageConfig.perPage = Number(event.target.value);
     this.localTableConfig.pageConfig.offset = 0;
 
     if (this.isServerMode()) {
@@ -171,7 +171,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   setDisplayData() : any[] {
-    let { dataMode, pageConfig, tableData } = this.localTableConfig;
+    let { pageConfig, tableData } = this.localTableConfig;
 
     if (this.isServerMode()) {
       return tableData;
