@@ -182,7 +182,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   private setTotalCount() : void {
     let { totalCount, tableData } = this.localTableConfig; 
 
-    this.localTableConfig.totalCount = totalCount !== undefined && totalCount !== null ? totalCount : tableData.length;
+    this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
   }
 
   private isServerMode() : boolean {
