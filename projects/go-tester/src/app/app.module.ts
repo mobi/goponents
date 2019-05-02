@@ -1,7 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { GoButtonModule, GoIconModule, GoTableModule } from '@tangoe/goponents';
+import { ToastrModule } from 'ngx-toastr';
+
+import {
+  GoButtonModule,
+  GoIconModule,
+  GoMessageModule,
+  GoTableModule,
+  GoToastModule
+} from '../../../go-lib/src/public_api';
 
 import { AppComponent } from './app.component';
 
@@ -11,9 +20,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     GoButtonModule,
     GoIconModule,
-    GoTableModule
+    GoMessageModule,
+    GoTableModule,
+    GoToastModule,
+    ToastrModule.forRoot({ timeOut: 3000, positionClass: 'toast-bottom-right', preventDuplicates: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

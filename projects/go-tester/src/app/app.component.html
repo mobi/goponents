@@ -11,7 +11,26 @@
 <br/>
 <br/>
 
-<go-table [tableConfig]="tableConfig">
+<go-toast type="positive"
+          header="Hey You!"
+          message="Hey, it worked just fine thanks. Did you know that it actually errored out from the server side thing somewhere?">
+</go-toast>
+
+<br/>
+
+<go-toast type="neutral"
+          header="Announcement!">
+</go-toast>
+
+<br/>
+
+<go-toast type="negative"
+          message="Hey, it worked just fine thanks.">
+</go-toast>
+
+<br/>
+
+<!-- <go-table [tableConfig]="tableConfig">
 
   <go-table-column field="name.first" title="First Name"></go-table-column>
   <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -20,4 +39,4 @@
   <go-table-column field="gender" title="Gender"></go-table-column>
   <go-table-column field="ip_address" title="IP Address"></go-table-column>
 
-</go-table>
+</go-table> -->
