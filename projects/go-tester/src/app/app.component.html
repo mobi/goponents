@@ -11,7 +11,8 @@
 <br/>
 <br/>
 
-<go-table [tableConfig]="tableConfig"
+<go-table [loadingData]="tableLoading"
+          [tableConfig]="tableConfig"
           (tableChange)="handleTableChange($event)"
           *ngIf="tableConfig">
 

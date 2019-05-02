@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'go-tester';
 
   tableConfig: GoTableConfig;
+  tableLoading: boolean = true;
 
   constructor(private appService: AppService) { }
 
@@ -22,6 +23,7 @@ export class AppComponent {
         tableData: data.results,
         totalCount: data.totalCount
       });
+      this.tableLoading = false;
     })
   }
 
@@ -31,9 +33,9 @@ export class AppComponent {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
-          currentTableConfig.loadingData = false;
     
           this.tableConfig = currentTableConfig;
+          this.tableLoading = false;
         }, 1000);
       });
     }

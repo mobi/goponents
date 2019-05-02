@@ -19,6 +19,7 @@ import { sortBy } from './go-table-utils';
 export class GoTableComponent implements OnInit, OnChanges {
 
   @Input() tableConfig: GoTableConfig;
+  @Input() loadingData: boolean = false;
 
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter();
 
@@ -48,7 +49,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
     
     this.showTable = Boolean(this.tableConfig);
-    this.localTableConfig.loadingData = false;
+    this.loadingData = false;
   }
 
   hasData() : boolean {
@@ -73,7 +74,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   toggleSort(columnField: string) : void {
     let { sort, sortable, tableData } = this.localTableConfig;
 
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     if (tableData && sortable) {
       if (sort && sort.column === columnField) {
         sort.direction = this.toggleSortDir(sort.direction);
@@ -85,19 +86,19 @@ export class GoTableComponent implements OnInit, OnChanges {
         this.tableChange.emit(this.localTableConfig);
       } else {
         this.handleSort();
-        this.localTableConfig.loadingData = false;
+        this.loadingData = false;
       }
     }
   }
 
   nextPage() : void {
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     this.localTableConfig.paging.skip = this.localTableConfig.paging.skip + this.localTableConfig.paging.perPage;
 
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {
-      this.localTableConfig.loadingData = false;
+      this.loadingData = false;
     }
   }
 
@@ -110,25 +111,25 @@ export class GoTableComponent implements OnInit, OnChanges {
   setLastPage() : void {
     let { totalCount, paging } = this.localTableConfig;
 
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     let offset = totalCount - (totalCount % paging.perPage);
     paging.skip = offset === totalCount ? totalCount - paging.perPage : offset;
 
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {
-      this.localTableConfig.loadingData = false;
+      this.loadingData = false;
     }
   }
 
   prevPage() : void {
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     this.localTableConfig.paging.skip = this.localTableConfig.paging.skip - this.localTableConfig.paging.perPage;
 
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {
-      this.localTableConfig.loadingData = false;
+      this.loadingData = false;
     }
   }
 
@@ -137,25 +138,25 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   setFirstPage() : void {
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     this.localTableConfig.paging.skip = 0;
 
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {
-      this.localTableConfig.loadingData = false;
+      this.loadingData = false;
     }
   }
 
   setPerPage(e) : void {
-    this.localTableConfig.loadingData = true;
+    this.loadingData = true;
     this.localTableConfig.paging.perPage = Number(e.target.value);
     this.localTableConfig.paging.skip = 0;
 
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {
-      this.localTableConfig.loadingData = false;
+      this.loadingData = false;
     }
   }
 

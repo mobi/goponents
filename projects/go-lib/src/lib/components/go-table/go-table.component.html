@@ -43,7 +43,7 @@
       <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isLastPage() }" (click)="setLastPage()" icon="last_page"></go-icon>
     </div>
   </div>
-  <div class="go-table-loader" [ngClass]="{ 'go-table-loader--enabled': localTableConfig.loadingData, 'go-table-loader--disabled': !localTableConfig.loadingData }">
+  <div class="go-table-loader" [ngClass]="{ 'go-table-loader--enabled': loadingData, 'go-table-loader--disabled': !loadingData }">
     Loading...
   </div>
   <ng-template #noDataTable>
