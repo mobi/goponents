@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
+
+import { fadeAnimation } from '../../animations/fade.animation';
+import { offCanvasAnimation } from '../../animations/off-canvas.animation';
 
 @Component({
   selector: 'go-off-canvas',
@@ -17,30 +13,8 @@ import { GoOffCanvasItem } from './go-off-canvas.interface';
     './go-off-canvas.component.scss'
   ],
   animations: [
-    trigger('fade', [
-      state('in', style({
-        opacity: 1,
-        visibility: 'visible'
-      })),
-      state('out', style({
-        opacity: 0,
-        visibility: 'hidden'
-      })),
-      transition('in <=> out', [
-        animate('.5s cubic-bezier(.25, .8, .25, 1)')
-      ])
-    ]),
-    trigger('slide', [
-      state('in', style({
-        transform: 'translateX(-300px)'
-      })),
-      state('out', style({
-        transform: 'translateX(0)'
-      })),
-      transition('in <=> out', [
-        animate('.5s cubic-bezier(.25, .8, .25, 1)')
-      ])
-    ])
+    fadeAnimation,
+    offCanvasAnimation
   ]
 })
 export class GoOffCanvasComponent implements OnInit {
