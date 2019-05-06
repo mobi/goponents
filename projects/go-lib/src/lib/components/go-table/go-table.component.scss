@@ -6,13 +6,13 @@
   position: relative;
 }
 
-.go-table__table {
+.go-table {
   border: 1px solid $theme-light-border;
   max-width: 100%;
   overflow-x: auto;
 }
 
-.go-table {
+.go-table__table {
   border-spacing: 0;
   color: $theme-light-color;
   width: 100%;
@@ -110,7 +110,7 @@
   }
 }
 
-.go-form__label--table-toolbar {
+.go-table-toolbar__label {
   display: inline-block;
   font-weight: normal;
   padding: 0 0.5rem;

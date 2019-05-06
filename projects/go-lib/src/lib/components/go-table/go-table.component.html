@@ -1,6 +1,6 @@
 <div class="go-table-container" *ngIf="showTable">
-  <div class="go-table__table">
-    <table class="go-table" *ngIf="hasData(); else noDataTable">
+  <div class="go-table">
+    <table class="go-table__table" *ngIf="hasData(); else noDataTable">
       <thead>
         <tr>
           <th *ngFor="let col of columns" class="go-table__th" [ngClass]="columnClasses(col.field)" (click)="toggleSort(col.field)">
@@ -30,7 +30,7 @@
           <option value="{{ size }}">{{ size }}</option>
         </ng-container>
       </select>
-      <label class="go-form__label go-form__label--table-toolbar">Page Size</label>
+      <label class="go-form__label go-table-toolbar__label">Page Size</label>
     </div>
     <div class="go-table-totals">
       {{ outputResultsPerPage() }} /
