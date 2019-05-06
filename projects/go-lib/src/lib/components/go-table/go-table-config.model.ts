@@ -1,5 +1,5 @@
-import { GoTablePageConfig } from './go-table-paging';
-import { GoTableSortConfig } from './go-table-sort';
+import { GoTablePageConfig } from './go-table-paging.model';
+import { GoTableSortConfig } from './go-table-sort.model';
 
 export class GoTableConfig {
   dataMode: GoTableDataSource = GoTableDataSource.client;

@@ -26,9 +26,8 @@
   <div class="go-table-toolbar go-table-toolbar--bottom" *ngIf="showPaging()">
     <div class="go-table-page-size">
       <select class="go-form__select" (change)="setPerPage($event)">
-        <ng-container *ngFor="let size of localTableConfig.pageConfig.pageSizes">
-          <option value="{{ size }}">{{ size }}</option>
-        </ng-container>
+        <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
+                value="{{ size }}">{{ size }}</option>
       </select>
       <label class="go-form__label go-table-toolbar__label">Page Size</label>
     </div>
