@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GoTableConfig, GoMessageService } from '../../../go-lib/src/public_api';
+import { GoTableConfig, GoToasterService } from '../../../go-lib/src/public_api';
 import data from '../assets/MOCK_DATA_1000.json';
 
 @Component({
@@ -15,11 +15,11 @@ export class AppComponent implements OnInit {
     tableData: data
   });
 
-  constructor(private goMessageService: GoMessageService) { }
+  constructor(private goToasterService: GoToasterService) { }
 
   ngOnInit() {
     setTimeout(() => {
-      this.goMessageService.sendMessage('Hey, this is a test!', 'HI!');
-    }, 3000);
+      this.goToasterService.toastInfo({ message: 'Check this out'});
+    }, 1500);
   }
 }

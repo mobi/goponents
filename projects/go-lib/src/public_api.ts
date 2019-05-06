@@ -37,6 +37,11 @@ export * from './lib/components/go-table/go-table-sort';
 export * from './lib/components/go-toast/go-toast.component';
 export * from './lib/components/go-toast/go-toast.module';
 
+// Toaster
+export * from './lib/components/go-toaster/go-toaster.component';
+export * from './lib/components/go-toaster/go-toaster.module';
+export * from './lib/components/go-toaster/go-toaster.service';
+
 // Services
 export * from './lib/services/go-message/go-message.service';
 export * from './lib/services/go-message/go-message.module';

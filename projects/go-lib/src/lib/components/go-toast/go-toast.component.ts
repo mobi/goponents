@@ -14,9 +14,9 @@ export class GoToastComponent {
 
   @Output() handleDismiss = new EventEmitter();
 
-  constructor() { }
+  //#region Private Methods
 
-  statusClasses() : object {
+  private statusClasses() : object {
     return {
       'go-toast-status--positive': this.type === 'positive',
       'go-toast-status--neutral': this.type === 'neutral' || !this.type,
@@ -24,7 +24,7 @@ export class GoToastComponent {
     }
   }
 
-  goIconType() : string {
+  private goIconType() : string {
     switch (this.type) {
       case 'positive':
         return 'done';
@@ -35,8 +35,9 @@ export class GoToastComponent {
     }
   }
 
-  dismiss() : void {
+  private dismiss() : void {
     this.handleDismiss.emit();
   }
 
+  //#endregion
 }

@@ -1,0 +1,21 @@
+@import '~@tangoe/gosheets/base/_variables';
+
+.go-toaster {
+  bottom: 0;
+  overflow: hidden;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  width: 400px;
+  z-index: 600;
+
+  @media(max-width: $breakpoint-mobile) {
+    left: 0;
+    max-width: 100vw;
+    width: auto;
+  }
+}
+
+.go-toaster__item {
+  padding-top: 1rem;
+}

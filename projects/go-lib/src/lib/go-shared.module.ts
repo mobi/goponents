@@ -7,6 +7,7 @@ import { GoMessageModule } from './services/go-message/go-message.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
 import { GoTableModule } from './components/go-table/go-table.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
+import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { GoToastModule } from './components/go-toast/go-toast.module';
     GoMessageModule,
     GoModalModule,
     GoTableModule,
-    GoToastModule
+    GoToastModule,
+    GoToasterModule
   ],
   exports: [
     GoAccordionModule,
@@ -27,7 +29,8 @@ import { GoToastModule } from './components/go-toast/go-toast.module';
     GoMessageModule,
     GoModalModule,
     GoTableModule,
-    GoToastModule
+    GoToastModule,
+    GoToasterModule
   ]
 })
 

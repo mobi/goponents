@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ToastrModule } from 'ngx-toastr';
-
 import {
   GoButtonModule,
   GoIconModule,
   GoMessageModule,
   GoTableModule,
-  GoToastModule
+  GoToastModule,
+  GoToasterModule
 } from '../../../go-lib/src/public_api';
 
 import { AppComponent } from './app.component';
@@ -26,9 +25,8 @@ import { AppComponent } from './app.component';
     GoMessageModule,
     GoTableModule,
     GoToastModule,
-    ToastrModule.forRoot({ timeOut: 3000, positionClass: 'toast-bottom-right', preventDuplicates: true })
+    GoToasterModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
