@@ -72,12 +72,12 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   toggleSort(columnField: string) : void {
-    let { sortConfig, sortable, tableData } = this.localTableConfig;
+    const { sortConfig, sortable, tableData } = this.localTableConfig;
 
     this.loadingData = true;
     if (tableData && sortable) {
       if (sortConfig && sortConfig.column === columnField) {
-        sortConfig.direction = this.toggleSortDir(sortConfig.direction);
+        this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
       } else {
         this.localTableConfig.sortConfig = { column: columnField, direction: SortDirection.ascending };
       }
@@ -99,17 +99,17 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   isLastPage() : boolean {
-    let { pageConfig, tableData, totalCount } = this.localTableConfig;
+    const { pageConfig, tableData, totalCount } = this.localTableConfig;
 
     return ((pageConfig.offset + pageConfig.perPage) >= tableData.length) && ((pageConfig.offset + pageConfig.perPage) >= totalCount);
   }
 
   setLastPage() : void {
-    let { totalCount, pageConfig } = this.localTableConfig;
+    const { totalCount, pageConfig } = this.localTableConfig;
 
     this.loadingData = true;
     let offset = totalCount - (totalCount % pageConfig.perPage);
-    pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
+    this.localTableConfig.pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
 
     this.tableChangeOutcome();
   }
@@ -141,7 +141,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   outputResultsPerPage() : string {
-    let { pageConfig, totalCount } = this.localTableConfig;
+    const { pageConfig, totalCount } = this.localTableConfig;
 
     let beginning = this.localTableConfig.pageConfig.offset + 1;
     let endingEstimate = pageConfig.offset + pageConfig.perPage;
@@ -151,7 +151,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   setDisplayData() : any[] {
-    let { pageConfig, tableData } = this.localTableConfig;
+    const { pageConfig, tableData } = this.localTableConfig;
 
     if (this.isServerMode()) {
       return tableData;
@@ -162,7 +162,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   
   /** Private Methods **/
   private handleSort() : void {
-    let { sortConfig, sortable, tableData } = this.localTableConfig;
+    const { sortConfig, sortable, tableData } = this.localTableConfig;
 
     if (sortConfig && sortable && tableData && sortConfig.column) {
       this.localTableConfig.tableData.sort(sortBy(sortConfig.column, Boolean(sortConfig.direction)));
@@ -174,13 +174,13 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   private sortClasses(columnField: string, direction: SortDirection) : boolean {
-    let { sortConfig } = this.localTableConfig;
+    const { sortConfig } = this.localTableConfig;
 
     return sortConfig && sortConfig.column === columnField && sortConfig.direction === direction;
   }
 
   private setTotalCount() : void {
-    let { totalCount, tableData } = this.localTableConfig; 
+    const { totalCount, tableData } = this.localTableConfig; 
 
     this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
   }
