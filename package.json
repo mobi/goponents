@@ -36,7 +36,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@tangoe/goponents": "file:dist/go-lib/tangoe-goponents-0.5.6.tgz",
-    "@tangoe/gosheets": "^0.6.1",
+    "@tangoe/gosheets": "^0.7.1",
     "core-js": "^2.5.4",
     "ngx-toastr": "^9.1.2",
     "npm": "^6.9.0",
