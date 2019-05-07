@@ -64,13 +64,6 @@ export class GoTableComponent implements OnInit, OnChanges {
     return this.hasData() && this.localTableConfig.pageable;
   }
 
-  columnClasses(columnField: string) : object {
-    return {
-      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.ascending),
-      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.descending)
-    }
-  }
-
   toggleSort(columnField: string) : void {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
 
@@ -194,6 +187,13 @@ export class GoTableComponent implements OnInit, OnChanges {
       this.tableChange.emit(this.localTableConfig);
     } else {
       this.loadingData = false;
+    }
+  }
+
+  private columnClasses(columnField: string) : object {
+    return {
+      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.ascending),
+      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.descending)
     }
   }
 }

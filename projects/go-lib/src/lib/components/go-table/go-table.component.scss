@@ -79,35 +79,41 @@
   border-top: 0;
 }
 
-.go-table-page-controls {
+.go-table-toolbar__page-controls {
   align-items: center;
   display: flex;
 }
 
-.go-table-page-controls__icon {
+.go-table-toolbar__page-controls-button {
   align-items: center;
+  border: 0;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   font-size: 1.25rem;
   margin: 0 0.25rem;
+  outline: none;
   padding: 0.5rem;
   user-select: none;
   @include transition(all);
 
-  &:hover {
+  &:hover, &:focus, &:active {
     background: $theme-light-bg-hover;
   }
 }
 
-.go-table-page-controls__icon--disabled {
+.go-table-toolbar__page-controls-button--disabled {
   color: lighten($theme-light-color, 40);
   cursor: not-allowed;
   pointer-events: none;
 
-  &:hover {
+  &:hover, &:focus, &:active {
     background: none;
   }
+}
+
+.go-table-toolbar__page-controls-icon {
+  height: 1.25rem;   
 }
 
 .go-table-toolbar__label {

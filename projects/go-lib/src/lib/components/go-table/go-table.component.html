@@ -24,22 +24,46 @@
     </table>
   </div>
   <div class="go-table-toolbar go-table-toolbar--bottom" *ngIf="showPaging()">
-    <div class="go-table-page-size">
+    <div class="go-table-toolbar__page-size">
       <select class="go-form__select" (change)="setPerPage($event)">
         <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
-                value="{{ size }}">{{ size }}</option>
+                [value]="[size]">{{ size }}</option>
       </select>
       <label class="go-form__label go-table-toolbar__label">Page Size</label>
     </div>
-    <div class="go-table-totals">
+    <div class="go-table-toolbar__totals">
       {{ outputResultsPerPage() }} /
       {{ localTableConfig.totalCount | number : '1.0-0' }} Results
     </div>
-    <div class="go-table-page-controls">
-      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isFirstPage() }" (click)="setFirstPage()" icon="first_page"></go-icon>
-      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isFirstPage() }" (click)="prevPage()" icon="chevron_left"></go-icon>
-      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isLastPage() }" (click)="nextPage()" icon="chevron_right"></go-icon>
-      <go-icon class="go-table-page-controls__icon" [ngClass]="{ 'go-table-page-controls__icon--disabled': isLastPage() }" (click)="setLastPage()" icon="last_page"></go-icon>
+    <div class="go-table-toolbar__page-controls">
+      <button (click)="setFirstPage()"
+              [disabled]="isFirstPage()"
+              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isFirstPage() }"
+              class="go-table-toolbar__page-controls-button"
+              type="button">
+        <go-icon class="go-table-toolbar__page-controls-icon" icon="first_page"></go-icon>
+      </button>
+      <button (click)="prevPage()"
+              [disabled]="isFirstPage()"
+              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isFirstPage() }"
+              class="go-table-toolbar__page-controls-button"
+              type="button">
+        <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_left"></go-icon>
+      </button>
+      <button (click)="nextPage()"
+              [disabled]="isLastPage()"
+              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isLastPage() }"
+              class="go-table-toolbar__page-controls-button"
+              type="button">
+        <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_right"></go-icon>
+      </button>
+      <button (click)="setLastPage()"
+              [disabled]="isLastPage()"
+              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isLastPage() }"
+              class="go-table-toolbar__page-controls-button"
+              type="button">
+        <go-icon class="go-table-toolbar__page-controls-icon" icon="last_page"></go-icon>
+      </button>
     </div>
   </div>
   <div class="go-table-loader" [ngClass]="{ 'go-table-loader--enabled': loadingData }">
