@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 
+import { ToastInterface } from './go-toaster.model';
 import { GoToastComponent } from '../go-toast/go-toast.component';
 
 @Injectable({
@@ -70,10 +71,4 @@ export class GoToasterService {
   }
 
   //#endregion
-}
-
-interface ToastInterface {
-  header?: string;
-  message?: string;
-  type?: string;
 }

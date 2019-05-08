@@ -78,18 +78,25 @@
   top: 0;
 }
 
-.go-toast-dismiss__icon {
+.go-toast-dismiss__button {
+  border: 0;
   border-radius: 50%;
   color: $theme-light-border;
   cursor: pointer;
-  display: block;
-  height: 1rem;
+  display: block; 
+  outline: none;
   padding: 0.5rem;
   user-select: none;
   @include transition(all);
 
-  &:hover {
+  &:hover, &:focus, &:active {
     background: $theme-light-bg-hover;
     color: darken($theme-light-border, 5%);
   }
+}
+
+.go-toast-dismiss__icon {
+  display: block;
+  font-size: 1rem;
+  height: 1rem;
 }
