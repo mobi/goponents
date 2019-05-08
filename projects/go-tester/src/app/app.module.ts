@@ -5,10 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 
-import { 
+import {
   GoButtonModule,
   GoIconModule,
-  GoOffCanvasService,
   GoOffCanvasModule,
   GoTableModule,
   GoButtonComponent,
@@ -28,8 +27,7 @@ import {
     GoOffCanvasModule
   ],
   providers: [
-    AppService,
-    GoOffCanvasService
+    AppService
   ],
   entryComponents: [
     GoButtonComponent,

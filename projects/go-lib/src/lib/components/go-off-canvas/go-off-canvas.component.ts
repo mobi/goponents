@@ -26,7 +26,7 @@ export class GoOffCanvasComponent implements OnInit {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private goOffCanvasService: GoOffCanvasService
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.goOffCanvasService.activeOffCanvasComponent.subscribe((goOffCanvasItem) => {
@@ -39,7 +39,11 @@ export class GoOffCanvasComponent implements OnInit {
     });
   }
 
-  loadComponent(): void {
+  public closeOffCanvas(): void {
+    this.goOffCanvasService.closeOffCanvas();
+  }
+
+  private loadComponent(): void {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       this.currentOffCanvasItem.component
     );
@@ -52,9 +56,5 @@ export class GoOffCanvasComponent implements OnInit {
     Object.keys(this.currentOffCanvasItem.bindings).forEach(key => {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
     });
-  }
-
-  closeOffCanvas() : void {
-    this.goOffCanvasService.setOffCanvasStatus(false);
   }
 }

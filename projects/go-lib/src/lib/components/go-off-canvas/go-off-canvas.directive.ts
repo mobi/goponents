@@ -4,5 +4,7 @@ import { Directive, ViewContainerRef } from "@angular/core";
   selector: '[go-off-canvas-host]'
 })
 export class GoOffCanvasDirective {
-  constructor(public viewContainerRef: ViewContainerRef){}
+  constructor(
+    public viewContainerRef: ViewContainerRef
+  ) { }
 }
