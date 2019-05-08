@@ -62,7 +62,6 @@
               "projects/go-tester/src/assets"
             ],
             "styles": [
-              "node_modules/ngx-toastr/toastr.css",
               "projects/go-tester/src/styles.scss"
             ],
             "scripts": []

@@ -30,8 +30,9 @@ export * from './lib/components/go-modal/go-modal.service';
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
-export * from './lib/components/go-table/go-table-config';
-export * from './lib/components/go-table/go-table-sort';
+export * from './lib/components/go-table/go-table-config.model';
+export * from './lib/components/go-table/go-table-sort.model';
+export * from './lib/components/go-table/go-table-paging.model';
 
 // Toast
 export * from './lib/components/go-toast/go-toast.component';

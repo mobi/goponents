@@ -1,6 +1,6 @@
 export class GoTableSortConfig {
   column: string;
-  direction?: SortDirection = SortDirection.ascending;
+  direction: SortDirection = SortDirection.ascending;
 
   constructor(fields?: {
     column: string,
