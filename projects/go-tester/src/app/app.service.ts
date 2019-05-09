@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { GoTableConfig, GoTablePageConfig, GoTableSortConfig } from '@tangoe/goponents';
+import { GoTableConfig, GoTablePageConfig, GoTableSortConfig } from '../../../go-lib/src/public_api';
 
 // Only using this to emulate sorting for server side
 import { sortBy } from '../../../go-lib/src/lib/components/go-table/go-table-utils';
