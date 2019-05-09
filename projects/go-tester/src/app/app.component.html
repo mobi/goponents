@@ -19,6 +19,27 @@
 >
   Other Thing
 </go-button>
+<go-button buttonIcon="home">
+  Hey
+</go-button>
+<go-button
+  buttonIcon="add_shopping_cart"
+  buttonVariant="positive"
+  (handleClick)="clickHey()"
+  [useLoader]="true"
+  #heyButton
+>
+  Hey
+</go-button>
+<go-button buttonIcon="fingerprint" buttonVariant="negative">
+  Hey
+</go-button>
+<go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
+  Nope
+</go-button>
+<go-button buttonIcon="plus_one" buttonVariant="neutral">
+  Hey
+</go-button>
 
 <br/>
 <br/>

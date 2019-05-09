@@ -2,8 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'go-button',
-  templateUrl: './go-button.component.html',
-  styleUrls: ['go-button.component.scss']
+  templateUrl: './go-button.component.html'
 })
 export class GoButtonComponent {
   @Input() buttonDisabled: boolean;
@@ -18,22 +17,28 @@ export class GoButtonComponent {
 
   constructor() {}
 
-  public clicked() : void {
-    if (this.isProcessing || this.buttonDisabled) { return; }
-
+  public clicked(): void {
     this.isProcessing = this.useLoader;
     this.handleClick.emit(this.isProcessing);
   }
   
-  public reset() : void {
+  public reset(): void {
     this.isProcessing = false;
   }
 
-  public classList() : any {
+  public classObject(): object {
+    // 'alert' as a variant is depreciated and
+    // will be removed in a later version
+    let isNegative: boolean = [
+      'alert',
+      'negative'
+    ].includes(this.buttonVariant);
+
     return {
-      'go-button__loading': this.isProcessing,
-      'go-button__disabled': this.buttonDisabled,
-      'go-button__alert': (this.buttonVariant === 'alert')
+      'go-button--loading': this.isProcessing,
+      'go-button--negative': isNegative,
+      'go-button--neutral': (this.buttonVariant === 'neutral'),
+      'go-button--positive': (this.buttonVariant === 'positive')
     };
   }
 }
