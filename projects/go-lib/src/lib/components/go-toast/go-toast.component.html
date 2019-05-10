@@ -1,7 +1,7 @@
 <div class="go-toast">
-  <div class="go-toast-strip" [ngClass]="statusClasses()"></div>
+  <div class="go-toast-strip" [ngClass]="statusClass"></div>
   <div class="go-toast-status">
-    <go-icon class="go-toast-status__icon" [ngClass]="statusClasses()" icon="{{ goIconType() }}"></go-icon>
+    <go-icon class="go-toast-status__icon" [ngClass]="statusClass" [icon]="icon"></go-icon>
   </div>
   <div class="go-toast-content"  [ngClass]="{ 'go-toast-content--no-title': !header }">
     <h5 class="go-toast-content__title" *ngIf="header">{{ header }}</h5>

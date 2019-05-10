@@ -5,7 +5,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './go-toast.component.html',
   styleUrls: ['./go-toast.component.scss']
 })
-export class GoToastComponent {
+export class GoToastComponent implements OnInit {
+  statusClass: string = 'go-toast-status--neutral';
+  icon: string = 'notifications_none';
 
   @Input() dismissable: boolean = false;
   @Input() header: string;
@@ -14,17 +16,29 @@ export class GoToastComponent {
 
   @Output() handleDismiss = new EventEmitter();
 
+  ngOnInit(): void {
+    this.statusClass = this.getStatus();
+    this.icon = this.getIcon();
+  }
+
+  public dismiss(): void {
+    this.handleDismiss.emit();
+  }
+
   //#region Private Methods
 
-  private statusClasses() : object {
-    return {
-      'go-toast-status--positive': this.type === 'positive',
-      'go-toast-status--neutral': this.type === 'neutral' || !this.type,
-      'go-toast-status--negative': this.type === 'negative'
+  private getStatus(): string {
+    switch (this.type) {
+      case 'positive':
+        return 'go-toast-status--positive';
+      case 'negative':
+        return 'go-toast-status--negative';
+      default:
+        return 'go-toast-status--neutral';
     }
   }
 
-  private goIconType() : string {
+  private getIcon(): string {
     switch (this.type) {
       case 'positive':
         return 'done';
@@ -33,10 +47,6 @@ export class GoToastComponent {
       default:
         return 'notifications_none'
     }
-  }
-
-  private dismiss() : void {
-    this.handleDismiss.emit();
   }
 
   //#endregion
