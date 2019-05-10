@@ -9,7 +9,7 @@ export class GoTableConfig {
   sortConfig?: GoTableSortConfig;
   sortable: boolean = true;
   tableData: any[];
-  totalCount?: number;
+  totalCount: number = null;
 
   constructor(fields?: {
     dataMode?: GoTableDataSource,
