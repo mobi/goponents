@@ -84,6 +84,8 @@ export class GoTableComponent implements OnInit, OnChanges {
         this.localTableConfig.sortConfig = { column: columnField, direction: SortDirection.ascending };
       }
 
+      this.localTableConfig.pageConfig.offset = 0;
+
       if (this.isServerMode()) {
         this.tableChange.emit(this.localTableConfig);
       } else {
@@ -182,7 +184,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   private setTotalCount() : void {
-    const { totalCount, tableData } = this.localTableConfig; 
+    const { totalCount, tableData } = this.localTableConfig;
 
     this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
   }

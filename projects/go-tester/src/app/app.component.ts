@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GoTableConfig, GoTableDataSource, GoToasterService } from '../../../go-lib/src/public_api';
 
 import { AppService } from './app.service';
 import {
@@ -7,7 +6,8 @@ import {
   GoOffCanvasService,
   GoTableDataSource,
   GoButtonComponent,
-  GoIconComponent
+  GoIconComponent,
+  GoToasterService
 } from '../../../go-lib/src/public_api';
 
 @Component({
