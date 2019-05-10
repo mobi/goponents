@@ -1,0 +1,50 @@
+@import '~@tangoe/gosheets/base/variables';
+
+.go-off-canvas-backdrop {
+  background: rgba($base-dark, .5);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity .5s cubic-bezier(.25, .8, .25, 1);
+  width: 100vw;
+}
+
+.go-off-canvas {
+  background-color: $base-dark;
+  border-left: 2px solid $base-dark-secondary;
+  bottom: 0;
+  color: $base-light;
+  display: flex;
+  flex-direction: column;
+  left: 100%;
+  position: fixed;
+  top: 0;
+  width: 300px;
+}
+
+.go-off-canvas__header {
+  align-self: flex-start;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.go-off-canvas__button {
+  background: $base-dark-secondary;
+  border: 0;
+  color: $base-light;
+  cursor: pointer;
+  display: block;
+  font-family: $heading-font-stack;
+  font-size: .8rem;
+  line-height: 1rem;
+  outline-offset: -2px;
+  padding: $column-gutter--half $column-gutter;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.go-off-canvas__content {
+  flex: 1;
+  overflow-y: auto;
+}

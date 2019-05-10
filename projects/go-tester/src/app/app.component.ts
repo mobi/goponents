@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { GoTableConfig, GoTableDataSource } from '../../../go-lib/src/public_api';
-
 import { AppService } from './app.service';
+import {
+  GoTableConfig,
+  GoOffCanvasService,
+  GoTableDataSource,
+  GoButtonComponent,
+  GoIconComponent
+} from '../../../go-lib/src/public_api';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +19,10 @@ export class AppComponent {
   tableConfig: GoTableConfig;
   tableLoading: boolean = true;
 
-  constructor(private appService: AppService) { }
+  constructor(
+    private appService: AppService,
+    private goOffCanvasService: GoOffCanvasService
+  ) { }
 
   ngOnInit() {
     this.appService.getMockData(new GoTableConfig()).subscribe(data => {
@@ -39,5 +47,24 @@ export class AppComponent {
         }, 1000);
       });
     }
+  }
+
+  openThing() : void {
+    this.goOffCanvasService.openOffCanvas({
+      component: GoButtonComponent,
+      bindings: {
+        buttonVariant: 'alert',
+        buttonIcon: 'g_translate'
+      }
+    });
+  }
+
+  openOtherThing() : void {
+    this.goOffCanvasService.openOffCanvas({
+      component: GoIconComponent,
+      bindings: {
+        icon: 'alarm'
+      }
+    });
   }
 }
