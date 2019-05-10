@@ -42,6 +42,8 @@ export class AppComponent implements OnInit {
 
     setTimeout(() => {
       this.goToasterService.toastInfo({ message: 'Check this out'});
+      this.goToasterService.toastSuccess({message: 'Check this out' });
+      this.goToasterService.toastError({ message: 'Check this out' });
     }, 1500);
   }
 
