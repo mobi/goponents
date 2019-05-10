@@ -5,7 +5,9 @@ import { GoMessageService } from './go-message.service';
 
 @NgModule({
   declarations: [],
-  providers: [GoMessageService],
+  providers: [
+    GoMessageService
+  ],
   imports: [
     CommonModule
   ]

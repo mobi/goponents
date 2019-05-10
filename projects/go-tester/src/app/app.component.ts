@@ -1,4 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GoTableConfig, GoTableDataSource, GoToasterService } from '../../../go-lib/src/public_api';
+
 import { AppService } from './app.service';
 import {
   GoTableConfig,
@@ -11,9 +13,10 @@ import {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   @ViewChild('heyButton') heyButton: GoButtonComponent;
 
   title = 'go-tester';
@@ -23,6 +26,7 @@ export class AppComponent {
 
   constructor(
     private appService: AppService,
+    private goToasterService: GoToasterService,
     private goOffCanvasService: GoOffCanvasService
   ) { }
 
@@ -35,6 +39,10 @@ export class AppComponent {
       });
       this.tableLoading = false;
     })
+
+    setTimeout(() => {
+      this.goToasterService.toastInfo({ message: 'Check this out'});
+    }, 1500);
   }
 
   clickHey(): void {

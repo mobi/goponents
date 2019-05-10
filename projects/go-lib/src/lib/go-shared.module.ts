@@ -3,9 +3,11 @@ import { GoAccordionModule  } from './components/go-accordion/go-accordion.modul
 import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
-import { GoTableModule } from './components/go-table/go-table.module';
 import { GoMessageModule } from './services/go-message/go-message.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
+import { GoTableModule } from './components/go-table/go-table.module';
+import { GoToastModule } from './components/go-toast/go-toast.module';
+import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 
 @NgModule({
   imports: [
@@ -13,18 +15,22 @@ import { GoModalModule } from './components/go-modal/go-modal.module';
     GoButtonModule,
     GoCardModule,
     GoIconModule,
-    GoTableModule,
     GoMessageModule,
-    GoModalModule
+    GoModalModule,
+    GoTableModule,
+    GoToastModule,
+    GoToasterModule
   ],
   exports: [
     GoAccordionModule,
     GoButtonModule,
     GoCardModule,
     GoIconModule,
-    GoTableModule,
     GoMessageModule,
-    GoModalModule
+    GoModalModule,
+    GoTableModule,
+    GoToastModule,
+    GoToasterModule
   ]
 })
 

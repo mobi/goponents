@@ -1,0 +1,15 @@
+<div class="go-toast">
+  <div class="go-toast-strip" [ngClass]="statusClasses()"></div>
+  <div class="go-toast-status">
+    <go-icon class="go-toast-status__icon" [ngClass]="statusClasses()" icon="{{ goIconType() }}"></go-icon>
+  </div>
+  <div class="go-toast-content"  [ngClass]="{ 'go-toast-content--no-title': !header }">
+    <h5 class="go-toast-content__title" *ngIf="header">{{ header }}</h5>
+    <p class="go-toast-content__message">{{ message }}</p>
+  </div>
+  <div class="go-toast-dismiss" *ngIf="dismissable">
+    <button class="go-toast-dismiss__button" type="button">
+      <go-icon class="go-toast-dismiss__icon" icon="close" (click)="dismiss()"></go-icon>
+    </button>
+  </div>
+</div>

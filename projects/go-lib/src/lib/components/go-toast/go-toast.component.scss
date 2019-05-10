@@ -1,0 +1,102 @@
+@import '~@tangoe/gosheets/base/_variables';
+@import '../../../styles/mixins';
+
+.go-toast {
+  background: $theme-light-bg;
+  border-radius: $global-radius;
+  box-shadow: $global-box-shadow;
+  display: flex;
+  position: relative;
+}
+
+.go-toast-strip {
+  background-color: $base-light-secondary;
+  border-radius: $global-radius 0 0 $global-radius;
+  flex-shrink: 0;
+  width: $global-radius;
+}
+
+.go-toast-status {
+  align-self: flex-start;
+  padding: 1.5rem 1.2rem;
+}
+
+.go-toast-status__icon {
+  background-color: $base-light-secondary;
+  border-radius: 50%;
+  box-shadow: $global-box-shadow;
+  color: $base-light;
+  display: block;
+  font-size: 1rem;
+  height: 1rem;
+  padding: 0.5rem;
+  user-select: none;
+}
+
+.go-toast-status--positive {
+  background-color: $ui-color-positive;
+  background-image: $ui-color-positive-gradient;
+}
+
+.go-toast-status--neutral {
+  background-color: $ui-color-neutral;
+  background-image: $ui-color-neutral-gradient;
+}
+
+.go-toast-status--negative {
+  background-color: $ui-color-negative;
+  background-image: $ui-color-negative-gradient;
+}
+
+.go-toast-content {
+  color: $theme-light-color;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1.25rem 0.75rem 0;
+}
+
+.go-toast-content--no-title {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.go-toast-content__title {
+  font-size: 1.25rem;
+  margin-top: 1.2rem;
+}
+
+.go-toast-content__message {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.go-toast-dismiss {
+  padding: 0.25rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.go-toast-dismiss__button {
+  border: 0;
+  border-radius: 50%;
+  color: $theme-light-border;
+  cursor: pointer;
+  display: block; 
+  outline: none;
+  padding: 0.5rem;
+  user-select: none;
+  @include transition(all);
+
+  &:hover, &:focus, &:active {
+    background: $theme-light-bg-hover;
+    color: darken($theme-light-border, 5%);
+  }
+}
+
+.go-toast-dismiss__icon {
+  display: block;
+  font-size: 1rem;
+  height: 1rem;
+}

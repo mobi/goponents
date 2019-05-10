@@ -44,6 +44,13 @@
 <br/>
 <br/>
 
+<go-toast type="neutral"
+          header="Announcement!"
+          [dismissable]="true">
+</go-toast>
+
+<br/>
+
 <go-table [loadingData]="tableLoading"
           [tableConfig]="tableConfig"
           (tableChange)="handleTableChange($event)"
@@ -59,4 +66,5 @@
 
 </go-table>
 
+<go-toaster></go-toaster>
 <go-off-canvas></go-off-canvas>
