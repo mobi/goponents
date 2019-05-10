@@ -25,6 +25,10 @@
     "publish_local": "npm run package && node ./local_install.js"
   },
   "private": true,
+  "engines": {
+    "npm": "^6.9.0",
+    "node": "^8.11.4"
+  },
   "dependencies": {
     "@angular/animations": "~7.2.15",
     "@angular/common": "~7.2.15",
@@ -35,7 +39,7 @@
     "@angular/platform-browser": "~7.2.15",
     "@angular/platform-browser-dynamic": "~7.2.15",
     "@angular/router": "~7.2.15",
-    "@tangoe/gosheets": "^0.7.1",
+    "@tangoe/gosheets": "^0.7.2",
     "core-js": "^2.5.4",
     "ngx-toastr": "^9.1.2",
     "npm": "^6.9.0",
