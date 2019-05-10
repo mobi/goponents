@@ -35,7 +35,7 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
-    "@tangoe/gosheets": "^0.7.1",
+    "@tangoe/gosheets": "^0.7.2",
     "core-js": "^2.5.4",
     "ngx-toastr": "^9.1.2",
     "npm": "^6.9.0",
