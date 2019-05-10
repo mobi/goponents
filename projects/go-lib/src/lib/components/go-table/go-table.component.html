@@ -1,13 +1,19 @@
 <div class="go-table-container" *ngIf="showTable">
+  <div class="go-table-toolbar go-table-toolbar--top" *ngIf="tableTitle">
+    <h5 class="go-heading--no-margin">{{ tableTitle }}</h5>
+  </div>
   <div class="go-table">
     <table class="go-table__table" *ngIf="hasData(); else noDataTable">
       <thead>
         <tr>
-          <th *ngFor="let col of columns" class="go-table__th" [ngClass]="columnClasses(col.field)" (click)="toggleSort(col.field)">
-            <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
-            <ng-template #columnHeaderOutlet>
-              <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
-            </ng-template>
+          <th *ngFor="let col of columns" class="go-table__th" (click)="toggleSort(col.field)">
+            <div class="go-table__th-content">
+              <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
+              <ng-template #columnHeaderOutlet>
+                <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
+              </ng-template>
+              <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
+            </div>
           </th>
         </tr>
       </thead>
@@ -25,13 +31,13 @@
   </div>
   <div class="go-table-toolbar go-table-toolbar--bottom" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
-      <select class="go-form__select" (change)="setPerPage($event)">
+      <select class="go-form__select go-table-toolbar__select" (change)="setPerPage($event)">
         <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
                 [value]="[size]">{{ size }}</option>
       </select>
-      <label class="go-form__label go-table-toolbar__label">Page Size</label>
+      <label class="go-table-toolbar__label">Page Size</label>
     </div>
-    <div class="go-table-toolbar__totals">
+    <div class="go-table-toolbar__label">
       {{ outputResultsPerPage() }} /
       {{ localTableConfig.totalCount | number : '1.0-0' }} Results
     </div>

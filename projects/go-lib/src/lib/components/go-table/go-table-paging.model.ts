@@ -1,7 +1,7 @@
 export class GoTablePageConfig {
   offset: number = 0;
-  pageSizes: number[] = [20, 50, 100];
-  perPage: number = 20;
+  pageSizes: number[] = [10, 25, 50];
+  perPage: number = 10;
 
   constructor(fields?: {
     offset?: number,
