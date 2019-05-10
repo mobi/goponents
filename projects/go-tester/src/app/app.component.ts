@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AppService } from './app.service';
 import {
   GoTableConfig,
@@ -14,6 +14,8 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('heyButton') heyButton: GoButtonComponent;
+
   title = 'go-tester';
 
   tableConfig: GoTableConfig;
@@ -33,6 +35,12 @@ export class AppComponent {
       });
       this.tableLoading = false;
     })
+  }
+
+  clickHey(): void {
+    setTimeout(() => {
+      this.heyButton.reset();
+    }, 4000);
   }
 
   handleTableChange(currentTableConfig: GoTableConfig) : void {
