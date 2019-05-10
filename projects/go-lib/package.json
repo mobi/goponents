@@ -8,12 +8,10 @@
   "author": "Tangoe GoMobile",
   "description": "A library of UI components for Angular v7+.",
   "license": "MIT",
-  "dependencies": {
-    "@tangoe/gosheets": "^0.7.2"
-  },
   "devDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
+    "@tangoe/gosheets": "^0.7.2",
     "ngx-toastr": "^9.1.2"
   }
 }
