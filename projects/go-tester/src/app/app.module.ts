@@ -4,9 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
+  GoButtonComponent,
   GoButtonModule,
+  GoIconComponent,
   GoIconModule,
   GoMessageModule,
+  GoOffCanvasModule,
   GoTableModule,
   GoToastModule,
   GoToasterModule
@@ -14,6 +17,7 @@ import {
 
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+
 
 @NgModule({
   declarations: [
@@ -26,11 +30,18 @@ import { AppService } from './app.service';
     GoButtonModule,
     GoIconModule,
     GoMessageModule,
+    GoOffCanvasModule,
     GoTableModule,
     GoToastModule,
     GoToasterModule
   ],
-  providers: [AppService],
+  providers: [
+    AppService
+  ],
+  entryComponents: [
+    GoButtonComponent,
+    GoIconComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

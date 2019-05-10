@@ -27,6 +27,11 @@ export * from './lib/components/go-modal/go-modal.component';
 export * from './lib/components/go-modal/go-modal.module';
 export * from './lib/components/go-modal/go-modal.service';
 
+// Off Canvas
+export * from './lib/components/go-off-canvas/go-off-canvas.component';
+export * from './lib/components/go-off-canvas/go-off-canvas.module';
+export * from './lib/components/go-off-canvas/go-off-canvas.service';
+
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';

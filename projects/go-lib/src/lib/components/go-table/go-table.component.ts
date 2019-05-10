@@ -18,8 +18,9 @@ import { sortBy } from './go-table-utils';
 })
 export class GoTableComponent implements OnInit, OnChanges {
 
-  @Input() tableConfig: GoTableConfig;
   @Input() loadingData: boolean = false;
+  @Input() tableConfig: GoTableConfig;
+  @Input() tableTitle: string;
 
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
@@ -60,10 +61,11 @@ export class GoTableComponent implements OnInit, OnChanges {
     return false;
   }
 
-  columnClasses(columnField: string) : object {
-    return {
-      'go-table__th--sort-down': this.sortClasses(columnField, SortDirection.ascending),
-      'go-table__th--sort-up': this.sortClasses(columnField, SortDirection.descending)
+  sortIcons(columnField: string) : string {
+    if (this.sortClasses(columnField, SortDirection.ascending)) {
+      return 'arrow_upward';
+    } else if (this.sortClasses(columnField, SortDirection.descending)) {
+      return 'arrow_downward';
     }
   }
 

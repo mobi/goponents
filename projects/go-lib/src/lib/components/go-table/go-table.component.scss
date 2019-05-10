@@ -1,13 +1,14 @@
 @import '~@tangoe/gosheets/base/_variables';
-@import '../../../styles/variables';
 @import '../../../styles/mixins';
 
 .go-table-container {
+  background: $theme-light-bg;
+  border-radius: $global-radius;
+  box-shadow: $global-box-shadow;
   position: relative;
 }
 
 .go-table {
-  border: 1px solid $theme-light-border;
   max-width: 100%;
   overflow-x: auto;
 }
@@ -19,78 +20,100 @@
 }
 
 .go-table__th {
-  background: $brand-color;
-  border-right: 1px solid $theme-light-border;
-  color: $base-light;
+  color: $theme-light-color;
   cursor: pointer;
-  font-weight: normal;
-  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: 1pt;
+  padding: 1rem 1.25rem;
   position: relative;
   text-align: left;
-
-  &:last-child {
-    border-right: 0;
-  }
-}
-
-.go-table__th--sort-up::after,
-.go-table__th--sort-down::after {
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  content: '';
-  height: 0;
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
   @include transition(all);
-}
 
-.go-table__th--sort-up::after {
-  border-top: 5px solid $base-light;
-}
-
-.go-table__th--sort-down::after {
-  border-bottom: 5px solid $base-light;
-}
-
-.go-table__tr {
-
-  &:nth-child(2n) {
-    background: $theme-light-bg-active;
+  &:hover {
+    background: $theme-light-app-bg;
   }
+
+  &:first-of-type {
+    border-radius: $global-radius 0 0 0;
+  }
+
+  &:last-of-type {
+    border-radius: 0 $global-radius 0 0;
+  }
+}
+
+.go-table__th-content {
+  display: flex;
+  line-height: 1;
+}
+
+.go-table__sort-icon {
+  display: inline-block;
+  height: 0.75rem;
+  padding-left: 0.25rem;
 }
 
 .go-table__td {
-  padding: 0.5rem 1rem;
+  border-bottom: 1px solid $theme-light-app-bg;
+  font-size: 0.875rem;
+  padding: 0.875rem 1.25rem;
+
+  .go-table__tr:first-child & {
+    border-top: 1px solid $theme-light-app-bg;
+  }
+
+  .go-table__tr:last-child & {
+    border-bottom: 0;
+  }
 }
 
 .go-table-toolbar {
   align-items: center;
-  border: 1px solid $theme-light-border;
   display: flex;
+  font-size: 0.875rem;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 1rem 1.25rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-wrap: wrap;
+  }
 }
 
 .go-table-toolbar--bottom {
   border-radius: 0 0 $global-radius $global-radius;
-  border-top: 0;
+  border-top: 1px solid $theme-light-app-bg;
+}
+
+.go-table-toolbar--top {
+  border-radius: $global-radius $global-radius 0 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    border-bottom: 1px solid $theme-light-app-bg;
+  }
 }
 
 .go-table-toolbar__page-controls {
   align-items: center;
   display: flex;
+
+  @media (max-width: $breakpoint-mobile) {
+    justify-content: space-between;
+    margin-top: 1rem;
+    width: 100%;
+  }
 }
 
 .go-table-toolbar__page-controls-button {
   align-items: center;
+  background: transparent;
   border: 0;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin: 0 0.25rem;
   outline: none;
   padding: 0.5rem;
@@ -113,13 +136,18 @@
 }
 
 .go-table-toolbar__page-controls-icon {
-  height: 1.25rem;   
+  height: 1rem;
+}
+
+.go-table-toolbar__select {
+  font-size: 0.875rem;
+  height: 2rem;
 }
 
 .go-table-toolbar__label {
   display: inline-block;
   font-weight: normal;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
 }
 
 /***** Loader *****/
@@ -150,14 +178,11 @@
   border-spacing: 0;
   width: 100%;
 
-  tr:nth-child(odd) {
-    background: $theme-light-bg-active;
-  }
-
   td {
+    border-top: 1px solid $theme-light-app-bg;
     color: $theme-light-color;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    padding: 0.875rem 1.25rem;
     text-align: center;
   }
 }

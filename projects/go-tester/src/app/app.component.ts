@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GoTableConfig, GoTableDataSource, GoToasterService } from '../../../go-lib/src/public_api';
 
 import { AppService } from './app.service';
+import {
+  GoTableConfig,
+  GoOffCanvasService,
+  GoTableDataSource,
+  GoButtonComponent,
+  GoIconComponent
+} from '../../../go-lib/src/public_api';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +16,9 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild('heyButton') heyButton: GoButtonComponent;
+
   title = 'go-tester';
 
   tableConfig: GoTableConfig;
@@ -16,7 +26,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private goToasterService: GoToasterService
+    private goToasterService: GoToasterService,
+    private goOffCanvasService: GoOffCanvasService
   ) { }
 
   ngOnInit() {
@@ -34,6 +45,12 @@ export class AppComponent implements OnInit {
     }, 1500);
   }
 
+  clickHey(): void {
+    setTimeout(() => {
+      this.heyButton.reset();
+    }, 4000);
+  }
+
   handleTableChange(currentTableConfig: GoTableConfig) : void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.appService.getMockData(currentTableConfig).subscribe(data => {
@@ -46,5 +63,24 @@ export class AppComponent implements OnInit {
         }, 1000);
       });
     }
+  }
+
+  openThing() : void {
+    this.goOffCanvasService.openOffCanvas({
+      component: GoButtonComponent,
+      bindings: {
+        buttonVariant: 'alert',
+        buttonIcon: 'g_translate'
+      }
+    });
+  }
+
+  openOtherThing() : void {
+    this.goOffCanvasService.openOffCanvas({
+      component: GoIconComponent,
+      bindings: {
+        icon: 'alarm'
+      }
+    });
   }
 }
