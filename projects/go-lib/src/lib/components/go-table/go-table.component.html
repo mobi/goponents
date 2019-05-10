@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th *ngFor="let col of columns" class="go-table__th" (click)="toggleSort(col.field)">
-            <div class="go-table__th__content">
+            <div class="go-table__th-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
               <ng-template #columnHeaderOutlet>
                 <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
