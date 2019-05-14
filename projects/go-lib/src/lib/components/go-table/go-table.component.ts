@@ -76,8 +76,9 @@ export class GoTableComponent implements OnInit, OnChanges {
   toggleSort(columnField: string) : void {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
 
-    this.loadingData = true;
     if (tableData && sortable) {
+      this.loadingData = true;
+
       if (sortConfig && sortConfig.column === columnField) {
         this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
       } else {
