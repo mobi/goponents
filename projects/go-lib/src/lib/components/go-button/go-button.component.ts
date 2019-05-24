@@ -10,6 +10,7 @@ export class GoButtonComponent {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string;
   @Input() useLoader: boolean;
+  @Input() useDarkTheme: boolean;
 
   @Output() handleClick = new EventEmitter<boolean>();
 
@@ -21,7 +22,7 @@ export class GoButtonComponent {
     this.isProcessing = this.useLoader;
     this.handleClick.emit(this.isProcessing);
   }
-  
+
   public reset(): void {
     this.isProcessing = false;
   }
@@ -35,6 +36,7 @@ export class GoButtonComponent {
     ].includes(this.buttonVariant);
 
     return {
+      'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
       'go-button--negative': isNegative,
       'go-button--neutral': (this.buttonVariant === 'neutral'),
