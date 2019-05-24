@@ -11,7 +11,7 @@
   "devDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
-    "@tangoe/gosheets": "^0.7.2",
+    "@tangoe/gosheets": "^0.8.1",
     "ngx-toastr": "^9.1.2"
   }
 }
