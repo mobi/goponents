@@ -22,15 +22,17 @@
 }
 
 .go-toast-status__icon {
+  align-items: center;
   background-color: $base-light-secondary;
   border-radius: 50%;
   box-shadow: $global-box-shadow;
   color: $base-light;
-  display: block;
+  display: flex;
   font-size: 1rem;
-  height: 1rem;
-  padding: 0.5rem;
+  height: 2rem;
+  justify-content: center;
   user-select: none;
+  width: 2rem;
 }
 
 .go-toast-status--positive {
