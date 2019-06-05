@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     class="go-loader-container"
+     [ngClass]="containerClasses()"
+     viewBox="0 0 150 150">
+  <title>Loading</title>
+  <linearGradient id="goLoaderNeutralGradient">
+    <stop offset="15%" class="go-loader-gradient--start-neutral"/>
+    <stop offset="40%" class="go-loader-gradient--finish"/>
+  </linearGradient>
+  <linearGradient id="goLoaderPositiveGradient">
+    <stop offset="15%" class="go-loader-gradient--start-positive"/>
+    <stop offset="40%" class="go-loader-gradient--finish"/>
+  </linearGradient>
+  <linearGradient id="goLoaderNegativeGradient">
+    <stop offset="15%" class="go-loader-gradient--start-negative"/>
+    <stop offset="40%" class="go-loader-gradient--finish"/>
+  </linearGradient>
+  <path id="go-loader-outer-circle"
+        data-name="go-loader-middle-circle"
+        d="M75,150a74.648,74.648,0,0,1-41.933-12.809,75.22,75.22,0,0,1-27.173-33,74.9,74.9,0,0,1,6.915-71.126,75.22,75.22,0,0,1,33-27.173,74.9,74.9,0,0,1,71.127,6.915,75.22,75.22,0,0,1,27.173,33,74.9,74.9,0,0,1-6.915,71.127,75.22,75.22,0,0,1-33,27.173A74.531,74.531,0,0,1,75,150ZM75,5A69.672,69.672,0,0,0,35.862,16.955,70.2,70.2,0,0,0,10.5,47.753a69.908,69.908,0,0,0,6.454,66.385,70.2,70.2,0,0,0,30.8,25.361,69.908,69.908,0,0,0,66.385-6.454,70.2,70.2,0,0,0,25.361-30.8,69.907,69.907,0,0,0-6.454-66.385,70.2,70.2,0,0,0-30.8-25.361A69.563,69.563,0,0,0,75,5Z"
+        class="go-loader go-loader--outer"
+        [ngClass]="pathClasses()"/>
+  <path id="go-loader-middle-circle"
+        data-name="go-loader-middle-circle"
+        d="M60,120a59.72,59.72,0,0,1-33.547-10.247,60.175,60.175,0,0,1-21.738-26.4,59.921,59.921,0,0,1,5.532-56.9,60.176,60.176,0,0,1,26.4-21.738,59.92,59.92,0,0,1,56.9,5.532,60.176,60.176,0,0,1,21.738,26.4,59.92,59.92,0,0,1-5.532,56.9,60.176,60.176,0,0,1-26.4,21.738A59.622,59.622,0,0,1,60,120ZM60,5a54.743,54.743,0,0,0-30.751,9.393,55.16,55.16,0,0,0-19.927,24.2,54.928,54.928,0,0,0,5.071,52.159,55.161,55.161,0,0,0,24.2,19.927,54.927,54.927,0,0,0,52.159-5.071,55.162,55.162,0,0,0,19.927-24.2,54.927,54.927,0,0,0-5.071-52.159,55.161,55.161,0,0,0-24.2-19.927A54.655,54.655,0,0,0,60,5Z"
+        class="go-loader go-loader--middle"
+        [ngClass]="pathClasses()"/>
+  <path id="go-loader-inner-circle"
+        data-name="go-loader-inner-circle"
+        d="M45,90A45.012,45.012,0,0,1,27.484,3.536,45.012,45.012,0,0,1,62.516,86.464,44.718,44.718,0,0,1,45,90ZM44.925,4.925a40.011,40.011,0,0,0-15.57,76.857A40.01,40.01,0,0,0,60.5,8.068,39.748,39.748,0,0,0,44.925,4.925Z"
+        class="go-loader go-loader--inner"
+        [ngClass]="pathClasses()"/>
+</svg>

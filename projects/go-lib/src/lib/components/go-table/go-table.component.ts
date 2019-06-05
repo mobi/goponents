@@ -10,8 +10,10 @@ import { Component,
 import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableConfig, GoTableDataSource, SortDirection } from './index';
 import { sortBy } from './go-table-utils';
+import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
+  animations: [fadeTemplateAnimation],
   selector: 'go-table',
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
