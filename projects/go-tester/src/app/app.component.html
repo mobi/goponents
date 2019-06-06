@@ -1,78 +1,80 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="go-container" style="margin: 0;">
+
+  <div class="go-column go-column--100">
+    <h1 class="go-header-2">
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4>Loader</h4>
+    <go-button (handleClick)="stopLoaderAnimation()">
+      Toggle Animation
+    </go-button>
+    <br>
+    <br>
+    <div class="go-container">
+      <div class="go-column go-column--100">
+        <go-loader #loader loaderSize="small"></go-loader>
+        <go-loader></go-loader>
+        <go-loader loaderSize="large"></go-loader>
+      </div>
+    </div>
+  </div>
+  
+  <div class="go-column go-column--100">
+    <h4>Buttons</h4>
+    <go-button buttonIcon="home">
+      Hey
+    </go-button>
+    <go-button buttonIcon="add_shopping_cart" buttonVariant="positive" (handleClick)="clickHey()" [useLoader]="true" #heyButton>
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative">
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
+      Nope
+    </go-button>
+    <go-button buttonIcon="plus_one" buttonVariant="neutral">
+      Hey
+    </go-button>
+    <go-button [buttonIcon]="'home'" buttonVariant="positive" [useDarkTheme]="true">
+      Dark
+    </go-button>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4>Off Canvas</h4>
+    <go-button buttonIcon="home" (handleClick)="openThing()">
+      Click me to open
+    </go-button>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4>Toasts</h4>
+    <go-toast type="neutral"
+              header="Announcement!"
+              [dismissable]="true">
+    </go-toast>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4>Table</h4>
+    <go-table [loadingData]="tableLoading"
+              [tableConfig]="tableConfig"
+              (tableChange)="handleTableChange($event)"
+              tableTitle="People Data"
+              *ngIf="tableConfig">
+      <go-table-column field="id" title="ID"></go-table-column>
+      <go-table-column field="name.first" title="First Name"></go-table-column>
+      <go-table-column field="name.last" title="Last Name"></go-table-column>
+      <go-table-column field="email" title="Email"></go-table-column>
+      <go-table-column field="gender" title="Gender"></go-table-column>
+      <go-table-column field="ip_address" title="IP Address"></go-table-column>
+    </go-table>
+  </div>
 </div>
-
-<go-button
-  [buttonIcon]="'home'"
-  (handleClick)="openThing()"
->
-  Hey
-</go-button>
-
-<go-button
-  [buttonIcon]="'g_translate'"
-  (handleClick)="openOtherThing()"
->
-  Other Thing
-</go-button>
-<go-button buttonIcon="home">
-  Hey
-</go-button>
-<go-button
-  buttonIcon="add_shopping_cart"
-  buttonVariant="positive"
-  (handleClick)="clickHey()"
-  [useLoader]="true"
-  #heyButton
->
-  Hey
-</go-button>
-<go-button buttonIcon="fingerprint" buttonVariant="negative">
-  Hey
-</go-button>
-<go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
-  Nope
-</go-button>
-<go-button buttonIcon="plus_one" buttonVariant="neutral">
-  Hey
-</go-button>
-
-<go-button
-  [buttonIcon]="'home'"
-  buttonVariant="positive"
-  [useDarkTheme]="true"
->
-  Dark
-</go-button>
-
-<br/>
-<br/>
-
-<go-toast type="neutral"
-          header="Announcement!"
-          [dismissable]="true">
-</go-toast>
-
-<br/>
-
-<go-table [loadingData]="tableLoading"
-          [tableConfig]="tableConfig"
-          (tableChange)="handleTableChange($event)"
-          tableTitle="People Data"
-          *ngIf="tableConfig">
-
-  <go-table-column field="id" title="ID"></go-table-column>
-  <go-table-column field="name.first" title="First Name"></go-table-column>
-  <go-table-column field="name.last" title="Last Name"></go-table-column>
-  <go-table-column field="email" title="Email"></go-table-column>
-  <go-table-column field="gender" title="Gender"></go-table-column>
-  <go-table-column field="ip_address" title="IP Address"></go-table-column>
-
-</go-table>
 
 <go-toaster></go-toaster>
 <go-off-canvas></go-off-canvas>

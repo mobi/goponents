@@ -159,18 +159,11 @@
   height: 100%;
   justify-content: center;
   left: 0;
-  opacity: 0;
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: -1;
 
   @include transition(opacity);
-}
-
-.go-table-loader--enabled {
-  opacity: 1;
-  z-index: 1;
 }
 
 /***** Placeholder Table *****/

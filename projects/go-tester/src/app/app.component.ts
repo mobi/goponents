@@ -7,6 +7,7 @@ import {
   GoTableDataSource,
   GoButtonComponent,
   GoIconComponent,
+  GoLoaderComponent,
   GoToasterService
 } from '../../../go-lib/src/public_api';
 
@@ -18,6 +19,7 @@ import {
 export class AppComponent implements OnInit {
 
   @ViewChild('heyButton') heyButton: GoButtonComponent;
+  @ViewChild('loader') loader: GoLoaderComponent;
 
   title = 'go-tester';
 
@@ -47,6 +49,10 @@ export class AppComponent implements OnInit {
     }, 1500);
   }
 
+  stopLoaderAnimation() {
+    this.loader.loaderDone = this.loader.loaderDone ? false: true;
+  }
+
   clickHey(): void {
     setTimeout(() => {
       this.heyButton.reset();
@@ -62,22 +68,12 @@ export class AppComponent implements OnInit {
     
           this.tableConfig = currentTableConfig;
           this.tableLoading = false;
-        }, 1000);
+        }, 2000);
       });
     }
   }
 
   openThing() : void {
-    this.goOffCanvasService.openOffCanvas({
-      component: GoButtonComponent,
-      bindings: {
-        buttonVariant: 'alert',
-        buttonIcon: 'g_translate'
-      }
-    });
-  }
-
-  openOtherThing() : void {
     this.goOffCanvasService.openOffCanvas({
       component: GoIconComponent,
       bindings: {
