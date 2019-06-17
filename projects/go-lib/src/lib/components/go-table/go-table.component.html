@@ -1,14 +1,23 @@
 <div class="go-table-container" *ngIf="showTable">
-  <div class="go-table-toolbar go-table-toolbar--top" *ngIf="tableTitle">
+  <div class="go-table-toolbar" *ngIf="tableTitle">
     <h5 class="go-heading--no-margin">{{ tableTitle }}</h5>
   </div>
   <div class="go-table">
-    <table class="go-table__table" *ngIf="hasData(); else noDataTable">
-      <thead>
+    <table
+      class="go-table__table"
+      *ngIf="hasData(); else noDataTable"
+    >
+      <thead class="go-table__head">
         <tr>
-          <th *ngFor="let col of columns" class="go-table__th" (click)="toggleSort(col.field)">
-            <div class="go-table__th-content">
-              <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">{{ col.title || col.field }}</ng-container>
+          <th
+            *ngFor="let col of columns"
+            class="go-table__head-column"
+            (click)="toggleSort(col.field)"
+          >
+            <div class="go-table__head-content">
+              <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
+                {{ col.title || col.field }}
+              </ng-container>
               <ng-template #columnHeaderOutlet>
                 <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
               </ng-template>
@@ -17,10 +26,19 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of setDisplayData()" class="go-table__tr">
-          <td *ngFor="let col of columns" class="go-table__td" width="{{ col.width || 'auto' }}">
-            <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">{{ col.getFieldData(item) }}</ng-container>
+      <tbody class="go-table__body">
+        <tr
+          *ngFor="let item of setDisplayData()"
+          class="go-table__body-row"
+        >
+          <td
+            *ngFor="let col of columns"
+            class="go-table__body-column"
+            width="{{ col.width || 'auto' }}"
+          >
+            <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
+              {{ col.getFieldData(item) }}
+            </ng-container>
             <ng-template #columnCellOutlet>
               <ng-container *ngTemplateOutlet="col.goTableCell; context: { $implicit: item }"></ng-container>
             </ng-template>
@@ -29,7 +47,7 @@
       </tbody>
     </table>
   </div>
-  <div class="go-table-toolbar go-table-toolbar--bottom" *ngIf="showPaging()">
+  <div class="go-table-toolbar" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
       <select class="go-form__select go-table-toolbar__select" (change)="setPerPage($event)">
         <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
@@ -44,29 +62,29 @@
     <div class="go-table-toolbar__page-controls">
       <button (click)="setFirstPage()"
               [disabled]="isFirstPage()"
-              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isFirstPage() }"
-              class="go-table-toolbar__page-controls-button"
+              [ngClass]="{ 'go-table-toolbar__button--disabled': isFirstPage() }"
+              class="go-table-toolbar__button"
               type="button">
         <go-icon class="go-table-toolbar__page-controls-icon" icon="first_page"></go-icon>
       </button>
       <button (click)="prevPage()"
               [disabled]="isFirstPage()"
-              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isFirstPage() }"
-              class="go-table-toolbar__page-controls-button"
+              [ngClass]="{ 'go-table-toolbar__button--disabled': isFirstPage() }"
+              class="go-table-toolbar__button"
               type="button">
         <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_left"></go-icon>
       </button>
       <button (click)="nextPage()"
               [disabled]="isLastPage()"
-              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isLastPage() }"
-              class="go-table-toolbar__page-controls-button"
+              [ngClass]="{ 'go-table-toolbar__button--disabled': isLastPage() }"
+              class="go-table-toolbar__button"
               type="button">
         <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_right"></go-icon>
       </button>
       <button (click)="setLastPage()"
               [disabled]="isLastPage()"
-              [ngClass]="{ 'go-table-toolbar__page-controls-button--disabled': isLastPage() }"
-              class="go-table-toolbar__page-controls-button"
+              [ngClass]="{ 'go-table-toolbar__button--disabled': isLastPage() }"
+              class="go-table-toolbar__button"
               type="button">
         <go-icon class="go-table-toolbar__page-controls-icon" icon="last_page"></go-icon>
       </button>
