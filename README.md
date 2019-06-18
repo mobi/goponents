@@ -28,17 +28,23 @@ Run `npm run publish` to build and pack the library locally and also to push the
 | card         | Available                              |
 | icon         | Available                              |
 | modal        | Available                              |
+| off-canvas   | Available                              |
 | table        | Available                              |
+| toasts       | Available                              |
 |--------------|----------------------------------------|
-| autocomplete | Priority                               |
+| input        | Priority                               |
+| textarea     | Priority                               |
 | combobox     | Priority                               |
-| tabs         | Priority                               |
-| badge        | Priority                               |
-| tooltip      | Priority                               |
-| masked input | Priority                               |
-| checkbox     | Idea                                   |
-| datepicker   | Idea                                   |
-| radio        | Idea                                   |
+| checkbox     | Priority                               |
+| copy button  | Priority                               |
+| radio        | Priority                               |
+| datepicker   | Will Need                              |
+| autocomplete | Will Need                              |
+| masked input | Will Need                              |
+|--------------|----------------------------------------|
+| tabs         | Idea                                   |
+| badge        | Idea                                   |
+| tooltip      | Idea                                   |
 | slide toggle | Idea                                   |
 | timepicker   | Idea                                   |
 
