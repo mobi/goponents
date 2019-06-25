@@ -9,11 +9,11 @@
   "description": "A library of UI components for Angular v7+.",
   "license": "MIT",
   "peerDependencies": {
-    "@tangoe/gosheets": "^1.0.0-beta.2"
+    "@tangoe/gosheets": "^1.0.0"
   },
   "devDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
-    "@tangoe/gosheets": "^1.0.0-beta.1"
+    "@tangoe/gosheets": "^1.0.0"
   }
 }
