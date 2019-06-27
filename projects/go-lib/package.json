@@ -1,11 +1,11 @@
 {
   "name": "@tangoe/goponents",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mobi/goponents.git"
   },
-  "author": "Tangoe GoMobile",
+  "author": "Tangoe Mobile",
   "description": "A library of UI components for Angular v7+.",
   "license": "MIT",
   "peerDependencies": {
