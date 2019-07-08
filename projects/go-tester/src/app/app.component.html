@@ -6,6 +6,28 @@
     <ng-container go-header-right>
       <go-icon-button buttonIcon="picture_in_picture" (handleClick)="openModal()"></go-icon-button>
       <go-icon-button buttonIcon="input" (handleClick)="openOffCanvas()"></go-icon-button>
+      <go-action-sheet [shiftLeft]="true">
+        <ng-container go-action-sheet__button>
+          <go-icon-button buttonIcon="input"></go-icon-button>
+        </ng-container>
+        <ng-container go-action-sheet-content>
+          <go-panel header="true" title="Christoph<br><p>christoph.drechsler@tangoe.com</p>">
+          </go-panel>
+          <go-panel title="Router Link" icon="folder" routerLink="/test-page-1">
+          </go-panel>
+          <go-panel icon="open_in_new" title="External Link" externalLink="https://www.google.com">
+          </go-panel>
+          <go-panel title="Open Toast" icon="folder" (action)="openToast()">
+          </go-panel>
+          <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
+            <go-accordion-panel title="Accordion" icon="home">
+              Another test 
+            </go-accordion-panel>
+          </go-accordion>
+          <go-panel danger="true" title="Logout" icon="lock">
+          </go-panel>
+        </ng-container>
+      </go-action-sheet>
     </ng-container>
   </go-header>
   <go-side-nav go-layout-nav [menuItems]="menuItems">

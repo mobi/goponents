@@ -10,6 +10,10 @@ export * from './lib/components/go-accordion/go-accordion-panel.component';
 export * from './lib/components/go-accordion/go-accordion.component';
 export * from './lib/components/go-accordion/go-accordion.module';
 
+// Action Sheet
+export * from './lib/components/go-action-sheet/go-action-sheet.component';
+export * from './lib/components/go-action-sheet/go-action-sheet.module';
+
 // Button
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';

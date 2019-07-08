@@ -6,7 +6,8 @@ import {
   GoOffCanvasService,
   GoSideNavService,
   NavGroup,
-  NavItem
+  NavItem,
+  GoToasterService
 } from '../../../go-lib/src/public_api';
 
 @Component({
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
+    private goToasterService: GoToasterService,
     private goOffCanvasService: GoOffCanvasService,
     private goSideNavService: GoSideNavService,
     private goModalService: GoModalService
@@ -55,5 +57,9 @@ export class AppComponent implements OnInit {
         icon: 'alarm'
       }
     );
+  }
+
+  openToast() {
+    this.goToasterService.toastInfo({ message: 'From the action sheet'});
   }
 }

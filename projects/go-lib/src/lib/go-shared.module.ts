@@ -13,10 +13,12 @@ import { GoTableModule } from './components/go-table/go-table.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
 import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
+import { GoActionSheetModule } from './components/go-action-sheet/go-action-sheet.module';
 
 @NgModule({
   imports: [
     GoAccordionModule,
+    GoActionSheetModule,
     GoButtonModule,
     GoCardModule,
     GoHeaderModule,
