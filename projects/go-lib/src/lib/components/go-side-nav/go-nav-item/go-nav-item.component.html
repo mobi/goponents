@@ -1,0 +1,17 @@
+<div class="go-nav-item"
+     [title]="description">
+  <a class="go-nav-item__link"
+     [routerLinkActive]="['go-nav-item__link--active']"
+     [routerLink]="[navItem.route]"
+     [routerLinkActiveOptions]="{exact:true}">
+    <go-icon [icon]="navItem.routeIcon"
+             iconClass="go-nav-group__icon"
+             *ngIf="navItem.routeIcon">
+    </go-icon>
+    <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon }"
+          class="go-nav-item__title"
+          *ngIf="navService.navOpen">
+      {{navItem.routeTitle}}
+    </span>
+  </a>
+</div>

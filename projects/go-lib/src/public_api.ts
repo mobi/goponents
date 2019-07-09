@@ -36,6 +36,13 @@ export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 
+// Side Nav
+export * from './lib/components/go-side-nav/go-side-nav.module';
+export * from './lib/components/go-side-nav/nav-group.model';
+export * from './lib/components/go-side-nav/nav-item.model';
+export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';
+export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
+
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
