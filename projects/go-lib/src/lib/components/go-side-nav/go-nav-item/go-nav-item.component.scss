@@ -1,0 +1,65 @@
+@import '~@tangoe/gosheets/base/variables';
+@import '~@tangoe/gosheets/base/mixins';
+@import '../../../../styles/variables';
+
+.go-nav-item {
+  align-items: center;
+  display: flex;
+  padding-right: .5rem;
+  @include transition(all);
+
+  &:hover {
+    background: $theme-dark-bg-hover;
+  }
+}
+
+.go-nav-item__link::before {
+  background: $base-primary;
+  border-radius: 0 $global-radius $global-radius 0;
+  content: " ";
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 4px;
+  @include transition(all);
+}
+
+.go-nav-item__link--active {
+  .go-nav-item__title {
+    font-weight: $weight-regular;
+  }
+}
+
+.go-nav-item__link--active::before {
+  opacity: 1;
+}
+
+.go-nav-item__link,
+.go-nav-item__link:visited,
+.go-nav-item__link:focus,
+.go-nav-item__link:active {
+  color: $theme-dark-color;
+}
+
+.go-nav-item__link {
+  align-items: center;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  text-decoration: none;
+}
+
+.go-nav-item__title {
+  font-size: $inner-side-nav-font-size;
+  font-weight: $weight-light;
+  letter-spacing: $side-nav-letter-spacing;
+  padding: $inner-side-nav-padding;
+}
+
+.go-nav-item__title--with-icon {
+  font-size: 1rem;
+  padding: $outer-side-nav-padding;
+}
