@@ -3,6 +3,7 @@ import { GoAccordionModule  } from './components/go-accordion/go-accordion.modul
 import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
+import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
 import { GoSearchModule } from './components/go-search/go-search.module';
@@ -19,6 +20,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoCardModule,
     GoIconButtonModule,
     GoIconModule,
+    GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
     GoSearchModule,
@@ -33,6 +35,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoCardModule,
     GoIconButtonModule,
     GoIconModule,
+    GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
     GoSearchModule,

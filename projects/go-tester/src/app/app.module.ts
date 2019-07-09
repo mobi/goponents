@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.router';
-import { DummyComponent } from './dummy.component'
+import { DummyComponent } from './dummy.component';
 
 import {
   GoButtonComponent,
   GoButtonModule,
-  GoIconComponent,
   GoIconButtonModule,
+  GoIconComponent,
   GoIconModule,
+  GoLayoutModule,
   GoLoaderModule,
   GoOffCanvasModule,
   GoSearchModule,
@@ -20,23 +21,33 @@ import {
   GoToastModule
 } from '../../../go-lib/src/public_api';
 
+import { AppRoutesModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { SearchTestComponent } from './components/search-test.component';
+import { TestPage1Component } from './components/test-page-1/test-page-1.component';
+import { TestPage2Component } from './components/test-page-2/test-page-2.component';
+import { AppGuard } from './app.guard';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DummyComponent,
-    SearchTestComponent
+    SearchTestComponent,
+    TestPage1Component,
+    TestPage2Component
   ],
   imports: [
+    AppRoutesModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     GoButtonModule,
     GoIconModule,
     GoIconButtonModule,
+    GoLayoutModule,
     GoLoaderModule,
     GoOffCanvasModule,
     GoSearchModule,
@@ -47,7 +58,8 @@ import { SearchTestComponent } from './components/search-test.component';
     AppRoutingModule
   ],
   providers: [
-    AppService
+    AppService,
+    AppGuard
   ],
   entryComponents: [
     GoButtonComponent,

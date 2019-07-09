@@ -23,8 +23,12 @@ export * from './lib/components/go-icon/go-icon.component'
 export * from './lib/components/go-icon/go-icon.module';
 
 // Icon Button
-export * from './lib/components/go-icon-button/go-icon-button.component'
+export * from './lib/components/go-icon-button/go-icon-button.component';
 export * from './lib/components/go-icon-button/go-icon-button.module';
+
+// Layout
+export * from './lib/components/go-layout/go-layout.component';
+export * from './lib/components/go-layout/go-layout.module';
 
 // Loader
 export * from './lib/components/go-loader/go-loader.component';

@@ -1,0 +1,12 @@
+<go-table [loadingData]="tableLoading"
+          [tableConfig]="tableConfig"
+          (tableChange)="handleTableChange($event)"
+          tableTitle="People Data"
+          *ngIf="tableConfig">
+  <go-table-column field="id" title="ID"></go-table-column>
+  <go-table-column field="name.first" title="First Name"></go-table-column>
+  <go-table-column field="name.last" title="Last Name"></go-table-column>
+  <go-table-column field="email" title="Email"></go-table-column>
+  <go-table-column field="gender" title="Gender"></go-table-column>
+  <go-table-column field="ip_address" title="IP Address"></go-table-column>
+</go-table>

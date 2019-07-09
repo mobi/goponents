@@ -5,7 +5,7 @@ import {
   trigger
 } from '@angular/animations';
 
-const timing = '.5s cubic-bezier(.25, .8, .25, 1)';
+import { timing, easing } from './_configs';
 
 export const toastAnimation = trigger('toastAnimation', [
   transition(':enter', [
@@ -13,13 +13,13 @@ export const toastAnimation = trigger('toastAnimation', [
       height: 0,
       opacity: 0
     }),
-    animate(timing, style({
+    animate(timing + easing, style({
       height: '*',
       opacity: 1
     }))
   ]),
   transition(':leave', [
-    animate(timing, style({
+    animate(timing + easing, style({
       paddingTop: 0,
       opacity: 0,
       height: 0

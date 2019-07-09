@@ -9,9 +9,10 @@ import {
   GoIconComponent,
   GoLoaderComponent,
   GoSideNavService,
-  GoToasterService,
   NavGroup,
-  NavItem
+  NavItem,
+  GoModalService,
+  GoToasterService
 } from '../../../go-lib/src/public_api';
 
 @Component({
@@ -56,7 +57,8 @@ export class AppComponent implements OnInit {
     private appService: AppService,
     private goToasterService: GoToasterService,
     private goOffCanvasService: GoOffCanvasService,
-    private goSideNavService: GoSideNavService
+    private goSideNavService: GoSideNavService,
+    private goModalService: GoModalService
   ) { }
 
   ngOnInit() {
@@ -111,5 +113,14 @@ export class AppComponent implements OnInit {
 
   toggleSideMenu(): void {
     this.goSideNavService.toggleNav();
+  }
+
+  openModal() : void {
+    this.goModalService.openModal(
+      GoIconComponent,
+      {
+        icon: 'alarm'
+      }
+    );
   }
 }
