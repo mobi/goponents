@@ -27,6 +27,10 @@ export * from './lib/components/go-checkbox/go-checkbox.component';
 export * from './lib/components/go-checkbox/go-checkbox.module';
 export * from './lib/components/go-checkbox/go-checkbox-group.component';
 
+// Copy
+export * from './lib/components/go-copy/go-copy.component';
+export * from './lib/components/go-copy/go-copy.module';
+
 // Header
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';

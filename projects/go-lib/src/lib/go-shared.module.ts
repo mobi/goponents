@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { GoAccordionModule  } from './components/go-accordion/go-accordion.module';
 import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
+import { GoCopyModule } from './components/go-copy/go-copy.module';
 import { GoHeaderModule } from './components/go-header/go-header.module';
 import { GoHintModule } from './components/go-hint/go-hint.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
@@ -28,6 +29,7 @@ import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
+    GoCopyModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
@@ -50,6 +52,7 @@ import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
+    GoCopyModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
