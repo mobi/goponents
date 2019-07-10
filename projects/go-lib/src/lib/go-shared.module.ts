@@ -9,6 +9,7 @@ import { GoSideNavModule } from './components/go-side-nav/go-side-nav.module';
 import { GoTableModule } from './components/go-table/go-table.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
+import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoButtonModule,
     GoCardModule,
     GoIconModule,
+    GoIconButtonModule,
     GoLoaderModule,
     GoModalModule,
     GoSideNavModule,
@@ -28,6 +30,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoButtonModule,
     GoCardModule,
     GoIconModule,
+    GoIconButtonModule,
     GoLoaderModule,
     GoModalModule,
     GoSideNavModule,

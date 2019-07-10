@@ -22,6 +22,10 @@ export * from './lib/components/go-card/go-card.module';
 export * from './lib/components/go-icon/go-icon.component'
 export * from './lib/components/go-icon/go-icon.module';
 
+// Icon Button
+export * from './lib/components/go-icon-button/go-icon-button.component'
+export * from './lib/components/go-icon-button/go-icon-button.module';
+
 // Loader
 export * from './lib/components/go-loader/go-loader.component';
 export * from './lib/components/go-loader/go-loader.module';

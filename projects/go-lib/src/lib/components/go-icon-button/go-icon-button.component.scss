@@ -1,0 +1,18 @@
+@import '~@tangoe/gosheets/base/variables';
+@import '~@tangoe/gosheets/base/mixins';
+
+.go-icon-button {
+  @include transition(background-color);
+
+  border: 0;
+  border-radius: $global-radius--round;
+  color: $base-dark;
+  cursor: pointer;
+  display: inline-flex;
+  outline-color: $theme-light-border;
+  padding: .5rem;
+
+  &:hover {
+    background-color: $theme-light-bg-hover;
+  }
+}
