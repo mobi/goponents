@@ -14,6 +14,10 @@ export * from './lib/components/go-accordion/go-accordion.module';
 export * from './lib/components/go-action-sheet/go-action-sheet.component';
 export * from './lib/components/go-action-sheet/go-action-sheet.module';
 
+// Badge
+export * from './lib/components/go-badge/go-badge.component';
+export * from './lib/components/go-badge/go-badge.module';
+
 // Button
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
