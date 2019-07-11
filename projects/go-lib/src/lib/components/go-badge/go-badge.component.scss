@@ -1,0 +1,25 @@
+@import '~@tangoe/gosheets/base/_variables';
+
+.go-badge {
+  background: $ui-color-neutral;
+  border: 1px;
+  border-color: $theme-light-bg;
+  border-radius: 25px;
+  border-style: solid;
+  color: $base-light;
+  font-size: 12px;
+  height: 22px;
+  left: -10px;
+  padding: 4px;
+  position:absolute;
+  top: -12px;
+  z-index: 1;
+}
+
+.go-badge-container {
+  position: relative;
+}
+
+.go-badge-outer-container {
+  display: inline-flex;
+}
