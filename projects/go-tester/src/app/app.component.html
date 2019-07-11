@@ -72,6 +72,11 @@
       <go-table-column field="email" title="Email"></go-table-column>
       <go-table-column field="gender" title="Gender"></go-table-column>
       <go-table-column field="ip_address" title="IP Address"></go-table-column>
+      <go-table-column>
+        <ng-template #goTableCell let-item>
+          <go-icon icon="delete"></go-icon>
+        </ng-template>
+      </go-table-column>
     </go-table>
   </div>
 </div>
