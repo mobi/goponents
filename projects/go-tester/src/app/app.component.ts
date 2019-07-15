@@ -67,13 +67,13 @@ export class AppComponent implements OnInit {
         totalCount: data.totalCount
       });
       this.tableLoading = false;
-    })
+    });
 
-    setTimeout(() => {
-      this.goToasterService.toastInfo({ message: 'Check this out'});
-      this.goToasterService.toastSuccess({message: 'Check this out' });
-      this.goToasterService.toastError({ message: 'Check this out' });
-    }, 1500);
+    // setTimeout(() => {
+    //   this.goToasterService.toastInfo({ message: 'Check this out'});
+    //   this.goToasterService.toastSuccess({message: 'Check this out' });
+    //   this.goToasterService.toastError({ message: 'Check this out' });
+    // }, 1500);
   }
 
   stopLoaderAnimation() {
@@ -92,7 +92,7 @@ export class AppComponent implements OnInit {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
-    
+
           this.tableConfig = currentTableConfig;
           this.tableLoading = false;
         }, 2000);
