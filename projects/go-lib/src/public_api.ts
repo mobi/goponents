@@ -36,6 +36,11 @@ export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 
+// Search
+export * from './lib/components/go-search/go-search.component';
+export * from './lib/components/go-search/go-search.module';
+export * from './lib/components/go-search/go-search.service';
+
 // Side Nav
 export * from './lib/components/go-side-nav/go-side-nav.module';
 export * from './lib/components/go-side-nav/nav-group.model';

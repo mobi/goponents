@@ -12,20 +12,22 @@ import {
   GoIconModule,
   GoLoaderModule,
   GoOffCanvasModule,
+  GoSearchModule,
   GoSideNavModule,
   GoTableModule,
-  GoToastModule,
-  GoToasterModule
+  GoToasterModule,
+  GoToastModule
 } from '../../../go-lib/src/public_api';
 
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
-
+import { SearchTestComponent } from './components/search-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DummyComponent
+    DummyComponent,
+    SearchTestComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { AppService } from './app.service';
     GoIconModule,
     GoLoaderModule,
     GoOffCanvasModule,
+    GoSearchModule,
     GoSideNavModule,
     GoTableModule,
     GoToastModule,
