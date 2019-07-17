@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoToastComponent } from './go-toast.component';
+import { GoIconModule } from '../go-icon/go-icon.module';
 
 describe('GoToastComponent', () => {
   let component: GoToastComponent;
@@ -8,7 +9,8 @@ describe('GoToastComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoToastComponent ]
+      declarations: [ GoToastComponent ],
+      imports: [ GoIconModule ]
     })
     .compileComponents();
   }));
