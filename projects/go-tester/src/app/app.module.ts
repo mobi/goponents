@@ -9,7 +9,6 @@ import {
   GoButtonComponent,
   GoButtonModule,
   GoIconComponent,
-  GoIconButtonComponent,
   GoIconButtonModule,
   GoIconModule,
   GoLoaderModule,
@@ -49,8 +48,7 @@ import { AppService } from './app.service';
   ],
   entryComponents: [
     GoButtonComponent,
-    GoIconComponent,
-    GoIconButtonComponent
+    GoIconComponent
   ],
   bootstrap: [AppComponent]
 })

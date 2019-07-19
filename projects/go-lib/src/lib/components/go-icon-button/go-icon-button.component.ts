@@ -8,7 +8,7 @@ export class GoIconButtonComponent {
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
 
-  @Output() handleClick = new EventEmitter<boolean>();
+  @Output() handleClick = new EventEmitter();
 
   public clicked(): void {
     this.handleClick.emit();

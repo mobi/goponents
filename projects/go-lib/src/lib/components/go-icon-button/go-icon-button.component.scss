@@ -6,10 +6,10 @@
 
   border: 0;
   border-radius: $global-radius--round;
-  color: $base-dark;
+  color: $theme-light-color;
   cursor: pointer;
   display: inline-flex;
-  outline-color: $theme-light-border;
+  box-shadow: $theme-light-border;
   padding: .5rem;
 
   &:hover {
