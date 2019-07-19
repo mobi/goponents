@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, OnChanges, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnChanges, OnInit, ViewChild } from '@angular/core';
 
 import { GoModalDirective } from './go-modal.directive';
 import { GoModalService } from './go-modal.service';
@@ -37,7 +37,7 @@ export class GoModalComponent implements OnInit {
     const viewContainerRef = this.goModalHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
+    const componentRef = viewContainerRef.createComponent(componentFactory);
 
     Object.keys(this.currentComponent.bindings).forEach(key => {
       componentRef.instance[key] = this.currentComponent.bindings[key];
@@ -55,6 +55,6 @@ export class GoModalComponent implements OnInit {
   }
 
   goModalClasses() {
-    return { 'go-modal--visible': this.opened }
+    return { 'go-modal--visible': this.opened };
   }
 }

@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AppService } from './app.service';
 import {
-  GoTableConfig,
-  GoOffCanvasService,
-  GoTableDataSource,
   GoButtonComponent,
   GoIconComponent,
   GoLoaderComponent,
+  GoOffCanvasService,
+  GoTableConfig,
+  GoTableDataSource,
   GoToasterService
 } from '../../../go-lib/src/public_api';
 
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
         totalCount: data.totalCount
       });
       this.tableLoading = false;
-    })
+    });
 
     setTimeout(() => {
       this.goToasterService.toastInfo({ message: 'Check this out'});
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   stopLoaderAnimation() {
-    this.loader.loaderDone = this.loader.loaderDone ? false: true;
+    this.loader.loaderDone = this.loader.loaderDone ? false : true;
   }
 
   clickHey(): void {
@@ -59,13 +59,13 @@ export class AppComponent implements OnInit {
     }, 4000);
   }
 
-  handleTableChange(currentTableConfig: GoTableConfig) : void {
+  handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.appService.getMockData(currentTableConfig).subscribe(data => {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
-    
+
           this.tableConfig = currentTableConfig;
           this.tableLoading = false;
         }, 2000);
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openThing() : void {
+  openThing(): void {
     this.goOffCanvasService.openOffCanvas({
       component: GoIconComponent,
       bindings: {

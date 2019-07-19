@@ -30,7 +30,7 @@ export class GoButtonComponent {
   public classObject(): object {
     // 'alert' as a variant is depreciated and
     // will be removed in a later version
-    let isNegative: boolean = [
+    const isNegative: boolean = [
       'alert',
       'negative'
     ].includes(this.buttonVariant);

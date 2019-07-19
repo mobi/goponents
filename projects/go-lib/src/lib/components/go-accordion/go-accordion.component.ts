@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, Input, QueryList, ContentChildren } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 @Component({
@@ -38,7 +38,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
 
       p.expanded = this.expandAll || p.expanded;
       p.icon = !this.showIcons ? null : p.icon;
-    })
+    });
   }
 
   openPanelCloseOthers(panel: GoAccordionPanelComponent) {
@@ -56,7 +56,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   closePanel(panel: GoAccordionPanelComponent) {
     panel.expanded = false;
   }
-  
+
   setActiveTheme() {
     this.activeTheme = 'go-accordion--theme-' + this.theme;
   }

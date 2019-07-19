@@ -15,8 +15,8 @@ export class AppService {
   constructor (private http: HttpClient) { }
 
   getMockData(params?: GoTableConfig) {
-    return this.http.get<any>("../assets/MOCK_DATA_1000.json").pipe(map(data => {
-      let formattedData = { totalCount: 0, results: [] };
+    return this.http.get<any>('../assets/MOCK_DATA_1000.json').pipe(map(data => {
+      const formattedData = { totalCount: 0, results: [] };
 
       formattedData.totalCount = data.length;
 
@@ -32,11 +32,11 @@ export class AppService {
   }
 
   /***** Private Methods *****/
-  private paginateData(paging: GoTablePageConfig, results: any[]) : any[] {
+  private paginateData(paging: GoTablePageConfig, results: any[]): any[] {
     return results.slice(paging.offset, paging.offset + paging.perPage);
   }
 
-  private sortData(sort: GoTableSortConfig, results: any[]) : any[] {
+  private sortData(sort: GoTableSortConfig, results: any[]): any[] {
     return results.sort(sortBy(sort.column, Boolean(sort.direction)));
   }
 

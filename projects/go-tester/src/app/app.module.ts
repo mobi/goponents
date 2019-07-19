@@ -11,8 +11,8 @@ import {
   GoLoaderModule,
   GoOffCanvasModule,
   GoTableModule,
-  GoToastModule,
-  GoToasterModule
+  GoToasterModule,
+  GoToastModule
 } from '../../../go-lib/src/public_api';
 
 import { AppComponent } from './app.component';

@@ -33,7 +33,7 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     if (!this.tableConfig) {
-      throw new Error("GoTableComponent: tableConfig is a required Input");
+      throw new Error('GoTableComponent: tableConfig is a required Input');
     } else {
       this.renderTable();
     }
@@ -43,19 +43,19 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.renderTable();
   }
 
-  renderTable() : void {
+  renderTable(): void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
 
       this.setTotalCount();
       this.handleSort();
     }
-    
+
     this.showTable = Boolean(this.tableConfig);
     this.loadingData = false;
   }
 
-  hasData() : boolean {
+  hasData(): boolean {
     if (this.localTableConfig && this.localTableConfig.tableData) {
       return Boolean(this.localTableConfig.tableData.length);
     }
@@ -63,7 +63,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     return false;
   }
 
-  sortIcons(columnField: string) : string {
+  sortIcons(columnField: string): string {
     if (this.sortClasses(columnField, SortDirection.ascending)) {
       return 'arrow_upward';
     } else if (this.sortClasses(columnField, SortDirection.descending)) {
@@ -71,11 +71,11 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  showPaging() : boolean {
+  showPaging(): boolean {
     return this.hasData() && this.localTableConfig.pageable;
   }
 
-  toggleSort(columnField: string) : void {
+  toggleSort(columnField: string): void {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
 
     if (tableData && sortable) {
@@ -98,48 +98,48 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  nextPage() : void {
+  nextPage(): void {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage;
 
     this.tableChangeOutcome();
   }
 
-  isLastPage() : boolean {
+  isLastPage(): boolean {
     const { pageConfig, tableData, totalCount } = this.localTableConfig;
 
     return ((pageConfig.offset + pageConfig.perPage) >= tableData.length) && ((pageConfig.offset + pageConfig.perPage) >= totalCount);
   }
 
-  setLastPage() : void {
+  setLastPage(): void {
     const { totalCount, pageConfig } = this.localTableConfig;
 
     this.loadingData = true;
-    let offset = totalCount - (totalCount % pageConfig.perPage);
+    const offset = totalCount - (totalCount % pageConfig.perPage);
     this.localTableConfig.pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
 
     this.tableChangeOutcome();
   }
 
-  prevPage() : void {
+  prevPage(): void {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage;
 
     this.tableChangeOutcome();
   }
 
-  isFirstPage() : boolean {
+  isFirstPage(): boolean {
     return this.localTableConfig.pageConfig.offset === 0;
   }
 
-  setFirstPage() : void {
+  setFirstPage(): void {
     this.loadingData = true;
     this.localTableConfig.pageConfig.offset = 0;
 
     this.tableChangeOutcome();
   }
 
-  setPerPage(event: any) : void {
+  setPerPage(event: any): void {
     this.loadingData = true;
     this.localTableConfig.pageConfig.perPage = Number(event.target.value);
     this.localTableConfig.pageConfig.offset = 0;
@@ -147,17 +147,17 @@ export class GoTableComponent implements OnInit, OnChanges {
     this.tableChangeOutcome();
   }
 
-  outputResultsPerPage() : string {
+  outputResultsPerPage(): string {
     const { pageConfig, totalCount } = this.localTableConfig;
 
-    let beginning = this.localTableConfig.pageConfig.offset + 1;
-    let endingEstimate = pageConfig.offset + pageConfig.perPage;
-    let ending = endingEstimate <= totalCount ? endingEstimate : totalCount - pageConfig.offset;
+    const beginning = this.localTableConfig.pageConfig.offset + 1;
+    const endingEstimate = pageConfig.offset + pageConfig.perPage;
+    const ending = endingEstimate <= totalCount ? endingEstimate : totalCount - pageConfig.offset;
 
-    return beginning + " - " + ending;
+    return beginning + ' - ' + ending;
   }
 
-  setDisplayData() : any[] {
+  setDisplayData(): any[] {
     const { pageConfig, tableData } = this.localTableConfig;
 
     if (this.isServerMode()) {
@@ -166,9 +166,9 @@ export class GoTableComponent implements OnInit, OnChanges {
       return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
     }
   }
-  
+
   /** Private Methods **/
-  private handleSort() : void {
+  private handleSort(): void {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
 
     if (sortConfig && sortable && tableData && sortConfig.column) {
@@ -176,27 +176,27 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  private toggleSortDir(currDir: SortDirection) : SortDirection {
+  private toggleSortDir(currDir: SortDirection): SortDirection {
     return currDir === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
   }
 
-  private sortClasses(columnField: string, direction: SortDirection) : boolean {
+  private sortClasses(columnField: string, direction: SortDirection): boolean {
     const { sortConfig } = this.localTableConfig;
 
     return sortConfig && sortConfig.column === columnField && sortConfig.direction === direction;
   }
 
-  private setTotalCount() : void {
+  private setTotalCount(): void {
     const { totalCount, tableData } = this.localTableConfig;
 
     this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
   }
 
-  private isServerMode() : boolean {
+  private isServerMode(): boolean {
     return this.localTableConfig.dataMode === GoTableDataSource.server;
   }
 
-  private tableChangeOutcome() : void {
+  private tableChangeOutcome(): void {
     if (this.isServerMode()) {
       this.tableChange.emit(this.localTableConfig);
     } else {

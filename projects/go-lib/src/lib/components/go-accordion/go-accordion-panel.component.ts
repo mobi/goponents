@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'go-accordion-panel',
@@ -11,7 +11,7 @@ export class GoAccordionPanelComponent implements OnInit {
   @Input() expanded: boolean = false;
   @Input() icon: string = null;
   @Input() title: string;
-  
+
   @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }

@@ -21,7 +21,7 @@ export class GoTableConfig {
     tableData: any[],
     totalCount?: number
   }) {
-    if (fields) Object.assign(this, fields);
+    if (fields) { Object.assign(this, fields); }
   }
 }
 

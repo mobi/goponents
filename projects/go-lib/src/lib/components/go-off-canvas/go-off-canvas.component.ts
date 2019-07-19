@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
@@ -51,7 +51,7 @@ export class GoOffCanvasComponent implements OnInit {
 
     viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
+    const componentRef = viewContainerRef.createComponent(componentFactory);
 
     Object.keys(this.currentOffCanvasItem.bindings).forEach(key => {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];

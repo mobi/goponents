@@ -19,7 +19,7 @@ export * from './lib/components/go-card/go-card.component';
 export * from './lib/components/go-card/go-card.module';
 
 // Icon
-export * from './lib/components/go-icon/go-icon.component'
+export * from './lib/components/go-icon/go-icon.component';
 export * from './lib/components/go-icon/go-icon.module';
 
 // Loader

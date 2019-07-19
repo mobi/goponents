@@ -36,4 +36,4 @@ export const fadeTemplateAnimation = trigger('fadeTemplate', [
       opacity: 0
     }))
   ])
-])
+]);
