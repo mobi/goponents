@@ -10,7 +10,7 @@ export class GoIconComponent {
   @Input() iconClass: string;
 
   public classObject(): object {
-    let classes: object = {};
+    let classes: object = {}; // tslint:disable-line:prefer-const
 
     if (this.iconModifier) {
       classes[`go-icon--${this.iconModifier}`] = true;
