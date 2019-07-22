@@ -1,0 +1,14 @@
+<header class="go-header">
+  <div class="go-header__left">
+    <go-icon class="go-header__menu" icon="menu"></go-icon>
+    <div class="go-header__logo-container">
+      <img class="go-header__logo" [src]="logo"/>
+    </div>
+  </div>
+  <div class="go-header__middle">
+    <ng-content select="[go-header-middle]"></ng-content>
+  </div>
+  <div class="go-header__right">
+    <ng-content select="[go-header-right]"></ng-content>
+  </div>
+</header>

@@ -1,0 +1,61 @@
+@import '~@tangoe/gosheets/base/_variables';
+@import '~@tangoe/gosheets/base/_mixins';
+
+.go-header {
+  background: $theme-light-bg;
+  box-shadow: $global-box-shadow;
+  display: flex;
+  height: 4rem;
+}
+
+.go-header__menu {
+  @include transition(background);
+
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  justify-content: center;
+  width: 3rem;
+
+  &:hover {
+    background: $theme-light-bg-hover;
+  }
+}
+
+.go-header__logo-container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.go-header__logo {
+  display: block;
+  flex: 0;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.go-header__left {
+  display: flex;
+  padding: 0.5rem;
+  width: 15.5rem;
+}
+
+.go-header__middle {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+.go-header__right {
+  align-items: center;
+  display: flex;
+  padding: 0 1rem;
+}

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { GoHeaderModule  } from '../go-header/go-header.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoModalModule } from '../go-modal/go-modal.module';
 import { GoOffCanvasModule } from '../go-off-canvas/go-off-canvas.module';
@@ -26,6 +27,7 @@ import { GoLayoutComponent } from './go-layout.component';
     CommonModule,
     RouterModule,
     // Goponents
+    GoHeaderModule,
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,

@@ -8,6 +8,7 @@ import { DummyComponent } from './dummy.component';
 import {
   GoButtonComponent,
   GoButtonModule,
+  GoHeaderModule,
   GoIconButtonModule,
   GoIconComponent,
   GoIconModule,
@@ -45,6 +46,7 @@ import { AppGuard } from './app.guard';
     BrowserAnimationsModule,
     HttpClientModule,
     GoButtonModule,
+    GoHeaderModule,
     GoIconModule,
     GoIconButtonModule,
     GoLayoutModule,

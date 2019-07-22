@@ -18,8 +18,12 @@ export * from './lib/components/go-button/go-button.module';
 export * from './lib/components/go-card/go-card.component';
 export * from './lib/components/go-card/go-card.module';
 
+// Header
+export * from './lib/components/go-header/go-header.component';
+export * from './lib/components/go-header/go-header.module';
+
 // Icon
-export * from './lib/components/go-icon/go-icon.component'
+export * from './lib/components/go-icon/go-icon.component';
 export * from './lib/components/go-icon/go-icon.module';
 
 // Icon Button
