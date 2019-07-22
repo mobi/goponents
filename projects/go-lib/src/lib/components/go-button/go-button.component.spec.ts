@@ -29,15 +29,15 @@ describe('GoButtonComponent', () => {
     it('sets isProcessing to false if useLoader is false', () => {
       expect(component.isProcessing).toBe(false);
       component.clicked();
-      expect(component.isProcessing).toBe(false);
+      expect(component.isProcessing).toBe(component.useLoader);
     });
 
     it('sets isProcessing to true if useLoader is true', () => {
       component.useLoader =  true;
 
-      expect(component.isProcessing).toBe(false);
+      expect(component.isProcessing).not.toBe(component.useLoader);
       component.clicked();
-      expect(component.isProcessing).toBe(true);
+      expect(component.isProcessing).toBe(component.useLoader);
     });
 
     it('emits the handleClick event with the isProcessing boolean', () => {
