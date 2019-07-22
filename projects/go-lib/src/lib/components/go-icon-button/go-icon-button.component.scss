@@ -4,12 +4,13 @@
 .go-icon-button {
   @include transition(background-color);
 
+  background: $theme-light-bg;
   border: 0;
   border-radius: $global-radius--round;
+  box-shadow: $global-box-shadow;
   color: $theme-light-color;
   cursor: pointer;
   display: inline-flex;
-  box-shadow: $theme-light-border;
   padding: .5rem;
 
   &:hover {
