@@ -22,4 +22,23 @@ describe('GoCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('the template', () => {
+    it('renders the header by default', () => {
+      const goCardTemplate: HTMLElement = fixture.nativeElement;
+      const headerElement: HTMLElement = goCardTemplate.querySelector('header');
+
+      expect(headerElement).not.toBeNull();
+    });
+
+    it('hides the header if showHeader is false', () => {
+      component.showHeader = false;
+      fixture.detectChanges();
+
+      const goCardTemplate: HTMLElement = fixture.nativeElement;
+      const headerElement: HTMLElement = goCardTemplate.querySelector('header');
+
+      expect(headerElement).toBeNull();
+    });
+  });
 });
