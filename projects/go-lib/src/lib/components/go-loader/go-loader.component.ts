@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'go-loader',
@@ -11,30 +11,25 @@ export class GoLoaderComponent implements OnInit {
   @Input() loaderSize: string = 'medium';
   @Input() loaderType: string = 'neutral';
 
-  constructor() { }
+  pathClasses: object = {};
+  containerClasses: object = {};
 
   ngOnInit() {
-  }
-
-  completeAnimation() : void {
-    this.loaderDone = true;
-  }
-
-  public pathClasses() : object {
-    return {
+    this.pathClasses = {
       'go-loader--neutral': this.loaderType === 'neutral',
       'go-loader--positive': this.loaderType === 'positive',
       'go-loader--negative': this.loaderType === 'negative'
-    }
-  }
+    };
 
-  public containerClasses() : object {
-    return {
+    this.containerClasses = {
       'go-loader-container--small': this.loaderSize === 'small',
       'go-loader-container--medium': this.loaderSize === 'medium',
       'go-loader-container--large': this.loaderSize === 'large',
       'go-loader-container--completed': this.loaderDone
-    }
+    };
   }
 
+  completeAnimation(): void {
+    this.loaderDone = true;
+  }
 }
