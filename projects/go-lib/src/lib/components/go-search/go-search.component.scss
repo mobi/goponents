@@ -3,9 +3,12 @@
 
 .go-search {
   position: relative;
+  z-index: 1;
 }
 
 .go-search__container {
+  @include transition(all);
+
   background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: 1rem;
@@ -17,7 +20,6 @@
   top: calc(50% - ((1.875rem + 2px) / 2));
   // height of input + border, halfed
   width: 600px;
-  @include transition(all);
 
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
@@ -37,9 +39,10 @@
 }
 
 .go-search__field {
+  @include transition(all);
+
   align-items: center;
   display: flex;
-  @include transition(all);
 }
 
 .go-search__submit {

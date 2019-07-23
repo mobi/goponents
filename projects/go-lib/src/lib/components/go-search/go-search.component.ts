@@ -18,16 +18,17 @@ export class GoSearchComponent implements OnInit {
   searchActive: boolean = false;
   resultsOverflow: string = 'hidden';
 
-  @HostListener('document:click') onDocumentClick(event) {
-    this.closeSearchEvent(event);
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(target: HTMLElement) {
+    this.closeSearchEvent(target);
   }
 
   constructor(
     public goSearchService: GoSearchService,
     private elementRef: ElementRef,
-    private fb: FormBuilder
+    private formBuilder: FormBuilder
   ) {
-    this.goSearchForm = this.fb.group({
+    this.goSearchForm = this.formBuilder.group({
       term: ''
     });
   }
@@ -61,19 +62,19 @@ export class GoSearchComponent implements OnInit {
     this.searchActive = true;
   }
 
-  leaveInput(event: any): void {
-    if (!this.elementRef.nativeElement.contains(event.relatedTarget)) {
+  leaveInput(event: FocusEvent): void {
+    if (event.relatedTarget && !this.elementRef.nativeElement.contains(event.relatedTarget)) {
       this.closeSearch();
     }
   }
 
-  closeSearchEvent(event: any): void {
-    if (event && !this.elementRef.nativeElement.contains(event.target)) {
+  private closeSearchEvent(target: HTMLElement): void {
+    if (!this.elementRef.nativeElement.contains(target)) {
       this.closeSearch();
     }
   }
 
-  closeSearch(): void {
+  private closeSearch(): void {
     this.searchActive = false;
     this.goSearchService.hasResults = false;
     this.goSearchService.showNoResultsMessage = false;
