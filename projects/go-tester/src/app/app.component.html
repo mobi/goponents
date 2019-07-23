@@ -4,10 +4,8 @@
       <app-search-test></app-search-test>
     </go-search>
     <ng-container go-header-right>
-      <go-button buttonIcon="home" (handleClick)="openThing()">
-        Off Canvas
-      </go-button>
-      <go-icon-button buttonIcon="home" (handleClick)="openThing()"></go-icon-button>
+      <go-icon-button buttonIcon="picture_in_picture" (handleClick)="openModal()"></go-icon-button>
+      <go-icon-button buttonIcon="input" (handleClick)="openOffCanvas()"></go-icon-button>
     </ng-container>
   </go-header>
   <go-side-nav go-layout-nav [menuItems]="menuItems">

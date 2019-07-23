@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  openThing(): void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: GoIconComponent,
       bindings: {
