@@ -1,11 +1,53 @@
 <div class="go-container">
   <div class="go-column go-column--100">
-    <div class="test-div-block">test2</div>
+    <h1 class="go-heading-2">
+      Welcome to {{ title }}!
+    </h1>
   </div>
-  <div class="go-column go-column--50">
-    <div class="test-div-block">test2</div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Loader</h4>
+    <go-button (handleClick)="stopLoaderAnimation()">
+      Toggle Animation
+    </go-button>
+    <br>
+    <br>
+    <div class="go-container">
+      <div class="go-column go-column--100">
+        <go-loader loaderSize="large"></go-loader>
+        <go-loader></go-loader>
+        <go-loader #loader loaderSize="small"></go-loader>
+      </div>
+    </div>
   </div>
-  <div class="go-column go-column--50">
-    <div class="test-div-block">test2</div>
+      
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Buttons</h4>
+    <go-button buttonIcon="home">
+      Hey
+    </go-button>
+    <go-button buttonIcon="add_shopping_cart" buttonVariant="positive" (handleClick)="clickHey()" [useLoader]="true" #heyButton>
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative">
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
+      Nope
+    </go-button>
+    <go-button buttonIcon="plus_one" buttonVariant="neutral">
+      Hey
+    </go-button>
+    <go-button [buttonIcon]="'home'" buttonVariant="positive" [useDarkTheme]="true">
+      Dark
+    </go-button>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Toasts</h4>
+    <go-toast type="neutral"
+              header="Announcement!"
+              [dismissable]="true">
+    </go-toast>
   </div>
 </div>

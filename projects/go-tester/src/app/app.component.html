@@ -1,115 +1,21 @@
-
-  <!-- <header>
-    <div class="header__logo">
-      <go-icon icon="menu" iconClass="go-nav-group__icon" (click)="toggleSideMenu()"></go-icon>
-    </div>
-  </header> -->
-  <!-- <div class="main__content">
-    <go-side-nav [menuItems]="menuItems">
-    </go-side-nav>
-    <div class="main__content--container">
-      <div class="go-container" style="margin: 0;"> -->
-
-        <!-- <div class="go-column go-column--100">
-          <h1 class="go-header-2">
-            Welcome to {{ title }}!
-          </h1>
-        </div> -->
-
-        <div class="go-column go-column--100">
-          <h4>Search</h4>
-          <div>
-            <go-search>
-              <app-search-test></app-search-test>
-            </go-search>
-          </div>
-        </div>
-        <!-- <div class="go-column go-column--100">
-          <h4>Loader</h4>
-          <go-button (handleClick)="stopLoaderAnimation()">
-            Toggle Animation
-          </go-button>
-          <br>
-          <br>
-          <div class="go-container">
-            <div class="go-column go-column--100">
-              <go-loader #loader loaderSize="small"></go-loader>
-              <go-loader></go-loader>
-              <go-loader loaderSize="large"></go-loader>
-            </div>
-          </div>
-        </div> -->
-        
-        <!-- <div class="go-column go-column--100">
-          <h4>Buttons</h4>
-          <go-button buttonIcon="home">
-            Hey
-          </go-button>
-          <go-button buttonIcon="add_shopping_cart" buttonVariant="positive" (handleClick)="clickHey()" [useLoader]="true" #heyButton>
-            Hey
-          </go-button>
-          <go-button buttonIcon="fingerprint" buttonVariant="negative">
-            Hey
-          </go-button>
-          <go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
-            Nope
-          </go-button>
-          <go-button buttonIcon="plus_one" buttonVariant="neutral">
-            Hey
-          </go-button>
-          <go-button [buttonIcon]="'home'" buttonVariant="positive" [useDarkTheme]="true">
-            Dark
-          </go-button>
-        </div>
-        <div class="go-column go-column--100">
-          <h4>Icon Button</h4>
-          <go-icon-button buttonTitle="Home" buttonIcon="home" (handleClick)="openThing()"></go-icon-button>
-        </div>
-
-        <!-- <div class="go-column go-column--100">
-          <h4>Off Canvas</h4>
-          <go-button buttonIcon="home" (handleClick)="openThing()">
-            Click me to open
-          </go-button>
-        </div> -->
-
-        <!-- <div class="go-column go-column--100">
-          <h4>Toasts</h4>
-          <go-toast type="neutral"
-                    header="Announcement!"
-                    [dismissable]="true">
-          </go-toast>
-        </div> -->
-
-        <!-- <div class="go-column go-column--100">
-          <h4>Table</h4>
-          <go-table [loadingData]="tableLoading"
-                    [tableConfig]="tableConfig"
-                    (tableChange)="handleTableChange($event)"
-                    tableTitle="People Data"
-                    *ngIf="tableConfig">
-            <go-table-column field="id" title="ID"></go-table-column>
-            <go-table-column field="name.first" title="First Name"></go-table-column>
-            <go-table-column field="name.last" title="Last Name"></go-table-column>
-            <go-table-column field="email" title="Email"></go-table-column>
-            <go-table-column field="gender" title="Gender"></go-table-column>
-            <go-table-column field="ip_address" title="IP Address"></go-table-column>
-            <go-table-column>
-              <ng-template #goTableCell let-item>
-                <go-icon icon="delete"></go-icon>
-              </ng-template>
-            </go-table-column>
-          </go-table>
-        </div> -->
-
 <go-layout>
   <go-header logo="https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290"
              go-header>
     <ng-container go-header-middle>
-      middle
+      <div class="go-column go-column--100">
+        <h4>Search</h4>
+        <div>
+          <go-search>
+            <app-search-test></app-search-test>
+          </go-search>
+        </div>
+      </div>
     </ng-container>
     <ng-container go-header-right>
-      right
+      <go-button buttonIcon="home" (handleClick)="openThing()">
+        Off Canvas
+      </go-button>
+      <go-icon-button buttonIcon="home" (handleClick)="openThing()"></go-icon-button>
     </ng-container>
   </go-header>
   <ng-container go-nav>

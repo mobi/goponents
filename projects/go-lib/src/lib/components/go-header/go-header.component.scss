@@ -1,4 +1,5 @@
 @import '~@tangoe/gosheets/base/_variables';
+@import '../../../styles/variables';
 @import '~@tangoe/gosheets/base/_mixins';
 
 .go-header {
@@ -12,13 +13,16 @@
   @include transition(background);
 
   align-items: center;
+  align-self: center;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
+  height: calc(#{$side-nav-width--collapsed} - 1rem);
   flex-shrink: 0;
   font-size: 1.5rem;
   justify-content: center;
-  width: 3rem;
+  user-select: none;
+  width: calc(#{$side-nav-width--collapsed} - 1rem);
 
   &:hover {
     background: $theme-light-bg-hover;
@@ -30,7 +34,7 @@
   display: flex;
   flex: 1;
   justify-content: flex-start;
-  padding-left: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .go-header__logo {
@@ -41,21 +45,33 @@
 }
 
 .go-header__left {
+  @include transition(width);
+
   display: flex;
   padding: 0.5rem;
   width: 15.5rem;
 }
 
+.go-header__left--collapsed {
+  width: auto;
+}
+
 .go-header__middle {
+  @include transition(padding);
+
   align-items: center;
   display: flex;
   flex: 1;
   justify-content: flex-start;
+  padding: 0 1rem 0 3rem;
+}
+
+.go-header__middle--collapsed {
   padding: 0 1rem;
 }
 
 .go-header__right {
   align-items: center;
   display: flex;
-  padding: 0 1rem;
+  padding: 0 3rem 0 1rem;
 }

@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { AppGuard } from './app.guard';
 
 const routes: Routes = [
-  { path: '', component: TestPage1Component, canActivate: [AppGuard] },
+  { path: '', redirectTo: 'test-page-1', pathMatch: 'full' },
+  { path: 'test-page-1', component: TestPage1Component, canActivate: [AppGuard] },
   { path: 'test-page-2', component: TestPage2Component, canActivate: [AppGuard]}
 ];
 

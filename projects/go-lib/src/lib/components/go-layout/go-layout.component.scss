@@ -13,19 +13,6 @@ body {
   overflow: hidden;
 }
 
-.go-layout__nav {
-  background: $theme-dark-bg;
-  border-right: 1px solid $theme-dark-border;
-  color: $theme-dark-color;
-  width: 15.5rem;
-  
-  a {
-    color: $theme-dark-color !important;
-    display: inline-block;
-    padding: 1rem;
-  }
-}
-
 .go-layout__content {
   display: flex;
   flex-grow: 1;

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
 
 @Component({
   selector: 'go-header',
@@ -9,9 +10,13 @@ export class GoHeaderComponent implements OnInit {
 
   @Input() logo: string = '';
 
-  constructor() { }
+  constructor(public sideNavService: GoSideNavService) { }
 
   ngOnInit() {
+  }
+
+  toggleSideMenu(): void {
+    this.sideNavService.toggleNav();
   }
 
 }
