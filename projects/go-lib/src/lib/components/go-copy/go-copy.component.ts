@@ -11,7 +11,7 @@ export class GoCopyComponent {
 
   constructor() { }
 
-  copyStringToClipboard (element: HTMLInputElement): void {
+  copyStringToClipboard (element: HTMLElement): void {
     (element.children[1] as HTMLInputElement).select();
     document.execCommand('copy');
   }
