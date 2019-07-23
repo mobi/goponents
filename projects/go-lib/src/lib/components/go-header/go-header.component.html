@@ -7,7 +7,9 @@
     </go-icon>
     <div class="go-header__logo-container"
          [ngClass]="{ 'go-header__logo-container--collapsed': !sideNavService.navOpen }">
-      <img class="go-header__logo" [src]="logo"/>
+      <img class="go-header__logo"
+           alt="{{ altText }}"
+           [src]="logo"/>
     </div>
   </div>
   <div class="go-header__middle"

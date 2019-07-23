@@ -8,6 +8,7 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service
 })
 export class GoHeaderComponent {
 
+  @Input() altText: string = '';
   @Input() logo: string = '';
 
   constructor(public sideNavService: GoSideNavService) { }

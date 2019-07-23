@@ -34,8 +34,7 @@ export class GoLayoutComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
-      }
-      if ((event instanceof NavigationEnd) || (event instanceof NavigationCancel) || (event instanceof NavigationError)) {
+      } else if ((event instanceof NavigationEnd) || (event instanceof NavigationCancel) || (event instanceof NavigationError)) {
         this.routeLoader = false;
       }
     });
@@ -44,5 +43,4 @@ export class GoLayoutComponent implements OnInit {
   routeAnimation(outlet: RouterOutlet): ActivatedRoute | string {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
-
 }

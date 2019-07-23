@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { GoLayoutComponent } from './go-layout.component';
+import { RouterModule } from '@angular/router';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoModalModule } from '../go-modal/go-modal.module';
+import { GoModalService } from '../go-modal/go-modal.service';
+import { GoOffCanvasModule } from '../go-off-canvas/go-off-canvas.module';
+import { GoOffCanvasService } from '../go-off-canvas/go-off-canvas.service';
+import { GoToasterModule } from '../go-toaster/go-toaster.module';
+import { GoToasterService } from '../go-toaster/go-toaster.service';
 
 describe('GoLayoutComponent', () => {
   let component: GoLayoutComponent;
@@ -8,7 +17,20 @@ describe('GoLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoLayoutComponent ]
+      declarations: [ GoLayoutComponent ],
+      imports: [
+        GoLoaderModule,
+        GoModalModule,
+        GoOffCanvasModule,
+        GoToasterModule,
+        RouterModule,
+        RouterTestingModule
+      ],
+      providers: [
+        GoModalService,
+        GoOffCanvasService,
+        GoToasterService
+      ]
     })
     .compileComponents();
   }));
