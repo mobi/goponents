@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TestPage1Component } from './components/test-page-1/test-page-1.component';
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
-import { AppComponent } from './app.component';
 import { AppGuard } from './app.guard';
 
 const routes: Routes = [

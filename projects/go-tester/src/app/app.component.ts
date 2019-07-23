@@ -16,7 +16,8 @@ import {
 })
 export class AppComponent implements OnInit {
 
-  title = 'go-tester';
+  logo: string = 'https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290';
+  title: string = 'go-tester';
 
   menuItems: Array<NavGroup | NavItem> = [
     { routeIcon: 'dashboard', routeTitle: 'Tests', subRoutes: [

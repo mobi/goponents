@@ -1,8 +1,8 @@
 <div class="go-layout">
-  <ng-content select="[go-header]"></ng-content>
+  <ng-content select="[go-layout-header]"></ng-content>
   <div class="go-layout__content">
     <nav class="go-layout__nav">
-      <ng-content select="[go-nav]"></ng-content>
+      <ng-content select="[go-layout-nav]"></ng-content>
     </nav>
     <main class="go-layout__route-container" [@routerAnimation]="routeAnimation(mainRouter)">
       <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet"></router-outlet>

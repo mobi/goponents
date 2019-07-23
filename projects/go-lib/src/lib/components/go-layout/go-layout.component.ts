@@ -1,5 +1,17 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Router, RouterOutlet, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterOutlet
+} from '@angular/router';
 
 import { routerAnimation } from '../../animations/route.animation';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
@@ -11,7 +23,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
   animations: [routerAnimation, fadeTemplateAnimation],
   encapsulation: ViewEncapsulation.None
 })
-export class GoLayoutComponent {
+export class GoLayoutComponent implements OnInit {
 
   routeLoader: boolean = false;
 
@@ -22,10 +34,10 @@ export class GoLayoutComponent {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
       }
-      if (event instanceof (NavigationEnd || NavigationCancel || NavigationError)) {
+      if ((event instanceof NavigationEnd) || (event instanceof NavigationCancel) || (event instanceof NavigationError)) {
         this.routeLoader = false;
       }
-    })
+    });
   }
 
   routeAnimation(outlet: RouterOutlet) {

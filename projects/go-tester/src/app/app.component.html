@@ -1,16 +1,8 @@
 <go-layout>
-  <go-header logo="https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290"
-             go-header>
-    <ng-container go-header-middle>
-      <div class="go-column go-column--100">
-        <h4>Search</h4>
-        <div>
-          <go-search>
-            <app-search-test></app-search-test>
-          </go-search>
-        </div>
-      </div>
-    </ng-container>
+  <go-header go-layout-header [logo]="logo">
+    <go-search go-header-middle>
+      <app-search-test></app-search-test>
+    </go-search>
     <ng-container go-header-right>
       <go-button buttonIcon="home" (handleClick)="openThing()">
         Off Canvas
@@ -18,8 +10,6 @@
       <go-icon-button buttonIcon="home" (handleClick)="openThing()"></go-icon-button>
     </ng-container>
   </go-header>
-  <ng-container go-nav>
-    <go-side-nav [menuItems]="menuItems">
-    </go-side-nav>
-  </ng-container>
+  <go-side-nav go-layout-nav [menuItems]="menuItems">
+  </go-side-nav>
 </go-layout>
