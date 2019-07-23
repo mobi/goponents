@@ -6,7 +6,7 @@ import {
   trigger
 } from '@angular/animations';
 
-import { timing, easing } from './_configs';
+import { easing, timing } from './_configs';
 
 export const offCanvasAnimation = trigger('offCanvas', [
   state('slideIn', style({

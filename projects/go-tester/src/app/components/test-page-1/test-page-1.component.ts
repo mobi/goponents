@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoTableConfig, GoTableDataSource } from '../../../../../go-lib/src/public_api';
 
 import { AppService } from '../../app.service'; 
 
 
 @Component({
-  selector: 'test-page-1',
+  selector: 'app-test-page-1',
   templateUrl: './test-page-1.component.html'
 })
 export class TestPage1Component implements OnInit {
@@ -23,7 +23,7 @@ export class TestPage1Component implements OnInit {
         totalCount: data.totalCount
       });
       this.tableLoading = false;
-    })
+    });
   }
 
   handleTableChange(currentTableConfig: GoTableConfig) : void {
@@ -32,7 +32,7 @@ export class TestPage1Component implements OnInit {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
-    
+
           this.tableConfig = currentTableConfig;
           this.tableLoading = false;
         }, 2000);

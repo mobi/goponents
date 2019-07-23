@@ -1,11 +1,17 @@
 <header class="go-header">
-  <div class="go-header__left" [ngClass]="{ 'go-header__left--collapsed': !sideNavService.navOpen }">
-    <go-icon class="go-header__menu" icon="menu" (click)="toggleSideMenu()"></go-icon>
-    <div class="go-header__logo-container" [ngClass]="{ 'go-header__logo-container--collapsed': !sideNavService.navOpen }">
+  <div class="go-header__left"
+       [ngClass]="{ 'go-header__left--collapsed': !sideNavService.navOpen }">
+    <go-icon class="go-header__menu"
+             icon="menu" 
+             (click)="toggleSideMenu()">
+    </go-icon>
+    <div class="go-header__logo-container"
+         [ngClass]="{ 'go-header__logo-container--collapsed': !sideNavService.navOpen }">
       <img class="go-header__logo" [src]="logo"/>
     </div>
   </div>
-  <div class="go-header__middle" [ngClass]="{ 'go-header__middle--collapsed': !sideNavService.navOpen }">
+  <div class="go-header__middle"
+       [ngClass]="{ 'go-header__middle--collapsed': !sideNavService.navOpen }">
     <ng-content select="[go-header-middle]"></ng-content>
   </div>
   <div class="go-header__right">

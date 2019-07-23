@@ -17,9 +17,9 @@
   border-radius: 50%;
   cursor: pointer;
   display: flex;
-  height: calc(#{$side-nav-width--collapsed} - 1rem);
   flex-shrink: 0;
   font-size: 1.5rem;
+  height: calc(#{$side-nav-width--collapsed} - 1rem);
   justify-content: center;
   user-select: none;
   width: calc(#{$side-nav-width--collapsed} - 1rem);
@@ -37,10 +37,14 @@
   padding: 0.5rem 1rem;
 }
 
+.go-header__logo-container--collapsed {
+  flex-shrink: 1;
+}
+
 .go-header__logo {
   display: block;
   flex: 0;
-  max-height: 100%;
+  height: 100%;
   max-width: 100%;
 }
 

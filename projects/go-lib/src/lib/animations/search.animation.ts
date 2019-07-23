@@ -1,13 +1,11 @@
 import {
   animate,
-  state,
   style,
   transition,
   trigger
 } from '@angular/animations';
 
-const timing = '.5s'
-const easing =  'cubic-bezier(.25, .8, .25, 1)';
+import { easing, timing } from './_configs';
 
 export const searchLoaderAnim = trigger('searchLoaderAnim', [
   transition(':enter', [
@@ -29,7 +27,7 @@ export const searchLoaderAnim = trigger('searchLoaderAnim', [
       padding: 0
     }))
   ])
-])
+]);
 
 export const searchResultsAnim = trigger('searchResultsAnim', [
   transition(':enter', [
@@ -54,4 +52,4 @@ export const searchResultsAnim = trigger('searchResultsAnim', [
       opacity: 0
     }))
   ])
-])
+]);

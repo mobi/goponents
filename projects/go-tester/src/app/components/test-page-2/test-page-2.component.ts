@@ -7,8 +7,7 @@ import {
 
 @Component({
   selector: 'app-test-page-2',
-  templateUrl: './test-page-2.component.html',
-  styleUrls: ['./test-page-2.component.scss']
+  templateUrl: './test-page-2.component.html'
 })
 export class TestPage2Component implements OnInit {
 

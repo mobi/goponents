@@ -6,7 +6,7 @@ import {
   trigger
 } from '@angular/animations';
 
-import { timing, easing } from './_configs';
+import { easing, timing } from './_configs';
 
 export const fadeAnimation = trigger('fade', [
   state('in', style({
@@ -36,4 +36,4 @@ export const fadeTemplateAnimation = trigger('fadeTemplate', [
       opacity: 0
     }))
   ])
-])
+]);

@@ -5,7 +5,7 @@ import {
   trigger
 } from '@angular/animations';
 
-import { timing, easing } from './_configs';
+import { easing, timing } from './_configs';
 
 export const toastAnimation = trigger('toastAnimation', [
   transition(':enter', [

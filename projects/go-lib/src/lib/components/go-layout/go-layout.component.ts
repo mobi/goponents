@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 
 import {
+  ActivatedRoute,
   NavigationCancel,
   NavigationEnd,
   NavigationError,
@@ -29,7 +30,7 @@ export class GoLayoutComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
@@ -40,7 +41,7 @@ export class GoLayoutComponent implements OnInit {
     });
   }
 
-  routeAnimation(outlet: RouterOutlet) {
+  routeAnimation(outlet: RouterOutlet): ActivatedRoute | string {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 

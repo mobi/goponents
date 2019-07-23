@@ -4,9 +4,13 @@
     <nav class="go-layout__nav">
       <ng-content select="[go-layout-nav]"></ng-content>
     </nav>
-    <main class="go-layout__route-container" [@routerAnimation]="routeAnimation(mainRouter)">
-      <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet"></router-outlet>
-      <div class="go-route-loader" *ngIf="routeLoader" @fadeTemplate>
+    <main class="go-layout__route-container"
+          [@routerAnimation]="routeAnimation(mainRouter)">
+      <router-outlet class="go-layout__route-container-outlet"
+                     #mainRouter="outlet"></router-outlet>
+      <div class="go-route-loader"
+           *ngIf="routeLoader"
+           @fadeTemplate>
         <go-loader></go-loader>
       </div>
     </main>
