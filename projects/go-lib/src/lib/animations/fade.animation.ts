@@ -6,7 +6,7 @@ import {
   trigger
 } from '@angular/animations';
 
-const timing = '.5s cubic-bezier(.25, .8, .25, 1)';
+import { easing, timing } from './_configs';
 
 export const fadeAnimation = trigger('fade', [
   state('in', style({
@@ -18,7 +18,7 @@ export const fadeAnimation = trigger('fade', [
     visibility: 'hidden'
   })),
   transition('in <=> out', [
-    animate(timing)
+    animate(timing + easing)
   ])
 ]);
 
@@ -27,13 +27,13 @@ export const fadeTemplateAnimation = trigger('fadeTemplate', [
     style({
       opacity: 0
     }),
-    animate(timing, style({
+    animate(timing + easing, style({
       opacity: 1
     }))
   ]),
   transition(':leave', [
-    animate(timing, style({
+    animate(timing + easing, style({
       opacity: 0
     }))
   ])
-])
+]);

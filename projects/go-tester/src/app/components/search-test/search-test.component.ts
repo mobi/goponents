@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { GoSearchService } from '../../../../go-lib/src/public_api';
+import { GoSearchService } from '../../../../../go-lib/src/public_api';
 
-import { AppService } from '../app.service';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-search-test',
@@ -19,8 +19,8 @@ export class SearchTestComponent implements OnInit {
 
   ngOnInit() {
     this.searchService.searchTerm.subscribe(searchTerm => {
+
       // this section is dependent upon what the data looks like
-      // the loader and hasResults should be updated accordingly
       this.appService
           .getMockSearch(searchTerm)
           .subscribe(results => {

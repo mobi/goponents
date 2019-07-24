@@ -6,6 +6,8 @@ import {
   trigger
 } from '@angular/animations';
 
+import { easing, timing } from './_configs';
+
 export const offCanvasAnimation = trigger('offCanvas', [
   state('slideIn', style({
     transform: 'translateX(-300px)'
@@ -15,6 +17,6 @@ export const offCanvasAnimation = trigger('offCanvas', [
     visibility: 'hidden'
   })),
   transition('slideIn <=> slideOut', [
-    animate('.5s cubic-bezier(.25, .8, .25, 1)')
+    animate(timing + easing)
   ])
 ]);

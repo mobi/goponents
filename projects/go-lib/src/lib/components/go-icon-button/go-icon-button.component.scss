@@ -7,13 +7,16 @@
   background: $theme-light-bg;
   border: 0;
   border-radius: $global-radius--round;
-  box-shadow: $global-box-shadow;
-  color: $theme-light-color;
   cursor: pointer;
   display: inline-flex;
+  outline: none;
   padding: .5rem;
 
-  &:hover {
-    background-color: $theme-light-bg-hover;
+  .go-icon-button__icon {
+    display: flex;
+  }
+  
+  &:hover, &:active, &:focus {
+    background: $theme-light-bg-hover;
   }
 }
