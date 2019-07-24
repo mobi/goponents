@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class GoIconButtonComponent {
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
+  @Input() buttonTitle: string;
 
   @Output() handleClick = new EventEmitter();
 
