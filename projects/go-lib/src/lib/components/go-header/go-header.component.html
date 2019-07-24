@@ -1,10 +1,11 @@
 <header class="go-header">
   <div class="go-header__left"
        [ngClass]="{ 'go-header__left--collapsed': !sideNavService.navOpen }">
-    <go-icon class="go-header__menu"
-             icon="menu" 
-             (click)="toggleSideMenu()">
-    </go-icon>
+    <go-icon-button class="go-header__menu"
+             buttonIcon="menu"
+             buttonTitle="Menu"
+             (handleClick)="toggleSideMenu()">
+    </go-icon-button>
     <div class="go-header__logo-container"
          [ngClass]="{ 'go-header__logo-container--collapsed': !sideNavService.navOpen }">
       <img class="go-header__logo"

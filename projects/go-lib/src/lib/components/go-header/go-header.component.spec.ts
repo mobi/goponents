@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoHeaderComponent } from './go-header.component';
-import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 describe('GoHeaderComponent', () => {
   let component: GoHeaderComponent;
@@ -11,7 +11,7 @@ describe('GoHeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GoHeaderComponent ],
       imports: [
-        GoIconModule
+        GoIconButtonModule
       ]
     })
     .compileComponents();
