@@ -21,6 +21,9 @@ export const searchLoaderAnim = trigger('searchLoaderAnim', [
     }))
   ]),
   transition(':leave', [
+    style({
+      padding: '2rem'
+    }),
     animate(timing + ' ' + easing, style({
       height: 0,
       opacity: 0,
@@ -44,7 +47,8 @@ export const searchResultsAnim = trigger('searchResultsAnim', [
   ]),
   transition(':leave', [
     style({
-      overflowY: 'hidden'
+      overflowY: 'hidden',
+      margin: '1rem 0 0.5rem 0'
     }),
     animate(timing + ' ' + easing, style({
       height: 0,
