@@ -1,4 +1,5 @@
 @import '~@tangoe/gosheets/base/_variables';
+@import '../../../styles/mixins';
 
 .go-toaster {
   bottom: 0;
@@ -7,7 +8,7 @@
   position: fixed;
   right: 0;
   width: 400px;
-  z-index: 600;
+  z-index: z-index(toaster);
 
   @media(max-width: $breakpoint-mobile) {
     left: 0;

@@ -1,9 +1,10 @@
 @import '~@tangoe/gosheets/base/variables';
 @import '~@tangoe/gosheets/base/mixins';
+@import '../../../styles/mixins';
 
 .go-search {
   position: relative;
-  z-index: 1;
+  z-index: z-index(search);
 }
 
 .go-search__container {
