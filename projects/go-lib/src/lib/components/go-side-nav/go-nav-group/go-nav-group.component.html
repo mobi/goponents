@@ -1,7 +1,9 @@
 <div class="go-nav-group"
      [ngClass]="{ 'go-nav-group--expanded': navItem.expanded }"
-     *ngIf="navItem.subRoutes && navItem.subRoutes.length > 0">
-  <div class="go-nav-group__dropdown" (click)="expand(navItem)">
+     *ngIf="navItem.subRoutes && navItem.subRoutes.length > 0; else noSubRoutes">
+  <div class="go-nav-group__dropdown"
+       (click)="expand(navItem)"
+       [attr.title]="navItem.description">
     <div class="go-nav-group__link">
       <go-icon [icon]="navItem.routeIcon"
                iconClass="go-nav-group__icon"
@@ -29,4 +31,6 @@
     </div>
   </div>
 </div>
-<go-nav-item *ngIf="!navItem.subRoutes" [navItem]="navItem"></go-nav-item>
+<ng-template #noSubRoutes>
+  <go-nav-item [navItem]="navItem"></go-nav-item>
+</ng-template>
