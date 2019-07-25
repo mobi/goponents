@@ -1,11 +1,11 @@
 @import '~@tangoe/gosheets/base/variables';
 
 .go-loader-container {
-  animation: loaderFadeIn 0.5s $global-transition-timing forwards;
+  animation: loaderFadeIn .5s $global-transition-timing forwards;
   display: inline-block;
-	height: 75px;
-	position: relative;
-	width: 75px;
+  height: 75px;
+  position: relative;
+  width: 75px;
 }
 
 .go-loader-container--small {
@@ -43,30 +43,18 @@
   stop-color: $ui-color-negative;
 }
 
-.go-loader--neutral {
-  fill: url(#goLoaderNeutralGradient);
-}
-
-.go-loader--positive {
-  fill: url(#goLoaderPositiveGradient);
-}
-
-.go-loader--negative {
-  fill: url(#goLoaderNegativeGradient);
-}
-
 .go-loader--outer {
-	animation: rotatePathOuter 0.75s linear infinite;
+  animation: rotatePathOuter .75s linear infinite;
 }
 
 .go-loader--middle {
-	animation: rotatePathMiddle 1s linear infinite;
-	transform: translate(10%, 10%);
+  animation: rotatePathMiddle 1s linear infinite;
+  transform: translate(10%, 10%);
 }
 
 .go-loader--inner {
-	animation: rotatePathInner 1.25s linear infinite;
-	transform: translate(20%, 20%);
+  animation: rotatePathInner 1.25s linear infinite;
+  transform: translate(20%, 20%);
 }
 
 .go-loader-container--completed {
@@ -74,28 +62,31 @@
 }
 
 @keyframes rotatePathOuter {
-	from {
+  from {
     transform: rotate(0deg);
   }
-	to {
+
+  to {
     transform: rotate(360deg);
   }
 }
 
 @keyframes rotatePathMiddle {
-	from {
+  from {
     transform: rotate(0deg) translate(10%, 10%);
   }
-	to {
+
+  to {
     transform: rotate(360deg) translate(10%, 10%);
   }
 }
 
 @keyframes rotatePathInner {
-	from {
+  from {
     transform: rotate(0deg) translate(20%, 20%);
   }
-	to {
+
+  to {
     transform: rotate(360deg) translate(20%, 20%);
   }
 }
@@ -104,6 +95,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -113,6 +105,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

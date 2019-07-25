@@ -1,34 +1,32 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'go-loader',
   templateUrl: './go-loader.component.html',
   styleUrls: ['./go-loader.component.scss']
 })
-export class GoLoaderComponent implements OnInit {
-
+export class GoLoaderComponent {
   @Input() loaderDone: boolean = false;
   @Input() loaderSize: string = 'medium';
   @Input() loaderType: string = 'neutral';
 
-  constructor() { }
+  fillIDs: object = {
+    neutral: this.randomishID('neutral'),
+    negative: this.randomishID('negative'),
+    positive: this.randomishID('positive')
+  };
 
-  ngOnInit() {
-  }
+  //#region Public Methods
 
-  completeAnimation() : void {
+  completeAnimation(): void {
     this.loaderDone = true;
   }
 
-  public pathClasses() : object {
-    return {
-      'go-loader--neutral': this.loaderType === 'neutral',
-      'go-loader--positive': this.loaderType === 'positive',
-      'go-loader--negative': this.loaderType === 'negative'
-    }
+  fillUrl(): string {
+    return `url(#${this.fillIDs[this.loaderType]})`;
   }
 
-  public containerClasses() : object {
+  containerClasses(): object {
     return {
       'go-loader-container--small': this.loaderSize === 'small',
       'go-loader-container--medium': this.loaderSize === 'medium',
@@ -37,4 +35,18 @@ export class GoLoaderComponent implements OnInit {
     }
   }
 
+  //#endregion
+  //#region Public Methods
+
+  /**
+   * Use this method to generate a semi-unique ID in order to avoid
+   * duplicate IDs in the markup.
+   * `this.randomishID('neutral');`
+   * @param type: string
+   */
+  private randomishID(type: string): string {
+    return `${type}-${Date.now()}-${Math.floor(Math.random() * Math.floor(1000))}`;
+  }
+
+  //#endregion
 }
