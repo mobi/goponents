@@ -1,51 +1,31 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
+import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'go-loader',
   templateUrl: './go-loader.component.html',
-  styleUrls: ['./go-loader.component.scss']
+  styleUrls: ['./go-loader.component.scss'],
+  animations: [
+    fadeTemplateAnimation
+  ]
 })
 export class GoLoaderComponent {
-  @Input() loaderDone: boolean = false;
   @Input() loaderSize: string = 'medium';
   @Input() loaderType: string = 'neutral';
 
-  fillIDs: object = {
-    neutral: this.randomishID('neutral'),
-    negative: this.randomishID('negative'),
-    positive: this.randomishID('positive')
-  };
+  @HostBinding('@fadeTemplate')
 
   //#region Public Methods
-
-  completeAnimation(): void {
-    this.loaderDone = true;
-  }
-
-  fillUrl(): string {
-    return `url(#${this.fillIDs[this.loaderType]})`;
-  }
 
   containerClasses(): object {
     return {
-      'go-loader-container--small': this.loaderSize === 'small',
-      'go-loader-container--medium': this.loaderSize === 'medium',
-      'go-loader-container--large': this.loaderSize === 'large',
-      'go-loader-container--completed': this.loaderDone
+      'go-loader--small': this.loaderSize === 'small',
+      'go-loader--medium': this.loaderSize === 'medium',
+      'go-loader--large': this.loaderSize === 'large',
+      'go-loader--negative': this.loaderType === 'negative',
+      'go-loader--neutral': this.loaderType === 'neutral',
+      'go-loader--positive': this.loaderType === 'positive'
     }
-  }
-
-  //#endregion
-  //#region Public Methods
-
-  /**
-   * Use this method to generate a semi-unique ID in order to avoid
-   * duplicate IDs in the markup.
-   * `this.randomishID('neutral');`
-   * @param type: string
-   */
-  private randomishID(type: string): string {
-    return `${type}-${Date.now()}-${Math.floor(Math.random() * Math.floor(1000))}`;
   }
 
   //#endregion
