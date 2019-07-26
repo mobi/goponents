@@ -9,6 +9,7 @@
   top: 0;
   transition: opacity .5s cubic-bezier(.25, .8, .25, 1);
   width: 100vw;
+  z-index: z-index(off-canvas);
 }
 
 .go-off-canvas {
@@ -22,7 +23,6 @@
   position: fixed;
   top: 0;
   width: 300px;
-  z-index: z-index(off-canvas);
 }
 
 .go-off-canvas__header {

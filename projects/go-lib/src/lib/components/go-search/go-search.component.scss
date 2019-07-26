@@ -4,12 +4,11 @@
 
 .go-search {
   position: relative;
-  z-index: z-index(search);
 }
 
 .go-search__container {
   @include transition(all);
-
+  
   background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: 1rem;
@@ -21,7 +20,8 @@
   top: calc(50% - ((1.875rem + 2px) / 2));
   // height of input + border, halfed
   width: 600px;
-
+  z-index: z-index(search);
+  
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
   }
