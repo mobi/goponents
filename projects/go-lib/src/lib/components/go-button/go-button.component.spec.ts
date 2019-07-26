@@ -32,7 +32,7 @@ describe('GoButtonComponent', () => {
       expect(component.isProcessing).toBe(component.useLoader);
     });
 
-    it('sets isProcessing to true if useLoader is true', () => {
+    it('sets isProcessing to useLoader', () => {
       component.useLoader =  true;
 
       expect(component.isProcessing).not.toBe(component.useLoader);
