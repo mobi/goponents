@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
@@ -25,7 +25,7 @@ export class GoLoaderComponent {
       'go-loader--negative': this.loaderType === 'negative',
       'go-loader--neutral': this.loaderType === 'neutral',
       'go-loader--positive': this.loaderType === 'positive'
-    }
+    };
   }
 
   //#endregion
