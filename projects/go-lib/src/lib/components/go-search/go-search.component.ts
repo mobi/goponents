@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  OnInit
+} from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -18,6 +24,7 @@ export class GoSearchComponent implements OnInit {
   searchActive: boolean = false;
   resultsOverflow: string = 'hidden';
 
+  @HostBinding('class.go-search__parent')
   @HostListener('document:click', ['$event.target'])
   onDocumentClick(target: HTMLElement) {
     this.closeSearchEvent(target);
