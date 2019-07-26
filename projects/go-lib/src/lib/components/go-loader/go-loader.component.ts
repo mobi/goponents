@@ -14,6 +14,7 @@ export class GoLoaderComponent {
   @Input() loaderType: string = 'neutral';
 
   @HostBinding('@fadeTemplate')
+  public fadeTemplate: boolean = true;
 
   //#region Public Methods
 
