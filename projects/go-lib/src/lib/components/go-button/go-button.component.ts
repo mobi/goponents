@@ -9,14 +9,12 @@ export class GoButtonComponent {
   @Input() buttonIcon: string;
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string;
-  @Input() useLoader: boolean;
-  @Input() useDarkTheme: boolean;
+  @Input() useLoader: boolean = false;
+  @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick = new EventEmitter<boolean>();
 
   isProcessing: boolean = false;
-
-  constructor() {}
 
   public clicked(): void {
     this.isProcessing = this.useLoader;
@@ -30,7 +28,7 @@ export class GoButtonComponent {
   public classObject(): object {
     // 'alert' as a variant is depreciated and
     // will be removed in a later version
-    let isNegative: boolean = [
+    const isNegative: boolean = [
       'alert',
       'negative'
     ].includes(this.buttonVariant);
