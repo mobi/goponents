@@ -1,60 +1,46 @@
 @import '~@tangoe/gosheets/base/variables';
 @import '~@tangoe/gosheets/base/mixins';
 
+$loader-sizes: (small: 50px, medium: 100px, large: 150px);
+$loader-speeds: (outer: 1.25s, middle: 1s, inner: .75s);
+$loader-colors: (
+  negative: $ui-color-negative,
+  neutral: $ui-color-neutral,
+  positive: $ui-color-positive
+);
+
 .go-loader {
   display: inline-block;
-  height: 75px;
+  height: map-get($loader-sizes, medium);
   position: relative;
-  width: 75px;
+  width: map-get($loader-sizes, medium);
 
   path {
+    @include transition(fill, .5s);
+
     fill: $ui-color-neutral;
-    transition: fill .5s;
   }
 }
 
-.go-loader--negative path {
-  fill: $ui-color-negative;
+@each $name, $size in $loader-sizes {
+  .go-loader--#{$name} {
+    height: $size;
+    width: $size;
+  }
 }
 
-.go-loader--neutral path {
-  fill: $ui-color-neutral;
+@each $name, $color in $loader-colors {
+  .go-loader--#{$name} path {
+    fill: $color;
+  }
 }
 
-.go-loader--positive path {
-  fill: $ui-color-positive;
+@each $name, $speed in $loader-speeds {
+  .go-loader__#{$name} {
+    animation: rotate $speed linear infinite;
+    transform-origin: center center;
+  }
 }
-
-.go-loader--small {
-  height: 50px;
-  width: 50px;
-}
-
-.go-loader--medium {
-  height: 100px;
-  width: 100px;
-}
-
-.go-loader--large {
-  height: 150px;
-  width: 150px;
-}
-
-.go-loader__outer {
-  animation: rotate .75s linear infinite;
-  transform-origin: center center;
-}
-
-.go-loader__middle {
-  animation: rotate 1s linear infinite;
-  transform-origin: center center;
-}
-
-.go-loader__inner {
-  animation: rotate 1.25s linear infinite;
-  transform-origin: center center;
-}
-
 
 @keyframes rotate {
   from {
