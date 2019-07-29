@@ -20,6 +20,8 @@
 }
 
 .go-nav-group__title {
+  align-items: center;
+  display: flex;
   font-weight: $weight-light;
   letter-spacing: $side-nav-letter-spacing;
   padding: $outer-side-nav-padding;

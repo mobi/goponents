@@ -20,8 +20,8 @@ export class AppComponent implements OnInit {
   title: string = 'go-tester';
 
   menuItems: Array<NavGroup | NavItem> = [
-    { routeIcon: 'dashboard', routeTitle: 'Tests', subRoutes: [
-      { route: 'test-page-1', routeTitle: 'Test 1' },
+    { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
+      { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
       { route: 'test-page-2', routeTitle: 'Test 2' }
     ]}
   ];

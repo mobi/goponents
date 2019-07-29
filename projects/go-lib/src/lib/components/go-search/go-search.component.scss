@@ -44,6 +44,10 @@
 
   align-items: center;
   display: flex;
+
+  ::-ms-clear {
+    display: none;
+  }
 }
 
 .go-search__submit {

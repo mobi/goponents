@@ -34,7 +34,7 @@
           <td
             *ngFor="let col of columns"
             class="go-table__body-column"
-            width="{{ col.width || 'auto' }}"
+            [attr.width]="col.width"
           >
             <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
               {{ col.getFieldData(item) }}
