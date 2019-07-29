@@ -18,7 +18,7 @@ export class GoLoaderComponent {
 
   //#region Public Methods
 
-  containerClasses(): object {
+  loaderClasses(): object {
     return {
       'go-loader--small': this.loaderSize === 'small',
       'go-loader--medium': this.loaderSize === 'medium',
