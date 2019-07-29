@@ -16,8 +16,10 @@ import {
   GoSearchModule,
   GoSideNavModule,
   GoTableModule,
+  GoToastModule,
   GoToasterModule,
-  GoToastModule
+  GoActionSheetModule,
+  GoAccordionModule
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
@@ -42,6 +44,8 @@ import { AppGuard } from './app.guard';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    GoAccordionModule,
+    GoActionSheetModule,
     GoButtonModule,
     GoHeaderModule,
     GoIconModule,

@@ -44,4 +44,8 @@ export class TestPage2Component implements OnInit {
       this.heyButton.reset();
     }, 4000);
   }
+
+  openToast() {
+    this.goToasterService.toastInfo({ message: 'From the action sheet'});
+  }
 }

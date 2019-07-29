@@ -1,0 +1,99 @@
+@import '~@tangoe/gosheets/base/_variables';
+@import '~@tangoe/gosheets/base/_mixins';
+$base-medium: #767676 !default;
+
+.go-panel {
+  @include transition;
+
+  background: $theme-light-bg;
+  color: $theme-light-color;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: normal;
+  max-width: 20rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+
+  &:hover {
+    background: $theme-light-bg-hover;
+  }
+
+  .material-icons {
+    font-size: 1rem;
+  }
+
+  .go-panel__title {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    white-space: nowrap;
+
+    .go-panel__icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 1rem;
+      text-align: center;
+    }
+
+    .go-panel__title-text {
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+}
+
+.go-panel--danger {
+  border-top: 1px solid $theme-light-border;
+
+  .material-icons {
+    color: $ui-color-negative;
+  }
+
+  .go-panel__title {
+    .go-panel__title-text {
+      color: $ui-color-negative;
+    }
+  }
+}
+
+.go-panel--header {
+  color: $base-medium;
+}
+
+.go-action-sheet__title-panel {
+  .go-panel__title-text {
+    color: $base-light-secondary;
+    font-size: 10pt;
+    letter-spacing: 0.02rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+go-panel.disabled {
+  .go-panel__title {
+    opacity: 0.5;
+  }
+
+  .table-action-sheet__row-hint {
+    display: block;
+  }
+}
+
+button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 100%;
+
+  &:hover {
+    background: $theme-light-bg-hover;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
