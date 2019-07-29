@@ -15,6 +15,8 @@ export class TestPage2Component implements OnInit {
   @ViewChild('loader') loader: GoLoaderComponent;
 
   title: string = 'Test 2';
+  loaderType: string = 'neutral';
+  loading: boolean = true;
 
   constructor(private goToasterService: GoToasterService) { }
 
@@ -27,7 +29,14 @@ export class TestPage2Component implements OnInit {
   }
 
   stopLoaderAnimation() {
-    this.loader.loaderDone = this.loader.loaderDone ? false : true;
+    const loaderTypes: string[] = [
+      'neutral',
+      'negative',
+      'positive'
+    ];
+
+    this.loaderType = loaderTypes[Math.floor(Math.random() * loaderTypes.length)];
+    this.loading = !this.loading;
   }
 
   clickHey(): void {

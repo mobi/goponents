@@ -14,9 +14,9 @@
     <br>
     <div class="go-container">
       <div class="go-column go-column--100">
-        <go-loader loaderSize="large"></go-loader>
-        <go-loader></go-loader>
-        <go-loader #loader loaderSize="small"></go-loader>
+        <go-loader loaderSize="large" [loaderType]="loaderType"></go-loader>
+        <go-loader [loaderType]="loaderType"></go-loader>
+        <go-loader *ngIf="loading" loaderSize="small" [loaderType]="loaderType"></go-loader>
       </div>
     </div>
   </div>
