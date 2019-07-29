@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'go-toast',
@@ -45,7 +45,7 @@ export class GoToastComponent implements OnInit {
       case 'negative':
         return 'priority_high';
       default:
-        return 'notifications_none'
+        return 'notifications_none';
     }
   }
 
