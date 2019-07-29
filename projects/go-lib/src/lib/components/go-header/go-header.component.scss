@@ -2,11 +2,19 @@
 @import '../../../styles/variables';
 @import '~@tangoe/gosheets/base/_mixins';
 
+$breakpoint-header-mobile-small: 500px;
+
 .go-header {
   background: $theme-light-bg;
   box-shadow: $global-box-shadow;
   display: flex;
   height: 4rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 8rem;
+  }
 }
 
 .go-header__menu {
@@ -35,6 +43,10 @@
   flex: 1;
   justify-content: flex-start;
   padding: 0.5rem 1rem;
+
+  @media (max-width: $breakpoint-header-mobile-small) {
+    padding: 0.5rem;
+  }
 }
 
 .go-header__logo-container--collapsed {
@@ -54,6 +66,10 @@
   display: flex;
   padding: 0.5rem;
   width: 15.5rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    height: 4rem;
+  }
 }
 
 .go-header__left--collapsed {
@@ -67,7 +83,14 @@
   display: flex;
   flex: 1;
   justify-content: flex-start;
-  padding: 0 1rem 0 3rem;
+  padding: 0 1rem 0 2rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex: auto;
+    height: 4rem;
+    order: 2;
+    width: 100vw;
+  }
 }
 
 .go-header__middle--collapsed {
@@ -77,5 +100,16 @@
 .go-header__right {
   align-items: center;
   display: flex;
-  padding: 0 3rem 0 1rem;
+  padding: 0 2rem 0 1rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex: 1;
+    height: 4rem;
+    justify-content: flex-end;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: $breakpoint-header-mobile-small) {
+    justify-content: space-between;
+  }
 }

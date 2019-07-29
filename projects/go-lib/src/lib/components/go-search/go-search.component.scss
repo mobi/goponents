@@ -4,6 +4,16 @@
 
 .go-search {
   position: relative;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  }
+}
+
+:host.go-search__parent {
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  } 
 }
 
 .go-search__container {
@@ -19,11 +29,15 @@
   position: absolute;
   top: calc(50% - ((1.875rem + 2px) / 2));
   // height of input + border, halfed
-  width: 600px;
+  width: 500px;
   z-index: z-index(search);
   
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
   }
 }
 
