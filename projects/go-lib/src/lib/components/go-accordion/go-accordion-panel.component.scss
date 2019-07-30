@@ -121,33 +121,6 @@
   }
 }
 
-.go-action-sheet__go-accordion {
-  .go-accordion {
-    border: none;
-  }
-
-  .go-accordion-panel__title-bar {
-    font-size: 1rem;
-    padding: 1rem 0;
-  }
-
-  .go-accordion-panel__control-icon {
-    font-size: 1rem;
-  }
-
-  go-accordion-panel:not(:first-of-type) .go-accordion-panel__title-bar,
-  go-accordion-panel:last-of-type .go-accordion-panel__title-bar {
-    border-top: none;
-  }
-
-  .go-accordion-panel {
-    &:first-of-type::before,
-    .go-accordion-panel__title-bar {
-      border-radius: 0;
-    }
-  }
-}
-
 go-accordion-panel {
   &:last-of-type {
     .go-accordion-panel::before {
@@ -228,11 +201,7 @@ go-accordion-panel {
 
 // ----- Utility Classes
 .go-accordion--slim {
-  .go-accordion-panel__title-icon {
+  .go-accordion-panel__title-bar {
     font-size: 1rem;
-  }
-
-  &:hover {
-    background: $theme-light-bg-hover;
   }
 }

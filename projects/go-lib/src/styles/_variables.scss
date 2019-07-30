@@ -8,13 +8,3 @@ $brand-color-hover: darken($base-primary, 10%);
 $brand-color-dark: darken($base-primary, 15%);
 $brand-color-darker: darken($base-primary, 20%);
 $brand-color-gradient: linear-gradient(to right, $base-primary, $brand-color-hover);
-
-// Structure
-$side-nav-width: 15.5rem;
-$side-nav-width--collapsed: 3.2rem;
-
-// SideNav
-$inner-side-nav-font-size: 0.875rem;
-$inner-side-nav-padding: $column-gutter--half $column-gutter--three-quarters $column-gutter--half 3.2rem;
-$outer-side-nav-padding: 1rem 1rem 1rem 0;
-$side-nav-letter-spacing: .02rem;

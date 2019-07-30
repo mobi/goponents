@@ -8,43 +8,6 @@
   position: relative;
 }
 
-.go-table-header {
-  align-items: center;
-  display: flex;
-
-  h5 {
-    padding: .875rem 0 .875rem 1.25rem;
-  }
-  
-  @media (max-width: $breakpoint-mobile) {
-    align-items: initial;
-    flex-direction: column;
-    justify-content: center;
-
-    .go-table-header__actions {
-      justify-content: initial;
-    }
-  }
-}
-
-.go-table-header__actions {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  padding: .875rem 1.25rem;
-}
-
-.go-table-header--stacked {
-  align-items: initial;
-  flex-direction: column;
-  justify-content: center;
-
-  .go-table-header__actions {
-    justify-content: initial;
-  }
-}
-
 // Loader 
 //================
 .go-table-loader {

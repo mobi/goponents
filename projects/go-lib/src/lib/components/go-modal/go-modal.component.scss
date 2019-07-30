@@ -13,7 +13,7 @@
   top: 0;
   visibility: hidden;
   width: 100%;
-  z-index: z-index(modal);
+  z-index: 400;
   @include transition(all);
 }
 

@@ -1,9 +1,6 @@
 <div class="go-table-container" *ngIf="showTable">
-  <div class="go-table-header" [ngClass]="{ 'go-table-header--stacked': stackHeader }">
-    <h5 class="go-heading-5 go-heading--no-margin" *ngIf="tableTitle">{{ tableTitle }}</h5>
-    <div class="go-table-header__actions" *ngIf="showTableActions">
-      <ng-content select="[go-table-actions]"></ng-content>
-    </div>
+  <div class="go-table-toolbar" *ngIf="tableTitle">
+    <h5 class="go-heading--no-margin">{{ tableTitle }}</h5>
   </div>
   <div class="go-table">
     <table
@@ -37,7 +34,7 @@
           <td
             *ngFor="let col of columns"
             class="go-table__body-column"
-            [attr.width]="col.width"
+            width="{{ col.width || 'auto' }}"
           >
             <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
               {{ col.getFieldData(item) }}

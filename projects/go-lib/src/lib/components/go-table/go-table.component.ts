@@ -1,13 +1,11 @@
-import {
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  QueryList
-} from '@angular/core';
+import { Component,
+         ContentChildren,
+         EventEmitter,
+         Input,
+         OnChanges,
+         OnInit,
+         Output,
+         QueryList } from '@angular/core';
 
 import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableConfig, GoTableDataSource, SortDirection } from './index';
@@ -23,8 +21,6 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 export class GoTableComponent implements OnInit, OnChanges {
 
   @Input() loadingData: boolean = false;
-  @Input() showTableActions: boolean = false;
-  @Input() stackHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
 

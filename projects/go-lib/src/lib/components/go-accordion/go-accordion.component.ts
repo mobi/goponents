@@ -11,7 +11,6 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   @Input() expandAll: boolean = false;
   @Input() multiExpand: boolean = false;
   @Input() showIcons: boolean = false;
-  @Input() slim: boolean = false;
   @Input() theme: string = 'light';
 
   activeTheme: string;
@@ -21,6 +20,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   constructor() { }
 
   ngOnInit() {
+    this.setActiveTheme();
     this.multiExpand = this.expandAll || this.multiExpand;
   }
 
@@ -57,11 +57,8 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
     panel.expanded = false;
   }
   
-  accordionClasses(): object {
-    return {
-      'go-accordion--theme-light': this.theme === 'light' && !this.slim,
-      'go-accordion--theme-dark': this.theme === 'dark' && !this.slim,
-      'go-accordion--slim': this.slim
-    }
+  setActiveTheme() {
+    this.activeTheme = 'go-accordion--theme-' + this.theme;
   }
+
 }
