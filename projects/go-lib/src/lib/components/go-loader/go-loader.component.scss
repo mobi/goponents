@@ -1,53 +1,119 @@
 @import '~@tangoe/gosheets/base/variables';
-@import '~@tangoe/gosheets/base/mixins';
 
-$loader-sizes: (small: 50px, medium: 100px, large: 150px);
-$loader-speeds: (outer: 1.25s, middle: 1s, inner: .75s);
-$loader-colors: (
-  negative: $ui-color-negative,
-  neutral: $ui-color-neutral,
-  positive: $ui-color-positive
-);
+.go-loader-container {
+  animation: loaderFadeIn 0.5s $global-transition-timing forwards;
+  display: inline-block;
+	height: 75px;
+	position: relative;
+	width: 75px;
+}
+
+.go-loader-container--small {
+  height: 50px;
+  width: 50px;
+}
+
+.go-loader-container--medium {
+  height: 100px;
+  width: 100px;
+}
+
+.go-loader-container--large {
+  height: 150px;
+  width: 150px;
+}
 
 .go-loader {
-  display: inline-block;
-  height: map-get($loader-sizes, medium);
-  position: relative;
-  width: map-get($loader-sizes, medium);
-
-  path {
-    @include transition(fill, .5s);
-
-    fill: $ui-color-neutral;
-  }
+  transform-origin: 50% 50%;
 }
 
-@each $name, $size in $loader-sizes {
-  .go-loader--#{$name} {
-    height: $size;
-    width: $size;
-  }
+.go-loader-gradient--finish {
+  stop-color: rgba(255, 255, 255, 0);
 }
 
-@each $name, $color in $loader-colors {
-  .go-loader--#{$name} path {
-    fill: $color;
-  }
+.go-loader-gradient--start-neutral {
+  stop-color: $ui-color-neutral;
 }
 
-@each $name, $speed in $loader-speeds {
-  .go-loader__#{$name} {
-    animation: rotate $speed linear infinite;
-    transform-origin: center center;
-  }
+.go-loader-gradient--start-positive {
+  stop-color: $ui-color-positive;
 }
 
-@keyframes rotate {
-  from {
+.go-loader-gradient--start-negative {
+  stop-color: $ui-color-negative;
+}
+
+.go-loader--neutral {
+  fill: url(#goLoaderNeutralGradient);
+}
+
+.go-loader--positive {
+  fill: url(#goLoaderPositiveGradient);
+}
+
+.go-loader--negative {
+  fill: url(#goLoaderNegativeGradient);
+}
+
+.go-loader--outer {
+	animation: rotatePathOuter 0.75s linear infinite;
+}
+
+.go-loader--middle {
+	animation: rotatePathMiddle 1s linear infinite;
+	transform: translate(10%, 10%);
+}
+
+.go-loader--inner {
+	animation: rotatePathInner 1.25s linear infinite;
+	transform: translate(20%, 20%);
+}
+
+.go-loader-container--completed {
+  animation: loaderFadeOut 0.25s $global-transition-timing forwards;
+}
+
+@keyframes rotatePathOuter {
+	from {
     transform: rotate(0deg);
   }
-
-  to {
+	to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotatePathMiddle {
+	from {
+    transform: rotate(0deg) translate(10%, 10%);
+  }
+	to {
+    transform: rotate(360deg) translate(10%, 10%);
+  }
+}
+
+@keyframes rotatePathInner {
+	from {
+    transform: rotate(0deg) translate(20%, 20%);
+  }
+	to {
+    transform: rotate(360deg) translate(20%, 20%);
+  }
+}
+
+@keyframes loaderFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loaderFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
