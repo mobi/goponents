@@ -31,6 +31,14 @@ export class AppService {
     }));
   }
 
+  getMockSearch(term: string) {
+    return this.http.get<any>("../assets/MOCK_DATA_1000.json").pipe(map(data => {
+      return data.filter(item => {
+        return item.id.toString().includes(term) || item.name.first.includes(term) || item.name.last.includes(term) || item.email.includes(term);
+      })
+    }))
+  }
+
   /***** Private Methods *****/
   private paginateData(paging: GoTablePageConfig, results: any[]) : any[] {
     return results.slice(paging.offset, paging.offset + paging.perPage);
