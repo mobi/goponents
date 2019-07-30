@@ -8,10 +8,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class GoPanelComponent {
 
   @Input() danger: boolean;
-  @Input() header: boolean;
+  @Input() showHeader: boolean;
   @Input() icon: string;
   @Input() externalLink: string;
-  @Input() title: string;
+  @Input() panelContent: string;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
@@ -20,7 +20,7 @@ export class GoPanelComponent {
   panelClasses(): object {
     return {
       'go-panel--danger': this.danger,
-      'go-panel--header': this.header
+      'go-panel--header': this.showHeader
     }
   }
 
