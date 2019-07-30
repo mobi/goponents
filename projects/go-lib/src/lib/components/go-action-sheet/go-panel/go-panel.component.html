@@ -4,7 +4,7 @@
    *ngIf="externalLink; else noLink">
   <span class="go-panel__title">
     <span *ngIf="icon" class="go-panel__icon material-icons">{{icon}}</span>
-    <span class="go-panel__title-text" [innerHtml]="title"></span>
+    <span class="go-panel__title-text" [innerHtml]="panelContent"></span>
   </span>
 </a>
 
@@ -14,7 +14,7 @@
           (click)="handleAction()">
     <span class="go-panel__title">
       <span *ngIf="icon" class="go-panel__icon material-icons">{{icon}}</span>
-      <span class="go-panel__title-text" [innerHtml]="title"></span>
+      <span class="go-panel__title-text" [innerHtml]="panelContent"></span>
     </span>
   </button>
 </ng-template>
