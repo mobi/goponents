@@ -6,37 +6,62 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   GoButtonComponent,
   GoButtonModule,
+  GoHeaderModule,
+  GoIconButtonModule,
   GoIconComponent,
   GoIconModule,
+  GoLayoutModule,
   GoLoaderModule,
   GoOffCanvasModule,
+  GoSearchModule,
+  GoSideNavModule,
   GoTableModule,
   GoToastModule,
-  GoToasterModule
+  GoToasterModule,
+  GoActionSheetModule,
+  GoAccordionModule
 } from '../../../go-lib/src/public_api';
+
+import { AppRoutesModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
+import { SearchTestComponent } from './components/search-test/search-test.component';
+import { TestPage1Component } from './components/test-page-1/test-page-1.component';
+import { TestPage2Component } from './components/test-page-2/test-page-2.component';
+import { AppGuard } from './app.guard';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchTestComponent,
+    TestPage1Component,
+    TestPage2Component
   ],
   imports: [
+    AppRoutesModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    GoAccordionModule,
+    GoActionSheetModule,
     GoButtonModule,
+    GoHeaderModule,
     GoIconModule,
+    GoIconButtonModule,
+    GoLayoutModule,
     GoLoaderModule,
     GoOffCanvasModule,
+    GoSearchModule,
+    GoSideNavModule,
     GoTableModule,
     GoToastModule,
     GoToasterModule
   ],
   providers: [
-    AppService
+    AppService,
+    AppGuard
   ],
   entryComponents: [
     GoButtonComponent,

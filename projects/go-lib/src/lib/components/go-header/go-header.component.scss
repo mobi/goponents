@@ -1,0 +1,115 @@
+@import '~@tangoe/gosheets/base/_variables';
+@import '../../../styles/variables';
+@import '~@tangoe/gosheets/base/_mixins';
+
+$breakpoint-header-mobile-small: 500px;
+
+.go-header {
+  background: $theme-light-bg;
+  box-shadow: $global-box-shadow;
+  display: flex;
+  height: 4rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 8rem;
+  }
+}
+
+.go-header__menu {
+  @include transition(background);
+
+  align-items: center;
+  align-self: center;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  height: calc(#{$side-nav-width--collapsed} - 1rem);
+  justify-content: center;
+  user-select: none;
+  width: calc(#{$side-nav-width--collapsed} - 1rem);
+
+  &:hover {
+    background: $theme-light-bg-hover;
+  }
+}
+
+.go-header__logo-container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem;
+
+  @media (max-width: $breakpoint-header-mobile-small) {
+    padding: 0.5rem;
+  }
+}
+
+.go-header__logo-container--collapsed {
+  flex-shrink: 1;
+}
+
+.go-header__logo {
+  display: block;
+  flex: 0;
+  height: 100%;
+  max-width: 100%;
+}
+
+.go-header__left {
+  @include transition(width);
+
+  display: flex;
+  padding: 0.5rem;
+  width: 15.5rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    height: 4rem;
+  }
+}
+
+.go-header__left--collapsed {
+  width: auto;
+}
+
+.go-header__middle {
+  @include transition(padding);
+
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 0 1rem 0 2rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex: auto;
+    height: 4rem;
+    order: 2;
+    width: 100vw;
+  }
+}
+
+.go-header__middle--collapsed {
+  padding: 0 1rem;
+}
+
+.go-header__right {
+  align-items: center;
+  display: flex;
+  padding: 0 2rem 0 1rem;
+
+  @media (max-width: $breakpoint-mobile) {
+    flex: 1;
+    height: 4rem;
+    justify-content: flex-end;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: $breakpoint-header-mobile-small) {
+    justify-content: space-between;
+  }
+}

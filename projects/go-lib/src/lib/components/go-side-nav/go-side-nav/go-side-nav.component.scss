@@ -1,0 +1,29 @@
+@import '~@tangoe/gosheets/base/_variables';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.go-side-nav {
+  background: $theme-dark-bg;
+  color: $theme-dark-color;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem 0;
+  width: $side-nav-width;
+  z-index: z-index(navigation);
+
+  @media(max-width: $breakpoint-mobile) {
+    display: none;
+
+    &.go-side-nav--show-mobile {
+      display: flex;
+      width: 100vw;
+    }
+  }
+
+  &.go-side-nav--collapsed {
+    width: $side-nav-width--collapsed;
+  }
+}

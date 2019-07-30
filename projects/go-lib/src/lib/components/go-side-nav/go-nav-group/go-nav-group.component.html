@@ -1,0 +1,36 @@
+<div class="go-nav-group"
+     [ngClass]="{ 'go-nav-group--expanded': navItem.expanded }"
+     *ngIf="navItem.subRoutes && navItem.subRoutes.length > 0; else noSubRoutes">
+  <div class="go-nav-group__dropdown"
+       (click)="expand(navItem)"
+       [attr.title]="navItem.description">
+    <div class="go-nav-group__link">
+      <go-icon [icon]="navItem.routeIcon"
+               iconClass="go-nav-group__icon"
+               *ngIf="navItem.routeIcon">
+      </go-icon>
+      <span class="go-nav-group__title" *ngIf="navService.navOpen">
+        {{ navItem.routeTitle }}
+      </span>
+    </div>
+    <go-icon class="go-nav-group__expand-icon"
+             icon="expand_more"
+             *ngIf="navService.navOpen"
+             [ngClass]="{ 'go-nav-group__expand-icon--expanded': navItem.expanded }">
+    </go-icon>
+  </div>
+  <div *ngIf="navItem.expanded">
+    <div *ngFor="let item of navItem.subRoutes">
+      <go-nav-group *ngIf="item.subRoutes; else subRoutesElse"
+                    class="go-nav-group__inner-group"
+                    [navItem]="item">
+      </go-nav-group>
+      <ng-template #subRoutesElse>
+        <go-nav-item *ngIf="!item.subRoutes" [navItem]="item"></go-nav-item>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<ng-template #noSubRoutes>
+  <go-nav-item [navItem]="navItem"></go-nav-item>
+</ng-template>

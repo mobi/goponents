@@ -1,0 +1,81 @@
+<div class="go-container">
+  <div class="go-column go-column--100">
+    <h1 class="go-heading-2">
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+
+  <div class="go-column go-column--100 go-column--collapse">
+    <h4 class="go-heading-4">Action Sheet</h4>
+    <go-action-sheet>
+      <ng-container go-action-sheet__button>
+        <go-button buttonIcon="home">
+          Click me to open Action Sheet
+        </go-button>
+      </ng-container>
+      <ng-container go-action-sheet-content>
+        <go-panel showHeader="true" panelContent="Christoph<br><p>christoph.drechsler@tangoe.com</p>">
+        </go-panel>
+        <go-panel panelContent="Router Link" icon="folder" routerLink="/test-page-1">
+        </go-panel>
+        <go-panel icon="open_in_new" panelContent="External Link" externalLink="https://www.google.com">
+        </go-panel>
+        <go-panel panelContent="Open Toast" icon="folder" (action)="openToast()">
+        </go-panel>
+        <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
+          <go-accordion-panel title="Accordion" icon="home">
+            Another test 
+          </go-accordion-panel>
+        </go-accordion>
+        <go-panel danger="true" panelContent="Logout" icon="lock">
+        </go-panel>
+      </ng-container>
+    </go-action-sheet>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Loader</h4>
+    <go-button (handleClick)="stopLoaderAnimation()">
+      Toggle Animation
+    </go-button>
+    <br>
+    <br>
+    <div class="go-container">
+      <div class="go-column go-column--100">
+        <go-loader loaderSize="large" [loaderType]="loaderType"></go-loader>
+        <go-loader [loaderType]="loaderType"></go-loader>
+        <go-loader *ngIf="loading" loaderSize="small" [loaderType]="loaderType"></go-loader>
+      </div>
+    </div>
+  </div>
+      
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Buttons</h4>
+    <go-button buttonIcon="home">
+      Hey
+    </go-button>
+    <go-button buttonIcon="add_shopping_cart" buttonVariant="positive" (handleClick)="clickHey()" [useLoader]="true" #heyButton>
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative">
+      Hey
+    </go-button>
+    <go-button buttonIcon="fingerprint" buttonVariant="negative" buttonDisabled="true">
+      Nope
+    </go-button>
+    <go-button buttonIcon="plus_one" buttonVariant="neutral">
+      Hey
+    </go-button>
+    <go-button [buttonIcon]="'home'" buttonVariant="positive" [useDarkTheme]="true">
+      Dark
+    </go-button>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Toasts</h4>
+    <go-toast type="neutral"
+              header="Announcement!"
+              [dismissable]="true">
+    </go-toast>
+  </div>
+</div>

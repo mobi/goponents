@@ -1,40 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
+import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'go-loader',
   templateUrl: './go-loader.component.html',
-  styleUrls: ['./go-loader.component.scss']
+  styleUrls: ['./go-loader.component.scss'],
+  animations: [
+    fadeTemplateAnimation
+  ]
 })
-export class GoLoaderComponent implements OnInit {
-
-  @Input() loaderDone: boolean = false;
+export class GoLoaderComponent {
   @Input() loaderSize: string = 'medium';
   @Input() loaderType: string = 'neutral';
 
-  constructor() { }
+  @HostBinding('@fadeTemplate')
+  public fadeTemplate: boolean = true;
 
-  ngOnInit() {
-  }
+  //#region Public Methods
 
-  completeAnimation() : void {
-    this.loaderDone = true;
-  }
-
-  public pathClasses() : object {
+  loaderClasses(): object {
     return {
+      'go-loader--small': this.loaderSize === 'small',
+      'go-loader--medium': this.loaderSize === 'medium',
+      'go-loader--large': this.loaderSize === 'large',
+      'go-loader--negative': this.loaderType === 'negative',
       'go-loader--neutral': this.loaderType === 'neutral',
-      'go-loader--positive': this.loaderType === 'positive',
-      'go-loader--negative': this.loaderType === 'negative'
-    }
+      'go-loader--positive': this.loaderType === 'positive'
+    };
   }
 
-  public containerClasses() : object {
-    return {
-      'go-loader-container--small': this.loaderSize === 'small',
-      'go-loader-container--medium': this.loaderSize === 'medium',
-      'go-loader-container--large': this.loaderSize === 'large',
-      'go-loader-container--completed': this.loaderDone
-    }
-  }
-
+  //#endregion
 }

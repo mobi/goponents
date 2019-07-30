@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { AppService } from './app.service';
 import {
-  GoTableConfig,
-  GoOffCanvasService,
-  GoTableDataSource,
-  GoButtonComponent,
   GoIconComponent,
-  GoLoaderComponent,
+  GoModalService,
+  GoOffCanvasService,
+  GoSideNavService,
+  NavGroup,
+  NavItem,
   GoToasterService
 } from '../../../go-lib/src/public_api';
 
@@ -18,67 +17,49 @@ import {
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('heyButton') heyButton: GoButtonComponent;
-  @ViewChild('loader') loader: GoLoaderComponent;
+  logo: string = 'https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290';
+  title: string = 'go-tester';
 
-  title = 'go-tester';
-
-  tableConfig: GoTableConfig;
-  tableLoading: boolean = true;
+  menuItems: Array<NavGroup | NavItem> = [
+    { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
+      { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
+      { route: 'test-page-2', routeTitle: 'Test 2' }
+    ]}
+  ];
 
   constructor(
-    private appService: AppService,
     private goToasterService: GoToasterService,
-    private goOffCanvasService: GoOffCanvasService
+    private goOffCanvasService: GoOffCanvasService,
+    private goSideNavService: GoSideNavService,
+    private goModalService: GoModalService
   ) { }
 
   ngOnInit() {
-    this.appService.getMockData(new GoTableConfig()).subscribe(data => {
-      this.tableConfig = new GoTableConfig({
-        dataMode: GoTableDataSource.server,
-        tableData: data.results,
-        totalCount: data.totalCount
-      });
-      this.tableLoading = false;
-    })
-
-    setTimeout(() => {
-      this.goToasterService.toastInfo({ message: 'Check this out'});
-      this.goToasterService.toastSuccess({message: 'Check this out' });
-      this.goToasterService.toastError({ message: 'Check this out' });
-    }, 1500);
   }
 
-  stopLoaderAnimation() {
-    this.loader.loaderDone = this.loader.loaderDone ? false: true;
-  }
-
-  clickHey(): void {
-    setTimeout(() => {
-      this.heyButton.reset();
-    }, 4000);
-  }
-
-  handleTableChange(currentTableConfig: GoTableConfig) : void {
-    if (this.tableConfig.dataMode === GoTableDataSource.server) {
-      this.appService.getMockData(currentTableConfig).subscribe(data => {
-        setTimeout(() => {
-          currentTableConfig.tableData = data.results;
-          currentTableConfig.totalCount = data.totalCount;
-    
-          this.tableConfig = currentTableConfig;
-          this.tableLoading = false;
-        }, 2000);
-      });
-    }
-  }
-
-  openThing() : void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: GoIconComponent,
       bindings: {
         icon: 'alarm'
       }
     });
+  }
+
+  toggleSideMenu(): void {
+    this.goSideNavService.toggleNav();
+  }
+
+  openModal(): void {
+    this.goModalService.openModal(
+      GoIconComponent,
+      {
+        icon: 'alarm'
+      }
+    );
+  }
+
+  openToast() {
+    this.goToasterService.toastInfo({ message: 'From the action sheet'});
   }
 }

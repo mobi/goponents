@@ -1,0 +1,7 @@
+<div class="go-side-nav"
+     [ngClass]="{ 'go-side-nav--show-mobile' : navService.navOpen, 'go-side-nav--collapsed' : !navService.navOpen }">
+  <go-nav-group *ngFor="let item of menuItems"
+                [navItem]="item"
+                (closeNavs)="closeNavs($event)">
+  </go-nav-group>
+</div>
