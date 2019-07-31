@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -13,7 +13,9 @@ export class GoHeaderComponent {
   @Input() altText: string = '';
   @Input() logo: string = '';
 
-  private minWidthBreakpoint = 768;
+  @ViewChild('middleSection') middleSection: ElementRef;
+
+  private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
   private resizeSubsciption: Subscription;
 
@@ -28,6 +30,10 @@ export class GoHeaderComponent {
 
   toggleSideMenu(): void {
     this.sideNavService.toggleNav();
+  }
+
+  middleContentExists(): boolean {
+    return this.middleSection.nativeElement.childElementCount > 0;
   }
 
   private setupResizeSubscription(): void {

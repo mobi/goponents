@@ -1,5 +1,6 @@
 @import '~@tangoe/gosheets/base/_variables';
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 @import '~@tangoe/gosheets/base/_mixins';
 
 $breakpoint-header-mobile-small: 500px;
@@ -9,11 +10,13 @@ $breakpoint-header-mobile-small: 500px;
   box-shadow: $global-box-shadow;
   display: flex;
   height: 4rem;
+  justify-content: space-between;
+  position: relative;
+  z-index: z-index(navigation);
 
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     height: auto;
-    min-height: 8rem;
   }
 }
 
@@ -31,10 +34,6 @@ $breakpoint-header-mobile-small: 500px;
   justify-content: center;
   user-select: none;
   width: calc(#{$side-nav-width--collapsed} - 1rem);
-
-  &:hover {
-    background: $theme-light-bg-hover;
-  }
 }
 
 .go-header__logo-container {
@@ -95,6 +94,10 @@ $breakpoint-header-mobile-small: 500px;
 
 .go-header__middle--collapsed {
   padding: 0 1rem;
+}
+
+.go-header__middle--hide {
+  display: none;
 }
 
 .go-header__right {
