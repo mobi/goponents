@@ -54,7 +54,7 @@ export class GoTableComponent implements OnInit, OnChanges {
       this.setTotalCount();
       this.handleSort();
     }
-    
+
     this.showTable = Boolean(this.tableConfig);
     this.loadingData = false;
   }
@@ -93,9 +93,8 @@ export class GoTableComponent implements OnInit, OnChanges {
 
       this.localTableConfig.pageConfig.offset = 0;
 
-      if (this.isServerMode()) {
-        this.tableChange.emit(this.localTableConfig);
-      } else {
+      this.tableChange.emit(this.localTableConfig);
+      if (!this.isServerMode()) {
         this.handleSort();
         this.loadingData = false;
       }
@@ -170,7 +169,7 @@ export class GoTableComponent implements OnInit, OnChanges {
       return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
     }
   }
-  
+
   /** Private Methods **/
   private handleSort() : void {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
@@ -201,9 +200,8 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   private tableChangeOutcome() : void {
-    if (this.isServerMode()) {
-      this.tableChange.emit(this.localTableConfig);
-    } else {
+    this.tableChange.emit(this.localTableConfig);
+    if (!this.isServerMode()) {
       this.loadingData = false;
     }
   }
