@@ -4,7 +4,7 @@ This project houses a set of UI components for Angular and designed around the '
 
 # Getting Started
 1. Take a look at our [code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md)
-2. Take a look at our [contribution guidelines](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md)
+2. Read through our [contribution guidelines](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md)
 3. Install the latest version of npm
    ```bash
    npm install -g npm@latest
