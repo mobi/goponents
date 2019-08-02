@@ -56,7 +56,6 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
 
     this.showTable = Boolean(this.tableConfig);
-    this.loadingData = false;
   }
 
   hasData() : boolean {
@@ -83,8 +82,6 @@ export class GoTableComponent implements OnInit, OnChanges {
     const { sortConfig, sortable, tableData } = this.localTableConfig;
 
     if (tableData && sortable) {
-      this.loadingData = true;
-
       if (sortConfig && sortConfig.column === columnField) {
         this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
       } else {
@@ -96,13 +93,11 @@ export class GoTableComponent implements OnInit, OnChanges {
       this.tableChange.emit(this.localTableConfig);
       if (!this.isServerMode()) {
         this.handleSort();
-        this.loadingData = false;
       }
     }
   }
 
   nextPage() : void {
-    this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage;
 
     this.tableChangeOutcome();
@@ -117,7 +112,6 @@ export class GoTableComponent implements OnInit, OnChanges {
   setLastPage() : void {
     const { totalCount, pageConfig } = this.localTableConfig;
 
-    this.loadingData = true;
     let offset = totalCount - (totalCount % pageConfig.perPage);
     this.localTableConfig.pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
 
@@ -125,7 +119,6 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   prevPage() : void {
-    this.loadingData = true;
     this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage;
 
     this.tableChangeOutcome();
@@ -136,14 +129,12 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   setFirstPage() : void {
-    this.loadingData = true;
     this.localTableConfig.pageConfig.offset = 0;
 
     this.tableChangeOutcome();
   }
 
   setPerPage(event: any) : void {
-    this.loadingData = true;
     this.localTableConfig.pageConfig.perPage = Number(event.target.value);
     this.localTableConfig.pageConfig.offset = 0;
 
@@ -201,8 +192,5 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   private tableChangeOutcome() : void {
     this.tableChange.emit(this.localTableConfig);
-    if (!this.isServerMode()) {
-      this.loadingData = false;
-    }
   }
 }
