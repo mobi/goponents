@@ -2,24 +2,27 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
+  GoAccordionModule,
+  GoActionSheetModule,
   GoButtonComponent,
   GoButtonModule,
+  GoCardModule,
   GoHeaderModule,
   GoIconButtonModule,
   GoIconComponent,
   GoIconModule,
+  GoInputModule,
   GoLayoutModule,
   GoLoaderModule,
   GoOffCanvasModule,
   GoSearchModule,
   GoSideNavModule,
   GoTableModule,
-  GoToastModule,
   GoToasterModule,
-  GoActionSheetModule,
-  GoAccordionModule
+  GoToastModule
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
@@ -30,26 +33,31 @@ import { SearchTestComponent } from './components/search-test/search-test.compon
 import { TestPage1Component } from './components/test-page-1/test-page-1.component';
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
 import { AppGuard } from './app.guard';
-
+import { TestPage3Component } from './components/test-page-3/test-page-3.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchTestComponent,
     TestPage1Component,
-    TestPage2Component
+    TestPage2Component,
+    TestPage3Component
   ],
   imports: [
     AppRoutesModule,
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     GoAccordionModule,
     GoActionSheetModule,
     GoButtonModule,
+    GoCardModule,
     GoHeaderModule,
     GoIconModule,
     GoIconButtonModule,
+    GoInputModule,
     GoLayoutModule,
     GoLoaderModule,
     GoOffCanvasModule,
