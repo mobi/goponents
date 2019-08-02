@@ -1,0 +1,22 @@
+<div [formGroup]="parentFormGroup">
+  <label [for]="controlName" class="go-form__label">
+    {{ label }}
+  </label>
+  <input [id]="controlName"
+         class="go-form__input"
+         [ngClass]="{'go-form__input--error': !controlIsValid()}"
+         [type]="inputType"
+         [placeholder]="placeholder"
+         [formControlName]="controlName">
+
+  <p *ngFor="let hint of hints" class="go-hint">
+    {{ hint }}
+  </p>
+
+  <ng-container *ngIf="!controlIsValid()">
+    <p class="go-hint go-hint--error" *ngFor="let error of errors">
+      <span class="go-hint__status">{{ errorStatus }}</span>
+      {{ error }}
+    </p>
+  </ng-container>
+</div>

@@ -34,6 +34,10 @@ export * from './lib/components/go-icon/go-icon.module';
 export * from './lib/components/go-icon-button/go-icon-button.component';
 export * from './lib/components/go-icon-button/go-icon-button.module';
 
+// Input
+export * from './lib/components/go-input/go-input.component';
+export * from './lib/components/go-input/go-input.module';
+
 // Layout
 export * from './lib/components/go-layout/go-layout.component';
 export * from './lib/components/go-layout/go-layout.module';
