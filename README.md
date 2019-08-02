@@ -2,8 +2,10 @@
 ###### Currently v1.1.1
 This project houses a set of UI components for Angular and designed around the 'Go' design system.
 
-# Development server
-1. Install the latest version of npm
+# Getting Started
+1. Take a look at our [code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md)
+2. Take a look at our [contribution guidelines](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md)
+3. Install the latest version of npm
    ```bash
    npm install -g npm@latest
    ```
@@ -12,16 +14,16 @@ This project houses a set of UI components for Angular and designed around the '
    nvm install-latest-npm
    ```
    _We try to stay as up to date a possible._
-2. Install all of the node modules
+4. Install all of the node modules
    ```bash
    npm install
    ```
-3. Start a development test server:
+5. Start a development test server:
    ```bash
    ng serve
    ```
    _This will serve the go-tester directory at `localhost:4200`_
-4. In a separate tab, start the tests for the go-lib components:
+6. In a separate tab, start the tests for the go-lib components:
    ```bash
    ng test go-lib
    ```
@@ -30,7 +32,7 @@ This project houses a set of UI components for Angular and designed around the '
 # Directory structure
 The project is separated up into three project directories.
 
-#### go-lib
+### go-lib
 [projects/go-lib](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-lib) is where all of our production components, services, and other items are built out. If you are adding that you would like to distribute, this is where you will do that work.
 
 The components are located [here](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-lib/src/lib/components):
@@ -38,7 +40,7 @@ The components are located [here](https://github.com/AlexOverbeck/goponents/tree
 projects/go-lib/src/lib/components
 ```
 
-#### go-tester
+### go-tester
 [projects/go-tester](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester) is separate app that allows us to test the implementation of our components as we build them out. If you want to test to make sure your go-lib components work as expected in a more real world setting, this is where you will do that work.
 
 The base tester app is located [here](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester/src/app);
@@ -46,7 +48,7 @@ The base tester app is located [here](https://github.com/AlexOverbeck/goponents/
 projects/go-tester/src/app
 ```
 
-#### go-tester-e2e
+### go-tester-e2e
 [projects/go-tester](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester-e2e) will eventually be where we will write all of our end to end testing for our go-tester app. We have not yet done this, but we would welcome any [contributions](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md).
 
 
