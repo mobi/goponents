@@ -28,6 +28,7 @@ export class TestPage1Component implements OnInit {
 
   handleTableChange(currentTableConfig: GoTableConfig) : void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
+      this.tableLoading = true;
       this.appService.getMockData(currentTableConfig).subscribe(data => {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
