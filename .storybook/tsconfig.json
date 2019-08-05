@@ -1,0 +1,21 @@
+{
+  "extends": "../projects/go-lib/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  "exclude": [
+    "../src/test.ts",
+    "../src/**/*.spec.ts",
+    "../projects/**/*.spec.ts",
+    "../projects/**/*-spec.ts"
+  ],
+  "include": [
+    "../src/**/*",
+    "../projects/**/*"
+  ],
+  "files": [
+    "./typings.d.ts"
+  ]
+}
