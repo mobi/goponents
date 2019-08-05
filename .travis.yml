@@ -10,3 +10,4 @@ cache:
   npm: false
 script:
   - ng test go-lib --watch=false --browsers=ChromeHeadless
+  - npm run chromatic

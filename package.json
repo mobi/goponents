@@ -24,7 +24,8 @@
     "publish": "npm run package && cd dist/go-lib && npm publish",
     "publish_local": "npm run package && node ./local_install.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "CHROMATIC_APP_CODE=sd8u5fuc6e chromatic test"
   },
   "private": true,
   "engines": {
@@ -77,6 +78,7 @@
     "karma-jasmine": "~1.1.2",
     "ng-packagr": "^5.1.0",
     "protractor": "~5.4.0",
+    "storybook-chromatic": "^2.1.0",
     "ts-node": "~7.0.0",
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
