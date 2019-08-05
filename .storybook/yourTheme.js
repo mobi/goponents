@@ -3,17 +3,17 @@ import { create } from '@storybook/theming';
 export default create({
   base: 'light',
   //
-  // colorPrimary: 'hotpink',
+  // colorPrimary: '#65B360',
   // colorSecondary: 'deepskyblue',
   //
   // // UI
   // appBg: 'white',
-  // appContentBg: 'silver',
+  // appContentBg: '#B1B1B1',
   // appBorderColor: 'grey',
   // appBorderRadius: 4,
   //
   // // Typography
-  // fontBase: '"Open Sans", sans-serif',
+  // fontBase: 'Bryant, sans-serif',
   // fontCode: 'monospace',
   //
   // // Text colors
