@@ -11,8 +11,10 @@ storiesOf('Icon', module)
     moduleMetadata: {
       declarations: [GoIconComponent],
     },
-    template: `<go-icon icon="check"></go-icon>`,
-    props: {},
+    template: `<go-icon [icon]="icon"></go-icon>`,
+    props: {
+      icon: text('icon', 'check'),
+    },
   }))
   .add('with modifiers', () => ({
     moduleMetadata: {
