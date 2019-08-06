@@ -11,16 +11,16 @@ import {
 })
 export class TestPage2Component implements OnInit {
 
-  @ViewChild('heyButton') heyButton: GoButtonComponent;
   @ViewChild('loader') loader: GoLoaderComponent;
 
   title: string = 'Test 2';
+  shopping: boolean = false;
   loaderType: string = 'neutral';
   loading: boolean = true;
 
   constructor(private goToasterService: GoToasterService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     setTimeout(() => {
       this.goToasterService.toastInfo({ message: 'Check this out'});
       this.goToasterService.toastSuccess({message: 'Check this out' });
@@ -28,7 +28,7 @@ export class TestPage2Component implements OnInit {
     }, 1500);
   }
 
-  stopLoaderAnimation() {
+  stopLoaderAnimation(): void {
     const loaderTypes: string[] = [
       'neutral',
       'negative',
@@ -40,12 +40,13 @@ export class TestPage2Component implements OnInit {
   }
 
   clickHey(): void {
+    this.shopping = true;
     setTimeout(() => {
-      this.heyButton.reset();
+      this.shopping = false;
     }, 4000);
   }
 
-  openToast() {
+  openToast(): void {
     this.goToasterService.toastInfo({ message: 'From the action sheet'});
   }
 }

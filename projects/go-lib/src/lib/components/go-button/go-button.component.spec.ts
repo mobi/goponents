@@ -26,20 +26,6 @@ describe('GoButtonComponent', () => {
   });
 
   describe('clicked()', () => {
-    it('sets isProcessing to false if useLoader is false', () => {
-      expect(component.isProcessing).toBe(false);
-      component.clicked();
-      expect(component.isProcessing).toBe(component.useLoader);
-    });
-
-    it('sets isProcessing to useLoader', () => {
-      component.useLoader =  true;
-
-      expect(component.isProcessing).not.toBe(component.useLoader);
-      component.clicked();
-      expect(component.isProcessing).toBe(component.useLoader);
-    });
-
     it('emits the handleClick event with the isProcessing boolean', () => {
       spyOn(component.handleClick, 'emit');
       spyOn(component, 'clicked').and.callThrough();
@@ -52,16 +38,6 @@ describe('GoButtonComponent', () => {
 
       expect(component.clicked).toHaveBeenCalled();
       expect(component.handleClick.emit).toHaveBeenCalledWith(component.isProcessing);
-    });
-  });
-
-  describe('reset()', () => {
-    it('sets isProcessing to false', () => {
-      component.isProcessing = true;
-
-      expect(component.isProcessing).toBe(true);
-      component.reset();
-      expect(component.isProcessing).toBe(false);
     });
   });
 

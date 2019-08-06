@@ -9,21 +9,18 @@ export class GoButtonComponent {
   @Input() buttonIcon: string;
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string;
-  @Input() useLoader: boolean = false;
+  @Input() isProcessing: boolean = false;
   @Input() useDarkTheme: boolean = false;
+  @Input() useLoader: boolean = false;
 
-  @Output() handleClick = new EventEmitter<boolean>();
+  @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  isProcessing: boolean = false;
 
   public clicked(): void {
-    this.isProcessing = this.useLoader;
     this.handleClick.emit(this.isProcessing);
   }
 
-  public reset(): void {
-    this.isProcessing = false;
-  }
+  public reset(): void { }
 
   public classObject(): object {
     // 'alert' as a variant is depreciated and
