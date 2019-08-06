@@ -20,4 +20,3 @@ _**Example:**_
 > This feature will needs to have the following requirements:
 > 1. Requirement
 > 2. Requirement
-
