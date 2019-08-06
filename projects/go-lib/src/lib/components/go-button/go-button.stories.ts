@@ -3,10 +3,8 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { boolean, number, optionsKnob, select, text, withKnobs } from '@storybook/addon-knobs';
 
-import { Welcome } from '@storybook/angular/demo';
 import { GoButtonComponent as Button } from './go-button.component';
 import {GoIconModule} from '../go-icon/go-icon.module';
-import { GoIconComponent } from '../go-icon/go-icon.component';
 import markdownNotes from './go-button.docs.md';
 
 
