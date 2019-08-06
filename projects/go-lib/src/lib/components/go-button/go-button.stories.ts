@@ -1,7 +1,7 @@
 import {moduleMetadata, storiesOf} from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import { boolean, number, optionsKnob, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, number, optionsKnob, select, text, withKnobs } from '@storybook/addon-knobs';
 
 import { Welcome } from '@storybook/angular/demo';
 import { GoButtonComponent as Button } from './go-button.component';
@@ -20,45 +20,34 @@ storiesOf('Button', module)
       ]
     }),
   )
-  .add('default', () => ({
-    template: `<go-button [buttonVariant]="buttonVariant">hello</go-button>`,
-  }),{
-    notes: { markdown: markdownNotes },
-  })
-  .add('positive', () => ({
+  .add('Basics', () => ({
     template: `<go-button [buttonVariant]="buttonVariant">hello</go-button>`,
     props: {
-      buttonVariant: text('buttonVariant', 'positive')
+      buttonVariant: select('buttonVariant', {
+        default: '',
+        negative: 'negative',
+        neutral: 'neutral',
+        positive: 'positive'
+      }),
     },
   }),{
     notes: { markdown: markdownNotes },
   })
-  .add('negative', () => ({
-    template: `<go-button [buttonVariant]="buttonVariant">hello</go-button>`,
-    props: {
-      buttonVariant: text('buttonVariant', 'negative')
-    },
-  }),{
-    notes: { markdown: markdownNotes },
-  })
-  .add('neutral', () => ({
-    template: `<go-button [buttonVariant]="buttonVariant">hello</go-button>`,
-    props: {
-      buttonVariant: text('buttonVariant', 'neutral')
-    },
-  }),{
-    notes: { markdown: markdownNotes },
-  })
-  .add('disabled', () => ({
+  .add('Disabled', () => ({
     template: `<go-button [buttonDisabled]="true">hello</go-button>`,
+  }),{
+    notes: { markdown: markdownNotes },
+  })
+  .add('Icon Button', () => ({
+    template: `<go-button [buttonVariant]="buttonVariant" [buttonIcon]="buttonIcon">with an icon</go-button>`,
     props: {
-      buttonVariant: text('buttonVariant', 'positive')
-    },
-  }))
-  .add('with icon', () => ({
-    template: `<go-button [buttonIcon]="buttonIcon">with an icon</go-button>`,
-    props: {
-      buttonIcon: text('buttonIcon', 'home')
+      buttonVariant: select('buttonVariant', {
+        default: '',
+        negative: 'negative',
+        neutral: 'neutral',
+        positive: 'positive'
+      }),
+      buttonIcon: text('buttonIcon', 'home'),
     },
   }))
 

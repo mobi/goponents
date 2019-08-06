@@ -7,8 +7,8 @@ export default create({
   // colorSecondary: 'deepskyblue',
   //
   // // UI
-  // appBg: 'white',
-  // appContentBg: '#B1B1B1',
+  // appBg: '#B1B1B1',
+  // appContentBg: '#F0F0F0',
   // appBorderColor: 'grey',
   // appBorderRadius: 4,
   //
@@ -31,7 +31,7 @@ export default create({
   // inputTextColor: 'black',
   // inputBorderRadius: 4,
   //
-  // brandTitle: 'My custom storybook',
+  brandTitle: 'Go Design',
   // brandUrl: 'https://example.com',
   // brandImage: 'https://placehold.it/350x150',
 });

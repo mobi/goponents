@@ -6,11 +6,11 @@ import '!style-loader!css-loader!material-design-icons/iconfont/material-icons.c
 import yourTheme from './yourTheme';
 import {addParameters} from "@storybook/angular";
 
-// addParameters({
-//   options: {
-//     theme: yourTheme,
-//   },
-// });
+addParameters({
+  options: {
+    theme: yourTheme,
+  },
+});
 
 // automatically import all files ending in *.stories.ts
 const req = require.context('../projects/go-lib/src', true, /\.stories\.ts$/);
