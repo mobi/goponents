@@ -76,6 +76,10 @@ export * from './lib/components/go-table/go-table-paging.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
 
+// Text Area
+export * from './lib/components/go-text-area/go-text-area.component';
+export * from './lib/components/go-text-area/go-text-area.module';
+
 // Toast
 export * from './lib/components/go-toast/go-toast.component';
 export * from './lib/components/go-toast/go-toast.module';

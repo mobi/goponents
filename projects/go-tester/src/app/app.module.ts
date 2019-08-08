@@ -21,6 +21,7 @@ import {
   GoSearchModule,
   GoSideNavModule,
   GoTableModule,
+  GoTextAreaModule,
   GoToasterModule,
   GoToastModule
 } from '../../../go-lib/src/public_api';
@@ -32,8 +33,8 @@ import { AppService } from './app.service';
 import { SearchTestComponent } from './components/search-test/search-test.component';
 import { TestPage1Component } from './components/test-page-1/test-page-1.component';
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
-import { AppGuard } from './app.guard';
 import { TestPage3Component } from './components/test-page-3/test-page-3.component';
+import { AppGuard } from './app.guard';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,8 @@ import { TestPage3Component } from './components/test-page-3/test-page-3.compone
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     GoAccordionModule,
     GoActionSheetModule,
     GoButtonModule,
@@ -64,6 +67,7 @@ import { TestPage3Component } from './components/test-page-3/test-page-3.compone
     GoSearchModule,
     GoSideNavModule,
     GoTableModule,
+    GoTextAreaModule,
     GoToastModule,
     GoToasterModule
   ],
