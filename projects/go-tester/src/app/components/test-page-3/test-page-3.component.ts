@@ -25,11 +25,19 @@ export class TestPage3Component implements OnInit {
       this.formErrors.name = ['This is an invalid name'];
       this.form.get('name').setErrors({ name: 'invalid' });
     }
+    if (this.formErrors.notes) {
+      this.formErrors.notes = null;
+      this.form.get('notes').setErrors(null);
+    } else {
+      this.formErrors.notes = ['This is an invalid desciption'];
+      this.form.get('notes').setErrors({ errors: 'invalid' });
+    }
   }
 
   private buildForm(): void {
     this.form = this.fb.group({
-      name: new FormControl()
+      name: [''],
+      notes: ['']
     });
   }
 }
