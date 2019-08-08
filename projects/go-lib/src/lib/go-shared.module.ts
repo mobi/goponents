@@ -15,6 +15,7 @@ import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.m
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoActionSheetModule } from './components/go-action-sheet/go-action-sheet.module';
 import { GoInputModule } from './components/go-input/go-input.module';
+import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { GoInputModule } from './components/go-input/go-input.module';
     GoSearchModule,
     GoSideNavModule,
     GoTableModule,
+    GoTextAreaModule,
     GoToastModule,
     GoToasterModule
   ],
@@ -49,6 +51,7 @@ import { GoInputModule } from './components/go-input/go-input.module';
     GoSearchModule,
     GoSideNavModule,
     GoTableModule,
+    GoTextAreaModule,
     GoToastModule,
     GoToasterModule
   ]
