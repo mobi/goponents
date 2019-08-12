@@ -6,6 +6,8 @@ export class GoTableConfig {
   noDataText: string = 'No Data';
   pageable: boolean = true;
   pageConfig: GoTablePageConfig = new GoTablePageConfig();
+  selectable: boolean = false;
+  selectBy: string;
   sortConfig?: GoTableSortConfig;
   sortable: boolean = true;
   tableData: any[];
@@ -16,12 +18,15 @@ export class GoTableConfig {
     noDataText?: string,
     pageable?: boolean,
     pageConfig?: GoTablePageConfig,
+    selectable?: boolean,
+    selectBy?: string,
     sortConfig?: GoTableSortConfig,
     sortable?: boolean,
     tableData: any[],
     totalCount?: number
   }) {
-    if (fields) Object.assign(this, fields);
+    if (fields) { Object.assign(this, fields); }
+    if (this.selectable && !this.selectBy) { throw new Error('GoTableConfig: selectBy cannot be null if selectable is true'); }
   }
 }
 

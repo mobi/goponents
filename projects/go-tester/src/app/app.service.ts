@@ -5,6 +5,7 @@ import { GoTableConfig, GoTablePageConfig, GoTableSortConfig } from '../../../go
 
 // Only using this to emulate sorting for server side
 import { sortBy } from '../../../go-lib/src/lib/components/go-table/go-table-utils';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ import { sortBy } from '../../../go-lib/src/lib/components/go-table/go-table-uti
 
 export class AppService {
 
-  constructor (private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getMockData(params?: GoTableConfig) {
-    return this.http.get<any>("../assets/MOCK_DATA_1000.json").pipe(map(data => {
-      let formattedData = { totalCount: 0, results: [] };
+  getMockData(params?: GoTableConfig): Observable<any> {
+    return this.http.get<any>('../assets/MOCK_DATA_1000.json').pipe(map((data: any) => {
+      const formattedData: any = { totalCount: 0, results: [] };
 
       formattedData.totalCount = data.length;
 
@@ -31,20 +32,23 @@ export class AppService {
     }));
   }
 
-  getMockSearch(term: string) {
-    return this.http.get<any>("../assets/MOCK_DATA_1000.json").pipe(map(data => {
-      return data.filter(item => {
-        return item.id.toString().includes(term) || item.name.first.includes(term) || item.name.last.includes(term) || item.email.includes(term);
-      })
-    }))
+  getMockSearch(term: string): any {
+    return this.http.get<any>('../assets/MOCK_DATA_1000.json').pipe(map((data: any) => {
+      return data.filter((item: any) => {
+        return item.id.toString().includes(term) ||
+               item.name.first.includes(term) ||
+               item.name.last.includes(term) ||
+               item.email.includes(term);
+      });
+    }));
   }
 
   /***** Private Methods *****/
-  private paginateData(paging: GoTablePageConfig, results: any[]) : any[] {
+  private paginateData(paging: GoTablePageConfig, results: any[]): any[] {
     return results.slice(paging.offset, paging.offset + paging.perPage);
   }
 
-  private sortData(sort: GoTableSortConfig, results: any[]) : any[] {
+  private sortData(sort: GoTableSortConfig, results: any[]): any[] {
     return results.sort(sortBy(sort.column, Boolean(sort.direction)));
   }
 

@@ -1,12 +1,13 @@
 <go-table [loadingData]="tableLoading"
           [tableConfig]="tableConfig"
+          (rowSelectionEvent)="handleSelection($event)"
           [showTableActions]="true"
           (tableChange)="handleTableChange($event)"
           tableTitle="People Data"
+          #peopleTable
           *ngIf="tableConfig">
   <ng-container go-table-actions>
-    <go-button>Thing 1</go-button>
-    <go-icon-button buttonIcon="settings"></go-icon-button>
+    <go-button (handleClick)="outputSelectionCount()">Selection Count</go-button>
   </ng-container>
   <go-table-column field="id" title="ID"></go-table-column>
   <go-table-column field="name.first" title="First Name"></go-table-column>

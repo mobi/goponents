@@ -1,12 +1,14 @@
 import {
   Component,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
-  QueryList
+  QueryList,
+  ViewChild
 } from '@angular/core';
 
 import { GoTableColumnComponent } from './go-table-column.component';
@@ -14,6 +16,8 @@ import {
   GoTableConfig,
   GoTableDataSource,
   GoTablePageConfig,
+  GoTableRowSelectionEvent,
+  GoTableSelectionMode,
   GoTableSortConfig,
   SortDirection
 } from './index';
@@ -34,11 +38,25 @@ export class GoTableComponent implements OnInit, OnChanges {
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
 
+  /**
+   * This event is emitted when a row's selection changes
+   * @returns a `GoTableRowSelectionEvent` object.
+   * - `currentRow` is the targeted row
+   * - `selectedRows` are the currently selected rows if the `selectionMode` is `selection`
+   * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
+   * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
+   */
+  @Output() rowSelectionEvent: EventEmitter<GoTableRowSelectionEvent> = new EventEmitter<GoTableRowSelectionEvent>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
 
+  @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
+
   localTableConfig: GoTableConfig;
+  selectAllChecked: boolean = false;
+  selectedRows: any[] = [];
+  deselectedRows: any[] = [];
   showTable: boolean = false;
 
   ngOnInit(): void {
@@ -198,7 +216,53 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Private Methods **/
+  getSelectionCount(): number {
+    if (this.determineSelectionMode() === GoTableSelectionMode.deselection) {
+      return this.localTableConfig.totalCount - this.deselectedRows.length;
+    } else {
+      return this.selectedRows.length;
+    }
+  }
+
+  toggleSelectAll(): void {
+    this.selectedRows = [];
+    this.deselectedRows = [];
+    this.selectAllChecked = !this.selectAllChecked;
+
+    if (!this.selectAllChecked) {
+      this.selectAllCheckbox.nativeElement.indeterminate = false;
+    }
+  }
+
+  selectionChange(event: any, row: any): void {
+    if (this.selectAllChecked) {
+      this.deselectionModeChange(event.target.checked, row);
+    } else {
+      this.selectionModeChange(event.target.checked, row);
+    }
+
+    this.rowSelectionEvent.emit({
+      currentRow: {
+        data: row,
+        selected: event.target.checked
+      },
+      deselectedRows: this.selectAllChecked ? this.deselectedRows : null,
+      selectionMode: this.determineSelectionMode(),
+      selectedRows: !this.selectAllChecked ? this.selectedRows : null
+     });
+  }
+
+  isRowSelected(row: any): boolean {
+    if (this.selectAllChecked && !this.isRowInDeselected(row)) {
+      return true;
+    } else if (!this.selectAllChecked && this.isRowInSelected(row)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //#region Private Methods
   private handleSort(): void {
     const { sortConfig, sortable, tableData }:
     {
@@ -242,4 +306,41 @@ export class GoTableComponent implements OnInit, OnChanges {
       this.loadingData = false;
     }
   }
+
+  private determineSelectionMode(): GoTableSelectionMode {
+    return this.selectAllChecked ? GoTableSelectionMode.deselection : GoTableSelectionMode.selection;
+  }
+
+  private isRowInSelected(row: any): boolean {
+    return this.selectedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
+  }
+
+  private isRowInDeselected(row: any): boolean {
+    return this.deselectedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
+  }
+
+  private selectionModeChange(checked: boolean, row: any): void {
+    const selectedIndex: number = this.selectedRows.indexOf(row);
+
+    if (checked && selectedIndex < 0) {
+      this.selectedRows.push(row);
+    } else {
+      this.selectedRows.splice(selectedIndex, 1);
+    }
+  }
+
+  private deselectionModeChange(checked: boolean, row: any): void {
+    const deSelectedIndex: number = this.deselectedRows.indexOf(row);
+
+    if (checked && deSelectedIndex >= 0) {
+      this.deselectedRows.splice(deSelectedIndex, 1);
+      if (this.deselectedRows.length === 0) {
+        this.selectAllCheckbox.nativeElement.indeterminate = false;
+      }
+    } else {
+      this.deselectedRows.push(row);
+      this.selectAllCheckbox.nativeElement.indeterminate = true;
+    }
+  }
+  //#endregion
 }
