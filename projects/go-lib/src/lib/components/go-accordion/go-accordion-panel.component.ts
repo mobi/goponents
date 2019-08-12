@@ -32,7 +32,7 @@ export class GoAccordionPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.expanded = this.expanded || false;
+    // NOTE: `title` is deprecated and will be removed in later version
     this.heading = this.heading || this.title;
   }
 

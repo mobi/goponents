@@ -23,6 +23,9 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
 
   constructor() { }
 
+  //#region Lifecycle Methods
+  ///////////////////////////
+
   ngOnInit(): void {
     this.multiExpand = this.expandAll || this.multiExpand;
   }
@@ -35,25 +38,16 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
       panel.isFirst = index === 0;
       panel.isLast = index === (this.panels.length - 1);
       panel.expanded = this.expandAll || panel.expanded;
-      panel.icon = !this.showIcons ? null : panel.icon;
+
+      // NOTE: This feels a little destructive.
+      // We lose track of the icon explicitly set by the child component.
+      panel.icon = this.showIcons ? panel.icon : null;
     });
   }
+  //#endregion
 
-  private openPanelCloseOthers(panel: GoAccordionPanelComponent): void {
-    this.panels.toArray().forEach((p: GoAccordionPanelComponent) => {
-      this.closePanel(p);
-    });
-
-    this.openPanel(panel);
-  }
-
-  private openPanel(panel: GoAccordionPanelComponent): void {
-    panel.expanded = true;
-  }
-
-  private closePanel(panel: GoAccordionPanelComponent): void {
-    panel.expanded = false;
-  }
+  //#region Private Methods
+  /////////////////////////
 
   private subscribePanel(panel: GoAccordionPanelComponent): void {
     panel.toggle.subscribe(() => {
@@ -66,4 +60,19 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
       }
     });
   }
+
+  private openPanelCloseOthers(panel: GoAccordionPanelComponent): void {
+    this.panels.toArray().forEach(this.closePanel);
+
+    this.openPanel(panel);
+  }
+
+  private openPanel(panel: GoAccordionPanelComponent): void {
+    panel.expanded = true;
+  }
+
+  private closePanel(panel: GoAccordionPanelComponent): void {
+    panel.expanded = false;
+  }
+  //#endregion
 }
