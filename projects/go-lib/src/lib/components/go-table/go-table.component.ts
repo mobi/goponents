@@ -55,8 +55,7 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   localTableConfig: GoTableConfig;
   selectAllChecked: boolean = false;
-  selectedRows: any[] = [];
-  deselectedRows: any[] = [];
+  targetedRows: any[] = [];
   showTable: boolean = false;
 
   ngOnInit(): void {
@@ -218,15 +217,14 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   getSelectionCount(): number {
     if (this.determineSelectionMode() === GoTableSelectionMode.deselection) {
-      return this.localTableConfig.totalCount - this.deselectedRows.length;
+      return this.localTableConfig.totalCount - this.targetedRows.length;
     } else {
-      return this.selectedRows.length;
+      return this.targetedRows.length;
     }
   }
 
   toggleSelectAll(): void {
-    this.selectedRows = [];
-    this.deselectedRows = [];
+    this.targetedRows = [];
     this.selectAllChecked = !this.selectAllChecked;
 
     if (!this.selectAllChecked) {
@@ -235,10 +233,24 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   selectionChange(event: any, row: any): void {
+    const index: number = this.targetedRows.indexOf(row);
+
     if (this.selectAllChecked) {
-      this.deselectionModeChange(event.target.checked, row);
+      if (event.target.checked && index >= 0) {
+        this.targetedRows.splice(index, 1);
+        if (this.targetedRows.length === 0) {
+          this.selectAllCheckbox.nativeElement.indeterminate = false;
+        }
+      } else {
+        this.targetedRows.push(row);
+        this.selectAllCheckbox.nativeElement.indeterminate = true;
+      }
     } else {
-      this.selectionModeChange(event.target.checked, row);
+      if (event.target.checked && index < 0) {
+        this.targetedRows.push(row);
+      } else {
+        this.targetedRows.splice(index, 1);
+      }
     }
 
     this.rowSelectionEvent.emit({
@@ -246,16 +258,16 @@ export class GoTableComponent implements OnInit, OnChanges {
         data: row,
         selected: event.target.checked
       },
-      deselectedRows: this.selectAllChecked ? this.deselectedRows : null,
+      deselectedRows: this.selectAllChecked ? this.targetedRows : null,
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.selectedRows : null
+      selectedRows: !this.selectAllChecked ? this.targetedRows : null
      });
   }
 
   isRowSelected(row: any): boolean {
-    if (this.selectAllChecked && !this.isRowInDeselected(row)) {
+    if (this.selectAllChecked && !this.isRowInTargeted(row)) {
       return true;
-    } else if (!this.selectAllChecked && this.isRowInSelected(row)) {
+    } else if (!this.selectAllChecked && this.isRowInTargeted(row)) {
       return true;
     } else {
       return false;
@@ -311,36 +323,8 @@ export class GoTableComponent implements OnInit, OnChanges {
     return this.selectAllChecked ? GoTableSelectionMode.deselection : GoTableSelectionMode.selection;
   }
 
-  private isRowInSelected(row: any): boolean {
-    return this.selectedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
-  }
-
-  private isRowInDeselected(row: any): boolean {
-    return this.deselectedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
-  }
-
-  private selectionModeChange(checked: boolean, row: any): void {
-    const selectedIndex: number = this.selectedRows.indexOf(row);
-
-    if (checked && selectedIndex < 0) {
-      this.selectedRows.push(row);
-    } else {
-      this.selectedRows.splice(selectedIndex, 1);
-    }
-  }
-
-  private deselectionModeChange(checked: boolean, row: any): void {
-    const deSelectedIndex: number = this.deselectedRows.indexOf(row);
-
-    if (checked && deSelectedIndex >= 0) {
-      this.deselectedRows.splice(deSelectedIndex, 1);
-      if (this.deselectedRows.length === 0) {
-        this.selectAllCheckbox.nativeElement.indeterminate = false;
-      }
-    } else {
-      this.deselectedRows.push(row);
-      this.selectAllCheckbox.nativeElement.indeterminate = true;
-    }
+  private isRowInTargeted(row: any): boolean {
+    return this.targetedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
   }
   //#endregion
 }
