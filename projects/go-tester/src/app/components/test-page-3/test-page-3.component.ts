@@ -18,19 +18,17 @@ export class TestPage3Component implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.formErrors.name) {
-      this.formErrors.name = null;
-      this.form.get('name').setErrors(null);
+    this.setError('name', 'This is an invalid name');
+    this.setError('notes', 'This is an invalid desciption');
+  }
+
+  private setError(formControlName: string, errorMessage: string): void {
+    if (this.formErrors[formControlName]) {
+      this.formErrors[formControlName] = null;
+      this.form.get(formControlName).setErrors(null);
     } else {
-      this.formErrors.name = ['This is an invalid name'];
-      this.form.get('name').setErrors({ name: 'invalid' });
-    }
-    if (this.formErrors.notes) {
-      this.formErrors.notes = null;
-      this.form.get('notes').setErrors(null);
-    } else {
-      this.formErrors.notes = ['This is an invalid desciption'];
-      this.form.get('notes').setErrors({ errors: 'invalid' });
+      this.formErrors[formControlName] = [errorMessage];
+      this.form.get(formControlName).setErrors({ errors: 'invalid' });
     }
   }
 

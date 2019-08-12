@@ -7,14 +7,15 @@ import { FormGroup } from '@angular/forms';
 })
 export class GoTextAreaComponent {
 
-  @Input() label: string;
+  @Input() controlName: string;
   @Input() errors: string[];
   @Input() errorStatus: string = 'Error:';
   @Input() hints: string[];
   @Input() inputDisabled: boolean;
-  @Input() controlName: string;
+  @Input() label: string;
   @Input() parentFormGroup: FormGroup;
   @Input() placeholder: string = '';
+  @Input() theme: string = 'light';
 
   constructor() { }
 
