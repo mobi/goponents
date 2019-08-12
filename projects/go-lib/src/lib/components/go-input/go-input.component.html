@@ -1,22 +1,25 @@
 <div [formGroup]="parentFormGroup">
-  <label [for]="controlName" class="go-form__label">
+  <label [for]="controlName"
+         class="go-form__label"
+         [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
   </label>
   <input [id]="controlName"
          class="go-form__input"
-         [ngClass]="{'go-form__input--error': !controlIsValid()}"
+         [ngClass]="{'go-form__input--error': !controlIsValid(), 'go-form__input--dark': theme === 'dark'}"
+         [attr.disabled]="inputDisabled ? '' : null"
          [type]="inputType"
          [placeholder]="placeholder"
          [formControlName]="controlName">
 
-  <p *ngFor="let hint of hints" class="go-hint">
+  <p *ngFor="let hint of hints" class="go-hint" [ngClass]="{'go-form__input--dark': theme === 'dark'}">
     {{ hint }}
   </p>
 
-  <ng-container *ngIf="!controlIsValid()">
+  <div [ngClass]="{'go-form__input--dark': theme === 'dark'}" *ngIf="!controlIsValid()">
     <p class="go-hint go-hint--error" *ngFor="let error of errors">
       <span class="go-hint__status">{{ errorStatus }}</span>
       {{ error }}
     </p>
-  </ng-container>
+  </div>
 </div>
