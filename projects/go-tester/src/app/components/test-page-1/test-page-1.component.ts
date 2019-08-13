@@ -3,8 +3,8 @@ import {
   GoTableComponent,
   GoTableConfig,
   GoTableDataSource,
-  GoTableRowSelectionEvent,
   GoToasterService,
+  RowSelectionEvent
 } from '../../../../../go-lib/src/public_api';
 
 import { AppService } from '../../app.service';
@@ -57,7 +57,11 @@ export class TestPage1Component implements OnInit {
     this.toasterService.toastSuccess({ message: 'Rows Selected: ' + this.peopleTable.getSelectionCount() });
   }
 
-  handleSelection(selectionEvent: GoTableRowSelectionEvent): void {
+  showCurrentSelection(): void {
+    console.log(this.peopleTable.getSelectionState());
+  }
+
+  handleSelection(selectionEvent: RowSelectionEvent): void {
     const action: string = selectionEvent.currentRow.selected ? 'Selected: ' : 'Deselected: ';
     this.toasterService.toastInfo({ message: action + selectionEvent.currentRow.data['email'] });
   }

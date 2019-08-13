@@ -5,5 +5,5 @@
 
 export { GoTableConfig, GoTableDataSource } from './go-table-config.model';
 export { GoTablePageConfig } from './go-table-paging.model';
-export { GoTableRowSelectionEvent, GoTableSelectionMode } from './go-table-selection.model';
+export { RowSelectionEvent, SelectionMode, SelectionState } from './go-table-selection.model';
 export { GoTableSortConfig, SortDirection } from './go-table-sort.model';

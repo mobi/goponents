@@ -16,9 +16,10 @@ import {
   GoTableConfig,
   GoTableDataSource,
   GoTablePageConfig,
-  GoTableRowSelectionEvent,
-  GoTableSelectionMode,
   GoTableSortConfig,
+  RowSelectionEvent,
+  SelectionMode,
+  SelectionState,
   SortDirection
 } from './index';
 import { sortBy } from './go-table-utils';
@@ -46,7 +47,7 @@ export class GoTableComponent implements OnInit, OnChanges {
    * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
    * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
    */
-  @Output() rowSelectionEvent: EventEmitter<GoTableRowSelectionEvent> = new EventEmitter<GoTableRowSelectionEvent>();
+  @Output() rowSelectionEvent: EventEmitter<RowSelectionEvent> = new EventEmitter<RowSelectionEvent>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
@@ -216,11 +217,19 @@ export class GoTableComponent implements OnInit, OnChanges {
   }
 
   getSelectionCount(): number {
-    if (this.determineSelectionMode() === GoTableSelectionMode.deselection) {
+    if (this.determineSelectionMode() === SelectionMode.deselection) {
       return this.localTableConfig.totalCount - this.targetedRows.length;
     } else {
       return this.targetedRows.length;
     }
+  }
+
+  getSelectionState(): SelectionState {
+    return {
+      deselectedRows: this.selectAllChecked ? this.targetedRows : [],
+      selectionMode: this.determineSelectionMode(),
+      selectedRows: !this.selectAllChecked ? this.targetedRows : []
+    };
   }
 
   toggleSelectAll(): void {
@@ -258,9 +267,9 @@ export class GoTableComponent implements OnInit, OnChanges {
         data: row,
         selected: event.target.checked
       },
-      deselectedRows: this.selectAllChecked ? this.targetedRows : null,
+      deselectedRows: this.selectAllChecked ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.targetedRows : null
+      selectedRows: !this.selectAllChecked ? this.targetedRows : []
      });
   }
 
@@ -319,8 +328,8 @@ export class GoTableComponent implements OnInit, OnChanges {
     }
   }
 
-  private determineSelectionMode(): GoTableSelectionMode {
-    return this.selectAllChecked ? GoTableSelectionMode.deselection : GoTableSelectionMode.selection;
+  private determineSelectionMode(): SelectionMode {
+    return this.selectAllChecked ? SelectionMode.deselection : SelectionMode.selection;
   }
 
   private isRowInTargeted(row: any): boolean {
