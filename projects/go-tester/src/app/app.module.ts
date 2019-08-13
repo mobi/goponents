@@ -30,6 +30,7 @@ import { AppRoutesModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { SearchTestComponent } from './components/search-test/search-test.component';
+import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-test.component';
 import { TestPage1Component } from './components/test-page-1/test-page-1.component';
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
 import { AppGuard } from './app.guard';
@@ -39,6 +40,7 @@ import { TestPage3Component } from './components/test-page-3/test-page-3.compone
   declarations: [
     AppComponent,
     SearchTestComponent,
+    OffCanvasTestComponent,
     TestPage1Component,
     TestPage2Component,
     TestPage3Component
@@ -73,7 +75,7 @@ import { TestPage3Component } from './components/test-page-3/test-page-3.compone
   ],
   entryComponents: [
     GoButtonComponent,
-    GoIconComponent
+    OffCanvasTestComponent
   ],
   bootstrap: [AppComponent]
 })

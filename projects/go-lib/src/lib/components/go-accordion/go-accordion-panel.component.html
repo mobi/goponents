@@ -5,7 +5,7 @@
   <header
     aria-expanded="expanded"
     class="go-accordion-panel__header"
-    [ngClass]="{'go-accordion-panel__header--active': expanded, 'go-accordion-panel__header--slim': slim}"
+    [ngClass]="headerClasses()"
     (click)="toggle.emit()"
   >
     <span class="go-accordion-panel__title">

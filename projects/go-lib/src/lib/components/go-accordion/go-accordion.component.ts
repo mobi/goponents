@@ -13,11 +13,12 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
   template: '<ng-content></ng-content>'
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit {
+  @Input() borderless: boolean = false;
   @Input() expandAll: boolean = false;
   @Input() multiExpand: boolean = false;
   @Input() showIcons: boolean = false;
   @Input() slim: boolean = false;
-  @Input() theme: string = 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoAccordionPanelComponent) panels: QueryList<GoAccordionPanelComponent>;
 
@@ -27,6 +28,8 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   ///////////////////////////
 
   ngOnInit(): void {
+    // Angular doesn't type check templates. This forces one of two options for theme.
+    this.theme = this.theme === 'dark' ? 'dark' : 'light';
     this.multiExpand = this.expandAll || this.multiExpand;
   }
 
@@ -34,7 +37,9 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
     this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
       this.subscribePanel(panel);
 
-      panel.slim = this.slim;
+      panel.borderless = panel.borderless === undefined ? this.borderless : panel.borderless;
+      panel.slim = panel.slim === undefined ? this.slim : panel.slim;
+      panel.theme = panel.theme || this.theme;
       panel.isFirst = index === 0;
       panel.isLast = index === (this.panels.length - 1);
       panel.expanded = this.expandAll || panel.expanded;

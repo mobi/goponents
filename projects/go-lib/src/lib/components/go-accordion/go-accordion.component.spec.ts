@@ -71,6 +71,15 @@ describe('AccordionComponent', () => {
   });
 
   describe('ngAfterContentInit', () => {
+    beforeEach(() => {
+      panelOne.theme = undefined;
+      panelTwo.theme = undefined;
+      panelOne.slim = undefined;
+      panelTwo.slim = undefined;
+      panelOne.borderless = undefined;
+      panelTwo.borderless = undefined;
+    });
+
     it('subscribes to each panels toggle event', () => {
       spyOn(panelOne.toggle, 'subscribe').and.callThrough();
       spyOn(panelTwo.toggle, 'subscribe').and.callThrough();
@@ -83,13 +92,81 @@ describe('AccordionComponent', () => {
 
     it('sets the slim property on the panel', () => {
       expect(component.slim).toBe(false);
-      expect(panelOne.slim).toBe(false);
+      expect(panelOne.slim).toBe(undefined);
+      expect(panelTwo.slim).toBe(undefined);
 
       component.slim = true;
       component.ngAfterContentInit();
 
       expect(component.slim).toBe(true);
       expect(panelOne.slim).toBe(component.slim);
+      expect(panelTwo.slim).toBe(component.slim);
+    });
+
+    it('does NOT override the slim property if explicitly set on the panel', () => {
+      expect(component.slim).toBe(false);
+      expect(panelOne.slim).toBe(undefined);
+      expect(panelTwo.slim).toBe(undefined);
+
+      component.slim = false;
+      panelOne.slim = true;
+      component.ngAfterContentInit();
+
+      expect(component.slim).toBe(false);
+      expect(panelOne.slim).toBe(true);
+      expect(panelTwo.slim).toBe(false);
+    });
+
+    it('sets the borderless property on the panel', () => {
+      expect(component.borderless).toBe(false);
+      expect(panelOne.borderless).toBeUndefined();
+      expect(panelTwo.borderless).toBeUndefined();
+
+      component.ngAfterContentInit();
+
+      expect(component.borderless).toBe(false);
+      expect(panelOne.borderless).toBe(false);
+      expect(panelTwo.borderless).toBe(false);
+    });
+
+    it('does NOT override theme borderless if explicitly set on the panel', () => {
+      expect(component.borderless).toBe(false);
+      expect(panelOne.borderless).toBeUndefined();
+      expect(panelTwo.borderless).toBeUndefined();
+
+      panelOne.borderless = true;
+      component.ngAfterContentInit();
+
+      expect(component.borderless).toBe(false);
+      expect(panelOne.borderless).toBe(true);
+      expect(panelTwo.borderless).toBe(false);
+    });
+
+    it('sets the theme property on the panel', () => {
+      expect(component.theme).toBe('light');
+      expect(panelOne.theme).toBeUndefined();
+      expect(panelTwo.theme).toBeUndefined();
+
+      component.theme = 'dark';
+      component.ngAfterContentInit();
+
+      expect(component.theme).toBe('dark');
+      expect(panelOne.theme).toBe('dark');
+      expect(panelTwo.theme).toBe('dark');
+    });
+
+    it('does NOT override theme property if explicitly set on the panel', () => {
+      expect(component.theme).toBe('light');
+      expect(panelOne.theme).toBeUndefined();
+      expect(panelTwo.theme).toBeUndefined();
+
+      component.theme = 'dark';
+      panelOne.theme = 'light';
+      component.ngAfterContentInit();
+
+      expect(component.theme).toBe('dark');
+      expect(panelOne.theme).toBe('light');
+      expect(panelTwo.theme).toBe('dark');
     });
 
     it('sets isFirst to true and isLast to false on the first panel in the accordion', () => {

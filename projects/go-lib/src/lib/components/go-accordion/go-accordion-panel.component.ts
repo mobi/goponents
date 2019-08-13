@@ -18,16 +18,17 @@ import { accordionAnimation } from '../../animations/accordion.animation';
   ]
 })
 export class GoAccordionPanelComponent implements OnInit {
-  @Input() borderless: boolean = false;
+  @Input() borderless: boolean;
   @Input() expanded: boolean = false;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
   @Input() isLast: boolean = false;
-  @Input() slim: boolean = false;
+  @Input() slim: boolean;
+  @Input() theme: 'dark' | 'light';
   @Input() title: string;
 
-  @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
+  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
@@ -38,10 +39,19 @@ export class GoAccordionPanelComponent implements OnInit {
 
   containerClasses(): object {
     return {
-      'go-accordion-panel--borderless': this.borderless,
-      'go-accordion-panel--active': this.expanded,
-      'go-accordion-panel--first': this.isFirst,
-      'go-accordion-panel--last': this.isLast,
+      'go-accordion-panel--active': this.expanded === true,
+      'go-accordion-panel--borderless': this.borderless === true,
+      'go-accordion-panel--dark': this.theme === 'dark',
+      'go-accordion-panel--first': this.isFirst === true,
+      'go-accordion-panel--last': this.isLast === true,
+    };
+  }
+
+  headerClasses(): object {
+    return {
+      'go-accordion-panel__header--active': this.expanded === true,
+      'go-accordion-panel__header--dark': this.theme === 'dark',
+      'go-accordion-panel__header--slim': this.slim === true
     };
   }
 }

@@ -44,6 +44,7 @@ describe('GoAccordionPanelComponent', () => {
     beforeEach(() => {
       expect(component.containerClasses()).toEqual({
         'go-accordion-panel--borderless': false,
+        'go-accordion-panel--dark': false,
         'go-accordion-panel--active': false,
         'go-accordion-panel--first': false,
         'go-accordion-panel--last': false
@@ -53,45 +54,75 @@ describe('GoAccordionPanelComponent', () => {
     it('sets the go-accordion-panel--borderless class if borderless is true', () => {
       component.borderless = true;
 
-      expect(component.containerClasses()).toEqual({
-        'go-accordion-panel--borderless': true,
-        'go-accordion-panel--active': false,
-        'go-accordion-panel--first': false,
-        'go-accordion-panel--last': false
-      });
+      const containerClasses: object = component.containerClasses();
+
+      expect(containerClasses['go-accordion-panel--borderless']).toBe(true);
     });
 
     it('sets the go-accordion-panel--active class if expanded is true', () => {
       component.expanded = true;
 
-      expect(component.containerClasses()).toEqual({
-        'go-accordion-panel--borderless': false,
-        'go-accordion-panel--active': true,
-        'go-accordion-panel--first': false,
-        'go-accordion-panel--last': false
-      });
+      const containerClasses: object = component.containerClasses();
+
+      expect(containerClasses['go-accordion-panel--active']).toBe(true);
+    });
+
+    it('sets the go-accordion-panel--dark class if theme is "dark"', () => {
+      component.theme = 'dark';
+
+      const containerClasses: object = component.containerClasses();
+
+      expect(containerClasses['go-accordion-panel--dark']).toBe(true);
     });
 
     it('sets the go-accordion-panel--first class if expanded is true', () => {
       component.isFirst = true;
 
-      expect(component.containerClasses()).toEqual({
-        'go-accordion-panel--borderless': false,
-        'go-accordion-panel--active': false,
-        'go-accordion-panel--first': true,
-        'go-accordion-panel--last': false
-      });
+      const containerClasses: object = component.containerClasses();
+
+      expect(containerClasses['go-accordion-panel--first']).toBe(true);
     });
 
     it('sets the go-accordion-panel--last class if expanded is true', () => {
       component.isLast = true;
 
-      expect(component.containerClasses()).toEqual({
-        'go-accordion-panel--borderless': false,
-        'go-accordion-panel--active': false,
-        'go-accordion-panel--first': false,
-        'go-accordion-panel--last': true
+      const containerClasses: object = component.containerClasses();
+
+      expect(containerClasses['go-accordion-panel--last']).toBe(true);
+    });
+  });
+
+  describe('headerClasses', () => {
+    beforeEach(() => {
+      expect(component.headerClasses()).toEqual({
+        'go-accordion-panel__header--active': false,
+        'go-accordion-panel__header--dark': false,
+        'go-accordion-panel__header--slim': false
       });
+    });
+
+    it('sets the go-accordion-panel__header--active class if expanded is true', () => {
+      component.expanded = true;
+
+      const headerClasses: object = component.headerClasses();
+
+      expect(headerClasses['go-accordion-panel__header--active']).toBe(true);
+    });
+
+    it('sets the go-accordion-panel__header--dark class if theme is dark', () => {
+      component.theme = 'dark';
+
+      const headerClasses: object = component.headerClasses();
+
+      expect(headerClasses['go-accordion-panel__header--dark']).toBe(true);
+    });
+
+    it('sets the go-accordion-panel__header--slim class if slim is true', () => {
+      component.slim = true;
+
+      const headerClasses: object = component.headerClasses();
+
+      expect(headerClasses['go-accordion-panel__header--slim']).toBe(true);
     });
   });
 

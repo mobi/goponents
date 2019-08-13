@@ -47,6 +47,12 @@
   border-radius: 0;
 }
 
+.go-accordion-panel--dark {
+  background: $theme-dark-bg;
+  border-color: $theme-dark-border;
+  color: $theme-dark-color;
+}
+
 .go-accordion-panel__header {
   @include transition(background-color);
 
@@ -59,10 +65,18 @@
   &:hover {
     background-color: $theme-light-bg-hover;
   }
+
+  &.go-accordion-panel__header--dark:hover {
+    background-color: $theme-dark-bg-hover;
+  }
 }
 
 .go-accordion-panel__header--active {
-  background: $theme-light-bg-active;
+  background-color: $theme-light-bg-active;
+
+  &.go-accordion-panel__header--dark {
+    background-color: $theme-dark-bg-active;
+  }
 }
 
 .go-accordion-panel__header--slim {
