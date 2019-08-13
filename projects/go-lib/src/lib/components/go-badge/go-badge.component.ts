@@ -7,17 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class GoBadgeComponent {
   @Input() badgeData: string;
-  @Input() badgeColor: string;
-  constructor() { }
+  @Input() badgeColor: string = 'neutral';
+  @Input() displayData: boolean = true;
 
-  getColor() {
-    switch (this.badgeColor) {
-      case 'positive':
-        return 'go-badge--positive';
-      case 'negative':
-        return 'go-badge--negative';
-      default:
-        return 'go-badge--neutral';
-    }
+  badgeClasses(): object {
+    return {
+      'go-badge--positive': this.badgeColor === 'positive',
+      'go-badge--negative': this.badgeColor === 'negative',
+      'go-badge--neutral': this.badgeColor === 'neutral',
+      'go-badge--dot': !this.displayData
+    };
   }
 }
