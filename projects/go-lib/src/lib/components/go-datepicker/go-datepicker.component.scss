@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.go-datepicker {
+  position: relative;
+}
+
+.go-datepicker__toggle {
+  right: 1rem;
+  position: absolute;
+}
