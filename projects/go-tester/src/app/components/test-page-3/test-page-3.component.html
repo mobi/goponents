@@ -86,6 +86,20 @@
                   placeholder="Some notes or something."
                   [control]="form.controls.notes"
                 ></go-text-area>
+                <go-datepicker [control]="form.controls.date"
+                               label="DOB"
+                               [hints]="['Date of Birth']"
+                               locale="de">
+                </go-datepicker>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  [control]="form.controls.date"
+                  label="DOB"
+                  [hints]="['Date of Birth']"
+                  locale="de">
+                </go-datepicker>
               </div>
 
               <div class="go-column go-column--100">

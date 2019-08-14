@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class TestPage3Component {
   form: FormGroup = new FormGroup({
+    date: new FormControl({ value: '', disabled: false }, Validators.required),
     food: new FormGroup({
       apples: new FormControl(''),
       bananas: new FormControl('')
@@ -42,7 +43,8 @@ export class TestPage3Component {
       ],
       notes: [{ message: 'test' }],
       radio: [{message: 'some test error'}],
-      food: [{message: 'some test error'}]
+      food: [{message: 'some test error'}],
+      date: [{message: 'This is not a date'}]
     };
 
     this.setErrors(errorResponse);

@@ -17,6 +17,7 @@ export class TestPage2Component implements OnInit {
   shopping: boolean = false;
   loaderType: string = 'neutral';
   loading: boolean = true;
+  date: Date = new Date();
 
   constructor(private goToasterService: GoToasterService) { }
 
