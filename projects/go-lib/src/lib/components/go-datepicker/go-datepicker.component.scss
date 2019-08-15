@@ -1,4 +1,36 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@tangoe/gosheets/base/_variables';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: (
+  500: $ui-color-neutral,
+  contrast: (
+    500: $theme-light-bg
+  )
+);
+
+$accent: (
+  500: $ui-color-positive,
+  contrast: (
+    500: $theme-light-bg
+  )
+);
+
+$negative: (
+  500: $ui-color-negative,
+  contrast: (
+    500: $theme-light-bg
+  )
+);
+
+$theme-primary: mat-palette($primary);
+$theme-accent:  mat-palette($accent);
+$theme-warn:    mat-palette($negative);
+
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+@include angular-material-theme($theme);
 
 .go-datepicker {
   position: relative;
@@ -6,5 +38,6 @@
 
 .go-datepicker__toggle {
   right: 1rem;
+  top: .25rem;
   position: absolute;
 }

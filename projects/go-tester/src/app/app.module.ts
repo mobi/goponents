@@ -40,7 +40,6 @@ import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-
 import { TestPage1Component } from './components/test-page-1/test-page-1.component';
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
 import { TestPage3Component } from './components/test-page-3/test-page-3.component';
-import { AppGuard } from './app.guard';
 
 @NgModule({
   declarations: [
