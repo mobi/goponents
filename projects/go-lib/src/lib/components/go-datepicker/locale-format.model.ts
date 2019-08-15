@@ -11,8 +11,12 @@ export class LocaleFormat {
       year = century + year;
     }
 
+    if (!this.validDate(month, day, year)) {
+      return null;
+    }
+
     // Create a new date with the correct year month and date values based on the locale of the datepicker
-    return new Date(year, month - 1, day, 12);
+    return new Date(year, month - 1, day);
   }
 
   static format(locale: string): string {
@@ -32,5 +36,16 @@ export class LocaleFormat {
 
   static century(): number {
     return parseInt((new Date().getFullYear().toString().slice(0, 2) + '00'), 10);
+  }
+
+  static validDate(month: number, day: number, year: number): boolean {
+    const validDays: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (day <= validDays[month - 1]) {
+      return true;
+    }
+    if (year % 4 === 0 && month === 2 && day === 29) {
+      return true;
+    }
+    return false;
   }
 }

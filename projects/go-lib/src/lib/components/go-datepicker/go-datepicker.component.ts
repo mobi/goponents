@@ -32,5 +32,11 @@ export class GoDatepickerComponent implements OnInit {
       // The araibic character set is completely different so we just won't show this here
       this.placeholder = LocaleFormat.format(this.locale);
     }
+
+    this.control.valueChanges.subscribe((value: Date) => {
+      if (!value && this.datepickerInput.nativeElement.value) {
+        this.control.setErrors({ format: 'format is invalid' });
+      }
+    });
   }
 }
