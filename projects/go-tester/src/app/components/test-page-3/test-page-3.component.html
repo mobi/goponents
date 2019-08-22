@@ -17,6 +17,12 @@
                         [parentFormGroup]="form"
                         [errors]="formErrors.name">
               </go-input>
+              <go-text-area controlName="notes"
+                            label="Notes"
+                            [hints]="['Give us a full description']"
+                            [parentFormGroup]="form"
+                            [errors]="formErrors.notes">
+              </go-text-area>
             </div>
 
             <div class="go-column go-column--100">
