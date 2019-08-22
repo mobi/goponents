@@ -1,4 +1,4 @@
-<div
+<section
   class="go-accordion-panel"
   [ngClass]="containerClasses()"
 >
@@ -8,14 +8,14 @@
     [ngClass]="headerClasses()"
     (click)="toggle.emit()"
   >
-    <span class="go-accordion-panel__title">
+    <div class="go-accordion-panel__title">
       <go-icon
         *ngIf="icon"
         [icon]="icon"
         class="go-accordion-panel__title-icon"
       ></go-icon>
-      <h2 class="go-accordion-panel__title-text">{{ heading }}</h2>
-    </span>
+      <h1 class="go-accordion-panel__title-text">{{ heading }}</h1>
+    </div>
 
     <go-icon
       class="go-accordion-panel__control"
@@ -32,4 +32,4 @@
       <ng-content></ng-content>
     </div>
   </div>
-</div>
+</section>
