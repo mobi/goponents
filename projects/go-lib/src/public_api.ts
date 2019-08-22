@@ -22,6 +22,11 @@ export * from './lib/components/go-button/go-button.module';
 export * from './lib/components/go-card/go-card.component';
 export * from './lib/components/go-card/go-card.module';
 
+// Checkbox
+export * from './lib/components/go-checkbox/go-checkbox.component';
+export * from './lib/components/go-checkbox/go-checkbox.module';
+export * from './lib/components/go-checkbox/go-checkbox-group.component';
+
 // Header
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';
