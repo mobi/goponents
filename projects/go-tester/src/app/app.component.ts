@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
   menuItems: Array<NavGroup | NavItem> = [
     { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
       { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
-      { route: 'test-page-2', routeTitle: 'Test 2' }
+      { route: 'test-page-2', routeTitle: 'Test 2' },
+      { route: 'test-page-3', routeTitle: 'Test 3', description: 'Forms' }
     ]}
   ];
 

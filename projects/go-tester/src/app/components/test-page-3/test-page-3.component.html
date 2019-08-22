@@ -1,0 +1,33 @@
+<section class="go-container">
+  <div class="go-column go-column--100">
+    <h2 class="go-heading-2">
+      Form
+    </h2>
+    <hr>
+  </div>
+  <div class="go-column go-column--100">
+    <go-card>
+      <ng-container go-card-content>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form" *ngIf="form">
+          <section class="go-container">
+            <div class="go-column go-column--50">
+              <go-input controlName="name"
+                        label="Name"
+                        [hints]="['we need your full name here']"
+                        [parentFormGroup]="form"
+                        [errors]="formErrors.name">
+              </go-input>
+            </div>
+
+            <div class="go-column go-column--100">
+              <go-button buttonType='submit'
+                         buttonVariant='positive'>
+                Save
+              </go-button>
+            </div>
+          </section>
+        </form>
+      </ng-container>
+    </go-card>
+  </div>
+</section>
