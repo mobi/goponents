@@ -1,0 +1,13 @@
+<div>
+  <input [id]="id"
+         class="go-form__checkbox"
+         [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+         type="checkbox"
+         [formControl]="control">
+
+  <label [for]="id"
+         class="go-form__label go-form__label--inline"
+         [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+    {{ label }}
+  </label>
+</div>

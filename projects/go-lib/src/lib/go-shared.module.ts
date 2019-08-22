@@ -19,6 +19,7 @@ import { GoInputModule } from './components/go-input/go-input.module';
 import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
 import { GoRadioModule } from './components/go-radio/go-radio.module';
 import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-toggle.module';
+import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-to
     GoActionSheetModule,
     GoButtonModule,
     GoCardModule,
+    GoCheckboxModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
@@ -47,6 +49,7 @@ import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-to
     GoAccordionModule,
     GoButtonModule,
     GoCardModule,
+    GoCheckboxModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
