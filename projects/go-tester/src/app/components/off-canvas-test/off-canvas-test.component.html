@@ -1,0 +1,49 @@
+<div class="go-container">
+  <go-accordion
+    [showIcons]="false"
+    theme="dark"
+    [slim]="true"
+    class="go-column go-column--100"
+  >
+    <go-accordion-panel title="Test 1" icon="home" expanded="true">
+      <form class="go-form go-form--dark">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <label for="first-name-input" class="go-form__label">First Name</label>
+            <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">
+          </div>
+          <div class="go-column go-column--50">
+            <label for="last-name-input" class="go-form__label">Last Name</label>
+            <input class="go-form__input" id="last-name-input" placeholder="Appleseed" type="text">
+          </div>
+          <div class="go-column go-column--100">
+            <label for="email-input" class="go-form__label">Email</label>
+            <input class="go-form__input" id="email-input" placeholder="your@email.com" type="email">
+          </div>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <label for="password-input" class="go-form__label">Password</label>
+            <input class="go-form__input" id="password-input" placeholder="**************" type="password">
+          </div>
+        </div>
+      </form>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 2" icon="settings">
+      <p class="go-body-copy">This is a second thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 3" icon="landscape">
+      <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+  </go-accordion>
+
+  <go-accordion [showIcons]="true" class="go-column go-column--100">
+    <go-accordion-panel title="Test 1" icon="home" expanded="true">
+      <p class="go-body-copy">This is some content for Test 1.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 2" icon="settings">
+      <p class="go-body-copy">This is a second thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 3" icon="landscape">
+      <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+  </go-accordion>
+</div>

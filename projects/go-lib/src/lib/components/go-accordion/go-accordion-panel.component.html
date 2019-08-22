@@ -1,16 +1,35 @@
-<div class="go-accordion-panel" [ngClass]="{ 'go-accordion-panel--active': expanded, 'go-accordion-panel--inactive': !expanded }">
-  <header class="go-accordion-panel__title-bar" (click)="toggle.emit()" aria-expanded="expanded">
-    <span class="go-accordion-panel__title">
-      <span *ngIf="icon" class="material-icons go-accordion-panel__title-icon">{{ icon }}</span>
-      <span class="go-accordion-panel__title-text" [innerHtml]="title"></span>
-    </span>
-    <span class="go-accordion-panel__control">
-      <span class="material-icons go-accordion-panel__control-icon">expand_more</span>
-    </span>
+<section
+  class="go-accordion-panel"
+  [ngClass]="containerClasses()"
+>
+  <header
+    aria-expanded="expanded"
+    class="go-accordion-panel__header"
+    [ngClass]="headerClasses()"
+    (click)="toggle.emit()"
+  >
+    <div class="go-accordion-panel__title">
+      <go-icon
+        *ngIf="icon"
+        [icon]="icon"
+        class="go-accordion-panel__title-icon"
+      ></go-icon>
+      <h1 class="go-accordion-panel__title-text">{{ heading }}</h1>
+    </div>
+
+    <go-icon
+      class="go-accordion-panel__control"
+      icon="expand_more"
+      [ngClass]="{'go-accordion-panel__control--active': expanded}"
+    ></go-icon>
   </header>
-  <div class="go-accordion-panel__content-container">
-    <div class="go-accordion-panel__content">
+
+  <div [@accordionAnimation]="expanded ? 'open' : 'close'">
+    <div
+      class="go-accordion-panel__content"
+      [ngClass]="{'go-accordion-panel__content--slim': slim }"
+    >
       <ng-content></ng-content>
     </div>
   </div>
-</div>
+</section>
