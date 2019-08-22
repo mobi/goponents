@@ -5,10 +5,11 @@ import {
   GoModalService,
   GoOffCanvasService,
   GoSideNavService,
+  GoToasterService,
   NavGroup,
-  NavItem,
-  GoToasterService
+  NavItem
 } from '../../../go-lib/src/public_api';
+import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-test.component';
 
 @Component({
   selector: 'app-root',
@@ -40,10 +41,8 @@ export class AppComponent implements OnInit {
 
   openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: GoIconComponent,
-      bindings: {
-        icon: 'alarm'
-      }
+      component: OffCanvasTestComponent,
+      bindings: {}
     });
   }
 
