@@ -78,6 +78,14 @@ describe('AccordionComponent', () => {
       panelTwo.slim = undefined;
       panelOne.borderless = undefined;
       panelTwo.borderless = undefined;
+
+      spyOn(panelOne, 'updateClasses');
+      spyOn(panelTwo, 'updateClasses');
+    });
+
+    afterEach(() => {
+      expect(panelOne.updateClasses).toHaveBeenCalled();
+      expect(panelTwo.updateClasses).toHaveBeenCalled();
     });
 
     it('subscribes to each panels toggle event', () => {
@@ -171,12 +179,14 @@ describe('AccordionComponent', () => {
 
     it('sets isFirst to true and isLast to false on the first panel in the accordion', () => {
       expect(component.panels.length).toBe(2);
+      component.ngAfterContentInit();
       expect(panelOne.isFirst).toBe(true);
       expect(panelOne.isLast).toBe(false);
     });
 
     it('sets isFirst to false and isLast to true on the last panel in the accordion', () => {
       expect(component.panels.length).toBe(2);
+      component.ngAfterContentInit();
       expect(panelTwo.isFirst).toBe(false);
       expect(panelTwo.isLast).toBe(true);
     });
@@ -212,18 +222,28 @@ describe('AccordionComponent', () => {
           isn't a toggle event emitter on the panel.
         `);
       }
+
+      spyOn(panelOne, 'updateClasses');
+      spyOn(panelTwo, 'updateClasses');
     });
 
     it('closes if it is open', () => {
       expect(panelOne.expanded).toBe(false);
+
       panelOne.toggle.emit();
+
       expect(panelOne.expanded).toBe(true);
+      expect(panelOne.updateClasses).toHaveBeenCalled();
+      expect(panelTwo.updateClasses).toHaveBeenCalled();
     });
 
     it('opens if it is closed', () => {
       panelOne.expanded = true;
+
       panelOne.toggle.emit();
+
       expect(panelOne.expanded).toBe(false);
+      expect(panelOne.updateClasses).toHaveBeenCalled();
     });
 
     describe('if multiExpand is false', () => {
@@ -240,6 +260,8 @@ describe('AccordionComponent', () => {
 
         expect(panelOne.expanded).toBe(false);
         expect(panelTwo.expanded).toBe(true);
+        expect(panelOne.updateClasses).toHaveBeenCalled();
+        expect(panelTwo.updateClasses).toHaveBeenCalled();
       });
     });
 
@@ -257,6 +279,7 @@ describe('AccordionComponent', () => {
 
         expect(panelOne.expanded).toBe(true);
         expect(panelTwo.expanded).toBe(true);
+        expect(panelTwo.updateClasses).toHaveBeenCalled();
       });
     });
   });

@@ -1,11 +1,11 @@
 <section
   class="go-accordion-panel"
-  [ngClass]="containerClasses()"
+  [ngClass]="containerClasses"
 >
   <header
     aria-expanded="expanded"
     class="go-accordion-panel__header"
-    [ngClass]="headerClasses()"
+    [ngClass]="headerClasses"
     (click)="toggle.emit()"
   >
     <div class="go-accordion-panel__title">

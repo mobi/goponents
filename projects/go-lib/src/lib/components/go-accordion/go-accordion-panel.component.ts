@@ -4,7 +4,8 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnChanges
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -17,7 +18,7 @@ import { accordionAnimation } from '../../animations/accordion.animation';
     accordionAnimation
   ]
 })
-export class GoAccordionPanelComponent implements OnInit {
+export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Input() borderless: boolean;
   @Input() expanded: boolean = false;
   @Input() heading: string;
@@ -30,6 +31,9 @@ export class GoAccordionPanelComponent implements OnInit {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
+  containerClasses: object;
+  headerClasses: object;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -37,18 +41,20 @@ export class GoAccordionPanelComponent implements OnInit {
     this.heading = this.heading || this.title;
   }
 
-  containerClasses(): object {
-    return {
+  ngOnChanges(): void {
+    this.updateClasses();
+  }
+
+  updateClasses(): void {
+    this.containerClasses = {
       'go-accordion-panel--active': this.expanded === true,
       'go-accordion-panel--borderless': this.borderless === true,
       'go-accordion-panel--dark': this.theme === 'dark',
       'go-accordion-panel--first': this.isFirst === true,
       'go-accordion-panel--last': this.isLast === true,
     };
-  }
 
-  headerClasses(): object {
-    return {
+    this.headerClasses = {
       'go-accordion-panel__header--active': this.expanded === true,
       'go-accordion-panel__header--dark': this.theme === 'dark',
       'go-accordion-panel__header--slim': this.slim === true

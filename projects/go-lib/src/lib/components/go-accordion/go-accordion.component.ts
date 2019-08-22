@@ -47,6 +47,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
       // NOTE: This feels a little destructive.
       // We lose track of the icon explicitly set by the child component.
       panel.icon = this.showIcons ? panel.icon : null;
+      panel.updateClasses();
     });
   }
   //#endregion
@@ -74,10 +75,12 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
 
   private openPanel(panel: GoAccordionPanelComponent): void {
     panel.expanded = true;
+    panel.updateClasses();
   }
 
   private closePanel(panel: GoAccordionPanelComponent): void {
     panel.expanded = false;
+    panel.updateClasses();
   }
   //#endregion
 }
