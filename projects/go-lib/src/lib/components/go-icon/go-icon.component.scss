@@ -1,0 +1,54 @@
+@import "~@tangoe/gosheets/base/variables";
+@import "~@tangoe/gosheets/base/mixins";
+
+$icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
+
+// This .go-icon selector styles are borrowed verbatim from the material
+// icons documentation and applied to our own bem style block class.
+.go-icon {
+  // sass-lint:disable-block no-vendor-prefixes property-sort-order
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  // Support for all WebKit browsers.
+  -webkit-font-smoothing: antialiased;
+
+  // Support for Safari and Chrome.
+  text-rendering: optimizeLegibility;
+
+  // Support for Firefox.
+  -moz-osx-font-smoothing: grayscale;
+
+  // Support for IE.
+  font-feature-settings: 'liga';
+}
+
+.go-icon--light {
+  @include fill-text-background($color: $theme-light-border);
+}
+
+.go-icon--negative {
+  @include fill-text-background($ui-color-negative-gradient, $ui-color-negative);
+}
+
+.go-icon--neutral {
+  @include fill-text-background($ui-color-neutral-gradient, $ui-color-neutral);
+}
+
+.go-icon--positive {
+  @include fill-text-background($ui-color-positive-gradient, $ui-color-positive);
+}
+
+@each $name, $size in $icon-sizes {
+  .go-icon--#{$name} {
+    font-size: $size;
+  }
+}
