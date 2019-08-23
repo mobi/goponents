@@ -1,5 +1,4 @@
 import { configure } from '@storybook/angular';
-import 'storybook-chromatic';
 
 import '!style-loader!css-loader!sass-loader!@tangoe/gosheets/gosheets.scss';
 import '!style-loader!css-loader!material-design-icons/iconfont/material-icons.css';
