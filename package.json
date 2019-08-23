@@ -39,7 +39,6 @@
     "@angular/platform-browser": "~7.2.15",
     "@angular/platform-browser-dynamic": "~7.2.15",
     "@angular/router": "~7.2.15",
-    "@tangoe/gosheets": "^1.0.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "npm": "^6.10.1",
