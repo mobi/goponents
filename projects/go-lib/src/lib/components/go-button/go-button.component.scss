@@ -1,10 +1,45 @@
 @import '../../../styles/variables';
-@import "~@tangoe/gosheets/base/mixins";
 
 $button__border-width: 4px;
 $button__background--hover: rgba($theme-light-border, .1);
 $button__background--disabled: rgba($theme-light-border, .3);
 $button__background--loading: rgba($theme-light-border, .4);
+
+@mixin go-button-mutator(
+  $dark-modifier: false,
+  $dark-theme: false,
+  $from: $theme-light-border,
+  $gradient: null,
+  $hover-background: false,
+  $loading-modifier: false,
+  $to: $theme-light-border
+) {
+  $color-gradient: if($gradient, $gradient, linear-gradient(to bottom, $from, $to));
+  $dark-gradient: linear-gradient($theme-dark-bg, $theme-dark-bg);
+  $light-gradient: linear-gradient($theme-light-bg, $theme-light-bg);
+  $selected-gradient: if($dark-theme, $dark-gradient, $light-gradient);
+
+  background-image: $selected-gradient, $color-gradient;
+
+  @if ($dark-modifier) {
+    &.go-button--dark {
+      background-image: $dark-gradient, $color-gradient;
+    }
+  }
+
+  @if (type-of($loading-modifier) == color) {
+    &.go-button--loading::before {
+      background: linear-gradient(to right, transparent, $loading-modifier, transparent);
+      background-size: 1000px 100%;
+    }
+  }
+
+  @if (type-of($hover-background) == color) {
+    &:hover:not(.go-button--loading)::before {
+      background: $hover-background;
+    }
+  }
+}
 
 .go-button {
   @include go-button-mutator;

@@ -17,3 +17,34 @@ $z-index: (
 @function z-index($key) {
   @return map-get($z-index, $key);
 }
+
+@mixin fill-text-background($fill: null, $color: $base-dark) {
+  // sass-lint:disable-block no-vendor-prefixes property-sort-order
+  color: $color;
+
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    @if ($fill) {
+      background: $fill;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    } @else {
+      background: transparent;
+      background-clip: border-box;
+      -webkit-background-clip: border-box;
+      -webkit-text-fill-color: currentcolor;
+    }
+  }
+}
+
+@mixin transition(
+  $property: all,
+  $duration: $global-transition-duration,
+  $timing: $global-transition-timing
+) {
+  transition: {
+    duration: $global-transition-duration;
+    property: $property;
+    timing-function: $timing;
+  };
+}

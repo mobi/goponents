@@ -1,5 +1,6 @@
 @import '../../../../styles/variables';
-@import '~@tangoe/gosheets/base/_mixins';
+@import '../../../../styles/mixins';
+
 $base-medium: #767676 !default;
 
 .go-panel {
