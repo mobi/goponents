@@ -1,4 +1,3 @@
-@import '~@tangoe/gosheets/base/_variables';
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
@@ -176,8 +175,7 @@ go-accordion-panel {
   position: relative;
 
   &::before {
-    background: $brand-color-gradient;
-    background-color: $brand-color;
+    background: $base-primary;
     content: " ";
     height: 100%;
     left: 0;

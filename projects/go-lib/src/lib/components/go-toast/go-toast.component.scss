@@ -1,4 +1,4 @@
-@import '~@tangoe/gosheets/base/_variables';
+@import '../../../styles/variables';
 @import '../../../styles/mixins';
 
 .go-toast {
@@ -85,7 +85,7 @@
   border-radius: 50%;
   color: $theme-light-border;
   cursor: pointer;
-  display: block; 
+  display: block;
   outline: none;
   padding: 0.5rem;
   user-select: none;

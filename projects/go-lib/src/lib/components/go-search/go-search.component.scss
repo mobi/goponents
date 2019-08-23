@@ -1,4 +1,4 @@
-@import '~@tangoe/gosheets/base/variables';
+@import '../../../styles/variables';
 @import '~@tangoe/gosheets/base/mixins';
 @import '../../../styles/mixins';
 
@@ -13,12 +13,12 @@
 :host.go-search__parent {
   @media (max-width: $breakpoint-tablet) {
     width: 100%;
-  } 
+  }
 }
 
 .go-search__container {
   @include transition(all);
-  
+
   background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: 1rem;
@@ -31,7 +31,7 @@
   // height of input + border, halfed
   width: 500px;
   z-index: z-index(search);
-  
+
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
   }
@@ -104,7 +104,7 @@
   &::placeholder {
     color: $theme-light-color;
   }
-  
+
   &:active, &:focus {
     outline: none;
   }
