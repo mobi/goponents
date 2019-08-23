@@ -1,0 +1,176 @@
+@import "~@tangoe/gosheets/base/variables";
+@import "~@tangoe/gosheets/base/mixins";
+
+$button__border-width: 4px;
+$button__background--hover: rgba($theme-light-border, .1);
+$button__background--disabled: rgba($theme-light-border, .3);
+$button__background--loading: rgba($theme-light-border, .4);
+
+.go-button {
+  @include go-button-mutator;
+
+  background-origin: padding-box, border-box; // This is important
+  background-repeat: no-repeat; // This is important
+  border: $button__border-width solid transparent;
+  border-radius: $global-radius;
+  color: $base-dark;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $heading-font-stack;
+  font-size: .875rem;
+  letter-spacing: .015rem;
+  line-height: 1rem;
+  outline-color: $theme-light-border;
+  outline-offset: -2px;
+  padding: $column-gutter--half $column-gutter;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color $global-transition-duration $global-transition-timing;
+
+  &::before {
+    border: ($button__border-width / 2) solid $base-light;
+    border-radius: $global-radius - 1;
+    bottom: -1px;
+    content: '';
+    left: -1px;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    transition: background $global-transition-duration $global-transition-timing;
+  }
+
+  &:hover,
+  &:disabled {
+    color: $base-dark-secondary;
+  }
+
+  &:hover:not(.go-button--loading)::before {
+    background: $button__background--hover;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include go-button-mutator;
+
+    cursor: not-allowed;
+
+    &:hover::before,
+    &::before {
+      background: $button__background--disabled;
+    }
+
+    .go-button__icon {
+      @include fill-text-background($color: $theme-light-border);
+    }
+  }
+
+  .go-button__icon {
+    font-size: 1.25rem;
+    line-height: 1rem;
+    margin-bottom: -.2rem;
+    margin-left: -$column-gutter--half;
+    margin-right: $column-gutter--quarter;
+    margin-top: -.2rem;
+    padding: .2rem 0;
+    vertical-align: top;
+  }
+}
+
+.go-button--dark {
+  @include go-button-mutator($dark-theme: true);
+
+  color: $theme-dark-text-color;
+
+  &::before {
+    border-color: $theme-dark-bg;
+  }
+
+  &:hover,
+  &:disabled {
+    color: $base-light;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include go-button-mutator(
+      $dark-theme: true,
+      $from: $base-dark-secondary,
+      $to: $base-dark-secondary
+    );
+
+    &:hover::before,
+    &::before {
+      background: rgba($base-dark-secondary, .4);
+    }
+  }
+}
+
+.go-button--loading {
+  color: $base-dark-secondary;
+  cursor: wait;
+
+  &::before {
+    animation: background-animation 1.75s linear infinite;
+    background: linear-gradient(to right, transparent, $button__background--loading, transparent);
+    background-position: -1000px 0;
+    background-repeat: repeat-x;
+    background-size: 1000px 100%;
+  }
+}
+
+.go-button--negative {
+  @include go-button-mutator(
+    $dark-modifier: true,
+    $gradient: $ui-color-negative-gradient,
+    $hover-background: $ui-background-negative,
+    $loading-modifier: rgba($ui-color-negative, .2)
+  );
+
+  outline-color: $ui-color-negative-active;
+}
+
+.go-button--neutral {
+  @include go-button-mutator(
+    $dark-modifier: true,
+    $gradient: $ui-color-neutral-gradient,
+    $hover-background: $ui-background-neutral,
+    $loading-modifier: rgba($ui-color-neutral, .2)
+  );
+
+  outline-color: $ui-color-neutral-active;
+}
+
+.go-button--positive {
+  @include go-button-mutator(
+    $dark-modifier: true,
+    $gradient: $ui-color-positive-gradient,
+    $hover-background: $ui-background-positive,
+    $loading-modifier: rgba($ui-color-positive, .3)
+  );
+
+  outline-color: $ui-color-positive-active;
+}
+
+@keyframes background-animation {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 1000px 0;
+  }
+}
+
+.go-button-group {
+  display: inline-flex;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+}
+
+.go-button-group__item {
+  margin-right: 0.5rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
