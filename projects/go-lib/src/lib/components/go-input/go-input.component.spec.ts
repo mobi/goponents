@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoInputComponent } from './go-input.component';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('GoInputComponent', () => {
   let component: GoInputComponent;
@@ -18,10 +18,8 @@ describe('GoInputComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoInputComponent);
     component = fixture.componentInstance;
-    component.controlName = 'testField';
-    component.parentFormGroup = new FormBuilder().group({
-      testField: ''
-    });
+    component.control = new FormControl('Some Value');
+
     fixture.detectChanges();
   });
 
