@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-page-3',
   templateUrl: './test-page-3.component.html'
 })
-export class TestPage3Component implements OnInit {
-  formErrors: {[k: string]: string[]} = {};
-  form: FormGroup;
+export class TestPage3Component {
+  form: FormGroup = new FormGroup({
+    name: new FormControl({ value: '', disabled: false }, Validators.required),
+    notes: new FormControl('')
+  });
 
-  constructor(
-    private fb: FormBuilder
-  ) { }
+  otherThing: FormControl = new FormControl('test');
+  testOtherThing: FormControl = new FormControl({ value: 'Disabled Input', disabled: true });
 
-  ngOnInit(): void {
-    this.buildForm();
-  }
+  constructor() { }
 
   onSubmit(): void {
-    this.setError('name', 'This is an invalid name');
-    this.setError('notes', 'This is an invalid desciption');
+    const errorResponse: object = {
+      name: [
+        {
+          message: 'This is a default error.'
+        },
+        {
+          type: 'A custom message',
+          message: 'This is an invalid name.'
+        }
+      ]
+    };
+    this.setErrors(errorResponse);
   }
 
-  private setError(formControlName: string, errorMessage: string): void {
-    if (this.formErrors[formControlName]) {
-      this.formErrors[formControlName] = null;
-      this.form.get(formControlName).setErrors(null);
-    } else {
-      this.formErrors[formControlName] = [errorMessage];
-      this.form.get(formControlName).setErrors({ errors: 'invalid' });
+  private setErrors(errorResponse: object): void {
+    for (const [input, errors] of Object.entries(errorResponse)) {
+      if (input in this.form.controls) {
+        this.form.controls[input].setErrors(errors);
+      }
     }
-  }
-
-  private buildForm(): void {
-    this.form = this.fb.group({
-      name: [''],
-      notes: ['']
-    });
   }
 }
