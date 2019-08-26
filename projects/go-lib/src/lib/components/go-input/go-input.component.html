@@ -1,12 +1,12 @@
 <div>
-  <label [attr.for]="id"
-         class="go-form__label"
+  <label class="go-form__label"
+         [attr.for]="id"
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
   </label>
-  <input [id]="id"
-         class="go-form__input"
-         [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
+  <input class="go-form__input"
+         [id]="id"
+         [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
          [type]="inputType"
          [placeholder]="placeholder"
          [formControl]="control">

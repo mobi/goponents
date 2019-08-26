@@ -9,6 +9,7 @@ export class GoInputComponent implements OnInit {
   id: string;
 
   @Input() control: FormControl;
+  @Input() inputId: string;
   @Input() hints: string[];
   @Input() inputType: string = 'text';
   @Input() label: string;
@@ -18,14 +19,14 @@ export class GoInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.generateId(this.label);
+    this.id = this.inputId || this.generateId(this.label);
   }
 
   private generateId(label: string): string {
     const labelText: string = label || 'input';
     const idArray: Array<string> = labelText.split(' ');
 
-    // NOTE: There is only a one in a million chance that this number is unique.
+    // NOTE: There is only a one in a million chance that this number is not unique.
     idArray.push(String(Math.round(Math.random() * 1000000)));
 
     return idArray.join('-');
