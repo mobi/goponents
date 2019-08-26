@@ -1,35 +1,34 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'go-input',
   templateUrl: './go-input.component.html'
 })
 export class GoInputComponent implements OnInit {
+  id: string;
 
-  @Input() controlName: string;
-  @Input() errors: string[];
-  @Input() errorStatus: string = 'Error:';
+  @Input() control: FormControl;
+  @Input() key: string;
   @Input() hints: string[];
-  @Input() inputDisabled: boolean;
   @Input() inputType: string = 'text';
   @Input() label: string;
-  @Input() parentFormGroup: FormGroup;
   @Input() placeholder: string = '';
   @Input() theme: string = 'light';
 
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.controlName) {
-      throw new Error('GoInput: controlName is a required Input');
-    }
-    if (!this.parentFormGroup) {
-      throw new Error('GoInput: parentFormGroup is a required Input');
-    }
+    this.id = this.key || this.generateId(this.label);
   }
 
-  controlIsValid(): boolean {
-    return !this.parentFormGroup.get(this.controlName).invalid;
+  private generateId(label: string): string {
+    const labelText: string = label || 'input';
+    const idArray: Array<string> = labelText.split(' ');
+
+    // NOTE: There is only a one in a million chance that this number is not unique.
+    idArray.push(String(Math.round(Math.random() * 1000000)));
+
+    return idArray.join('-');
   }
 }
