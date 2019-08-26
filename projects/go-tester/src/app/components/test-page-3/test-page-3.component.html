@@ -1,38 +1,50 @@
-<section class="go-container">
-  <div class="go-column go-column--100">
+<section>
+  <header>
     <h2 class="go-heading-2">
       Form
     </h2>
     <hr>
-  </div>
-  <div class="go-column go-column--100">
+  </header>
+  <div>
     <go-card>
       <ng-container go-card-content>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form" *ngIf="form">
-          <section class="go-container">
-            <div class="go-column go-column--50">
-              <go-input controlName="name"
-                        label="Name"
-                        [hints]="['we need your full name here']"
-                        [parentFormGroup]="form"
-                        [errors]="formErrors.name">
-              </go-input>
-              <go-text-area controlName="notes"
-                            label="Notes"
-                            [hints]="['Give us a full description']"
-                            [parentFormGroup]="form"
-                            [errors]="formErrors.notes">
-              </go-text-area>
-            </div>
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <go-input
+              label="Other Name"
+              [hints]="['we need your full name here']"
+              [control]="otherThing"
+            ></go-input>
+          </div>
+          <div class="go-column go-column--50">
+            <go-input
+              label="Test Other Name"
+              [hints]="['we need your full name here']"
+              [control]="testOtherThing"
+            ></go-input>
+          </div>
 
-            <div class="go-column go-column--100">
-              <go-button buttonType='submit'
-                         buttonVariant='positive'>
-                Save
-              </go-button>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form go-column go-column--100" *ngIf="form">
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-input
+                  label="Name"
+                  key="some-test"
+                  [hints]="['we need your full name here']"
+                  placeholder="Something"
+                  [control]="form.controls.name"
+                ></go-input>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-button buttonType='submit'
+                          buttonVariant='positive'>
+                  Save
+                </go-button>
+              </div>
             </div>
-          </section>
-        </form>
+          </form>
+        </div>
       </ng-container>
     </go-card>
   </div>
