@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { DateAdapter } from '@angular/material';
 import { AppDateAdapter } from './date-adapter.model';
 import { LocaleFormat } from './locale-format.model';
+import { UniqueIdentifier } from '../../helpers/unique-identifier.model';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -12,8 +13,11 @@ import { LocaleFormat } from './locale-format.model';
   providers: [{provide: DateAdapter, useClass: AppDateAdapter}]
 })
 export class GoDatepickerComponent implements OnInit {
+  id: string;
+
   @Input() control: FormControl;
   @Input() hints: string[];
+  @Input() key: string;
   @Input() label: string;
   @Input() locale: string = 'en-US';
   @Input() placeholder: string = '';
@@ -24,6 +28,8 @@ export class GoDatepickerComponent implements OnInit {
   constructor(private dateAdapter: DateAdapter<Date>) {}
 
   ngOnInit(): void {
+    this.id = this.key || UniqueIdentifier.generate(this.label);
+
     if (this.locale) {
       this.dateAdapter.setLocale(this.locale);
     }
