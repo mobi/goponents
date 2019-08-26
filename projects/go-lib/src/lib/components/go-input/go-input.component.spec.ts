@@ -18,10 +18,6 @@ describe('GoInputComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoInputComponent);
     component = fixture.componentInstance;
-    component.controlName = 'testField';
-    component.parentFormGroup = new FormBuilder().group({
-      testField: ''
-    });
     fixture.detectChanges();
   });
 

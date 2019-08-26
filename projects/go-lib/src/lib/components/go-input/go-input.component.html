@@ -1,25 +1,24 @@
-<div [formGroup]="parentFormGroup">
-  <label [for]="controlName"
+<div>
+  <label [attr.for]="id"
          class="go-form__label"
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
   </label>
-  <input [id]="controlName"
+  <input [id]="id"
          class="go-form__input"
-         [ngClass]="{'go-form__input--error': !controlIsValid(), 'go-form__input--dark': theme === 'dark'}"
-         [attr.disabled]="inputDisabled ? '' : null"
+         [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
          [type]="inputType"
          [placeholder]="placeholder"
-         [formControlName]="controlName">
+         [formControl]="control">
 
   <p *ngFor="let hint of hints" class="go-hint" [ngClass]="{'go-form__input--dark': theme === 'dark'}">
     {{ hint }}
   </p>
 
-  <div [ngClass]="{'go-form__input--dark': theme === 'dark'}" *ngIf="!controlIsValid()">
-    <p class="go-hint go-hint--error" *ngFor="let error of errors">
-      <span class="go-hint__status">{{ errorStatus }}</span>
-      {{ error }}
+  <div [ngClass]="{'go-form__input--dark': theme === 'dark'}" *ngIf="control?.errors?.length">
+    <p class="go-hint go-hint--error" *ngFor="let error of control.errors">
+      <span class="go-hint__status">{{ error.type || 'Error:' }}</span>
+      {{ error.message }}
     </p>
   </div>
 </div>
