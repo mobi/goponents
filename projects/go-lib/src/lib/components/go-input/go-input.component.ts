@@ -9,7 +9,7 @@ export class GoInputComponent implements OnInit {
   id: string;
 
   @Input() control: FormControl;
-  @Input() inputId: string;
+  @Input() key: string;
   @Input() hints: string[];
   @Input() inputType: string = 'text';
   @Input() label: string;
@@ -19,7 +19,7 @@ export class GoInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.inputId || this.generateId(this.label);
+    this.id = this.key || this.generateId(this.label);
   }
 
   private generateId(label: string): string {
