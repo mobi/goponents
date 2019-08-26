@@ -28,8 +28,16 @@
   color: $theme-dark-color;
 }
 
-.go-hint--error::before {
+.go-hint--negative::before {
   background-image: $ui-color-negative-gradient;
+}
+
+.go-hint--positive::before {
+  background-image: $ui-color-positive-gradient;
+}
+
+.go-hint--neutral::before {
+  background-image: $ui-color-neutral-gradient;
 }
 
 .go-hint__label {

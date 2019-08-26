@@ -10,13 +10,13 @@ export class GoHintComponent implements OnChanges, OnInit {
   hintClasses: object = {};
 
   @Input() label: string;
-  @Input() type: 'error' | 'info' | 'positive';
+  @Input() type: 'negative' | 'neutral' | 'positive';
   @Input() theme: 'light' | 'dark' = 'light';
   @Input() message: string;
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('type' in changes) {
-      ['error', 'info', 'positive'].forEach((type: string) => {
+      ['negative', 'neutral', 'positive'].forEach((type: string) => {
         this.hintClasses[`go-hint--${type}`] = changes.type.currentValue === type;
       });
     }
@@ -27,7 +27,7 @@ export class GoHintComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    if (this.type === 'error' && this.label === undefined) {
+    if (this.type === 'negative' && this.label === undefined) {
       this.label = 'Error:';
     }
   }
