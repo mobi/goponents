@@ -36,6 +36,26 @@
                 ></go-input>
               </div>
 
+              <div class="go-column go-column--50">
+                <go-radio-group
+                  label="Options"
+                  [hints]="['please select one']"
+                  [control]="form.controls.radio">
+                  <div>
+                    <go-radio-button
+                      label="really cool radio option here"
+                      formValue="option1">
+                    </go-radio-button>
+                  </div>
+                  <div>
+                    <go-radio-button
+                      label="Another really awesome option"
+                      formValue="option2">
+                    </go-radio-button>
+                  </div>
+                </go-radio-group>
+              </div>
+
               <div class="go-column go-column--100">
                 <go-text-area
                   label="Notes"

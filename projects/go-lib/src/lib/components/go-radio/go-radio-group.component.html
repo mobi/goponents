@@ -1,0 +1,17 @@
+<fieldset class="go-form__fieldset go-form__fieldset--no-margin" [attr.disabled]="control.disabled ? true : null">
+  <legend class="go-form__legend">{{ label }}</legend>
+    
+  <ng-content></ng-content>
+
+  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+  
+  <div *ngIf="control?.errors?.length">
+    <go-hint
+      *ngFor="let error of control.errors"
+      [message]="error.message"
+      [label]="error.type"
+      [theme]="theme"
+      type="negative"
+    ></go-hint>
+  </div>
+</fieldset>
