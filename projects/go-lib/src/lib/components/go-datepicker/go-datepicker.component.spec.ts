@@ -4,6 +4,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoDatepickerComponent } from './go-datepicker.component';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { MatDatepickerModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import { GoHintModule } from '../go-hint/go-hint.module';
 
 describe('GoDatepickerComponent', () => {
   let component: GoDatepickerComponent;
@@ -14,6 +15,7 @@ describe('GoDatepickerComponent', () => {
       declarations: [ GoDatepickerComponent ],
       imports: [
         GoIconButtonModule,
+        GoHintModule,
         FormsModule,
         ReactiveFormsModule,
         MatDatepickerModule,

@@ -35,7 +35,7 @@ export class GoDatepickerComponent implements OnInit {
     }
 
     if (!this.placeholder && !this.locale.includes('ar')) {
-      // The araibic character set is completely different so we just won't show this here
+      // The arabic character set is completely different so we just won't show this here
       this.placeholder = LocaleFormat.format(this.locale);
     }
 
