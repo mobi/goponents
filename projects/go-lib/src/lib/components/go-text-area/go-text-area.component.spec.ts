@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoTextAreaComponent } from './go-text-area.component';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoHintModule } from '../go-hint/go-hint.module';
 
 describe('GoTextAreaComponent', () => {
   let component: GoTextAreaComponent;
@@ -10,8 +11,11 @@ describe('GoTextAreaComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoTextAreaComponent],
-      imports: [FormsModule, ReactiveFormsModule]
-
+      imports: [
+        FormsModule,
+        GoHintModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));
@@ -19,11 +23,8 @@ describe('GoTextAreaComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoTextAreaComponent);
     component = fixture.componentInstance;
-    component.parentFormGroup = new FormBuilder().group({
-      testField: ''
-    });
+    component.control = new FormControl('');
 
-    component.controlName = 'testField';
     fixture.detectChanges();
   });
 
