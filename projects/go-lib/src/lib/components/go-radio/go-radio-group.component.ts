@@ -9,8 +9,8 @@ import { GoRadioButtonComponent } from './go-radio-button.component';
 export class GoRadioGroupComponent implements AfterContentInit {
   @Input() control: FormControl;
   @Input() hints: string[];
-  @Input() label: string;
-  @Input() theme: string = 'light';
+  @Input() legend: string;
+  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoRadioButtonComponent) radioButtons: QueryList<GoRadioButtonComponent>;
 
