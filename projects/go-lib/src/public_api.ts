@@ -26,6 +26,10 @@ export * from './lib/components/go-card/go-card.module';
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';
 
+// Hint
+export * from './lib/components/go-hint/go-hint.component';
+export * from './lib/components/go-hint/go-hint.module';
+
 // Icon
 export * from './lib/components/go-icon/go-icon.component';
 export * from './lib/components/go-icon/go-icon.module';
