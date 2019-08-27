@@ -73,7 +73,7 @@ describe('GoRadioGroupComponent', () => {
     });
 
     it('should set a control on each child component', () => {
-      const newControl: FormControl = new FormControl({ value: 'option1' });
+      const newControl: FormControl = new FormControl('option1');
 
       component.control = newControl;
       component.ngAfterContentInit();
