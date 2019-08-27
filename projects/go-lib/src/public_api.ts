@@ -60,6 +60,11 @@ export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 
+// Radio
+export * from './lib/components/go-radio/go-radio-button.component';
+export * from './lib/components/go-radio/go-radio-group.component';
+export * from './lib/components/go-radio/go-radio.module';
+
 // Search
 export * from './lib/components/go-search/go-search.component';
 export * from './lib/components/go-search/go-search.module';

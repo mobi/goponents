@@ -8,7 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class TestPage3Component {
   form: FormGroup = new FormGroup({
     name: new FormControl({ value: '', disabled: false }, Validators.required),
-    notes: new FormControl('')
+    notes: new FormControl(''),
+    radio: new FormControl({ value: '' })
   });
   loading: boolean = false;
 
