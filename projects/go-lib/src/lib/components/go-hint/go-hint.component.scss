@@ -1,0 +1,50 @@
+@import '~@tangoe/gosheets/base/_variables';
+
+.go-hint {
+  font-size: .875rem;
+  font-style: italic;
+  line-height: 1rem;
+  margin: $column-gutter--half 0;
+  padding-left: $column-gutter--three-quarters;
+  position: relative;
+
+  &::before {
+    background: $theme-light-border;
+    border-radius: $global-radius;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.go-hint--dark {
+  color: $theme-dark-color;
+}
+
+.go-hint--negative::before {
+  background-image: $ui-color-negative-gradient;
+}
+
+.go-hint--positive::before {
+  background-image: $ui-color-positive-gradient;
+}
+
+.go-hint--neutral::before {
+  background-image: $ui-color-neutral-gradient;
+}
+
+.go-hint__label {
+  display: block;
+  font-size: .75rem;
+  font-style: normal;
+  font-weight: $weight-bold;
+  margin-bottom: $column-gutter--quarter;
+  text-transform: uppercase;
+}

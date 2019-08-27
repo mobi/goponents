@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoInputComponent } from './go-input.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoHintModule } from '../go-hint/go-hint.module';
 
 describe('GoInputComponent', () => {
   let component: GoInputComponent;
@@ -10,7 +11,11 @@ describe('GoInputComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoInputComponent],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [
+        FormsModule,
+        GoHintModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));
