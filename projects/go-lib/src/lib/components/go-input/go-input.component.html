@@ -11,14 +11,15 @@
          [placeholder]="placeholder"
          [formControl]="control">
 
-  <p *ngFor="let hint of hints" class="go-hint" [ngClass]="{'go-form__input--dark': theme === 'dark'}">
-    {{ hint }}
-  </p>
+  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
 
-  <div [ngClass]="{'go-form__input--dark': theme === 'dark'}" *ngIf="control?.errors?.length">
-    <p class="go-hint go-hint--error" *ngFor="let error of control.errors">
-      <span class="go-hint__status">{{ error.type || 'Error:' }}</span>
-      {{ error.message }}
-    </p>
+  <div *ngIf="control?.errors?.length">
+    <go-hint
+      *ngFor="let error of control.errors"
+      [message]="error.message"
+      [label]="error.type"
+      [theme]="theme"
+      type="negative"
+    ></go-hint>
   </div>
 </div>
