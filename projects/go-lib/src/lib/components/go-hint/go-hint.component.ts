@@ -22,12 +22,12 @@ export class GoHintComponent implements OnChanges, OnInit {
     }
 
     if ('theme' in changes) {
-      this.hintClasses['go-hint--dark'] = this.theme === 'dark';
+      this.hintClasses['go-hint--dark'] = changes.theme.currentValue === 'dark';
     }
   }
 
   ngOnInit(): void {
-    if (this.type === 'negative' && this.label === undefined) {
+    if (this.type === 'negative' && !this.label) {
       this.label = 'Error:';
     }
   }
