@@ -10,6 +10,7 @@ export class TestPage3Component {
     name: new FormControl({ value: '', disabled: false }, Validators.required),
     notes: new FormControl('')
   });
+  loading: boolean = false;
 
   otherThing: FormControl = new FormControl('test');
   testOtherThing: FormControl = new FormControl({ value: 'Disabled Input', disabled: true });
@@ -17,6 +18,12 @@ export class TestPage3Component {
   constructor() { }
 
   onSubmit(): void {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 4000);
+
     const errorResponse: object = {
       name: [
         {
