@@ -17,6 +17,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoActionSheetModule } from './components/go-action-sheet/go-action-sheet.module';
 import { GoInputModule } from './components/go-input/go-input.module';
 import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
+import { GoRadioModule } from './components/go-radio/go-radio.module';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { GoTextAreaModule } from './components/go-text-area/go-text-area.module'
     GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
+    GoRadioModule,
     GoSearchModule,
     GoSideNavModule,
     GoTableModule,
@@ -51,6 +53,7 @@ import { GoTextAreaModule } from './components/go-text-area/go-text-area.module'
     GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
+    GoRadioModule,
     GoSearchModule,
     GoSideNavModule,
     GoTableModule,
