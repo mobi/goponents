@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ export class TestPage3Component {
   form: FormGroup = new FormGroup({
     name: new FormControl({ value: '', disabled: false }, Validators.required),
     notes: new FormControl(''),
-    radio: new FormControl({ value: '' })
+    radio: new FormControl({value: '', disabled: false})
   });
   loading: boolean = false;
 
@@ -23,7 +23,7 @@ export class TestPage3Component {
 
     setTimeout(() => {
       this.loading = false;
-    }, 4000);
+    }, 2000);
 
     const errorResponse: object = {
       name: [
@@ -35,8 +35,10 @@ export class TestPage3Component {
           message: 'This is an invalid name.'
         }
       ],
-      notes: [{ message: 'test' }]
+      notes: [{ message: 'test' }],
+      radio: [{message: 'some test error'}]
     };
+
     this.setErrors(errorResponse);
   }
 
