@@ -14,7 +14,7 @@ export class GoInputComponent implements OnInit {
   @Input() inputType: string = 'text';
   @Input() label: string;
   @Input() placeholder: string = '';
-  @Input() theme: string = 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   constructor() { }
 

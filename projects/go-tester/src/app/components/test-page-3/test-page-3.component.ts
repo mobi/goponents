@@ -33,7 +33,8 @@ export class TestPage3Component {
           type: 'A custom message',
           message: 'This is an invalid name.'
         }
-      ]
+      ],
+      notes: [{ message: 'test' }]
     };
     this.setErrors(errorResponse);
   }
