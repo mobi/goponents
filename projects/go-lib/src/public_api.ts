@@ -77,6 +77,10 @@ export * from './lib/components/go-side-nav/nav-item.model';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
 
+// Switch Toggle
+export * from './lib/components/go-switch-toggle/go-switch-toggle.component';
+export * from './lib/components/go-switch-toggle/go-switch-toggle.module';
+
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';

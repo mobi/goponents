@@ -1,0 +1,64 @@
+@import '~@tangoe/gosheets/base/variables';
+@import '~@tangoe/gosheets/base/mixins';
+
+.go-form__switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 3.5rem;
+  height: 2rem;
+}
+
+.go-form__switch-toggle__input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.go-form__switch-toggle__toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 2rem;
+  background-color: $base-light-secondary;
+  @include transition(all);
+}
+
+.go-form__switch-toggle__toggle:before {
+  position: absolute;
+  content: "";
+  height: 1.5rem;
+  width: 1.5rem;
+  left: 4px;
+  bottom: 4px;
+  background-color: $base-light;
+  @include transition(all);
+  border-radius: 50%;
+}
+
+.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+  background-color: $ui-color-neutral;
+}
+
+.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
+  box-shadow: 0 0 1px $ui-color-neutral;
+}
+
+.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle:before {
+  -webkit-transform: translateX(1.5rem);
+  -ms-transform: translateX(1.5rem);
+  transform: translateX(1.5rem);
+}
+
+.go-form__switch-toggle__wrapper {
+  position: relative;
+}
+
+.go-form__switch-toggle__label {
+  top: .5rem;
+  line-height: 1rem;
+  padding-left: 1rem;
+  position: absolute;
+}
