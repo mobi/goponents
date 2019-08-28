@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { GoTableConfig, GoTableDataSource } from '../../../../../go-lib/src/public_api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  GoTableComponent,
+  GoTableConfig,
+  GoTableDataSource,
+  GoToasterService,
+  RowSelectionEvent
+} from '../../../../../go-lib/src/public_api';
 
-import { AppService } from '../../app.service'; 
+import { AppService } from '../../app.service';
 
 
 @Component({
@@ -13,12 +19,19 @@ export class TestPage1Component implements OnInit {
   tableConfig: GoTableConfig;
   tableLoading: boolean = true;
 
-  constructor(private appService: AppService) { }
+  @ViewChild('peopleTable') peopleTable: GoTableComponent;
 
-  ngOnInit() {
-    this.appService.getMockData(new GoTableConfig()).subscribe(data => {
+  constructor(
+    private appService: AppService,
+    private toasterService: GoToasterService
+  ) { }
+
+  ngOnInit(): void {
+    this.appService.getMockData(new GoTableConfig()).subscribe((data: any) => {
       this.tableConfig = new GoTableConfig({
         dataMode: GoTableDataSource.server,
+        selectable: true,
+        selectBy: 'id',
         tableData: data.results,
         totalCount: data.totalCount
       });
@@ -26,17 +39,30 @@ export class TestPage1Component implements OnInit {
     });
   }
 
-  handleTableChange(currentTableConfig: GoTableConfig) : void {
+  handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
-      this.appService.getMockData(currentTableConfig).subscribe(data => {
+      this.appService.getMockData(currentTableConfig).subscribe((data: any) => {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
 
           this.tableConfig = currentTableConfig;
           this.tableLoading = false;
-        }, 2000);
+        }, 1000);
       });
     }
+  }
+
+  outputSelectionCount(): void {
+    this.toasterService.toastSuccess({ message: 'Rows Selected: ' + this.peopleTable.getSelectionCount() });
+  }
+
+  showCurrentSelection(): void {
+    console.log(this.peopleTable.getSelectionState());
+  }
+
+  handleSelection(selectionEvent: RowSelectionEvent): void {
+    const action: string = selectionEvent.currentRow.selected ? 'Selected: ' : 'Deselected: ';
+    this.toasterService.toastInfo({ message: action + selectionEvent.currentRow.data['email'] });
   }
 }
