@@ -88,6 +88,46 @@
                 ></go-text-area>
               </div>
 
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="selectControl"
+                  bindLabel="name"
+                  [hints]="['Select an option here, whatever you want']">
+                </go-select>
+              </div>
+              <div class="go-column go-column--50">
+                You selected: {{selectControl.value?.name}}
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="otherSelectControl"
+                  bindLabel="name"
+                  [hints]="['This is disabled']">
+                </go-select>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="validationSelectControl"
+                  bindLabel="name"
+                  [hints]="['This is has a custom error message You need to select Ron.']">
+                </go-select>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="multiSelectControl"
+                  bindLabel="name"
+                  multiple="true"
+                  [hints]="['This is a multi select.']">
+                </go-select>
+              </div>
+
               <div class="go-column go-column--100">
                   <go-switch-toggle
                     [control]="form.controls.toggle"

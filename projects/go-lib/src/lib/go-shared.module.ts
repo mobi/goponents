@@ -9,6 +9,7 @@ import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
 import { GoSearchModule } from './components/go-search/go-search.module';
+import { GoSelectModule } from './components/go-select/go-select.module';
 import { GoSideNavModule } from './components/go-side-nav/go-side-nav.module';
 import { GoTableModule } from './components/go-table/go-table.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
@@ -38,6 +39,7 @@ import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
     GoModalModule,
     GoRadioModule,
     GoSearchModule,
+    GoSelectModule,
     GoSideNavModule,
     GoSwitchToggleModule,
     GoTableModule,
@@ -60,6 +62,7 @@ import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
     GoModalModule,
     GoRadioModule,
     GoSearchModule,
+    GoSelectModule,
     GoSideNavModule,
     GoSwitchToggleModule,
     GoTableModule,
