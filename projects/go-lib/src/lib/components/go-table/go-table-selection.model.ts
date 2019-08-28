@@ -36,6 +36,6 @@ export interface SelectionState {
 }
 
 export enum SelectionMode {
-  selection,
-  deselection
+  selection = 'selection',
+  deselection = 'deselection'
 }
