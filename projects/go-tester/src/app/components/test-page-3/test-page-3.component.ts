@@ -9,7 +9,8 @@ export class TestPage3Component {
   form: FormGroup = new FormGroup({
     name: new FormControl({ value: '', disabled: false }, Validators.required),
     notes: new FormControl(''),
-    radio: new FormControl({value: '', disabled: false})
+    radio: new FormControl({value: '', disabled: false}),
+    toggle: new FormControl(false)
   });
   loading: boolean = false;
 

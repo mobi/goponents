@@ -66,6 +66,14 @@
               </div>
 
               <div class="go-column go-column--100">
+                  <go-switch-toggle
+                    [control]="form.controls.toggle"
+                    label="Toggle Me"
+                    [hints]="['please']"
+                  ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
                 <go-button buttonType='submit'
                            buttonVariant='positive'
                            [isProcessing]="loading">
