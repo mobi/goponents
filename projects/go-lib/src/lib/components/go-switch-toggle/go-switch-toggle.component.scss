@@ -26,17 +26,17 @@
   position: absolute;
   right: 0;
   top: 0;
-}
 
-.go-form__switch-toggle__toggle:before {
-  @include transition(all);
+  &::before {
+    @include transition(all);
 
-  background-color: $base-light;
-  border-radius: 50%;
-  content: "";
-  height: calc(1.125rem - 2px);
-  position: absolute;
-  width: calc(1.125rem - 2px);
+    background-color: $base-light;
+    border-radius: 50%;
+    content: '';
+    height: calc(1.125rem - 2px);
+    position: absolute;
+    width: calc(1.125rem - 2px);
+  }
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
@@ -52,7 +52,7 @@
   box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-positive);
 }
 
-.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle:before {
+.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle::before {
   box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.3);
   -webkit-transform: translateX(1.125rem);
   -moz-transform: translateX(1.125rem);
