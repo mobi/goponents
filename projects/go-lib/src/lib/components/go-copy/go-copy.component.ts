@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   animations: [],
@@ -9,10 +9,12 @@ import { Component, Input } from '@angular/core';
 export class GoCopyComponent {
   @Input() text: string;
 
+  @ViewChild('copyText') copyText: ElementRef;
+
   constructor() { }
 
-  copyStringToClipboard (element: HTMLElement): void {
-    (element.children[1] as HTMLInputElement).select();
+  copyStringToClipboard(): void {
+    this.copyText.nativeElement.select();
     document.execCommand('copy');
   }
 }
