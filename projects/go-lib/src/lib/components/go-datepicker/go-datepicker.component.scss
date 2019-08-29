@@ -1,7 +1,7 @@
-@import '~@tangoe/gosheets/base/_variables';
+@import '~@tangoe/gosheets/base/variables';
 @import '~@angular/material/theming';
 
-@include mat-core();
+@include mat-core;
 
 $primary: (
   500: $ui-color-neutral,

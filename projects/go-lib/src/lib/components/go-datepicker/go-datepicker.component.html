@@ -1,26 +1,27 @@
-<label [for]="id"
-       class="go-form__label"
-       [ngClass]="{'go-form__label--dark': theme == 'dark'}">
+<label 
+  [attr.for]="id"
+  class="go-form__label"
+  [ngClass]="{'go-form__label--dark': theme == 'dark'}">
   {{ label }}
 </label>
 
 <div class="go-datepicker">
-    <input 
-      matInput
-      #datepickerInput
-      class="go-form__input"
-      [matDatepicker]="picker"
-      [id]="id"
-      [placeholder]="placeholder"
-      [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
-      [formControl]="control"
-    >
-    <go-icon-button
-      class="go-datepicker__toggle"
-      buttonIcon="today"
-      (handleClick)="picker.open()"
-    ></go-icon-button>
-    <mat-datepicker #picker></mat-datepicker>
+  <input 
+    matInput
+    #datepickerInput
+    class="go-form__input"
+    [matDatepicker]="picker"
+    [id]="id"
+    [placeholder]="placeholder"
+    [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
+    [formControl]="control"
+  >
+  <go-icon-button
+    class="go-datepicker__toggle"
+    buttonIcon="today"
+    (handleClick)="picker.open()"
+  ></go-icon-button>
+  <mat-datepicker #picker></mat-datepicker>
 </div>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

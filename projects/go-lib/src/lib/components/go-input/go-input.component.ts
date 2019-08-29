@@ -20,6 +20,6 @@ export class GoInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || UniqueIdentifier.generate(this.label);
+    this.id = this.key || UniqueIdentifier.generate(this.label, { fallback: 'input' });
   }
 }

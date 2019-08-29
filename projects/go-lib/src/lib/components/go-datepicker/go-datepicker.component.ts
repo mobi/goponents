@@ -28,7 +28,7 @@ export class GoDatepickerComponent implements OnInit {
   constructor(private dateAdapter: DateAdapter<Date>) {}
 
   ngOnInit(): void {
-    this.id = this.key || UniqueIdentifier.generate(this.label);
+    this.id = this.key || UniqueIdentifier.generate(this.label, { fallback: 'date-picker' });
 
     if (this.locale) {
       this.dateAdapter.setLocale(this.locale);
