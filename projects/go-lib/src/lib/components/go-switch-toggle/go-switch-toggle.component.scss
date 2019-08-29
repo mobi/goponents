@@ -2,54 +2,63 @@
 @import '~@tangoe/gosheets/base/mixins';
 
 .go-form__switch-toggle {
-  position: relative;
   display: inline-block;
-  width: 3.5rem;
-  height: 2rem;
+  height: 1.125rem;
+  position: relative;
+  width: 2.25rem;
 }
 
 .go-form__switch-toggle__input {
+  height: 0;
   opacity: 0;
   width: 0;
-  height: 0;
 }
 
 .go-form__switch-toggle__toggle {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 2rem;
-  background-color: $base-light-secondary;
   @include transition(all);
+
+  background-color: $base-light-secondary;
+  border: 1px solid $base-light-secondary;
+  border-radius: 1.125rem;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .go-form__switch-toggle__toggle:before {
-  position: absolute;
-  content: "";
-  height: 1.5rem;
-  width: 1.5rem;
-  left: 4px;
-  bottom: 4px;
-  background-color: $base-light;
   @include transition(all);
+
+  background-color: $base-light;
   border-radius: 50%;
+  content: "";
+  height: calc(1.125rem - 2px);
+  position: absolute;
+  width: calc(1.125rem - 2px);
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
-  background-color: $ui-color-neutral;
+  background-color: $ui-color-positive;
+  border-color: $ui-color-positive;
+}
+
+.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle::before {
+  box-shadow: 3px 0 5px -1px rgba(0, 0, 0, 0.3);
 }
 
 .go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
-  box-shadow: 0 0 1px $ui-color-neutral;
+  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-positive);
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle:before {
-  -webkit-transform: translateX(1.5rem);
-  -ms-transform: translateX(1.5rem);
-  transform: translateX(1.5rem);
+  box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateX(1.125rem);
+  -moz-transform: translateX(1.125rem);
+  -ms-transform: translateX(1.125rem);
+  -o-transform: translateX(1.125rem);
+  transform: translateX(1.125rem);
 }
 
 .go-form__switch-toggle__wrapper {
@@ -57,8 +66,9 @@
 }
 
 .go-form__switch-toggle__label {
-  top: .5rem;
-  line-height: 1rem;
-  padding-left: 1rem;
+  line-height: 1.125rem;
+  padding-bottom: 0;
+  padding-left: 0.75rem;
   position: absolute;
+  user-select: none;
 }
