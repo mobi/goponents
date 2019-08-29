@@ -37,7 +37,7 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 }
 
 .go-datepicker__toggle {
-  right: 1rem;
-  top: .25rem;
   position: absolute;
+  right: .25rem;
+  top: .25rem;
 }
