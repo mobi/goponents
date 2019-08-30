@@ -175,7 +175,8 @@ go-accordion-panel {
   position: relative;
 
   &::before {
-    background: $base-primary;
+    background: $base-primary-gradient;
+    background-color: $base-primary;
     content: " ";
     height: 100%;
     left: 0;

@@ -49,6 +49,9 @@ $base-light: #FFF;
 $base-light-secondary: #B1B1B1;
 $base-primary: #65B360;
 
+$base-primary-hover: darken($base-primary, 10%);
+$base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-hover);
+
 // Light Theme
 $theme-light-app-bg: #F0F0F0;
 $theme-light-bg: $base-light;
