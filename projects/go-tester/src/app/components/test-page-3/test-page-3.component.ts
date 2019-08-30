@@ -6,6 +6,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './test-page-3.component.html'
 })
 export class TestPage3Component {
+  selectData: any = [{
+    id: 1,
+    name: 'Harry'
+  }, {
+    id: 2,
+    name: 'Hermione'
+  }, {
+    id: 3,
+    name: 'Ron'
+  }, {
+    id: 4,
+    name: 'Voldermort'
+  }, {
+    id: 5,
+    name: 'Snake'
+  }];
+
   form: FormGroup = new FormGroup({
     food: new FormGroup({
       apples: new FormControl(''),
@@ -20,6 +37,10 @@ export class TestPage3Component {
 
   otherThing: FormControl = new FormControl('test');
   testOtherThing: FormControl = new FormControl({ value: 'Disabled Input', disabled: true });
+  selectControl: FormControl = new FormControl();
+  otherSelectControl: FormControl = new FormControl({ value: 'Disabled Select', disabled: true });
+  validationSelectControl: FormControl = new FormControl({ value: 'Hermione', disabled: false });
+  multiSelectControl: FormControl = new FormControl();
 
   constructor() { }
 
@@ -42,7 +63,8 @@ export class TestPage3Component {
       ],
       notes: [{ message: 'test' }],
       radio: [{message: 'some test error'}],
-      food: [{message: 'some test error'}]
+      food: [{message: 'some test error'}],
+      validationSelectControl: [{message: 'You need to select Ron.'}]
     };
 
     this.setErrors(errorResponse);
@@ -52,6 +74,10 @@ export class TestPage3Component {
     for (const [input, errors] of Object.entries(errorResponse)) {
       if (input in this.form.controls) {
         this.form.controls[input].setErrors(errors);
+      }
+
+      if (this.validationSelectControl.value.name !== 'Ron') {
+        this.validationSelectControl.setErrors(errorResponse['validationSelectControl']);
       }
     }
   }

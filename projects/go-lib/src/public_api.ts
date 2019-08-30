@@ -83,6 +83,10 @@ export * from './lib/components/go-search/go-search.component';
 export * from './lib/components/go-search/go-search.module';
 export * from './lib/components/go-search/go-search.service';
 
+// Select
+export * from './lib/components/go-select/go-select.component';
+export * from './lib/components/go-select/go-select.module';
+
 // Side Nav
 export * from './lib/components/go-side-nav/go-side-nav.module';
 export * from './lib/components/go-side-nav/nav-group.model';
