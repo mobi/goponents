@@ -2,7 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'go-button',
-  templateUrl: './go-button.component.html'
+  templateUrl: './go-button.component.html',
+  styleUrls: ['./go-button.component.scss']
 })
 export class GoButtonComponent {
   @Input() buttonDisabled: boolean;

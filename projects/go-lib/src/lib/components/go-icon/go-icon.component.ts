@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'go-icon',
-  templateUrl: 'go-icon.component.html'
+  templateUrl: 'go-icon.component.html',
+  styleUrls: ['go-icon.component.scss']
 })
 export class GoIconComponent {
   @Input() icon: string;
