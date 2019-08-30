@@ -23,6 +23,7 @@ export class TestPage3Component implements OnInit {
     name: 'Snake'
   }];
 
+  fileControl: FormControl = new FormControl();
   form: FormGroup = new FormGroup({
     food: new FormGroup({
       apples: new FormControl(''),

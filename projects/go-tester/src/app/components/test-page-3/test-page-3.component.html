@@ -46,7 +46,13 @@
               </div>
 
               <div class="go-column go-column--100">
-                <go-file-upload></go-file-upload>
+                <go-file-upload
+                  [control]="fileControl"
+                  buttonVariant="positive"
+                  buttonIcon="home"
+                  label="Upload File"
+                  [hints]="['You can upload multiple files']"
+                ></go-file-upload>
               </div>
 
               <div class="go-column go-column--50">

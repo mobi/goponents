@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'go-file-upload',
@@ -9,10 +9,15 @@ import { FormControl, FormGroup, FormArray, FormBuilder, AbstractControl } from 
 export class GoFileUploadComponent implements OnInit {
 
   form: FormGroup;
-  control: FormArray;
+  files: FormArray;
   fb: FormBuilder;
-  filePreview: string;
-  hints: Array<string> = [];
+  filePreview: Array<string> = [];
+
+  @Input() buttonIcon: string;
+  @Input() control: FormControl;
+  @Input() buttonVariant: string;
+  @Input() label: string;
+  @Input() hints: Array<string> = [];
 
   constructor() { }
 
@@ -21,13 +26,17 @@ export class GoFileUploadComponent implements OnInit {
     this.form = this.fb.group({
       filesArray: this.fb.array([])
     });
-    this.control = <FormArray>this.form.controls['filesArray'];
+    this.files = <FormArray>this.form.controls['filesArray'];
+    this.files.valueChanges.subscribe( (fileChanges: any) => {
+      this.control.setValue(fileChanges);
+    });
   }
 
   onFilePicked(event: Event): void {
-    event.target.files.forEach((file: any) => {
-      this.control.push(this.patchValues(file));
-      debugger;
+    const target: HTMLInputElement = event.target as HTMLInputElement;
+    Array.from(target.files).forEach((file: any) => {
+      this.files.push(this.patchValues(file));
+      this.filePreview.push(file.name);
     });
   }
 

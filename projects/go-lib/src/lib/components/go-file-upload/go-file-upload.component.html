@@ -1,12 +1,16 @@
 <div>
   <go-button
-    buttonIcon="add_shopping_cart"
-    buttonVariant="positive"
+    buttonIcon="{{buttonIcon}}"
+    buttonVariant="{{buttonVariant}}"
     (click)="filePicker.click()"
     #filePicker>
-    Upload File
+    {{label}}
   </go-button>
   <input type="file" #filePicker (change)="onFilePicked($event)" multiple>
 </div>
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="light"></go-hint>
+<go-hint *ngFor="let file of filePreview" [message]="file" [theme]="light">
+</go-hint>
+
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="light">
+</go-hint>
