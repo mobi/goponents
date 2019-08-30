@@ -222,9 +222,6 @@ describe('AccordionComponent', () => {
           isn't a toggle event emitter on the panel.
         `);
       }
-
-      spyOn(panelOne, 'updateClasses');
-      spyOn(panelTwo, 'updateClasses');
     });
 
     it('closes if it is open', () => {
@@ -233,8 +230,6 @@ describe('AccordionComponent', () => {
       panelOne.toggle.emit();
 
       expect(panelOne.expanded).toBe(true);
-      expect(panelOne.updateClasses).toHaveBeenCalled();
-      expect(panelTwo.updateClasses).toHaveBeenCalled();
     });
 
     it('opens if it is closed', () => {
@@ -243,7 +238,6 @@ describe('AccordionComponent', () => {
       panelOne.toggle.emit();
 
       expect(panelOne.expanded).toBe(false);
-      expect(panelOne.updateClasses).toHaveBeenCalled();
     });
 
     describe('if multiExpand is false', () => {
@@ -260,8 +254,6 @@ describe('AccordionComponent', () => {
 
         expect(panelOne.expanded).toBe(false);
         expect(panelTwo.expanded).toBe(true);
-        expect(panelOne.updateClasses).toHaveBeenCalled();
-        expect(panelTwo.updateClasses).toHaveBeenCalled();
       });
     });
 
@@ -279,7 +271,6 @@ describe('AccordionComponent', () => {
 
         expect(panelOne.expanded).toBe(true);
         expect(panelTwo.expanded).toBe(true);
-        expect(panelTwo.updateClasses).toHaveBeenCalled();
       });
     });
   });

@@ -35,19 +35,8 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
+      this.updatePanelState(panel, index);
       this.subscribePanel(panel);
-
-      panel.borderless = panel.borderless === undefined ? this.borderless : panel.borderless;
-      panel.slim = panel.slim === undefined ? this.slim : panel.slim;
-      panel.theme = panel.theme || this.theme;
-      panel.isFirst = index === 0;
-      panel.isLast = index === (this.panels.length - 1);
-      panel.expanded = this.expandAll || panel.expanded;
-
-      // NOTE: This feels a little destructive.
-      // We lose track of the icon explicitly set by the child component.
-      panel.icon = this.showIcons ? panel.icon : null;
-      panel.updateClasses();
     });
   }
   //#endregion
@@ -58,28 +47,29 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   private subscribePanel(panel: GoAccordionPanelComponent): void {
     panel.toggle.subscribe(() => {
       if (!panel.expanded && this.multiExpand) {
-        this.openPanel(panel);
+        panel.expanded = true;
       } else if (!panel.expanded && !this.multiExpand) {
-        this.openPanelCloseOthers(panel);
+        this.panels.toArray().forEach((thePanel: GoAccordionPanelComponent) => {
+          thePanel.expanded = false;
+        });
+        panel.expanded = true;
       } else {
-        this.closePanel(panel);
+        panel.expanded = false;
       }
     });
   }
 
-  private openPanelCloseOthers(panel: GoAccordionPanelComponent): void {
-    this.panels.toArray().forEach(this.closePanel);
+  private updatePanelState(panel: GoAccordionPanelComponent, index: number): void {
+    panel.borderless = panel.borderless === undefined ? this.borderless : panel.borderless;
+    panel.slim = panel.slim === undefined ? this.slim : panel.slim;
+    panel.theme = panel.theme || this.theme;
+    panel.isFirst = index === 0;
+    panel.isLast = index === (this.panels.length - 1);
+    panel.expanded = this.expandAll || panel.expanded;
 
-    this.openPanel(panel);
-  }
-
-  private openPanel(panel: GoAccordionPanelComponent): void {
-    panel.expanded = true;
-    panel.updateClasses();
-  }
-
-  private closePanel(panel: GoAccordionPanelComponent): void {
-    panel.expanded = false;
+    // NOTE: This feels a little destructive.
+    // We lose track of the icon explicitly set by the child component.
+    panel.icon = this.showIcons ? panel.icon : null;
     panel.updateClasses();
   }
   //#endregion

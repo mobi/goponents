@@ -19,8 +19,11 @@ import { accordionAnimation } from '../../animations/accordion.animation';
   ]
 })
 export class GoAccordionPanelComponent implements OnInit, OnChanges {
+  _expanded: boolean = false; // Note: Use _expanded in the template
+  containerClasses: object = {};
+  headerClasses: object = {};
+
   @Input() borderless: boolean;
-  @Input() expanded: boolean = false;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
@@ -29,10 +32,17 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
 
-  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
+  @Input()
+  set expanded(expanded: boolean) {
+    this._expanded = expanded;
+    this.containerClasses['go-accordion-panel--active'] = expanded;
+    this.headerClasses['go-accordion-panel__header--active'] = expanded;
+  }
+  get expanded(): boolean {
+    return this._expanded;
+  }
 
-  containerClasses: object;
-  headerClasses: object;
+  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 

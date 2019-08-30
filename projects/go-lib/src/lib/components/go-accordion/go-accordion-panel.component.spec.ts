@@ -50,10 +50,34 @@ describe('GoAccordionPanelComponent', () => {
     });
   });
 
+  describe('expanded', () => {
+    it('sets _expanded', () => {
+      expect(component._expanded).toBe(false);
+
+      component.expanded = true;
+
+      expect(component._expanded).toBe(true);
+    });
+
+    it('gets _expanded', () => {
+      expect(component.expanded).toBe(component._expanded);
+    });
+
+    it('sets modifier classes', () => {
+      expect(component.containerClasses['go-accordion-panel--active']).toBeFalsy();
+      expect(component.headerClasses['go-accordion-panel__header--active']).toBeFalsy();
+
+      component.expanded = true;
+
+      expect(component.containerClasses['go-accordion-panel--active']).toBe(true);
+      expect(component.headerClasses['go-accordion-panel__header--active']).toBe(true);
+    });
+  });
+
   describe('updateClasses()', () => {
     beforeEach(() => {
-      expect(component.containerClasses).toBeUndefined();
-      expect(component.headerClasses).toBeUndefined();
+      expect(component.containerClasses).toEqual({});
+      expect(component.headerClasses).toEqual({});
     });
 
     describe('containerClasses', () => {
@@ -66,7 +90,7 @@ describe('GoAccordionPanelComponent', () => {
       });
 
       it('sets the go-accordion-panel--active class if expanded is true', () => {
-        component.expanded = true;
+        component._expanded = true;
 
         component.updateClasses();
 
@@ -100,7 +124,7 @@ describe('GoAccordionPanelComponent', () => {
 
     describe('headerClasses', () => {
       it('sets the go-accordion-panel__header--active class if expanded is true', () => {
-        component.expanded = true;
+        component._expanded = true;
 
         component.updateClasses();
 
