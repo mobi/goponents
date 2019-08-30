@@ -4,7 +4,8 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnChanges
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -17,9 +18,12 @@ import { accordionAnimation } from '../../animations/accordion.animation';
     accordionAnimation
   ]
 })
-export class GoAccordionPanelComponent implements OnInit {
+export class GoAccordionPanelComponent implements OnInit, OnChanges {
+  _expanded: boolean = false; // Note: Use _expanded in the template
+  containerClasses: object = {};
+  headerClasses: object = {};
+
   @Input() borderless: boolean;
-  @Input() expanded: boolean = false;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
@@ -27,6 +31,16 @@ export class GoAccordionPanelComponent implements OnInit {
   @Input() slim: boolean;
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
+
+  @Input()
+  set expanded(expanded: boolean) {
+    this._expanded = expanded;
+    this.containerClasses['go-accordion-panel--active'] = expanded;
+    this.headerClasses['go-accordion-panel__header--active'] = expanded;
+  }
+  get expanded(): boolean {
+    return this._expanded;
+  }
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
@@ -37,18 +51,20 @@ export class GoAccordionPanelComponent implements OnInit {
     this.heading = this.heading || this.title;
   }
 
-  containerClasses(): object {
-    return {
+  ngOnChanges(): void {
+    this.updateClasses();
+  }
+
+  updateClasses(): void {
+    this.containerClasses = {
       'go-accordion-panel--active': this.expanded === true,
       'go-accordion-panel--borderless': this.borderless === true,
       'go-accordion-panel--dark': this.theme === 'dark',
       'go-accordion-panel--first': this.isFirst === true,
       'go-accordion-panel--last': this.isLast === true,
     };
-  }
 
-  headerClasses(): object {
-    return {
+    this.headerClasses = {
       'go-accordion-panel__header--active': this.expanded === true,
       'go-accordion-panel__header--dark': this.theme === 'dark',
       'go-accordion-panel__header--slim': this.slim === true

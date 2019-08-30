@@ -1,6 +1,6 @@
 <div class="go-container">
-  <go-accordion [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
-    <go-accordion-panel title="Test 1" icon="home" expanded="true">
+  <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
+    <go-accordion-panel title="Test 1" icon="home" [expanded]="true">
       <p class="go-body-copy">This is some content for Test 1.</p>
     </go-accordion-panel>
     <go-accordion-panel title="Test 2" icon="settings">
@@ -12,7 +12,7 @@
   </go-accordion>
 
   <go-accordion [showIcons]="true" class="go-column go-column--100">
-    <go-accordion-panel title="Test 1" icon="home" expanded="true">
+    <go-accordion-panel title="Test 1" icon="home" [expanded]="true">
       <p class="go-body-copy">This is some content for Test 1.</p>
     </go-accordion-panel>
     <go-accordion-panel title="Test 2" theme="dark" icon="settings">
@@ -24,7 +24,7 @@
   </go-accordion>
 
   <go-accordion class="go-column go-column--100">
-    <go-accordion-panel heading="Test 1" expanded="true">
+    <go-accordion-panel heading="Test 1" [expanded]="true">
       <p class="go-body-copy">This is some content for Test 1.</p>
     </go-accordion-panel>
     <go-accordion-panel heading="Test 2">

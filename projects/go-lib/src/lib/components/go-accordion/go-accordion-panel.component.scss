@@ -128,11 +128,6 @@
   color: $theme-dark-color;
   font-weight: 300;
 
-  go-accordion-panel:not(:first-of-type) .go-accordion-panel__header,
-  go-accordion-panel:last-of-type .go-accordion-panel__header {
-    border-top: 1px solid $theme-dark-border;
-  }
-
   .go-accordion-panel--border-top .go-accordion-panel__header {
     border-top: 1px solid $theme-dark-border;
   }
