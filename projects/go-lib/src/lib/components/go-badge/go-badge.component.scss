@@ -1,16 +1,14 @@
 @import '~@tangoe/gosheets/base/_variables';
 
 .go-badge {
-  border: 1px;
-  border-color: $theme-light-bg;
-  border-radius: 25px;
-  border-style: solid;
-  font-size: 12px;
+  border: 1px solid $theme-light-bg;
+  border-radius: 1.5rem;
+  font-size: .75rem;
   height: 22px;
-  left: -10px;
-  padding: 4px;
+  left: -.625rem;
+  padding: .25rem;
   position:absolute;
-  top: -12px;
+  top: -.75rem;
   z-index: 1;
 }
 
