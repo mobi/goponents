@@ -25,6 +25,32 @@ describe('goCopyComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('copyStringToClipboard()', () => {
+    it('selects the text in the text area', () => {
+      spyOn(component.copyText.nativeElement, 'select').and.callThrough();
+
+      component.text = 'Ohhhhh Snappppp!';
+      fixture.detectChanges();
+      component.copyStringToClipboard();
+
+      const start: number = component.copyText.nativeElement.selectionStart;
+      const end: number = component.copyText.nativeElement.selectionEnd;
+      const selectedText: string = component.copyText.nativeElement.value.substring(start, end);
+
+      expect(selectedText).toBe(component.text);
+    });
+
+    it('executes the copy command', () => {
+      spyOn(document, 'execCommand');
+
+      component.text = 'Ohhhhh Snappppp!';
+      fixture.detectChanges();
+      component.copyStringToClipboard();
+
+      expect(document.execCommand).toHaveBeenCalledWith('copy');
+    });
+  });
+
   describe('template', () => {
     it('child element should contain the text to be copied', () => {
       component.text = 'test';
