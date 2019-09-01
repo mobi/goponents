@@ -23,6 +23,7 @@ import { GoRadioModule } from './components/go-radio/go-radio.module';
 import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-toggle.module';
 import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
+import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoCardModule,
     GoCheckboxModule,
     GoCopyModule,
+    GoDatepickerModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
@@ -58,6 +60,7 @@ import { GoToasterModule } from './components/go-toaster/go-toaster.module';
     GoCardModule,
     GoCheckboxModule,
     GoCopyModule,
+    GoDatepickerModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,

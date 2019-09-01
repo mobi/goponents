@@ -1,0 +1,42 @@
+<div
+  (click)="closeCalendar()"
+  [@fade]="opened ? 'in' : 'out'"
+  class="go-calendar-backdrop"
+  tabindex="-1"
+>
+</div>
+
+<div class="go-calendar" *ngIf="opened">
+  <div *ngIf="view === 'day'">
+    <go-calendar-day-view
+      [day]="selectedDate"
+      [dateAdapter]="dateAdapter"
+      [month]="currentMonth"
+      [year]="currentYear"
+      (setMonth)="setMonth($event)"
+      (setYear)="updateYear($event)"
+      (datePicked)="pickDay($event)"
+      (setView)="switchView($event)"
+    ></go-calendar-day-view>
+  </div>
+
+  <div *ngIf="view === 'year'">
+    <go-calendar-year-view
+      [year]="currentYear"
+      [dateAdapter]="dateAdapter"
+      (setYear)="updateYear($event)"
+      (setView)="switchView($event)"
+    ></go-calendar-year-view>
+  </div>
+  
+  <div *ngIf="view === 'month'">
+    <go-calendar-month-view
+      [month]="currentMonth"
+      [dateAdapter]="dateAdapter"
+      [year]="currentYear"
+      (setMonth)="setMonth($event)"
+      (setView)="switchView($event)"
+      (setYear)="updateYear($event)"
+    ></go-calendar-month-view>
+  </div>
+</div>

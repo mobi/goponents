@@ -1,0 +1,35 @@
+<label 
+  [attr.for]="id"
+  class="go-form__label"
+  [ngClass]="{'go-form__label--dark': theme == 'dark'}">
+  {{ label }}
+</label>
+
+<div class="go-datepicker">
+  <input 
+    class="go-form__input"
+    [id]="id"
+    [placeholder]="placeholder"
+    [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
+    [(ngModel)]="selectedDate"
+    (blur)="validateDate()"
+  >
+  <go-icon-button
+    class="go-datepicker__toggle"
+    buttonIcon="today"
+    (handleClick)="openDatepicker()"
+  ></go-icon-button>
+  <go-calendar (datePicked)="datePicked($event)" [calendar]="goCalendar"></go-calendar>
+</div>
+
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+
+<div *ngIf="control?.errors?.length">
+  <go-hint
+    *ngFor="let error of control.errors"
+    [message]="error.message"
+    [label]="error.type"
+    [theme]="theme"
+    type="negative"
+  ></go-hint>
+</div>
