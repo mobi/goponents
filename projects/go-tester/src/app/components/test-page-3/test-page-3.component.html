@@ -129,11 +129,25 @@
               </div>
 
               <div class="go-column go-column--100">
-                  <go-switch-toggle
-                    [control]="form.controls.toggle"
-                    label="Toggle Me"
-                    [hints]="['please']"
-                  ></go-switch-toggle>
+                <go-switch-toggle
+                  [control]="form.controls.toggle"
+                  label="Toggle Me"
+                  [hints]="['please']"
+                ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  locale="zh-TW"
+                  [control]="form.controls.date">
+                </go-datepicker>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  locale="en-US"
+                  [control]="form.controls.date">
+                </go-datepicker>
               </div>
 
               <div class="go-column go-column--100">
