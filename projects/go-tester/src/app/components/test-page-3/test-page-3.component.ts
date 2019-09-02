@@ -33,7 +33,7 @@ export class TestPage3Component {
     radio: new FormControl({value: '', disabled: false}),
     toggle: new FormControl(false),
     date: new FormControl('2017/6/21'),
-    date2: new FormControl('')
+    date2: new FormControl('1999/5/15')
   });
   loading: boolean = false;
 
