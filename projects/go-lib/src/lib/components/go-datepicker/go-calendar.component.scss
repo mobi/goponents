@@ -21,6 +21,7 @@ $size: 288px;
   left: 0;
   bottom: 2.5rem;
   z-index: 500;
+  width: 300px;
 }
 
 .go-calendar__header {
@@ -49,7 +50,7 @@ $size: 288px;
 }
 
 .go-calendar__date {
-  line-height: 1.5rem;
+  line-height: 2rem;
   text-align: right;
   margin: 5px;
 }
@@ -68,6 +69,9 @@ th {
   border-style: hidden;
   border-radius: 1.5rem;
   font-size: .75rem;
+  height: 90%;
+  width: 90%;
+  padding: 5%;
 
   &:hover, &:active, &:focus {
     background: $theme-light-bg-hover;
@@ -81,4 +85,12 @@ th {
   &.go-calendar__body__cell--selected {
     border: 1px solid black;
   }
+}
+
+.go-calendar__body__border {
+  border-top: 1px solid black;
+}
+
+table {
+  width: 100%;
 }
