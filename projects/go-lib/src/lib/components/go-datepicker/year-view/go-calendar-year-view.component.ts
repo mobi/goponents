@@ -14,6 +14,8 @@ export class GoCalendarYearViewComponent implements OnInit {
 
   @Input() year: object;
   @Input() dateAdapter: DateAdapter;
+  @Input() minDate: Date;
+  @Input() maxDate: Date;
 
   @Output() setView: EventEmitter<string> = new EventEmitter<string>();
   @Output() setYear: EventEmitter<number> = new EventEmitter<number>();
@@ -45,7 +47,9 @@ export class GoCalendarYearViewComponent implements OnInit {
         break;
       case 'Enter':
         event.preventDefault();
-        this.pickYear(this.focusedYear['year']);
+        if (!this.focusedYear['disabled']) {
+          this.pickYear(this.focusedYear['year']);
+        }
         break;
       default:
         return;
@@ -114,9 +118,28 @@ export class GoCalendarYearViewComponent implements OnInit {
   private createYear(year: number): object {
     const isSelected: boolean = year === this.year['year'];
     return {
+      disabled: this.isDisabled(year),
       year: year,
       selected: isSelected,
       translated: this.dateAdapter.getYearName(year)
     };
+  }
+
+  private isDisabled(year: number): boolean {
+    return this.afterMaxDate(year) || this.beforeMinDate(year);
+  }
+
+  private afterMaxDate(year: number): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    return this.maxDate.getFullYear() < year;
+  }
+
+  private beforeMinDate(year: number): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    return this.minDate.getFullYear() > year;
   }
 }

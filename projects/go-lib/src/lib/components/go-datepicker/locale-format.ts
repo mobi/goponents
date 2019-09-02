@@ -1,5 +1,11 @@
 export class LocaleFormat {
-  static parse(values: string[], locale: string): Date {
+  static parse(date: string, locale: string): Date {
+    if (!date) {
+      return null;
+    }
+
+    const values: string[] = date.split(/[/\-.]/);
+
     if (!values[0] || !values[1] || !values[2]) {
       return null;
     } else if (values && values[0].length > 2) {
