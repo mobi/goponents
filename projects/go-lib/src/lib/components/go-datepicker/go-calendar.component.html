@@ -13,6 +13,8 @@
       [dateAdapter]="dateAdapter"
       [month]="currentMonth"
       [year]="currentYear"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
       (setMonth)="setMonth($event)"
       (setYear)="updateYear($event)"
       (datePicked)="pickDay($event)"
@@ -24,6 +26,8 @@
     <go-calendar-year-view
       [year]="currentYear"
       [dateAdapter]="dateAdapter"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
       (setYear)="updateYear($event)"
       (setView)="switchView($event)"
     ></go-calendar-year-view>
@@ -34,6 +38,8 @@
       [month]="currentMonth"
       [dateAdapter]="dateAdapter"
       [year]="currentYear"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
       (setMonth)="setMonth($event)"
       (setView)="switchView($event)"
       (setYear)="updateYear($event)"

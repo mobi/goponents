@@ -13,13 +13,18 @@
     [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
     [(ngModel)]="selectedDate"
     (blur)="validateDate()"
-  >
+  />
   <go-icon-button
     class="go-datepicker__toggle"
     buttonIcon="today"
     (handleClick)="openDatepicker()"
   ></go-icon-button>
-  <go-calendar (datePicked)="datePicked($event)" [calendar]="goCalendar"></go-calendar>
+  <go-calendar
+    (datePicked)="datePicked($event)"
+    [maxDate]="max"
+    [minDate]="min"
+    [calendar]="goCalendar"
+  ></go-calendar>
 </div>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

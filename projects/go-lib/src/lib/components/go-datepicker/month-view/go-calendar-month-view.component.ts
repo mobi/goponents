@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { DateAdapter } from '../date-adapter';
 
 @Component({
@@ -6,13 +6,15 @@ import { DateAdapter } from '../date-adapter';
   styleUrls: ['./go-calendar-month-view.component.scss'],
   templateUrl: './go-calendar-month-view.component.html',
 })
-export class GoCalendarMonthViewComponent implements OnInit {
+export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
   focusedMonth: object;
   months: object[][];
 
   @Input() month: number;
   @Input() year: object;
   @Input() dateAdapter: DateAdapter;
+  @Input() minDate?: Date;
+  @Input() maxDate?: Date;
 
   @Output() setView: EventEmitter<string> = new EventEmitter<string>();
   @Output() setMonth: EventEmitter<number> = new EventEmitter<number>();
@@ -45,7 +47,9 @@ export class GoCalendarMonthViewComponent implements OnInit {
         break;
       case 'Enter':
         event.preventDefault();
-        this.pickMonth(this.focusedMonth['month']);
+        if (!this.focusedMonth['disabled']) {
+          this.pickMonth(this.focusedMonth['month']);
+        }
         break;
       default:
         return;
@@ -53,8 +57,11 @@ export class GoCalendarMonthViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setUpMonths();
     this.setFocusedMonth(this.month);
+  }
+
+  ngOnChanges(): void {
+    this.setUpMonths();
   }
 
   public nextYear(): void {
@@ -107,9 +114,42 @@ export class GoCalendarMonthViewComponent implements OnInit {
   private createMonth(month: number): object {
     const isSelected: boolean = month === this.month;
     return {
+      disabled: this.isDisabled(month),
       month: month,
       selected: isSelected,
       translated: this.dateAdapter.monthNames[month]
     };
+  }
+
+  private isDisabled(month: number): boolean {
+    return this.afterMaxMonth(month) || this.beforeMinMonth(month);
+  }
+
+  private afterMaxMonth(month: number): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    if (this.year['year'] < this.maxDate.getFullYear() || // year is before max dates year
+         (this.year['year'] === this.maxDate.getFullYear() && // year is the same as max dates year and
+           month <= this.maxDate.getMonth() // month is before or equal to max dates month
+         )
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  private beforeMinMonth(month: number): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    if (this.year['year'] > this.minDate.getFullYear() ||
+         (this.year['year'] === this.minDate.getFullYear() &&
+           month >= this.minDate.getMonth()
+         )
+    ) {
+      return false;
+    }
+    return true;
   }
 }

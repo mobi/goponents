@@ -14,6 +14,8 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   @Input() month: number;
   @Input() year: object;
   @Input() dateAdapter: DateAdapter;
+  @Input() minDate?: Date;
+  @Input() maxDate?: Date;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
   @Output() setMonth: EventEmitter<number> = new EventEmitter<number>();
@@ -47,7 +49,9 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
         break;
       case 'Enter':
         event.preventDefault();
-        this.pickDay(this.focusedDate['date']);
+        if (!this.focusedDate['disabled']) {
+          this.pickDay(this.focusedDate['date']);
+        }
         break;
       default:
         return;
@@ -98,16 +102,19 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
   private setFocusedDate(day: number): void {
+    let newDate: number;
     if (this.focusedDate) {
       this.focusedDate['focused'] = false;
     }
     if (day > this.dateAdapter.daysInMonth(this.month, this.year['year'])) {
-      const lastMonth: number = this.month;
+      newDate = day - this.dateAdapter.daysInMonth(this.month, this.year['year']);
+      this.focusedDate = this.createDay(newDate, this.dateAdapter.nextMonth(this.month));
       this.nextMonth();
-      this.focusedDate = this.findDay(day - this.dateAdapter.daysInMonth(lastMonth, this.year['year']));
     } else if (day < 1) {
+      const previousMonth: number = this.dateAdapter.previousMonth(this.month);
+      newDate = day + this.dateAdapter.daysInMonth(previousMonth, this.year['year']);
+      this.focusedDate = this.createDay(newDate, previousMonth);
       this.previousMonth();
-      this.focusedDate = this.findDay(this.dateAdapter.daysInMonth(this.month, this.year['year']) + day);
     } else {
       this.focusedDate = this.findDay(day);
     }
@@ -171,12 +178,15 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
 
-  private createDay(day: number): object {
-    const date: Date = new Date(this.year['year'] + '/' + (this.month + 1) + '/' + day);
+  private createDay(day: number, month?: number): object {
+    month = month || this.month;
+    const date: Date = new Date(this.year['year'] + '/' + (month + 1) + '/' + day);
     const selected: boolean = this.isSelected(date);
+    const disabled: boolean = this.isDisabled(date);
 
     return {
       date: date,
+      disabled: disabled,
       dateToShow: this.dateAdapter.dateNames[day - 1],
       selected: selected
     };
@@ -194,6 +204,46 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       !date
       || date.getMonth() !== this.month
       || date.getFullYear() !== this.year['year']
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  private isDisabled(date: Date): boolean {
+    return this.isAfterMax(date) || this.isBeforeMin(date);
+  }
+
+  private isAfterMax(date: Date): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    if (date.getFullYear() < this.maxDate.getFullYear()  || // dates year is before max year
+         (this.maxDate.getFullYear() === date.getFullYear() && // years are equal and
+           (date.getMonth() < this.maxDate.getMonth() || // dates month is before max dates month or
+             (date.getMonth() === this.maxDate.getMonth() && // same month and date is before max date
+              date.getDate() <= this.maxDate.getDate()
+             )
+           )
+         )
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  private isBeforeMin(date: Date): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    if (date.getFullYear() > this.minDate.getFullYear() || // dates year is after min year
+         (this.minDate.getFullYear() === date.getFullYear() && // years are euqal and
+           (date.getMonth() > this.minDate.getMonth() || // dates month is after min dates month or
+             (date.getMonth() === this.minDate.getMonth() && // same month and date is after min date
+              date.getDate() >= this.minDate.getDate()
+             )
+           )
+         )
     ) {
       return false;
     }

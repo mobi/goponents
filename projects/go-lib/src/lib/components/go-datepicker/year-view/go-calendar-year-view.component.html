@@ -15,7 +15,14 @@
       <table>
         <tr *ngFor="let row of years" class="go-calendar__row">
           <td *ngFor="let col of row" class="go-calendar__date">
-            <button class="go-calendar__body__cell" [ngClass]="{'go-calendar__body__cell--selected': col.selected, 'go-calendar__body__cell--focused': col.focused}" (click)="pickYear(col.year)">{{col.translated}}</button>
+            <button
+              class="go-calendar__body__cell"
+              [disabled]="col.disabled"
+              [ngClass]="{'go-calendar__body__cell--selected': col.selected, 'go-calendar__body__cell--focused': col.focused}"
+              (click)="pickYear(col.year)"
+            >
+              {{col.translated}}
+            </button>
           </td>
         </tr>
       </table>

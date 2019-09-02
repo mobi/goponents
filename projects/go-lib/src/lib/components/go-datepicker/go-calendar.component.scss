@@ -69,7 +69,7 @@ th {
   border-style: hidden;
   border-radius: 1.5rem;
   font-size: .75rem;
-  height: 90%;
+  height: 1.75rem;
   width: 90%;
   padding: 5%;
 
@@ -83,7 +83,8 @@ th {
   }
 
   &.go-calendar__body__cell--selected {
-    border: 1px solid black;
+    background-color: $ui-color-neutral-hover;
+    color: $theme-dark-text-color;
   }
 }
 

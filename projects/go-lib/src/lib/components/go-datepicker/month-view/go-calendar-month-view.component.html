@@ -17,6 +17,7 @@
           <td *ngFor="let col of row" class="go-calendar__date">
             <button
               class="go-calendar__body__cell"
+              [disabled]="col.disabled"
               [ngClass]="{'go-calendar__body__cell--selected': col.selected, 'go-calendar__body__cell--focused': col.focused}"
               (click)="pickMonth(col.month)"
             >

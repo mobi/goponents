@@ -20,6 +20,8 @@ export class GoCalendarComponent implements OnInit {
   view: string = 'day';
 
   @Input() calendar: GoCalendar;
+  @Input() minDate: Date;
+  @Input() maxDate: Date;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 

@@ -11,6 +11,8 @@ import { LocaleFormat } from './locale-format';
 export class GoDatepickerComponent implements OnInit {
   selectedDate: string;
   goCalendar: GoCalendar;
+  min: Date;
+  max: Date;
 
   @Input() control: FormControl;
   @Input() hints: string[];
@@ -19,6 +21,8 @@ export class GoDatepickerComponent implements OnInit {
   @Input() locale: string = 'en-US';
   @Input() placeholder: string = '';
   @Input() theme: string = 'light';
+  @Input() maxDate: Date | string;
+  @Input() minDate: Date | string;
 
   constructor(
   ) {
@@ -30,8 +34,11 @@ export class GoDatepickerComponent implements OnInit {
     if (this.control.value instanceof Date) {
       this.datePicked(this.control.value);
     } else if (typeof this.control.value === 'string') {
-      this.validateDate();
+      this.validateDate('en-US');
     }
+
+    this.min = this.initializeDate(this.minDate);
+    this.max = this.initializeDate(this.maxDate);
 
     this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {
@@ -40,19 +47,27 @@ export class GoDatepickerComponent implements OnInit {
     });
   }
 
-  openDatepicker(): void {
+  public openDatepicker(): void {
     this.goCalendar.setLocale(this.locale);
     this.goCalendar.openCalendar(this.control.value);
   }
 
-  datePicked(date: Date): void {
+  public datePicked(date: Date): void {
     this.control.setValue(date);
     if (this.control.value) {
       this.selectedDate = LocaleFormat.formatDate(date, this.locale);
     }
   }
 
-  validateDate(): void {
-    this.datePicked(LocaleFormat.parse(this.selectedDate.split(/[/\-.]/), this.locale));
+  public validateDate(locale: string): void {
+    locale = locale || this.locale;
+    this.datePicked(LocaleFormat.parse(this.selectedDate, locale));
+  }
+
+  private initializeDate(date: Date | string): Date {
+    if (date instanceof Date) {
+      return date;
+    }
+    return LocaleFormat.parse(date, 'en-US');
   }
 }
