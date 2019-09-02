@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -26,6 +26,19 @@ export class GoCalendarComponent implements OnInit {
   constructor(
   ) {
     this.dateAdapter = new DateAdapter();
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent): void {
+    switch (event.key) {
+      case 'Esc': // IE/Edge specific value
+      case 'Escape':
+        event.preventDefault();
+        this.closeCalendar();
+        break;
+      default:
+        return;
+    }
   }
 
   ngOnInit(): void {

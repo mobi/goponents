@@ -1,22 +1,11 @@
 export class LocaleFormat {
   static parse(values: string[], locale: string): Date {
-    const format: Array<string> = this.format(locale).split(/[/\-.]/);
-    const month: number = this.dateFromFormat(format, values, 'mm');
-    const day: number = this.dateFromFormat(format, values, 'dd');
-    let year: number = this.dateFromFormat(format, values, 'yyyy');
-
-    if (year <= 100) {
-      // We're assuming that if they input a 2 digit year they want the current century
-      const century: number = this.century();
-      year = century + year;
-    }
-
-    if (!this.validDate(month, day, year)) {
+    if (!values[0] || !values[1] || !values[2]) {
       return null;
+    } else if (values && values[0].length > 2) {
+      return this.parseFromInternational(values);
     }
-
-    // Create a new date with the correct year month and date values based on the locale of the datepicker
-    return new Date(year, month - 1, day);
+    return this.parseFromFormat(values, locale);
   }
 
   static format(locale: string): string {
@@ -53,5 +42,29 @@ export class LocaleFormat {
     if (date) {
       return new Intl.DateTimeFormat(locale).format(date);
     }
+  }
+
+  private static parseFromFormat(values: string[], locale: string): Date {
+    const format: Array<string> = this.format(locale).split(/[/\-.]/);
+    const month: number = this.dateFromFormat(format, values, 'mm');
+    const day: number = this.dateFromFormat(format, values, 'dd');
+    let year: number = this.dateFromFormat(format, values, 'yyyy');
+
+    if (year <= 100) {
+      // We're assuming that if they input a 2 digit year they want the current century
+      const century: number = this.century();
+      year = century + year;
+    }
+
+    if (!this.validDate(month, day, year)) {
+      return null;
+    }
+
+    // Create a new date with the correct year month and date values based on the locale of the datepicker
+    return new Date(year, month - 1, day);
+  }
+
+  private static parseFromInternational(values: string[]): Date {
+    return new Date(parseInt(values[0], 10), parseInt(values[1], 10), parseInt(values[2], 10), 0, 0, 0);
   }
 }
