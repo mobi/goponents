@@ -65,6 +65,6 @@ export class LocaleFormat {
   }
 
   private static parseFromInternational(values: string[]): Date {
-    return new Date(parseInt(values[0], 10), parseInt(values[1], 10), parseInt(values[2], 10), 0, 0, 0);
+    return new Date(parseInt(values[0], 10), parseInt(values[1], 10) - 1, parseInt(values[2], 10), 0, 0, 0);
   }
 }

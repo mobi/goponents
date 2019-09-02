@@ -55,7 +55,11 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    this.setFocusedDate(this.day.getDate());
+    if (this.validDate(this.day)) {
+      this.setFocusedDate(this.day.getDate());
+    } else {
+      this.setFocusedDate(1);
+    }
   }
 
   ngOnChanges(): void {
@@ -94,7 +98,9 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
   private setFocusedDate(day: number): void {
-    this.focusedDate['focused'] = false;
+    if (this.focusedDate) {
+      this.focusedDate['focused'] = false;
+    }
     if (day > this.dateAdapter.daysInMonth(this.month, this.year['year'])) {
       const lastMonth: number = this.month;
       this.nextMonth();
@@ -181,5 +187,16 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
     const week: number = Math.floor((day + firstDate - 1) / 7);
     const dayOfWeek: number = (day + firstDate - 1) % 7;
     return this.weeks[week][dayOfWeek];
+  }
+
+  private validDate(date: Date): boolean {
+    if (
+      !date
+      || date.getMonth() !== this.month
+      || date.getFullYear() !== this.year['year']
+    ) {
+      return false;
+    }
+    return true;
   }
 }

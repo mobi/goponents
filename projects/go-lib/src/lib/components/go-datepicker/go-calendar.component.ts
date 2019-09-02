@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -61,7 +61,6 @@ export class GoCalendarComponent implements OnInit {
 
   public setMonth(month: number): void {
     this.currentMonth = month;
-    this.setValidDate();
   }
 
   public updateYear(year: number): void {
@@ -69,8 +68,6 @@ export class GoCalendarComponent implements OnInit {
       year: year,
       translated: this.dateAdapter.getYearName(year)
     };
-
-    this.setValidDate();
   }
 
   public pickDay(day: Date): void {
@@ -89,11 +86,5 @@ export class GoCalendarComponent implements OnInit {
     }
     this.currentMonth = this.selectedDate.getMonth();
     this.updateYear(this.selectedDate.getFullYear());
-  }
-
-  private setValidDate(): void {
-    if (this.selectedDate.getMonth() !== this.currentMonth || this.selectedDate.getFullYear() !== this.currentYear['year']) {
-      this.selectedDate = new Date(this.currentYear['year'], this.currentMonth, 1, 0, 0, 0, 0);
-    }
   }
 }
