@@ -27,6 +27,11 @@ export class GoDatepickerComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedDate = this.control.value;
+    if (this.control.value instanceof Date) {
+      this.datePicked(this.control.value);
+    } else if (typeof this.control.value === 'string') {
+      this.validateDate();
+    }
 
     this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {

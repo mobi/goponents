@@ -3,7 +3,7 @@
     <div class="go-calendar__header__left">
       {{year.translated}}
       <div class="go-calendar__header__dropdown">
-        <go-icon-button buttonIcon="keyboard_arrow_down" (handleClick)="switchView($event)"></go-icon-button>
+        <go-icon-button buttonIcon="keyboard_arrow_up" (handleClick)="switchView($event)"></go-icon-button>
       </div>
     </div>
     <div class="go-calendar__header__right">
@@ -11,7 +11,7 @@
       <go-icon-button buttonIcon="keyboard_arrow_right" (handleClick)="nextYear()"></go-icon-button>
     </div>
   </span>
-  <div class="go-calendar__body">
+  <div class="go-calendar__body go-calendar__body__border">
       <table>
         <tr *ngFor="let row of months">
           <td *ngFor="let col of row" class="go-calendar__date">

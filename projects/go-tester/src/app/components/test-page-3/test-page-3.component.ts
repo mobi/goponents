@@ -32,7 +32,8 @@ export class TestPage3Component {
     notes: new FormControl(''),
     radio: new FormControl({value: '', disabled: false}),
     toggle: new FormControl(false),
-    date: new FormControl('')
+    date: new FormControl('2017/6/21'),
+    date2: new FormControl('')
   });
   loading: boolean = false;
 
@@ -46,7 +47,6 @@ export class TestPage3Component {
   constructor() { }
 
   onSubmit(): void {
-    debugger;
     this.loading = true;
 
     setTimeout(() => {
