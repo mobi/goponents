@@ -6,7 +6,8 @@
 </label>
 
 <div class="go-datepicker">
-  <input 
+  <input
+    #datepickerInput
     class="go-form__input"
     [id]="id"
     [placeholder]="placeholder"
@@ -24,6 +25,8 @@
     (datePicked)="datePicked($event)"
     [maxDate]="max"
     [minDate]="min"
+    [displayFromRight]="displayFromRight"
+    [displayAbove]="displayAbove"
     [calendar]="goCalendar"
   ></go-calendar>
 </div>

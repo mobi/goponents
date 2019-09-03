@@ -6,7 +6,11 @@
 >
 </div>
 
-<div class="go-calendar" *ngIf="opened">
+<div
+  class="go-calendar"
+  [ngClass]="{'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight}"
+  *ngIf="opened"
+>
   <div *ngIf="view === 'day'">
     <go-calendar-day-view
       [day]="selectedDate"
