@@ -22,6 +22,8 @@ export class GoCalendarComponent implements OnInit {
   @Input() calendar: GoCalendar;
   @Input() minDate: Date;
   @Input() maxDate: Date;
+  @Input() displayFromRight: boolean;
+  @Input() displayAbove: boolean;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 

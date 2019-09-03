@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
@@ -13,6 +13,8 @@ export class GoDatepickerComponent implements OnInit {
   goCalendar: GoCalendar;
   min: Date;
   max: Date;
+  displayFromRight: boolean = false;
+  displayAbove: boolean = false;
 
   @Input() control: FormControl;
   @Input() hints: string[];
@@ -23,6 +25,8 @@ export class GoDatepickerComponent implements OnInit {
   @Input() theme: string = 'light';
   @Input() maxDate: Date | string;
   @Input() minDate: Date | string;
+
+  @ViewChild('datepickerInput') datepickerInput: ElementRef;
 
   constructor(
   ) {
@@ -48,6 +52,10 @@ export class GoDatepickerComponent implements OnInit {
   }
 
   public openDatepicker(): void {
+    const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
+
+    this.displayFromRight = window.innerWidth - distance['left'] < 350;
+    this.displayAbove = window.innerHeight - distance['top'] < 350;
     this.goCalendar.setLocale(this.locale);
     this.goCalendar.openCalendar(this.control.value);
   }
