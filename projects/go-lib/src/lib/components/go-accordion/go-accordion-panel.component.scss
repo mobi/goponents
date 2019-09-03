@@ -1,6 +1,5 @@
-@import '~@tangoe/gosheets/base/variables';
-@import '~@tangoe/gosheets/base/mixins';
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .go-accordion-panel {
   background: $theme-light-bg;
@@ -13,8 +12,8 @@
   &::before {
     @include transition(opacity);
 
-    background: $brand-color-gradient;
-    background-color: $brand-color;
+    background: $base-primary-gradient;
+    background-color: $base-primary;
     content: '';
     height: 100%;
     left: 0;
