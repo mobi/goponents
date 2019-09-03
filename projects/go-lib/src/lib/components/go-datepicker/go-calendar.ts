@@ -23,6 +23,16 @@ export class GoCalendar {
     this.setCalendarStatus(false);
   }
 
+  public dateOutOfRange(date: Date, min?: Date, max?: Date): boolean {
+    if (min && date < min) {
+      return true;
+    }
+    if (max && date > max) {
+      return true;
+    }
+    return false;
+  }
+
   private setCalendarStatus(isOpen: boolean = true): void {
     this.calendarOpen.next(isOpen);
   }

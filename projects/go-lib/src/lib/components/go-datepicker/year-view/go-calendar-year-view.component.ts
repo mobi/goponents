@@ -11,6 +11,8 @@ export class GoCalendarYearViewComponent implements OnInit {
   years: object[][];
   firstYear: object;
   lastYear: object;
+  nextGroupDisabled: boolean;
+  previousGroupDisabled: boolean;
 
   @Input() year: object;
   @Input() dateAdapter: DateAdapter;
@@ -96,6 +98,9 @@ export class GoCalendarYearViewComponent implements OnInit {
       }
     }
     this.lastYear = this.years[5][3];
+
+    this.nextGroupDisabled = this.nextYearGroupInvalid();
+    this.previousGroupDisabled = this.previousYearGroupInvalid();
   }
 
   private setFocusedYear(year: number): void {
@@ -141,5 +146,27 @@ export class GoCalendarYearViewComponent implements OnInit {
       return false;
     }
     return this.minDate.getFullYear() > year;
+  }
+
+  private nextYearGroupInvalid(): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    const firstDateOfYear: Date = new Date(this.lastYear['year'] + 1, 0, 1);
+    if (firstDateOfYear > this.maxDate) {
+      return true;
+    }
+    return false;
+  }
+
+  private previousYearGroupInvalid(): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    const lastDateOfYear: Date = new Date(this.firstYear['year'] - 1, 11, 31);
+    if (lastDateOfYear < this.minDate) {
+      return true;
+    }
+    return false;
   }
 }
