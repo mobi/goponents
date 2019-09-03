@@ -10,6 +10,7 @@
     class="go-form__input"
     [id]="id"
     [placeholder]="placeholder"
+    (keyup)="restrictInput($event)"
     [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
     [(ngModel)]="selectedDate"
     (blur)="validateDate()"
