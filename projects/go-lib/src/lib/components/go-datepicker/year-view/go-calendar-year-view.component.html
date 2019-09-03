@@ -7,8 +7,16 @@
       </div>
     </div>
     <div class="go-calendar__header__right">
-      <go-icon-button buttonIcon="keyboard_arrow_left" (handleClick)="previousYearGroup()"></go-icon-button>
-      <go-icon-button buttonIcon="keyboard_arrow_right" (handleClick)="nextYearGroup()"></go-icon-button>
+      <go-icon-button
+        [buttonDisabled]=previousGroupDisabled
+        buttonIcon="keyboard_arrow_left"
+        (handleClick)="previousYearGroup()"
+      ></go-icon-button>
+      <go-icon-button
+        [buttonDisabled]="nextGroupDisabled"
+        buttonIcon="keyboard_arrow_right"
+        (handleClick)="nextYearGroup()"
+      ></go-icon-button>
     </div>
   </span>
   <div class="go-calendar__body go-calendar__body__border">

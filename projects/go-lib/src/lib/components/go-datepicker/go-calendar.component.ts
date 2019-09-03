@@ -82,9 +82,19 @@ export class GoCalendarComponent implements OnInit {
   }
 
   private initializeDate(): void {
+    let newDate: Date;
+
     if (!this.selectedDate) {
-      this.selectedDate = new Date();
-      this.selectedDate.setHours(0, 0, 0, 0);
+      newDate = new Date();
+      newDate.setHours(0, 0, 0, 0);
+
+      const invalid: boolean = this.calendar.dateOutOfRange(this.selectedDate, this.minDate, this.maxDate);
+      if (invalid && this.minDate) {
+        newDate = this.minDate;
+      } else if (invalid && this.maxDate) {
+        newDate = this.maxDate;
+      }
+      this.selectedDate = newDate;
     }
     this.currentMonth = this.selectedDate.getMonth();
     this.updateYear(this.selectedDate.getFullYear());

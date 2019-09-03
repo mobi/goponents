@@ -7,8 +7,16 @@
       </div>
     </div>
     <div class="go-calendar__header__right">
-      <go-icon-button buttonIcon="keyboard_arrow_left" (handleClick)="previousMonth()"></go-icon-button>
-      <go-icon-button buttonIcon="keyboard_arrow_right" (handleClick)="nextMonth()"></go-icon-button>
+      <go-icon-button
+        [buttonDisabled]="previousMonthDisabled"
+        buttonIcon="keyboard_arrow_left"
+        (handleClick)="previousMonth()"
+      ></go-icon-button>
+      <go-icon-button
+        [buttonDisabled]="nextMonthDisabled"
+        buttonIcon="keyboard_arrow_right"
+        (handleClick)="nextMonth()"
+      ></go-icon-button>
     </div>
   </span>
 </div>

@@ -9,6 +9,8 @@ import { DateAdapter } from '../date-adapter';
 export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   focusedDate: object;
   weeks: object[][];
+  nextMonthDisabled: boolean;
+  previousMonthDisabled: boolean;
 
   @Input() day: Date;
   @Input() month: number;
@@ -71,6 +73,8 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
     if (this.focusedDate) {
       this.setFocusedDate(this.focusedDate['date'].getDate());
     }
+    this.nextMonthDisabled = this.nextMonthInvalid();
+    this.previousMonthDisabled = this.previousMonthInvalid();
   }
 
   public nextMonth(): void {
@@ -248,5 +252,37 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       return false;
     }
     return true;
+  }
+
+  private nextMonthInvalid(): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    const nextMonth: number = this.dateAdapter.nextMonth(this.month);
+    let year: number = this.year['year'];
+    if (nextMonth === 0) {
+      year ++;
+    }
+    const firstDateOfMonth: Date = new Date(year, nextMonth, 1);
+    if (firstDateOfMonth > this.maxDate) {
+      return true;
+    }
+    return false;
+  }
+
+  private previousMonthInvalid(): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    const previousMonth: number = this.dateAdapter.previousMonth(this.month);
+    let year: number = this.year['year'];
+    if (previousMonth === 11) {
+      year --;
+    }
+    const lastDateOfMonth: Date = new Date(year, previousMonth, this.dateAdapter.daysInMonth(previousMonth, year));
+    if (lastDateOfMonth < this.minDate) {
+      return true;
+    }
+    return false;
   }
 }

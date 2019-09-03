@@ -30,6 +30,9 @@ export class GoDatepickerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.min = this.initializeDate(this.minDate);
+    this.max = this.initializeDate(this.maxDate);
+
     this.selectedDate = this.control.value;
     if (this.control.value instanceof Date) {
       this.datePicked(this.control.value);
@@ -37,12 +40,9 @@ export class GoDatepickerComponent implements OnInit {
       this.validateDate('en-US');
     }
 
-    this.min = this.initializeDate(this.minDate);
-    this.max = this.initializeDate(this.maxDate);
-
     this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {
-        this.control.setErrors([{ format: 'format is invalid' }]);
+        this.control.setErrors([{ message: 'format is invalid' }]);
       }
     });
   }
@@ -53,9 +53,14 @@ export class GoDatepickerComponent implements OnInit {
   }
 
   public datePicked(date: Date): void {
-    this.control.setValue(date);
-    if (this.control.value) {
-      this.selectedDate = LocaleFormat.formatDate(date, this.locale);
+    if (!this.goCalendar.dateOutOfRange(date, this.min, this.max)) {
+      this.control.setValue(date);
+      if (this.control.value) {
+        this.selectedDate = LocaleFormat.formatDate(date, this.locale);
+      }
+    } else {
+      this.control.setValue(null);
+      this.control.setErrors([{ message: 'Date is out of range' }]);
     }
   }
 

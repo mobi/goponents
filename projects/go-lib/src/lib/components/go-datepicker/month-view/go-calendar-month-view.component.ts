@@ -9,6 +9,8 @@ import { DateAdapter } from '../date-adapter';
 export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
   focusedMonth: object;
   months: object[][];
+  nextYearDisabled: boolean;
+  previousYearDisabled: boolean;
 
   @Input() month: number;
   @Input() year: object;
@@ -62,6 +64,8 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
 
   ngOnChanges(): void {
     this.setUpMonths();
+    this.nextYearDisabled = this.nextYearInvalid();
+    this.previousYearDisabled = this.previousYearInvalid();
   }
 
   public nextYear(): void {
@@ -151,5 +155,27 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
       return false;
     }
     return true;
+  }
+
+  private nextYearInvalid(): boolean {
+    if (!this.maxDate) {
+      return false;
+    }
+    const firstDateOfYear: Date = new Date(this.year['year'] + 1, 0, 1);
+    if (firstDateOfYear > this.maxDate) {
+      return true;
+    }
+    return false;
+  }
+
+  private previousYearInvalid(): boolean {
+    if (!this.minDate) {
+      return false;
+    }
+    const lastDateOfYear: Date = new Date(this.year['year'] - 1, 11, 31);
+    if (lastDateOfYear < this.minDate) {
+      return true;
+    }
+    return false;
   }
 }
