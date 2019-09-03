@@ -22,7 +22,8 @@
     "npm_pack": "cd dist/go-lib && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
     "publish": "npm run package && cd dist/go-lib && npm publish",
-    "publish_local": "npm run package && node ./local_install.js"
+    "publish_local": "npm run package && node ./local_install.js",
+    "sass-lint": "node_modules/.bin/sass-lint -c .sass-lint.yml"
   },
   "private": true,
   "engines": {
@@ -63,6 +64,7 @@
     "karma-jasmine": "~1.1.2",
     "ng-packagr": "^5.1.0",
     "protractor": "~5.4.0",
+    "sass-lint": "^1.13.1",
     "ts-node": "~7.0.0",
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
