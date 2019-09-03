@@ -69,6 +69,10 @@ export class GoDatepickerComponent implements OnInit {
     this.datePicked(LocaleFormat.parse(this.selectedDate, locale));
   }
 
+  public restrictInput(): void {
+    this.selectedDate = this.selectedDate.replace(/[^0-9/.-]+$/, '');
+  }
+
   private initializeDate(date: Date | string): Date {
     if (date instanceof Date) {
       return date;
