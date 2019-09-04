@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
+import { CalendarCell } from './calendar-cell.model';
 
 @Component({
   selector: 'go-calendar',
@@ -14,10 +15,11 @@ import { DateAdapter } from './date-adapter';
 export class GoCalendarComponent implements OnInit {
   opened: boolean = false;
   currentMonth: number = 0;
-  currentYear: object;
+  currentYear: CalendarCell;
   selectedDate: Date;
   dateAdapter: DateAdapter;
   view: string = 'day';
+  canClose: boolean = true;
 
   @Input() calendar: GoCalendar;
   @Input() minDate: Date;
@@ -27,17 +29,21 @@ export class GoCalendarComponent implements OnInit {
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 
-  constructor(
-    private elementRef: ElementRef
-  ) {
+  constructor() {
     this.dateAdapter = new DateAdapter();
   }
 
-  @HostListener('document:click', ['$event.target'])
-  onDocumentClick(target: HTMLElement): void {
-    if (this.opened && !this.elementRef.nativeElement.contains(target)) {
+  @HostListener('click')
+  ClickInside(): void {
+    this.canClose = false;
+  }
+
+  @HostListener('document: click')
+  onDocumentClick(): void {
+    if (this.canClose) {
       this.closeCalendar();
     }
+    this.canClose = true;
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -77,7 +83,7 @@ export class GoCalendarComponent implements OnInit {
 
   public updateYear(year: number): void {
     this.currentYear = {
-      year: year,
+      value: year,
       translated: this.dateAdapter.getYearName(year)
     };
   }

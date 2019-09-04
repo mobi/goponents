@@ -28,15 +28,15 @@
       </th>
     </tr>
     <tr *ngFor="let week of weeks">
-      <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day['date'])">
-        <span *ngIf="!day.dateToShow"></span>
+      <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day.value)">
+        <span *ngIf="!day.translated"></span>
         <button
           class="go-calendar__body__cell"
           [disabled]="day.disabled"
           [ngClass]="{'go-calendar__body__cell--selected': day.selected, 'go-calendar__body__cell--focused': day.focused}"
-          *ngIf="day.dateToShow"
+          *ngIf="day.translated"
         >
-          {{day.dateToShow}}
+          {{day.translated}}
         </button>
       </td>
     </tr>

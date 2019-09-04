@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { DateAdapter } from '../date-adapter';
+import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
   selector: 'go-calendar-year-view',
@@ -7,14 +8,14 @@ import { DateAdapter } from '../date-adapter';
   templateUrl: './go-calendar-year-view.component.html',
 })
 export class GoCalendarYearViewComponent implements OnInit {
-  focusedYear: object;
-  years: object[][];
-  firstYear: object;
-  lastYear: object;
+  focusedYear: CalendarCell;
+  years: CalendarCell[][];
+  firstYear: CalendarCell;
+  lastYear: CalendarCell;
   nextGroupDisabled: boolean;
   previousGroupDisabled: boolean;
 
-  @Input() year: object;
+  @Input() year: CalendarCell;
   @Input() dateAdapter: DateAdapter;
   @Input() minDate: Date;
   @Input() maxDate: Date;
@@ -30,27 +31,27 @@ export class GoCalendarYearViewComponent implements OnInit {
       case 'Down': // IE/Edge specific value
       case 'ArrowDown':
         event.preventDefault();
-        this.setFocusedYear(this.focusedYear['year'] + 4);
+        this.setFocusedYear(this.focusedYear.value + 4);
         break;
       case 'Up': // IE/Edge specific value
       case 'ArrowUp':
         event.preventDefault();
-        this.setFocusedYear(this.focusedYear['year'] - 4);
+        this.setFocusedYear(this.focusedYear.value - 4);
         break;
       case 'Left': // IE/Edge specific value
       case 'ArrowLeft':
         event.preventDefault();
-        this.setFocusedYear(this.focusedYear['year'] - 1);
+        this.setFocusedYear(this.focusedYear.value - 1);
         break;
       case 'Right': // IE/Edge specific value
       case 'ArrowRight':
         event.preventDefault();
-        this.setFocusedYear(this.focusedYear['year'] + 1);
+        this.setFocusedYear(this.focusedYear.value + 1);
         break;
       case 'Enter':
         event.preventDefault();
-        if (!this.focusedYear['disabled']) {
-          this.pickYear(this.focusedYear['year']);
+        if (!this.focusedYear.disabled) {
+          this.pickYear(this.focusedYear.value);
         }
         break;
       default:
@@ -59,18 +60,18 @@ export class GoCalendarYearViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setUpYears(this.year['year'] - 15);
-    this.setFocusedYear(this.year['year']);
+    this.setUpYears(this.year.value - 15);
+    this.setFocusedYear(this.year.value);
   }
 
   public nextYearGroup(): void {
-    this.setUpYears(this.lastYear['year'] + 1);
-    this.setFocusedYear(this.focusedYear['year'] + 24);
+    this.setUpYears(this.lastYear.value + 1);
+    this.setFocusedYear(this.focusedYear.value + 24);
   }
 
   public previousYearGroup(): void {
-    this.setUpYears(this.firstYear['year'] - (6 * 4));
-    this.setFocusedYear(this.focusedYear['year'] - 24);
+    this.setUpYears(this.firstYear.value - (6 * 4));
+    this.setFocusedYear(this.focusedYear.value - 24);
   }
 
   public switchView(): void {
@@ -92,7 +93,7 @@ export class GoCalendarYearViewComponent implements OnInit {
         const currentYear: number = startYear + (4 * row) + col;
         this.years[row].push(this.createYear(currentYear));
 
-        if (!this.focusedYear && this.years[row][col]['selected']) {
+        if (!this.focusedYear && this.years[row][col].selected) {
           this.focusedYear = this.findYear(currentYear);
         }
       }
@@ -104,13 +105,13 @@ export class GoCalendarYearViewComponent implements OnInit {
   }
 
   private setFocusedYear(year: number): void {
-    this.focusedYear['focused'] = false;
-    if (year > this.lastYear['year']) {
+    this.focusedYear.focused = false;
+    if (year > this.lastYear.value) {
       if (!this.nextGroupDisabled) {
         this.nextYearGroup();
         this.focusedYear = this.findYear(year);
       }
-    } else if (year < this.firstYear['year']) {
+    } else if (year < this.firstYear.value) {
       if (!this.previousGroupDisabled) {
         this.previousYearGroup();
         this.focusedYear = this.findYear(year);
@@ -118,20 +119,20 @@ export class GoCalendarYearViewComponent implements OnInit {
     } else {
       this.focusedYear = this.findYear(year);
     }
-    this.focusedYear['focused'] = true;
+    this.focusedYear.focused = true;
   }
 
-  private findYear(year: number): object {
-    const row: number = Math.floor((year - this.firstYear['year']) / 4);
-    const col: number = (year - this.firstYear['year']) % 4;
+  private findYear(year: number): CalendarCell {
+    const row: number = Math.floor((year - this.firstYear.value) / 4);
+    const col: number = (year - this.firstYear.value) % 4;
     return this.years[row][col];
   }
 
-  private createYear(year: number): object {
-    const isSelected: boolean = year === this.year['year'];
+  private createYear(year: number): CalendarCell {
+    const isSelected: boolean = year === this.year.value;
     return {
       disabled: this.isDisabled(year),
-      year: year,
+      value: year,
       selected: isSelected,
       translated: this.dateAdapter.getYearName(year)
     };
@@ -159,7 +160,7 @@ export class GoCalendarYearViewComponent implements OnInit {
     if (!this.maxDate) {
       return false;
     }
-    const firstDateOfYear: Date = new Date(this.lastYear['year'] + 1, 0, 1);
+    const firstDateOfYear: Date = new Date(this.lastYear.value + 1, 0, 1);
     if (firstDateOfYear > this.maxDate) {
       return true;
     }
@@ -170,7 +171,7 @@ export class GoCalendarYearViewComponent implements OnInit {
     if (!this.minDate) {
       return false;
     }
-    const lastDateOfYear: Date = new Date(this.firstYear['year'] - 1, 11, 31);
+    const lastDateOfYear: Date = new Date(this.firstYear.value - 1, 11, 31);
     if (lastDateOfYear < this.minDate) {
       return true;
     }

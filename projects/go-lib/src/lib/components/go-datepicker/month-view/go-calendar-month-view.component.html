@@ -27,7 +27,7 @@
               class="go-calendar__body__cell"
               [disabled]="col.disabled"
               [ngClass]="{'go-calendar__body__cell--selected': col.selected, 'go-calendar__body__cell--focused': col.focused}"
-              (click)="pickMonth(col.month)"
+              (click)="pickMonth(col.value)"
             >
               {{col.translated}}
             </button>

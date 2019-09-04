@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { DateAdapter } from '../date-adapter';
+import { CalendarCell, CalendarCellDate } from '../calendar-cell.model';
 
 @Component({
   selector: 'go-calendar-day-view',
@@ -7,14 +8,14 @@ import { DateAdapter } from '../date-adapter';
   templateUrl: './go-calendar-day-view.component.html',
 })
 export class GoCalendarDayViewComponent implements OnChanges, OnInit {
-  focusedDate: object;
-  weeks: object[][];
+  focusedDate: CalendarCellDate;
+  weeks: CalendarCellDate[][];
   nextMonthDisabled: boolean;
   previousMonthDisabled: boolean;
 
   @Input() day: Date;
   @Input() month: number;
-  @Input() year: object;
+  @Input() year: CalendarCell;
   @Input() dateAdapter: DateAdapter;
   @Input() minDate?: Date;
   @Input() maxDate?: Date;
@@ -32,27 +33,27 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       case 'Down': // IE/Edge specific value
       case 'ArrowDown':
         event.preventDefault();
-        this.setFocusedDate(this.focusedDate['date'].getDate() + 7);
+        this.setFocusedDate(this.focusedDate.value.getDate() + 7);
         break;
       case 'Up': // IE/Edge specific value
       case 'ArrowUp':
         event.preventDefault();
-        this.setFocusedDate(this.focusedDate['date'].getDate() - 7);
+        this.setFocusedDate(this.focusedDate.value.getDate() - 7);
         break;
       case 'Left': // IE/Edge specific value
       case 'ArrowLeft':
         event.preventDefault();
-        this.setFocusedDate(this.focusedDate['date'].getDate() - 1);
+        this.setFocusedDate(this.focusedDate.value.getDate() - 1);
         break;
       case 'Right': // IE/Edge specific value
       case 'ArrowRight':
         event.preventDefault();
-        this.setFocusedDate(this.focusedDate['date'].getDate() + 1);
+        this.setFocusedDate(this.focusedDate.value.getDate() + 1);
         break;
       case 'Enter':
         event.preventDefault();
-        if (!this.focusedDate['disabled']) {
-          this.pickDay(this.focusedDate['date']);
+        if (!this.focusedDate.disabled) {
+          this.pickDay(this.focusedDate.value);
         }
         break;
       default:
@@ -71,7 +72,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     this.calculateMonth();
     if (this.focusedDate) {
-      this.setFocusedDate(this.focusedDate['date'].getDate());
+      this.setFocusedDate(this.focusedDate.value.getDate());
     }
     this.nextMonthDisabled = this.nextMonthInvalid();
     this.previousMonthDisabled = this.previousMonthInvalid();
@@ -83,7 +84,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
     this.setMonth.emit(nextMonth);
 
     if (nextMonth === 0) {
-      this.setYear.emit(this.year['year'] + 1);
+      this.setYear.emit(this.year.value + 1);
     }
   }
 
@@ -93,7 +94,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
     this.setMonth.emit(previousMonth);
 
     if (previousMonth === 11) {
-      this.setYear.emit(this.year['year'] - 1);
+      this.setYear.emit(this.year.value - 1);
     }
   }
 
@@ -108,36 +109,36 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   private setFocusedDate(day: number): void {
     let newDate: number;
     if (this.focusedDate) {
-      this.focusedDate['focused'] = false;
+      this.focusedDate.focused = false;
     }
-    if (day > this.dateAdapter.daysInMonth(this.month, this.year['year'])) {
+    if (day > this.dateAdapter.daysInMonth(this.month, this.year.value)) {
       if (!this.nextMonthDisabled) {
-        newDate = day - this.dateAdapter.daysInMonth(this.month, this.year['year']);
+        newDate = day - this.dateAdapter.daysInMonth(this.month, this.year.value);
         this.focusedDate = this.createDay(newDate, this.dateAdapter.nextMonth(this.month));
         this.nextMonth();
       }
     } else if (day < 1) {
       if (!this.previousMonthDisabled) {
         const previousMonth: number = this.dateAdapter.previousMonth(this.month);
-        newDate = day + this.dateAdapter.daysInMonth(previousMonth, this.year['year']);
+        newDate = day + this.dateAdapter.daysInMonth(previousMonth, this.year.value);
         this.focusedDate = this.createDay(newDate, previousMonth);
         this.previousMonth();
       }
     } else {
       this.focusedDate = this.findDay(day);
     }
-    this.focusedDate['focused'] = true;
+    this.focusedDate.focused = true;
   }
 
   private calculateMonth(): void {
-    const firstDate: number = new Date(this.year['year'] + '/' + (this.month + 1) + '/01').getDay();
+    const firstDate: number = new Date(this.year.value + '/' + (this.month + 1) + '/01').getDay();
 
     this.weeks = [[]];
-    let daysLeft: number = this.dateAdapter.daysInMonth(this.month, this.year['year']);
+    let daysLeft: number = this.dateAdapter.daysInMonth(this.month, this.year.value);
     let currentDay: number = 1;
 
     for (let i: number = firstDate - 1; i >= 0; i--) {
-      this.weeks[0].push({ month: '', date: '' });
+      this.weeks[0].push({ value: null, translated: '' });
     }
 
     for (let i: number = this.weeks[0].length; i < 7; i++) {
@@ -171,7 +172,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   private addDate(currentWeek: number, currentDay: number, idx: number): void {
     this.weeks[currentWeek].push(this.createDay(currentDay));
 
-    if (!this.focusedDate && this.weeks[currentWeek][idx]['selected']) {
+    if (!this.focusedDate && this.weeks[currentWeek][idx].selected) {
       this.focusedDate = this.findDay(currentDay);
     }
   }
@@ -186,22 +187,22 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
 
-  private createDay(day: number, month?: number): object {
+  private createDay(day: number, month?: number): CalendarCellDate {
     month = month || this.month;
-    const date: Date = new Date(this.year['year'] + '/' + (month + 1) + '/' + day);
+    const date: Date = new Date(this.year.value + '/' + (month + 1) + '/' + day);
     const selected: boolean = this.isSelected(date);
     const disabled: boolean = this.isDisabled(date);
 
     return {
-      date: date,
+      value: date,
       disabled: disabled,
-      dateToShow: this.dateAdapter.dateNames[day - 1],
+      translated: this.dateAdapter.dateNames[day - 1],
       selected: selected
     };
   }
 
-  private findDay(day: number): object {
-    const firstDate: number = new Date(this.year['year'] + '/' + (this.month + 1) + '/01').getDay();
+  private findDay(day: number): CalendarCellDate {
+    const firstDate: number = new Date(this.year.value + '/' + (this.month + 1) + '/01').getDay();
     const week: number = Math.floor((day + firstDate - 1) / 7);
     const dayOfWeek: number = (day + firstDate - 1) % 7;
     return this.weeks[week][dayOfWeek];
@@ -211,7 +212,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
     if (
       !date
       || date.getMonth() !== this.month
-      || date.getFullYear() !== this.year['year']
+      || date.getFullYear() !== this.year.value
     ) {
       return false;
     }
@@ -263,7 +264,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       return false;
     }
     const nextMonth: number = this.dateAdapter.nextMonth(this.month);
-    let year: number = this.year['year'];
+    let year: number = this.year.value;
     if (nextMonth === 0) {
       year ++;
     }
@@ -279,7 +280,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       return false;
     }
     const previousMonth: number = this.dateAdapter.previousMonth(this.month);
-    let year: number = this.year['year'];
+    let year: number = this.year.value;
     if (previousMonth === 11) {
       year --;
     }
