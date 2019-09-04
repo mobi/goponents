@@ -28,8 +28,7 @@ export class GoDatepickerComponent implements OnInit {
 
   @ViewChild('datepickerInput') datepickerInput: ElementRef;
 
-  constructor(
-  ) {
+  constructor() {
     this.goCalendar = new GoCalendar();
   }
 

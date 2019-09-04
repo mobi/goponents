@@ -1,5 +1,6 @@
 import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { DateAdapter } from '../date-adapter';
+import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
   selector: 'go-calendar-month-view',
@@ -7,13 +8,13 @@ import { DateAdapter } from '../date-adapter';
   templateUrl: './go-calendar-month-view.component.html',
 })
 export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
-  focusedMonth: object;
-  months: object[][];
+  focusedMonth: CalendarCell;
+  months: CalendarCell[][];
   nextYearDisabled: boolean;
   previousYearDisabled: boolean;
 
   @Input() month: number;
-  @Input() year: object;
+  @Input() year: CalendarCell;
   @Input() dateAdapter: DateAdapter;
   @Input() minDate?: Date;
   @Input() maxDate?: Date;
@@ -30,27 +31,27 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
       case 'Down': // IE/Edge specific value
       case 'ArrowDown':
         event.preventDefault();
-        this.setFocusedMonth(this.focusedMonth['month'] + 4);
+        this.setFocusedMonth(this.focusedMonth.value + 4);
         break;
       case 'Up': // IE/Edge specific value
       case 'ArrowUp':
         event.preventDefault();
-        this.setFocusedMonth(this.focusedMonth['month'] - 4);
+        this.setFocusedMonth(this.focusedMonth.value - 4);
         break;
       case 'Left': // IE/Edge specific value
       case 'ArrowLeft':
         event.preventDefault();
-        this.setFocusedMonth(this.focusedMonth['month'] - 1);
+        this.setFocusedMonth(this.focusedMonth.value - 1);
         break;
       case 'Right': // IE/Edge specific value
       case 'ArrowRight':
         event.preventDefault();
-        this.setFocusedMonth(this.focusedMonth['month'] + 1);
+        this.setFocusedMonth(this.focusedMonth.value + 1);
         break;
       case 'Enter':
         event.preventDefault();
-        if (!this.focusedMonth['disabled']) {
-          this.pickMonth(this.focusedMonth['month']);
+        if (!this.focusedMonth.disabled) {
+          this.pickMonth(this.focusedMonth.value);
         }
         break;
       default:
@@ -69,11 +70,11 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
   }
 
   public nextYear(): void {
-    this.setYear.emit(this.year['year'] + 1);
+    this.setYear.emit(this.year.value + 1);
   }
 
   public previousYear(): void {
-    this.setYear.emit(this.year['year'] - 1);
+    this.setYear.emit(this.year.value - 1);
   }
 
   public switchView(): void {
@@ -94,7 +95,7 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
         const currentMonth: number = (4 * row) + col;
         this.months[row].push(this.createMonth(currentMonth));
 
-        if (!this.focusedMonth && this.months[row][col]['selected']) {
+        if (!this.focusedMonth && this.months[row][col].selected) {
           this.focusedMonth = this.findMonth(currentMonth);
         }
       }
@@ -103,23 +104,23 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
 
   private setFocusedMonth(month: number): void {
     if (month < 12 && month >= 0) {
-      this.focusedMonth['focused'] = false;
+      this.focusedMonth.focused = false;
       this.focusedMonth = this.findMonth(month);
-      this.focusedMonth['focused'] = true;
+      this.focusedMonth.focused = true;
     }
   }
 
-  private findMonth(month: number): object {
+  private findMonth(month: number): CalendarCell {
     const row: number = Math.floor(month / 4);
     const col: number = month % 4;
     return this.months[row][col];
   }
 
-  private createMonth(month: number): object {
+  private createMonth(month: number): CalendarCell {
     const isSelected: boolean = month === this.month;
     return {
       disabled: this.isDisabled(month),
-      month: month,
+      value: month,
       selected: isSelected,
       translated: this.dateAdapter.monthNames[month]
     };
@@ -133,8 +134,8 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
     if (!this.maxDate) {
       return false;
     }
-    if (this.year['year'] < this.maxDate.getFullYear() || // year is before max dates year
-         (this.year['year'] === this.maxDate.getFullYear() && // year is the same as max dates year and
+    if (this.year.value < this.maxDate.getFullYear() || // year is before max dates year
+         (this.year.value === this.maxDate.getFullYear() && // year is the same as max dates year and
            month <= this.maxDate.getMonth() // month is before or equal to max dates month
          )
     ) {
@@ -147,8 +148,8 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
     if (!this.minDate) {
       return false;
     }
-    if (this.year['year'] > this.minDate.getFullYear() ||
-         (this.year['year'] === this.minDate.getFullYear() &&
+    if (this.year.value > this.minDate.getFullYear() ||
+         (this.year.value === this.minDate.getFullYear() &&
            month >= this.minDate.getMonth()
          )
     ) {
@@ -161,7 +162,7 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
     if (!this.maxDate) {
       return false;
     }
-    const firstDateOfYear: Date = new Date(this.year['year'] + 1, 0, 1);
+    const firstDateOfYear: Date = new Date(this.year.value + 1, 0, 1);
     if (firstDateOfYear > this.maxDate) {
       return true;
     }
@@ -172,7 +173,7 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
     if (!this.minDate) {
       return false;
     }
-    const lastDateOfYear: Date = new Date(this.year['year'] - 1, 11, 31);
+    const lastDateOfYear: Date = new Date(this.year.value - 1, 11, 31);
     if (lastDateOfYear < this.minDate) {
       return true;
     }
