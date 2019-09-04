@@ -51,7 +51,8 @@ export class GoDatepickerComponent implements OnInit {
     });
   }
 
-  public openDatepicker(): void {
+  public openDatepicker(event: Event): void {
+    event.stopPropagation();
     const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
 
     this.displayFromRight = window.innerWidth - distance['left'] < 350;
