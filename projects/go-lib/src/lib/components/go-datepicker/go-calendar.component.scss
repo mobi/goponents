@@ -1,7 +1,4 @@
-@import '../../../styles/variables';
 @import '../../../styles/mixins';
-
-$size: 288px;
 
 .go-calendar-backdrop {
   height: 100vh;
@@ -28,76 +25,4 @@ $size: 288px;
 
 .go-calendar--right {
   right: 0;
-}
-
-.go-calendar__header {
-  display: inline-flex;
-  height: 1rem;
-  margin-top: 0.5rem;
-  width: 100%;
-  padding-bottom: 1.5rem;
-}
-
-.go-calendar__header__left {
-  display: flex;
-  flex: 1;
-  margin-left: .5rem;
-
-  &:hover, &:active, &:focus {
-    background: $theme-light-bg-hover;
-    cursor: pointer;
-  }
-}
-
-.go-calendar__header__right {
-  align-items: center;
-  display: flex;
-  padding-top: .5rem;
-}
-
-.go-calendar__date {
-  line-height: 2rem;
-  text-align: right;
-  margin: 5px;
-}
-
-.go-calendar__header__dropdown {
-  margin-top: -.5rem;
-}
-
-th {
-  border-bottom: 1px solid black;
-  padding-bottom: .5rem;
-  padding-top: .5rem;
-}
-
-.go-calendar__body__cell {
-  border-style: hidden;
-  border-radius: 1.5rem;
-  font-size: .75rem;
-  height: 1.75rem;
-  width: 90%;
-  padding: 5%;
-
-  &:hover, &:active, &:focus {
-    background: $theme-light-bg-hover;
-    cursor: pointer;
-  }
-
-  &.go-calendar__body__cell--focused {
-    background: $theme-light-bg-hover;
-  }
-
-  &.go-calendar__body__cell--selected {
-    background-color: $ui-color-neutral-hover;
-    color: $theme-dark-text-color;
-  }
-}
-
-.go-calendar__body__border {
-  border-top: 1px solid black;
-}
-
-table {
-  width: 100%;
 }
