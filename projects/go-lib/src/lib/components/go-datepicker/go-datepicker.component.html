@@ -19,7 +19,7 @@
   <go-icon-button
     class="go-datepicker__toggle"
     buttonIcon="today"
-    (handleClick)="openDatepicker()"
+    (click)="openDatepicker($event)"
   ></go-icon-button>
   <go-calendar
     (datePicked)="datePicked($event)"

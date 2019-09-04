@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -28,8 +28,16 @@ export class GoCalendarComponent implements OnInit {
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 
   constructor(
+    private elementRef: ElementRef
   ) {
     this.dateAdapter = new DateAdapter();
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(target: HTMLElement): void {
+    if (this.opened && !this.elementRef.nativeElement.contains(target)) {
+      this.closeCalendar();
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
