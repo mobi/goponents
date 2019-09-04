@@ -106,11 +106,18 @@ export class GoCalendarYearViewComponent implements OnInit {
   private setFocusedYear(year: number): void {
     this.focusedYear['focused'] = false;
     if (year > this.lastYear['year']) {
-      this.nextYearGroup();
+      if (!this.nextGroupDisabled) {
+        this.nextYearGroup();
+        this.focusedYear = this.findYear(year);
+      }
     } else if (year < this.firstYear['year']) {
-      this.previousYearGroup();
+      if (!this.previousGroupDisabled) {
+        this.previousYearGroup();
+        this.focusedYear = this.findYear(year);
+      }
+    } else {
+      this.focusedYear = this.findYear(year);
     }
-    this.focusedYear = this.findYear(year);
     this.focusedYear['focused'] = true;
   }
 

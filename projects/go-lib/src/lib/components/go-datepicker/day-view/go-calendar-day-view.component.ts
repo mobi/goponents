@@ -111,14 +111,18 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
       this.focusedDate['focused'] = false;
     }
     if (day > this.dateAdapter.daysInMonth(this.month, this.year['year'])) {
-      newDate = day - this.dateAdapter.daysInMonth(this.month, this.year['year']);
-      this.focusedDate = this.createDay(newDate, this.dateAdapter.nextMonth(this.month));
-      this.nextMonth();
+      if (!this.nextMonthDisabled) {
+        newDate = day - this.dateAdapter.daysInMonth(this.month, this.year['year']);
+        this.focusedDate = this.createDay(newDate, this.dateAdapter.nextMonth(this.month));
+        this.nextMonth();
+      }
     } else if (day < 1) {
-      const previousMonth: number = this.dateAdapter.previousMonth(this.month);
-      newDate = day + this.dateAdapter.daysInMonth(previousMonth, this.year['year']);
-      this.focusedDate = this.createDay(newDate, previousMonth);
-      this.previousMonth();
+      if (!this.previousMonthDisabled) {
+        const previousMonth: number = this.dateAdapter.previousMonth(this.month);
+        newDate = day + this.dateAdapter.daysInMonth(previousMonth, this.year['year']);
+        this.focusedDate = this.createDay(newDate, previousMonth);
+        this.previousMonth();
+      }
     } else {
       this.focusedDate = this.findDay(day);
     }
