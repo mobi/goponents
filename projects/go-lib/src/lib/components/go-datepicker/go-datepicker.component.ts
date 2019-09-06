@@ -37,10 +37,8 @@ export class GoDatepickerComponent implements OnInit {
     this.max = this.initializeDate(this.maxDate);
 
     this.selectedDate = this.control.value;
-    if (this.control.value instanceof Date) {
-      this.datePicked(this.control.value);
-    } else if (typeof this.control.value === 'string') {
-      this.validateDate('en-US');
+    if (this.control.value) {
+      this.datePicked(this.initializeDate(this.control.value));
     }
 
     this.control.valueChanges.subscribe((value: Date) => {
@@ -56,7 +54,6 @@ export class GoDatepickerComponent implements OnInit {
 
     this.displayFromRight = window.innerWidth - distance['left'] < 350;
     this.displayAbove = window.innerHeight - distance['top'] < 350;
-    this.goCalendar.setLocale(this.locale);
     this.goCalendar.openCalendar(this.control.value);
   }
 
@@ -72,13 +69,12 @@ export class GoDatepickerComponent implements OnInit {
     }
   }
 
-  public validateDate(locale: string): void {
-    locale = locale || this.locale;
-    this.datePicked(LocaleFormat.parse(this.selectedDate, locale));
+  public validateDate(): void {
+    this.datePicked(LocaleFormat.parse(this.selectedDate, this.locale));
   }
 
   public restrictInput(): void {
-    this.selectedDate = this.selectedDate.replace(/[^0-9/.-]+$/, '');
+    this.selectedDate = this.selectedDate.replace(/[^0-9/.-]/g, '');
   }
 
   private initializeDate(date: Date | string): Date {

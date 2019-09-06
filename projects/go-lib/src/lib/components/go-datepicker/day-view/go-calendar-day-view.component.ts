@@ -189,7 +189,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
 
   private createDay(day: number, month?: number): CalendarCellDate {
     month = month || this.month;
-    const date: Date = new Date(this.year.value + '/' + (month + 1) + '/' + day);
+    const date: Date = new Date(this.year.value, month, day);
     const selected: boolean = this.isSelected(date);
     const disabled: boolean = this.isDisabled(date);
 
@@ -202,7 +202,7 @@ export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   }
 
   private findDay(day: number): CalendarCellDate {
-    const firstDate: number = new Date(this.year.value + '/' + (this.month + 1) + '/01').getDay();
+    const firstDate: number = new Date(this.year.value, this.month, 1).getDay();
     const week: number = Math.floor((day + firstDate - 1) / 7);
     const dayOfWeek: number = (day + firstDate - 1) % 7;
     return this.weeks[week][dayOfWeek];

@@ -26,6 +26,7 @@ export class GoCalendarComponent implements OnInit {
   @Input() maxDate: Date;
   @Input() displayFromRight: boolean;
   @Input() displayAbove: boolean;
+  @Input() locale: string;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -68,9 +69,7 @@ export class GoCalendarComponent implements OnInit {
       this.opened = value;
     });
 
-    this.calendar.locale.subscribe((value: string) => {
-      this.dateAdapter.setLocale(value);
-    });
+    this.dateAdapter.setLocale(this.locale);
   }
 
   public closeCalendar(): void {
@@ -90,10 +89,10 @@ export class GoCalendarComponent implements OnInit {
 
   public pickDay(day: Date): void {
     this.datePicked.emit(day);
-    this.calendar.closeCalendar();
+    this.closeCalendar();
   }
 
-  public switchView(viewType: string): void {
+  public switchView(viewType: 'year' | 'month' | 'day'): void {
     this.view = viewType;
   }
 
@@ -104,7 +103,7 @@ export class GoCalendarComponent implements OnInit {
       newDate = new Date();
       newDate.setHours(0, 0, 0, 0);
 
-      const invalid: boolean = this.calendar.dateOutOfRange(this.selectedDate, this.minDate, this.maxDate);
+      const invalid: boolean = this.calendar.dateOutOfRange(newDate, this.minDate, this.maxDate);
       if (invalid && this.minDate) {
         newDate = this.minDate;
       } else if (invalid && this.maxDate) {
