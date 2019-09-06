@@ -1,8 +1,8 @@
 ---
 name: "\U0001F6E0Chore or maintenance request"
 about: Request that a chore or maintenance be performed
-title: ''
-labels: chore
+title: "[Chore] "
+labels: chore, new issue
 assignees: ''
 
 ---
