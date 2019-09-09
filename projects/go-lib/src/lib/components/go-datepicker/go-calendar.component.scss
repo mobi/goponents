@@ -1,0 +1,16 @@
+.go-calendar {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: .5rem;
+  background: white;
+  z-index: 500;
+  width: 300px;
+}
+
+.go-calendar--above {
+  bottom: 2.5rem;
+}
+
+.go-calendar--right {
+  right: 0;
+}

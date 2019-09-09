@@ -31,7 +31,9 @@ export class TestPage3Component {
     name: new FormControl({ value: '', disabled: false }, Validators.required),
     notes: new FormControl(''),
     radio: new FormControl({value: '', disabled: false}),
-    toggle: new FormControl(false)
+    toggle: new FormControl(false),
+    date: new FormControl(new Date(2019, 4, 25)),
+    date2: new FormControl('5/25/2019')
   });
   loading: boolean = false;
 

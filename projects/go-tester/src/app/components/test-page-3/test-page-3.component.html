@@ -27,6 +27,15 @@
           <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form go-column go-column--100" *ngIf="form">
             <div class="go-container">
               <div class="go-column go-column--100">
+                <go-datepicker
+                  label="DOB"
+                  locale="en-US"
+                  maxDate="5/16/2001"
+                  minDate="5/1/1999"
+                  [control]="form.controls.date2">
+                </go-datepicker>
+              </div>
+              <div class="go-column go-column--100">
                 <go-input
                   label="Name"
                   key="some-test"
@@ -129,11 +138,19 @@
               </div>
 
               <div class="go-column go-column--100">
-                  <go-switch-toggle
-                    [control]="form.controls.toggle"
-                    label="Toggle Me"
-                    [hints]="['please']"
-                  ></go-switch-toggle>
+                <go-switch-toggle
+                  [control]="form.controls.toggle"
+                  label="Toggle Me"
+                  [hints]="['please']"
+                ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  label="Chinese DOB"
+                  locale="zh-TW"
+                  [control]="form.controls.date">
+                </go-datepicker>
               </div>
 
               <div class="go-column go-column--100">
