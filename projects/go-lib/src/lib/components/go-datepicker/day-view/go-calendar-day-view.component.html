@@ -1,12 +1,12 @@
 <div>
   <span class="go-calendar__header">
-    <div class="go-calendar__header__left">
+    <div class="go-calendar__header--left">
       {{dateAdapter.monthNames[month]}} - {{year.translated}}
-      <div class="go-calendar__header__dropdown">
+      <div class="go-calendar__header-dropdown">
         <go-icon-button buttonIcon="keyboard_arrow_down" (handleClick)="switchView()"></go-icon-button>
       </div>
     </div>
-    <div class="go-calendar__header__right">
+    <div class="go-calendar__header--right">
       <go-icon-button
         [buttonDisabled]="previousMonthDisabled"
         buttonIcon="keyboard_arrow_left"
@@ -21,9 +21,9 @@
   </span>
 </div>
 <div class="go-calendar__body">
-  <table>
+  <table class="go-calendar__table">
     <tr>
-      <th *ngFor="let weekDay of dateAdapter.daysOfWeek">
+      <th class="go-calendar__body--header" *ngFor="let weekDay of dateAdapter.daysOfWeek">
         {{weekDay}}
       </th>
     </tr>
@@ -31,9 +31,9 @@
       <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day.value)">
         <span *ngIf="!day.translated"></span>
         <button
-          class="go-calendar__body__cell"
+          class="go-calendar__cell"
           [disabled]="day.disabled"
-          [ngClass]="{'go-calendar__body__cell--selected': day.selected, 'go-calendar__body__cell--focused': day.focused}"
+          [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
           *ngIf="day.translated"
         >
           {{day.translated}}

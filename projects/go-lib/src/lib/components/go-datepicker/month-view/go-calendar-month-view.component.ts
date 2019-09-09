@@ -4,7 +4,7 @@ import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
   selector: 'go-calendar-month-view',
-  styleUrls: ['./go-calendar-month-view.component.scss'],
+  styleUrls: ['../calendar-views.scss'],
   templateUrl: './go-calendar-month-view.component.html',
 })
 export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
@@ -13,14 +13,14 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
   nextYearDisabled: boolean;
   previousYearDisabled: boolean;
 
+  @Input() dateAdapter: DateAdapter;
+  @Input() maxDate?: Date;
+  @Input() minDate?: Date;
   @Input() month: number;
   @Input() year: CalendarCell;
-  @Input() dateAdapter: DateAdapter;
-  @Input() minDate?: Date;
-  @Input() maxDate?: Date;
 
-  @Output() setView: EventEmitter<string> = new EventEmitter<string>();
   @Output() setMonth: EventEmitter<number> = new EventEmitter<number>();
+  @Output() setView: EventEmitter<string> = new EventEmitter<string>();
   @Output() setYear: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {}
