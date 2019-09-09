@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { boolean, number, optionsKnob, text, withKnobs } from '@storybook/addon-knobs';
 
-import { GoIconComponent } from './go-icon.component';
+import { GoIconComponent } from '../go-lib/src/lib/components/go-icon/go-icon.component';
 
 storiesOf('Icon', module)
   .addDecorator(withKnobs)

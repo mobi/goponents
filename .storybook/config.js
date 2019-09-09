@@ -12,7 +12,7 @@ addParameters({
 });
 
 // automatically import all files ending in *.stories.ts
-const req = require.context('../projects/go-lib/src', true, /\.stories\.ts$/);
+const req = require.context('../projects/stories', true, /\.stories\.ts$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }

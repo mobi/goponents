@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { boolean, number, optionsKnob, select, text, withKnobs } from '@storybook/addon-knobs';
 
-import { GoLoaderComponent } from './go-loader.component';
+import { GoLoaderComponent } from '../go-lib/src/lib/components/go-loader/go-loader.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 storiesOf('Loader', module)
