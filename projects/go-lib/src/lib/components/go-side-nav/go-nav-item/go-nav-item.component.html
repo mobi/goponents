@@ -21,6 +21,7 @@
 </div>
 
 <ng-template #navItemInner>
+  <span #goNavItemSelected class="go-nav-item--selected"></span>
   <go-icon [icon]="navItem.routeIcon"
            iconClass="go-nav-group__icon"
            *ngIf="navItem.routeIcon">
@@ -31,4 +32,3 @@
     {{navItem.routeTitle}}
   </span>
 </ng-template>
-

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
+import { GoBrandingService } from '../../go-branding.service';
 
 @Component({
   selector: 'go-accordion-panel',
@@ -18,7 +19,7 @@ import { accordionAnimation } from '../../animations/accordion.animation';
     accordionAnimation
   ]
 })
-export class GoAccordionPanelComponent implements OnInit, OnChanges {
+export class GoAccordionPanelComponent implements AfterContentInit, OnInit, OnChanges {
   _expanded: boolean = false; // Note: Use _expanded in the template
   containerClasses: object = {};
   headerClasses: object = {};
@@ -44,7 +45,11 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() { }
+  @ViewChild('goAccordionPanelSelected') selectedBinding: ElementRef;
+
+  constructor(
+    private brandingService: GoBrandingService
+  ) { }
 
   ngOnInit(): void {
     // NOTE: `title` is deprecated and will be removed in later version
@@ -70,4 +75,9 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
       'go-accordion-panel__header--slim': this.slim === true
     };
   }
+  
+  ngAfterContentInit(): void {
+    this.selectedBinding.nativeElement.style.background = this.brandingService.brandColor;
+  }
+
 }

@@ -6,34 +6,29 @@
   align-items: center;
   display: flex;
   @include transition(all);
+  position: relative;
 
   &:hover {
     background: $theme-dark-bg-hover;
   }
 }
 
-.go-nav-item__link::before {
-  background: $base-primary;
-  border-radius: 0 $global-radius $global-radius 0;
-  content: " ";
-  height: 1.5rem;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  @include transition(all);
-}
-
 .go-nav-item__link--active {
   .go-nav-item__title {
     font-weight: $weight-regular;
   }
-}
 
-.go-nav-item__link--active::before {
-  opacity: 1;
+  .go-nav-item--selected {
+    background: $base-primary;
+    border-radius: 0 $global-radius $global-radius 0;
+    content: " ";
+    height: 1.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    @include transition(all);
+  }
 }
 
 .go-nav-item__link,

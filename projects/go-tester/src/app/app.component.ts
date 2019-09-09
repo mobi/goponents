@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {
+  GoBrandingService,
   GoIconComponent,
   GoModalService,
   GoOffCanvasService,
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
+    private goBrandingService: GoBrandingService,
     private goToasterService: GoToasterService,
     private goOffCanvasService: GoOffCanvasService,
     private goSideNavService: GoSideNavService,
@@ -53,6 +55,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.goBrandingService.setBrandColor('#8A4EDE');
   }
 
   openOffCanvas(): void {

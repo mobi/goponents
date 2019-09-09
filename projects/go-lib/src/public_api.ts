@@ -18,6 +18,9 @@ export * from './lib/components/go-action-sheet/go-action-sheet.module';
 export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
+// Branding
+export * from './lib/go-branding.service';
+
 // Button
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';

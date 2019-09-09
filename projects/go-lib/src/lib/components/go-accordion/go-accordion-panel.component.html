@@ -2,6 +2,7 @@
   class="go-accordion-panel"
   [ngClass]="containerClasses"
 >
+  <span #goAccordionPanelSelected class="go-accordion-panel--selected"></span>
   <header
     [attr.aria-expanded]="_expanded"
     class="go-accordion-panel__header"
