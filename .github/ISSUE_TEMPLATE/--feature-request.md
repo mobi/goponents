@@ -1,14 +1,22 @@
 ---
 name: "\U0001F4A1Feature request"
 about: Suggest an idea for this project
-title: ''
-labels: enhancement
+title: "[Feature] "
+labels: feature, new issue
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+### What is the feature that you would like to propose?
+Please provide a clear and concise description of what the feature is and how it will be used.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+_**Example:**_
+> We have a need for [...] 
+
+### Describe the solution you'd like
+A clear and concise description of what you want to see built.
+
+_**Example:**_
+> This feature will needs to have the following requirements:
+> 1. Requirement
+> 2. Requirement

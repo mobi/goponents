@@ -1,0 +1,148 @@
+$input--disabled-background: rgba($base-dark-secondary, .4);
+
+@mixin disabled-input {
+  background: {
+    color: $theme-light-app-bg;
+    image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAqCAYAAADS4VmSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYdJREFUeNrsV+1tgzAQLSgDeIM2G6QbkAnICHSCigmaTICYIGzQMEHYoBmBbsAG7bv2IiHLxh848McnnSzL+O7d+e7ZJE+O0ratwJBBd9LSDdrleT642EscHL9g+IAWhk8b6AlA+mAA4PyA4QwVlngpC28AcZkNAM4Ldu4jBKLxBgDndM5fmggpum+eP0MPmgy9AsRN52NjiOBTc8alXGwAW2KoFDVCNrbOGdCknorraMjakYvV6ijSCVu5NO9Mzv82/X/TGWxZAcikee1QfLXBlhUAIUV2sfWu+FY4AWDSWURSTQT9qgCWlNUBJFLfj89e7uWTo+2p/f2dFxK+Xq+K6/XRQvS8T5k+dytkn3xWqcX9/kgpYhdEABHAZsbegcnk3tNiyQwQjW5Bp3tSfvM1XncBqPjHcU/HTlXviOvU6ydUBmrPtWAABs+1YACE51owAO+ea8HaMEOxncd/R/ymqFwL0LcLgvLAHCISPhHHuyACiABUAJoV/TcEoBwRytJ/RuWvAAMAsBxvzn+b8C4AAAAASUVORK5CYII=');
+    position: right $column-gutter top .8rem;
+    repeat: no-repeat;
+    size: auto $column-gutter--three-quarters;
+  }
+  cursor: not-allowed;
+}
+
+.go-form__fieldset {
+  border: 1px solid $theme-light-border;
+  border-radius: $global-radius;
+  margin-bottom: $column-gutter--double;
+  padding: $column-gutter;
+
+  &:disabled {
+    background: $theme-light-app-bg;
+    cursor: not-allowed;
+
+    label,
+    .go-form__label {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.go-form--dark .go-form__fieldset,
+.go-form__fieldset--dark {
+  &:disabled {
+    background: $base-dark-secondary;
+  }
+}
+
+.go-form__fieldset--error {
+  border-color: $ui-color-negative;
+}
+
+.go-form__legend {
+  margin-left: -($column-gutter--half);
+  padding: 0 $column-gutter--half;
+  text-transform: uppercase;
+}
+
+.go-form--dark .go-form__legend,
+.go-form__legend--dark {
+  color: $theme-dark-color;
+}
+
+.go-form__label {
+  color: $theme-light-color;
+  display: block;
+  font-family: $heading-font-stack;
+  font-size: .875rem;
+  font-weight: $weight-bold;
+  letter-spacing: 1pt;
+  line-height: 1.3;
+  padding-bottom: $column-gutter--three-quarters;
+}
+
+.go-form--dark .go-form__label,
+.go-form__label--dark {
+  color: $theme-dark-color;
+}
+
+.go-form__label--inline {
+  display: inline-block;
+}
+
+.go-form__input {
+  background: transparent;
+  border: 1px solid $theme-light-border;
+  border-radius: $global-radius;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: .5pt;
+  line-height: 1.5;
+  outline-color: $ui-color-positive;
+  padding: $column-gutter--half $column-gutter--three-quarters;
+  resize: vertical;
+  width: 100%;
+
+  &:-ms-input-placeholder {
+    color: $theme-light-border;
+  }
+
+  &::placeholder {
+    color: $theme-light-border;
+  }
+
+  &:disabled {
+    @include disabled-input;
+  }
+}
+
+.go-form__checkbox {
+  margin-bottom: $column-gutter--three-quarters;
+  margin-right: $column-gutter--three-quarters;
+  width: auto;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.go-form__select {
+  -webkit-appearance: menulist;
+  appearance: menulist;
+  border: 1px solid $theme-light-border;
+  font-size: 1rem;
+  height: 1.5rem + $column-gutter;
+  letter-spacing: .5pt;
+  line-height: 1.5;
+  outline-color: $ui-color-positive;
+
+  &:disabled {
+    @include disabled-input;
+  }
+}
+
+.go-form--dark .go-form__input,
+.go-form--dark .go-form__select,
+.go-form__input--dark,
+.go-form__select--dark {
+  background-color: transparent;
+  color: $theme-dark-color;
+
+  &:disabled {
+    background-color: $input--disabled-background;
+    border-color:  $base-dark-secondary;
+    color: $theme-light-border;
+  }
+}
+
+.go-form__select--no-margin,
+.go-form__input--no-margin,
+.go-form__fieldset--no-margin {
+  @extend %element--no-margin;
+}
+
+.go-form__select--error,
+.go-form__input--error {
+  border-color: $ui-color-negative;
+  outline-color: $ui-color-negative-active;
+}

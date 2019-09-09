@@ -68,8 +68,9 @@ export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
 export * from './lib/components/go-table/go-table-config.model';
-export * from './lib/components/go-table/go-table-sort.model';
 export * from './lib/components/go-table/go-table-paging.model';
+export * from './lib/components/go-table/go-table-selection.model';
+export * from './lib/components/go-table/go-table-sort.model';
 
 // Toast
 export * from './lib/components/go-toast/go-toast.component';

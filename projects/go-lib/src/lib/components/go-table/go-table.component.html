@@ -6,17 +6,19 @@
     </div>
   </div>
   <div class="go-table">
-    <table
-      class="go-table__table"
-      *ngIf="hasData(); else noDataTable"
-    >
+    <table class="go-table__table"
+           *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
-          <th
-            *ngFor="let col of columns"
-            class="go-table__head-column"
-            (click)="toggleSort(col.field)"
-          >
+          <th class="go-table__head-column"
+              width="60"
+              *ngIf="localTableConfig.selectable"
+              (click)="toggleSelectAll()">
+            <input type="checkbox" [checked]="selectAllChecked" name="select_all" #selectAllCheckbox/>
+          </th>
+          <th *ngFor="let col of columns"
+              class="go-table__head-column"
+              (click)="toggleSort(col.field)">
             <div class="go-table__head-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
                 {{ col.title || col.field }}
@@ -30,15 +32,19 @@
         </tr>
       </thead>
       <tbody class="go-table__body">
-        <tr
-          *ngFor="let item of setDisplayData()"
-          class="go-table__body-row"
-        >
-          <td
-            *ngFor="let col of columns"
-            class="go-table__body-column"
-            [attr.width]="col.width"
-          >
+        <tr *ngFor="let item of setDisplayData()"
+            class="go-table__body-row">
+          <td class="go-table__body-column"
+              width="60"
+              *ngIf="localTableConfig.selectable">
+            <input type="checkbox"
+                   [checked]="isRowSelected(item)"
+                   (change)="selectionChange($event, item)"
+                   [name]="'selection_' + item[localTableConfig.selectBy]"/>
+          </td>
+          <td *ngFor="let col of columns"
+              class="go-table__body-column"
+              [attr.width]="col.width">
             <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
               {{ col.getFieldData(item) }}
             </ng-container>

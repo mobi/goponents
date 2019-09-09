@@ -1,5 +1,5 @@
-@import '~@tangoe/gosheets/base/variables';
-@import '~@tangoe/gosheets/base/mixins';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 $loader-sizes: (small: 50px, medium: 100px, large: 150px);
 $loader-speeds: (outer: 1.25s, middle: 1s, inner: .75s);

@@ -1,0 +1,41 @@
+.go-hint {
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1rem;
+  margin: $column-gutter--half 0;
+  padding-bottom: $column-gutter--quarter;
+  padding-left: $column-gutter--three-quarters;
+  padding-top: $column-gutter--quarter;
+  position: relative;
+
+  &::before {
+    background: $theme-light-border;
+    border-radius: $global-radius;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.go-hint--error {
+  padding-top: 0;
+
+  &::before {
+    background-image: $ui-color-negative-gradient;
+  }
+}
+
+.go-hint__status {
+  display: block;
+  font-size: .5rem;
+  font-style: normal;
+  font-weight: $weight-bold;
+  text-transform: uppercase;
+}

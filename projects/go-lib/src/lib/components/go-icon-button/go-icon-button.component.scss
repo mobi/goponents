@@ -1,5 +1,5 @@
-@import '~@tangoe/gosheets/base/variables';
-@import '~@tangoe/gosheets/base/mixins';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .go-icon-button {
   @include transition(background-color);
@@ -7,6 +7,7 @@
   background: $theme-light-bg;
   border: 0;
   border-radius: $global-radius--round;
+  color: $base-dark;
   cursor: pointer;
   display: inline-flex;
   outline: none;
@@ -15,7 +16,7 @@
   .go-icon-button__icon {
     display: flex;
   }
-  
+
   &:hover, &:active, &:focus {
     background: $theme-light-bg-hover;
   }
