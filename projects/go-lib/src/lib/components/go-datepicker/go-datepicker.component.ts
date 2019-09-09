@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
@@ -8,23 +8,25 @@ import { LocaleFormat } from './locale-format';
   styleUrls: ['./go-datepicker.component.scss'],
   templateUrl: './go-datepicker.component.html'
 })
-export class GoDatepickerComponent implements OnInit {
-  selectedDate: string;
-  goCalendar: GoCalendar;
-  min: Date;
-  max: Date;
-  displayFromRight: boolean = false;
+export class GoDatepickerComponent implements OnDestroy, OnInit {
   displayAbove: boolean = false;
+  displayFromRight: boolean = false;
+  goCalendar: GoCalendar;
+  id: string;
+  max: Date;
+  min: Date;
+  selectedDate: string;
+  subscription: any;
 
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() key: string;
   @Input() label: string;
   @Input() locale: string = 'en-US';
-  @Input() placeholder: string = '';
-  @Input() theme: string = 'light';
   @Input() maxDate: Date | string;
   @Input() minDate: Date | string;
+  @Input() placeholder: string = '';
+  @Input() theme: string = 'light';
 
   @ViewChild('datepickerInput') datepickerInput: ElementRef;
 
@@ -35,17 +37,22 @@ export class GoDatepickerComponent implements OnInit {
   ngOnInit(): void {
     this.min = this.initializeDate(this.minDate);
     this.max = this.initializeDate(this.maxDate);
+    this.id = this.key || this.generateId(this.label);
 
     this.selectedDate = this.control.value;
     if (this.control.value) {
       this.datePicked(this.initializeDate(this.control.value));
     }
 
-    this.control.valueChanges.subscribe((value: Date) => {
+    this.subscription = this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {
         this.control.setErrors([{ message: 'format is invalid' }]);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public openDatepicker(event: Event): void {
@@ -82,5 +89,15 @@ export class GoDatepickerComponent implements OnInit {
       return date;
     }
     return LocaleFormat.parse(date, 'en-US');
+  }
+
+  private generateId(label: string): string {
+    const labelText: string = label || 'datepicker';
+    const idArray: Array<string> = labelText.split(' ');
+
+    // NOTE: There is only a one in a million chance that this number is not unique.
+    idArray.push(String(Math.round(Math.random() * 1000000)));
+
+    return idArray.join('-');
   }
 }

@@ -1,12 +1,12 @@
 <div>
   <span class="go-calendar__header">
-    <div class="go-calendar__header__left">
+    <div class="go-calendar__header--left">
       {{year.translated}}
-      <div class="go-calendar__header__dropdown">
+      <div class="go-calendar__header-dropdown">
         <go-icon-button buttonIcon="keyboard_arrow_up" (handleClick)="switchView($event)"></go-icon-button>
       </div>
     </div>
-    <div class="go-calendar__header__right">
+    <div class="go-calendar__header--right">
       <go-icon-button
         [buttonDisabled]="previousYearDisabled"
         buttonIcon="keyboard_arrow_left"
@@ -20,19 +20,19 @@
     </div>
   </span>
   <div class="go-calendar__body go-calendar__body__border">
-      <table>
-        <tr *ngFor="let row of months">
-          <td *ngFor="let col of row" class="go-calendar__date">
-            <button
-              class="go-calendar__body__cell"
-              [disabled]="col.disabled"
-              [ngClass]="{'go-calendar__body__cell--selected': col.selected, 'go-calendar__body__cell--focused': col.focused}"
-              (click)="pickMonth(col.value)"
-            >
-              {{col.translated}}
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div>
+    <table class="go-calendar__table">
+      <tr *ngFor="let row of months">
+        <td *ngFor="let col of row" class="go-calendar__date">
+          <button
+            class="go-calendar__cell"
+            [disabled]="col.disabled"
+            [ngClass]="{'go-calendar__cell--selected': col.selected, 'go-calendar__cell--focused': col.focused}"
+            (click)="pickMonth(col.value)"
+          >
+            {{col.translated}}
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

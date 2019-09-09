@@ -8,7 +8,7 @@
   padding-bottom: 1.5rem;
 }
 
-.go-calendar__header__left {
+.go-calendar__header--left {
   display: flex;
   flex: 1;
   margin-left: .5rem;
@@ -19,7 +19,7 @@
   }
 }
 
-.go-calendar__header__right {
+.go-calendar__header--right {
   align-items: center;
   display: flex;
   padding-top: .5rem;
@@ -31,17 +31,17 @@
   margin: 5px;
 }
 
-.go-calendar__header__dropdown {
+.go-calendar__header-dropdown {
   margin-top: -.5rem;
 }
 
-th {
+.go-calendar__body--header {
   border-bottom: 1px solid black;
   padding-bottom: .5rem;
   padding-top: .5rem;
 }
 
-.go-calendar__body__cell {
+.go-calendar__cell {
   border-style: hidden;
   border-radius: 1.5rem;
   font-size: .75rem;
@@ -54,11 +54,11 @@ th {
     cursor: pointer;
   }
 
-  &.go-calendar__body__cell--focused {
+  &.go-calendar__cell--focused {
     background: $theme-light-bg-hover;
   }
 
-  &.go-calendar__body__cell--selected {
+  &.go-calendar__cell--selected {
     background-color: $ui-color-neutral-hover;
     color: $theme-dark-text-color;
   }
@@ -68,6 +68,6 @@ th {
   border-top: 1px solid black;
 }
 
-table {
+.go-calendar__table {
   width: 100%;
 }

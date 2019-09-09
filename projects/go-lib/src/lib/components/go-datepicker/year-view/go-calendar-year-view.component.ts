@@ -4,21 +4,21 @@ import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
   selector: 'go-calendar-year-view',
-  styleUrls: ['./go-calendar-year-view.component.scss'],
+  styleUrls: ['../calendar-views.scss'],
   templateUrl: './go-calendar-year-view.component.html',
 })
 export class GoCalendarYearViewComponent implements OnInit {
-  focusedYear: CalendarCell;
-  years: CalendarCell[][];
   firstYear: CalendarCell;
+  focusedYear: CalendarCell;
   lastYear: CalendarCell;
   nextGroupDisabled: boolean;
   previousGroupDisabled: boolean;
+  years: CalendarCell[][];
 
-  @Input() year: CalendarCell;
   @Input() dateAdapter: DateAdapter;
-  @Input() minDate: Date;
   @Input() maxDate: Date;
+  @Input() minDate: Date;
+  @Input() year: CalendarCell;
 
   @Output() setView: EventEmitter<string> = new EventEmitter<string>();
   @Output() setYear: EventEmitter<number> = new EventEmitter<number>();

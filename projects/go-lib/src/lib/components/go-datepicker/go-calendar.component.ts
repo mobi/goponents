@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -12,21 +12,22 @@ import { CalendarCell } from './calendar-cell.model';
     fadeAnimation
   ]
 })
-export class GoCalendarComponent implements OnInit {
-  opened: boolean = false;
+export class GoCalendarComponent implements OnDestroy, OnInit {
+  canClose: boolean = true;
   currentMonth: number = 0;
   currentYear: CalendarCell;
-  selectedDate: Date;
   dateAdapter: DateAdapter;
+  opened: boolean = false;
+  selectedDate: Date;
+  subscription: any;
   view: string = 'day';
-  canClose: boolean = true;
 
   @Input() calendar: GoCalendar;
-  @Input() minDate: Date;
-  @Input() maxDate: Date;
-  @Input() displayFromRight: boolean;
   @Input() displayAbove: boolean;
+  @Input() displayFromRight: boolean;
   @Input() locale: string;
+  @Input() maxDate: Date;
+  @Input() minDate: Date;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -61,7 +62,7 @@ export class GoCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.calendar.calendarOpen.subscribe((value: boolean) => {
+    this.subscription = this.calendar.calendarOpen.subscribe((value: boolean) => {
       if (value) {
         this.selectedDate = this.calendar.selectedDate;
         this.initializeDate();
@@ -70,6 +71,10 @@ export class GoCalendarComponent implements OnInit {
     });
 
     this.dateAdapter.setLocale(this.locale);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public closeCalendar(): void {
