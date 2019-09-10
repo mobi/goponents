@@ -9,6 +9,7 @@
     [icon]="buttonIcon"
     [iconModifier]="buttonVariant || 'light'"
     iconClass="go-button__icon"
+    [disabled]="buttonDisabled || isProcessing"
     *ngIf="buttonIcon"
   ></go-icon>
   <ng-content></ng-content>
