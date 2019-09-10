@@ -1,0 +1,38 @@
+<div>
+  <span class="go-calendar__header">
+    <div class="go-calendar__header--left">
+      {{firstYear.translated}} - {{lastYear.translated}}
+      <div class="go-calendar__header-dropdown">
+        <go-icon-button buttonIcon="keyboard_arrow_up" (handleClick)="switchView($event)"></go-icon-button>
+      </div>
+    </div>
+    <div class="go-calendar__header--right">
+      <go-icon-button
+        [buttonDisabled]=previousGroupDisabled
+        buttonIcon="keyboard_arrow_left"
+        (handleClick)="previousYearGroup()"
+      ></go-icon-button>
+      <go-icon-button
+        [buttonDisabled]="nextGroupDisabled"
+        buttonIcon="keyboard_arrow_right"
+        (handleClick)="nextYearGroup()"
+      ></go-icon-button>
+    </div>
+  </span>
+  <div class="go-calendar__body go-calendar__body__border">
+    <table class="go-calendar__table">
+      <tr *ngFor="let row of years" class="go-calendar__row">
+        <td *ngFor="let col of row" class="go-calendar__date">
+          <button
+            class="go-calendar__cell"
+            [disabled]="col.disabled"
+            [ngClass]="{'go-calendar__cell--selected': col.selected, 'go-calendar__cell--focused': col.focused}"
+            (click)="pickYear(col.value)"
+          >
+            {{col.translated}}
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<input
+  type="radio"
+  class="go-form__checkbox"
+  [id]="id"
+  [formControl]="control"
+  [value]="formValue"
+>
+
+<label
+  class="go-form__label go-form__label--inline"
+  [attr.for]="id"
+  [ngClass]="{'go-form__label--dark': theme == 'dark'}"
+>
+  {{ label }}
+</label>

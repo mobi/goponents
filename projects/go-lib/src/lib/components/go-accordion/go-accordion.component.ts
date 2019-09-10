@@ -1,67 +1,76 @@
-import { Component, OnInit, AfterContentInit, Input, QueryList, ContentChildren } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnInit,
+  QueryList,
+} from '@angular/core';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 @Component({
   selector: 'go-accordion',
-  templateUrl: './go-accordion.component.html',
-  styleUrls: ['./go-accordion.component.scss']
+  template: '<ng-content></ng-content>'
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit {
-
+  @Input() borderless: boolean = false;
   @Input() expandAll: boolean = false;
   @Input() multiExpand: boolean = false;
   @Input() showIcons: boolean = false;
   @Input() slim: boolean = false;
-  @Input() theme: string = 'light';
-
-  activeTheme: string;
+  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoAccordionPanelComponent) panels: QueryList<GoAccordionPanelComponent>;
 
   constructor() { }
 
-  ngOnInit() {
+  //#region Lifecycle Methods
+  ///////////////////////////
+
+  ngOnInit(): void {
+    // Angular doesn't type check templates. This forces one of two options for theme.
+    this.theme = this.theme === 'dark' ? 'dark' : 'light';
     this.multiExpand = this.expandAll || this.multiExpand;
   }
 
-  ngAfterContentInit() {
-    this.panels.toArray().forEach((p) => {
-      p.toggle.subscribe(() => {
-        if (!p.expanded && this.multiExpand) {
-          this.openPanel(p);
-        } else if (!p.expanded && !this.multiExpand) {
-          this.openPanelCloseOthers(p);
-        } else {
-          this.closePanel(p);
-        }
-      });
-
-      p.expanded = this.expandAll || p.expanded;
-      p.icon = !this.showIcons ? null : p.icon;
-    })
-  }
-
-  openPanelCloseOthers(panel: GoAccordionPanelComponent) {
-    this.panels.toArray().forEach((p) => {
-      this.closePanel(p);
+  ngAfterContentInit(): void {
+    this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
+      this.updatePanelState(panel, index);
+      this.subscribePanel(panel);
     });
+  }
+  //#endregion
 
-    this.openPanel(panel);
+  //#region Private Methods
+  /////////////////////////
+
+  private subscribePanel(panel: GoAccordionPanelComponent): void {
+    panel.toggle.subscribe(() => {
+      if (!panel.expanded && this.multiExpand) {
+        panel.expanded = true;
+      } else if (!panel.expanded && !this.multiExpand) {
+        this.panels.toArray().forEach((thePanel: GoAccordionPanelComponent) => {
+          thePanel.expanded = false;
+        });
+        panel.expanded = true;
+      } else {
+        panel.expanded = false;
+      }
+    });
   }
 
-  openPanel(panel: GoAccordionPanelComponent) {
-    panel.expanded = true;
-  }
+  private updatePanelState(panel: GoAccordionPanelComponent, index: number): void {
+    panel.borderless = panel.borderless === undefined ? this.borderless : panel.borderless;
+    panel.slim = panel.slim === undefined ? this.slim : panel.slim;
+    panel.theme = panel.theme || this.theme;
+    panel.isFirst = index === 0;
+    panel.isLast = index === (this.panels.length - 1);
+    panel.expanded = this.expandAll || panel.expanded;
 
-  closePanel(panel: GoAccordionPanelComponent) {
-    panel.expanded = false;
+    // NOTE: This feels a little destructive.
+    // We lose track of the icon explicitly set by the child component.
+    panel.icon = this.showIcons ? panel.icon : null;
+    panel.updateClasses();
   }
-  
-  accordionClasses(): object {
-    return {
-      'go-accordion--theme-light': this.theme === 'light' && !this.slim,
-      'go-accordion--theme-dark': this.theme === 'dark' && !this.slim,
-      'go-accordion--slim': this.slim
-    }
-  }
+  //#endregion
 }

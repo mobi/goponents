@@ -4,7 +4,9 @@
       <app-search-test></app-search-test>
     </go-search>
     <ng-container go-header-right>
-      <go-icon-button buttonIcon="add_circle" (handleClick)="openOffCanvas()"></go-icon-button>
+      <go-badge badgeData="1231" [displayData]="false">
+        <go-icon-button buttonIcon="add_circle" (handleClick)="openOffCanvas()"></go-icon-button>
+      </go-badge>
       <go-icon-button buttonIcon="assistant" (handleClick)="openOffCanvas()"></go-icon-button>
       <go-icon-button buttonIcon="build" (handleClick)="openOffCanvas()"></go-icon-button>
       <go-icon-button buttonIcon="picture_in_picture" (handleClick)="openModal()"></go-icon-button>
@@ -26,7 +28,7 @@
           <go-panel panelContent="Open Toast" icon="folder" (action)="openToast()">
           </go-panel>
           <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
-            <go-accordion-panel title="Accordion" icon="home">
+            <go-accordion-panel [borderless]="true" title="Accordion" icon="home">
               Another test 
             </go-accordion-panel>
           </go-accordion>

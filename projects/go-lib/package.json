@@ -1,6 +1,6 @@
 {
   "name": "@tangoe/goponents",
-  "version": "1.1.1",
+  "version": "1.2.0-beta.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mobi/goponents.git"
@@ -9,6 +9,7 @@
   "description": "A library of UI components for Angular v7+.",
   "license": "MIT",
   "peerDependencies": {
+    "@ng-select/ng-select": "^2.20.5",
     "@tangoe/gosheets": "^1.0.0"
   },
   "devDependencies": {

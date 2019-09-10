@@ -1,0 +1,28 @@
+<div>
+  <label
+    class="go-form__label"
+    [attr.for]="id"
+    [ngClass]="{'go-form__label--dark': theme === 'dark'}"
+  >
+    {{ label }}
+  </label>
+  <textarea
+    class="go-form__input"
+    [id]="id"
+    [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+    [placeholder]="placeholder"
+    [formControl]="control"
+  ></textarea>
+
+  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+
+  <div *ngIf="control?.errors?.length">
+    <go-hint
+      *ngFor="let error of control.errors"
+      [message]="error.message"
+      [label]="error.type"
+      [theme]="theme"
+      type="negative"
+    ></go-hint>
+  </div>
+</div>

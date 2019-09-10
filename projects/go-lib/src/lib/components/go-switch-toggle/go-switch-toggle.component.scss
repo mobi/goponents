@@ -1,0 +1,74 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.go-form__switch-toggle {
+  display: inline-block;
+  height: 1.125rem;
+  position: relative;
+  width: 2.25rem;
+}
+
+.go-form__switch-toggle__input {
+  height: 0;
+  opacity: 0;
+  width: 0;
+}
+
+.go-form__switch-toggle__toggle {
+  @include transition(all);
+
+  background-color: $base-light-secondary;
+  border: 1px solid $base-light-secondary;
+  border-radius: 1.125rem;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &::before {
+    @include transition(all);
+
+    background-color: $base-light;
+    border-radius: 50%;
+    content: '';
+    height: calc(1.125rem - 2px);
+    position: absolute;
+    width: calc(1.125rem - 2px);
+  }
+}
+
+.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+  background-color: $ui-color-positive;
+  border-color: $ui-color-positive;
+}
+
+.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle::before {
+  box-shadow: 3px 0 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
+  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-positive);
+}
+
+.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle::before {
+  box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateX(1.125rem);
+  -moz-transform: translateX(1.125rem);
+  -ms-transform: translateX(1.125rem);
+  -o-transform: translateX(1.125rem);
+  transform: translateX(1.125rem);
+}
+
+.go-form__switch-toggle__wrapper {
+  position: relative;
+}
+
+.go-form__switch-toggle__label {
+  line-height: 1.125rem;
+  padding-bottom: 0;
+  padding-left: 0.75rem;
+  position: absolute;
+  user-select: none;
+}

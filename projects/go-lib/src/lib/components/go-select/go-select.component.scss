@@ -1,0 +1,42 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-select .ng-select-container {
+  letter-spacing: 0.5pt;
+  line-height: 1.5;
+
+  input {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+}
+
+.ng-select.ng-select-single .ng-select-container,
+.ng-select.ng-select-multiple .ng-select-container {
+  height: calc(1.5rem + #{$column-gutter});  
+}
+
+.ng-select.ng-select-focused .ng-select-container {
+  border-color: $ui-color-positive;
+  box-shadow: none;
+  outline: $ui-color-positive auto 5px;
+  outline-offset: -2px;
+}
+
+.ng-select.ng-invalid.ng-touched .ng-select-container {
+  border-color: $ui-color-negative;
+}
+
+.ng-select.ng-invalid.ng-select-focused .ng-select-container {
+  border-color: $ui-color-negative;
+  box-shadow: none;
+  outline: $ui-color-negative auto 5px;
+  outline-offset: -2px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked,
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+  background: $theme-light-bg-hover;
+}
