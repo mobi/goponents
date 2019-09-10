@@ -37,9 +37,19 @@ $loader-colors: (
 
 @each $name, $speed in $loader-speeds {
   .go-loader__#{$name} {
+    @extend %go-loader__piece;
+
     animation: rotate $speed linear infinite;
-    transform-origin: center center;
   }
+}
+
+%go-loader__piece {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: center center;
 }
 
 @keyframes rotate {
