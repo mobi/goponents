@@ -1,4 +1,12 @@
+<label
+  class="go-form__label"
+  [attr.for]="id"
+  [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  {{ label }}
+</label>
+
 <ng-select
+  [labelForId]="id"
   [items]="items"
   bindLabel="{{bindLabel}}"
   [multiple]="multiple"
