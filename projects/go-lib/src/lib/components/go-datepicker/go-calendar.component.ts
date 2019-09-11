@@ -74,7 +74,9 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   public closeCalendar(): void {

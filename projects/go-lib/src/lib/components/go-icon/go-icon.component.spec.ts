@@ -23,25 +23,32 @@ describe('GoIconComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('classObject()', () => {
+  describe('ngOnChanges', () => {
     it('builds an object with a modifier class key if iconModifier exists', () => {
-      expect(component.classObject()).toEqual({});
+      expect(component.classObject).toEqual({});
 
       component.iconModifier = 'positive';
+      component.ngOnChanges();
 
-      expect(component.classObject()).toEqual({
-        'go-icon--positive': true
-      });
+      expect(component.classObject['go-icon--positive']).toBe(true);
     });
 
     it('builds an object with a additional classes key if iconClass exists', () => {
-      expect(component.classObject()).toEqual({});
+      expect(component.classObject).toEqual({});
 
       component.iconClass = 'odd multiple class use case';
+      component.ngOnChanges();
 
-      expect(component.classObject()).toEqual({
-        'odd multiple class use case': true
-      });
+      expect(component.classObject['odd multiple class use case']).toBe(true);
+    });
+
+    it('adds a disabled modifier if disabled is true', () => {
+      expect(component.classObject['go-icon--disabled']).toBeFalsy();
+
+      component.disabled = true;
+      component.ngOnChanges();
+
+      expect(component.classObject['go-icon--disabled']).toBe(true);
     });
   });
 
@@ -54,6 +61,7 @@ describe('GoIconComponent', () => {
       component.iconClass = 'awesome test classes';
       component.iconModifier = 'positive';
 
+      component.ngOnChanges();
       fixture.detectChanges();
 
       goIconTemplate = fixture.nativeElement;

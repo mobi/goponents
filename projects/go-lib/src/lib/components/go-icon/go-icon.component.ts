@@ -1,26 +1,31 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'go-icon',
   templateUrl: 'go-icon.component.html',
   styleUrls: ['go-icon.component.scss']
 })
-export class GoIconComponent {
+export class GoIconComponent implements OnChanges {
+  classObject: object = {};
+
   @Input() icon: string;
   @Input() iconModifier: string;
   @Input() iconClass: string;
+  @Input() disabled: boolean = false;
 
-  public classObject(): object {
-    let classes: object = {}; // tslint:disable-line:prefer-const
+  ngOnChanges(): void {
+    this.classObject = {};
 
     if (this.iconModifier) {
-      classes[`go-icon--${this.iconModifier}`] = true;
+      this.classObject[`go-icon--${this.iconModifier}`] = true;
     }
 
     if (this.iconClass) {
-      classes[this.iconClass] = true;
+      this.classObject[this.iconClass] = true;
     }
 
-    return classes;
+    if (this.disabled) {
+      this.classObject['go-icon--disabled'] = true;
+    }
   }
 }

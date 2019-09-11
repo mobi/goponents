@@ -52,7 +52,9 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   public openDatepicker(event: Event): void {
