@@ -78,7 +78,7 @@ $ui-color-negative-active: #BA3F3F;
 $ui-color-negative-hover: #A83939;
 $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
 $ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
-$ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
+$ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-active);
 $ui-background-negative: rgba($ui-color-negative, .1);
 
 // Neutral Colors -
@@ -86,13 +86,13 @@ $ui-background-negative: rgba($ui-color-negative, .1);
 $ui-color-neutral: #8A4EDE;
 $ui-color-neutral-active: #7F47CC;
 $ui-color-neutral-hover: #7441BA;
-$ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
+$ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-active);
 $ui-background-neutral: rgba($ui-color-neutral, .1);
 
 // Positive Colors -
 // These are used to portray good actions, states, or other generally positive states in the interface
-$ui-color-positive: #4EDED2;
-$ui-color-positive-active: #47CCC1;
-$ui-color-positive-hover: #41BAB0;
-$ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+$ui-color-positive: #00838f;
+$ui-color-positive-active: #00737D;
+$ui-color-positive-hover: #00626B;
+$ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-active);
 $ui-background-positive: rgba($ui-color-positive, .2);

@@ -3,6 +3,7 @@
 .go-badge {
   border: 1px solid $theme-light-bg;
   border-radius: 1.5rem;
+  color: $base-light;
   font-size: .75rem;
   height: 22px;
   left: -.625rem;
@@ -31,15 +32,12 @@
 
 .go-badge--positive {
   background: $ui-color-positive;
-  color: $base-dark;
 }
 
 .go-badge--neutral {
   background: $ui-color-neutral;
-  color: $base-light;
 }
 
 .go-badge--negative {
   background: $ui-color-negative;
-  color: $base-light;
 }
