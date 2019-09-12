@@ -128,6 +128,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   background-color: transparent;
   color: $theme-dark-color;
 
+  option {
+    color: black;
+  }
+
   &:disabled {
     background-color: $input--disabled-background;
     border-color:  $base-dark-secondary;
