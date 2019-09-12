@@ -18,7 +18,7 @@ export class GoSelectComponent implements OnInit {
   @Input() key: string;
   @Input() label: string;
   @Input() multiple: boolean = false;
-  @Input() theme: 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   ngOnInit(): void {
     this.id = this.key || this.generateId(this.label);
