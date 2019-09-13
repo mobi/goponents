@@ -7,19 +7,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class TestPage3Component {
   selectData: any = [{
-    id: 1,
+    value: 1,
     name: 'Harry'
   }, {
-    id: 2,
+    value: 2,
     name: 'Hermione'
   }, {
-    id: 3,
+    value: 3,
     name: 'Ron'
   }, {
-    id: 4,
+    value: 4,
     name: 'Voldermort'
   }, {
-    id: 5,
+    value: 5,
     name: 'Snake'
   }];
 
