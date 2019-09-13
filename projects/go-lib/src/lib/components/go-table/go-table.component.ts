@@ -188,7 +188,7 @@ export class GoTableComponent implements OnInit, OnChanges {
 
     const beginning: number = this.localTableConfig.pageConfig.offset + 1;
     const endingEstimate: number = pageConfig.offset + pageConfig.perPage;
-    const ending: number = endingEstimate <= totalCount ? endingEstimate : totalCount - pageConfig.offset;
+    const ending: number = endingEstimate <= totalCount ? endingEstimate : totalCount;
 
     return beginning + ' - ' + ending;
   }
