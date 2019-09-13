@@ -101,19 +101,21 @@
                 <go-select
                   [items]="selectData"
                   [control]="selectControl"
+                  bindValue="value"
                   bindLabel="name"
                   [hints]="['Select an option here, whatever you want']"
                   label="Select Box Here">
                 </go-select>
               </div>
               <div class="go-column go-column--50">
-                You selected: {{selectControl.value?.name}}
+                You selected value: {{selectControl.value}}
               </div>
 
               <div class="go-column go-column--50">
                 <go-select
                   [items]="selectData"
                   [control]="otherSelectControl"
+                  bindValue="value"
                   bindLabel="name"
                   [hints]="['This is disabled']"
                   label="Other Select Box">
@@ -124,6 +126,7 @@
                 <go-select
                   [items]="selectData"
                   [control]="validationSelectControl"
+                  bindValue="value"
                   bindLabel="name"
                   [hints]="['This is has a custom error message You need to select Ron.']"
                   label="Validated Select Box">
@@ -134,6 +137,7 @@
                 <go-select
                   [items]="selectData"
                   [control]="multiSelectControl"
+                  bindValue="value"
                   bindLabel="name"
                   multiple="true"
                   [hints]="['This is a multi select.']">
