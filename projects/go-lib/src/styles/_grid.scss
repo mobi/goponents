@@ -1,4 +1,4 @@
-* { 
+* {
   box-sizing: border-box;
 }
 
@@ -17,14 +17,14 @@
   .go-column--#{$name} {
     flex-basis: percentage($size);
     width: percentage($size);
-    
+
     @if ($name <= 25) {
       @extend %tablet__flex-basis--50;
       @extend %mobile__flex-basis--100;
     } @else {
       @extend %tablet__flex-basis--100;
     }
-    
+
   }
 }
 
@@ -54,6 +54,22 @@
 
 .go-container--align-center {
   align-items: center;
+}
+
+.go-container--justify-center {
+  justify-content: center;
+}
+
+.go-container--justify-between {
+  justify-content: space-between;
+}
+
+.go-container--justify-end {
+  justify-content: flex-end;
+}
+
+.go-container--justify-start {
+  justify-content: flex-start;
 }
 
 .go-column--no-padding {
