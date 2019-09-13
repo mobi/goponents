@@ -1,0 +1,176 @@
+<section>
+  <header>
+    <h2 class="go-heading-2">
+      Form
+    </h2>
+    <hr>
+  </header>
+  <div>
+    <go-card>
+      <ng-container go-card-content>
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <go-input
+              label="Other Name"
+              [hints]="['we need your full name here']"
+              [control]="otherThing"
+            ></go-input>
+          </div>
+          <div class="go-column go-column--50">
+            <go-input
+              label="Test Other Name"
+              [hints]="['we need your full name here']"
+              [control]="testOtherThing"
+            ></go-input>
+          </div>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form go-column go-column--100" *ngIf="form">
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  label="DOB"
+                  locale="en-US"
+                  maxDate="5/16/2001"
+                  minDate="5/1/1999"
+                  [control]="form.controls.date2">
+                </go-datepicker>
+              </div>
+              <div class="go-column go-column--100">
+                <go-input
+                  label="Name"
+                  key="some-test"
+                  [hints]="['we need your full name here']"
+                  placeholder="Something"
+                  [control]="form.controls.name"
+                ></go-input>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-radio-group
+                  legend="Options"
+                  [hints]="['please select one']"
+                  [control]="form.controls.radio"
+                >
+                  <div>
+                    <go-radio-button
+                      label="really cool radio option here"
+                      formValue="option1"
+                    ></go-radio-button>
+                  </div>
+                  <div>
+                    <go-radio-button
+                      label="Another really awesome option"
+                      formValue="option2"
+                    ></go-radio-button>
+                  </div>
+                </go-radio-group>
+              </div>
+
+              <div class="go-column go-column--100 go-column--no-padding">
+                <go-checkbox-group
+                  legend="Food"
+                  [hints]="['please select one']"
+                  [control]="form.controls.food"
+                >
+                  <div class="go-container">
+                    <div class="go-column go-column--50 go-column--no-padding">
+                      <div>
+                        <go-checkbox [control]="form.controls.food.controls.apples"
+                                      label="Apples">
+                        </go-checkbox>
+                      </div>
+                      <div>
+                        <go-checkbox [control]="form.controls.food.controls.bananas"
+                                      label="Bananas">
+                        </go-checkbox>
+                      </div>
+                    </div>
+                  </div>
+                </go-checkbox-group>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-text-area
+                  label="Notes"
+                  placeholder="Some notes or something."
+                  [control]="form.controls.notes"
+                ></go-text-area>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="selectControl"
+                  bindValue="value"
+                  bindLabel="name"
+                  [hints]="['Select an option here, whatever you want']"
+                  label="Select Box Here">
+                </go-select>
+              </div>
+              <div class="go-column go-column--50">
+                You selected value: {{selectControl.value}}
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="otherSelectControl"
+                  bindValue="value"
+                  bindLabel="name"
+                  [hints]="['This is disabled']"
+                  label="Other Select Box">
+                </go-select>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="validationSelectControl"
+                  bindValue="value"
+                  bindLabel="name"
+                  [hints]="['This is has a custom error message You need to select Ron.']"
+                  label="Validated Select Box">
+                </go-select>
+              </div>
+
+              <div class="go-column go-column--50">
+                <go-select
+                  [items]="selectData"
+                  [control]="multiSelectControl"
+                  bindValue="value"
+                  bindLabel="name"
+                  multiple="true"
+                  [hints]="['This is a multi select.']">
+                </go-select>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-switch-toggle
+                  [control]="form.controls.toggle"
+                  label="Toggle Me"
+                  [hints]="['please']"
+                ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  label="Chinese DOB"
+                  locale="zh-TW"
+                  [control]="form.controls.date">
+                </go-datepicker>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-button buttonType='submit'
+                           buttonVariant='positive'
+                           [isProcessing]="loading">
+                  Save
+                </go-button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ng-container>
+    </go-card>
+  </div>
+</section>

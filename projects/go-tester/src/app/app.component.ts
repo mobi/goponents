@@ -5,10 +5,11 @@ import {
   GoModalService,
   GoOffCanvasService,
   GoSideNavService,
+  GoToasterService,
   NavGroup,
-  NavItem,
-  GoToasterService
+  NavItem
 } from '../../../go-lib/src/public_api';
+import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-test.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
   menuItems: Array<NavGroup | NavItem> = [
     { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
       { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
-      { route: 'test-page-2', routeTitle: 'Test 2' }
+      { route: 'test-page-2', routeTitle: 'Test 2' },
+      { route: 'test-page-3', routeTitle: 'Test 3', description: 'Forms' }
     ]}
   ];
 
@@ -39,10 +41,8 @@ export class AppComponent implements OnInit {
 
   openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: GoIconComponent,
-      bindings: {
-        icon: 'alarm'
-      }
+      component: OffCanvasTestComponent,
+      bindings: {}
     });
   }
 

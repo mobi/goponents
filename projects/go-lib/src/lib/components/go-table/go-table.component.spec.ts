@@ -34,4 +34,43 @@ describe('GoTableComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('outputResultsPerPage', () => {
+
+    beforeEach(() => {
+      component.localTableConfig.totalCount = 135;
+    });
+
+    it('calculates first number based on offset', () => {
+      component.localTableConfig.pageConfig.perPage = 50;
+      component.localTableConfig.pageConfig.offset = 10;
+
+      const resultSet: string = component.outputResultsPerPage();
+      const firstNumber: number = component.localTableConfig.pageConfig.offset + 1;
+      const secondNumber: number = component.localTableConfig.pageConfig.offset + component.localTableConfig.pageConfig.perPage;
+
+      expect(resultSet).toBe(firstNumber +  ' - ' + secondNumber);
+    });
+
+    it('calculates last number as totalCount if on last page', () => {
+      component.localTableConfig.pageConfig.perPage = 50;
+      component.localTableConfig.pageConfig.offset = 100;
+
+      const resultSet: string = component.outputResultsPerPage();
+      const firstNumber: number = component.localTableConfig.pageConfig.offset + 1;
+
+      expect(resultSet).toBe(firstNumber + ' - ' + component.localTableConfig.totalCount);
+    });
+
+    it('calculates last number as remainder of page if not on last page', () => {
+      component.localTableConfig.pageConfig.perPage = 50;
+      component.localTableConfig.pageConfig.offset = 50;
+
+      const resultSet: string = component.outputResultsPerPage();
+      const firstNumber: number = component.localTableConfig.pageConfig.offset + 1;
+      const secondNumber: number = component.localTableConfig.pageConfig.offset + component.localTableConfig.pageConfig.perPage;
+
+      expect(resultSet).toBe(firstNumber + ' - ' + secondNumber);
+    });
+  });
 });

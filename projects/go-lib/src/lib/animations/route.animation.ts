@@ -1,5 +1,6 @@
 import {
   animate,
+  AnimationTriggerMetadata,
   query,
   style,
   transition,
@@ -8,7 +9,7 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const routerAnimation =
+export const routerAnimation: AnimationTriggerMetadata  =
   trigger('routerAnimation', [
     transition('* <=> *', [
       query(':enter',
@@ -21,15 +22,15 @@ export const routerAnimation =
       query(':leave',
         [
           style({ opacity: 1 }),
-          animate(timing + easing, style({ opacity: 0, transform: 'scale(0.95)' }))
+          animate(timing + easing, style({ opacity: 0 }))
         ],
         { optional: true }
       ),
 
       query(':enter',
         [
-          style({ opacity: 0, transform: 'scale(0.95)' }),
-          animate(timing + easing, style({ opacity: 1, transform: 'scale(1)' }))
+          style({ opacity: 0 }),
+          animate(timing + easing, style({ opacity: 1 }))
         ],
         { optional: true }
       )

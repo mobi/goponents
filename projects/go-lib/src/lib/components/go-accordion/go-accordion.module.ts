@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GoAccordionComponent } from './go-accordion.component';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
+import { GoIconModule } from '../go-icon/go-icon.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
     GoAccordionPanelComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    GoIconModule
   ],
   exports: [
     GoAccordionComponent,

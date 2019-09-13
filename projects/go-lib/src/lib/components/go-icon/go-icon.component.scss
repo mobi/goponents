@@ -47,8 +47,23 @@ $icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
   @include fill-text-background($ui-color-positive-gradient, $ui-color-positive);
 }
 
+.go-icon--disabled {
+  @include fill-text-background($color: $theme-light-border);
+}
+
 @each $name, $size in $icon-sizes {
   .go-icon--#{$name} {
     font-size: $size;
   }
+}
+
+.go-button__icon {
+  font-size: 1.25rem;
+  line-height: 1rem;
+  margin-bottom: -.2rem;
+  margin-left: -$column-gutter--half;
+  margin-right: $column-gutter--quarter;
+  margin-top: -.2rem;
+  padding: .2rem 0;
+  vertical-align: top;
 }

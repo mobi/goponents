@@ -94,21 +94,6 @@ $button__background--loading: rgba($theme-light-border, .4);
     &::before {
       background: $button__background--disabled;
     }
-
-    .go-button__icon {
-      @include fill-text-background($color: $theme-light-border);
-    }
-  }
-
-  .go-button__icon {
-    font-size: 1.25rem;
-    line-height: 1rem;
-    margin-bottom: -.2rem;
-    margin-left: -$column-gutter--half;
-    margin-right: $column-gutter--quarter;
-    margin-top: -.2rem;
-    padding: .2rem 0;
-    vertical-align: top;
   }
 }
 

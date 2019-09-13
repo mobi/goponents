@@ -1,19 +1,58 @@
-<go-table [loadingData]="tableLoading"
-          [tableConfig]="tableConfig"
-          (rowSelectionEvent)="handleSelection($event)"
-          [showTableActions]="true"
-          (tableChange)="handleTableChange($event)"
-          tableTitle="People Data"
-          #peopleTable
-          *ngIf="tableConfig">
-  <ng-container go-table-actions>
-    <go-button (handleClick)="outputSelectionCount()">Selection Count</go-button>
-    <go-button (handleClick)="showCurrentSelection()">Selection State</go-button>
-  </ng-container>
-  <go-table-column field="id" title="ID"></go-table-column>
-  <go-table-column field="name.first" title="First Name"></go-table-column>
-  <go-table-column field="name.last" title="Last Name"></go-table-column>
-  <go-table-column field="email" title="Email"></go-table-column>
-  <go-table-column field="gender" title="Gender"></go-table-column>
-  <go-table-column field="ip_address" title="IP Address"></go-table-column>
-</go-table>
+<div class="go-container">
+  <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
+    <go-accordion-panel title="Test 1" icon="home" [expanded]="true">
+      <p class="go-body-copy">This is some content for Test 1.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 2" icon="settings">
+      <p class="go-body-copy">This is a second thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 3" icon="landscape">
+      <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+  </go-accordion>
+
+  <go-accordion [showIcons]="true" class="go-column go-column--100">
+    <go-accordion-panel title="Test 1" icon="home" [expanded]="true">
+      <p class="go-body-copy">This is some content for Test 1.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 2" theme="dark" icon="settings">
+      <p class="go-body-copy">This is a second thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 3" icon="landscape">
+      <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+  </go-accordion>
+
+  <go-accordion class="go-column go-column--100">
+    <go-accordion-panel heading="Test 1" [expanded]="true">
+      <p class="go-body-copy">This is some content for Test 1.</p>
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 2">
+      <p class="go-body-copy">This is a second thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 3">
+      <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+  </go-accordion>
+
+  <go-table [loadingData]="tableLoading"
+            [tableConfig]="tableConfig"
+            (rowSelectionEvent)="handleSelection($event)"
+            [showTableActions]="true"
+            (tableChange)="handleTableChange($event)"
+            class="go-column go-column--100"
+            tableTitle="People Data"
+            #peopleTable
+            *ngIf="tableConfig">
+    <ng-container go-table-actions>
+      <go-button (handleClick)="outputSelectionCount()">Selection Count</go-button>
+      <go-button (handleClick)="showCurrentSelection()">Selection State</go-button>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</div>

@@ -14,6 +14,10 @@ export * from './lib/components/go-accordion/go-accordion.module';
 export * from './lib/components/go-action-sheet/go-action-sheet.component';
 export * from './lib/components/go-action-sheet/go-action-sheet.module';
 
+// Badge
+export * from './lib/components/go-badge/go-badge.component';
+export * from './lib/components/go-badge/go-badge.module';
+
 // Button
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
@@ -22,9 +26,27 @@ export * from './lib/components/go-button/go-button.module';
 export * from './lib/components/go-card/go-card.component';
 export * from './lib/components/go-card/go-card.module';
 
+// Checkbox
+export * from './lib/components/go-checkbox/go-checkbox.component';
+export * from './lib/components/go-checkbox/go-checkbox.module';
+export * from './lib/components/go-checkbox/go-checkbox-group.component';
+
+// Copy
+export * from './lib/components/go-copy/go-copy.component';
+export * from './lib/components/go-copy/go-copy.module';
+
+// Datepicker
+export * from './lib/components/go-datepicker/calendar-cell.model';
+export * from './lib/components/go-datepicker/go-datepicker.component';
+export * from './lib/components/go-datepicker/go-datepicker.module';
+
 // Header
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';
+
+// Hint
+export * from './lib/components/go-hint/go-hint.component';
+export * from './lib/components/go-hint/go-hint.module';
 
 // Icon
 export * from './lib/components/go-icon/go-icon.component';
@@ -33,6 +55,10 @@ export * from './lib/components/go-icon/go-icon.module';
 // Icon Button
 export * from './lib/components/go-icon-button/go-icon-button.component';
 export * from './lib/components/go-icon-button/go-icon-button.module';
+
+// Input
+export * from './lib/components/go-input/go-input.component';
+export * from './lib/components/go-input/go-input.module';
 
 // Layout
 export * from './lib/components/go-layout/go-layout.component';
@@ -52,10 +78,19 @@ export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 
+// Radio
+export * from './lib/components/go-radio/go-radio-button.component';
+export * from './lib/components/go-radio/go-radio-group.component';
+export * from './lib/components/go-radio/go-radio.module';
+
 // Search
 export * from './lib/components/go-search/go-search.component';
 export * from './lib/components/go-search/go-search.module';
 export * from './lib/components/go-search/go-search.service';
+
+// Select
+export * from './lib/components/go-select/go-select.component';
+export * from './lib/components/go-select/go-select.module';
 
 // Side Nav
 export * from './lib/components/go-side-nav/go-side-nav.module';
@@ -64,6 +99,10 @@ export * from './lib/components/go-side-nav/nav-item.model';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
 
+// Switch Toggle
+export * from './lib/components/go-switch-toggle/go-switch-toggle.component';
+export * from './lib/components/go-switch-toggle/go-switch-toggle.module';
+
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
@@ -71,6 +110,10 @@ export * from './lib/components/go-table/go-table-config.model';
 export * from './lib/components/go-table/go-table-paging.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
+
+// Text Area
+export * from './lib/components/go-text-area/go-text-area.component';
+export * from './lib/components/go-text-area/go-text-area.module';
 
 // Toast
 export * from './lib/components/go-toast/go-toast.component';

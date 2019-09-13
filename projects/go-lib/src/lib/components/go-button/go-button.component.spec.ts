@@ -26,20 +26,6 @@ describe('GoButtonComponent', () => {
   });
 
   describe('clicked()', () => {
-    it('sets isProcessing to false if useLoader is false', () => {
-      expect(component.isProcessing).toBe(false);
-      component.clicked();
-      expect(component.isProcessing).toBe(component.useLoader);
-    });
-
-    it('sets isProcessing to useLoader', () => {
-      component.useLoader =  true;
-
-      expect(component.isProcessing).not.toBe(component.useLoader);
-      component.clicked();
-      expect(component.isProcessing).toBe(component.useLoader);
-    });
-
     it('emits the handleClick event with the isProcessing boolean', () => {
       spyOn(component.handleClick, 'emit');
       spyOn(component, 'clicked').and.callThrough();
@@ -55,58 +41,49 @@ describe('GoButtonComponent', () => {
     });
   });
 
-  describe('reset()', () => {
-    it('sets isProcessing to false', () => {
-      component.isProcessing = true;
-
-      expect(component.isProcessing).toBe(true);
-      component.reset();
-      expect(component.isProcessing).toBe(false);
-    });
-  });
-
   describe('classObject()', () => {
-    it('builds an object with all of the class values falsey', () => {
-      const classes: object = component.classObject();
-
-      expect(Object.values(classes)).not.toContain(true);
+    beforeEach(() => {
+      expect(component.classObject).toEqual({});
     });
 
     it('returns an object that sets go-button--negative to true based on buttonVariant', () => {
-      expect(component.classObject()['go-button--negative']).toBe(false);
+      expect(component.classObject['go-button--negative']).toBeFalsy();
 
       component.buttonVariant = 'alert';
-      expect(component.classObject()['go-button--negative']).toBe(true);
+      component.ngOnChanges();
+      expect(component.classObject['go-button--negative']).toBe(true);
 
       component.buttonVariant = 'negative';
-      expect(component.classObject()['go-button--negative']).toBe(true);
+      component.ngOnChanges();
+      expect(component.classObject['go-button--negative']).toBe(true);
     });
 
     it('returns an object that set go-button--neutral to true based on buttonVariant', () => {
-      expect(component.classObject()['go-button--neutral']).toBe(false);
+      expect(component.classObject['go-button--neutral']).toBeFalsy();
 
       component.buttonVariant = 'neutral';
-      expect(component.classObject()['go-button--neutral']).toBe(true);
+      component.ngOnChanges();
+      expect(component.classObject['go-button--neutral']).toBe(true);
     });
 
     it('returns an object that set go-button--positive to true based on buttonVariant', () => {
-      expect(component.classObject()['go-button--positive']).toBe(false);
+      expect(component.classObject['go-button--positive']).toBeFalsy();
 
       component.buttonVariant = 'positive';
-      expect(component.classObject()['go-button--positive']).toBe(true);
+      component.ngOnChanges();
+      expect(component.classObject['go-button--positive']).toBe(true);
     });
 
     it('returns an object that set other modifiers to true', () => {
-      const before: object = component.classObject();
-      expect(before['go-button--dark']).toBe(false);
-      expect(before['go-button--loading']).toBe(false);
+      expect(component.classObject['go-button--dark']).toBeFalsy();
+      expect(component.classObject['go-button--loading']).toBeFalsy();
 
       component.useDarkTheme = true;
       component.isProcessing = true;
+      component.ngOnChanges();
 
-      const after: object = component.classObject();
-      expect(after['go-button--dark']).toBe(true);
-      expect(after['go-button--loading']).toBe(true);
+      expect(component.classObject['go-button--dark']).toBe(true);
+      expect(component.classObject['go-button--loading']).toBe(true);
     });
   });
 
