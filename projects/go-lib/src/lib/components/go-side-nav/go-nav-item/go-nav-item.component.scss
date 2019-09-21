@@ -17,11 +17,12 @@
   background: $base-primary;
   border-radius: 0 $global-radius $global-radius 0;
   content: " ";
-  height: 100%;
+  height: 1.5rem;
   left: 0;
   opacity: 0;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 4px;
   @include transition(all);
 }
