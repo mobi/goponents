@@ -1,9 +1,21 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-$loader-sizes: (small: 50px, medium: 100px, large: 150px);
-$loader-speeds: (outer: 1.25s, middle: 1s, inner: .75s);
+$loader-sizes: (
+  small: 50px,
+  medium: 100px,
+  large: 150px
+);
+
+$loader-speeds: (
+  outer: 1.25s,
+  middle: 1s,
+  inner: .75s
+);
+
 $loader-colors: (
+  light: $base-light,
+  dark: $base-dark,
   negative: $ui-color-negative,
   neutral: $ui-color-neutral,
   positive: $ui-color-positive
