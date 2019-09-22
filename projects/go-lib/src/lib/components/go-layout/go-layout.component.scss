@@ -20,6 +20,7 @@ body {
 .go-layout__content {
   display: flex;
   flex-grow: 1;
+  height: calc(100vh - #{$header-height});
 }
 
 .go-layout__route-container {
