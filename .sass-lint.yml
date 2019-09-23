@@ -54,22 +54,22 @@ rules:
   # Name Formats
   class-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
   function-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
   id-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
   mixin-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
   placeholder-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
   variable-name-format:
     - 1
-    - convention: hyphenatedbem
+    - convention: hyphenated_BEM
 
   # Style Guide
   attribute-quotes: 1
