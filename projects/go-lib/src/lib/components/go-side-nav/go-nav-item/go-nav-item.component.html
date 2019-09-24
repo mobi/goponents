@@ -2,8 +2,7 @@
      [attr.title]="navItem.description">
   <a class="go-nav-item__link"
      [routerLinkActive]="['go-nav-item__link--active']"
-     [routerLink]="[navItem.route]"
-     [routerLinkActiveOptions]="{exact:true}">
+     [routerLink]="[navItem.route]">
     <go-icon [icon]="navItem.routeIcon"
              iconClass="go-nav-group__icon"
              *ngIf="navItem.routeIcon">
