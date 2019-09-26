@@ -44,6 +44,10 @@ export * from './lib/components/go-datepicker/calendar-cell.model';
 export * from './lib/components/go-datepicker/go-datepicker.component';
 export * from './lib/components/go-datepicker/go-datepicker.module';
 
+// Footer
+export * from './lib/components/go-footer/go-footer.component';
+export * from './lib/components/go-footer/go-footer.module';
+
 // Header
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';

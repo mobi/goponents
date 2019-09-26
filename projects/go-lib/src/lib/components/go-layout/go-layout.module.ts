@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { GoFooterModule } from '../go-footer/go-footer.module';
 import { GoHeaderModule  } from '../go-header/go-header.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoModalModule } from '../go-modal/go-modal.module';
@@ -23,6 +24,7 @@ import { GoLayoutComponent } from './go-layout.component';
     CommonModule,
     RouterModule,
     // Goponents
+    GoFooterModule,
     GoHeaderModule,
     GoLoaderModule,
     GoModalModule,
