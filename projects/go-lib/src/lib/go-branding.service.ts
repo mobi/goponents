@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class GoBrandingService {
-  brandColor: string;
-
-  constructor() {
-    this.brandColor = '#65B360';
-  }
+  brandColor: BehaviorSubject<string> = new BehaviorSubject<string>('#65B360');
 
   public setBrandColor(color: string): void {
-    this.brandColor = color;
+    this.brandColor.next(color);
   }
 }

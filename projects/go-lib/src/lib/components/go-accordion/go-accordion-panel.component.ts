@@ -2,10 +2,9 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
-  ViewEncapsulation,
-  OnChanges
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -19,10 +18,11 @@ import { GoBrandingService } from '../../go-branding.service';
     accordionAnimation
   ]
 })
-export class GoAccordionPanelComponent implements AfterContentInit, OnInit, OnChanges {
+export class GoAccordionPanelComponent implements OnInit, OnChanges {
   _expanded: boolean = false; // Note: Use _expanded in the template
   containerClasses: object = {};
   headerClasses: object = {};
+  brandColor: string;
 
   @Input() borderless: boolean;
   @Input() heading: string;
@@ -45,8 +45,6 @@ export class GoAccordionPanelComponent implements AfterContentInit, OnInit, OnCh
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
-  @ViewChild('goAccordionPanelSelected') selectedBinding: ElementRef;
-
   constructor(
     private brandingService: GoBrandingService
   ) { }
@@ -54,6 +52,10 @@ export class GoAccordionPanelComponent implements AfterContentInit, OnInit, OnCh
   ngOnInit(): void {
     // NOTE: `title` is deprecated and will be removed in later version
     this.heading = this.heading || this.title;
+
+    this.brandingService.brandColor.subscribe((value: string) => {
+      this.brandColor = value;
+    });
   }
 
   ngOnChanges(): void {
@@ -75,9 +77,4 @@ export class GoAccordionPanelComponent implements AfterContentInit, OnInit, OnCh
       'go-accordion-panel__header--slim': this.slim === true
     };
   }
-  
-  ngAfterContentInit(): void {
-    this.selectedBinding.nativeElement.style.background = this.brandingService.brandColor;
-  }
-
 }

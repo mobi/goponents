@@ -16,7 +16,9 @@ describe('GoAccordionPanelComponent', () => {
         BrowserAnimationsModule,
         GoIconModule
       ],
-      providers: [ GoBrandingService ]
+      providers: [
+        GoBrandingService
+      ]
     })
     .compileComponents();
   }));
