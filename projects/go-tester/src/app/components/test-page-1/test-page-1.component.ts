@@ -33,7 +33,8 @@ export class TestPage1Component implements OnInit {
         selectable: true,
         selectBy: 'id',
         tableData: data.results,
-        totalCount: data.totalCount
+        totalCount: data.totalCount,
+        sortable: false
       });
       this.tableLoading = false;
     });
