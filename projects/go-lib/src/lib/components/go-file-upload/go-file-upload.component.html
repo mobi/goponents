@@ -1,16 +1,18 @@
 <div>
   <go-button
-    buttonIcon="{{buttonIcon}}"
-    buttonVariant="{{buttonVariant}}"
-    (click)="filePicker.click()"
-    #filePicker>
+    [buttonIcon]="buttonIcon"
+    [buttonVariant]="buttonVariant"
+    (click)="filePicker.click()">
     {{label}}
   </go-button>
-  <input type="file" #filePicker (change)="onFilePicked($event)" multiple>
+  <input type="file" #filePicker (change)="onFilePicked()" multiple>
 </div>
 
-<go-hint *ngFor="let file of filePreview" [message]="file" [theme]="light">
-</go-hint>
+<p class="go-hint" *ngFor="let file of filePreview; let i = index">
+  {{ file }}
+  <go-icon-button buttonIcon="delete" (handleClick)="removeFile(i)"></go-icon-button>
+</p>
+
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="light">
 </go-hint>

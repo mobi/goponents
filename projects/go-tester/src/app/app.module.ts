@@ -33,7 +33,7 @@ import {
   GoTableModule,
   GoTextAreaModule,
   GoToasterModule,
-  GoToastModule,
+  GoToastModule
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
