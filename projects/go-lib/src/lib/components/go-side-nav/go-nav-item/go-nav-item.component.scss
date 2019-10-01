@@ -5,7 +5,6 @@
 .go-nav-item {
   align-items: center;
   display: flex;
-  padding-right: .5rem;
   @include transition(all);
 
   &:hover {
@@ -58,6 +57,7 @@
   font-weight: $weight-light;
   letter-spacing: $side-nav-letter-spacing;
   padding: $inner-side-nav-padding;
+  flex-grow: 1;
 }
 
 .go-nav-item__title--with-icon {
