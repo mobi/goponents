@@ -9,5 +9,5 @@ export interface NavItem {
    * new tab unless a different target is specified within `externalLinkTarget`.
    */
   isExternalLink?: boolean;
-  externalLinkTarget?: '_self' | '_blank' | 'parent' | '_top';
+  externalLinkTarget?: '_self' | '_blank' | '_parent' | '_top';
 }
