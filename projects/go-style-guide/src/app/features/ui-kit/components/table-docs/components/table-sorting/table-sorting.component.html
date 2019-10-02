@@ -1,0 +1,67 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Implementing Sorting</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        By default, sorting is enabled. To set the sorted column and direction, you may pass an <code class="code-block--inline">GoTableSortConfig</code>
+        class to the <code class="code-block--inline">sortConfig</code> property on the <code class="code-block--inline">GoTableConfig</code> object.
+      </p>
+
+      <code [highlight]="tableSortConfig"></code>
+
+      <h2 class="go-heading-6">column</h2>
+      <p class="go-body-copy">
+        This property determines which column to set as the default sort as a string.
+        To sort a column in a nested object in the array, you may pass the path to the property. <code class="code-block--inline">"address.state"</code>
+      </p>
+      <h2 class="go-heading-6">direction</h2>
+      <p class="go-body-copy">
+        This property determines the direction to sort the data. By default, it will sort <code class="code-block--inline">ascending</code>.
+        This property is an enum, <code class="code-block--inline">SortDirection</code> (see below).
+      </p>
+      <code [highlight]="tableSortDir"></code>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Setting the Sort</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="tableConfigEx_html"></code>
+      <h2 class="go-heading-6">example.ts</h2>
+      <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Sort Example">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="restrictingSort">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Restricting Sort Example</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="tableConfigEx_html"></code>
+      <h2 class="go-heading-6">example.ts</h2>
+      <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig_nosort" tableTitle="Restricting Sort">
+      <go-table-column field="id" title="ID"></go-table-column>
+      <go-table-column field="name.first" title="First Name"></go-table-column>
+      <go-table-column field="name.last" title="Last Name"></go-table-column>
+      <go-table-column field="email" title="Email"></go-table-column>
+      <go-table-column field="gender" title="Gender"></go-table-column>
+      <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>

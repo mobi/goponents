@@ -1,0 +1,354 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+</header>
+<div class="go-container">
+  <div class="go-column go-column--100">
+    <go-card [showHeader]="false" class="go-column go-column--100" id="description">
+      <ng-container go-card-content>
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            <!-- Intro -->
+            <h2 class="go-heading-5">Usage</h2>
+            <p class="go-body-copy">
+              The <code class="code-block--inline">&lt;go-button&gt;</code>
+              component should be used for any instance of a button throughout
+              the app.
+            </p>
+
+            <!-- Bindings -->
+            <h2 class="go-heading-5">Bindings</h2>
+            <code [highlight]="componentBindings"></code>
+          </div>
+          <div class="go-column go-column--50">
+            <h3 class="go-heading-6">buttonDisabled</h3>
+            <p class="go-body-copy">
+              Disables the button. This should be handled by the parent
+              component.
+            </p>
+
+            <h3 class="go-heading-6">buttonIcon</h3>
+            <p class="go-body-copy">
+              Add an icon to the left of the text in the button. See the 
+              <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
+              page for available icons.
+            </p>
+
+            <h3 class="go-heading-6">buttonType</h3>
+            <p class="go-body-copy">
+              Changes the type attribute of the button. This attribute
+              defaults to "button" but other options are necessary when
+              doing things like submitting or resetting forms. 
+            </p>
+
+            <h3 class="go-heading-6">handleClick</h3>
+            <p class="go-body-copy">
+              This event fires when the button is clicked. Use this event 
+              to handle the click event.
+            </p>
+          </div>
+          <div class="go-column go-column--50">
+            <h3 class="go-heading-6">buttonVariant</h3>
+            <p class="go-body-copy">
+              The <code class="code-block--inline">buttonVariant</code>
+              binding controls the style of the button. This includes
+              options that allow us to implement the following
+              modifications:
+            </p>
+            <ol class="go-list go-list--ordered">
+              <li>Default: <code class="code-block--inline">.go-button</code></li>
+              <li>Negative: <code class="code-block--inline">.go-button--negative</code></li>
+              <li>Neutral: <code class="code-block--inline">.go-button--neutral</code></li>
+              <li>Positive: <code class="code-block--inline">.go-button--positive</code></li>
+            </ol>
+
+            <h3 class="go-heading-6">isProcessing</h3>
+            <p class="go-body-copy">
+              Turns the loading state on/off. It is recommended to use this when
+              processing data that will take longer than 250ms. Examples:
+              submitting a form, sorting data, refreshing data from the
+              server, etc.
+            </p>
+            <h3 class="go-heading-6">useDarkTheme</h3>
+            <p class="go-body-copy">
+              Applies a dark theme to the button component.
+              The dark button styles can be applied by setting the
+              <code class="code-block--inline">useDarkTheme</code>
+              binding to <code class="code-block--inline">true</code>.
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+  </div>
+
+  <go-card class="go-column go-column--100" id="default-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Default Button</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The default button is preferred when the action being performed
+        is of little importance. Ideally, the button itself describes
+        what it does. For example, a button to close a modal would be
+        a good use case for the default button. It isn't important or
+        informational, it is just a simple action.
+      </p>
+      <code [highlight]="defaultExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()">Default</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="negative-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Negative Buttons</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Negative buttons are displayed in red. Use negative buttons to designate
+        an action as being dangerous or negative. Deleting a resource
+        is a good example of when to use this button. It could also be
+        used to guide a user away from an action we don't want them to
+        take.
+      </p>
+      <code [highlight]="negativeExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="negative">Negative</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="negative" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="negative" buttonIcon="delete">With Icon</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="neutral-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Neutral Buttons</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Neutral buttons are displayed in purple. Use neutral buttons to designate
+        an action as being informational. Opening up a chat modal or
+        sending a user to an external resource might be a good example
+        of when to use this button. It could also be used to guide a
+        user towards an action that isn't necessarily positive, but still
+        important.
+      </p>
+      <code [highlight]="neutralExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="neutral">Neutral</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="neutral" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="neutral" buttonIcon="live_help">With Icon</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="positive-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Positive Buttons</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Positive buttons are displayed in blue. Use positive buttons to
+        designate an action as being positive. Creating a resource or
+        submitting a form might be a good example of when to use this
+        button variant. It could also be used to guide a user towards
+        an action we want them to make, such as signing up for something
+      </p>
+      <code [highlight]="positiveExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="positive">Positive</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="positive" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button (handleClick)="testClick()" buttonVariant="positive" buttonIcon="check">With Icon</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="loading-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button with loader</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Loading buttons display the loading animation inside the
+        button.  By default this is false. It is recommended to use
+        this when processing data that will take longer than 250ms.
+        Examples might include submitting a form, sorting data,
+        refreshing data from the server, etc. While in this state,
+        a button will additionally be disabled to prevent the action
+        from being taken more than once.
+      </p>
+      <h3 class="go-heading-6">example.ts</h3>
+      <code [highlight]="loadingExampleTS"></code>
+      <h3 class="go-heading-6">example.html</h3>
+      <code [highlight]="loadingExampleHTML"></code>
+      <h6 class="go-heading-6">View</h6>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('defaultButton')"
+            [isProcessing]="defaultButtonLoading"
+            buttonIcon="close"
+            #defaultButton
+          >
+            Default Loading
+          </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('negativeButton')"
+            [isProcessing]="negativeButtonLoading"
+            buttonIcon="delete"
+            buttonVariant="negative"
+            #negativeButton
+          >
+            Negative Loading
+          </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('neutralButton')"
+            [isProcessing]="neutralButtonLoading"
+            buttonIcon="info"
+            buttonVariant="neutral"
+            #neutralButton
+          >
+            Neutral Loading
+          </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('positiveButton')"
+            [isProcessing]="positiveButtonLoading"
+            buttonIcon="check"
+            buttonVariant="positive"
+            #positiveButton
+          >
+            Positive Loading
+          </go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="dark-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Dark buttons</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100 go-column--no-padding">
+          <p class="go-body-copy">
+            Dark buttons work all the same as the rest of the buttons,
+            the difference being that some of the colors have been tweaked
+            to allow this button to maintain an appropriate amount of
+            contrast when displayed on a dark background.
+          </p>
+          <p class="go-body-copy">
+            The dark button styles can be applied by setting the
+            <code class="code-block--inline">useDarkTheme</code>
+            binding to <code class="code-block--inline">true</code>.
+          </p>
+
+          <code [highlight]="darkButtonExample"></code>
+        </div>
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="dark-example-area">
+            <div class="go-container">
+              <div class="go-column go-column--50">
+                <go-button (handleClick)="testClick()" [useDarkTheme]="true">
+                  Default
+                </go-button>
+              </div>
+              <div class="go-column go-column--50">
+                <go-button
+                  (handleClick)="testClick()"
+                  [useDarkTheme]="true"
+                  buttonVariant="neutral"
+                  buttonIcon="live_help"
+                >
+                  With Icon
+                </go-button>
+              </div>
+              <div class="go-column go-column--50">
+                <go-button
+                  (handleClick)="testSubmit('negativeDarkButton')"
+                  [useDarkTheme]="true"
+                  buttonIcon="delete"
+                  buttonVariant="negative"
+                  [isProcessing]="negativeDarkButtonLoading"
+                  #negativeDarkButton
+                >
+                  Negative Loading
+                </go-button>
+              </div>
+              <div class="go-column go-column--50">
+                <go-button
+                  [useDarkTheme]="true"
+                  buttonIcon="check"
+                  buttonVariant="positive"
+                  buttonDisabled="true"
+                >
+                  Positive Disabled
+                </go-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100 go-column--no-padding" id="button-group">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button Groups</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100 go-column--no-padding">
+          <p class="go-body-copy">
+            Sometimes it will be necessary to group buttons together. There are a set of helper
+            classes available to accomplish this.
+          </p>
+          <code [highlight]="buttonGroup"></code>
+        </div>
+        <div class="go-column go-column--100 go-column--no-padding">
+          <ul class="go-button-group">
+            <li class="go-button-group__item">
+              <go-button>Button 1</go-button>
+            </li>
+            <li class="go-button-group__item">
+              <go-button>Button 2</go-button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</div>

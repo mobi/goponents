@@ -1,0 +1,64 @@
+@import '../../../../../../../go-lib/src/styles/variables';
+
+$colors: (
+  base: (
+    $base-primary,
+    $base-light,
+    $base-light-secondary,
+    $base-dark,
+    $base-dark-secondary
+  ),
+  positive: (
+    $ui-color-positive,
+    $ui-color-positive-active,
+    $ui-color-positive-hover,
+    $ui-color-positive-gradient
+  ),
+  negative: (
+    $ui-color-negative,
+    $ui-color-negative-active,
+    $ui-color-negative-hover,
+    $ui-color-negative-gradient
+  ),
+  neutral: (
+    $ui-color-neutral,
+    $ui-color-neutral-active,
+    $ui-color-neutral-hover,
+    $ui-color-neutral-gradient
+  )
+);
+
+@each $name, $palette in $colors {
+  $index: 1;
+
+  #go-color-#{$name} {
+    @each $color in $palette {
+      .go-color-items__item:nth-of-type(#{$index}) {
+        background: nth($palette, $index);
+      }
+
+      $index: $index + 1;
+    }
+  }
+}
+
+.go-color-items {
+  border-radius: $global-radius;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.go-color-items__item {
+  align-items: center;
+  color: $base-light;
+  display: flex;
+  flex-grow: 1;
+  height: 150px;
+  justify-content: center;
+}
+
+.go-color-items__item--dark {
+  color: $base-dark;
+}

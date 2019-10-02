@@ -1,0 +1,9 @@
+@import '../../../../../../../../../go-lib/src/styles/variables';
+
+.stacked-header__type {
+  color: $base-dark;
+  display: block;
+  font-weight: normal;
+  margin-bottom: $column-gutter--quarter;
+  text-transform: capitalize;
+}

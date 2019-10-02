@@ -1,0 +1,39 @@
+<div class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h3 class="go-heading-5">Usage</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">&lt;go-layout&gt;</code> component should only be used once, at the root level component
+        (typically the app component). This component is used to create an application layout that includes routing, navigation, and
+        slots in the header for a logo, a search component, and actions.
+      </p>
+
+      <h5 class="go-heading-5">Bindings</h5>
+      <p class="go-body-copy">
+        There are none! Instead, there are two areas used for content projection: <code class="code-block--inline">go-layout-header</code>
+        and <code class="code-block--inline">go-layout-nav</code>. These should be applied to the <code class="code-block--inline">&lt;go-header&gt;</code>
+        and <code class="code-block--inline">&lt;go-side-nav&gt;</code> components respectively. Check the simple setup example below. 
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="setup">
+    <ng-container go-card-header>
+      <h3 class="go-heading-5">Simple Setup</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        For the sake of this example, we'll be referencing the layout of this application because it's a living example of the
+        entire layout component and family.
+      </p>
+
+      <h6 class="go-heading-6">app.module</h6>
+      <code [highlight]="basicExample_module"></code>
+
+      <h6 class="go-heading-6">app.component</h6>
+      <code [highlight]="basicExample_html"></code>
+    </ng-container>
+  </go-card>
+</div>

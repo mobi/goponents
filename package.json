@@ -23,7 +23,9 @@
     "package": "npm run build_lib && npm run npm_pack",
     "publish": "npm run package && cd dist/go-lib && npm publish",
     "publish_local": "npm run package && node ./local_install.js",
-    "sass-lint": "node_modules/.bin/sass-lint -c .sass-lint.yml"
+    "sass-lint": "node_modules/.bin/sass-lint -c .sass-lint.yml",
+    "style_guide": "ng serve --project=go-style-guide",
+    "style_guide_publish": "ng build --prod --project=go-style-guide"
   },
   "private": true,
   "engines": {
@@ -43,6 +45,9 @@
     "@ng-select/ng-select": "^2.20.5",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
+    "faker": "4.1.0",
+    "highlight.js": "^9.13.1",
+    "ngx-highlightjs": "^3.0.1",
     "npm": "^6.10.1",
     "rxjs": "~6.5.2",
     "web-animations-js": "^2.3.2",
