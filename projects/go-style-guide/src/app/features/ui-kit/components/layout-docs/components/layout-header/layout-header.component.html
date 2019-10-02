@@ -1,0 +1,66 @@
+<div class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h3 class="go-heading-5">Usage</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100">
+          <p class="go-body-copy">
+            The <code class="code-block--inline">&lt;go-header&gt;</code> component should only be used once, at the root level component.
+            It should be placed inside a <code class="code-block--inline">&lt;go-layout&gt;</code> and be given the attribute of 
+            <code class="code-block--inline">&lt;go-layout-header&gt;</code>.
+            This component will render a header across the top of the application that contains an icon button to collapse the side nav, bindings
+            for a logo, a slot for the search component in the middle, and a slot for actions on the right.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100">
+          <h5 class="go-heading-5">Bindings</h5>
+          <code [highlight]="componentBindings"></code>
+
+          <h6 class="go-heading-6">altText</h6>
+          <p class="go-body-copy">
+            This binding will output the alt text for the logo image. This is optional, but recommended.
+          </p>
+
+          <h6 class="go-heading-6">logo</h6>
+          <p class="go-body-copy">
+            This binding takes the path to the logo.
+          </p>
+        </div>
+
+        <div class="go-column go-column--100 go-column--no-padding">
+          <h5 class="go-heading-5">Content Projection</h5>
+          <p class="go-body-copy">
+            In addtiion to the bindings, there are two areas used for content projection: <code class="code-block--inline">go-header-middle</code>
+            and <code class="code-block--inline">go-header-right</code>. These should be applied to the <code class="code-block--inline">&lt;go-search&gt;</code>
+            component and an <code class="code-block--inline">&lt;ng-container&gt;</code> element respectively. Check the example below for details.
+          </p>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="setup">
+    <ng-container go-card-header>
+      <h3 class="go-heading-5">Simple Setup</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100 go-column--no-padding">
+          <p class="go-body-copy">
+            For the sake of this example, we'll be referencing the layout of this application because it's a living example of the
+            entire layout component and family. It is also being shown inside of the layout component because it's required to be inside it.
+          </p>
+          
+          <h6 class="go-heading-6">app.module</h6>
+          <code [highlight]="basicExample_module"></code>
+          
+          <h6 class="go-heading-6">app.component.html</h6>
+          <code [highlight]="basicExample_html"></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</div>

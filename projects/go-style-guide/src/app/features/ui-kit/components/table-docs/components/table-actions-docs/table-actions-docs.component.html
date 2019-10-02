@@ -1,0 +1,35 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Implementing Table Actions</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Table actions are a set of icon buttons and other tools meant to perform actions on the table or the data inside of it.
+        In the table you can provide a series of components via content projection.
+      </p>
+
+      <code [highlight]="tableActions_html"></code>
+
+      <p class="go-body-copy">
+        For the table actions to appear, you must toggle them on by using <code class="code-block--inline">showTableActions</code>
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100"
+            [tableConfig]="tableConfig"
+            tableTitle="Example of Table Actions"
+            [showTableActions]="true">
+    <ng-container go-table-actions>
+      <go-icon-button buttonIcon="filter"></go-icon-button>
+      <go-icon-button buttonIcon="settings"></go-icon-button>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>

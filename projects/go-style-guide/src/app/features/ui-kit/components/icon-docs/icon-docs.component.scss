@@ -1,0 +1,10 @@
+.list {
+  line-height: 4rem;
+  list-style: none;
+}
+
+:host ::ng-deep .list__icon {
+  font-size: 4rem;
+  vertical-align: middle;
+}
+

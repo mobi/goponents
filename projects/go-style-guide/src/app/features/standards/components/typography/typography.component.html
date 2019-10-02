@@ -1,0 +1,85 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+</header>
+<section class="go-container">
+  <go-card class="go-column go-column--50">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Default Usage</h1>
+    </ng-container>
+
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        By default we apply margin to the bottom of all of the basic typograhical elements.
+        This allows us to establish a more clear vertical rhythm to enhance readibility.
+      </p>
+      <p class="go-body-copy">
+        To learn how to remove this margin see below.
+      </p>
+      <code [highlight]="basicExample"></code>
+    </ng-container>
+  </go-card>
+
+  <go-card [showHeader]="false" class="go-column go-column--50">
+    <ng-container go-card-content>
+      <div [innerHtml]="basicExample"></div>
+    </ng-container>
+  </go-card>
+</section>
+
+<section class="go-container">
+  <go-card class="go-column go-column--50">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Removing Margin</h1>
+    </ng-container>
+
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The default heading margin can be removed by adding the
+        <code class="code-block--inline">go-heading--no-margin</code>
+        modifier class to any heading.
+      </p>
+      <p class="go-body-copy">
+        The same styles can be applied on body copy by adding the
+        <code class="code-block--inline">body-copy--no-margin</code>
+        modifier class to any paragraph.
+      </p>
+      <code [highlight]="noMarginExample"></code>
+    </ng-container>
+  </go-card>
+
+  <go-card [showHeader]="false" class="go-column go-column--50">
+    <ng-container go-card-content>
+      <h1 class="go-heading-5">
+        Heading with margin
+      </h1>
+      <h2 class="go-heading-6">
+        Heading with margin
+      </h2>
+      <p class="go-body-copy">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
+        veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+      </p>
+      <p class="go-body-copy">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+        sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+      </p>
+      
+      <h1 class="go-heading-5 go-heading--no-margin">
+        Heading without margin
+      </h1>
+      <h2 class="go-heading-6 go-heading--no-margin">
+        Heading without margin
+      </h2>
+      <p class="go-body-copy go-body-copy--no-margin">
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
+        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et 
+        dolore magnam aliquam quaerat voluptatem.
+      </p>
+      <p class="go-body-copy go-body-copy--no-margin">
+        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit 
+        laboriosam, nisi ut aliquid ex ea commodi consequatur?
+      </p>
+    </ng-container>
+  </go-card>
+</section>

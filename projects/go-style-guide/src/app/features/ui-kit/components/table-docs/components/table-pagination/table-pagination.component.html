@@ -1,0 +1,63 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Implementing Paging</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        By default, pagination is enabled. To configure the paging setup, you can pass a <code class="code-block--inline">GoTablePageConfig</code> class
+        to <code class="code-block--inline">pageConfig</code> on the <code class="code-block--inline">GoTableConfig</code> class.
+      </p>
+
+      <code [highlight]="pageConfig"></code>
+
+      <h2 class="go-heading-6">offset</h2>
+      <p class="go-body-copy">
+        This property represents the number of records to offset the paging by.
+        This is set and updated internally by the table component, but it may need updated externally if you're implementing server-side paging.
+        <br/>
+        <caption>See <a [routerLink]="['../server-integration']">Server Integration</a> for more details.</caption>
+      </p>
+      <h2 class="go-heading-6">pageSizes</h2>
+      <p class="go-body-copy">
+        This property determines what page sizes are available to the user. It takes an array of numbers, but has defaults.
+        It is recommended to stick with the predefined options, but if needed, pass whole numbers in increments of 5 for more options.
+      </p>
+      <h2 class="go-heading-6">perPage</h2>
+      <p class="go-body-copy">
+        This property represents the current items per page. It is set and updated internally by the table component.
+        <br/>
+        <caption>If you're implementing server-side paging, this is important. See <a [routerLink]="['../server-integration']">Server Integration</a> for more details.</caption>
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <div>
+        <h1 class="go-heading-5">Simple Paging</h1>
+        <p class="go-body-copy">
+          Nothing extra for client-side paging is required, it just works. To set different page sizes, the following is requried.
+        </p>
+      </div>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100">
+          <h2 class="go-heading-6">example.html</h2>
+          <code [highlight]="tableConfig_html"></code>
+          <h2 class="go-heading-6">example.ts</h2>
+          <code [highlight]="tableConfig_ts" class="code-block--no-bottom-margin"></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Paging Example">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>
