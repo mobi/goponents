@@ -1,4 +1,3 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
 import { GoIconModule } from '../go-icon/go-icon.module';
@@ -11,7 +10,6 @@ import { NgModule } from '@angular/core';
     GoLoaderComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     CommonModule,
     GoIconModule
   ],
