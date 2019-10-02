@@ -4,7 +4,7 @@
      *ngIf="!navItem.isExternalLink"
      [routerLinkActive]="['go-nav-item__link--active']"
      [routerLink]="[navItem.route]">
-    <ng-container *ngTemplateOutlet="navItemInner; context: { $implicit: navItem }"></ng-container>
+    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
   </a>
 
   <a class="go-nav-item__link"
@@ -12,7 +12,7 @@
      [href]="navItem.route"
      [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'"
      rel="noreferrer">
-    <ng-container *ngTemplateOutlet="navItemInner; context: { $implicit: navItem }"></ng-container>
+    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
     <go-icon *ngIf="!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank'"
              icon="launch"
              iconClass="go-nav-group__icon">
@@ -20,7 +20,7 @@
   </a>
 </div>
 
-<ng-template #navItemInner let-navItem>
+<ng-template #navItemInner>
   <go-icon [icon]="navItem.routeIcon"
            iconClass="go-nav-group__icon"
            *ngIf="navItem.routeIcon">
