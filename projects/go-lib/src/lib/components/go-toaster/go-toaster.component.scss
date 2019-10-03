@@ -4,7 +4,6 @@
 .go-toaster {
   bottom: 0;
   overflow: hidden;
-  padding: 1rem;
   position: fixed;
   right: 0;
   width: 400px;
@@ -18,5 +17,5 @@
 }
 
 .go-toaster__item {
-  padding-top: 1rem;
+  margin: 0 1rem 1rem 0;
 }
