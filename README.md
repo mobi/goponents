@@ -1,8 +1,8 @@
 # Goponents
 
-###### Currently `v1.2.0`
+###### Currently `v1.2.1`
 
-This project houses a set of UI components for Angular and designed around the 'Go' design system.
+This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
 # Getting Started
 1. Take a look at our [code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md)
@@ -22,7 +22,7 @@ This project houses a set of UI components for Angular and designed around the '
    ```
 5. Start a development test server:
    ```bash
-   ng serve
+   ng serve --project=go-tester
    ```
    _This will serve the go-tester directory at `localhost:4200`_
 6. In a separate tab, start the tests for the go-lib components:
@@ -81,31 +81,39 @@ To do this properly, you must export each individual file within the `public_api
 
 ### Components Available
 
-| Component    | Notes                                  |
-|--------------|----------------------------------------|
-| accordion    | Available                              |
-| button       | Available                              |
-| card         | Available                              |
-| icon         | Available                              |
-| modal        | Available                              |
-| off-canvas   | Available                              |
-| table        | Available                              |
-| toasts       | Available                              |
-|--------------|----------------------------------------|
-| input        | Priority                               |
-| textarea     | Priority                               |
-| combobox     | Priority                               |
-| checkbox     | Priority                               |
-| copy button  | Priority                               |
-| radio        | Priority                               |
-| datepicker   | Will Need                              |
-| autocomplete | Will Need                              |
-| masked input | Will Need                              |
-|--------------|----------------------------------------|
-| tabs         | Idea                                   |
-| badge        | Idea                                   |
-| tooltip      | Idea                                   |
-| slide toggle | Idea                                   |
-| timepicker   | Idea                                   |
-| wysiwyg editor | Idea                                 |
+| Component      | Notes                                  |
+|----------------|----------------------------------------|
+| accordion      | Available                              |
+| badge          | Available                              |
+| button         | Available                              |
+| card           | Available                              |
+| checkbox       | Available                              |
+| checkbox group | Available                              |
+| copy button    | Available                              |
+| datepicker     | Available                              |
+| header         | Available                              |
+| icon           | Available                              |
+| icon button    | Available                              |
+| input          | Available                              |
+| hint           | Available                              |
+| layout         | Available                              |
+| modal          | Available                              |
+| off-canvas     | Available                              |
+| radio          | Available                              |
+| radio group    | Available                              |
+| select         | Available                              |
+| search         | Available                              |
+| side nav       | Available                              |
+| slide toggle   | Available                              |
+| table          | Available                              |
+| textarea       | Available                              |
+| toasts         | Available                              |
+|----------------|----------------------------------------|
+| autocomplete   | Will Need                              |
+| masked input   | Will Need                              |
+|----------------|----------------------------------------|
+| tabs           | Idea                                   |
+| tooltip        | Idea                                   |
+| timepicker     | Idea                                   |
+| wysiwyg        | Idea                                   |
 
