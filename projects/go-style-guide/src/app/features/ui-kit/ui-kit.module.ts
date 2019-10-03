@@ -19,6 +19,7 @@ import {
   GoModalService,
   GoOffCanvasModule,
   GoOffCanvasService,
+  GoSelectModule,
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
@@ -63,6 +64,7 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
 
 @NgModule({
   imports: [
@@ -76,6 +78,7 @@ import { TableActionsDocsComponent } from './components/table-docs/components/ta
     GoIconButtonModule,
     GoIconModule,
     GoInputModule,
+    GoSelectModule,
     GoTextAreaModule,
     GoLoaderModule,
     GoModalModule,
@@ -103,6 +106,7 @@ import { TableActionsDocsComponent } from './components/table-docs/components/ta
     ModalDocsComponent,
     ModalTestComponent,
     OffCanvasDocsComponent,
+    SelectDocsComponent,
     ServerIntegrationComponent,
     TableDocsComponent,
     TableOverviewComponent,

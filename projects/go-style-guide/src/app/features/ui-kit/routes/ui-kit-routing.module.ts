@@ -29,6 +29,7 @@ import { LayoutNavComponent } from '../components/layout-docs/components/layout-
 import { LayoutHeaderComponent } from '../components/layout-docs/components/layout-header/layout-header.component';
 import { LayoutSearchComponent } from '../components/layout-docs/components/layout-search/layout-search.component';
 import { LayoutExampleComponent } from '../components/layout-docs/components/layout-example/layout-example.component';
+import { SelectDocsComponent } from '../components/form-docs/components/select-docs/select-docs.component';
 import { TextAreaDocsComponent } from '../components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from '../components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from '../components/table-docs/components/table-actions-docs/table-actions-docs.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
     { path: '', component: FormsOverviewComponent },
     { path: 'datepicker', component: DatepickerDocsComponent },
     { path: 'input', component: InputDocsComponent },
+    { path: 'select', component: SelectDocsComponent },
     { path: 'textarea', component: TextAreaDocsComponent }
   ]},
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
