@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
@@ -20,6 +20,7 @@ import { offCanvasAnimation } from '../../animations/off-canvas.animation';
 export class GoOffCanvasComponent implements OnInit {
   currentOffCanvasItem: GoOffCanvasItem;
   opened: boolean = false;
+  header: string;
 
   @ViewChild(GoOffCanvasDirective) goOffCanvasHost: GoOffCanvasDirective;
 
@@ -56,5 +57,7 @@ export class GoOffCanvasComponent implements OnInit {
     Object.keys(this.currentOffCanvasItem.bindings).forEach(key => {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
     });
+
+    this.header = this.currentOffCanvasItem.header;
   }
 }

@@ -61,7 +61,9 @@ export class AppComponent implements OnInit {
   openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: OffCanvasTestComponent,
-      bindings: {}
+      bindings: {
+      },
+      header: 'Test Header'
     });
   }
 
