@@ -26,7 +26,23 @@ export class AppComponent implements OnInit {
       { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
       { route: 'test-page-2', routeTitle: 'Test 2' },
       { route: 'test-page-3', routeTitle: 'Test 3', description: 'Forms' }
-    ]}
+    ]},
+    { routeIcon: 'explore', routeTitle: 'Second Test', route: 'test-page-4', description: 'Test Route 4' },
+    {
+      routeIcon: 'search',
+      routeTitle: 'External Link (New Tab)',
+      description: 'Test external link opening in new tab',
+      route: 'https://www.google.com/',
+      isExternalLink: true
+    },
+    {
+      routeIcon: 'search',
+      routeTitle: 'External Link (Same Tab)',
+      description: 'Test external link opening in same tab',
+      route: 'https://www.google.com/',
+      isExternalLink: true,
+      externalLinkTarget: '_self'
+    }
   ];
 
   constructor(
@@ -36,7 +52,7 @@ export class AppComponent implements OnInit {
     private goModalService: GoModalService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   openOffCanvas(): void {
@@ -59,7 +75,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  openToast() {
+  openToast(): void {
     this.goToasterService.toastInfo({ message: 'From the action sheet'});
   }
 }

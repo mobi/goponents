@@ -1,7 +1,3 @@
-// Structure
-$side-nav-width: 15.5rem;
-$side-nav-width--collapsed: 3.2rem;
-
 // UI Details
 // ----------------------------------------------------------------------------
 
@@ -19,13 +15,19 @@ $column-gutter--half: $column-gutter / 2;
 $column-gutter--quarter: $column-gutter / 4;
 $column-gutter--three-quarters: $column-gutter * .75;
 $column-sizes: (
+  20: 1 / 5,
   25: 1 / 4,
   33: 1 / 3,
   50: 2 / 4,
   66: 2 / 3,
   75: 3 / 4,
   100: 1
-);
+  );
+  
+$side-nav-width: 15.5rem;
+$side-nav-width--collapsed: 3.2rem;
+
+$header-height: 4rem;
 
 // Breakpoints
 $breakpoint-mobile: 768px;

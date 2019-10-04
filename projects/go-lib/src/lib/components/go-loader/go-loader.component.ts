@@ -10,24 +10,23 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
   ]
 })
 export class GoLoaderComponent {
+
   @Input() loaderSize: string = 'medium';
   @Input() loaderType: string = 'neutral';
 
   @HostBinding('@fadeTemplate')
   public fadeTemplate: boolean = true;
 
-  //#region Public Methods
-
   loaderClasses(): object {
     return {
       'go-loader--small': this.loaderSize === 'small',
       'go-loader--medium': this.loaderSize === 'medium',
       'go-loader--large': this.loaderSize === 'large',
+      'go-loader--light': this.loaderType === 'light',
+      'go-loader--dark': this.loaderType === 'dark',
       'go-loader--negative': this.loaderType === 'negative',
       'go-loader--neutral': this.loaderType === 'neutral',
       'go-loader--positive': this.loaderType === 'positive'
     };
   }
-
-  //#endregion
 }

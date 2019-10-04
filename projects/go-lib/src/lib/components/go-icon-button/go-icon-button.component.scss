@@ -17,7 +17,11 @@
     display: flex;
   }
 
-  &:hover, &:active, &:focus {
+  &:hover, &:focus {
     background: $theme-light-bg-hover;
+  }
+
+  &:active {
+    background: transparent;
   }
 }

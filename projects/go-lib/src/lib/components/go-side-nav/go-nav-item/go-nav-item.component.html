@@ -1,17 +1,34 @@
 <div class="go-nav-item"
      [attr.title]="navItem.description">
   <a class="go-nav-item__link"
+     *ngIf="!navItem.isExternalLink"
      [routerLinkActive]="['go-nav-item__link--active']"
-     [routerLink]="[navItem.route]"
-     [routerLinkActiveOptions]="{exact:true}">
-    <go-icon [icon]="navItem.routeIcon"
-             iconClass="go-nav-group__icon"
-             *ngIf="navItem.routeIcon">
+     [routerLink]="[navItem.route]">
+    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
+  </a>
+
+  <a class="go-nav-item__link"
+     *ngIf="navItem.isExternalLink"
+     [href]="navItem.route"
+     [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'"
+     rel="noreferrer">
+    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
+    <go-icon *ngIf="!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank'"
+             icon="launch"
+             iconClass="go-nav-group__icon">
     </go-icon>
-    <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon }"
-          class="go-nav-item__title"
-          *ngIf="navService.navOpen">
-      {{navItem.routeTitle}}
-    </span>
   </a>
 </div>
+
+<ng-template #navItemInner>
+  <go-icon [icon]="navItem.routeIcon"
+           iconClass="go-nav-group__icon"
+           *ngIf="navItem.routeIcon">
+  </go-icon>
+  <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon }"
+        class="go-nav-item__title"
+        *ngIf="navService.navOpen">
+    {{navItem.routeTitle}}
+  </span>
+</ng-template>
+

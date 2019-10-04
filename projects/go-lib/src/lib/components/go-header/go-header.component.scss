@@ -7,7 +7,7 @@ $breakpoint-header-mobile-small: 500px;
   background: $theme-light-bg;
   box-shadow: $global-box-shadow;
   display: flex;
-  height: 4rem;
+  height: $header-height;
   justify-content: space-between;
   position: relative;
   z-index: z-index(navigation);
@@ -65,7 +65,7 @@ $breakpoint-header-mobile-small: 500px;
   width: 15.5rem;
 
   @media (max-width: $breakpoint-mobile) {
-    height: 4rem;
+    height: $header-height;
   }
 }
 
@@ -84,7 +84,7 @@ $breakpoint-header-mobile-small: 500px;
 
   @media (max-width: $breakpoint-mobile) {
     flex: auto;
-    height: 4rem;
+    height: $header-height;
     order: 2;
     width: 100vw;
   }
@@ -105,7 +105,7 @@ $breakpoint-header-mobile-small: 500px;
 
   @media (max-width: $breakpoint-mobile) {
     flex: 1;
-    height: 4rem;
+    height: $header-height;
     justify-content: flex-end;
     padding: 0 1rem;
   }

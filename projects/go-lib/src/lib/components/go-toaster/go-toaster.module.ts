@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
 import { GoToasterService } from './go-toaster.service';
@@ -12,8 +10,6 @@ import { GoToastModule } from '../go-toast/go-toast.module';
     GoToasterComponent
   ],
   imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
     CommonModule,
     GoToastModule
   ],
