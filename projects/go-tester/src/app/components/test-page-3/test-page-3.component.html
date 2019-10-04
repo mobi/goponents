@@ -147,8 +147,17 @@
               <div class="go-column go-column--100">
                 <go-switch-toggle
                   [control]="form.controls.toggle"
-                  label="Toggle Me"
+                  label="Toggle This"
                   [hints]="['please']"
+                ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-switch-toggle
+                  [control]="form.controls.toggle2"
+                  label="Toggle That"
+                  labelPosition="before"
+                  [hints]="['look, the label can go before the switch']"
                 ></go-switch-toggle>
               </div>
 

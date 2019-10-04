@@ -13,6 +13,7 @@ export class GoSwitchToggleComponent implements OnInit {
   @Input() key: string;
   @Input() hints: string[];
   @Input() label: string;
+  @Input() labelPosition: 'before' | 'after' = 'after';
   @Input() theme: 'light' | 'dark' = 'light';
 
   constructor() { }
