@@ -18,6 +18,7 @@ export class GoSelectComponent implements OnInit {
   @Input() key: string;
   @Input() label: string;
   @Input() multiple: boolean = false;
+  @Input() placeholder: string;
   @Input() theme: 'light' | 'dark' = 'light';
 
   ngOnInit(): void {
