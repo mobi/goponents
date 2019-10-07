@@ -1,3 +1,3 @@
-export interface ConfigInterface {
+export interface GoConfigInterface {
   brandColor: string;
 }

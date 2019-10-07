@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ConfigInterface } from './go-config.model';
+import { GoConfigInterface } from './go-config.model';
 
 @Injectable()
 export class GoConfigService {
-  config: BehaviorSubject<ConfigInterface> = new BehaviorSubject<ConfigInterface> ({
+  config: BehaviorSubject<GoConfigInterface> = new BehaviorSubject<GoConfigInterface> ({
     brandColor: '#65B360'
   });
 
   public setBrandColor(color: string): void {
-    const config: ConfigInterface = this.config.getValue();
+    const config: GoConfigInterface = this.config.getValue();
     config.brandColor = color;
     this.config.next(config);
   }

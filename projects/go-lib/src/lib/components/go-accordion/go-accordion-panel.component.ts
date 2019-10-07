@@ -10,7 +10,7 @@ import {
 import { accordionAnimation } from '../../animations/accordion.animation';
 import { GoConfigService } from '../../go-config.service';
 import { distinctUntilKeyChanged } from 'rxjs/operators';
-import { ConfigInterface } from '../../go-config.model';
+import { GoConfigInterface } from '../../go-config.model';
 
 @Component({
   selector: 'go-accordion-panel',
@@ -56,8 +56,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this.heading = this.heading || this.title;
 
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
-      .subscribe((value: ConfigInterface) => {
+      .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
   }

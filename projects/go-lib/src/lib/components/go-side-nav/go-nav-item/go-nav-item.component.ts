@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
 import { GoConfigService } from '../../../go-config.service';
-import { ConfigInterface } from '../../../go-config.model';
+import { GoConfigInterface } from '../../../go-config.model';
 import { distinctUntilKeyChanged } from 'rxjs/operators';
 
 @Component({
@@ -22,8 +22,7 @@ export class GoNavItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
-      .subscribe((value: ConfigInterface) => {
+      .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
   }
