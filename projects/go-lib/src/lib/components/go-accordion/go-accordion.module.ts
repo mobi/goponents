@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GoAccordionComponent } from './go-accordion.component';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
-import { GoBrandingService } from '../../go-branding.service';
+import { GoConfigService } from '../../go-config.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { GoBrandingService } from '../../go-branding.service';
     GoAccordionPanelComponent
   ],
   providers: [
-    GoBrandingService
+    GoConfigService
   ]
 })
 

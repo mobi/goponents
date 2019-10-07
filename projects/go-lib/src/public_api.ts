@@ -19,7 +19,7 @@ export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
 // Branding
-export * from './lib/go-branding.service';
+export * from './lib/go-config.service';
 
 // Button
 export * from './lib/components/go-button/go-button.component';

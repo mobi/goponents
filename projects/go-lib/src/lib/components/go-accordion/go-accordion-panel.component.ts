@@ -8,7 +8,9 @@ import {
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
-import { GoBrandingService } from '../../go-branding.service';
+import { GoConfigService } from '../../go-config.service';
+import { distinctUntilKeyChanged } from 'rxjs/operators';
+import { ConfigInterface } from '../../go-config.model';
 
 @Component({
   selector: 'go-accordion-panel',
@@ -46,16 +48,18 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
-    private brandingService: GoBrandingService
+    private configService: GoConfigService
   ) { }
 
   ngOnInit(): void {
     // NOTE: `title` is deprecated and will be removed in later version
     this.heading = this.heading || this.title;
 
-    this.brandingService.brandColor.subscribe((value: string) => {
-      this.brandColor = value;
-    });
+    this.configService.config
+      .pipe(distinctUntilKeyChanged('brandColor'))
+      .subscribe((value: ConfigInterface) => {
+        this.brandColor = value.brandColor;
+      });
   }
 
   ngOnChanges(): void {

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
-import { GoBrandingService } from '../../go-branding.service';
+import { GoConfigService } from '../../go-config.service';
 
 describe('GoAccordionPanelComponent', () => {
   let component: GoAccordionPanelComponent;
@@ -17,7 +17,7 @@ describe('GoAccordionPanelComponent', () => {
         GoIconModule
       ],
       providers: [
-        GoBrandingService
+        GoConfigService
       ]
     })
     .compileComponents();

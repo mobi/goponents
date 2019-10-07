@@ -7,7 +7,7 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoSideNavComponent } from './go-side-nav/go-side-nav.component';
 import { GoNavGroupComponent } from './go-nav-group/go-nav-group.component';
 import { GoNavItemComponent } from './go-nav-item/go-nav-item.component';
-import { GoBrandingService } from '../../go-branding.service';
+import { GoConfigService } from '../../go-config.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { GoBrandingService } from '../../go-branding.service';
     GoNavItemComponent
   ],
   providers: [
-    GoBrandingService
+    GoConfigService
   ]
 })
 

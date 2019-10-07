@@ -24,14 +24,14 @@ import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-to
 import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
-import { GoBrandingService } from './go-branding.service';
+import { GoConfigService } from './go-config.service';
 
 @NgModule({
   imports: [
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
-    GoBrandingService,
+    GoConfigService,
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
@@ -58,7 +58,7 @@ import { GoBrandingService } from './go-branding.service';
   exports: [
     GoAccordionModule,
     GoBadgeModule,
-    GoBrandingService,
+    GoConfigService,
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
