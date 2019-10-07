@@ -246,4 +246,38 @@
       </div>
     </ng-container>
   </go-card>
+  <go-card id="form-select-placeholder" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Placeholder</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to be able to add a placeholder for the select box. We can achieve this through the
+        <code class="code-block--inline">@Input() placeholder: string;</code> binding. Setting
+        <code class="code-block--inline">placeholder</code> to a string will display that string by default in the
+        select box. When you select an option in the select box, it will replace the placeholder with the selected item.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select8"
+            [items]="items"
+            [multiple]="true"
+            placeholder="Select a Candy"
+            label="Favorite Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select8Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
 </section>

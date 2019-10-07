@@ -16,6 +16,7 @@ export class SelectDocsComponent implements OnInit {
   select5: FormControl = new FormControl('');
   select6: FormControl = new FormControl('');
   select7: FormControl = new FormControl('');
+  select8: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -101,6 +102,18 @@ export class SelectDocsComponent implements OnInit {
     [control]="select"
     [items]="items"
     [multiple]="true"
+    label="Favorite Candy"
+  ></go-select>
+  `;
+
+  select8Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    [multiple]="true"
+    placeholder="Select a Candy"
     label="Favorite Candy"
   ></go-select>
   `;
