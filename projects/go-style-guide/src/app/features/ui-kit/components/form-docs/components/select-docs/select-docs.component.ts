@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { GoModalService, GoSelectComponent } from 'projects/go-lib/src/public_api';
+import { ModalTestComponent } from '../../../modal-test/modal-test.component';
 
 @Component({
   templateUrl: './select-docs.component.html'
@@ -9,6 +11,7 @@ export class SelectDocsComponent implements OnInit {
     { value: 1, name: 'Reeses' },
     { value: 2, name: 'Mints' }
   ];
+
   select1: FormControl = new FormControl('');
   select2: FormControl = new FormControl('');
   select3: FormControl = new FormControl('');
@@ -18,6 +21,7 @@ export class SelectDocsComponent implements OnInit {
   select7: FormControl = new FormControl('');
   select8: FormControl = new FormControl('');
   select9: FormControl = new FormControl('');
+  select10: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -137,6 +141,24 @@ export class SelectDocsComponent implements OnInit {
   loadingSelectOptions: boolean = true;
   `;
 
+  select10Code: string = `
+  openModal(): void {
+    this.goModalService.openModal(
+      GoSelectComponent,
+      {
+        appendTo: 'body',
+        bindLabel: 'name',
+        bindValue: 'value',
+        control: this.select10,
+        items: this.items,
+        label: 'Favorite Candy'
+      }
+    );
+  }
+  `;
+
+  constructor(private goModalService: GoModalService) { }
+
   ngOnInit(): void {
     setTimeout((): void => {
       this.select5.setErrors([
@@ -149,5 +171,19 @@ export class SelectDocsComponent implements OnInit {
         }
       ]);
     });
+  }
+
+  openModal(): void {
+    this.goModalService.openModal(
+      GoSelectComponent,
+      {
+        appendTo: 'body',
+        bindLabel: 'name',
+        bindValue: 'value',
+        control: this.select10,
+        items: this.items,
+        label: 'Favorite Candy',
+      }
+    );
   }
 }

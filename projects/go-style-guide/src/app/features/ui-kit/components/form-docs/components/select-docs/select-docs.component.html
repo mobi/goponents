@@ -318,4 +318,30 @@
       </div>
     </ng-container>
   </go-card>
+  <go-card id="form-select-appendto" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component appendTo</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a 
+        <code class="code-block--inline">go-select</code> within a <code class="code-block--inline">go-modal</code>.
+        Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
+        the modal from closing automatically upon selecting an item from the select dropdown.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-button (handleClick)="openModal()">Click Me</go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select10Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
 </section>

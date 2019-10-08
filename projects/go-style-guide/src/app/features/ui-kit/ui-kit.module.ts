@@ -25,7 +25,8 @@ import {
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
-  GoToastModule
+  GoToastModule,
+  GoSelectComponent
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -141,6 +142,7 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
   ],
   entryComponents: [
     BasicTestComponent,
+    GoSelectComponent,
     ModalTestComponent
   ],
   providers: [
