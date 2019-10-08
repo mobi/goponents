@@ -18,9 +18,6 @@ export * from './lib/components/go-action-sheet/go-action-sheet.module';
 export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
-// Branding
-export * from './lib/go-config.service';
-
 // Button
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
@@ -33,6 +30,10 @@ export * from './lib/components/go-card/go-card.module';
 export * from './lib/components/go-checkbox/go-checkbox.component';
 export * from './lib/components/go-checkbox/go-checkbox.module';
 export * from './lib/components/go-checkbox/go-checkbox-group.component';
+
+// Configuration
+export * from './lib/go-config.service';
+export * from './lib/go-config.model';
 
 // Copy
 export * from './lib/components/go-copy/go-copy.component';
