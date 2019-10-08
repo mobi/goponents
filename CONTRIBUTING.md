@@ -12,11 +12,15 @@ Our team will first make sure of the following:
 2. Where it fits into our current road map. 
 3. What design resources and support will be needed before the feature work can begin. 
 
-Please consider what kind of change it is:
+## Working Issues
+Before working on an issue, you must claim it. To do so, simply comment on the issue stating that you're looking into it.
+Once claimed, a contributor will modify the issue and apply the appropriate labels and milestones.
 
-For a **Major Feature**, first open an issue and outline your proposal so that it can be discussed. This will also allow us to better coordinate our efforts, prevent duplication of work, and help you to craft the change so that it is successfully accepted into the project.
+### What issues can be worked?
 
-**Small Features** can be crafted and directly submitted as a Pull Request so long as they have the appropriate design support.
+Any issue that does not have the `Needs Triaged` milestone can be worked.
+
+Issues labeled as `bugs` take priority over general a `chore` or `feature`.
 
 ## Submitting a pull request (PR)
 Before you submit your pull request (PR) consider the following guidelines:
@@ -42,10 +46,11 @@ Before you submit your pull request (PR) consider the following guidelines:
    git push origin my-branch-name
    ```
 9. In GitHub, send a pull request to `goponents:dev`.
-   - If we suggest changes then:
-     1. Make the required updates.
-     2. Re-run the test suite to ensure tests are still passing.
-     3. Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
+  - Please format the description of your PR with our [pull request template](https://github.com/mobi/goponents/blob/master/PULL_REQUEST_TEMPLATE)
+  - If we suggest changes then:
+    1. Make the required updates.
+    2. Re-run the test suite to ensure tests are still passing.
+    3. Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
         ```
         git rebase dev -i
         git push -f
