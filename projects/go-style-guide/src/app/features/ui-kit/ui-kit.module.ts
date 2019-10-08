@@ -9,6 +9,7 @@ import {
   GoBadgeModule,
   GoButtonModule,
   GoCardModule,
+  GoConfigService,
   GoCopyModule,
   GoDatepickerModule,
   GoIconButtonModule,
@@ -35,6 +36,7 @@ import { AccordionPanelDocsComponent } from './components/accordion-panel-docs/a
 import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
+import { ConfigurationDocsComponent } from './components/configuration-docs/configuration-docs.component';
 import { CopyDocsComponent } from './components/copy-docs/copy-docs.component';
 import { DatepickerDocsComponent } from './components/form-docs/components/datepicker-docs/datepicker-docs.component';
 import { FormControlDocsComponent } from './components/form-docs/components/form-control-docs/form-control-docs.component';
@@ -44,6 +46,7 @@ import { IconDocsComponent } from './components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from './components/form-docs/components/input-docs/input-docs.component';
 import { ModalDocsComponent } from './components/modal-docs/modal-docs.component';
 import { ModalTestComponent } from './components/modal-test/modal-test.component';
+import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
 import { ServerIntegrationComponent } from './components/table-docs/components/server-integration/server-integration.component';
 import { TableDocsComponent } from './components/table-docs/table-docs.component';
 import { TableOverviewComponent } from './components/table-docs/components/table-overview/table-overview.component';
@@ -64,7 +67,6 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
-import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
 
 @NgModule({
   imports: [
@@ -96,6 +98,7 @@ import { SelectDocsComponent } from './components/form-docs/components/select-do
     BadgeDocsComponent,
     ButtonDocsComponent,
     CardDocsComponent,
+    ConfigurationDocsComponent,
     CopyDocsComponent,
     FormControlDocsComponent,
     DatepickerDocsComponent,
@@ -131,6 +134,7 @@ import { SelectDocsComponent } from './components/form-docs/components/select-do
     ModalTestComponent
   ],
   providers: [
+    GoConfigService,
     GoModalService,
     GoOffCanvasService,
     GoToasterService

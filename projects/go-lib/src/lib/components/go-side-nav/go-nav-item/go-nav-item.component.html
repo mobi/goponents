@@ -21,6 +21,10 @@
 </div>
 
 <ng-template #navItemInner>
+  <span
+    class="go-nav-item--selected"
+    [ngStyle]="{'background': brandColor}"
+  ></span>
   <go-icon [icon]="navItem.routeIcon"
            iconClass="go-nav-group__icon"
            *ngIf="navItem.routeIcon">
@@ -31,4 +35,3 @@
     {{navItem.routeTitle}}
   </span>
 </ng-template>
-

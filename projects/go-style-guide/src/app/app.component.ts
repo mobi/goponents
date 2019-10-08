@@ -27,6 +27,7 @@ export class AppComponent {
       { route: 'ui-kit/badge', routeTitle: 'Badge' },
       { route: 'ui-kit/button', routeTitle: 'Button' },
       { route: 'ui-kit/card', routeTitle: 'Card' },
+      { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
       { route: 'ui-kit/forms', routeTitle: 'Forms' },
       { route: 'ui-kit/layout', routeTitle: 'Layout' },

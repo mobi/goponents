@@ -1,0 +1,47 @@
+<header class="go-page-title">
+    <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  </header>
+  
+  <section class="go-container">
+    <go-card class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h1 class="go-heading-5">Branding</h1>
+      </ng-container>
+      <ng-container go-card-content>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select pieces of our design system. Currently
+          the only things that can be branded are the active indicators on the sidenav and accordions. The
+          <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
+          to update the branding color by passing in either a hex number or the name of the color that we want
+          to update the design system current brand to.
+        </p>
+
+        <div class="go-container">
+          <div class="go-column--50">
+            <div class="go-column">
+              <go-input
+                [control]="formControl"
+                label="Brand Color">
+              </go-input>
+            </div>
+            
+            <div class="go-column">
+              <go-button
+                (handleClick)="updateColor()"
+              >
+                Update Branding Color
+              </go-button>
+            </div>
+          </div>
+
+          <div class="go-column go-column--50">
+            <code [highlight]="buttonExample">
+            </code>
+            
+            <code [highlight]="updateColorExample">
+            </code>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+  </section>

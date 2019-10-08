@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GoAccordionComponent } from './go-accordion.component';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoConfigService } from '../../go-config.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,9 @@ import { GoIconModule } from '../go-icon/go-icon.module';
   exports: [
     GoAccordionComponent,
     GoAccordionPanelComponent
+  ],
+  providers: [
+    GoConfigService
   ]
 })
 
