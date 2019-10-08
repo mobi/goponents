@@ -24,13 +24,14 @@ import {
   GoOffCanvasModule,
   GoRadioModule,
   GoSearchModule,
+  GoSelectComponent,
   GoSelectModule,
   GoSideNavModule,
   GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
   GoToasterModule,
-  GoToastModule
+  GoToastModule,
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
@@ -95,6 +96,7 @@ import { AppGuard } from './app.guard';
   ],
   entryComponents: [
     GoButtonComponent,
+    GoSelectComponent,
     OffCanvasTestComponent
   ],
   bootstrap: [AppComponent]
