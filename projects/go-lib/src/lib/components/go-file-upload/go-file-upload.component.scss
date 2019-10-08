@@ -1,3 +1,46 @@
+@import '../../../styles/variables';
+
 input[type="file"] {
   visibility: hidden;
+}
+
+.go-file-upload {
+  height: 10rem;
+  border: 2px dashed grey;
+  border-radius: 5px;
+
+  &.go-file-upload--disabled {
+    color: lighten($theme-light-color, 40);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.go-file-upload:hover {
+  cursor: pointer;
+  background-color: $theme-light-bg-hover !important;
+  opacity: 0.8;
+}
+
+.go-file-upload__container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.go-file-upload__file-list {
+  display: flex;
+}
+
+.go-file-upload__file-name {
+  margin-top: .5rem;
+}
+
+.go-file-upload__container--loading-text {
+  padding-top: .5rem;
+}
+
+.go-file-upload__container--loading {
+  padding-top: 1rem;
 }

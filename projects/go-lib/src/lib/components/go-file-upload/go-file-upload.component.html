@@ -1,18 +1,43 @@
-<div>
-  <go-button
-    [buttonIcon]="buttonIcon"
-    [buttonVariant]="buttonVariant"
-    (click)="filePicker.click()">
-    {{label}}
-  </go-button>
-  <input type="file" #filePicker (change)="onFilePicked()" multiple>
+<label class="go-form__label"
+       [attr.for]="id"
+       [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  {{ label }}
+</label>
+<div
+  goDragonDrop
+  class="go-file-upload go-file-upload__container"
+  [ngClass]="{ 'go-file-upload--disabled': state === 'selected' || isLoading }"
+  (click)="filePicker.click()"
+  (fileDropped)="onFilePicked($event)"
+>
+  <div class="go-file-upload__container" *ngIf="state === 'selecting' && !isLoading">
+    <go-icon icon="publish" iconModifier="large"></go-icon>
+    Drag and Drop File or Click to Browse
+  </div>
+  <div class="go-file-upload__container go-file-upload__container--loading" *ngIf="isLoading">
+    <go-loader *ngIf="isLoading"></go-loader>
+    <span class="go-file-upload__container--loading-text">Uploading File...</span>
+  </div>
+  <div class="go-file-upload__container go-file-upload__container--selected" *ngIf="state === 'selected' && !isLoading">
+    <go-icon icon="check" iconModifier="positive" iconClass="go-icon--large"></go-icon>
+    File Selected
+  </div>
+  <input
+    type="file"
+    [id]="id"
+    #filePicker
+    (change)="onFilePicked($event.target.files)"
+    [attr.multiple]="multiple ? true : null">
 </div>
 
-<p class="go-hint" *ngFor="let file of filePreview; let i = index">
-  {{ file }}
-  <go-icon-button buttonIcon="delete" (handleClick)="removeFile(i)"></go-icon-button>
-</p>
-
+<div *ngIf="filePreview.length" class="go-file-upload__file-name">
+  <span *ngIf="multiple">Files</span>
+  <span *ngIf="!multiple">File Name</span>
+  <p *ngFor="let file of filePreview; let i = index" class="go-file-upload__file-list">
+    <span class="go-file-upload__file-name">{{ file }}</span>
+    <go-icon-button buttonIcon="close" (handleClick)="removeFile(i)"></go-icon-button>
+  </p>
+</div>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="light">
 </go-hint>
