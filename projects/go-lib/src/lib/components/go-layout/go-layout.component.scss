@@ -13,11 +13,6 @@ body {
   overflow: hidden;
 }
 
-.go-layout__nav {
-  max-height: 100%;
-  overflow-y: auto;
-}
-
 .go-layout__content {
   display: flex;
   flex-grow: 1;
