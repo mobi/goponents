@@ -1,5 +1,4 @@
 import {
-  AfterContentInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -32,7 +31,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
 })
-export class GoTableComponent implements AfterContentInit, OnInit, OnChanges {
+export class GoTableComponent implements OnInit, OnChanges {
 
   @Input() loadingData: boolean = false;
   @Input() showTableActions: boolean = false;
@@ -72,14 +71,6 @@ export class GoTableComponent implements AfterContentInit, OnInit, OnChanges {
     this.renderTable();
   }
 
-  ngAfterContentInit(): void {
-    this.columns.forEach((column: GoTableColumnComponent) => {
-      if (column.sortable === undefined) {
-        column.sortable = this.localTableConfig.sortable;
-      }
-    });
-  }
-
   renderTable(): void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
@@ -111,14 +102,17 @@ export class GoTableComponent implements AfterContentInit, OnInit, OnChanges {
     return this.hasData() && this.localTableConfig.pageable;
   }
 
-  toggleSort(columnField: string): void {
-    const { sortConfig, tableData }:
+  toggleSort(columnSortable: boolean, columnField: string): void {
+    const { sortable, sortConfig, tableData }:
     {
+      sortable: boolean,
       sortConfig?: GoTableSortConfig,
       tableData: any[]
     } = this.localTableConfig;
 
-    if (tableData) {
+    columnSortable = columnSortable !== undefined ? columnSortable : sortable;
+
+    if (tableData && columnSortable) {
       if (sortConfig && sortConfig.column === columnField) {
         this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
       } else {

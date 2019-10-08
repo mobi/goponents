@@ -18,8 +18,8 @@
           </th>
           <th *ngFor="let col of columns"
               class="go-table__head-column"
-              (click)="col.sortable && toggleSort(col.field)"
-              [ngClass]="{'go-table__head--sortable': col.sortable}">
+              (click)="toggleSort(col.sortable, col.field)"
+              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }">
             <div class="go-table__head-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
                 {{ col.title || col.field }}
