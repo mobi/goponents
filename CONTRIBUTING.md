@@ -4,13 +4,6 @@ _**Note:** The guide for contributing to this repo is based on the [contribution
 ## Code of Conduct
 Please read and follow our [Code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md).
 
-## Got a question, problem, or feedback?
-Feel free to open up [an issue](https://github.com/mobi/goponents/issues/new/choose) using the appropriate template.
-
-When any sort of issue is created, depending on the impact or urgency of the issue, one of our [contributors](https://github.com/mobi/goponents/graphs/contributors) will respond as quickly as appropriate on the issue itself. We will try to give a timeline and release schedule for any request that is made.
-
-We would also welcome anyone to open up a [pull request]() for a bug or issue experienced in order to expedite the process.
-
 ## Feature requests
 You can request a new feature by submitting an issue to our [GitHub Repository](https://github.com/mobi/goponents/issues). If you would like to _implement_ a new feature, please submit an issue with a proposal for your work first. 
 
@@ -48,13 +41,19 @@ Before you submit your pull request (PR) consider the following guidelines:
    ```bash
    git push origin my-branch-name
    ```
-9. In GitHub, send a pull request to `goponents:master`.
+9. In GitHub, send a pull request to `goponents:dev`.
    - If we suggest changes then:
      1. Make the required updates.
      2. Re-run the test suite to ensure tests are still passing.
      3. Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
         ```
-        git rebase master -i
+        git rebase dev -i
         git push -f
         ```
 
+## Got a question, problem, or feedback?
+Feel free to open up [an issue](https://github.com/mobi/goponents/issues/new/choose) using the appropriate template.
+
+When any sort of issue is created, depending on the impact or urgency of the issue, one of our [contributors](https://github.com/mobi/goponents/graphs/contributors) will respond as quickly as appropriate on the issue itself. We will try to give a timeline and release schedule for any request that is made.
+
+We would also welcome anyone to open up a [pull request]() for a bug or issue experienced in order to expedite the process.
