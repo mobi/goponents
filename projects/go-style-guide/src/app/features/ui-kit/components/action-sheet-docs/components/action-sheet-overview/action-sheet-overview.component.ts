@@ -8,6 +8,17 @@ export class ActionSheetOverviewComponent {
 
   bindings: string = `@Input() shiftLeft: boolean = false;`;
 
+  structureHtml: string = `
+  <go-action-sheet>
+    <ng-container go-action-sheet__button>
+      <!-- a <go-icon-button> or <go-button> works well here -->
+    </ng-container>
+    <ng-container go-action-sheet-content>
+      <!-- here is where panels or accordions go -->
+    </ng-container>
+  </go-action-sheet>
+  `;
+
   simpleHtml: string = `
   <go-action-sheet>
     <ng-container go-action-sheet__button>

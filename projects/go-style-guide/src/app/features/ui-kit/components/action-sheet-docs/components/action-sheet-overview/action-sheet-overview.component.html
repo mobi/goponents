@@ -1,5 +1,5 @@
 <header class="go-page-title">
-    <h1 class="go-heading-3">Action Sheet</h1>
+    <h1 class="go-heading-3">Action Sheets</h1>
   </header>
   
   <section class="go-container">
@@ -28,6 +28,18 @@
         <p class="go-body-copy">
           <strong>For more detailed examples of options available to you, check out the options for the panel.</strong>
         </p>
+      </ng-container>
+    </go-card>
+
+    <go-card [showHeader]="false" class="go-column go-column--100">
+      <ng-container go-card-content>
+        <h1 class="go-heading-5">Action Sheet Structure</h1>
+        <p class="go-body-copy">
+          The action sheet component is split up into two sections. The trigger and the content.
+          The simpliest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
+        </p>
+
+        <code [highlight]="structureHtml"></code>
       </ng-container>
     </go-card>
   
