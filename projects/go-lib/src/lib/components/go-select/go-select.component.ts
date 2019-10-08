@@ -17,6 +17,7 @@ export class GoSelectComponent implements OnInit {
   @Input() items: any[];
   @Input() key: string;
   @Input() label: string;
+  @Input() loading: boolean = false;
   @Input() multiple: boolean = false;
   @Input() placeholder: string;
   @Input() theme: 'light' | 'dark' = 'light';

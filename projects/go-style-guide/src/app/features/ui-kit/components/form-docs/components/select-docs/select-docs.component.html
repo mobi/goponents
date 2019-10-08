@@ -176,7 +176,7 @@
       </div>
     </ng-container>
   </go-card>
-  <go-card id="form-select-errors" class="go-column go-column--100">
+  <go-card id="form-select-items" class="go-column go-column--100">
     <ng-container go-card-header>
       <h1 class="go-heading-5">Component Items</h1>
     </ng-container>
@@ -214,13 +214,13 @@
       </div>
     </ng-container>
   </go-card>
-  <go-card id="form-select-hints" class="go-column go-column--100">
+  <go-card id="form-select-multiple" class="go-column go-column--100">
     <ng-container go-card-header>
       <h1 class="go-heading-5">Component Multiple</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        Sometimes we may want to be able to select multiple things. We can achieve this throught the
+        Sometimes we may want to be able to select multiple things. We can achieve this through the
         <code class="code-block--inline">@Input() multiple: boolean = false;</code> binding. Setting <code class="code-block--inline">multiple</code>
         to true will turn the select into a multi select and will save an array of values instead of a single value.
       </p>
@@ -274,6 +274,44 @@
           <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code
             [highlight]="select8Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-loading" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Loading</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to indicate that the items for our select have not yet been retrieved. We can achieve this through the 
+        <code class="code-block--inline">@Input() loading: boolean = false;</code> binding. Setting <code class="code-block--inline">loading</code>
+        to true will display a loading spinner within the select to indicate that the items are not yet available, 
+        while setting <code class="code-block--inline">loading</code> to false will remove the spinner and allow the select to function normally. 
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select9"
+            [items]="items"
+            [multiple]="true"
+            label="Favorite Candy"
+            [loading]="loadingSelectOptions"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select9Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select9LoadingCode"
             class="code-block--no-bottom-margin"
           ></code>
         </div>
