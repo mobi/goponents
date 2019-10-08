@@ -6,8 +6,8 @@ import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@ang
 export class DragonDropDirective {
   @Output() fileDropped: EventEmitter<any> = new EventEmitter<any>();
 
-  @HostBinding('style.background-color') private background: string = '#FFF';
-  @HostBinding('style.opacity') private opacity: string = '1';
+  @HostBinding('style.background-color') background: string = '#FFF';
+  @HostBinding('style.opacity') opacity: string = '1';
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt: Event): void {

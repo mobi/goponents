@@ -22,6 +22,7 @@ export class GoFileUploadComponent implements OnInit {
   @Input() label: string;
   @Input() multiple: boolean = false;
   @Input() state: 'selecting' | 'selected' = 'selecting';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   constructor() { }
 
