@@ -9,7 +9,8 @@ export class GoConfigService {
   });
 
   public setBrandColor(color: string): void {
-    const config: GoConfigInterface = this.config.getValue();
+    // we have to copy the config here or it won't regester a change in components
+    const config: GoConfigInterface = Object.assign({}, this.config.getValue());
     config.brandColor = color;
     this.config.next(config);
   }

@@ -22,6 +22,7 @@ export class GoNavItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.configService.config
+      .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
