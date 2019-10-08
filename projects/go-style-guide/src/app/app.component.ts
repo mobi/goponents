@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { routerAnimation } from './app.animations';
 
 import { NavGroup, NavItem } from '../../../go-lib/src/public_api';
@@ -24,6 +24,7 @@ export class AppComponent {
     { route: 'ui-kit', routeIcon: 'widgets', routeTitle: 'Components', subRoutes: [
       { route: 'ui-kit/accordion', routeTitle: 'Accordion' },
       { route: 'ui-kit/accordion-panel', routeTitle: 'Accordion Panel' },
+      { route: 'ui-kit/action-sheet', routeTitle: 'Action Sheet' },
       { route: 'ui-kit/badge', routeTitle: 'Badge' },
       { route: 'ui-kit/button', routeTitle: 'Button' },
       { route: 'ui-kit/card', routeTitle: 'Card' },
