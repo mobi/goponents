@@ -62,7 +62,7 @@ export class GoFileUploadComponent implements OnInit {
   }
 
   private generateId(label: string): string {
-    const labelText: string = label || 'input';
+    const labelText: string = label || 'file-upload';
     const idArray: Array<string> = labelText.split(' ');
 
     // NOTE: There is only a one in a million chance that this number is not unique.
