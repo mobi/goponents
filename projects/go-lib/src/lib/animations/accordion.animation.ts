@@ -12,11 +12,13 @@ import { easing, timing } from './_configs';
 export const accordionAnimation: AnimationTriggerMetadata = trigger('accordionAnimation', [
   state('open', style({
     height: '*',
-    visibility: 'visible'
+    visibility: 'visible',
+    overflow: 'visible'
   })),
   state('close', style({
     height: 0,
-    visibility: 'hidden'
+    visibility: 'hidden',
+    overflow: 'hidden'
   })),
   transition('open <=> close', [
     animate(timing + easing)
