@@ -13,8 +13,6 @@ export class GoFileUploadComponent implements OnInit {
   filePreview: Array<string> = [];
   id: string;
 
-  @Input() buttonIcon: string;
-  @Input() buttonVariant: string;
   @Input() control: FormControl;
   @Input() hints: Array<string> = [];
   @Input() isLoading: boolean = false;
