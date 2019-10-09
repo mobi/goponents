@@ -46,7 +46,7 @@ Before you submit your pull request (PR) consider the following guidelines:
    git push origin my-branch-name
    ```
 9. In GitHub, send a pull request to `goponents:dev`.
-  - Please format the description of your PR with our [pull request template](https://github.com/mobi/goponents/blob/master/PULL_REQUEST_TEMPLATE)
+  - Please format the description of your PR with our [pull request template](https://github.com/mobi/goponents/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
   - If we suggest changes then:
     1. Make the required updates.
     2. Re-run the test suite to ensure tests are still passing.
