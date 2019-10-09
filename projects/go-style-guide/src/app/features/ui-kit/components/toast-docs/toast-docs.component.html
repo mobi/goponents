@@ -30,7 +30,7 @@
 
       <h2 class="go-heading-6">message</h2>
       <p class="go-body-copy">
-        The text to be displayed as the message of the toast. This is optional, however either this binding or the
+        The text or non-executable HTML to be displayed as the message of the toast. This is optional, however either this binding or the
         <code class="code-block--inline">header</code> binding must be set.
       </p>
 
@@ -67,6 +67,8 @@
   <go-toast class="go-column go-column--100" header="Success!" message="The thing you did saved successfully." type="positive"></go-toast>
   <go-toast class="go-column go-column--100" header="Hey!" message="Did you know that this is pretty cool?"></go-toast>
   <go-toast class="go-column go-column--100" header="Oh No!" message="The thing you did didn't work right." type="negative"></go-toast>
+  <go-toast class="go-column go-column--100" header="HTML Example" type="positive"
+            message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'></go-toast>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>

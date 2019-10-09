@@ -24,6 +24,8 @@ export class ToastDocsComponent {
   <go-toast header="Success!" message="The thing you did saved successfully." type="positive"></go-toast>
   <go-toast header="Hey!" message="Did you know that this is pretty cool?"></go-toast>
   <go-toast header="Oh No!" message="The thing you did didn't work right." type="negative"></go-toast>
+  <go-toast header="HTML Example" type="positive"
+            message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'></go-toast>
   `;
 
   dismiss_html: string = `
