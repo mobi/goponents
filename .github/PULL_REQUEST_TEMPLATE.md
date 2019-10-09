@@ -1,6 +1,8 @@
 ## PR Checklist
 Please check if your PR fulfills the following requirements:
 
+<!-- Please check all that apply using "x". -->
+
 - [ ] The commit message follows our guidelines: https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md
 - [ ] Tests for the changes have been added (for bug fixes / features)
 - [ ] Docs have been added / updated (for bug fixes / features)
@@ -31,6 +33,8 @@ Issue Number: N/A
 
 
 ## Does this PR introduce a breaking change?
+
+<!-- Please check either yes or no using "x". -->
 
 - [ ] Yes
 - [ ] No
