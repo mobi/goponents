@@ -4,7 +4,7 @@
 .card {
   background: $theme-light-bg;
   border-radius: $global-radius;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--normal;
   display: flex;
   flex-direction: column;
   padding: 1rem;

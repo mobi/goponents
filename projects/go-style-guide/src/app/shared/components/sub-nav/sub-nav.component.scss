@@ -34,7 +34,7 @@
     z-index: 10;
 
     &.sub-nav-submenu--mobile-show {
-      box-shadow: $global-box-shadow;
+      box-shadow: $global-box-shadow--normal;
       right: 0;
     }
   }
@@ -45,7 +45,7 @@
 
   background: $theme-light-bg;
   border-radius: $global-radius 0 0 $global-radius;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--normal;
   cursor: pointer;
   display: none;
   height: 3rem;
