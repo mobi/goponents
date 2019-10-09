@@ -31,8 +31,8 @@
 </div>
 
 <div *ngIf="filePreview.length" class="go-file-upload__file-name">
-  <span *ngIf="multiple">Files</span>
-  <span *ngIf="!multiple">File Name</span>
+  <label class="go-form__label file-name__label" *ngIf="multiple">Files</label>
+  <label class="go-form__label file-name__label" *ngIf="!multiple">File Name</label>
   <p *ngFor="let file of filePreview; let i = index" class="go-file-upload__file-list">
     <span class="go-file-upload__file-name">{{ file }}</span>
     <go-icon-button buttonIcon="close" (handleClick)="removeFile(i)"></go-icon-button>

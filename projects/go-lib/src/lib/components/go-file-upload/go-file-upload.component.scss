@@ -1,5 +1,11 @@
 @import '../../../styles/variables';
 
+@mixin upload-active {
+  cursor: pointer;
+  background-color: $theme-light-bg-hover;
+  opacity: 0.8;
+}
+
 input[type="file"] {
   visibility: hidden;
 }
@@ -13,13 +19,17 @@ input[type="file"] {
     color: lighten($theme-light-color, 40);
     cursor: not-allowed;
     pointer-events: none;
+    border-style: solid;
   }
 }
 
 .go-file-upload:hover {
-  cursor: pointer;
-  background-color: $theme-light-bg-hover !important;
-  opacity: 0.8;
+  @include upload-active;
+}
+
+.go-file-upload--active {
+  @include upload-active;
+  border-style: solid;
 }
 
 .go-file-upload__container {
@@ -31,10 +41,12 @@ input[type="file"] {
 
 .go-file-upload__file-list {
   display: flex;
+  justify-content: space-between;
 }
 
 .go-file-upload__file-name {
   margin-top: .5rem;
+  padding-right: .5rem;
 }
 
 .go-file-upload__container--loading-text {
@@ -43,4 +55,8 @@ input[type="file"] {
 
 .go-file-upload__container--loading {
   padding-top: 1rem;
+}
+
+.file-name__label {
+  padding-bottom: .25rem;
 }
