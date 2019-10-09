@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 // GoPonents
 import {
   GoAccordionModule,
+  GoActionSheetModule,
   GoBadgeModule,
   GoButtonModule,
   GoCardModule,
@@ -67,11 +68,17 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-sheet-docs.component';
+// tslint:disable-next-line: max-line-length
+import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
+// tslint:disable-next-line: max-line-length
+import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
 
 @NgModule({
   imports: [
     CommonModule,
     GoAccordionModule,
+    GoActionSheetModule,
     GoBadgeModule,
     GoButtonModule,
     GoCardModule,
@@ -127,7 +134,10 @@ import { TableActionsDocsComponent } from './components/table-docs/components/ta
     LayoutSearchComponent,
     LayoutExampleComponent,
     TableSelectionComponent,
-    TableActionsDocsComponent
+    TableActionsDocsComponent,
+    ActionSheetDocsComponent,
+    ActionSheetOverviewComponent,
+    ActionSheetPanelDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

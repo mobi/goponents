@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AccordionDocsComponent } from '../components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from '../components/accordion-panel-docs/accordion-panel-docs.component';
+import { ActionSheetDocsComponent } from '../components/action-sheet-docs/action-sheet-docs.component';
 import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from '../components/button-docs/button-docs.component';
 import { CardDocsComponent } from '../components/card-docs/card-docs.component';
@@ -34,11 +35,19 @@ import { TextAreaDocsComponent } from '../components/form-docs/components/text-a
 import { TableSelectionComponent } from '../components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from '../components/table-docs/components/table-actions-docs/table-actions-docs.component';
 import { ConfigurationDocsComponent } from '../components/configuration-docs/configuration-docs.component';
+// tslint:disable-next-line: max-line-length
+import { ActionSheetOverviewComponent } from '../components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
+// tslint:disable-next-line: max-line-length
+import { ActionSheetPanelDocsComponent } from '../components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
   { path: 'ui-kit/accordion', component: AccordionDocsComponent },
   { path: 'ui-kit/accordion-panel', component: AccordionPanelDocsComponent },
+  { path: 'ui-kit/action-sheet', component: ActionSheetDocsComponent, children: [
+    { path: '', component: ActionSheetOverviewComponent },
+    { path: 'panel', component: ActionSheetPanelDocsComponent }
+  ]},
   { path: 'ui-kit/badge', component: BadgeDocsComponent },
   { path: 'ui-kit/button', component: ButtonDocsComponent },
   { path: 'ui-kit/card', component: CardDocsComponent },
