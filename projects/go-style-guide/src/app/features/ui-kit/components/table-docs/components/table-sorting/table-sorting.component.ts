@@ -64,6 +64,28 @@ export class TableSortingComponent {
   });
   `;
 
+  tableConfigRestrictColumn_html: string = `
+  <go-table [tableConfig]="tableConfig">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email" [sortable]="false"></go-table-column>
+    <go-table-column field="gender" title="Gender" [sortable]="false"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address" [sortable]="false"></go-table-column>
+  </go-table>
+  `;
+
+  tableConfigEnableColumn_html: string = `
+  <go-table [tableConfig]="tableConfig">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name" [sortable]="true"></go-table-column>
+    <go-table-column field="name.last" title="Last Name" [sortable]="true"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+  `;
+
   tableConfig: GoTableConfig = new GoTableConfig({
     sortConfig: new GoTableSortConfig({
       column: 'name.first',
