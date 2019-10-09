@@ -17,8 +17,11 @@ export class SelectDocsComponent implements OnInit {
   select6: FormControl = new FormControl('');
   select7: FormControl = new FormControl('');
   select8: FormControl = new FormControl('');
+  select9: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
+
+  loadingSelectOptions: boolean = true;
 
   select1Code: string = `
   <go-select
@@ -116,6 +119,22 @@ export class SelectDocsComponent implements OnInit {
     placeholder="Select a Candy"
     label="Favorite Candy"
   ></go-select>
+  `;
+
+  select9Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select9"
+    [items]="items"
+    [multiple]="true"
+    label="Favorite Candy"
+    [loading]="loadingSelectOptions"
+  ></go-select>
+  `;
+
+  select9LoadingCode: string = `
+  loadingSelectOptions: boolean = true;
   `;
 
   ngOnInit(): void {
