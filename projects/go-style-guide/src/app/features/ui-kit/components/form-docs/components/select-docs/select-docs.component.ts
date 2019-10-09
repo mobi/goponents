@@ -21,6 +21,7 @@ export class SelectDocsComponent implements OnInit {
   select7: FormControl = new FormControl('');
   select8: FormControl = new FormControl('');
   select9: FormControl = new FormControl('');
+  select10: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
 
