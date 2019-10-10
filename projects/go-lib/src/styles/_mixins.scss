@@ -12,6 +12,7 @@ $z-index: (
   off-canvas: 300,
 	modal: 400,
   toaster: 500,
+  loading-screen: 600,
 );
 
 @function z-index($key) {
