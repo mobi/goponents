@@ -43,6 +43,7 @@ import { DatepickerDocsComponent } from './components/form-docs/components/datep
 import { FormControlDocsComponent } from './components/form-docs/components/form-control-docs/form-control-docs.component';
 import { FormDocsComponent } from './components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from './components/form-docs/components/forms-overview/forms-overview.component';
+import { IconButtonDocsComponent } from './components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from './components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from './components/form-docs/components/input-docs/input-docs.component';
 import { ModalDocsComponent } from './components/modal-docs/modal-docs.component';
@@ -112,6 +113,7 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
     DatepickerDocsComponent,
     FormDocsComponent,
     FormsOverviewComponent,
+    IconButtonDocsComponent,
     IconDocsComponent,
     InputDocsComponent,
     ModalDocsComponent,
