@@ -1,3 +1,124 @@
-<p>
-  icon-button-docs works!
-</p>
+<header class="go-page-title">
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+</header>
+<div class="go-container">
+  <div class="go-column go-column--100">
+    <go-card [showHeader]="false" class="go-column go-column--100" id="description">
+      <ng-container go-card-content>
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            <!-- Intro -->
+            <h2 class="go-heading-5">Usage</h2>
+            <p class="go-body-copy">
+              The <code class="code-block--inline">&lt;go-icon-button&gt;</code>
+              component should be used when a button which has not text is required.
+            </p>
+
+            <!-- Bindings -->
+            <h2 class="go-heading-5">Bindings</h2>
+            <code [highlight]="componentBindings"></code>
+          </div>
+          <div class="go-column go-column--100">
+            <h3 class="go-heading-6">buttonDisabled</h3>
+            <p class="go-body-copy">
+              Disables the button. This should be handled by the parent
+              component.
+            </p>
+
+            <h3 class="go-heading-6">buttonIcon</h3>
+            <p class="go-body-copy">
+              Changes the icon that is displayed within the button. See the 
+              <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
+              page for available icons.
+            </p>
+
+            <h3 class="go-heading-6">buttonSize</h3>
+            <p class="go-body-copy">
+              Changes the <code class="code-block--inline">font-size</code> property of the icon. 
+              This attribute defaults to "small", and the size options are as follows:
+            </p>
+            <ol class="go-list go-list--ordered">
+              <li>small: <code class="code-block--inline">1 rem</code></li>
+              <li>medium: <code class="code-block--inline">1.5 rem</code></li>
+              <li>large: <code class="code-block--inline">2 rem</code></li>
+            </ol>
+
+            <h3 class="go-heading-6">buttonTitle</h3>
+            <p class="go-body-copy">
+              Changes the <code class="code-block--inline">title</code> attribute of the button,
+              causing a tooltip to be displayed when hovering over the button.
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+  </div>
+
+  <go-card class="go-column go-column--100" id="button-icon">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button Icon</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <code [highlight]="iconsExample"></code>
+      <div class="go-container">
+        <div class="go-container">
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="home"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="school"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="work"></go-icon-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="button-size">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button Size</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <code [highlight]="sizeExample"></code>
+      <div class="go-container">
+        <div class="go-container">
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="small"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="medium"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="large"></go-icon-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="button-title">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button Title</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">Hover the icons below to see a tooltip.</p>
+      <code [highlight]="titleExample"></code>
+      <div class="go-container">
+        <div class="go-container">
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonTitle="Home"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="school" buttonTitle="School"></go-icon-button>
+          </div>
+          <div class="go-column go-column--33">
+            <go-icon-button (handleClick)="testClick()" buttonIcon="work" buttonTitle="Work"></go-icon-button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</div>
+
