@@ -11,7 +11,7 @@
             <h2 class="go-heading-5">Usage</h2>
             <p class="go-body-copy">
               The <code class="code-block--inline">&lt;go-icon-button&gt;</code>
-              component should be used when a button which has not text is required.
+              component should be used for buttons that have no text.
             </p>
 
             <!-- Bindings -->
@@ -38,9 +38,9 @@
               This attribute defaults to "small", and the size options are as follows:
             </p>
             <ol class="go-list go-list--ordered">
-              <li>small: <code class="code-block--inline">1 rem</code></li>
-              <li>medium: <code class="code-block--inline">1.5 rem</code></li>
-              <li>large: <code class="code-block--inline">2 rem</code></li>
+              <li><code class="code-block--inline">small</code> (1 rem)</li>
+              <li><code class="code-block--inline">medium</code> (1.5 rem)</li>
+              <li><code class="code-block--inline">large</code> (2 rem)</li>
             </ol>
 
             <h3 class="go-heading-6">buttonTitle</h3>
@@ -54,25 +54,43 @@
     </go-card>
   </div>
 
+  <go-card class="go-column go-column--100" id="button-disabled">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Button Disabled</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <section class="go-container">
+        <div class="go-column go-column--50">
+          <code [highlight]="disabledExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonDisabled="true"></go-icon-button>
+        </div>
+      </section>
+    </ng-container>
+  </go-card>
+
   <go-card class="go-column go-column--100" id="button-icon">
     <ng-container go-card-header>
       <h2 class="go-heading-5">Button Icon</h2>
     </ng-container>
     <ng-container go-card-content>
-      <code [highlight]="iconsExample"></code>
-      <div class="go-container">
-        <div class="go-container">
-          <div class="go-column go-column--33">
+      <section class="go-container">
+        <div class="go-column go-column--50">
+          <code [highlight]="iconExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="home"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="school"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="work"></go-icon-button>
           </div>
         </div>
-      </div>
+      </section>
     </ng-container>
   </go-card>
 
@@ -81,20 +99,22 @@
       <h2 class="go-heading-5">Button Size</h2>
     </ng-container>
     <ng-container go-card-content>
-      <code [highlight]="sizeExample"></code>
-      <div class="go-container">
-        <div class="go-container">
-          <div class="go-column go-column--33">
+      <section class="go-container">
+        <div class="go-column go-column--50">
+          <code [highlight]="sizeExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="small"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="medium"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonSize="large"></go-icon-button>
           </div>
         </div>
-      </div>
+      </section>
     </ng-container>
   </go-card>
 
@@ -103,21 +123,23 @@
       <h2 class="go-heading-5">Button Title</h2>
     </ng-container>
     <ng-container go-card-content>
-      <p class="go-body-copy">Hover the icons below to see a tooltip.</p>
-      <code [highlight]="titleExample"></code>
-      <div class="go-container">
-        <div class="go-container">
-          <div class="go-column go-column--33">
+      <p class="go-body-copy">Hover the icons to display their tooltips.</p>
+      <section class="go-container">
+        <div class="go-column go-column--50">
+          <code [highlight]="titleExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonTitle="Home"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="school" buttonTitle="School"></go-icon-button>
           </div>
-          <div class="go-column go-column--33">
+          <div class="go-column">
             <go-icon-button (handleClick)="testClick()" buttonIcon="work" buttonTitle="Work"></go-icon-button>
           </div>
         </div>
-      </div>
+      </section>
     </ng-container>
   </go-card>
 </div>

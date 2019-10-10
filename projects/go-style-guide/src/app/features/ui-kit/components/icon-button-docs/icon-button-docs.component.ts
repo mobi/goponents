@@ -17,7 +17,11 @@ export class IconButtonDocsComponent {
   @Output() handleClick: EventEmitter<void> = new EventEmitter();
   `;
 
-  iconsExample: string = `
+  disabledExample: string = `
+  <go-icon-button (handleClick)="testClick()" buttonIcon="home" buttonDisabled="true"></go-icon-button>
+  `;
+
+  iconExample: string = `
   <go-icon-button (handleClick)="testClick()" buttonIcon="home"></go-icon-button>
 
   <go-icon-button (handleClick)="testClick()" buttonIcon="school"></go-icon-button>
