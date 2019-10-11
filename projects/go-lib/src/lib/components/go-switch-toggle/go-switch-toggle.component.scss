@@ -61,14 +61,14 @@
   transform: translateX(1.125rem);
 }
 
-.go-form__switch-toggle__wrapper {
-  position: relative;
-}
-
 .go-form__switch-toggle__label {
   line-height: 1.125rem;
   padding-bottom: 0;
   padding-left: 0.75rem;
-  position: absolute;
   user-select: none;
+}
+
+.go-form__switch-toggle__label--before {
+  padding-left: 0;
+  padding-right: 0.75rem;
 }
