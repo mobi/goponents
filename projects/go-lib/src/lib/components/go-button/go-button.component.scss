@@ -181,14 +181,14 @@ $button__background--loading: rgba($theme-light-border, .4);
   }
 }
 
-.go-button-group {
+::ng-deep .go-button-group {
   display: inline-flex;
   justify-content: flex-start;
   list-style: none;
   margin: 0;
 }
 
-.go-button-group__item {
+::ng-deep .go-button-group__item {
   margin-right: 0.5rem;
 
   &:last-child {
