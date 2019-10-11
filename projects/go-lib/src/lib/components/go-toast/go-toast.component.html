@@ -5,7 +5,7 @@
   </div>
   <div class="go-toast-content"  [ngClass]="{ 'go-toast-content--no-title': !header }">
     <h5 class="go-heading-5 go-toast-content__title" *ngIf="header">{{ header }}</h5>
-    <p class="go-toast-content__message">{{ message }}</p>
+    <p class="go-toast-content__message" [innerHTML]="message"></p>
   </div>
   <div class="go-toast-dismiss" *ngIf="dismissable">
     <button class="go-toast-dismiss__button" type="button">
