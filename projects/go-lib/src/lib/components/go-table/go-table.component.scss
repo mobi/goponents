@@ -60,7 +60,6 @@
   @include transition(background);
 
   color: $theme-light-color;
-  cursor: pointer;
   font-size: .75rem;
   font-weight: bold;
   letter-spacing: 1pt;
@@ -70,16 +69,20 @@
   text-transform: uppercase;
   white-space: nowrap;
 
-  &:hover {
-    background: $theme-light-app-bg;
-  }
-
   &:first-of-type {
     border-top-left-radius: $global-radius;
   }
 
   &:last-of-type {
     border-top-right-radius: $global-radius;
+  }
+}
+
+.go-table__head--sortable {
+  cursor: pointer;
+
+  &:hover {
+    background: $theme-light-app-bg;
   }
 }
 

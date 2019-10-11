@@ -102,7 +102,7 @@ export class GoTableComponent implements OnInit, OnChanges {
     return this.hasData() && this.localTableConfig.pageable;
   }
 
-  toggleSort(columnField: string): void {
+  toggleSort(columnSortable: boolean, columnField: string): void {
     const { sortable, sortConfig, tableData }:
     {
       sortable: boolean,
@@ -110,7 +110,9 @@ export class GoTableComponent implements OnInit, OnChanges {
       tableData: any[]
     } = this.localTableConfig;
 
-    if (tableData && sortable) {
+    columnSortable = columnSortable !== undefined ? columnSortable : sortable;
+
+    if (tableData && columnSortable) {
       if (sortConfig && sortConfig.column === columnField) {
         this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
       } else {
