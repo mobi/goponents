@@ -52,12 +52,12 @@ export class AppComponent implements OnInit {
   selectItems: any = [
     { value: 1, label: 'Reeses' },
     { value: 2, label: 'Mints' },
-    { value: 1, label: 'Snickers' },
-    { value: 2, label: 'KitKat' },
-    { value: 1, label: 'Milky Way' },
-    { value: 2, label: 'Sour Patch Kids' },
-    { value: 1, label: 'Gobstoppers' },
-    { value: 2, label: 'Spinach' }
+    { value: 3, label: 'Snickers' },
+    { value: 4, label: 'KitKat' },
+    { value: 5, label: 'Milky Way' },
+    { value: 6, label: 'Sour Patch Kids' },
+    { value: 7, label: 'Gobstoppers' },
+    { value: 8, label: 'Spinach' }
   ];
 
   constructor(
