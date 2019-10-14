@@ -64,7 +64,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
       this.loaderClassObject['go-button__loader--light'] = true;
     } else {
       this.loaderType = 'light';
-      this.loaderClassObject['go-button__loader--' + this.buttonVariant] = true;
+      this.loaderClassObject[`go-button__loader--${this.buttonVariant}`] = true;
     }
   }
 
