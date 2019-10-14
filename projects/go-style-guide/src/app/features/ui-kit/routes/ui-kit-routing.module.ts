@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AccordionDocsComponent } from '../components/accordion-docs/accordion-docs.component';
-import { AccordionPanelDocsComponent } from '../components/accordion-panel-docs/accordion-panel-docs.component';
+import { AccordionPanelDocsComponent } from '../components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { ActionSheetDocsComponent } from '../components/action-sheet-docs/action-sheet-docs.component';
 import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from '../components/button-docs/button-docs.component';
@@ -39,10 +39,14 @@ import { ConfigurationDocsComponent } from '../components/configuration-docs/con
 import { ActionSheetOverviewComponent } from '../components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetPanelDocsComponent } from '../components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
+import { AccordionOverviewComponent } from '../components/accordion-docs/components/accordion-overview/accordion-overview.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
-  { path: 'ui-kit/accordion', component: AccordionDocsComponent },
+  { path: 'ui-kit/accordion', component: AccordionDocsComponent, children: [
+    { path: '', component: AccordionOverviewComponent },
+    { path: 'panel', component: AccordionPanelDocsComponent }
+  ]},
   { path: 'ui-kit/accordion-panel', component: AccordionPanelDocsComponent },
   { path: 'ui-kit/action-sheet', component: ActionSheetDocsComponent, children: [
     { path: '', component: ActionSheetOverviewComponent },
