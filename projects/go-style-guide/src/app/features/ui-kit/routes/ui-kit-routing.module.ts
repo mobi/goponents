@@ -11,6 +11,7 @@ import { CopyDocsComponent } from '../components/copy-docs/copy-docs.component';
 import { DatepickerDocsComponent } from '../components/form-docs/components/datepicker-docs/datepicker-docs.component';
 import { FormDocsComponent } from '../components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from '../components/form-docs/components/forms-overview/forms-overview.component';
+import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from '../components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from '../components/form-docs/components/input-docs/input-docs.component';
 import { ModalDocsComponent } from '../components/modal-docs/modal-docs.component';
@@ -64,6 +65,7 @@ const routes: Routes = [
     { path: 'select', component: SelectDocsComponent },
     { path: 'textarea', component: TextAreaDocsComponent }
   ]},
+  { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
     { path: '', component: LayoutOverviewComponent },
     { path: 'header', component: LayoutHeaderComponent },
