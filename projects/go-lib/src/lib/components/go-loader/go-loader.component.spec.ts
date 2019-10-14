@@ -26,10 +26,21 @@ describe('GoLoaderComponent', () => {
   });
 
   describe('loaderClasses()', () => {
+    it('adds an xsmall modifier class based on loaderSize', () => {
+      component.loaderSize = 'xsmall';
+
+      const containerClasses: object = component.loaderClasses();
+      expect(containerClasses['go-loader--xsmall']).toBe(true);
+      expect(containerClasses['go-loader--small']).toBe(false);
+      expect(containerClasses['go-loader--medium']).toBe(false);
+      expect(containerClasses['go-loader--large']).toBe(false);
+    });
+
     it('adds a small modifier class based on loaderSize', () => {
       component.loaderSize = 'small';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
+      expect(containerClasses['go-loader--xsmall']).toBe(false);
       expect(containerClasses['go-loader--small']).toBe(true);
       expect(containerClasses['go-loader--medium']).toBe(false);
       expect(containerClasses['go-loader--large']).toBe(false);
@@ -38,7 +49,8 @@ describe('GoLoaderComponent', () => {
     it('adds a medium modifier class based on loaderSize', () => {
       component.loaderSize = 'medium';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
+      expect(containerClasses['go-loader--xsmall']).toBe(false);
       expect(containerClasses['go-loader--small']).toBe(false);
       expect(containerClasses['go-loader--medium']).toBe(true);
       expect(containerClasses['go-loader--large']).toBe(false);
@@ -47,7 +59,8 @@ describe('GoLoaderComponent', () => {
     it('adds a large modifier class based on loaderSize', () => {
       component.loaderSize = 'large';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
+      expect(containerClasses['go-loader--xsmall']).toBe(false);
       expect(containerClasses['go-loader--small']).toBe(false);
       expect(containerClasses['go-loader--medium']).toBe(false);
       expect(containerClasses['go-loader--large']).toBe(true);
@@ -56,7 +69,7 @@ describe('GoLoaderComponent', () => {
     it('adds a neutral modifier class based on loaderType', () => {
       component.loaderType = 'neutral';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
       expect(containerClasses['go-loader--neutral']).toBe(true);
       expect(containerClasses['go-loader--negative']).toBe(false);
       expect(containerClasses['go-loader--positive']).toBe(false);
@@ -65,7 +78,7 @@ describe('GoLoaderComponent', () => {
     it('adds a negative modifier class based on loaderType', () => {
       component.loaderType = 'negative';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
       expect(containerClasses['go-loader--neutral']).toBe(false);
       expect(containerClasses['go-loader--negative']).toBe(true);
       expect(containerClasses['go-loader--positive']).toBe(false);
@@ -74,7 +87,7 @@ describe('GoLoaderComponent', () => {
     it('adds a positive modifier class based on loaderType', () => {
       component.loaderType = 'positive';
 
-      const containerClasses = component.loaderClasses();
+      const containerClasses: object = component.loaderClasses();
       expect(containerClasses['go-loader--neutral']).toBe(false);
       expect(containerClasses['go-loader--negative']).toBe(false);
       expect(containerClasses['go-loader--positive']).toBe(true);
