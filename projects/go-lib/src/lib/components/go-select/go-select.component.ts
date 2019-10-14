@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 export class GoSelectComponent implements OnInit {
   id: string;
 
+  @Input() appendTo: string;
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() control: FormControl;

@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 
 import {
   GoConfigService,
-  GoIconComponent,
   GoModalService,
   GoOffCanvasService,
+  GoSelectComponent,
   GoSideNavService,
   GoToasterService,
   NavGroup,
-  NavItem
+  NavItem,
 } from '../../../go-lib/src/public_api';
 import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-test.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,19 @@ export class AppComponent implements OnInit {
     }
   ];
 
+  selectControl: FormControl = new FormControl('');
+
+  selectItems: any = [
+    { value: 1, label: 'Reeses' },
+    { value: 2, label: 'Mints' },
+    { value: 3, label: 'Snickers' },
+    { value: 4, label: 'KitKat' },
+    { value: 5, label: 'Milky Way' },
+    { value: 6, label: 'Sour Patch Kids' },
+    { value: 7, label: 'Gobstoppers' },
+    { value: 8, label: 'Spinach' }
+  ];
+
   constructor(
     private goConfigService: GoConfigService,
     private goToasterService: GoToasterService,
@@ -71,9 +85,12 @@ export class AppComponent implements OnInit {
 
   openModal(): void {
     this.goModalService.openModal(
-      GoIconComponent,
+      GoSelectComponent,
       {
-        icon: 'alarm'
+        appendTo: 'body',
+        control: this.selectControl,
+        items: this.selectItems,
+        label: 'Testing the appendTo input'
       }
     );
   }

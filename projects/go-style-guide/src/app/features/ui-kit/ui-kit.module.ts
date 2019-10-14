@@ -25,7 +25,8 @@ import {
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
-  GoToastModule
+  GoToastModule,
+  GoSelectComponent
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -145,6 +146,7 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
   ],
   entryComponents: [
     BasicTestComponent,
+    GoSelectComponent,
     ModalTestComponent
   ],
   providers: [
