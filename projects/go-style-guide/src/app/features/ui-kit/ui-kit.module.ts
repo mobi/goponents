@@ -33,7 +33,7 @@ import { UiKitRoutesModule } from './routes/ui-kit-routing.module';
 
 // Module Components
 import { AccordionDocsComponent } from './components/accordion-docs/accordion-docs.component';
-import { AccordionPanelDocsComponent } from './components/accordion-panel-docs/accordion-panel-docs.component';
+import { AccordionPanelDocsComponent } from './components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
@@ -73,6 +73,7 @@ import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-
 import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
+import { AccordionOverviewComponent } from './components/accordion-docs/components/accordion-overview/accordion-overview.component';
 
 @NgModule({
   imports: [
@@ -137,7 +138,8 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     TableActionsDocsComponent,
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
-    ActionSheetPanelDocsComponent
+    ActionSheetPanelDocsComponent,
+    AccordionOverviewComponent
   ],
   entryComponents: [
     BasicTestComponent,

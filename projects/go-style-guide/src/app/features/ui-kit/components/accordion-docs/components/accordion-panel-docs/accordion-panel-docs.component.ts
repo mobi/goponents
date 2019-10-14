@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-accordion-panel-docs',
   templateUrl: './accordion-panel-docs.component.html'
 })
-export class AccordionPanelDocsComponent implements OnInit {
+export class AccordionPanelDocsComponent {
 
   pageTitle: string;
 
@@ -42,10 +43,7 @@ export class AccordionPanelDocsComponent implements OnInit {
   @Input() heading:     string;
   `;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.pageTitle = 'Accordion Panel';
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Accordion Panel';
   }
-
 }
