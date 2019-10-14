@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoButtonComponent } from './go-button.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('GoButtonComponent', () => {
   let component: GoButtonComponent;
@@ -10,7 +13,12 @@ describe('GoButtonComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GoButtonComponent ],
-      imports: [ GoIconModule ]
+      imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        GoIconModule,
+        GoLoaderModule
+      ]
     })
     .compileComponents();
   }));
@@ -43,15 +51,11 @@ describe('GoButtonComponent', () => {
 
   describe('classObject()', () => {
     beforeEach(() => {
-      expect(component.classObject).toEqual({});
+      component.classObject = {};
     });
 
     it('returns an object that sets go-button--negative to true based on buttonVariant', () => {
       expect(component.classObject['go-button--negative']).toBeFalsy();
-
-      component.buttonVariant = 'alert';
-      component.ngOnChanges();
-      expect(component.classObject['go-button--negative']).toBe(true);
 
       component.buttonVariant = 'negative';
       component.ngOnChanges();
@@ -66,12 +70,28 @@ describe('GoButtonComponent', () => {
       expect(component.classObject['go-button--neutral']).toBe(true);
     });
 
-    it('returns an object that set go-button--positive to true based on buttonVariant', () => {
-      expect(component.classObject['go-button--positive']).toBeFalsy();
+    it('returns an object that set go-button--primary to true based on buttonVariant', () => {
+      expect(component.classObject['go-button--primary']).toBeFalsy();
 
-      component.buttonVariant = 'positive';
+      component.buttonVariant = 'primary';
       component.ngOnChanges();
-      expect(component.classObject['go-button--positive']).toBe(true);
+      expect(component.classObject['go-button--primary']).toBe(true);
+    });
+
+    it('returns an object that set go-button--secondary to true based on buttonVariant', () => {
+      expect(component.classObject['go-button--secondary']).toBeFalsy();
+
+      component.buttonVariant = 'secondary';
+      component.ngOnChanges();
+      expect(component.classObject['go-button--secondary']).toBe(true);
+    });
+
+    it('returns an object that set go-button--tertiary to true based on buttonVariant', () => {
+      expect(component.classObject['go-button--tertiary']).toBeFalsy();
+
+      component.buttonVariant = 'tertiary';
+      component.ngOnChanges();
+      expect(component.classObject['go-button--tertiary']).toBe(true);
     });
 
     it('returns an object that set other modifiers to true', () => {
@@ -140,6 +160,46 @@ describe('GoButtonComponent', () => {
       const buttonElement: HTMLButtonElement = goButtonTemplate.querySelector('button');
 
       expect(buttonElement.type).toBe(component.buttonType);
+    });
+  });
+
+  describe('isAlternativeDark', () => {
+    it('returns true if useDarkTheme is true and buttonVariant is "secondary"', () => {
+      component.buttonVariant = 'secondary';
+      component.useDarkTheme = true;
+
+      const result: boolean = component['isAlternativeDark']();
+
+      expect(result).toBe(true);
+    });
+
+    it('returns true if useDarkTheme is true and buttonVariant is "tertiary"', () => {
+      component.buttonVariant = 'tertiary';
+      component.useDarkTheme = true;
+
+      const result: boolean = component['isAlternativeDark']();
+
+      expect(result).toBe(true);
+    });
+  });
+
+  describe('isAlternativeLight', () => {
+    it('returns true if useDarkTheme is false and buttonVariant is "secondary"', () => {
+      component.buttonVariant = 'secondary';
+      component.useDarkTheme = false;
+
+      const result: boolean = component['isAlternativeLight']();
+
+      expect(result).toBe(true);
+    });
+
+    it('returns true if useDarkTheme is false and buttonVariant is "tertiary"', () => {
+      component.buttonVariant = 'tertiary';
+      component.useDarkTheme = false;
+
+      const result: boolean = component['isAlternativeLight']();
+
+      expect(result).toBe(true);
     });
   });
 });
