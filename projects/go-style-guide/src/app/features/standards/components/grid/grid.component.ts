@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 export class GridComponent {
   pageTitle: string = 'Grid System';
 
+  basicExample20: string = `
+  <section class="go-container">
+    <div class="go-column go-column--20">1 of 5</div>
+    <div class="go-column go-column--20">2 of 5</div>
+    <div class="go-column go-column--20">3 of 5</div>
+    <div class="go-column go-column--20">4 of 5</div>
+    <div class="go-column go-column--20">5 of 5</div>
+  </section>
+  `;
+
   basicExample25: string = `
   <section class="go-container">
     <div class="go-column go-column--25">1 of 4</div>
