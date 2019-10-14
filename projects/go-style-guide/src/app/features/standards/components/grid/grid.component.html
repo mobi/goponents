@@ -36,6 +36,27 @@
       <h1 class="go-heading-4">Basic Examples</h1>
     </ng-container>
     <ng-container go-card-content>
+      <h2 id="go-column-20" class="go-heading-5">5 Column <em>(~20%)</em></h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--20</code> will create
+        a column that starts at 20% of the width of the container before filling
+        the remaining space. It can be used to create a basic 5 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 5 columns created with
+        the <code class="code-block--inline">.go-column--20</code> class will
+        stretch to being 2 columns per row. Giving it more space on smaller
+        devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--20 example-grid__column">1 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">2 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">3 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">4 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">5 of 5</div>
+      </section>
+      <code [highlight]="basicExample20"></code>
+
       <h2 id="go-column-25" class="go-heading-5">4 Column <em>(~25%)</em></h2>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--25</code> will create
