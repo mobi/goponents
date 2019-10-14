@@ -7,10 +7,8 @@ import { Component } from '@angular/core';
 export class GettingStartedComponent {
 
   installGoponents: string = `npm install @tangoe/goponents`;
-  installGosheets: string = `npm install @tangoe/gosheets`;
-  installGosheetsVersion: string = `npm install @tangoe/gosheets@1.0.0`;
-  importGosheetsBase: string = `@import "~@tangoe/gosheets/gosheets"`;
-  importGosheetsPartials: string = `@import "~@tangoe/gosheets/base/*"`;
+  importStylesBase: string = `@import "~@tangoe/goponents/styles/styles"`;
+  importStylesPartials: string = `@import "~@tangoe/goponents/styles/*"`;
 
   constructor() { }
 
