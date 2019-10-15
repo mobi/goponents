@@ -35,6 +35,8 @@
         <li><code class="code-block--inline">negative</code></li>
         <li><code class="code-block--inline">neutral</code></li>
         <li><code class="code-block--inline">positive</code></li>
+        <li><code class="code-block--inline">dark</code></li>
+        <li><code class="code-block--inline">light</code></li>
       </ol>
     </ng-container>
   </go-card>
@@ -53,6 +55,10 @@
           <go-loader loaderSize="small" loaderType="negative"></go-loader>
           <go-loader></go-loader>
           <go-loader loaderSize="large" loaderType="positive"></go-loader>
+          <go-loader loaderType="dark"></go-loader>
+          <div style="background:lightgrey; display:inline-block;">
+            <go-loader loaderSize="small" loaderType="light"></go-loader>
+          </div>
         </div>
       </div>
     </ng-container>

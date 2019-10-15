@@ -19,6 +19,8 @@ export class LoaderDocsComponent {
   <go-loader loaderSize="small" loaderType="negative"></go-loader>
   <go-loader></go-loader>
   <go-loader loaderSize="large" loaderType="positive"></go-loader>
+  <go-loader loaderType="dark"></go-loader>
+  <go-loader loaderSize="small" loaderType="light"></go-loader>
   `;
 
   fadeHtml: string = `
