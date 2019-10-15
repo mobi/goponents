@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoModalService, GoSelectComponent } from 'projects/go-lib/src/public_api';
-import { ModalTestComponent } from '../../../modal-test/modal-test.component';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   templateUrl: './select-docs.component.html'
@@ -157,7 +157,12 @@ export class SelectDocsComponent implements OnInit {
   }
   `;
 
-  constructor(private goModalService: GoModalService) { }
+  constructor(
+    private goModalService: GoModalService,
+    private subNavService: SubNavService
+  ) {
+    this.subNavService.pageTitle = 'Select';
+  }
 
   ngOnInit(): void {
     setTimeout((): void => {

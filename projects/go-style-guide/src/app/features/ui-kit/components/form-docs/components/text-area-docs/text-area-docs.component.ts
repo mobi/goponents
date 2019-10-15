@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   templateUrl: './text-area-docs.component.html'
@@ -95,6 +96,10 @@ export class TextAreaDocsComponent implements OnInit {
     placeholder="Tell us a little bit about yourself."
   ></go-text-area>
   `;
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Textarea';
+  }
 
   ngOnInit(): void {
     setTimeout((): void => {

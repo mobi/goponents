@@ -22,6 +22,7 @@ import {
   GoOffCanvasModule,
   GoOffCanvasService,
   GoSelectModule,
+  GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
@@ -76,6 +77,7 @@ import { ActionSheetOverviewComponent } from './components/action-sheet-docs/com
 // tslint:disable-next-line: max-line-length
 import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
 import { AccordionOverviewComponent } from './components/accordion-docs/components/accordion-overview/accordion-overview.component';
+import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 
 @NgModule({
   imports: [
@@ -95,6 +97,7 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,
+    GoSwitchToggleModule,
     GoTableModule,
     GoToastModule,
     HighlightModule,
@@ -142,7 +145,8 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
     ActionSheetPanelDocsComponent,
-    AccordionOverviewComponent
+    AccordionOverviewComponent,
+    SwitchToggleDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
