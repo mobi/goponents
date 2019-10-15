@@ -1,27 +1,47 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilKeyChanged } from 'rxjs/operators';
+import { GoConfigInterface } from '../../go-config.model';
+import { GoConfigService } from '../../go-config.service';
+import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
 
 @Component({
   selector: 'go-header',
   templateUrl: './go-header.component.html',
   styleUrls: ['./go-header.component.scss']
 })
-export class GoHeaderComponent {
+export class GoHeaderComponent implements OnInit {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
 
   @ViewChild('middleSection') middleSection: ElementRef;
 
+  public brandColor: string;
+  public menuIconColor: string = 'dark';
+
   private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
   private resizeSubsciption: Subscription;
 
-  constructor(public sideNavService: GoSideNavService) {
+  constructor (
+    public sideNavService: GoSideNavService,
+    private configService: GoConfigService
+  ) {
     this.setMobileNav();
     this.setupResizeSubscription();
+  }
+
+  ngOnInit(): void {
+    this.configService.config
+      .pipe(distinctUntilKeyChanged('brandColor'))
+      .subscribe((value: GoConfigInterface) => {
+        this.checkContrastRatio('#313536', value.brandColor);
+        // TODO: set the color of the menu icon based on the above result
+
+        this.brandColor = value.brandColor;
+
+      });
   }
 
   isNavCollapsed(): boolean {
@@ -47,6 +67,65 @@ export class GoHeaderComponent {
   private setMobileNav(): void {
     if (window.innerWidth <= this.minWidthBreakpoint) {
       this.sideNavService.navOpen = false;
+    }
+  }
+
+  // TODO: extract this methods into config service
+  hexToRgb(hex) {
+    const result: RegExpExecArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  }
+
+  rgbToHex(rgb) {
+    const hex = '#' + this.componentToHex(rgb['r']) + this.componentToHex(rgb['g']) + this.componentToHex(rgb['b']);
+    return hex;
+  }
+
+  luminanace(r, g, b) {
+    var a = [r, g, b].map(function (v) {
+      v /= 255;
+      return v <= 0.03928
+        ? v / 12.92
+        : Math.pow( (v + 0.055) / 1.055, 2.4 );
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+  }
+
+  contrast(rgb1, rgb2) {
+    const luminanace1 = this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05;
+    const luminanace2 = this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05;
+    console.log('luminance1: ', luminanace1);
+    console.log('luminance2: ', luminanace2);
+
+    return (this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05)
+         / (this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05);
+  }
+
+  checkContrastRatio(hex1, hex2) {
+    const rgb1 = this.hexToRgb(hex1);
+    console.log(rgb1);
+    const rgb2 = this.hexToRgb(hex2);
+    console.log(rgb2);
+
+    const contrast = this.contrast(rgb1, rgb2);
+    console.log('contrast: ', contrast);
+
+    if (contrast < 4.5) {
+      console.log('nope');
+      return false;
+    } else {
+      console.log('yep');
+      return true;
     }
   }
 }
