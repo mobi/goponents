@@ -14,42 +14,23 @@
           </p>
           <ul class="go-list">
             <li>You have Node installed</li>
-            <li>You have Angular installed (for goponents)</li>
+            <li>You have Angular installed</li>
             <li>You're ulitizing SCSS</li>
           </ul>
         </section>
         <p class="go-column go-column--100">
-          The current iteration of our design system is made up of two node modules:
+          The current iteration of our design system is made up of a single node module:
         </p>
-        <section class="go-column go-column--100">
+        <section class="go-column go-column--100 go-column--no-padding">
           <p class="go-body-copy">
             <strong>@tangoe/goponents</strong>
             (<a class="go-link" href="https://www.npmjs.com/package/@tangoe/goponents">npmjs</a> /
             <a class="go-link" href="https://github.com/mobi/goponents">GitHub</a>)
           </p>
           <p class="go-body-copy">
-            This package contains all of the custom Angular Components and Services 
-            outlined in the <a class="go-link" routerLink="./ui-kit">Components</a> 
-            section of this Style Guide.
+            This package contains all of the custom Angular Components, Services, and styles
+            outlined in this Style Guide.
           </p>
-        </section>
-        <section class="go-column go-column--100 go-column--no-padding">
-          <p class="go-body-copy">
-            <strong>@tangoe/gosheets</strong>
-            (<a class="go-link" href="https://www.npmjs.com/package/@tangoe/gosheets">npmjs</a> /
-            <a class="go-link" href="https://github.com/mobi/gosheets">GitHub</a>)
-          </p>
-          <p class="go-body-copy">
-            This package contains all of the global styles for the Go Design. Items included
-            in this package are:
-          </p>
-          <ul class="go-list">
-            <li>Color/Setting Variables</li>
-            <li>Various SCSS Mixins</li>
-            <li>Grid System</li>
-            <li>Form Styles</li>
-            <li>Type Styles</li>
-          </ul>
         </section>
       </div>
     </ng-container>
@@ -61,36 +42,13 @@
     <ng-container go-card-content>
       <div class="go-container">
         <p class="go-column go-column--100">
-          Both goponents & gosheets are open source projects and can easily be installed through NPM.  
+          Goponents is an open source project and can easily be installed through NPM.
         </p>
-        <section class="go-column go-column--100">
+        <section class="go-column go-column--100 go-column--no-padding">
           <h6 class="go-heading-6">
             Install goponents:
           </h6>
           <code [highlight]="installGoponents" [languages]="['bash']"></code>
-          <h6 class="go-heading-6">
-            Install gosheets:
-          </h6>
-          <code [highlight]="installGosheets" [languages]="['bash']"></code>
-        </section>
-        <section class="go-column go-column--100">
-          <h3 class="go-heading-5">Hey, Listen!</h3>
-          <p class="go-body-copy">
-            The latest version of goponents may not always have a dependency of the 
-            latest version of gosheets. To avoid problems, install goponents first and look
-            for the warning output from NPM about peer dependency requirements.
-          </p>
-          <p class="go-body-copy">
-            Alternatively, you can check for the version of <code class="code-block--inline">@tangoe/gosheets</code>
-            on the <code class="code-block--inline">devDependencies</code> object in
-            <code class="code-block--inline">./node_modules/@tangoe/goponents/package.json</code>
-          </p>
-        </section>
-        <section class="go-column go-column--100 go-column--no-padding">
-          <p class="go-body-copy">
-            After discovering the version requirements, install that version specifically:
-          </p>
-          <code [highlight]="installGosheetsVersion" [languages]="['bash']"></code>
         </section>
       </div>
     </ng-container>
@@ -102,9 +60,9 @@
     <ng-container go-card-content>
       <div class="go-container">
         <section class="go-column go-column--100">
-          <h3 class="go-heading-5">Goponents</h3>
+          <h3 class="go-heading-5">Components</h3>
           <p class="go-body-copy">
-            For goponents, the setup will depend upon which component you need to implement.
+            For components, the setup will depend upon which one you need to implement.
             To find that information, check each components' documenation for instructions.
             Typically it involves importing the specific module for each component you use.
           </p>
@@ -113,17 +71,17 @@
             import what is needed for each module.
           </p>
         </section>
-        <section class="go-column go-column--100">
-          <h3 class="go-heading-5">Gosheets</h3>
+        <section class="go-column go-column--100 go-column--no-padding">
+          <h3 class="go-heading-5">Styles</h3>
           <p class="go-body-copy">
-            To utlize all of the benefits gosheets has to offer, in the root <code class="code-block--inline">styles.scss</code>
+            To utlize all of the benefits our styles have to offer, in the root <code class="code-block--inline">styles.scss</code>
             of the project import: 
           </p>
-          <code [highlight]="importGosheetsBase"></code>
+          <code [highlight]="importStylesBase"></code>
           <p class="go-body-copy">
             Alternatively, partials can be imported individually. These can be found:
           </p>
-          <code [highlight]="importGosheetsPartials"></code>
+          <code [highlight]="importStylesPartials"></code>
         </section>
       </div>
     </ng-container>
