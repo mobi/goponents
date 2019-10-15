@@ -107,4 +107,22 @@
               [dismissable]="true">
     </go-toast>
   </div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Branding</h4>
+    <div class="go-column go-column--25">
+      <go-input
+        [control]="brandingControl"
+        label="Brand Color">
+      </go-input>
+    </div>
+    
+    <div class="go-column">
+      <go-button
+        (handleClick)="updateColor()"
+      >
+        Update Branding Color
+      </go-button>
+    </div>
+  </div>
 </div>
