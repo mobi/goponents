@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   templateUrl: './datepicker-docs.component.html'
@@ -134,6 +135,10 @@ export class DatepickerDocsComponent implements OnInit {
     minDate="5/10/2000"
   ></go-datepicker>
   `;
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Datepicker';
+  }
 
   ngOnInit(): void {
     setTimeout((): void => {
