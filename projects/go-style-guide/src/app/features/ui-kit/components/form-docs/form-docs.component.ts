@@ -12,6 +12,7 @@ export class FormDocsComponent {
         { route: './', routeTitle: 'Overview' },
         { route: './datepicker', routeTitle: 'Datepicker' },
         { route: './input', routeTitle: 'Input' },
+        { route: './radio', routeTitle: 'Radio' },
         { route: './select', routeTitle: 'Select' },
         { route: './switch-toggle', routeTitle: 'Switch Toggle' },
         { route: './textarea', routeTitle: 'Text Area' }
