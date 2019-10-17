@@ -14,6 +14,7 @@ export class GoHeaderComponent implements OnInit {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
+  @Input() enableBranding: boolean = false;
 
   @ViewChild('middleSection') middleSection: ElementRef;
 
@@ -34,13 +35,15 @@ export class GoHeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
-      .subscribe((value: GoConfigInterface) => {
-        this.brandColor = value.brandColor;
-        this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
-        this.brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
-      });
+    if (this.enableBranding) {
+      this.configService.config
+        .pipe(distinctUntilKeyChanged('brandColor'))
+        .subscribe((value: GoConfigInterface) => {
+          this.brandColor = value.brandColor;
+          this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
+          this.brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
+        });
+    }
   }
 
   isNavCollapsed(): boolean {
