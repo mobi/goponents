@@ -38,12 +38,8 @@ export class GoHeaderComponent implements OnInit {
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
-
-        console.log('value', value);
-        this.brandColorIsDark = !this.checkContrastRatio(this.brandColor, '#313536');
-        console.log('brandColorIsDark', this.brandColorIsDark);
+        this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
         this.brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
-        console.log('menuIconVariant', this.menuIconVariant);
       });
   }
 
@@ -71,62 +67,5 @@ export class GoHeaderComponent implements OnInit {
     if (window.innerWidth <= this.minWidthBreakpoint) {
       this.sideNavService.navOpen = false;
     }
-  }
-
-  // TODO: extract this methods into config service
-  hexToRgb(hex) {
-    const result: RegExpExecArray = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
-
-  componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
-  }
-
-  rgbToHex(rgb) {
-    const hex = '#' + this.componentToHex(rgb['r']) + this.componentToHex(rgb['g']) + this.componentToHex(rgb['b']);
-    return hex;
-  }
-
-  luminanace(r, g, b) {
-    var a = [r, g, b].map(function (v) {
-      v /= 255;
-      return v <= 0.03928
-        ? v / 12.92
-        : Math.pow( (v + 0.055) / 1.055, 2.4 );
-    });
-    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-  }
-
-  contrast(rgb1, rgb2) {
-    const luminanace1 = this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05;
-    const luminanace2 = this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05;
-
-    return (this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05)
-         / (this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05);
-  }
-
-  checkContrastRatio(hex1, hex2) {
-    let contrastIsAccessible: boolean;
-
-    const rgb1 = this.hexToRgb(hex1);
-    const rgb2 = this.hexToRgb(hex2);
-
-    const contrast = this.contrast(rgb1, rgb2);
-    console.log('contrast', contrast);
-
-    if (contrast < 4.5) {
-      contrastIsAccessible = false;
-    } else {
-      contrastIsAccessible = true;
-    }
-
-    return contrastIsAccessible;
   }
 }
