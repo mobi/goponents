@@ -48,7 +48,7 @@ export class RadioButtonDocsComponent implements OnInit {
     <div>
       <go-radio-button label="Option 2"
                         formValue="option2"
-                        key="option_1">
+                        key="option_2">
       </go-radio-button>
     </div>
   </go-radio-group>
