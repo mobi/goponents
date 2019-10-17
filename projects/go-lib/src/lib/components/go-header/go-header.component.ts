@@ -34,16 +34,16 @@ export class GoHeaderComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    if (this.enableBranding) {
-      this.configService.config
-        .pipe(distinctUntilKeyChanged('brandColor'))
-        .subscribe((value: GoConfigInterface) => {
+    this.configService.config
+      .pipe(distinctUntilKeyChanged('brandColor'))
+      .subscribe((value: GoConfigInterface) => {
+        if (this.enableBranding) {
           this.handleBrandColorChange(value);
-        });
-    } else {
-      this.brandColor = '';
-      this.menuIconVariant = 'light';
-    }
+        } else {
+          this.brandColor = '';
+          this.menuIconVariant = 'light';
+        }
+      });
   }
 
   isNavCollapsed(): boolean {
