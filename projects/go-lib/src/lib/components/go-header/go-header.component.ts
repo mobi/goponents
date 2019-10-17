@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilKeyChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
@@ -10,7 +10,7 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service
   templateUrl: './go-header.component.html',
   styleUrls: ['./go-header.component.scss']
 })
-export class GoHeaderComponent implements OnInit {
+export class GoHeaderComponent implements OnChanges {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
@@ -19,12 +19,11 @@ export class GoHeaderComponent implements OnInit {
   @ViewChild('middleSection') middleSection: ElementRef;
 
   public brandColor: string;
-  public brandColorIsDark: boolean = false;
   public menuIconVariant: string;
 
   private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
-  private resizeSubsciption: Subscription;
+  private resizeSubscription: Subscription;
 
   constructor (
     public sideNavService: GoSideNavService,
@@ -34,15 +33,15 @@ export class GoHeaderComponent implements OnInit {
     this.setupResizeSubscription();
   }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     if (this.enableBranding) {
       this.configService.config
         .pipe(distinctUntilKeyChanged('brandColor'))
         .subscribe((value: GoConfigInterface) => {
-          this.brandColor = value.brandColor;
-          this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
-          this.brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
+          this.handleBrandColorChange(value);
         });
+    } else {
+      this.brandColor = '';
     }
   }
 
@@ -59,7 +58,7 @@ export class GoHeaderComponent implements OnInit {
   }
 
   private setupResizeSubscription(): void {
-    this.resizeSubsciption = this.resizeObservable
+    this.resizeSubscription = this.resizeObservable
       .pipe(debounceTime(250))
       .subscribe(event => {
         this.setMobileNav();
@@ -70,5 +69,14 @@ export class GoHeaderComponent implements OnInit {
     if (window.innerWidth <= this.minWidthBreakpoint) {
       this.sideNavService.navOpen = false;
     }
+  }
+
+  private handleBrandColorChange(value: GoConfigInterface): void {
+    let brandColorIsDark: boolean;
+
+    this.brandColor = value.brandColor;
+
+    brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
+    brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
   }
 }

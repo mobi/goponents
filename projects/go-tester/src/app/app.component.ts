@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
 
   logo: string = 'https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290';
   title: string = 'go-tester';
+  enableHeaderBranding: boolean = false;
 
   menuItems: Array<NavGroup | NavItem> = [
     { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit {
   ];
 
   selectControl: FormControl = new FormControl('');
+  toggleControl: FormControl = new FormControl(false);
 
   selectItems: any = [
     { value: 1, label: 'Reeses' },
@@ -70,6 +72,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.goConfigService.setBrandColor('#8A4EDE');
+
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.enableHeaderBranding = !this.enableHeaderBranding;
+    });
   }
 
   openOffCanvas(): void {
