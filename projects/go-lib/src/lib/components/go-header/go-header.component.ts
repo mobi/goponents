@@ -42,6 +42,7 @@ export class GoHeaderComponent implements OnChanges {
         });
     } else {
       this.brandColor = '';
+      this.menuIconVariant = 'light';
     }
   }
 
