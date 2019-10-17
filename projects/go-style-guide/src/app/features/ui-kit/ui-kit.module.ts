@@ -21,6 +21,7 @@ import {
   GoModalService,
   GoOffCanvasModule,
   GoOffCanvasService,
+  GoRadioModule,
   GoSelectModule,
   GoSwitchToggleModule,
   GoTableModule,
@@ -78,6 +79,7 @@ import { ActionSheetOverviewComponent } from './components/action-sheet-docs/com
 import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
 import { AccordionOverviewComponent } from './components/accordion-docs/components/accordion-overview/accordion-overview.component';
 import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
+import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
 
 @NgModule({
   imports: [
@@ -98,6 +100,7 @@ import { SwitchToggleDocsComponent } from './components/form-docs/components/swi
     GoModalModule,
     GoOffCanvasModule,
     GoSwitchToggleModule,
+    GoRadioModule,
     GoTableModule,
     GoToastModule,
     HighlightModule,
@@ -146,7 +149,8 @@ import { SwitchToggleDocsComponent } from './components/form-docs/components/swi
     ActionSheetOverviewComponent,
     ActionSheetPanelDocsComponent,
     AccordionOverviewComponent,
-    SwitchToggleDocsComponent
+    SwitchToggleDocsComponent,
+    RadioButtonDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

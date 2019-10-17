@@ -42,6 +42,7 @@ import { ActionSheetOverviewComponent } from '../components/action-sheet-docs/co
 import { ActionSheetPanelDocsComponent } from '../components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
 import { AccordionOverviewComponent } from '../components/accordion-docs/components/accordion-overview/accordion-overview.component';
 import { SwitchToggleDocsComponent } from '../components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
+import { RadioButtonDocsComponent } from '../components/form-docs/components/radio-button-docs/radio-button-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
     { path: '', component: FormsOverviewComponent },
     { path: 'datepicker', component: DatepickerDocsComponent },
     { path: 'input', component: InputDocsComponent },
+    { path: 'radio', component: RadioButtonDocsComponent },
     { path: 'select', component: SelectDocsComponent },
     { path: 'switch-toggle', component: SwitchToggleDocsComponent },
     { path: 'textarea', component: TextAreaDocsComponent }
