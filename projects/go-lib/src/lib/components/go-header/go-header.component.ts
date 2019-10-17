@@ -18,7 +18,8 @@ export class GoHeaderComponent implements OnInit {
   @ViewChild('middleSection') middleSection: ElementRef;
 
   public brandColor: string;
-  public menuIconColor: string = 'dark';
+  public brandColorIsDark: boolean = false;
+  public menuIconVariant: string;
 
   private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
@@ -36,11 +37,13 @@ export class GoHeaderComponent implements OnInit {
     this.configService.config
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
-        this.checkContrastRatio('#313536', value.brandColor);
-        // TODO: set the color of the menu icon based on the above result
-
         this.brandColor = value.brandColor;
 
+        console.log('value', value);
+        this.brandColorIsDark = !this.checkContrastRatio(this.brandColor, '#313536');
+        console.log('brandColorIsDark', this.brandColorIsDark);
+        this.brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
+        console.log('menuIconVariant', this.menuIconVariant);
       });
   }
 
@@ -104,28 +107,26 @@ export class GoHeaderComponent implements OnInit {
   contrast(rgb1, rgb2) {
     const luminanace1 = this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05;
     const luminanace2 = this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05;
-    console.log('luminance1: ', luminanace1);
-    console.log('luminance2: ', luminanace2);
 
     return (this.luminanace(rgb1['r'], rgb1['g'], rgb1['b']) + 0.05)
          / (this.luminanace(rgb2['r'], rgb2['g'], rgb2['b']) + 0.05);
   }
 
   checkContrastRatio(hex1, hex2) {
+    let contrastIsAccessible: boolean;
+
     const rgb1 = this.hexToRgb(hex1);
-    console.log(rgb1);
     const rgb2 = this.hexToRgb(hex2);
-    console.log(rgb2);
 
     const contrast = this.contrast(rgb1, rgb2);
-    console.log('contrast: ', contrast);
+    console.log('contrast', contrast);
 
     if (contrast < 4.5) {
-      console.log('nope');
-      return false;
+      contrastIsAccessible = false;
     } else {
-      console.log('yep');
-      return true;
+      contrastIsAccessible = true;
     }
+
+    return contrastIsAccessible;
   }
 }

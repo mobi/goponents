@@ -6,7 +6,8 @@
              buttonIcon="menu"
              buttonSize="medium"
              buttonTitle="Menu"
-             (handleClick)="toggleSideMenu()">
+             (handleClick)="toggleSideMenu()"
+             [buttonVariant]="menuIconVariant">
     </go-icon-button>
     <div class="go-header__logo-container"
          [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }">

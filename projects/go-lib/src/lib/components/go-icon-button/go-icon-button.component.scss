@@ -4,7 +4,7 @@
 .go-icon-button {
   @include transition(background-color);
 
-  background: $theme-light-bg;
+  background: transparent;
   border: 0;
   border-radius: $global-radius--round;
   color: $base-dark;
