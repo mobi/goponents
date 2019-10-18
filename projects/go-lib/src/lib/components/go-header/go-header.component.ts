@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilKeyChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilKeyChanged, distinctUntilChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
@@ -14,7 +14,6 @@ export class GoHeaderComponent implements OnChanges {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
-  @Input() brandingEnabled: boolean = false;
 
   @ViewChild('middleSection') middleSection: ElementRef;
 
@@ -36,12 +35,13 @@ export class GoHeaderComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
+      .pipe(distinctUntilChanged())
       .subscribe((value: GoConfigInterface) => {
-        if (this.brandingEnabled) {
+        if (value.headerBrandingEnabled) {
           this.handleBrandColorChange(value);
         } else {
           this.brandColor = '';
+          this.brandColorIsDark = false;
         }
       });
   }
@@ -73,8 +73,9 @@ export class GoHeaderComponent implements OnChanges {
   }
 
   private handleBrandColorChange(value: GoConfigInterface): void {
+    const baseDarkHex: string = '#313536';
     this.brandColor = value.brandColor;
 
-    this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
+    this.brandColorIsDark = !this.configService.contrastIsAccessible(this.brandColor, baseDarkHex);
   }
 }

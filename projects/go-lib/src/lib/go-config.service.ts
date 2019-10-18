@@ -11,7 +11,8 @@ interface RGB {
 @Injectable()
 export class GoConfigService {
   config: BehaviorSubject<GoConfigInterface> = new BehaviorSubject<GoConfigInterface> ({
-    brandColor: '#65B360'
+    brandColor: '#65B360',
+    headerBrandingEnabled: false
   });
 
   public setBrandColor(color: string): void {
@@ -21,17 +22,20 @@ export class GoConfigService {
     this.config.next(config);
   }
 
-  public checkContrastRatioAccessibility(hex1: string, hex2: string): boolean {
-    let contrastIsAccessible: boolean;
+  public toggleHeaderBrandingEnabled(): void {
+    // we have to copy the config here or it won't regester a change in components
+    const config: GoConfigInterface = Object.assign({}, this.config.getValue());
+    config.headerBrandingEnabled = !config.headerBrandingEnabled;
+    this.config.next(config);
+  }
 
-    const rgb1: RGB = this.hexToRgb(hex1);
-    const rgb2: RGB = this.hexToRgb(hex2);
+  public contrastIsAccessible(backgroundHex: string, foregroundHex: string): boolean {
+    const backgroundRgb: RGB = this.hexToRgb(backgroundHex);
+    const foregroundRgb: RGB = this.hexToRgb(foregroundHex);
 
-    const contrast: number = this.contrast(rgb1, rgb2);
+    const contrast: number = this.contrast(backgroundRgb, foregroundRgb);
 
-    contrast > 4.5 ? contrastIsAccessible = true : contrastIsAccessible = false;
-
-    return contrastIsAccessible;
+    return contrast > 4.5;
   }
 
   private hexToRgb(hex: string): RGB {
