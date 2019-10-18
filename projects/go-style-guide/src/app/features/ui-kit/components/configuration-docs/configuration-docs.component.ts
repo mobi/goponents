@@ -38,8 +38,6 @@ export class ConfigurationDocsComponent implements OnInit {
   `;
 
   toggleHeaderEnabledExample: string = `
-  toggleControl: FormControl = new FormControl(false);
-
   ngOnInit(): void {
     this.toggleControl.valueChanges.subscribe(() => {
       this.goConfigService.toggleHeaderBrandingEnabled();
