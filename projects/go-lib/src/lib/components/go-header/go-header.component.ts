@@ -19,7 +19,6 @@ export class GoHeaderComponent implements OnChanges {
 
   public brandColor: string;
   public brandColorIsDark: boolean;
-  public menuIconVariant: string;
 
   private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
