@@ -73,6 +73,10 @@ $breakpoint-header-mobile-small: 500px;
   width: auto;
 }
 
+.go-header__left--dark {
+  color: $theme-dark-color
+}
+
 .go-header__middle {
   @include transition(padding);
 

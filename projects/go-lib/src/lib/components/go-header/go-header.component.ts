@@ -14,11 +14,12 @@ export class GoHeaderComponent implements OnChanges {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
-  @Input() enableBranding: boolean = false;
+  @Input() brandingEnabled: boolean = false;
 
   @ViewChild('middleSection') middleSection: ElementRef;
 
   public brandColor: string;
+  public brandColorIsDark: boolean;
   public menuIconVariant: string;
 
   private minWidthBreakpoint: number = 768;
@@ -37,11 +38,10 @@ export class GoHeaderComponent implements OnChanges {
     this.configService.config
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
-        if (this.enableBranding) {
+        if (this.brandingEnabled) {
           this.handleBrandColorChange(value);
         } else {
           this.brandColor = '';
-          this.menuIconVariant = 'light';
         }
       });
   }
@@ -73,11 +73,8 @@ export class GoHeaderComponent implements OnChanges {
   }
 
   private handleBrandColorChange(value: GoConfigInterface): void {
-    let brandColorIsDark: boolean;
-
     this.brandColor = value.brandColor;
 
-    brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
-    brandColorIsDark ? this.menuIconVariant = 'dark' : this.menuIconVariant = 'light';
+    this.brandColorIsDark = !this.configService.checkContrastRatioAccessibility(this.brandColor, '#313536');
   }
 }
