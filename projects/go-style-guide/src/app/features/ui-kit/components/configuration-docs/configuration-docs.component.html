@@ -9,18 +9,27 @@
       </ng-container>
       <ng-container go-card-content>
         <p class="go-body-copy">
-          The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select pieces of our design system. Currently
-          the only things that can be branded are the active indicators on the sidenav and accordions. The
-          <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
-          to update the branding color by passing in either a hex number or the name of the color that we want
-          to update the design system current brand to.
+          The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select 
+          pieces of our design system. Currently the only things that can be branded are the active indicators 
+          on the sidenav and accordions as well as the left portion of the header.
         </p>
 
+        <h1 class="go-heading-5">Update Branding Color</h1>
         <div class="go-container">
+          <div class="go-column--100">
+            <div class="go-column">
+              <p class="go-body-copy">
+                The <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
+                to update the branding color by passing in either a hex number or the name of the color that we want
+                to update the design system current brand to.
+              </p>
+            </div>
+          </div>
+
           <div class="go-column--50">
             <div class="go-column">
               <go-input
-                [control]="formControl"
+                [control]="inputControl"
                 label="Brand Color">
               </go-input>
             </div>
@@ -39,6 +48,35 @@
             </code>
             
             <code [highlight]="updateColorExample">
+            </code>
+          </div>
+        </div>
+
+        <h1 class="go-heading-5">Enable Header Branding</h1>
+        <div class="go-container">
+          <div class="go-column--100">
+            <div class="go-column">
+              <p class="go-body-copy">
+                The <code class="code-block--inline">public toggleHeaderBrandingEnabled(): void</code> method can 
+                be used to enable/disable header branding.
+              </p>
+            </div>
+          </div>
+
+          <div class="go-column--50">
+            <div class="go-column">
+              <go-switch-toggle
+                [control]="toggleControl"
+                label="Toggle Header Branding">
+              </go-switch-toggle>
+            </div>
+          </div>
+
+          <div class="go-column go-column--50">
+            <code [highlight]="toggleExample">
+            </code>
+            
+            <code [highlight]="toggleHeaderEnabledExample">
             </code>
           </div>
         </div>
