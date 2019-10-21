@@ -26,7 +26,7 @@ go-action-sheet-button {
   background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $global-box-shadow--small;
   left: 50%;
   opacity: 0;
   position: absolute;
@@ -40,7 +40,7 @@ go-action-sheet-button {
 
     background: $theme-light-bg;
     border: 1px solid $theme-light-border;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: $global-box-shadow--small;
     content: " ";
     height: 15px;
     left: calc(50% - 7.5px);

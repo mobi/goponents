@@ -5,7 +5,7 @@ $breakpoint-header-mobile-small: 500px;
 
 .go-header {
   background: $theme-light-bg;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--small;
   display: flex;
   height: $header-height;
   justify-content: space-between;
