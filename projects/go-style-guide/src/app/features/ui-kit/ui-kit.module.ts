@@ -10,6 +10,7 @@ import {
   GoBadgeModule,
   GoButtonModule,
   GoCardModule,
+  GoCheckboxModule,
   GoConfigService,
   GoCopyModule,
   GoDatepickerModule,
@@ -22,13 +23,13 @@ import {
   GoOffCanvasModule,
   GoOffCanvasService,
   GoRadioModule,
+  GoSelectComponent,
   GoSelectModule,
   GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
-  GoToastModule,
-  GoSelectComponent
+  GoToastModule
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -80,6 +81,7 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
 import { AccordionOverviewComponent } from './components/accordion-docs/components/accordion-overview/accordion-overview.component';
 import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
+import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
 
 @NgModule({
   imports: [
@@ -89,6 +91,7 @@ import { RadioButtonDocsComponent } from './components/form-docs/components/radi
     GoBadgeModule,
     GoButtonModule,
     GoCardModule,
+    GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
     GoIconButtonModule,
@@ -150,7 +153,8 @@ import { RadioButtonDocsComponent } from './components/form-docs/components/radi
     ActionSheetPanelDocsComponent,
     AccordionOverviewComponent,
     SwitchToggleDocsComponent,
-    RadioButtonDocsComponent
+    RadioButtonDocsComponent,
+    CheckboxDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
