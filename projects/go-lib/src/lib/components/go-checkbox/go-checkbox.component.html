@@ -10,4 +10,16 @@
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
   </label>
+  
+  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+  
+  <div *ngIf="control?.errors?.length">
+    <go-hint
+      *ngFor="let error of control.errors"
+      [message]="error.message"
+      [label]="error.type"
+      [theme]="theme"
+      type="negative"
+    ></go-hint>
+  </div>
 </div>
