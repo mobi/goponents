@@ -1,0 +1,58 @@
+<div class="go-container">
+    <go-card class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h3 class="go-heading-5">Usage</h3>
+      </ng-container>
+      <ng-container go-card-content>
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            <p class="go-body-copy">
+              The <code class="code-block--inline">&lt;go-footer&gt;</code> component should only be used once, at the root level component.
+              It should be placed inside a <code class="code-block--inline">&lt;go-layout&gt;</code> and be given the attribute of 
+              <code class="code-block--inline">&lt;go-layout-footer&gt;</code>.
+              This component will be rendered at the end of the main content on ever page.
+            </p>
+          </div>
+    
+          <div class="go-column go-column--100">
+            <h5 class="go-heading-5">Bindings</h5>
+            There are none! This component uses content projection to just put the footer in the correct place.
+          </div>
+  
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h5 class="go-heading-5">Content Projection</h5>
+            <p class="go-body-copy">
+              The go-layout uses the <code class="code-block--inline">go-layout-footer</code> for content projection.
+              This should be applied to a <code class="code-block--inline">&lt;go-footer&gt;</code> element to
+              add content to the end of the page. The content will be centered on the page.
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+  
+    <go-card class="go-column go-column--100" id="setup">
+      <ng-container go-card-header>
+        <h3 class="go-heading-5">Simple Setup</h3>
+      </ng-container>
+      <ng-container go-card-content>
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <p class="go-body-copy">
+              For the sake of this example, we'll be referencing the layout of this application because it's a living example of the
+              entire layout component and family. It is also being shown inside of the layout component because it's required to be inside it.
+            </p>
+            
+            <h6 class="go-heading-6">app.module</h6>
+            <code [highlight]="basicExample_module"></code>
+            
+            <h6 class="go-heading-6">app.component.html</h6>
+            <code [highlight]="basicExample_html"></code>
+
+            <h6 class="go-heading-6">app.component.ts</h6>
+            <code [highlight]="basicExample_component"></code>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+  </div>
