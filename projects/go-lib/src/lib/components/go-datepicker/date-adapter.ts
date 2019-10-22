@@ -1,6 +1,5 @@
 export class DateAdapter {
   private _locale: string;
-  private _timezone: string;
   public monthNames: Array<string>;
   public dateNames: Array<string>;
   public daysOfWeek: Array<string>;
@@ -11,14 +10,13 @@ export class DateAdapter {
 
   public setLocale(locale: string): void {
     this._locale = locale;
-    this._timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     this.setMonthNames();
     this.setDateNames();
     this.setDayOfWeekNames();
   }
 
   public getYearName(year: number): string {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {year: 'numeric', timeZone: this._timezone});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {year: 'numeric'});
 
     return this.format(format, new Date(year, 0, 1));
   }
@@ -65,7 +63,7 @@ export class DateAdapter {
   }
 
   private getMonthNames(style: 'long' | 'short' | 'narrow'): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {month: style, timeZone: this._timezone});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {month: style});
     const months: Array<string> = [];
     for (let i: number = 0; i < 12; i++) {
       months.push(this.format(format, new Date(2017, i, 1)));
@@ -74,7 +72,7 @@ export class DateAdapter {
   }
 
   private getDateNames(): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {day: 'numeric', timeZone: this._timezone});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {day: 'numeric'});
     const dates: Array<string> = [];
 
     for (let i: number = 0; i < 31; i++) {
@@ -85,7 +83,7 @@ export class DateAdapter {
   }
 
   private getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {weekday: style, timeZone: this._timezone});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {weekday: style});
     const dayNames: Array<string> = [];
 
     for (let i: number = 0; i < 7; i++) {
