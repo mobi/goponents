@@ -32,6 +32,7 @@ body {
 .go-layout__route-container-outlet ~ :not(go-footer) {
   width: 100%;
   padding: 2rem;
+  flex-grow: 1;
 }
 
 .go-footer {
