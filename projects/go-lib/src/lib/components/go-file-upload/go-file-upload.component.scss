@@ -6,20 +6,37 @@
   opacity: 0.8;
 }
 
-input[type="file"] {
+.go-file-upload__input {
   visibility: hidden;
 }
 
 .go-file-upload {
   height: 10rem;
-  border: 2px dashed grey;
-  border-radius: 5px;
+  border: 1px dashed $theme-light-border;
+  border-radius: $global-radius; 
+}
 
-  &.go-file-upload--disabled {
-    color: lighten($theme-light-color, 40);
-    cursor: not-allowed;
-    pointer-events: none;
-    border-style: solid;
+.go-file-upload--disabled {
+  color: lighten($theme-light-color, 40);
+  cursor: not-allowed;
+  pointer-events: none;
+  border-style: solid;
+}
+
+.go-file-upload--dark {
+  border: 1px dashed $theme-dark-border;
+  background-color: $theme-dark-bg;
+  border-radius: $global-radius;
+  color: $theme-dark-color;
+
+  .go-file-upload:hover {
+    background-color: $theme-dark-bg-hover;
+    color: $theme-dark-color-hover
+  }
+
+  .go-file-upload--active {
+    color: $theme-dark-color-hover;
+    background-color: $theme-dark-bg-hover;
   }
 }
 
@@ -59,4 +76,8 @@ input[type="file"] {
 
 .file-name__label {
   padding-bottom: .25rem;
+}
+
+.go-file-upload__file-name--dark {
+  color: $theme-dark-color;
 }

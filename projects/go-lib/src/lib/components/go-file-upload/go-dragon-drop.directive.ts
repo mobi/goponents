@@ -1,12 +1,21 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[goDragonDrop]'
 })
 export class DragonDropDirective {
-  @Output() fileDropped: EventEmitter<any> = new EventEmitter<any>();
+  active: boolean = false;
+  @Input() class: string = ''; // override the standard class attr with a new one.
+  @Input() activeClass: string = '';
+  @Output() dropped: EventEmitter<any> = new EventEmitter<any>();
 
-  @HostBinding('class.go-file-upload--active') active: boolean = false;
+  @HostBinding('class')
+    get hostClasses(): string {
+      return [
+        this.class,
+        this.active ? this.activeClass : '',
+      ].join(' ');
+    }
 
   // Dragover listener
   @HostListener('dragover', ['$event']) onDragOver(evt: Event): void {
@@ -27,9 +36,6 @@ export class DragonDropDirective {
     evt.preventDefault();
     evt.stopPropagation();
     this.active = false;
-    const files: File[] = evt.dataTransfer.files;
-    if (files.length > 0) {
-      this.fileDropped.emit(files);
-    }
+    this.dropped.emit(evt);
   }
 }

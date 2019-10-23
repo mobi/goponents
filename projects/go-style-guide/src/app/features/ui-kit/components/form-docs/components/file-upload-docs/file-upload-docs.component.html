@@ -239,4 +239,34 @@
       </div>
     </ng-container>
   </go-card>
+
+  <go-card id="form-file-upload-theme" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Theme</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        A dark or light theme can be triggered through the <code class="code-block--inline">@Input theme: 'dark' | 'light' = 'light';</code>
+        binding. The theme signifies which color of background the element is being placed upon. A light theme will be good for a light background,
+        while a dark theme would be better for something like being placed in the off canvas which has a dark background.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50 go-column--dark">
+          <h2 class="go-heading-6 go-heading--underlined go-form__label--dark">View</h2>
+          <go-file-upload
+            [control]="fileControl8"
+            label="Most Awesome Pictures"
+            theme="dark"
+          ></go-file-upload>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="basicThemeExample"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
 </section>

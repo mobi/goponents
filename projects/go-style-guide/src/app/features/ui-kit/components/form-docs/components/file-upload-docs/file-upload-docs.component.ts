@@ -13,6 +13,7 @@ export class FileUploadDocsComponent implements OnInit {
   fileControl5: FormControl = new FormControl('');
   fileControl6: FormControl = new FormControl('');
   fileControl7: FormControl = new FormControl('');
+  fileControl8: FormControl = new FormControl('');
 
   hints: Array<string> = [
     'Please upload your best picture',
@@ -85,6 +86,14 @@ export class FileUploadDocsComponent implements OnInit {
     [control]="fileControl"
     label="Most Awesome Pictures"
     [isLoading]="true"
+  ></go-file-upload>
+  `;
+
+  basicThemeExample: string = `
+  <go-file-upload
+    [control]="fileControl"
+    label="Most Awesome Pictures"
+    theme="dark"
   ></go-file-upload>
   `;
 

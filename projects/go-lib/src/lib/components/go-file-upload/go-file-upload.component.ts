@@ -36,13 +36,16 @@ export class GoFileUploadComponent implements OnInit {
     });
   }
 
-  onFilePicked(files: FileList): void {
-    Array.from(files).forEach((file: any) => {
-      this.files.push(this.patchValues(file));
-      this.filePreview.push(file.name);
-    });
-    if (!this.multiple) {
-      this.state = 'selected';
+  onFilePicked(evt: any): void {
+    const files: File[] = evt.dataTransfer.files;
+    if (files.length > 0) {
+      Array.from(files).forEach((file: any) => {
+        this.files.push(this.patchValues(file));
+        this.filePreview.push(file.name);
+      });
+      if (!this.multiple) {
+        this.state = 'selected';
+      }
     }
   }
 
