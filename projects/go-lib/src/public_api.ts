@@ -47,6 +47,7 @@ export * from './lib/components/go-datepicker/go-datepicker.module';
 // File Upload
 export * from './lib/components/go-file-upload/go-file-upload.component';
 export * from './lib/components/go-file-upload/go-file-upload.module';
+export * from './lib/components/go-file-upload/go-dragon-drop.directive';
 
 // Footer
 export * from './lib/components/go-footer/go-footer.component';
