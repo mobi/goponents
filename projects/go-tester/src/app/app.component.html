@@ -4,6 +4,10 @@
       <app-search-test></app-search-test>
     </go-search>
     <ng-container go-header-right>
+      <go-switch-toggle
+        [control]="toggleControl"
+        label="Header Branding"
+      ></go-switch-toggle>
       <go-badge badgeData="1231" [displayData]="false">
         <go-icon-button buttonIcon="add_circle" (handleClick)="openOffCanvas()"></go-icon-button>
       </go-badge>

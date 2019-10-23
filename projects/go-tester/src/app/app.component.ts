@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
   ];
 
   selectControl: FormControl = new FormControl('');
+  toggleControl: FormControl = new FormControl(false);
 
   selectItems: any = [
     { value: 1, label: 'Reeses' },
@@ -70,6 +71,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.goConfigService.setBrandColor('#8A4EDE');
+
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.goConfigService.toggleHeaderBrandingEnabled();
+    });
   }
 
   openOffCanvas(): void {

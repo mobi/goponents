@@ -1,6 +1,7 @@
 <header class="go-header">
   <div class="go-header__left"
-       [ngClass]="{ 'go-header__left--collapsed': isNavCollapsed() }">
+       [ngClass]="{ 'go-header__left--collapsed': isNavCollapsed(), 'go-header__left--dark': brandColorIsDark }"
+       [ngStyle]="{'background': brandColor}">
     <go-icon-button class="go-header__menu"
              buttonIcon="menu"
              buttonSize="medium"
