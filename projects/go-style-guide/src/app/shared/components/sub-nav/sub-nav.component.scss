@@ -10,11 +10,11 @@
 .sub-nav-outlet {
   flex: 1;
   position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .sub-nav-container-outlet ~ * {
-  height: 100%;
-  position: absolute;
   width: 100%;
 }
 

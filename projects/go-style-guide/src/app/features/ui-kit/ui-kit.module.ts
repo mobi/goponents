@@ -50,6 +50,7 @@ import { FormsOverviewComponent } from './components/form-docs/components/forms-
 import { IconButtonDocsComponent } from './components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from './components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from './components/form-docs/components/input-docs/input-docs.component';
+import { LayoutFooterComponent } from './components/layout-docs/components/layout-footer/layout-footer.component';
 import { ModalDocsComponent } from './components/modal-docs/modal-docs.component';
 import { ModalTestComponent } from './components/modal-test/modal-test.component';
 import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
@@ -141,6 +142,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     UiKitComponent,
     LoaderDocsComponent,
     LayoutDocsComponent,
+    LayoutFooterComponent,
     LayoutOverviewComponent,
     LayoutNavComponent,
     LayoutHeaderComponent,

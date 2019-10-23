@@ -14,6 +14,7 @@ import { FormsOverviewComponent } from '../components/form-docs/components/forms
 import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from '../components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from '../components/form-docs/components/input-docs/input-docs.component';
+import { LayoutFooterComponent } from '../components/layout-docs/components/layout-footer/layout-footer.component';
 import { ModalDocsComponent } from '../components/modal-docs/modal-docs.component';
 import { ServerIntegrationComponent } from '../components/table-docs/components/server-integration/server-integration.component';
 import { TableDocsComponent } from '../components/table-docs/table-docs.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
     { path: 'header', component: LayoutHeaderComponent },
     { path: 'search', component: LayoutSearchComponent },
     { path: 'side-nav', component: LayoutNavComponent },
+    { path: 'footer', component: LayoutFooterComponent },
     { path: 'example', component: LayoutExampleComponent }
   ]},
   { path: 'ui-kit/loader', component: LoaderDocsComponent },

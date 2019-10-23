@@ -12,6 +12,7 @@ import { NavGroup, NavItem } from '../../../go-lib/src/public_api';
   animations: [routerAnimation]
 })
 export class AppComponent {
+  date: Date = new Date();
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },

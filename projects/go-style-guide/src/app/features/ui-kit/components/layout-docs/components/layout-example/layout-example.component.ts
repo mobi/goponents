@@ -8,6 +8,7 @@ export class LayoutExampleComponent {
 
   example_app_module: string = `
   import {
+    GoFooterModule,
     GoHeaderModule,
     GoIconButtonModule,
     GoLayoutModule,
@@ -20,6 +21,7 @@ export class LayoutExampleComponent {
       AppComponent
     ],
     imports: [
+      GoFooterModule,
       GoHeaderModule,
       GoIconButtonModule,
       GoLayoutModule,
@@ -43,6 +45,9 @@ export class LayoutExampleComponent {
     </go-header>
     <go-side-nav go-layout-nav [menuItems]="menuItems">
     </go-side-nav>
+    <go-footer go-layout-footer>
+      {{ date }}
+    </go-footer>
   </go-layout>
   `;
 
@@ -52,6 +57,7 @@ export class LayoutExampleComponent {
     NavItem
   } from '@tangoe/goponents';
 
+  date: Date = new Date();
   logo: string = 'url-to-your-logo/go-design.png';
   title: string = 'Go Design';
 

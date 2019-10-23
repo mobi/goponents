@@ -10,7 +10,8 @@ import {
   GoModalModule,
   GoOffCanvasModule,
   GoSideNavModule,
-  GoToasterModule
+  GoToasterModule,
+  GoFooterModule
 } from '../../../go-lib/src/public_api';
 
 import { CoreModule } from './core/core.module';
@@ -39,6 +40,7 @@ export function hljsLanguages(): any[] {
     AppRoutingModule,
     CoreModule,
     FeaturesModule,
+    GoFooterModule,
     GoIconButtonModule,
     GoHeaderModule,
     GoLayoutModule,
