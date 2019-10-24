@@ -33,6 +33,12 @@
   display: flex;
   padding: $column-gutter;
   align-items: center;
+  justify-content: flex-end;
+}
+
+.go-off-canvas__title {
+  flex-grow: 1;
+  padding-right: .5rem;
 }
 
 .go-off-canvas__button {
