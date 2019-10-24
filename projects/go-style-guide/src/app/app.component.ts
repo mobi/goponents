@@ -12,6 +12,7 @@ import { NavGroup, NavItem } from '../../../go-lib/src/public_api';
   animations: [routerAnimation]
 })
 export class AppComponent {
+  date: Date = new Date();
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
@@ -23,7 +24,6 @@ export class AppComponent {
     ]},
     { route: 'ui-kit', routeIcon: 'widgets', routeTitle: 'Components', subRoutes: [
       { route: 'ui-kit/accordion', routeTitle: 'Accordion' },
-      { route: 'ui-kit/accordion-panel', routeTitle: 'Accordion Panel' },
       { route: 'ui-kit/action-sheet', routeTitle: 'Action Sheet' },
       { route: 'ui-kit/badge', routeTitle: 'Badge' },
       { route: 'ui-kit/button', routeTitle: 'Button' },
@@ -31,6 +31,7 @@ export class AppComponent {
       { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
       { route: 'ui-kit/forms', routeTitle: 'Forms' },
+      { route: 'ui-kit/icon-button', routeTitle: 'Icon Button' },
       { route: 'ui-kit/layout', routeTitle: 'Layout' },
       { route: 'ui-kit/loader', routeTitle: 'Loader' },
       { route: 'ui-kit/icon', routeTitle: 'Icon' },

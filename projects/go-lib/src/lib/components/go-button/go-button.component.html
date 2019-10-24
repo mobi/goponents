@@ -5,9 +5,16 @@
   [ngClass]="classObject"
   [type]="buttonType"
 >
+  <span class="go-button__loader"
+        *ngIf="isProcessing"
+        [ngClass]="loaderClassObject"
+        @fadeTemplate>
+    <go-loader [loaderType]="loaderType"
+               loaderSize="xsmall"
+               class="go-button__loader-container"></go-loader>
+  </span>
   <go-icon
     [icon]="buttonIcon"
-    [iconModifier]="buttonVariant || 'light'"
     iconClass="go-button__icon"
     [disabled]="buttonDisabled || isProcessing"
     *ngIf="buttonIcon"

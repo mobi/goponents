@@ -7,10 +7,10 @@ $icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
 // icons documentation and applied to our own bem style block class.
 .go-icon {
   // sass-lint:disable-block no-vendor-prefixes property-sort-order
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
   display: inline-block;
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: normal;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
@@ -31,24 +31,23 @@ $icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
   font-feature-settings: 'liga';
 }
 
-.go-icon--light {
-  @include fill-text-background($color: $theme-light-border);
+.go-icon--dark {
+  color: $theme-light-color;
+
+  &.go-icon--disabled {
+    color: rgba($theme-light-color, .7);
+  }
 }
 
-.go-icon--negative {
-  @include fill-text-background($ui-color-negative-gradient, $ui-color-negative);
-}
-
+.go-icon--light,
+.go-icon--primary,
+.go-icon--negative,
 .go-icon--neutral {
-  @include fill-text-background($ui-color-neutral-gradient, $ui-color-neutral);
-}
+  color: $theme-dark-color;
 
-.go-icon--positive {
-  @include fill-text-background($ui-color-positive-gradient, $ui-color-positive);
-}
-
-.go-icon--disabled {
-  @include fill-text-background($color: $theme-light-border);
+  &.go-icon--disabled {
+    color: rgba($theme-dark-color, .7);
+  }
 }
 
 @each $name, $size in $icon-sizes {
@@ -58,11 +57,11 @@ $icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
 }
 
 .go-button__icon {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1rem;
   margin-bottom: -.2rem;
-  margin-left: -$column-gutter--half;
-  margin-right: $column-gutter--quarter;
+  margin-left: -$column-gutter--quarter;
+  margin-right: $column-gutter--half;
   margin-top: -.2rem;
   padding: .2rem 0;
   vertical-align: top;

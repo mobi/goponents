@@ -1,19 +1,26 @@
 <div class="go-layout">
   <ng-content select="[go-layout-header]"></ng-content>
   <div class="go-layout__content">
-    <nav class="go-layout__nav">
+    <nav>
       <ng-content select="[go-layout-nav]"></ng-content>
     </nav>
     <main class="go-layout__route-container"
           [@routerAnimation]="routeAnimation(mainRouter)">
       <router-outlet class="go-layout__route-container-outlet"
-                     #mainRouter="outlet"></router-outlet>
-      <div class="go-route-loader"
-           *ngIf="routeLoader"
-           @fadeTemplate>
-        <go-loader></go-loader>
-      </div>
+                    #mainRouter="outlet">
+      </router-outlet>
+
+      <ng-content
+        class="go--footer"
+        *ngIf="!routeLoader"
+        select="[go-layout-footer]"
+      ></ng-content>
     </main>
+  </div>
+  <div class="go-route-loader"
+      *ngIf="routeLoader"
+      @fadeTemplate>
+    <go-loader></go-loader>
   </div>
 </div>
 

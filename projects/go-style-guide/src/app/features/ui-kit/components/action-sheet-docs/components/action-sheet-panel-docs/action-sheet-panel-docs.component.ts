@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GoToasterService } from 'projects/go-lib/src/public_api';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-action-sheet-panel-docs',
@@ -125,7 +126,12 @@ export class ActionSheetPanelDocsComponent {
   </go-action-sheet>
   `;
 
-  constructor(private toasterService: GoToasterService) { }
+  constructor(
+    private toasterService: GoToasterService,
+    private subNavService: SubNavService
+  ) {
+    this.subNavService.pageTitle = 'Action Sheet Panel';
+  }
 
   toast(): void {
     this.toasterService.toastInfo({ header: 'Accounement', message: 'You completed an action!' });

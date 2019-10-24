@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 })
 export class ConfigurationDocsComponent implements OnInit {
   pageTitle: string = 'Configuration';
-  formControl: FormControl;
+  inputControl: FormControl;
+  toggleControl: FormControl = new FormControl(false);
 
   updateColorExample: string = `
   updateColor(): void {
@@ -29,13 +30,31 @@ export class ConfigurationDocsComponent implements OnInit {
   </go-button>
   `;
 
+  toggleExample: string = `
+  <go-switch-toggle
+    [control]="toggleControl"
+    label="Header Branding">
+  </go-switch-toggle>
+  `;
+
+  toggleHeaderEnabledExample: string = `
+  ngOnInit(): void {
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.goConfigService.toggleHeaderBrandingEnabled();
+    });
+  }
+  `;
+
   constructor(private goConfigService: GoConfigService) { }
 
   ngOnInit(): void {
-    this.formControl = new FormControl(this.goConfigService.config.getValue().brandColor);
+    this.inputControl = new FormControl(this.goConfigService.config.getValue().brandColor);
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.goConfigService.toggleHeaderBrandingEnabled();
+    });
   }
 
   updateColor(): void {
-    this.goConfigService.setBrandColor(this.formControl.value);
+    this.goConfigService.setBrandColor(this.inputControl.value);
   }
 }

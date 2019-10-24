@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GettingStartedComponent } from './getting-started.component';
+import { IconButtonDocsComponent } from './icon-button-docs.component';
 
-describe('GettingStartedComponent', () => {
-  let component: GettingStartedComponent;
-  let fixture: ComponentFixture<GettingStartedComponent>;
+describe('IconButtonDocsComponent', () => {
+  let component: IconButtonDocsComponent;
+  let fixture: ComponentFixture<IconButtonDocsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GettingStartedComponent ]
+      declarations: [ IconButtonDocsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GettingStartedComponent);
+    fixture = TestBed.createComponent(IconButtonDocsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

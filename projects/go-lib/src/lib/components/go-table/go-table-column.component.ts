@@ -9,6 +9,7 @@ export class GoTableColumnComponent {
   @Input() field: string;
   @Input() title: string;
   @Input() width: number;
+  @Input() sortable?: boolean;
 
   @ContentChild('goTableCell') goTableCell: TemplateRef<any>;
   @ContentChild('goTableHead') goTableHead: TemplateRef<any>;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccordionPanelDocsComponent } from './accordion-panel-docs.component';
+import { GoFooterComponent } from './go-footer.component';
 
-describe('AccordionPanelDocsComponent', () => {
-  let component: AccordionPanelDocsComponent;
-  let fixture: ComponentFixture<AccordionPanelDocsComponent>;
+describe('GoFooterComponent', () => {
+  let component: GoFooterComponent;
+  let fixture: ComponentFixture<GoFooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccordionPanelDocsComponent ]
+      declarations: [ GoFooterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccordionPanelDocsComponent);
+    fixture = TestBed.createComponent(GoFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

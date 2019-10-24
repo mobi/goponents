@@ -36,8 +36,9 @@
             <h3 class="go-heading-6">buttonType</h3>
             <p class="go-body-copy">
               Changes the type attribute of the button. This attribute
-              defaults to "button" but other options are necessary when
-              doing things like submitting or resetting forms. 
+              defaults to <code class="code-block--inline">button</code> but other options are necessary when
+              doing things like submitting (<code class="code-block--inline">submit</code>)
+              or resetting (<code class="code-block--inline">reset</code>) forms.
             </p>
 
             <h3 class="go-heading-6">handleClick</h3>
@@ -55,16 +56,17 @@
               modifications:
             </p>
             <ol class="go-list go-list--ordered">
-              <li>Default: <code class="code-block--inline">.go-button</code></li>
-              <li>Negative: <code class="code-block--inline">.go-button--negative</code></li>
-              <li>Neutral: <code class="code-block--inline">.go-button--neutral</code></li>
-              <li>Positive: <code class="code-block--inline">.go-button--positive</code></li>
+              <li>Primary (default): <code class="code-block--inline">primary</code></li>
+              <li>Secondary: <code class="code-block--inline">secondary</code></li>
+              <li>Tertiary: <code class="code-block--inline">tertiary</code></li>
+              <li>Negative: <code class="code-block--inline">negative</code></li>
+              <li>Neutral: <code class="code-block--inline">neutral</code></li>
             </ol>
 
             <h3 class="go-heading-6">isProcessing</h3>
             <p class="go-body-copy">
               Turns the loading state on/off. It is recommended to use this when
-              processing data that will take longer than 250ms. Examples:
+              processing data that will take longer than ~250ms. Examples:
               submitting a form, sorting data, refreshing data from the
               server, etc.
             </p>
@@ -81,28 +83,79 @@
     </go-card>
   </div>
 
-  <go-card class="go-column go-column--100" id="default-buttons">
+  <div class="go-column go-column--100">
+    <go-toast type="negative"
+              header="Note!"
+              [message]="variantNotice"></go-toast>
+  </div>
+
+  <go-card class="go-column go-column--100" id="primary-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Default Button</h2>
+      <h2 class="go-heading-5">Primary Button</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        The default button is preferred when the action being performed
-        is of little importance. Ideally, the button itself describes
-        what it does. For example, a button to close a modal would be
-        a good use case for the default button. It isn't important or
-        informational, it is just a simple action.
+        The Primary button is the default button variant and should be used to indicate
+        the primary action on a page, such as a "save" button.
       </p>
-      <code [highlight]="defaultExample"></code>
+      <code [highlight]="primaryExample"></code>
       <div class="go-container">
         <div class="go-column go-column--33">
-          <go-button (handleClick)="testClick()">Default</go-button>
+          <go-button (handleClick)="testClick()">Primary</go-button>
         </div>
         <div class="go-column go-column--33">
           <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
         <div class="go-column go-column--33">
-          <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button (handleClick)="testClick()" buttonIcon="work"></go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="secondary-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Secondary Button</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The Secondary button variant should be used to indicate a secondary action
+        on a page. Examples could be: a refresh, opening modals, etc.
+      </p>
+      <code [highlight]="secondaryExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="tertiary-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Tertiary Button</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The Tertiary button variant should be used after both a primary and secondary variants have been used.
+        It should generally only appear next to secondary variant buttons.
+      </p>
+      <code [highlight]="tertiaryExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="tertiary" (handleClick)="testClick()">Tertiary</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--33">
+          <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
         </div>
       </div>
     </ng-container>
@@ -145,7 +198,7 @@
         an action as being informational. Opening up a chat modal or
         sending a user to an external resource might be a good example
         of when to use this button. It could also be used to guide a
-        user towards an action that isn't necessarily positive, but still
+        user towards an action that isn't necessarily required, but still
         important.
       </p>
       <code [highlight]="neutralExample"></code>
@@ -163,33 +216,6 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100" id="positive-buttons">
-    <ng-container go-card-header>
-      <h2 class="go-heading-5">Positive Buttons</h2>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Positive buttons are displayed in blue. Use positive buttons to
-        designate an action as being positive. Creating a resource or
-        submitting a form might be a good example of when to use this
-        button variant. It could also be used to guide a user towards
-        an action we want them to make, such as signing up for something
-      </p>
-      <code [highlight]="positiveExample"></code>
-      <div class="go-container">
-        <div class="go-column go-column--33">
-          <go-button (handleClick)="testClick()" buttonVariant="positive">Positive</go-button>
-        </div>
-        <div class="go-column go-column--33">
-          <go-button (handleClick)="testClick()" buttonVariant="positive" buttonDisabled="true">Disabled</go-button>
-        </div>
-        <div class="go-column go-column--33">
-          <go-button (handleClick)="testClick()" buttonVariant="positive" buttonIcon="check">With Icon</go-button>
-        </div>
-      </div>
-    </ng-container>
-  </go-card>
-
   <go-card class="go-column go-column--100" id="loading-buttons">
     <ng-container go-card-header>
       <h2 class="go-heading-5">Button with loader</h2>
@@ -198,7 +224,7 @@
       <p class="go-body-copy">
         Loading buttons display the loading animation inside the
         button.  By default this is false. It is recommended to use
-        this when processing data that will take longer than 250ms.
+        this when processing data that will take longer than ~250ms.
         Examples might include submitting a form, sorting data,
         refreshing data from the server, etc. While in this state,
         a button will additionally be disabled to prevent the action
@@ -212,12 +238,34 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <go-button
-            (handleClick)="testSubmit('defaultButton')"
-            [isProcessing]="defaultButtonLoading"
+            (handleClick)="testSubmit('primaryButton')"
+            [isProcessing]="primaryButtonLoading"
             buttonIcon="close"
-            #defaultButton
+            #primaryButton
           >
-            Default Loading
+            Primary
+          </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('secondaryButton')"
+            [isProcessing]="secondaryButtonLoading"
+            buttonIcon="check"
+            buttonVariant="secondary"
+            #secondaryButton
+          >
+            Secondary
+          </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('tertiaryButton')"
+            [isProcessing]="tertiaryButtonLoading"
+            buttonIcon="check"
+            buttonVariant="tertiary"
+            #tertiaryButton
+          >
+            Tertiary
           </go-button>
         </div>
         <div class="go-column go-column--50">
@@ -240,17 +288,6 @@
             #neutralButton
           >
             Neutral Loading
-          </go-button>
-        </div>
-        <div class="go-column go-column--50">
-          <go-button
-            (handleClick)="testSubmit('positiveButton')"
-            [isProcessing]="positiveButtonLoading"
-            buttonIcon="check"
-            buttonVariant="positive"
-            #positiveButton
-          >
-            Positive Loading
           </go-button>
         </div>
       </div>
@@ -283,16 +320,34 @@
             <div class="go-container">
               <div class="go-column go-column--50">
                 <go-button (handleClick)="testClick()" [useDarkTheme]="true">
-                  Default
+                  Primary
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button
-                  (handleClick)="testClick()"
-                  [useDarkTheme]="true"
-                  buttonVariant="neutral"
-                  buttonIcon="live_help"
-                >
+                <go-button (handleClick)="testSubmit('secondaryDarkButton')"
+                           [useDarkTheme]="true"
+                           buttonVariant="secondary"
+                           buttonIcon="home"
+                           [isProcessing]="secondaryDarkButtonLoading"
+                           #secondaryDarkButton>
+                  Secondary
+                </go-button>
+              </div>
+              <div class="go-column go-column--50">
+                <go-button (handleClick)="testSubmit('tertiaryDarkButton')"
+                           [useDarkTheme]="true"
+                           buttonVariant="tertiary"
+                           buttonIcon="home"
+                           [isProcessing]="tertiaryDarkButtonLoading"
+                           #tertiaryDarkButton>
+                  Tertiary
+                </go-button>
+              </div>
+              <div class="go-column go-column--50">
+                <go-button (handleClick)="testClick()"
+                           [useDarkTheme]="true"
+                           buttonVariant="neutral"
+                           buttonIcon="live_help">
                   With Icon
                 </go-button>
               </div>
@@ -309,13 +364,10 @@
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button
-                  [useDarkTheme]="true"
-                  buttonIcon="check"
-                  buttonVariant="positive"
-                  buttonDisabled="true"
-                >
-                  Positive Disabled
+                <go-button [useDarkTheme]="true"
+                           buttonIcon="check"
+                           buttonDisabled="true">
+                  Disabled
                 </go-button>
               </div>
             </div>

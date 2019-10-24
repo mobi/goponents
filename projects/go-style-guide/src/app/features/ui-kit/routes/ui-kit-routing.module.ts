@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AccordionDocsComponent } from '../components/accordion-docs/accordion-docs.component';
-import { AccordionPanelDocsComponent } from '../components/accordion-panel-docs/accordion-panel-docs.component';
+import { AccordionPanelDocsComponent } from '../components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { ActionSheetDocsComponent } from '../components/action-sheet-docs/action-sheet-docs.component';
 import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from '../components/button-docs/button-docs.component';
@@ -11,8 +11,10 @@ import { CopyDocsComponent } from '../components/copy-docs/copy-docs.component';
 import { DatepickerDocsComponent } from '../components/form-docs/components/datepicker-docs/datepicker-docs.component';
 import { FormDocsComponent } from '../components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from '../components/form-docs/components/forms-overview/forms-overview.component';
+import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from '../components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from '../components/form-docs/components/input-docs/input-docs.component';
+import { LayoutFooterComponent } from '../components/layout-docs/components/layout-footer/layout-footer.component';
 import { ModalDocsComponent } from '../components/modal-docs/modal-docs.component';
 import { ServerIntegrationComponent } from '../components/table-docs/components/server-integration/server-integration.component';
 import { TableDocsComponent } from '../components/table-docs/table-docs.component';
@@ -39,10 +41,17 @@ import { ConfigurationDocsComponent } from '../components/configuration-docs/con
 import { ActionSheetOverviewComponent } from '../components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetPanelDocsComponent } from '../components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
+import { AccordionOverviewComponent } from '../components/accordion-docs/components/accordion-overview/accordion-overview.component';
+import { SwitchToggleDocsComponent } from '../components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
+import { RadioButtonDocsComponent } from '../components/form-docs/components/radio-button-docs/radio-button-docs.component';
+import { CheckboxDocsComponent } from '../components/form-docs/components/checkbox-docs/checkbox-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
-  { path: 'ui-kit/accordion', component: AccordionDocsComponent },
+  { path: 'ui-kit/accordion', component: AccordionDocsComponent, children: [
+    { path: '', component: AccordionOverviewComponent },
+    { path: 'panel', component: AccordionPanelDocsComponent }
+  ]},
   { path: 'ui-kit/accordion-panel', component: AccordionPanelDocsComponent },
   { path: 'ui-kit/action-sheet', component: ActionSheetDocsComponent, children: [
     { path: '', component: ActionSheetOverviewComponent },
@@ -55,16 +64,21 @@ const routes: Routes = [
   { path: 'ui-kit/copy', component: CopyDocsComponent },
   { path: 'ui-kit/forms', component: FormDocsComponent, children: [
     { path: '', component: FormsOverviewComponent },
+    { path: 'checkbox', component: CheckboxDocsComponent },
     { path: 'datepicker', component: DatepickerDocsComponent },
     { path: 'input', component: InputDocsComponent },
+    { path: 'radio', component: RadioButtonDocsComponent },
     { path: 'select', component: SelectDocsComponent },
+    { path: 'switch-toggle', component: SwitchToggleDocsComponent },
     { path: 'textarea', component: TextAreaDocsComponent }
   ]},
+  { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
     { path: '', component: LayoutOverviewComponent },
     { path: 'header', component: LayoutHeaderComponent },
     { path: 'search', component: LayoutSearchComponent },
     { path: 'side-nav', component: LayoutNavComponent },
+    { path: 'footer', component: LayoutFooterComponent },
     { path: 'example', component: LayoutExampleComponent }
   ]},
   { path: 'ui-kit/loader', component: LoaderDocsComponent },

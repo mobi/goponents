@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoCheckboxComponent } from './go-checkbox.component';
+import { GoHintModule } from '../go-hint/go-hint.module';
 
 describe('GoCheckboxComponent', () => {
   let component: GoCheckboxComponent;
@@ -10,7 +11,11 @@ describe('GoCheckboxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoCheckboxComponent],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        GoHintModule
+      ]
     })
     .compileComponents();
   }));

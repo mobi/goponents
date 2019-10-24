@@ -9,12 +9,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
-}
-
-.go-layout__nav {
-  max-height: 100%;
-  overflow-y: auto;
 }
 
 .go-layout__content {
@@ -26,16 +22,22 @@ body {
 .go-layout__route-container {
   display: flex;
   flex-grow: 1;
-  position: relative;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - 4rem);
 }
 
-.go-layout__route-container-outlet ~ * {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 2rem;
-  position: absolute;
+.go-layout__route-container-outlet ~ :not(go-footer) {
   width: 100%;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.go-footer {
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .go-route-loader {
@@ -47,4 +49,5 @@ body {
   overflow: hidden;
   position: absolute;
   width: 100%;
+  z-index: z-index(loading-screen);
 }

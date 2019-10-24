@@ -32,6 +32,7 @@ export class TestPage3Component implements OnInit {
     notes: new FormControl(''),
     radio: new FormControl({value: '', disabled: false}),
     toggle: new FormControl(false),
+    toggle2: new FormControl(false),
     date: new FormControl(new Date(2019, 4, 25)),
     date2: new FormControl('5/25/2019')
   });

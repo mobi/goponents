@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-action-sheet-overview',
@@ -55,4 +56,8 @@ export class ActionSheetOverviewComponent {
     </ng-container>
   </go-action-sheet>
   `;
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Action Sheet Overview';
+  }
 }

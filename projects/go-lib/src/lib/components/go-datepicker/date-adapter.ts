@@ -16,7 +16,7 @@ export class DateAdapter {
   }
 
   public getYearName(year: number): string {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {year: 'numeric', timeZone: 'utc'});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {year: 'numeric'});
 
     return this.format(format, new Date(year, 0, 1));
   }
@@ -63,7 +63,7 @@ export class DateAdapter {
   }
 
   private getMonthNames(style: 'long' | 'short' | 'narrow'): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {month: style, timeZone: 'utc'});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {month: style});
     const months: Array<string> = [];
     for (let i: number = 0; i < 12; i++) {
       months.push(this.format(format, new Date(2017, i, 1)));
@@ -72,7 +72,7 @@ export class DateAdapter {
   }
 
   private getDateNames(): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {day: 'numeric', timeZone: 'utc'});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {day: 'numeric'});
     const dates: Array<string> = [];
 
     for (let i: number = 0; i < 31; i++) {
@@ -83,7 +83,7 @@ export class DateAdapter {
   }
 
   private getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): Array<string> {
-    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {weekday: style, timeZone: 'utc'});
+    const format: Intl.DateTimeFormat = new Intl.DateTimeFormat(this._locale, {weekday: style});
     const dayNames: Array<string> = [];
 
     for (let i: number = 0; i < 7; i++) {

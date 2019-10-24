@@ -8,11 +8,14 @@ import { NavGroup } from '../../../../../../../go-lib/src/public_api';
 export class FormDocsComponent {
   menuItems: Array<NavGroup> = [
     {
-      routeTitle: 'Basics', subRoutes: [
+      routeTitle: 'Forms', subRoutes: [
         { route: './', routeTitle: 'Overview' },
+        { route: 'checkbox', routeTitle: 'Checkbox' },
         { route: './datepicker', routeTitle: 'Datepicker' },
         { route: './input', routeTitle: 'Input' },
+        { route: './radio', routeTitle: 'Radio' },
         { route: './select', routeTitle: 'Select' },
+        { route: './switch-toggle', routeTitle: 'Switch Toggle' },
         { route: './textarea', routeTitle: 'Text Area' }
       ]
     }

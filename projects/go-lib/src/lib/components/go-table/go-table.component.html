@@ -10,7 +10,7 @@
            *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
-          <th class="go-table__head-column"
+          <th class="go-table__head-column go-table__head--sortable"
               width="60"
               *ngIf="localTableConfig.selectable"
               (click)="toggleSelectAll()">
@@ -18,7 +18,8 @@
           </th>
           <th *ngFor="let col of columns"
               class="go-table__head-column"
-              (click)="toggleSort(col.field)">
+              (click)="toggleSort(col.sortable, col.field)"
+              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }">
             <div class="go-table__head-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
                 {{ col.title || col.field }}

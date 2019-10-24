@@ -14,6 +14,7 @@ export class LayoutDocsComponent {
       { route: './header', routeTitle: 'Header' },
       { route: './search', routeTitle: 'Search' },
       { route: './side-nav', routeTitle: 'Side Nav' },
+      { route: './footer', routeTitle: 'Footer' },
       { route: './example', routeTitle: 'Full Example' }
     ]}
   ];

@@ -8,16 +8,22 @@ import { GoButtonComponent } from '../../../../../../../go-lib/src/public_api';
 })
 export class ButtonDocsComponent {
 
-  @ViewChild('defaultButton') defaultButton: GoButtonComponent;
+  @ViewChild('primaryButton') primaryButton: GoButtonComponent;
+  @ViewChild('secondaryButton') secondaryButton: GoButtonComponent;
+  @ViewChild('secondaryDarkButton') secondaryDarkButton: GoButtonComponent;
+  @ViewChild('tertiaryButton') tertiaryButton: GoButtonComponent;
+  @ViewChild('tertiaryDarkButton') tertiaryDarkButton: GoButtonComponent;
   @ViewChild('negativeButton') negativeButton: GoButtonComponent;
   @ViewChild('negativeDarkButton') negativeDarkButton: GoButtonComponent;
   @ViewChild('neutralButton') neutralButton: GoButtonComponent;
-  @ViewChild('positiveButton') positiveButton: GoButtonComponent;
 
-  defaultButtonLoading: boolean = false;
+  primaryButtonLoading: boolean = false;
+  secondaryButtonLoading: boolean = false;
+  secondaryDarkButtonLoading: boolean = false;
+  tertiaryButtonLoading: boolean = false;
+  tertiaryDarkButtonLoading: boolean = false;
   negativeButtonLoading: boolean = false;
   neutralButtonLoading: boolean = false;
-  positiveButtonLoading: boolean = false;
   negativeDarkButtonLoading: boolean = false;
 
   pageTitle: string = 'Button';
@@ -33,17 +39,38 @@ export class ButtonDocsComponent {
   @Output() handleClick = new EventEmitter<boolean>();
   `;
 
-  defaultExample: string = `
-  <go-button (handleClick)="testClick()">Default</go-button>
+  variantNotice: string = `
+  The default buttonVariant is 'primary', however in many cases the variant that should be used will be different.
+  It is dependent upon the usage context for when to use each variant. Refer to the mock ups for proper usage or
+  reach out to UX for clarification.
+  `;
+
+  primaryExample: string = `
+  <go-button (handleClick)="testClick()">Primary</go-button>
 
   <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
 
   <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
   `;
 
+  secondaryExample: string = `
+  <go-button (handleClick)="testClick()">Secondary</go-button>
+
+  <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+
+  <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+  `;
+
+  tertiaryExample: string = `
+  <go-button buttonVariant="tertiary" (handleClick)="testClick()">Tertiary</go-button>
+
+  <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+
+  <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+  `;
+
   negativeExample: string = this.buttonTemplate('negative', 'delete');
   neutralExample: string = this.buttonTemplate('neutral', 'live_help');
-  positiveExample: string = this.buttonTemplate('positive', 'check');
 
   loadingExampleTS: string = `
   import { GoButtonComponent } from 'goponents';
@@ -66,7 +93,7 @@ export class ButtonDocsComponent {
 
   darkButtonExample: string = `
   <go-button (handleClick)="testClick()" [useDarkTheme]="true">
-    Default
+    Primary
   </go-button>
   `;
 

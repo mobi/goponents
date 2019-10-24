@@ -9,6 +9,10 @@ import { GoTablePageConfig } from './go-table-paging.model';
 describe('GoTableComponent', () => {
   let component: GoTableComponent;
   let fixture: ComponentFixture<GoTableComponent>;
+  const tableConfig: GoTableConfig = new GoTableConfig({
+    pageable: true,
+    tableData: []
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,10 +28,8 @@ describe('GoTableComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoTableComponent);
     component = fixture.componentInstance;
-    component.tableConfig = new GoTableConfig({
-      pageable: true,
-      tableData: []
-    });
+    component.tableConfig = tableConfig;
+
     fixture.detectChanges();
   });
 
@@ -71,6 +73,32 @@ describe('GoTableComponent', () => {
       const secondNumber: number = component.localTableConfig.pageConfig.offset + component.localTableConfig.pageConfig.perPage;
 
       expect(resultSet).toBe(firstNumber + ' - ' + secondNumber);
+    });
+  });
+
+  describe('toggleSort', () => {
+    beforeEach(() => {
+      spyOn(component.tableChange, 'emit');
+    });
+
+    afterEach(() => {
+      component.tableConfig = tableConfig;
+    });
+
+    it('should update columns if column is sortable', () => {
+      component.toggleSort(true, 'value');
+      expect(component.tableChange.emit).toHaveBeenCalled();
+    });
+
+    it('should not update columns if column is not sortable', () => {
+      component.toggleSort(false, 'value');
+      expect(component.tableChange.emit).not.toHaveBeenCalled();
+    });
+
+    it('should update columns if column sortable is undefined, but table is sortable', () => {
+      component.tableConfig.sortable = true;
+      component.toggleSort(undefined, 'value');
+      expect(component.tableChange.emit).toHaveBeenCalled();
     });
   });
 });

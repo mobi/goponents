@@ -10,6 +10,7 @@ import {
   GoBadgeModule,
   GoButtonModule,
   GoCardModule,
+  GoCheckboxModule,
   GoConfigService,
   GoCopyModule,
   GoDatepickerModule,
@@ -21,7 +22,10 @@ import {
   GoModalService,
   GoOffCanvasModule,
   GoOffCanvasService,
+  GoRadioModule,
+  GoSelectComponent,
   GoSelectModule,
+  GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
   GoToasterService,
@@ -33,7 +37,7 @@ import { UiKitRoutesModule } from './routes/ui-kit-routing.module';
 
 // Module Components
 import { AccordionDocsComponent } from './components/accordion-docs/accordion-docs.component';
-import { AccordionPanelDocsComponent } from './components/accordion-panel-docs/accordion-panel-docs.component';
+import { AccordionPanelDocsComponent } from './components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
@@ -43,8 +47,10 @@ import { DatepickerDocsComponent } from './components/form-docs/components/datep
 import { FormControlDocsComponent } from './components/form-docs/components/form-control-docs/form-control-docs.component';
 import { FormDocsComponent } from './components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from './components/form-docs/components/forms-overview/forms-overview.component';
+import { IconButtonDocsComponent } from './components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from './components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from './components/form-docs/components/input-docs/input-docs.component';
+import { LayoutFooterComponent } from './components/layout-docs/components/layout-footer/layout-footer.component';
 import { ModalDocsComponent } from './components/modal-docs/modal-docs.component';
 import { ModalTestComponent } from './components/modal-test/modal-test.component';
 import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
@@ -73,6 +79,10 @@ import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-
 import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/components/action-sheet-panel-docs/action-sheet-panel-docs.component';
+import { AccordionOverviewComponent } from './components/accordion-docs/components/accordion-overview/accordion-overview.component';
+import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
+import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
+import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
 
 @NgModule({
   imports: [
@@ -82,6 +92,7 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     GoBadgeModule,
     GoButtonModule,
     GoCardModule,
+    GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
     GoIconButtonModule,
@@ -92,6 +103,8 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,
+    GoSwitchToggleModule,
+    GoRadioModule,
     GoTableModule,
     GoToastModule,
     HighlightModule,
@@ -111,6 +124,7 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     DatepickerDocsComponent,
     FormDocsComponent,
     FormsOverviewComponent,
+    IconButtonDocsComponent,
     IconDocsComponent,
     InputDocsComponent,
     ModalDocsComponent,
@@ -128,6 +142,7 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     UiKitComponent,
     LoaderDocsComponent,
     LayoutDocsComponent,
+    LayoutFooterComponent,
     LayoutOverviewComponent,
     LayoutNavComponent,
     LayoutHeaderComponent,
@@ -137,10 +152,15 @@ import { ActionSheetPanelDocsComponent } from './components/action-sheet-docs/co
     TableActionsDocsComponent,
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
-    ActionSheetPanelDocsComponent
+    ActionSheetPanelDocsComponent,
+    AccordionOverviewComponent,
+    SwitchToggleDocsComponent,
+    RadioButtonDocsComponent,
+    CheckboxDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
+    GoSelectComponent,
     ModalTestComponent
   ],
   providers: [

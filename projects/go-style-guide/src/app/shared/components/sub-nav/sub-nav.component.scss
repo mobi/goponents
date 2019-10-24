@@ -10,11 +10,11 @@
 .sub-nav-outlet {
   flex: 1;
   position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .sub-nav-container-outlet ~ * {
-  height: 100%;
-  position: absolute;
   width: 100%;
 }
 
@@ -34,7 +34,7 @@
     z-index: 10;
 
     &.sub-nav-submenu--mobile-show {
-      box-shadow: $global-box-shadow;
+      box-shadow: $global-box-shadow--regular;
       right: 0;
     }
   }
@@ -45,7 +45,7 @@
 
   background: $theme-light-bg;
   border-radius: $global-radius 0 0 $global-radius;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--regular;
   cursor: pointer;
   display: none;
   height: 3rem;

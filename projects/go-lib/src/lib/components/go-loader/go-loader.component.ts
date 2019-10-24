@@ -19,6 +19,7 @@ export class GoLoaderComponent {
 
   loaderClasses(): object {
     return {
+      'go-loader--xsmall': this.loaderSize === 'xsmall',
       'go-loader--small': this.loaderSize === 'small',
       'go-loader--medium': this.loaderSize === 'medium',
       'go-loader--large': this.loaderSize === 'large',

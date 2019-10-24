@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   templateUrl: './input-docs.component.html'
@@ -92,6 +93,10 @@ export class InputDocsComponent implements OnInit {
     inputType="password"
   ></go-input>
   `;
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Input';
+  }
 
   ngOnInit(): void {
     setTimeout((): void => {

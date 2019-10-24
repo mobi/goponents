@@ -1,120 +1,116 @@
-<header class="go-page-title">
-    <h1 class="go-heading-3">Action Sheets</h1>
-  </header>
-  
-  <section class="go-container">
-    <go-card [showHeader]="false" class="go-column go-column--100">
-      <ng-container go-card-content>
-        
-        <h1 class="go-heading-5">Usage</h1>
-        <p class="go-body-copy">The Action Sheet component should be used when a list of actions or links need to be grouped and hidden behind a button.</p>
+<section class="go-container">
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <ng-container go-card-content>
+      
+      <h1 class="go-heading-5">Usage</h1>
+      <p class="go-body-copy">The Action Sheet component should be used when a list of actions or links need to be grouped and hidden behind a button.</p>
 
-        <p class="go-body-copy">
-            The <code class="code-block--inline">go-action-sheet</code> element must be accompanied by
-            <code class="code-block--inline">go-panel</code> children.
-            See <a [routerLink]="['/ui-kit/action-sheet/panel']">Panel</a> for details.
+      <p class="go-body-copy">
+          The <code class="code-block--inline">go-action-sheet</code> element must be accompanied by
+          <code class="code-block--inline">go-panel</code> children.
+          See <a [routerLink]="['/ui-kit/action-sheet/panel']">Panel</a> for details.
+        </p>
+
+      <h1 class="go-heading-5">Bindings</h1>
+      <code [highlight]="bindings"></code>
+
+      <h2 class="go-heading-6">shiftLeft</h2>
+      <p class="go-body-copy">
+        If true, <code class="code-block--inline">shiftLeft</code>
+        will move the pop up portion of the action sheet to the left and adjust the arrow to the right.
+        This is useful for items close to the right edge of the page or container.
+      </p>
+
+      <p class="go-body-copy">
+        <strong>For more detailed examples of options available to you, check out the options for the panel.</strong>
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <ng-container go-card-content>
+      <h1 class="go-heading-5">Action Sheet Structure</h1>
+      <p class="go-body-copy">
+        The action sheet component is split up into two sections. The trigger and the content.
+        The simpliest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
+      </p>
+
+      <code [highlight]="structureHtml"></code>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h1 class="go-heading-5">Simple</h1>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            A simple example to show the basic functionality of an action sheet.
           </p>
-  
-        <h1 class="go-heading-5">Bindings</h1>
-        <code [highlight]="bindings"></code>
-  
-        <h2 class="go-heading-6">shiftLeft</h2>
-        <p class="go-body-copy">
-          If true, <code class="code-block--inline">shiftLeft</code>
-          will move the pop up portion of the action sheet to the left and adjust the arrow to the right.
-          This is useful for items close to the right edge of the page or container.
-        </p>
-
-        <p class="go-body-copy">
-          <strong>For more detailed examples of options available to you, check out the options for the panel.</strong>
-        </p>
-      </ng-container>
-    </go-card>
-
-    <go-card [showHeader]="false" class="go-column go-column--100">
-      <ng-container go-card-content>
-        <h1 class="go-heading-5">Action Sheet Structure</h1>
-        <p class="go-body-copy">
-          The action sheet component is split up into two sections. The trigger and the content.
-          The simpliest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
-        </p>
-
-        <code [highlight]="structureHtml"></code>
-      </ng-container>
-    </go-card>
-  
-    <go-card class="go-column go-column--100">
-      <header go-card-header>
-        <h1 class="go-heading-5">Simple</h1>
-      </header>
-      <div go-card-content>
-        <div class="go-container">
-          <div class="go-column--100 go-column go-column--no-padding">
-            <p class="go-body-copy">
-              A simple example to show the basic functionality of an action sheet.
-            </p>
-          </div>
-          <div class="go-column go-column--50 go-column--no-padding">
-            <h2 class="go-heading-6">Code</h2>
-            <code [highlight]="simpleHtml"></code>
-          </div>
-          <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-            <h2 class="go-heading-6">View</h2>
-            <go-action-sheet>
-              <ng-container go-action-sheet__button>
-                <go-button>
-                  Action Sheet
-                </go-button>
-              </ng-container>
-              <ng-container go-action-sheet-content>
-                <go-panel panelContent="Panel 1">
-                </go-panel>
-                <go-panel panelContent="Panel 2">
-                </go-panel>
-                <go-panel panelContent="Panel 3">
-                </go-panel>
-              </ng-container>
-            </go-action-sheet>
-          </div>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h2 class="go-heading-6">Code</h2>
+          <code [highlight]="simpleHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h2 class="go-heading-6">View</h2>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Action Sheet
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Panel 1">
+              </go-panel>
+              <go-panel panelContent="Panel 2">
+              </go-panel>
+              <go-panel panelContent="Panel 3">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
         </div>
       </div>
-    </go-card>
+    </div>
+  </go-card>
 
-    <go-card class="go-column go-column--100" #accordion>
-      <header go-card-header>
-        <h1 class="go-heading-5">With an Accordion</h1>
-      </header>
-      <div go-card-content>
-        <div class="go-container">
-          <div class="go-column--100 go-column go-column--no-padding">
-            <p class="go-body-copy">
-              This example shows an instance where an accordion is being used inside of an action sheet.
-            </p>
-          </div>
-          <div class="go-column go-column--50 go-column--no-padding">
-            <h2 class="go-heading-6">Code</h2>
-            <code [highlight]="accordionHtml"></code>
-          </div>
-          <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-            <h2 class="go-heading-6">View</h2>
-            <go-action-sheet>
-              <ng-container go-action-sheet__button>
-                <go-button>
-                  Action Sheet
-                </go-button>
-              </ng-container>
-              <ng-container go-action-sheet-content>
-                <go-panel panelContent="Home" icon="home">
-                </go-panel>
-                <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
-                  <go-accordion-panel title="Home Stuff" icon="home" [borderless]="true">
-                    Stuff about home
-                  </go-accordion-panel>
-                </go-accordion>
-              </ng-container>
-            </go-action-sheet>
-          </div>
+  <go-card class="go-column go-column--100" #accordion>
+    <header go-card-header>
+      <h1 class="go-heading-5">With an Accordion</h1>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            This example shows an instance where an accordion is being used inside of an action sheet.
+          </p>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h2 class="go-heading-6">Code</h2>
+          <code [highlight]="accordionHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h2 class="go-heading-6">View</h2>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Action Sheet
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Home" icon="home">
+              </go-panel>
+              <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
+                <go-accordion-panel title="Home Stuff" icon="home" [borderless]="true">
+                  Stuff about home
+                </go-accordion-panel>
+              </go-accordion>
+            </ng-container>
+          </go-action-sheet>
         </div>
       </div>
-    </go-card>
-  </section>
+    </div>
+  </go-card>
+</section>
