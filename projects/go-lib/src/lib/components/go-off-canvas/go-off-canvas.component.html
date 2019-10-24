@@ -1,7 +1,7 @@
 <div
   (click)="closeOffCanvas()"
   [@fade]="opened ? 'in' : 'out'"
-  class="go-column go-column--100 go-off-canvas-backdrop"
+  class="go-off-canvas-backdrop"
   tabindex="-1"
 >
 </div>
@@ -11,8 +11,12 @@
   role="dialog"
 >
   <div class="go-off-canvas__header">
-    <h2>{{ header }}</h2>
-    <go-icon icon="clear" iconModifier="medium" iconClass="clickable" (click)="closeOffCanvas()"></go-icon>
+    <h2 *ngIf="header">
+      {{ header }}
+    </h2>
+    <go-icon-button buttonIcon="close"
+                    (handleClick)="closeOffCanvas()">
+    </go-icon-button>
   </div>
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>

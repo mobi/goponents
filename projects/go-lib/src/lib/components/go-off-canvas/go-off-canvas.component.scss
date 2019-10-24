@@ -31,13 +31,8 @@
   flex: 0 0 auto;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem;
+  padding: $column-gutter;
   align-items: center;
-}
-
-.go-off-canvas__header:last-child {
-  margin-left: auto;
 }
 
 .go-off-canvas__button {

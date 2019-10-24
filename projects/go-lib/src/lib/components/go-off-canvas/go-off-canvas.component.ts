@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
@@ -40,7 +40,7 @@ export class GoOffCanvasComponent implements OnInit {
     });
   }
 
-  public closeOffCanvas(): void {
+  closeOffCanvas(): void {
     this.goOffCanvasService.closeOffCanvas();
   }
 
