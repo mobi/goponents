@@ -69,10 +69,6 @@ $breakpoint-header-mobile-small: 500px;
   }
 }
 
-.go-header__left--collapsed {
-  width: auto;
-}
-
 .go-header__left--dark {
   color: $theme-dark-color
 }
@@ -92,10 +88,6 @@ $breakpoint-header-mobile-small: 500px;
     order: 2;
     width: 100vw;
   }
-}
-
-.go-header__middle--collapsed {
-  padding: 0 1rem;
 }
 
 .go-header__middle--hide {
