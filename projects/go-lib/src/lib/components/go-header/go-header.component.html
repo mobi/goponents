@@ -1,13 +1,15 @@
 <header class="go-header">
   <div class="go-header__left"
-       [ngClass]="{ 'go-header__left--dark': brandColorIsDark }"
-       [ngStyle]="{ 'background': brandColor }">
-    <go-icon class="go-header__menu"
-             icon="menu"
-             (click)="toggleSideMenu()">
-    </go-icon>
+       [ngClass]="{ 'go-header__left--dark': brandColorIsDark }">
+    <div class="go-header__menu-container"
+         [ngStyle]="{ 'background': brandColor }"
+         (click)="toggleSideMenu()">
+      <go-icon class="go-header__menu" icon="menu">
+      </go-icon>
+    </div>
     <div class="go-header__logo-container"
-         [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }">
+         [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
+         [ngStyle]="{ 'background': getLogoBackground() }">
       <img class="go-header__logo"
            alt="{{ altText }}"
            [src]="logo"/>

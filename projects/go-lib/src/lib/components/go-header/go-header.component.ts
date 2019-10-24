@@ -49,6 +49,14 @@ export class GoHeaderComponent implements OnChanges {
     return window.innerWidth <= this.minWidthBreakpoint ? true : !this.sideNavService.navOpen;
   }
 
+  getLogoBackground(): string | null {
+    if (this.brandColor && !this.isNavCollapsed()) {
+      return this.brandColor;
+    } else {
+      return null;
+    }
+  }
+
   toggleSideMenu(): void {
     this.sideNavService.toggleNav();
   }

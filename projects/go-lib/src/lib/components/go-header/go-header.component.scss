@@ -18,13 +18,26 @@ $breakpoint-header-mobile-small: 500px;
   }
 }
 
+.go-header__menu-container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: $side-nav-width--collapsed;
+
+  &:hover {
+    .go-header__menu {
+      opacity: .5;
+    }
+  }
+}
+
 .go-header__menu {
-  @include transition(background);
+  @include transition(all);
 
   align-items: center;
   align-self: center;
   border-radius: 50%;
-  cursor: pointer;
   display: flex;
   flex-shrink: 0;
   font-size: 1.5rem;
@@ -32,10 +45,6 @@ $breakpoint-header-mobile-small: 500px;
   justify-content: center;
   user-select: none;
   width: calc(#{$side-nav-width--collapsed} - 1rem);
-
-  &:hover {
-    opacity: .5;
-  }
 }
 
 .go-header__logo-container {
@@ -43,7 +52,7 @@ $breakpoint-header-mobile-small: 500px;
   display: flex;
   flex: 1;
   justify-content: flex-start;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 
   @media (max-width: $breakpoint-header-mobile-small) {
     padding: 0.5rem;
@@ -65,7 +74,6 @@ $breakpoint-header-mobile-small: 500px;
   @include transition(width);
 
   display: flex;
-  padding: 0.5rem;
   width: 15.5rem;
 
   @media (max-width: $breakpoint-mobile) {
