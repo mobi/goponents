@@ -32,6 +32,10 @@ $breakpoint-header-mobile-small: 500px;
   justify-content: center;
   user-select: none;
   width: calc(#{$side-nav-width--collapsed} - 1rem);
+
+  &:hover {
+    opacity: .5;
+  }
 }
 
 .go-header__logo-container {
