@@ -1,5 +1,6 @@
 import {
   Component,
+  ContentChild,
   ContentChildren,
   ElementRef,
   EventEmitter,
@@ -8,6 +9,7 @@ import {
   OnInit,
   Output,
   QueryList,
+  TemplateRef,
   ViewChild
 } from '@angular/core';
 
@@ -24,9 +26,14 @@ import {
 } from './index';
 import { sortBy } from './go-table-utils';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
+import { detailButtonAnim, detailsAnimation } from '../../animations/table-details.animation';
 
 @Component({
-  animations: [fadeTemplateAnimation],
+  animations: [
+    detailButtonAnim,
+    detailsAnimation,
+    fadeTemplateAnimation
+  ],
   selector: 'go-table',
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
@@ -51,6 +58,7 @@ export class GoTableComponent implements OnInit, OnChanges {
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
+  @ContentChild('goTableDetails') details: TemplateRef<any>;
 
   @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
 
@@ -274,6 +282,10 @@ export class GoTableComponent implements OnInit, OnChanges {
     } else {
       return false;
     }
+  }
+
+  toggleDetails(row: any): void {
+    row.showDetails = !row.showDetails;
   }
 
   //#region Private Methods

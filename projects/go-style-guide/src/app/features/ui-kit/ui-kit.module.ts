@@ -57,6 +57,8 @@ import { ModalDocsComponent } from './components/modal-docs/modal-docs.component
 import { ModalTestComponent } from './components/modal-test/modal-test.component';
 import { SelectDocsComponent } from './components/form-docs/components/select-docs/select-docs.component';
 import { ServerIntegrationComponent } from './components/table-docs/components/server-integration/server-integration.component';
+import { TableDetailsComponent } from './components/table-docs/components/table-details/table-details.component';
+import { TableDetailsTestComponent } from './components/table-docs/components/table-details/table-details-test.component';
 import { TableDocsComponent } from './components/table-docs/table-docs.component';
 import { TableOverviewComponent } from './components/table-docs/components/table-overview/table-overview.component';
 import { TablePaginationComponent } from './components/table-docs/components/table-pagination/table-pagination.component';
@@ -152,6 +154,8 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     LayoutHeaderComponent,
     LayoutSearchComponent,
     LayoutExampleComponent,
+    TableDetailsComponent,
+    TableDetailsTestComponent,
     TableSelectionComponent,
     TableActionsDocsComponent,
     ActionSheetDocsComponent,
