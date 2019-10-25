@@ -71,6 +71,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.goConfigService.setBrandColor('#8A4EDE');
+    this.goConfigService.overrideMenuColor('light');
 
     this.toggleControl.valueChanges.subscribe(() => {
       this.goConfigService.toggleHeaderBrandingEnabled();

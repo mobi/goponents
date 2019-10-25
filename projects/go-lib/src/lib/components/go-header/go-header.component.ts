@@ -37,7 +37,12 @@ export class GoHeaderComponent implements OnChanges {
       .pipe(distinctUntilChanged())
       .subscribe((value: GoConfigInterface) => {
         if (value.headerBrandingEnabled) {
-          this.handleBrandColorChange(value);
+          if (value.brandFontColor) {
+            this.brandColor = value.brandColor;
+            this.brandColorIsDark = value.brandFontColor === 'light';
+          } else {
+            this.handleBrandColorChange(value);
+          }
         } else {
           this.brandColor = '';
           this.brandColorIsDark = false;
