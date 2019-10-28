@@ -96,6 +96,7 @@
   height: .75rem;
   padding-left: .25rem;
 }
+
 .go-table__body-column {
   border-bottom: 1px solid $theme-light-app-bg;
   font-size: .875rem;
@@ -112,6 +113,10 @@
 
 .go-table__body-row--selected {
   background: $theme-light-app-bg;
+}
+
+.go-table__body-row:nth-child(even) {
+  background: rgba($theme-light-app-bg, .5);
 }
 
 .go-table-toolbar {
