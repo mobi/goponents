@@ -12,6 +12,7 @@ export class CheckboxDocsComponent {
   checkbox2: FormControl = new FormControl('');
   checkbox3: FormControl = new FormControl('');
   checkbox4: FormControl = new FormControl('');
+  checkbox5: FormControl = new FormControl({ value: true, disabled: true });
 
   checkboxGroup1: FormGroup = new FormGroup({
     option1: new FormControl(''),
@@ -124,6 +125,13 @@ export class CheckboxDocsComponent {
                [control]="checkbox3"
                theme="dark">
   </go-checkbox>
+  `;
+
+  checkbox5Ex: string = `
+  checkbox5: FormControl = new FormControl({
+    value: true,
+    disabled: true
+  });
   `;
 
   constructor(private subNavService: SubNavService) {

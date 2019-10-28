@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'go-checkbox',
+  styleUrls: ['./go-checkbox.component.scss'],
   templateUrl: './go-checkbox.component.html'
 })
 export class GoCheckboxComponent implements OnInit {

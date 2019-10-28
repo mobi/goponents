@@ -170,6 +170,31 @@
     </ng-container>
   </go-card>
 
+  <go-card id="form-checkbox-disabled" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h1 class="go-heading-5">Checkbox Disabled</h1>
+      </ng-container>
+      <ng-container go-card-content>
+        <p class="go-body-copy">
+            FormControls can be disabled using the <code class="code-block--inline">disabled</code> property
+            on the form control.
+        </p>
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h2 class="go-heading-6 go-heading--underlined">View</h2>
+            <go-checkbox label="Checkbox 1" [control]="checkbox5">
+            </go-checkbox>
+          </div>
+          <div class="go-column go-column--50">
+            <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+            <code [highlight]="checkbox5Ex"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </ng-container>
+    </go-card>
+
   <go-card id="form-checkbox-theme" class="go-column go-column--100">
     <ng-container go-card-header>
       <h1 class="go-heading-5">Checkbox Theme</h1>

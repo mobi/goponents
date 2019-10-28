@@ -1,10 +1,15 @@
 <div>
-  <input [id]="id"
-         class="go-form__checkbox"
-         [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
-         type="checkbox"
-         [formControl]="control">
-
+  <span class="go-form__checkbox-wrapper">
+    <input
+      [id]="id"
+      class="go-form__checkbox"
+      type="checkbox"
+      [formControl]="control">
+    <span
+      class="go-form__styled-checkbox go-form__input"
+      [ngClass]="{'go-form__styled-checkbox--disabled': control?.disabled, 'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+    ></span>
+  </span>
   <label [for]="id"
          class="go-form__label go-form__label--inline"
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
