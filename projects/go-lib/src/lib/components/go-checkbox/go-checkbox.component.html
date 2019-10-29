@@ -4,11 +4,11 @@
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
     <input [id]="id"
-    class="go-form__checkbox go-form__checkbox--hidden"
-    [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
-    type="checkbox"
-    [formControl]="control">
-    <span class="go-form__checkbox-display"></span>
+           class="go-form__checkbox go-form__checkbox--hidden"
+           [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+           type="checkbox"
+           [formControl]="control">
+    <span class="go-form__custom-checkbox"></span>
   </label>
   
   <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
