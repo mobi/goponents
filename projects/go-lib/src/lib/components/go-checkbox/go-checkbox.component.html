@@ -7,7 +7,8 @@
            class="go-form__checkbox go-form__checkbox--hidden"
            [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
            type="checkbox"
-           [formControl]="control">
+           [formControl]="control"
+           [attr.disabled]="disabled ? '' : null">
     <span class="go-form__custom-checkbox"></span>
   </label>
   

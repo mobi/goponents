@@ -66,7 +66,7 @@
                 </go-radio-group>
               </div>
 
-              <div class="go-column go-column--100 go-column--no-padding">
+              <div class="go-column go-column--100">
                 <go-checkbox-group
                   legend="Food"
                   [hints]="['please select one']"
@@ -81,7 +81,19 @@
                       </div>
                       <div>
                         <go-checkbox [control]="form.controls.food.controls.bananas"
-                                      label="Bananas">
+                                      label="Bananas"
+                                      disabled="true">
+                        </go-checkbox>
+                      </div>
+                      <div>
+                        <go-checkbox [control]="form.controls.food.controls.mangos"
+                                      label="Mangos">
+                        </go-checkbox>
+                      </div>
+                      <div>
+                        <go-checkbox [control]="form.controls.food.controls.oranges"
+                                      label="Oranges"
+                                      disabled="true">
                         </go-checkbox>
                       </div>
                     </div>
