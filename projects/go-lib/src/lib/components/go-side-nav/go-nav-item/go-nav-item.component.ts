@@ -14,6 +14,7 @@ export class GoNavItemComponent implements OnInit {
   brandColor: string;
 
   @Input() navItem: NavItem;
+  @Input() level: number;
 
   constructor (
     public navService: GoSideNavService,

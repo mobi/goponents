@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
@@ -13,22 +13,26 @@ import { GoSideNavService } from './go-side-nav.service';
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;
 
-  constructor (private router: Router, public navService: GoSideNavService) { }
+  constructor (
+    private router: Router,
+    public navService: GoSideNavService
+  ) { }
 
   ngOnInit(): void {
+    this.navService.menuItemz = this.menuItems;
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd)
+        filter((event: any) => event instanceof NavigationEnd)
       ).subscribe((event: NavigationEnd) => {
-        this.menuItems.forEach(item => {
+        this.menuItems.forEach((item: (NavGroup | NavItem)) => {
           (item as NavGroup).expanded = this.setExpanded(item, event.url);
         });
     });
   }
 
   closeNavs(navGroup: NavGroup): void {
-    this.menuItems.forEach(group => {
-      const g = group as NavGroup;
+    this.menuItems.forEach((group: (NavGroup | NavItem)) => {
+      const g: NavGroup = group as NavGroup;
       g.expanded = this.openAccordion(g, navGroup);
     });
   }
@@ -44,7 +48,7 @@ export class GoSideNavComponent implements OnInit {
   }
 
   private navGroupExpansion(group: NavGroup, url: string): boolean {
-    group.expanded = group.subRoutes.some(subRoute => {
+    group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
       return this.setExpanded(subRoute, url);
     });
     return group.expanded;
@@ -58,11 +62,10 @@ export class GoSideNavComponent implements OnInit {
    * @param group this is the group we are trying to decide if it should be open.
    * @param item this is the group that we are searching for that was clicked on and needs opened.
    */
-
   private openAccordion(group: NavGroup, item: NavGroup): boolean {
     if (group.subRoutes) {
       if (group.routeTitle !== item.routeTitle) {
-        group.expanded = group.subRoutes.some(subRoute => {
+        group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
           return this.openAccordion((subRoute as NavGroup), item);
         });
       } else {

@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
-$inner-side-nav-font-size: 0.875rem;
+$inner-side-nav-font-size: .875rem;
 $inner-side-nav-padding: $column-gutter--half $column-gutter--three-quarters $column-gutter--half 3.2rem;
 $outer-side-nav-padding: 1rem 1rem 1rem 0;
-$side-nav-letter-spacing: .02rem;
+$side-nav-base-color: rgba($theme-dark-color, .7);
+$side-nav-root-item-height: 3.2rem;

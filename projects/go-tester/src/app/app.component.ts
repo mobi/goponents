@@ -27,12 +27,14 @@ export class AppComponent implements OnInit {
     { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
       { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
       { route: 'test-page-2', routeTitle: 'Test 2' },
-      { route: 'test-page-3', routeTitle: 'Test 3', description: 'Forms' }
+      { routeTitle: 'Test 3', description: 'Forms', subRoutes: [
+        { route: 'test-page-2/test-page-3', routeTitle: 'test 4' }
+      ]}
     ]},
     { routeIcon: 'explore', routeTitle: 'Second Test', route: 'test-page-4', description: 'Test Route 4' },
     {
       routeIcon: 'search',
-      routeTitle: 'External Link (New Tab)',
+      routeTitle: 'External Link (In a New Tab)',
       description: 'Test external link opening in new tab',
       route: 'https://www.google.com/',
       isExternalLink: true

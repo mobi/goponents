@@ -3,10 +3,14 @@
      *ngIf="group.subRoutes && group.subRoutes.length > 0; else noSubRoutes">
   <div class="go-nav-group__dropdown"
        (click)="expand(group)"
-       [attr.title]="group.description">
+       [attr.title]="group.description"
+       [ngClass]="{ 'go-nav-group__dropdown--expanded': group.expanded }">
     <div class="go-nav-group__link">
+      <span class="go-nav-item--selected"
+            [ngStyle]="{ 'background': brandColor }"
+            *ngIf="level === 0 && navItem.routeActive"></span>
       <go-icon [icon]="navItem.routeIcon"
-               iconClass="go-nav-group__icon"
+               class="go-nav-group__icon"
                *ngIf="navItem.routeIcon">
       </go-icon>
       <span class="go-nav-group__title" *ngIf="navService.navOpen">
@@ -23,14 +27,15 @@
     <div *ngFor="let item of group.subRoutes">
       <go-nav-group *ngIf="item.subRoutes; else subRoutesElse"
                     class="go-nav-group__inner-group"
-                    [navItem]="item">
+                    [navItem]="item"
+                    [level]="level + 2">
       </go-nav-group>
       <ng-template #subRoutesElse>
-        <go-nav-item [navItem]="item"></go-nav-item>
+        <go-nav-item [navItem]="item" [level]="level + 1"></go-nav-item>
       </ng-template>
     </div>
   </div>
 </div>
 <ng-template #noSubRoutes>
-  <go-nav-item [navItem]="navItem"></go-nav-item>
+  <go-nav-item [navItem]="navItem" [level]="level"></go-nav-item>
 </ng-template>
