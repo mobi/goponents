@@ -41,11 +41,7 @@
 }
 
 .go-search__container--active {
-  border: 0;
   box-shadow: $global-box-shadow--search;
-  padding: 0.5rem;
-  top: calc(50% - (2.875rem / 2));
-  // height of input with padding, halfed
 
   &:hover {
     background: $theme-light-bg;
