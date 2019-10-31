@@ -19,7 +19,7 @@ export class GoSideNavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.navService.menuItemz = this.menuItems;
+    this.navService.setMenuItems(this.menuItems);
     this.router.events
       .pipe(
         filter((event: any) => event instanceof NavigationEnd)

@@ -28,7 +28,7 @@
       <go-nav-group *ngIf="item.subRoutes; else subRoutesElse"
                     class="go-nav-group__inner-group"
                     [navItem]="item"
-                    [level]="level + 2">
+                    [level]="level + 1">
       </go-nav-group>
       <ng-template #subRoutesElse>
         <go-nav-item [navItem]="item" [level]="level + 1"></go-nav-item>

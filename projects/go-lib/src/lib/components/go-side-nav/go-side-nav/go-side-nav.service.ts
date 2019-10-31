@@ -29,7 +29,7 @@ export class GoSideNavService {
     });
   }
 
-  set menuItemz(val: (NavGroup | NavItem)[]) {
+  setMenuItems(val: (NavGroup | NavItem)[]): void {
     this.menuItems = val;
     this.createNavMap();
   }
