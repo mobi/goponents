@@ -1,0 +1,106 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3">Off Canvas</h1>
+</header>
+<div class="go-container">
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <ng-container go-card-content>
+      <h2 class="go-heading-5">Usage</h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">&lt;go-off-canvas&gt;</code>
+        component should be the only instance of the off canvas in the app.
+      </p>
+
+      <h2 class="go-heading-5">Setup</h2>
+      <p class="go-body-copy">
+        To use the off canvas anywhere in the app, you must first add
+        it to the app level. This should only be done once per application.
+      </p>
+      <ol class="go-list go-list--ordered">
+        <li>
+          <p class="go-body-copy">
+            Import the <code class="code-block--inline">GoOffCanvasModule</code>
+            into the main app module.
+          </p>
+          <code [highlight]="appModuleImport"></code>
+        </li>
+        <li>
+          <p class="go-body-copy">
+            Add the <code class="code-block--inline">&lt;go-off-canvas&gt;</code>
+            element to <code class="code-block--inline">app.component.html</code>.
+          </p>
+        </li>
+      </ol>
+    </ng-container>
+  </go-card>
+
+  <go-toast
+    class="go-column go-column--100"
+    header="Note!"
+    [message]="noteMessage"
+  ></go-toast>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-5">Using the Off Canvas service</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">To make use of the off canvas in our component:</p>
+      <ol class="go-list go-list--ordered">
+        <li>
+          <p class="go-body-copy">
+            In the module that imports your component, import the
+            <code class="code-block--inline">GoOffCanvasModule</code>,
+            add the component that will be rendered in the off canvas to
+            the <code class="code-block--inline">entryComponents</code>,
+            and add the <code class="code-block--inline">GoOffCanvasService</code>
+            to the providers.
+          </p>
+          <code [highlight]="uiKitExample"></code>
+        </li>
+        <li>
+          <p class="go-body-copy">
+            In the component that is telling the off canvas to open, import the
+            <code class="code-block--inline">GoOffCanvasService</code>, and the
+            component that is being rendered inside the off canvas.
+          </p>
+          <code [highlight]="implementationExample"></code>
+        </li>
+        <li>
+          <p class="go-body-copy">
+            To open the off canvas, use the service to call
+            <code class="code-block--inline">openOffCanvas</code>.
+            This method takes the component type (BasicTestComponent in our case),
+            the bindings for that component as an object, and an optional header binding as a string.
+          </p>
+          <code [highlight]="functionExample"></code>
+        </li>
+        <li>
+          <div class="go-container">
+            <div class="go-column go-column--100">
+              <p class="go-body-copy">
+                Lastly, we need something to trigger that function.
+                In our case we will use a button that triggers the
+                <code class="code-block--inline">openOffCanvas</code> method,
+                but it could be triggered by any event.
+              </p>
+            </div>
+            <div class="go-column go-column--50">
+              <h3 class="go-heading-6">component.html</h3>
+              <code [highlight]="htmlExample"></code>
+            </div>
+            <div class="go-column go-column--50">
+              <h3 class="go-heading-6">View</h3>
+              <go-button
+                (handleClick)="openOffCanvas()"
+                buttonIcon="subdirectory_arrow_right"
+                buttonVariant="neutral"
+              >
+                Open Off Canvas
+              </go-button>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </ng-container>
+  </go-card>
+</div>

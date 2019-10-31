@@ -1,25 +1,26 @@
 body {
-  font-family: $base-font-stack;
+  font-family: $primary-font-stack;
+  font-weight: $weight-light;
 }
 
 .go-heading-1 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: 6rem;
-  font-weight: $weight-light;
+  font-weight: $weight-regular;
   letter-spacing: -1.5pt;
   margin-bottom: $column-gutter--quarter;
 }
 
 .go-heading-2 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: 3.75rem;
-  font-weight: $weight-light;
+  font-weight: $weight-regular;
   letter-spacing: -.5pt;
   margin-bottom: $column-gutter--quarter;
 }
 
 .go-heading-3 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: 3rem;
   font-weight: $weight-regular;
   letter-spacing: 0;
@@ -28,7 +29,7 @@ body {
 }
 
 .go-heading-4 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: 2.125rem;
   font-weight: $weight-regular;
   letter-spacing: .25pt;
@@ -37,7 +38,7 @@ body {
 }
 
 .go-heading-5 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: 1.5rem;
   font-weight: $weight-bold;
   letter-spacing: 0;
@@ -46,7 +47,7 @@ body {
 }
 
 .go-heading-6 {
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: .875rem;
   font-weight: $weight-bold;
   letter-spacing: 1pt;

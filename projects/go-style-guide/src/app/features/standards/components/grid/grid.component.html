@@ -1,0 +1,253 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+</header>
+<section class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-4">Flexbox</h1>
+    </ng-container>
+    <ng-container go-card-content class="go-container">
+      <p class="go-body-copy">
+        The Flexible Box Layout Module <em>(flexbox)</em>, makes it easier to 
+        design flexible responsive layout structure without using float or 
+        positioning. Using flexbox we are able to build a lightweight, percentage 
+        based, grid system that suits all of our needs.
+      </p>
+      <p class="go-body-copy">
+        By default the grid will add a <code class="code-block--inline">2rem (32px)</code> 
+        gutter around the grid items. This helps estabilsh a more consistent 
+        vertial and horizontal rhythm. This can be overridden on the column
+        to help when nesting grids <em>(see "Nested Grid Example")</em>.
+      </p>
+      <p class="go-body-copy">
+        The nature of flexbox is flexible. For that reason the proportion of 
+        the columns might differ depending on the amount of columns in the 
+        container and the size of the viewport. 
+        Each <code class="code-block--inline">.go-column--xx</code> item will
+        attempt to constrain to the designated <code class="code-block--inline">xx</code> 
+        percentage before filling the remaining space for that row.
+      </p>
+    </ng-container>
+  </go-card>
+</section>
+<section id="basic-grid-examples" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-4">Basic Examples</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 id="go-column-20" class="go-heading-5">5 Column <em>(~20%)</em></h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--20</code> will create
+        a column that starts at 20% of the width of the container before filling
+        the remaining space. It can be used to create a basic 5 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 5 columns created with
+        the <code class="code-block--inline">.go-column--20</code> class will
+        stretch to being 2 columns per row. Giving it more space on smaller
+        devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--20 example-grid__column">1 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">2 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">3 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">4 of 5</div>
+        <div class="go-column go-column--20 example-grid__column">5 of 5</div>
+      </section>
+      <code [highlight]="basicExample20"></code>
+
+      <h2 id="go-column-25" class="go-heading-5">4 Column <em>(~25%)</em></h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--25</code> will create
+        a column that starts at 25% of the width of the container before filling
+        the remaining space. It can be used to create a basic 4 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 4 columns created with
+        the <code class="code-block--inline">.go-column--25</code> class will
+        stretch to being 2 columns per row. Giving it more space on smaller
+        devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--25 example-grid__column">1 of 4</div>
+        <div class="go-column go-column--25 example-grid__column">2 of 4</div>
+        <div class="go-column go-column--25 example-grid__column">3 of 4</div>
+        <div class="go-column go-column--25 example-grid__column">4 of 4</div>
+      </section>
+      <code [highlight]="basicExample25"></code>
+
+      <h2 id="go-column-33" class="go-heading-5">3 Column <em>(~33%)</em></h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--33</code> will create
+        a column that starts at 33% of the width of the container before filling
+        the remaining space. It can be used to create a basic 3 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 3 columns created with
+        the <code class="code-block--inline">.go-column--33</code> class will
+        stretch to being 1 column per row. Giving it more space on smaller devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--33 example-grid__column">1 of 3</div>
+        <div class="go-column go-column--33 example-grid__column">2 of 3</div>
+        <div class="go-column go-column--33 example-grid__column">3 of 3</div>
+      </section>
+      <code [highlight]="basicExample33"></code>
+
+      <h2 id="go-column-50" class="go-heading-5">2 Column <em>(~50%)</em></h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--50</code> will create
+        a column that starts at 50% of the width of the container before filling
+        the remaining space. It can be used to create a basic 2 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 2 columns created with
+        the <code class="code-block--inline">.go-column--50</code> class will
+        stretch to being 1 column per row. Giving it more space on smaller devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--50 example-grid__column">1 of 2</div>
+        <div class="go-column go-column--50 example-grid__column">2 of 2</div>
+      </section>
+      <code [highlight]="basicExample50"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="offset-grid-examples" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-4">Offset Examples</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 id="go-column-66" class="go-heading-5">~66% Column</h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--66</code> will create
+        a column that starts at 66% of the width of the container before filling
+        the remaining space. It can be used to create an offset 2 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 66% column created with
+        the <code class="code-block--inline">.go-column--66</code> class will
+        stretch to being 1 column per row. Giving it more space on smaller devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--33 example-grid__column">33.33333%</div>
+        <div class="go-column go-column--66 example-grid__column">66.66667%</div>
+      </section>
+      <code [highlight]="offsetExample66"></code>
+
+      <h2 id="go-column-75" class="go-heading-5">~75% Column</h2>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">.go-column--75</code> will create
+        a column that starts at 75% of the width of the container before filling
+        the remaining space. It can be used to create an offset 2 column grid.
+      </p>
+      <p class="go-body-copy">
+        On devices that are tablet sized and smaller the 2 columns created with
+        the <code class="code-block--inline">.go-column--75</code> class will
+        stretch to being 1 column per row. Giving it more space on smaller devices.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--75 example-grid__column">75%</div>
+        <div class="go-column go-column--25 example-grid__column">25%</div>
+      </section>
+      <code [highlight]="offsetExample75"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="advanced-grid-examples" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-4">Advanced Example</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 id="go-column-mixed" class="go-heading-5">Mix Columns</h2>
+      <p class="go-body-copy">
+        Below is an example of a mixed column grid. All of the columns can be contained
+        within a single <code class="code-block--inline">.go-container</code> element.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--25 example-grid__column">25%</div>
+        <div class="go-column go-column--25 example-grid__column">25%</div>
+        <div class="go-column go-column--50 example-grid__column">50%</div>
+        <div class="go-column go-column--66 example-grid__column">66%</div>
+        <div class="go-column go-column--33 example-grid__column">33%</div>
+        <div class="go-column go-column--100 example-grid__column">100%</div>
+      </section>
+      <code [highlight]="advancedExampleMixed"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="nested-grid-examples" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-4">Nested Grid Example</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Below is an example of a grid nested inside of another grid. All of the columns 
+        can be contained within a single <code class="code-block--inline">.go-container</code> 
+        element. Note the use of the <code class="code-block--inline">.go-column--no-padding</code>
+        modifier class to remove the padding added by default. This ensures that the nested
+        grid is flush with the bottom of the parent grid.
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column go-column--25 example-grid__column">25%</div>
+        <div class="go-column go-column--75 go-column--no-padding example-grid__column">
+          <p class="go-body-copy">75%</p>
+          <div class="go-container">
+            <div class="go-column go-column--50 example-grid__column">50%</div>
+            <div class="go-column go-column--50 example-grid__column">50%</div>
+          </div>
+        </div>
+      </section>
+      <code [highlight]="nestedExample"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="collapsable-column" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-4">Collapsable Column</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        In some cases, it may be necessary for columns in the grid to collapse to the size of its content.
+        A modifier class can be added to the column to acheive this:
+      </p>
+      <section class="go-container example-grid">
+        <div class="go-column example-grid__column">Column 1</div>
+        <div class="go-column go-column--collapse example-grid__column">Column 2</div>
+      </section>
+      <code [highlight]="collapseColumn"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="align-center-container" class="go-container">
+    <go-card class="go-column">
+      <ng-container go-card-header>
+        <h2 class="go-heading-4">Center Alignment</h2>
+      </ng-container>
+      <ng-container go-card-content>
+        <p class="go-body-copy">
+          In some cases, it may be necessary to align items in a container vertically centered.
+          A modifier class can be added to acheive this:
+        </p>
+        <section class="go-container go-container--align-center example-grid">
+          <div class="go-column go-column--50 example-grid__column">
+            <p class="go-body-copy">Column 1, Row 1</p>
+            <p class="go-body-copy">Column 1, Row 2</p>
+            <p class="go-body-copy--no-margin">Column 1, Row 3</p>
+          </div>
+          <div class="go-column go-column--50 example-grid__column">Column 2</div>
+        </section>
+        <code [highlight]="alignCenterContainer"></code>
+      </ng-container>
+    </go-card>
+  </section>

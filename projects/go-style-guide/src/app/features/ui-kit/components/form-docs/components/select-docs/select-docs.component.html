@@ -1,0 +1,384 @@
+<section class="go-container">
+  <app-form-control-docs
+    class="go-column go-column--100"
+  ></app-form-control-docs>
+  <go-card id="form-select-control" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Control</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        As with most of the form components, the only <code class="code-block--inline">@Input</code>
+        required of the text area component is a <code class="code-block--inline">FormControl</code>.
+        The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
+        attribute on the &lt;go-text-area&gt; component.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select [control]="select1"></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select1Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-label" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Label</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        All form components include an <code class="code-block--inline">@Input() label: string;</code>
+        that can be used to add a label to the textarea components.
+        In addition to displaying an HTML label, the text passed
+        in via the <code class="code-block--inline">[label]</code>
+        attribute is used to generate a unique ID to associate the
+        label with the textarea. If no label is passed in, a generic,
+        but still unique ID will be generated.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            [control]="select2"
+            label="Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select2Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-key" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Key</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        As stated above the label attribute is used to generate a
+        unique ID to associate the label with the select. As this might
+        not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+        can be used to configure the ID attribute of the textarea directly.
+        Anything passed into the component via the <code class="code-block--inline">[key]</code>
+        attribute will be used to both assign the ID to the select and
+        associate the label with the textarea.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            [control]="select3"
+            label="Favorite Candy"
+            key="your-favorite-candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select3Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+        <div class="go-column go-column--100">
+          <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
+          <p class="go-body-copy">
+            Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
+            to both the <code class="code-block--inline">id</code> attribute on
+            the textarea and the <code class="code-block--inline">for</code> attribute
+            on the label.
+          </p>
+          <code
+            [highlight]="select3KeyCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-hints" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Hints</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Form hints exist to help give more information about the
+        selects they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+        can be used to pass in an array of hints to the select component.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            [control]="select4"
+            label="Favorite Candy"
+            [hints]="hints"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select4HintsCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select4Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-errors" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Errors</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
+        via the <code class="code-block--inline">setErrors()</code> function.
+        All goponents use this API to display errors on our components, but the
+        data needs to be displayed in a specific structure.
+      </p>
+      <p class="go-body-copy">
+        By default the error type is set to "Error", however this can be
+        overridden as shown below.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            [control]="select5"
+            label="Favorite Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select5Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select5ErrorsCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-items" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Items</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Selects are pretty useless without options to choose from. The <code class="code-block--inline">@Input() items: any[];</code>
+        binding allows an array of options to be passed in. This array can either be an array of strings or objects. If it's
+        an array of objects you will also need to pass both a <code class="code-block--inline">@Input() bindLabel: string</code> and a
+        <code class="code-block--inline">@Input() bindValue: string</code> attribute. The <code class="code-block--inline">bindLabel</code> attribute
+        is used to tell the select what we should show for each option while the <code class="code-block--inline">bindValue</code> attribute
+        is used to tell teh select what value we want to save for each option. Both should reference a key on each object in the item array.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select6"
+            [items]="items"
+            label="Favorite Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select6Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select6ItemCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-multiple" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Multiple</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to be able to select multiple things. We can achieve this through the
+        <code class="code-block--inline">@Input() multiple: boolean = false;</code> binding. Setting <code class="code-block--inline">multiple</code>
+        to true will turn the select into a multi select and will save an array of values instead of a single value.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select7"
+            [items]="items"
+            [multiple]="true"
+            label="Favorite Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select7Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-placeholder" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Placeholder</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to be able to add a placeholder for the select box. We can achieve this through the
+        <code class="code-block--inline">@Input() placeholder: string;</code> binding. Setting
+        <code class="code-block--inline">placeholder</code> to a string will display that string by default in the
+        select box. When you select an option in the select box, it will replace the placeholder with the selected item.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select8"
+            [items]="items"
+            [multiple]="true"
+            placeholder="Select a Candy"
+            label="Favorite Candy"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select8Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-loading" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Loading</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to indicate that the items for our select have not yet been retrieved. We can achieve this through the 
+        <code class="code-block--inline">@Input() loading: boolean = false;</code> binding. Setting <code class="code-block--inline">loading</code>
+        to true will display a loading spinner within the select to indicate that the items are not yet available, 
+        while setting <code class="code-block--inline">loading</code> to false will remove the spinner and allow the select to function normally. 
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select9"
+            [items]="items"
+            [multiple]="true"
+            label="Favorite Candy"
+            [loading]="loadingSelectOptions"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select9Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select9LoadingCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-appendto" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component appendTo</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a 
+        <code class="code-block--inline">go-select</code> within a <code class="code-block--inline">go-modal</code>.
+        Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
+        the modal from closing automatically upon selecting an item from the select dropdown.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-button (handleClick)="openModal()">Click Me</go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select10OpenModalCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card id="form-select-loading" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Typeahead</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to use typeahead functionality in order to get the results from the server based
+        on a users input. The <code class="code-block--inline">@Input() typeahead?: Subject&lt;string&gt;;</code> binding.
+        can be used to pass a typeahead string through to do server side searching using an observable with rxjs.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select11"
+            [items]="options$ | async"
+            [multiple]="true"
+            label="Your Input"
+            [typeahead]="itemInput"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select11Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select11ComponentCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</section>

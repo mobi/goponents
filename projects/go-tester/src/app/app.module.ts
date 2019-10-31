@@ -14,6 +14,8 @@ import {
   GoCheckboxModule,
   GoCopyModule,
   GoDatepickerModule,
+  GoFileUploadModule,
+  GoFooterModule,
   GoHeaderModule,
   GoIconButtonModule,
   GoIconComponent,
@@ -24,6 +26,7 @@ import {
   GoOffCanvasModule,
   GoRadioModule,
   GoSearchModule,
+  GoSelectComponent,
   GoSelectModule,
   GoSideNavModule,
   GoSwitchToggleModule,
@@ -72,6 +75,8 @@ import { AppGuard } from './app.guard';
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoFileUploadModule,
+    GoFooterModule,
     GoHeaderModule,
     GoIconModule,
     GoIconButtonModule,
@@ -95,6 +100,7 @@ import { AppGuard } from './app.guard';
   ],
   entryComponents: [
     GoButtonComponent,
+    GoSelectComponent,
     OffCanvasTestComponent
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoHeaderComponent } from './go-header.component';
-import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { GoConfigService } from '../../go-config.service';
 
 describe('GoHeaderComponent', () => {
   let component: GoHeaderComponent;
@@ -11,7 +15,13 @@ describe('GoHeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GoHeaderComponent ],
       imports: [
-        GoIconButtonModule
+        CommonModule,
+        GoIconModule,
+        RouterModule,
+        RouterTestingModule
+      ],
+      providers: [
+        GoConfigService
       ]
     })
     .compileComponents();

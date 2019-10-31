@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -10,6 +11,7 @@ import { FormControl } from '@angular/forms';
 export class GoSelectComponent implements OnInit {
   id: string;
 
+  @Input() appendTo: string;
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() control: FormControl;
@@ -17,7 +19,10 @@ export class GoSelectComponent implements OnInit {
   @Input() items: any[];
   @Input() key: string;
   @Input() label: string;
+  @Input() loading: boolean = false;
   @Input() multiple: boolean = false;
+  @Input() placeholder: string;
+  @Input() typeahead?: Subject<string>;
   @Input() theme: 'light' | 'dark' = 'light';
 
   ngOnInit(): void {

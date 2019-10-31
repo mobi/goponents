@@ -31,6 +31,10 @@ export * from './lib/components/go-checkbox/go-checkbox.component';
 export * from './lib/components/go-checkbox/go-checkbox.module';
 export * from './lib/components/go-checkbox/go-checkbox-group.component';
 
+// Configuration
+export * from './lib/go-config.service';
+export * from './lib/go-config.model';
+
 // Copy
 export * from './lib/components/go-copy/go-copy.component';
 export * from './lib/components/go-copy/go-copy.module';
@@ -39,6 +43,15 @@ export * from './lib/components/go-copy/go-copy.module';
 export * from './lib/components/go-datepicker/calendar-cell.model';
 export * from './lib/components/go-datepicker/go-datepicker.component';
 export * from './lib/components/go-datepicker/go-datepicker.module';
+
+// File Upload
+export * from './lib/components/go-file-upload/go-file-upload.component';
+export * from './lib/components/go-file-upload/go-file-upload.module';
+export * from './lib/components/go-file-upload/go-dragon-drop.directive';
+
+// Footer
+export * from './lib/components/go-footer/go-footer.component';
+export * from './lib/components/go-footer/go-footer.module';
 
 // Header
 export * from './lib/components/go-header/go-header.component';

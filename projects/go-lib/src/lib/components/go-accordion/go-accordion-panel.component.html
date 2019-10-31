@@ -2,6 +2,10 @@
   class="go-accordion-panel"
   [ngClass]="containerClasses"
 >
+  <span
+    class="go-accordion-panel--selected"
+    [ngStyle]="{'background': brandColor}"
+  ></span>
   <header
     [attr.aria-expanded]="_expanded"
     class="go-accordion-panel__header"

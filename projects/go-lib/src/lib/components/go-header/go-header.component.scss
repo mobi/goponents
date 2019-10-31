@@ -5,7 +5,7 @@ $breakpoint-header-mobile-small: 500px;
 
 .go-header {
   background: $theme-light-bg;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--large;
   display: flex;
   height: $header-height;
   justify-content: space-between;
@@ -18,13 +18,26 @@ $breakpoint-header-mobile-small: 500px;
   }
 }
 
+.go-header__menu-container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: $side-nav-width--collapsed;
+
+  &:hover {
+    .go-header__menu {
+      opacity: .5;
+    }
+  }
+}
+
 .go-header__menu {
-  @include transition(background);
+  @include transition(all);
 
   align-items: center;
   align-self: center;
   border-radius: 50%;
-  cursor: pointer;
   display: flex;
   flex-shrink: 0;
   font-size: 1.5rem;
@@ -39,7 +52,7 @@ $breakpoint-header-mobile-small: 500px;
   display: flex;
   flex: 1;
   justify-content: flex-start;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 
   @media (max-width: $breakpoint-header-mobile-small) {
     padding: 0.5rem;
@@ -61,7 +74,6 @@ $breakpoint-header-mobile-small: 500px;
   @include transition(width);
 
   display: flex;
-  padding: 0.5rem;
   width: 15.5rem;
 
   @media (max-width: $breakpoint-mobile) {
@@ -69,8 +81,8 @@ $breakpoint-header-mobile-small: 500px;
   }
 }
 
-.go-header__left--collapsed {
-  width: auto;
+.go-header__left--dark {
+  color: $theme-dark-color
 }
 
 .go-header__middle {
@@ -88,10 +100,6 @@ $breakpoint-header-mobile-small: 500px;
     order: 2;
     width: 100vw;
   }
-}
-
-.go-header__middle--collapsed {
-  padding: 0 1rem;
 }
 
 .go-header__middle--hide {

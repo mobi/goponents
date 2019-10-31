@@ -1,9 +1,13 @@
 <div class="go-nav-item"
-     [attr.title]="navItem.description">
+     [attr.title]="navItem.description"
+     [ngClass]="{ 'go-nav-item--collapsed': !navService.navOpen }">
   <a class="go-nav-item__link"
      *ngIf="!navItem.isExternalLink"
      [routerLinkActive]="['go-nav-item__link--active']"
      [routerLink]="[navItem.route]">
+     <span class="go-nav-item--selected"
+           [ngStyle]="{ 'background': brandColor }"
+           *ngIf="level === 0 && navItem.routeActive"></span>
     <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
   </a>
 
@@ -13,22 +17,21 @@
      [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'"
      rel="noreferrer">
     <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
-    <go-icon *ngIf="!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank'"
+    <go-icon *ngIf="(!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank') && navService.navOpen"
              icon="launch"
-             iconClass="go-nav-group__icon">
+             class="go-nav-group__icon go-nav-group__icon--external">
     </go-icon>
   </a>
 </div>
 
 <ng-template #navItemInner>
   <go-icon [icon]="navItem.routeIcon"
-           iconClass="go-nav-group__icon"
+           class="go-nav-group__icon"
            *ngIf="navItem.routeIcon">
   </go-icon>
-  <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon }"
+  <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon, 'go-nav-item__title--level-2' : level >= 2 }"
         class="go-nav-item__title"
         *ngIf="navService.navOpen">
     {{navItem.routeTitle}}
   </span>
 </ng-template>
-

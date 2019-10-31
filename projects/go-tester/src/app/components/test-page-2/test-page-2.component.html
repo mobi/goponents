@@ -84,10 +84,45 @@
   </div>
 
   <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Button Group</h4>
+    <ul class="go-button-group">
+      <li class="go-button-group__item">
+        <go-button>Button 1</go-button>
+      </li>
+      <li class="go-button-group__item">
+        <go-button>Button 2</go-button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="go-column go-column--100">
     <h4 class="go-heading-4">Toasts</h4>
     <go-toast type="neutral"
               header="Announcement!"
               [dismissable]="true">
     </go-toast>
+    <go-toast type="positive"
+              header="HTML Example"
+              message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'
+              [dismissable]="true">
+    </go-toast>
+  </div>
+
+  <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Branding</h4>
+    <div class="go-column go-column--25">
+      <go-input
+        [control]="brandingControl"
+        label="Brand Color">
+      </go-input>
+    </div>
+    
+    <div class="go-column">
+      <go-button
+        (handleClick)="updateColor()"
+      >
+        Update Branding Color
+      </go-button>
+    </div>
   </div>
 </div>

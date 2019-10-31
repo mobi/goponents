@@ -1,0 +1,136 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Implementing Selection</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        By default, selection is disabled. To add row selection capabilities to the table, there are two properties of the <code class="code-block--inline">GoTableConfig</code>
+        that must be set, <code class="code-block--inline">selectable</code> and <code class="code-block--inline">selectBy</code>.
+      </p>
+
+      <code [highlight]="tableSelectConfig"></code>
+
+      <h6 class="go-heading-6">selectable</h6>
+      <p class="go-body-copy">
+        This property enables selection within the table. Without this enabled, selection will not be possible.
+      </p>
+      <h6 class="go-heading-6">selectBy</h6>
+      <p class="go-body-copy">
+        This property determines which column will be used to keep track of row selection. It corresponds to one of the fields in the columns. 
+        Typically, this should be an id, or some other unique identifier in the data set.
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="important-notes">
+    <ng-container go-card-header>
+      <h5 class="go-heading-5">Imporant Notes</h5>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        <strong>Selection is persistant.</strong> This means that if the user changes the page or sorts the data, previous selections will persist through these actions.
+        This applies to both client side <strong>and server side</strong> implementations.
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="interactive-selection">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Interacting with the Selection</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        There are two ways to interact with the selected items of the table.
+        By using an element reference on the table and/or using the <code class="code-block--inline">(rowSelectionEvent)</code> event.
+      </p>
+      <p class="go-body-copy">
+        First, you must understand how the table handle selection. See the <code class="code-block--inline">SelectionState</code> interface for an explanation:
+      </p>
+      <code [highlight]="tableSelectModels"></code>
+      <p class="go-body-copy">
+        In selection mode, the user is selecting individual rows. This means that these selected rows are being added to the selectedRows array.
+        In deselection mode, the user has checked the 'check all' check box and is now removing items from the selection; we call this deselection.
+        In this case, items are added to the deselectedRows array as the user unchecks them.
+      </p>
+      <p class="go-body-copy">
+        Interact with the table below to see how the selection works.
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100"
+    [tableConfig]="interactiveTableConfig"
+    tableTitle="Interactive Example of Selection States"
+    [showTableActions]="true"
+    (rowSelectionEvent)="tableRowEvent($event)"
+    #interactiveTable>
+    <ng-container go-table-actions>
+      <go-button (handleClick)="interactiveTableState()">State</go-button>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="element-reference">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Element Reference Interaction</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        This approach should be used when an action is performed after a user has finished their selecting (ex. button click).
+      </p>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="eleRef_html"></code>
+      <h2 class="go-heading-6">example.ts</h2>
+      <code [highlight]="eleRef_ts" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100"
+    [tableConfig]="eleRefTableConfig"
+    tableTitle="Element Reference Example"
+    [showTableActions]="true"
+    #eleRefTable>
+    <ng-container go-table-actions>
+      <go-button (handleClick)="getSelectionState()">Selection State</go-button>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="row-event">
+      <ng-container go-card-header>
+        <h1 class="go-heading-5">Row Event Interaction</h1>
+      </ng-container>
+      <ng-container go-card-content>
+        <p class="go-body-copy">
+          This approach should be used when an action necessary upon individual row selection or deselection.
+        </p>
+        <h2 class="go-heading-6">example.html</h2>
+        <code [highlight]="rowEvent_html"></code>
+        <h2 class="go-heading-6">example.ts</h2>
+        <code [highlight]="rowEvent_ts" class="code-block--no-bottom-margin"></code>
+      </ng-container>
+    </go-card>
+
+  <go-table class="go-column go-column--100"
+            [tableConfig]="rowEventTableConfig"
+            tableTitle="Row Event Example"
+            (rowSelectionEvent)="tableRowEvent($event)">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>

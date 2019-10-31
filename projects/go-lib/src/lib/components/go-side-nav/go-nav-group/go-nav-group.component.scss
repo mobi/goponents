@@ -2,43 +2,68 @@
 @import '../variables';
 
 .go-nav-group__dropdown {
+  @include transition(background, color);
+
   align-items: center;
+  color: $side-nav-base-color;
+  cursor: pointer;
   display: flex;
+  font-weight: $weight-light;
   padding-right: .5rem;
   user-select: none;
-  @include transition(all);
 
   &:hover {
     background: $theme-dark-bg-hover;
+    color: $theme-dark-color;
+
+    .go-nav-group__expand-icon {
+      color: $theme-dark-color;
+    }
+  }
+}
+
+.go-nav-group__dropdown--expanded {
+  background: $theme-dark-bg-active;
+  color: $theme-dark-color;
+  font-weight: $weight-regular;
+
+  .go-nav-group__expand-icon {
+    color: $theme-dark-color;
   }
 }
 
 .go-nav-group__link {
   display: flex;
   flex-grow: 1;
+  position: relative;
 }
 
 .go-nav-group__title {
   align-items: center;
   display: flex;
-  font-weight: $weight-light;
-  letter-spacing: $side-nav-letter-spacing;
   padding: $outer-side-nav-padding;
 }
 
 .go-nav-group__icon {
+  align-self: flex-start;
   font-size: 1.2rem;
+  height: $side-nav-root-item-height;
   padding: 1rem;
+}
+
+.go-nav-group__icon--external {
+  padding-left: .5rem;
+  padding-right: .75rem;
 }
 
 .go-nav-group__expand-icon {
   border-radius: 50%;
-  color: $theme-dark-color;
+  color: $side-nav-base-color;
   cursor: pointer;
   font-size: 1.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  width: 2.5rem;
+  height: 2rem;
+  padding: .25rem;
+  width: 2rem;
 
   &:hover {
     background: $theme-dark-bg;
@@ -58,4 +83,17 @@
 
 .go-nav-group--expanded {
   background: $theme-dark-bg-active;
+  color: $theme-dark-color;
+}
+
+.go-nav-item--selected {
+  @include transition(all);
+
+  border-radius: 0 $global-radius $global-radius 0;
+  content: ' ';
+  height: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
 }

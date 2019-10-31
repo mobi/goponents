@@ -6,12 +6,16 @@
 </label>
 
 <ng-select
+  [appendTo]="appendTo"
   [labelForId]="id"
   [items]="items"
   [bindLabel]="bindLabel"
   [bindValue]="bindValue"
+  [loading]="loading"
   [multiple]="multiple"
-  [formControl]="control">
+  [formControl]="control"
+  [typeahead]="typeahead"
+  [placeholder]="placeholder">
 </ng-select>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

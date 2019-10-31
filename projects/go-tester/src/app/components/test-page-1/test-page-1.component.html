@@ -49,9 +49,9 @@
       <go-button (handleClick)="showCurrentSelection()">Selection State</go-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
-    <go-table-column field="name.first" title="First Name"></go-table-column>
-    <go-table-column field="name.last" title="Last Name"></go-table-column>
-    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="name.first" [sortable]="true" title="First Name"></go-table-column>
+    <go-table-column field="name.last" [sortable]="true" title="Last Name"></go-table-column>
+    <go-table-column field="email" [sortable]="true" title="Email"></go-table-column>
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>

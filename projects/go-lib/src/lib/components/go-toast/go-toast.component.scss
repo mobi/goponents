@@ -4,7 +4,7 @@
 .go-toast {
   background: $theme-light-bg;
   border-radius: $global-radius;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--regular;
   display: flex;
   position: relative;
 }
@@ -25,7 +25,7 @@
   align-items: center;
   background-color: $base-light-secondary;
   border-radius: 50%;
-  box-shadow: $global-box-shadow;
+  box-shadow: $global-box-shadow--regular;
   color: $base-light;
   display: flex;
   font-size: 1rem;

@@ -1,0 +1,193 @@
+<section class="go-container">
+  <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
+  <go-card id="setup" class="go-column--100 go-column">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Setup</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        To use the radio components, you'll need to import the RadioModule into your module:
+      </p>
+      <code [highlight]="radioSetup"
+            class="code-block--no-bottom-margin">
+      </code>
+    </ng-container>
+  </go-card>
+  <go-card id="form-radio" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Simpliest Implementation</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        This simpliest way to implement the radio buttons requires a <code class="code-block--inline">&lt;go-radio-group&gt;</code> with the
+        <code class="code-block--inline">legend</code> and <code class="code-block--inline">[control]</code> bindings,
+        and at least two <code class="code-block--inline">&lt;go-radio-button&gt;</code> each having a 
+        <code class="code-block--inline">label</code> and <code class="code-block--inline">formValue</code>.
+      </p>
+      <p class="go-body-copy">
+        On the <code class="code-block--inline">&lt;go-radio-group&gt;</code>, the 
+        <code class="code-block--inline">legend</code> is the name of the set of radio options and
+        the <code class="code-block--inline">[control]</code> is the corresponding <code class="code-block--inline">FormControl</code>.
+      </p>
+      <p class="go-body-copy">
+        On the <code class="code-block--inline">&lt;go-radio-button&gt;</code>, the 
+        <code class="code-block--inline">label</code> is the name of that radio option and
+        the <code class="code-block--inline">formValue</code> is the value of that option.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-radio-group legend="Options"
+                          [control]="radio1">
+            <div>
+              <go-radio-button label="Option 1"
+                               formValue="option1">
+              </go-radio-button>
+            </div>
+            <div>
+              <go-radio-button label="Option 2"
+                               formValue="option2">
+              </go-radio-button>
+            </div>
+          </go-radio-group>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code [highlight]="radio1Ex"
+                class="code-block--no-bottom-margin">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card id="form-radio-key" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Radio Keys</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The label attribute is used to generate a unique ID to associate the label with the radio button.
+        As this might not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+        can be used to configure the ID attribute of the radio directly.
+        Anything passed into the component via the <code class="code-block--inline">[key]</code>
+        attribute will be used to both assign the ID to the radio and
+        associate the label with the radio button.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-radio-group legend="Options"
+                          [control]="radio2">
+            <div>
+              <go-radio-button label="Option 1"
+                               formValue="option1"
+                               key="option_1">
+              </go-radio-button>
+            </div>
+            <div>
+              <go-radio-button label="Option 2"
+                               formValue="option2"
+                               key="option_2">
+              </go-radio-button>
+            </div>
+          </go-radio-group>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code [highlight]="radio2Ex"
+                class="code-block--no-bottom-margin">
+          </code>
+        </div>
+      </div>
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
+        <p class="go-body-copy">
+          Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
+          to both the <code class="code-block--inline">id</code> attribute on
+          the input and the <code class="code-block--inline">for</code> attribute
+          on the label.
+        </p>
+        <code
+          [highlight]="radio2KeyCode"
+          class="code-block--no-bottom-margin"
+        ></code>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card id="form-radio-hints" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Radio Hints</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Form hints exist to help give more information about the
+        radio groups they are attached to. The <code class="code-block--inline">@Input() hints: Array&lt;string&gt;</code>
+        can be used to pass in an array of hints to the radio group component.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-radio-group legend="Options"
+                          [control]="radio3"
+                          [hints]="hints">
+            <div>
+              <go-radio-button label="Option 1" formValue="option1">
+              </go-radio-button>
+            </div>
+            <div>
+              <go-radio-button label="Option 2" formValue="option2">
+              </go-radio-button>
+            </div>
+          </go-radio-group>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code [highlight]="radio3HintsCode"
+                class="code-block--no-bottom-margin">
+          </code>
+          <code [highlight]="radio3Ex"
+                class="code-block--no-bottom-margin">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card id="form-radio-hints" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Radio Theme</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        By default the theme for the radio buttons is 'light', but there could be
+        and instance where we need a 'dark' theme. There is a binding
+        available for that.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50 go-column--dark">
+          <h2 class="go-heading-6 go-heading--underlined" style="color: #fff;">View</h2>
+          <go-radio-group legend="Options"
+                          [control]="radio4"
+                          theme="dark">
+            <div>
+              <go-radio-button label="Option 1" formValue="option1">
+              </go-radio-button>
+            </div>
+            <div>
+              <go-radio-button label="Option 2" formValue="option2">
+              </go-radio-button>
+            </div>
+          </go-radio-group>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code [highlight]="radio4Ex"
+                class="code-block--no-bottom-margin">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</section>

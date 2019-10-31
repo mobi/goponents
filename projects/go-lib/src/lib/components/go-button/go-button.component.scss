@@ -1,195 +1,225 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-$button__border-width: 4px;
-$button__background--hover: rgba($theme-light-border, .1);
-$button__background--disabled: rgba($theme-light-border, .3);
-$button__background--loading: rgba($theme-light-border, .4);
-
-@mixin go-button-mutator(
-  $dark-modifier: false,
-  $dark-theme: false,
-  $from: $theme-light-border,
-  $gradient: null,
-  $hover-background: false,
-  $loading-modifier: false,
-  $to: $theme-light-border
-) {
-  $color-gradient: if($gradient, $gradient, linear-gradient(to bottom, $from, $to));
-  $dark-gradient: linear-gradient($theme-dark-bg, $theme-dark-bg);
-  $light-gradient: linear-gradient($theme-light-bg, $theme-light-bg);
-  $selected-gradient: if($dark-theme, $dark-gradient, $light-gradient);
-
-  background-image: $selected-gradient, $color-gradient;
-
-  @if ($dark-modifier) {
-    &.go-button--dark {
-      background-image: $dark-gradient, $color-gradient;
+@mixin disabled-states($bg, $color, $color-opacity: .7) {
+  @if ($color == 'light') {
+    @if ($color-opacity == .7) {
+      color: rgba($theme-dark-color, .7);
+    } @else {
+      color: rgba($theme-dark-color, $color-opacity);
     }
+  } @else {
+    color: rgba($theme-light-color, .4);
   }
 
-  @if (type-of($loading-modifier) == color) {
-    &.go-button--loading::before {
-      background: linear-gradient(to right, transparent, $loading-modifier, transparent);
-      background-size: 1000px 100%;
-    }
-  }
-
-  @if (type-of($hover-background) == color) {
-    &:hover:not(.go-button--loading)::before {
-      background: $hover-background;
-    }
-  }
+  background: rgba($bg, .4);
 }
 
 .go-button {
-  @include go-button-mutator;
+  @include transition(all);
 
-  background-origin: padding-box, border-box; // This is important
-  background-repeat: no-repeat; // This is important
-  border: $button__border-width solid transparent;
+  border: 0;
   border-radius: $global-radius;
   color: $base-dark;
   cursor: pointer;
   display: inline-block;
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: .875rem;
+  font-weight: $weight-regular;
   letter-spacing: .015rem;
-  line-height: 1rem;
-  outline-color: $theme-light-border;
-  outline-offset: -2px;
+  outline: none;
   padding: $column-gutter--half $column-gutter;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: color $global-transition-duration $global-transition-timing;
-
-  &::before {
-    border: ($button__border-width / 2) solid $base-light;
-    border-radius: $global-radius - 1;
-    bottom: -1px;
-    content: '';
-    left: -1px;
-    position: absolute;
-    right: -1px;
-    top: -1px;
-    transition: background $global-transition-duration $global-transition-timing;
-  }
-
-  &:hover,
-  &:disabled {
-    color: $base-dark-secondary;
-  }
-
-  &:hover:not(.go-button--loading)::before {
-    background: $button__background--hover;
-  }
 
   &:disabled:not(.go-button--loading) {
-    @include go-button-mutator;
-
     cursor: not-allowed;
-
-    &:hover::before,
-    &::before {
-      background: $button__background--disabled;
-    }
-  }
-}
-
-.go-button--dark {
-  @include go-button-mutator($dark-theme: true);
-
-  color: $theme-dark-text-color;
-
-  &::before {
-    border-color: $theme-dark-bg;
-  }
-
-  &:hover,
-  &:disabled {
-    color: $base-light;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    @include go-button-mutator(
-      $dark-theme: true,
-      $from: $base-dark-secondary,
-      $to: $base-dark-secondary
-    );
-
-    &:hover::before,
-    &::before {
-      background: rgba($base-dark-secondary, .4);
-    }
   }
 }
 
 .go-button--loading {
-  color: $base-dark-secondary;
   cursor: wait;
+}
 
-  &::before {
-    animation: background-animation 1.75s linear infinite;
-    background: linear-gradient(to right, transparent, $button__background--loading, transparent);
-    background-position: -1000px 0;
-    background-repeat: repeat-x;
-    background-size: 1000px 100%;
+// Variations
+//=========================
+.go-button--primary,
+.go-button--negative,
+.go-button--neutral {
+  color: $theme-dark-color;
+}
+
+.go-button--primary {
+  background: $ui-color-positive;
+
+  &:hover,
+  &:focus {
+    background: $ui-color-positive-hover;
+  }
+
+  &:active {
+    background: $ui-color-positive-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($ui-color-positive, 'light');
+
+    &:hover,
+    &:focus {
+      @include disabled-states($ui-color-positive, 'light');
+    }
+  }
+}
+
+.go-button--secondary {
+  border: 1px solid $theme-light-border;
+}
+
+.go-button--secondary,
+.go-button--tertiary {
+  background: $theme-light-bg;
+  color: $theme-light-color;
+
+  &:hover,
+  &:focus {
+    background: $theme-light-bg-hover;
+  }
+
+  &:active {
+    background: $theme-light-bg-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($theme-light-bg, 'dark');
+
+    &:hover,
+    &:focus {
+      @include disabled-states($theme-light-bg, 'dark');
+    }
   }
 }
 
 .go-button--negative {
-  @include go-button-mutator(
-    $dark-modifier: true,
-    $gradient: $ui-color-negative-gradient,
-    $hover-background: $ui-background-negative,
-    $loading-modifier: rgba($ui-color-negative, .2)
-  );
+  background: $ui-color-negative;
 
-  outline-color: $ui-color-negative-active;
+  &:hover,
+  &:focus {
+    background: $ui-color-negative-hover;
+  }
+
+  &:active {
+    background: $ui-color-negative-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($ui-color-negative, 'light');
+
+    &:hover,
+    &:focus {
+      @include disabled-states($ui-color-negative, 'light');
+    }
+  }
 }
 
 .go-button--neutral {
-  @include go-button-mutator(
-    $dark-modifier: true,
-    $gradient: $ui-color-neutral-gradient,
-    $hover-background: $ui-background-neutral,
-    $loading-modifier: rgba($ui-color-neutral, .2)
-  );
+  background: $ui-color-neutral;
 
-  outline-color: $ui-color-neutral-active;
-}
-
-.go-button--positive {
-  @include go-button-mutator(
-    $dark-modifier: true,
-    $gradient: $ui-color-positive-gradient,
-    $hover-background: $ui-background-positive,
-    $loading-modifier: rgba($ui-color-positive, .3)
-  );
-
-  outline-color: $ui-color-positive-active;
-}
-
-@keyframes background-animation {
-  from {
-    background-position: 0 0;
+  &:hover,
+  &:focus {
+    background: $ui-color-neutral-hover;
   }
 
-  to {
-    background-position: 1000px 0;
+  &:active {
+    background: $ui-color-neutral-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($ui-color-neutral, 'light');
+
+    &:hover,
+    &:focus {
+      @include disabled-states($ui-color-neutral, 'light');
+    }
   }
 }
 
-.go-button-group {
+// Dark Buttons (only applies to secondary/tertiary)
+//==================================
+.go-button--dark {
+  &.go-button--secondary,
+  &.go-button--tertiary {
+    background: $theme-dark-bg;
+    color: $theme-dark-color;
+
+    &:hover,
+    &:focus {
+      background: $theme-dark-bg-hover;
+    }
+
+    &:active {
+      background: $theme-dark-bg-active;
+    }
+
+    &:disabled:not(.go-button--loading) {
+      @include disabled-states($theme-dark-bg, 'light', .4);
+
+      &:hover,
+      &:focus {
+        @include disabled-states($theme-dark-bg, 'light', .4);
+      }
+    }
+  }
+}
+
+// Loader
+//==================================
+.go-button__loader {
+  align-items: center;
+  border-radius: $global-radius;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: -#{ $column-gutter--half } -#{ $column-gutter };
+  position: absolute;
+  width: 100%;
+
+  &.go-button__loader--primary {
+    background: $ui-color-positive;
+  }
+
+  &.go-button__loader--light {
+    background: $theme-light-bg;
+  }
+
+  &.go-button__loader--dark {
+    background: $theme-dark-bg;
+  }
+
+  &.go-button__loader--negative {
+    background: $ui-color-negative;
+  }
+
+  &.go-button__loader--neutral {
+    background: $ui-color-neutral;
+  }
+}
+
+.go-button__loader-container {
+  height: calc(#{ $column-gutter } * 1.5);
+}
+
+// Button Group
+//=========================
+::ng-deep .go-button-group {
   display: inline-flex;
   justify-content: flex-start;
   list-style: none;
   margin: 0;
 }
 
-.go-button-group__item {
-  margin-right: 0.5rem;
+::ng-deep .go-button-group__item {
+  margin-right: .5rem;
 
   &:last-child {
     margin-right: 0;

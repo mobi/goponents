@@ -1,21 +1,22 @@
 <header class="go-header">
   <div class="go-header__left"
-       [ngClass]="{ 'go-header__left--collapsed': isNavCollapsed() }">
-    <go-icon-button class="go-header__menu"
-             buttonIcon="menu"
-             buttonSize="medium"
-             buttonTitle="Menu"
-             (handleClick)="toggleSideMenu()">
-    </go-icon-button>
+       [ngClass]="{ 'go-header__left--dark': brandColorIsDark }">
+    <div class="go-header__menu-container"
+         [ngStyle]="{ 'background': brandColor }"
+         (click)="toggleSideMenu()">
+      <go-icon class="go-header__menu" icon="menu">
+      </go-icon>
+    </div>
     <div class="go-header__logo-container"
-         [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }">
+         [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
+         [ngStyle]="{ 'background': getLogoBackground() }">
       <img class="go-header__logo"
            alt="{{ altText }}"
            [src]="logo"/>
     </div>
   </div>
   <div class="go-header__middle"
-       [ngClass]="{ 'go-header__middle--collapsed': isNavCollapsed(), 'go-header__middle--hide': !middleContentExists() }"
+       [ngClass]="{ 'go-header__middle--hide': !middleContentExists() }"
        #middleSection>
     <ng-content select="[go-header-middle]"></ng-content>
   </div>

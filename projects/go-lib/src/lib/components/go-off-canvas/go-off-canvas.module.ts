@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GoOffCanvasComponent } from './go-off-canvas.component';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { GoOffCanvasDirective } from './go-off-canvas.directive';
     GoOffCanvasDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    GoIconButtonModule
   ],
   exports: [
     GoOffCanvasComponent

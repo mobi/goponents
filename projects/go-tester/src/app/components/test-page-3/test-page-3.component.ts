@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-page-3',
   templateUrl: './test-page-3.component.html'
 })
-export class TestPage3Component {
+export class TestPage3Component implements OnInit {
   selectData: any = [{
     value: 1,
     name: 'Harry'
@@ -23,6 +23,7 @@ export class TestPage3Component {
     name: 'Snake'
   }];
 
+  fileControl: FormControl = new FormControl();
   form: FormGroup = new FormGroup({
     food: new FormGroup({
       apples: new FormControl(''),
@@ -32,10 +33,12 @@ export class TestPage3Component {
     notes: new FormControl(''),
     radio: new FormControl({value: '', disabled: false}),
     toggle: new FormControl(false),
+    toggle2: new FormControl(false),
     date: new FormControl(new Date(2019, 4, 25)),
     date2: new FormControl('5/25/2019')
   });
   loading: boolean = false;
+  loadingSelectOptions: boolean = true;
 
   otherThing: FormControl = new FormControl('test');
   testOtherThing: FormControl = new FormControl({ value: 'Disabled Input', disabled: true });
@@ -45,6 +48,12 @@ export class TestPage3Component {
   multiSelectControl: FormControl = new FormControl();
 
   constructor() { }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.loadingSelectOptions = false;
+    }, 3000);
+  }
 
   onSubmit(): void {
     this.loading = true;

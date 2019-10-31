@@ -3,6 +3,7 @@ export interface NavItem {
   route: string;
   routeIcon?: string;
   routeTitle: string;
+  routeActive?: boolean;
 
   /**
    * When `isExternalLink` is true, the value passed to `route` will be used for redirection. By default, all external links will open in a

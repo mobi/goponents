@@ -37,13 +37,25 @@
 
   <go-accordion [showIcons]="true" class="go-column go-column--100">
     <go-accordion-panel title="Test 1" icon="home" expanded="true">
-      <p class="go-body-copy">This is some content for Test 1.</p>
+      <div class="go-column go-column--100">
+        <go-select
+          [items]="selectData"
+          [control]="selectControl"
+          bindValue="value"
+          bindLabel="name"
+          placeholder="Select Box Placeholder"
+          label="Select Box Here">
+        </go-select>
+      </div>
     </go-accordion-panel>
-    <go-accordion-panel title="Test 2" icon="settings">
-      <p class="go-body-copy">This is a second thing.</p>
+    <go-accordion-panel title="Test 2" icon="home" expanded="true">
+      <p class="go-body-copy">This is some content for Test 2.</p>
     </go-accordion-panel>
-    <go-accordion-panel title="Test 3" icon="landscape">
+    <go-accordion-panel title="Test 3" icon="settings">
       <p class="go-body-copy">This is a third thing.</p>
+    </go-accordion-panel>
+    <go-accordion-panel title="Test 4" icon="landscape">
+      <p class="go-body-copy">This is a fourth thing.</p>
     </go-accordion-panel>
   </go-accordion>
 </div>

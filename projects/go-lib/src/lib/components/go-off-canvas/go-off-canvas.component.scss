@@ -30,6 +30,15 @@
   align-self: flex-start;
   flex: 0 0 auto;
   width: 100%;
+  display: flex;
+  padding: $column-gutter;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.go-off-canvas__title {
+  flex-grow: 1;
+  padding-right: .5rem;
 }
 
 .go-off-canvas__button {
@@ -38,7 +47,7 @@
   color: $base-light;
   cursor: pointer;
   display: block;
-  font-family: $heading-font-stack;
+  font-family: $primary-font-stack;
   font-size: .8rem;
   line-height: 1rem;
   outline-offset: -2px;

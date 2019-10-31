@@ -1,0 +1,26 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3">{{ subNavService.pageTitle }}</h1>
+</header>
+<div class="sub-nav-container">
+  <div class="sub-nav-outlet" [@routerAnimation]="getRouteAnimation(o)">
+    <router-outlet class="sub-nav-container-outlet" #o="outlet"></router-outlet>
+  </div>
+  <div class="sub-nav-submenu" [ngClass]="{ 'sub-nav-submenu--mobile-show': mobileSubmenuShown }" (click)="closeMobileMenu()">
+
+    <ng-container *ngFor="let item of menuItems">
+      <h5 class="go-heading-5 sub-nav-submenu__title">{{ item.routeTitle }}</h5>
+      <ul *ngIf="item.subRoutes" class="sub-nav-submenu__ul">
+        <li *ngFor="let subRoute of item.subRoutes">
+          <a class="go-link sub-nav-submenu__a"
+              [routerLinkActive]="['sub-nav-submenu__a--active']"
+              [routerLinkActiveOptions]="{exact:true}"
+              [routerLink]="subRoute.route">{{ subRoute.routeTitle }}</a>
+        </li>
+      </ul>
+    </ng-container>
+
+  </div>
+  <div class="sub-nav-submenu-mobile-toggle" (click)="toggleSubmenu()" [ngClass]="{ 'sub-nav-submenu-mobile-toggle--expand': mobileSubmenuShown }">
+    <go-icon class="sub-nav-submenu-mobile-toggle__icon" [icon]="submenuIcon()"></go-icon>
+  </div>
+</div>

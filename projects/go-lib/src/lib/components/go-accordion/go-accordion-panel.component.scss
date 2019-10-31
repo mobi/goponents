@@ -6,22 +6,8 @@
   border: 1px solid $theme-light-border;
   border-bottom-width: 0;
   color: $theme-light-color;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-
-  &::before {
-    @include transition(opacity);
-
-    background: $base-primary-gradient;
-    background-color: $base-primary;
-    content: '';
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    width: 4px;
-    z-index: 1;
-  }
 }
 
 .go-accordion-panel--first {
@@ -36,8 +22,14 @@
 }
 
 .go-accordion-panel--active {
-  &::before {
-    opacity: 1;
+  .go-accordion-panel--selected {
+    content: ' ';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    transition: all 0.25s ease-in;
+    width: 4px;
+    z-index: 1;
   }
 }
 

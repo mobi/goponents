@@ -45,6 +45,16 @@
                 ></go-input>
               </div>
 
+              <div class="go-column go-column--100">
+                <go-file-upload
+                  [control]="fileControl"
+                  [isLoading]="loading"
+                  [multiple]="true"
+                  label="Upload File"
+                  [hints]="['You can upload multiple files']"
+                ></go-file-upload>
+              </div>
+
               <div class="go-column go-column--50">
                 <go-radio-group
                   legend="Options"
@@ -104,6 +114,8 @@
                   bindValue="value"
                   bindLabel="name"
                   [hints]="['Select an option here, whatever you want']"
+                  [loading]="loadingSelectOptions"
+                  placeholder="Select Box Placeholder"
                   label="Select Box Here">
                 </go-select>
               </div>
@@ -147,8 +159,17 @@
               <div class="go-column go-column--100">
                 <go-switch-toggle
                   [control]="form.controls.toggle"
-                  label="Toggle Me"
+                  label="Toggle This"
                   [hints]="['please']"
+                ></go-switch-toggle>
+              </div>
+
+              <div class="go-column go-column--100">
+                <go-switch-toggle
+                  [control]="form.controls.toggle2"
+                  label="Toggle That"
+                  labelPosition="before"
+                  [hints]="['look, the label can go before the switch']"
                 ></go-switch-toggle>
               </div>
 

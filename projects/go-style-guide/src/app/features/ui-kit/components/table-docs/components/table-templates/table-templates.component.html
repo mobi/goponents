@@ -1,0 +1,102 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Implementing Templating</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        It is possible to add custom templates for column's heading or cell
+        by using <code class="code-block--inline">#goTableHead</code> and
+        <code class="code-block--inline">#goTableCell</code> respectively.
+      </p>
+      <p class="go-body-copy">
+        The content within these areas can be any HTML and is supported by
+        Angular so you can make use of components, pipes, etc.
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="cellTemplating">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Adding Cell Templating</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="columnTemplating" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Cell Template Example">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email">
+      <ng-template #goTableCell let-item>
+        <a class="go-link" href="mailto:{{ item.email }}">{{ item.email }}</a>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="headTemplating">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Adding Header Templating</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="headerTemplating" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Header Template Example">
+    <go-table-column field="id">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          ID
+        </div>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="name.first">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          First Name
+        </div>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="name.last">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          Last Name
+        </div>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="email">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          Primary Email
+        </div>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="gender">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          Gender
+        </div>
+      </ng-template>
+    </go-table-column>
+    <go-table-column field="ip_address" title="IP Address">
+      <ng-template #goTableHead let-item>
+        <div class="stacked-header">
+          <span class="stacked-header__type">Person</span>
+          IP Address
+        </div>
+      </ng-template>
+    </go-table-column>
+  </go-table>
+</section>

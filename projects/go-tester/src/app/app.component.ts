@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 import {
-  GoIconComponent,
+  GoConfigService,
   GoModalService,
   GoOffCanvasService,
+  GoSelectComponent,
   GoSideNavService,
   GoToasterService,
   NavGroup,
-  NavItem
+  NavItem,
 } from '../../../go-lib/src/public_api';
 import { OffCanvasTestComponent } from './components/off-canvas-test/off-canvas-test.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +27,14 @@ export class AppComponent implements OnInit {
     { routeIcon: 'dashboard', routeTitle: 'Tests', description: 'Test Routes', subRoutes: [
       { route: 'test-page-1', routeTitle: 'Test 1', description: 'Test Route 1' },
       { route: 'test-page-2', routeTitle: 'Test 2' },
-      { route: 'test-page-3', routeTitle: 'Test 3', description: 'Forms' }
+      { routeTitle: 'Test 3', description: 'Forms', subRoutes: [
+        { route: 'test-page-3', routeTitle: 'test 4' }
+      ]}
     ]},
     { routeIcon: 'explore', routeTitle: 'Second Test', route: 'test-page-4', description: 'Test Route 4' },
     {
       routeIcon: 'search',
-      routeTitle: 'External Link (New Tab)',
+      routeTitle: 'External Link (In a New Tab)',
       description: 'Test external link opening in new tab',
       route: 'https://www.google.com/',
       isExternalLink: true
@@ -45,7 +49,22 @@ export class AppComponent implements OnInit {
     }
   ];
 
+  selectControl: FormControl = new FormControl('');
+  toggleControl: FormControl = new FormControl(false);
+
+  selectItems: any = [
+    { value: 1, label: 'Reeses' },
+    { value: 2, label: 'Mints' },
+    { value: 3, label: 'Snickers' },
+    { value: 4, label: 'KitKat' },
+    { value: 5, label: 'Milky Way' },
+    { value: 6, label: 'Sour Patch Kids' },
+    { value: 7, label: 'Gobstoppers' },
+    { value: 8, label: 'Spinach' }
+  ];
+
   constructor(
+    private goConfigService: GoConfigService,
     private goToasterService: GoToasterService,
     private goOffCanvasService: GoOffCanvasService,
     private goSideNavService: GoSideNavService,
@@ -53,12 +72,20 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.goConfigService.setBrandColor('#8A4EDE');
+    this.goConfigService.overrideMenuColor('light');
+
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.goConfigService.toggleHeaderBrandingEnabled();
+    });
   }
 
   openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: OffCanvasTestComponent,
-      bindings: {}
+      bindings: {
+      },
+      header: 'Test Header'
     });
   }
 
@@ -68,9 +95,12 @@ export class AppComponent implements OnInit {
 
   openModal(): void {
     this.goModalService.openModal(
-      GoIconComponent,
+      GoSelectComponent,
       {
-        icon: 'alarm'
+        appendTo: 'body',
+        control: this.selectControl,
+        items: this.selectItems,
+        label: 'Testing the appendTo input'
       }
     );
   }

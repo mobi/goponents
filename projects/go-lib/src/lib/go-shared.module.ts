@@ -5,6 +5,7 @@ import { GoBadgeModule } from './components/go-badge/go-badge.module';
 import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
 import { GoCopyModule } from './components/go-copy/go-copy.module';
+import { GoFileUploadModule } from './components/go-file-upload/go-file-upload.module';
 import { GoHeaderModule } from './components/go-header/go-header.module';
 import { GoHintModule } from './components/go-hint/go-hint.module';
 import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.module';
@@ -24,6 +25,7 @@ import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-to
 import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
+import { GoFooterModule } from './components/go-footer/go-footer.module';
 
 @NgModule({
   imports: [
@@ -35,6 +37,8 @@ import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.mod
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoFileUploadModule,
+    GoFooterModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
@@ -61,6 +65,8 @@ import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.mod
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoFileUploadModule,
+    GoFooterModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,

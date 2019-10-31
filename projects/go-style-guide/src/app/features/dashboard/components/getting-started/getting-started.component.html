@@ -1,0 +1,89 @@
+<header class="go-page-title">
+  <h1 class="go-heading-3" style="text-align:center;">Getting Started</h1>
+</header>
+<div class="go-container go-container--centered">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-4">Step 0: Before You Go</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <section class="go-column go-column--100">
+          <p class="go-body-copy">
+            To utlize the design system modules we assume:
+          </p>
+          <ul class="go-list">
+            <li>You have Node installed</li>
+            <li>You have Angular installed</li>
+            <li>You're ulitizing SCSS</li>
+          </ul>
+        </section>
+        <p class="go-column go-column--100">
+          The current iteration of our design system is made up of a single node module:
+        </p>
+        <section class="go-column go-column--100 go-column--no-padding">
+          <p class="go-body-copy">
+            <strong>@tangoe/goponents</strong>
+            (<a class="go-link" href="https://www.npmjs.com/package/@tangoe/goponents">npmjs</a> /
+            <a class="go-link" href="https://github.com/mobi/goponents">GitHub</a>)
+          </p>
+          <p class="go-body-copy">
+            This package contains all of the custom Angular Components, Services, and styles
+            outlined in this Style Guide.
+          </p>
+        </section>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-4">Step 1: Installation</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <p class="go-column go-column--100">
+          Goponents is an open source project and can easily be installed through NPM.
+        </p>
+        <section class="go-column go-column--100 go-column--no-padding">
+          <h6 class="go-heading-6">
+            Install goponents:
+          </h6>
+          <code [highlight]="installGoponents" [languages]="['bash']"></code>
+        </section>
+      </div>
+    </ng-container>
+  </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-4">Step 2: Setup</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <section class="go-column go-column--100">
+          <h3 class="go-heading-5">Components</h3>
+          <p class="go-body-copy">
+            For components, the setup will depend upon which one you need to implement.
+            To find that information, check each components' documenation for instructions.
+            Typically it involves importing the specific module for each component you use.
+          </p>
+          <p class="go-body-copy">
+            <strong>DO NOT</strong> import every component into every module. <strong>ONLY</strong>
+            import what is needed for each module.
+          </p>
+        </section>
+        <section class="go-column go-column--100 go-column--no-padding">
+          <h3 class="go-heading-5">Styles</h3>
+          <p class="go-body-copy">
+            To utlize all of the benefits our styles have to offer, in the root <code class="code-block--inline">styles.scss</code>
+            of the project import: 
+          </p>
+          <code [highlight]="importStylesBase"></code>
+          <p class="go-body-copy">
+            Alternatively, partials can be imported individually. These can be found:
+          </p>
+          <code [highlight]="importStylesPartials"></code>
+        </section>
+      </div>
+    </ng-container>
+  </go-card>
+</div>

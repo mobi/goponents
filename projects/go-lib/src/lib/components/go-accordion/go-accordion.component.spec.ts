@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoAccordionComponent } from './go-accordion.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
+import { GoConfigService } from '../../go-config.service';
 
 @Component({
   selector: 'go-test',
@@ -37,6 +38,9 @@ describe('AccordionComponent', () => {
       imports: [
         BrowserAnimationsModule,
         GoIconModule
+      ],
+      providers: [
+        GoConfigService
       ]
     })
     .compileComponents();
