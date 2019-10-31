@@ -59,7 +59,7 @@
   </div>
   <div class="go-table-toolbar" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
-      <select class="go-form__select go-table-toolbar__select" (change)="setPerPage($event)">
+      <select class="go-form__select go-table-toolbar__select" [value]="localTableConfig.pageConfig.perPage" (change)="setPerPage($event)">
         <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
                 [value]="[size]">{{ size }}</option>
       </select>
