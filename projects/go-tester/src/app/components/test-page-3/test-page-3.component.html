@@ -45,6 +45,16 @@
                 ></go-input>
               </div>
 
+              <div class="go-column go-column--100">
+                <go-file-upload
+                  [control]="fileControl"
+                  [isLoading]="loading"
+                  [multiple]="true"
+                  label="Upload File"
+                  [hints]="['You can upload multiple files']"
+                ></go-file-upload>
+              </div>
+
               <div class="go-column go-column--50">
                 <go-radio-group
                   legend="Options"

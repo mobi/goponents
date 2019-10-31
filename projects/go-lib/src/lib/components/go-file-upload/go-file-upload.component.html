@@ -1,0 +1,56 @@
+<label class="go-form__label"
+       [attr.for]="id"
+       [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  {{ label }}
+</label>
+<div [ngClass]="{ 'go-file-upload--disabled': state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
+  <div
+    goDragonDrop
+    class="go-file-upload go-file-upload__container"
+    activeClass="go-file-upload--active"
+    (click)="filePicker.click()"
+    (dropped)="onFilePicked($event)"
+  >
+    <div class="go-file-upload__container" *ngIf="state === 'selecting' && !isLoading">
+      <go-icon icon="publish" iconModifier="large"></go-icon>
+      Drag and Drop File or Click to Browse
+    </div>
+    <div class="go-file-upload__container go-file-upload__container--loading" *ngIf="isLoading">
+      <go-loader *ngIf="isLoading" loaderSize="small"></go-loader>
+      <span class="go-file-upload__container--loading-text">Uploading File...</span>
+    </div>
+    <div class="go-file-upload__container go-file-upload__container--selected" *ngIf="state === 'selected' && !isLoading">
+      <go-icon icon="check" class="go-file-upload__selected-checkmark" iconClass="go-icon--large"></go-icon>
+      File Selected
+    </div>
+    <input
+      type="file"
+      [id]="id"
+      #filePicker
+      class="go-file-upload__input"
+      (change)="onFilePicked($event.target.files)"
+      [attr.multiple]="multiple ? true : null">
+  </div>
+</div>
+
+<div *ngIf="filePreview.length" class="go-file-upload__file-name">
+  <label class="go-form__label file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="multiple">Files</label>
+  <label class="go-form__label file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="!multiple">File Name</label>
+  <p *ngFor="let file of filePreview; let i = index" class="go-file-upload__file-list">
+    <span class="go-file-upload__file-name" [ngClass]="{'go-file-upload__file-name--dark': theme === 'dark'}">{{ file }}</span>
+    <go-icon-button buttonIcon="close" (handleClick)="removeFile(i)"></go-icon-button>
+  </p>
+</div>
+
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme">
+</go-hint>
+
+<div *ngIf="control?.errors?.length">
+  <go-hint
+    *ngFor="let error of control.errors"
+    [message]="error.message"
+    [label]="error.type"
+    [theme]="theme"
+    type="negative"
+  ></go-hint>
+</div>

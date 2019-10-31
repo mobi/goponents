@@ -14,6 +14,7 @@ import {
   GoConfigService,
   GoCopyModule,
   GoDatepickerModule,
+  GoFileUploadModule,
   GoIconButtonModule,
   GoIconModule,
   GoInputModule,
@@ -44,6 +45,7 @@ import { CardDocsComponent } from './components/card-docs/card-docs.component';
 import { ConfigurationDocsComponent } from './components/configuration-docs/configuration-docs.component';
 import { CopyDocsComponent } from './components/copy-docs/copy-docs.component';
 import { DatepickerDocsComponent } from './components/form-docs/components/datepicker-docs/datepicker-docs.component';
+import { FileUploadDocsComponent } from './components/form-docs/components/file-upload-docs/file-upload-docs.component';
 import { FormControlDocsComponent } from './components/form-docs/components/form-control-docs/form-control-docs.component';
 import { FormDocsComponent } from './components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from './components/form-docs/components/forms-overview/forms-overview.component';
@@ -95,6 +97,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoFileUploadModule,
     GoIconButtonModule,
     GoIconModule,
     GoInputModule,
@@ -122,6 +125,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     CopyDocsComponent,
     FormControlDocsComponent,
     DatepickerDocsComponent,
+    FileUploadDocsComponent,
     FormDocsComponent,
     FormsOverviewComponent,
     IconButtonDocsComponent,

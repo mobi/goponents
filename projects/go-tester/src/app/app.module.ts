@@ -14,6 +14,7 @@ import {
   GoCheckboxModule,
   GoCopyModule,
   GoDatepickerModule,
+  GoFileUploadModule,
   GoFooterModule,
   GoHeaderModule,
   GoIconButtonModule,
@@ -32,7 +33,7 @@ import {
   GoTableModule,
   GoTextAreaModule,
   GoToasterModule,
-  GoToastModule,
+  GoToastModule
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
@@ -74,6 +75,7 @@ import { AppGuard } from './app.guard';
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoFileUploadModule,
     GoFooterModule,
     GoHeaderModule,
     GoIconModule,

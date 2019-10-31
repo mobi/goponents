@@ -9,6 +9,7 @@ import { ButtonDocsComponent } from '../components/button-docs/button-docs.compo
 import { CardDocsComponent } from '../components/card-docs/card-docs.component';
 import { CopyDocsComponent } from '../components/copy-docs/copy-docs.component';
 import { DatepickerDocsComponent } from '../components/form-docs/components/datepicker-docs/datepicker-docs.component';
+import { FileUploadDocsComponent } from '../components/form-docs/components/file-upload-docs/file-upload-docs.component';
 import { FormDocsComponent } from '../components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from '../components/form-docs/components/forms-overview/forms-overview.component';
 import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
@@ -66,6 +67,7 @@ const routes: Routes = [
     { path: '', component: FormsOverviewComponent },
     { path: 'checkbox', component: CheckboxDocsComponent },
     { path: 'datepicker', component: DatepickerDocsComponent },
+    { path: 'file-upload', component: FileUploadDocsComponent },
     { path: 'input', component: InputDocsComponent },
     { path: 'radio', component: RadioButtonDocsComponent },
     { path: 'select', component: SelectDocsComponent },
