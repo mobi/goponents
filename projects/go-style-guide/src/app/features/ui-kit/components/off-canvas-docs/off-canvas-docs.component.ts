@@ -58,7 +58,8 @@ export class OffCanvasDocsComponent {
       component: BasicTestComponent,
       bindings: {
         someBinding: 'monkey'
-      }
+      },
+      header: 'Test Header'
     });
   }
   `;
@@ -82,7 +83,8 @@ export class OffCanvasDocsComponent {
       component: BasicTestComponent,
       bindings: {
         someBinding: 'Basic Off Canvas Component'
-      }
+      },
+      header: 'Test Header'
     });
   }
 }

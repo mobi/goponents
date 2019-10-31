@@ -11,13 +11,12 @@
   role="dialog"
 >
   <div class="go-off-canvas__header">
-    <button
-      (click)="closeOffCanvas()"
-      class="go-off-canvas__button"
-      type="button"
-    >
-      Close
-    </button>
+    <h2 *ngIf="header" class="go-off-canvas__title">
+      {{ header }}
+    </h2>
+    <go-icon-button buttonIcon="close"
+                    (handleClick)="closeOffCanvas()">
+    </go-icon-button>
   </div>
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>

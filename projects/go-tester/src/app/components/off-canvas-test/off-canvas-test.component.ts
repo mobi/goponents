@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './off-canvas-test.component.html'
 })
 export class OffCanvasTestComponent {
+  selectControl: FormControl = new FormControl();
   selectData: any = [{
     value: 1,
     name: 'Harry'
@@ -22,5 +23,4 @@ export class OffCanvasTestComponent {
     value: 5,
     name: 'Snake'
   }];
-  selectControl: FormControl = new FormControl();
 }
