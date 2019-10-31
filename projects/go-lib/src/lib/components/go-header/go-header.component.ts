@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilKeyChanged, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
@@ -37,7 +37,12 @@ export class GoHeaderComponent implements OnChanges {
       .pipe(distinctUntilChanged())
       .subscribe((value: GoConfigInterface) => {
         if (value.headerBrandingEnabled) {
-          this.handleBrandColorChange(value);
+          if (value.brandFontColor) {
+            this.brandColor = value.brandColor;
+            this.brandColorIsDark = value.brandFontColor === 'light';
+          } else {
+            this.handleBrandColorChange(value);
+          }
         } else {
           this.brandColor = '';
           this.brandColorIsDark = false;
@@ -47,6 +52,14 @@ export class GoHeaderComponent implements OnChanges {
 
   isNavCollapsed(): boolean {
     return window.innerWidth <= this.minWidthBreakpoint ? true : !this.sideNavService.navOpen;
+  }
+
+  getLogoBackground(): string | null {
+    if (this.brandColor && !this.isNavCollapsed()) {
+      return this.brandColor;
+    } else {
+      return null;
+    }
   }
 
   toggleSideMenu(): void {

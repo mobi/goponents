@@ -1,84 +1,114 @@
 <header class="go-page-title">
-    <h1 class="go-heading-3">{{ pageTitle }}</h1>
-  </header>
-  
-  <section class="go-container">
-    <go-card class="go-column go-column--100">
-      <ng-container go-card-header>
-        <h1 class="go-heading-5">Branding</h1>
-      </ng-container>
-      <ng-container go-card-content>
-        <p class="go-body-copy">
-          The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select 
-          pieces of our design system. Currently the only things that can be branded are the active indicators 
-          on the sidenav and accordions as well as the left portion of the header.
-        </p>
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+</header>
 
-        <h1 class="go-heading-5">Update Branding Color</h1>
-        <div class="go-container">
-          <div class="go-column--100">
-            <div class="go-column">
-              <p class="go-body-copy">
-                The <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
-                to update the branding color by passing in a hex code.
-              </p>
-            </div>
-          </div>
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Branding</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select 
+        pieces of our design system. Currently the only things that can be branded are the active indicators 
+        on the sidenav and accordions as well as the left portion of the header.
+      </p>
 
-          <div class="go-column--50">
-            <div class="go-column">
-              <go-input
-                [control]="inputControl"
-                label="Brand Color">
+      <h1 class="go-heading-5">Update Branding Color</h1>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
+        to update the branding color by passing in a hex code.
+      </p>
+
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <div class="go-container">
+            <div class="go-column go-column--100">
+              <go-input [control]="inputControl" label="Brand Color">
               </go-input>
             </div>
-            
-            <div class="go-column">
-              <go-button
-                (handleClick)="updateColor()"
-              >
+            <div class="go-column--100 go-column">
+              <go-button (handleClick)="updateColor()">
                 Update Branding Color
               </go-button>
             </div>
           </div>
-
-          <div class="go-column go-column--50">
-            <code [highlight]="buttonExample">
-            </code>
-            
-            <code [highlight]="updateColorExample">
-            </code>
-          </div>
         </div>
 
-        <h1 class="go-heading-5">Enable Header Branding</h1>
-        <div class="go-container">
-          <div class="go-column--100">
-            <div class="go-column">
-              <p class="go-body-copy">
-                The <code class="code-block--inline">public toggleHeaderBrandingEnabled(): void</code> method can 
-                be used to enable/disable header branding.
-              </p>
-            </div>
-          </div>
-
-          <div class="go-column--50">
-            <div class="go-column">
-              <go-switch-toggle
-                [control]="toggleControl"
-                label="Toggle Header Branding">
-              </go-switch-toggle>
-            </div>
-          </div>
-
-          <div class="go-column go-column--50">
-            <code [highlight]="toggleExample">
-            </code>
-            
-            <code [highlight]="toggleHeaderEnabledExample">
-            </code>
-          </div>
+        <div class="go-column go-column--50">
+          <code [highlight]="buttonExample">
+          </code>
+          
+          <code [highlight]="updateColorExample">
+          </code>
         </div>
-      </ng-container>
-    </go-card>
-  </section>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="header-branding">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Enable Header Branding</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">public toggleHeaderBrandingEnabled(): void</code> method can 
+        be used to enable/disable header branding.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <go-switch-toggle
+            [control]="toggleControl"
+            label="Toggle Header Branding">
+          </go-switch-toggle>
+        </div>
+
+        <div class="go-column go-column--50">
+          <code [highlight]="toggleExample">
+          </code>
+          
+          <code [highlight]="toggleHeaderEnabledExample">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="override-accessibility">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Override Accessibility Color</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">overrideMenuColor()</code> method can 
+        be used to override the accessibility check that is performed on the header.
+        You can specify <code class="code-block--inline">light</code>, <code class="code-block--inline">dark</code>
+        or leave it <code class="code-block--inline">undefined</code> to allow the accessibility check.
+        This feature is only activated if <code class="code-block--inline">headerBrandingEnabled</code> is enabled.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <p class="go-body-copy">
+            <go-select [control]="colorControl"
+                      label="Specify Font Color"
+                      bindValue="value"
+                      bindLabel="label"
+                      [items]="colorOptions">
+            </go-select>
+          </p>
+          <p class="go-body-copy">
+            Note: to see this example take affect, toggle the "Enable Header Branding" above to true.
+          </p>
+        </div>
+
+        <div class="go-column go-column--50">
+          <code [highlight]="colorEx">
+          </code>
+          
+          <code [highlight]="colorEx_html">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</section>

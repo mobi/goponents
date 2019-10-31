@@ -15,6 +15,10 @@ export class GoConfigService {
     headerBrandingEnabled: false
   });
 
+  /**
+   * Use this method to specific a brand color to be used in all places where branding is applied
+   * @param color The color for the brand
+   */
   public setBrandColor(color: string): void {
     // we have to copy the config here or it won't regester a change in components
     const config: GoConfigInterface = Object.assign({}, this.config.getValue());
@@ -22,6 +26,9 @@ export class GoConfigService {
     this.config.next(config);
   }
 
+  /**
+   * Use this method to turn the branding in the header on/off
+   */
   public toggleHeaderBrandingEnabled(): void {
     // we have to copy the config here or it won't regester a change in components
     const config: GoConfigInterface = Object.assign({}, this.config.getValue());
@@ -29,6 +36,21 @@ export class GoConfigService {
     this.config.next(config);
   }
 
+  /**
+   * Use this method to override the accessibility check and set a consistent background
+   * @param useColor specifies the font color to use, regardless of accessibilty
+   */
+  public overrideMenuColor(useColor: 'light'| 'dark'): void {
+    const config: GoConfigInterface = Object.assign({}, this.config.getValue());
+    config.brandFontColor = useColor;
+    this.config.next(config);
+  }
+
+  /**
+   * Use this method to check the contrast ratio between a foreground and background color combination
+   * @param backgroundHex the hexidecimal code for the background color
+   * @param foregroundHex the hexidecimal code for the foreground color
+   */
   public contrastIsAccessible(backgroundHex: string, foregroundHex: string): boolean {
     const backgroundRgb: RGB = this.hexToRgb(backgroundHex);
     const foregroundRgb: RGB = this.hexToRgb(foregroundHex);
