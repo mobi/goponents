@@ -46,7 +46,7 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="header-branding">
     <ng-container go-card-header>
       <h1 class="go-heading-5">Enable Header Branding</h1>
     </ng-container>
@@ -74,7 +74,7 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="override-accessibility">
     <ng-container go-card-header>
       <h1 class="go-heading-5">Override Accessibility Color</h1>
     </ng-container>
@@ -88,12 +88,17 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <go-select [control]="colorControl"
-                     label="Specify Font Color"
-                     bindValue="value"
-                     bindLabel="label"
-                     [items]="colorOptions">
-          </go-select>
+          <p class="go-body-copy">
+            <go-select [control]="colorControl"
+                      label="Specify Font Color"
+                      bindValue="value"
+                      bindLabel="label"
+                      [items]="colorOptions">
+            </go-select>
+          </p>
+          <p class="go-body-copy">
+            Note: to see this example take affect, toggle the "Enable Header Branding" above to true.
+          </p>
         </div>
 
         <div class="go-column go-column--50">
