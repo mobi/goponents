@@ -8,8 +8,14 @@ import { FormControl } from '@angular/forms';
 })
 export class ConfigurationDocsComponent implements OnInit {
   pageTitle: string = 'Configuration';
-  inputControl: FormControl;
+  inputControl: FormControl = new FormControl(false);
   toggleControl: FormControl = new FormControl(false);
+  colorControl: FormControl = new FormControl('');
+  colorOptions: any = [
+    { label: 'Default', value: undefined },
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' }
+  ];
 
   updateColorExample: string = `
   updateColor(): void {
@@ -45,12 +51,26 @@ export class ConfigurationDocsComponent implements OnInit {
   }
   `;
 
+  colorEx: string = `
+  colorControl: FormControl = new FormControl('');
+
+  constructor(private goConfigService: GoConfigService) { }
+
+  this.colorControl.valueChanges.subscribe(i => {
+    this.goConfigService.overrideMenuColor(i);
+  });
+  `;
+
   constructor(private goConfigService: GoConfigService) { }
 
   ngOnInit(): void {
     this.inputControl = new FormControl(this.goConfigService.config.getValue().brandColor);
     this.toggleControl.valueChanges.subscribe(() => {
       this.goConfigService.toggleHeaderBrandingEnabled();
+    });
+
+    this.colorControl.valueChanges.subscribe(i => {
+      this.goConfigService.overrideMenuColor(i);
     });
   }
 
