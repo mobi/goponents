@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoModalService, GoSelectComponent } from 'projects/go-lib/src/public_api';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
+import { debounceTime, map } from 'rxjs/operators';
+import { concat, of, Subject } from 'rxjs';
 
 @Component({
   templateUrl: './select-docs.component.html'
 })
 export class SelectDocsComponent implements OnInit {
+  itemInput: Subject<string> = new Subject<string>();
+  options$: any;
+
   items: any = [
     { value: 1, name: 'Reeses' },
     { value: 2, name: 'Mints' }
@@ -22,6 +27,7 @@ export class SelectDocsComponent implements OnInit {
   select8: FormControl = new FormControl('');
   select9: FormControl = new FormControl('');
   select10: FormControl = new FormControl('');
+  select11: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -157,6 +163,31 @@ export class SelectDocsComponent implements OnInit {
   }
   `;
 
+  select11Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    [items]="options$ | async"
+    [multiple]="true"
+    label="Your Input"
+    [typeahead]="itemInput"
+  ></go-select>
+  `;
+
+  select11ComponentCode: string = `
+  itemInput: Subject<string> = new Subject<string>();
+  options$: any;
+
+  this.options$ = concat(
+    of([]),
+    this.itemInput.pipe(
+      debounceTime(600), // Delay user input
+      map((input) => [input])
+    )
+  );
+  `;
+
   constructor(
     private goModalService: GoModalService,
     private subNavService: SubNavService
@@ -176,6 +207,14 @@ export class SelectDocsComponent implements OnInit {
         }
       ]);
     });
+
+    this.options$ = concat(
+      of([]),
+      this.itemInput.pipe(
+        debounceTime(600), // Delay user input
+        map((input) => [input])
+      )
+    );
   }
 
   openModal(): void {

@@ -344,4 +344,41 @@
       </div>
     </ng-container>
   </go-card>
+  <go-card id="form-select-loading" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Component Typeahead</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes we may want to use typeahead functionality in order to get the results from the server based
+        on a users input. The <code class="code-block--inline">@Input() typeahead?: Subject&lt;string&gt;;</code> binding.
+        can be used to pass a typeahead string through to do server side searching using an observable with rxjs.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-select
+            bindLabel="name"
+            bindValue="value"
+            [control]="select11"
+            [items]="options$ | async"
+            [multiple]="true"
+            label="Your Input"
+            [typeahead]="itemInput"
+          ></go-select>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code
+            [highlight]="select11Code"
+            class="code-block--no-bottom-margin"
+          ></code>
+          <code
+            [highlight]="select11ComponentCode"
+            class="code-block--no-bottom-margin"
+          ></code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
 </section>
