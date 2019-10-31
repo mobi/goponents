@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilKeyChanged, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
