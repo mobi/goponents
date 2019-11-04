@@ -111,12 +111,12 @@
   }
 }
 
-.go-table__body-row--selected {
-  background: $theme-light-app-bg;
-}
-
 .go-table__body-row:nth-child(even) {
   background: rgba($theme-light-app-bg, .5);
+}
+
+.go-table__body-row.go-table__body-row--selected {
+  background: $theme-light-app-bg;
 }
 
 .go-table-toolbar {
