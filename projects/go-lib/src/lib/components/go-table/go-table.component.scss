@@ -110,6 +110,10 @@
   }
 }
 
+.go-table__body-row--selected {
+  background: $theme-light-app-bg;
+}
+
 .go-table-toolbar {
   align-items: center;
   display: flex;
