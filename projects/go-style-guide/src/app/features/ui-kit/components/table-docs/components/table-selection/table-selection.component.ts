@@ -123,6 +123,32 @@ export class TableSelectionComponent {
   }
   `;
 
+  preselectedTable_html: string = `
+  <go-table class="go-column go-column--100"
+            [tableConfig]="preselectedTableConfig"
+            tableTitle="Preselect All Rows">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+  `;
+
+  preselectedTable_ts: string = `
+  import {
+    GoTableConfig
+  } from '@tangoe/goponents';
+
+  preselectedTableConfig: GoTableConfig = new GoTableConfig({
+    preselected: true,
+    selectBy: 'id',
+    selectable: true,
+    tableData: [] // your array of data
+  });
+  `;
+
   interactiveTableConfig: GoTableConfig = new GoTableConfig({
     selectBy: 'id',
     selectable: true,
@@ -136,6 +162,13 @@ export class TableSelectionComponent {
   });
 
   rowEventTableConfig: GoTableConfig = new GoTableConfig({
+    selectBy: 'id',
+    selectable: true,
+    tableData: this.tableDocsService.generateData(20)
+  });
+
+  preselectedTableConfig: GoTableConfig = new GoTableConfig({
+    preselected: true,
     selectBy: 'id',
     selectable: true,
     tableData: this.tableDocsService.generateData(20)

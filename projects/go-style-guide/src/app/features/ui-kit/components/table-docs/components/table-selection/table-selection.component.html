@@ -133,4 +133,34 @@
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
+
+  <go-card class="go-column go-column--100" id="preselect-options">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Preselect All Rows</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        There may be times where you want all options in a table to be preselected and the user to start
+        with deselecting options instead of selecting them. This can be accomplished through the
+        <code class="code-block--inline">preselected</code> option in the <code class="code-block--inline">GoTableConfig</code>.
+      </p>
+      <h2 class="go-heading-6">example.html</h2>
+      <code [highlight]="preselectedTable_html"></code>
+      <h2 class="go-heading-6">example.ts</h2>
+      <code [highlight]="preselectedTable_ts" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="preselectedTableConfig"
+    tableTitle="Preselect All Rows"
+  >
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
 </section>

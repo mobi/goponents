@@ -1,4 +1,6 @@
 import {
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   ElementRef,
@@ -31,7 +33,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
 })
-export class GoTableComponent implements OnInit, OnChanges {
+export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() loadingData: boolean = false;
   @Input() showTableActions: boolean = false;
@@ -59,6 +61,8 @@ export class GoTableComponent implements OnInit, OnChanges {
   targetedRows: any[] = [];
   showTable: boolean = false;
 
+  constructor(private changeDetector: ChangeDetectorRef) { }
+
   ngOnInit(): void {
     if (!this.tableConfig) {
       throw new Error('GoTableComponent: tableConfig is a required Input');
@@ -69,6 +73,13 @@ export class GoTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.renderTable();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.tableConfig.preselected) {
+      this.toggleSelectAll();
+      this.changeDetector.detectChanges();
+    }
   }
 
   renderTable(): void {
