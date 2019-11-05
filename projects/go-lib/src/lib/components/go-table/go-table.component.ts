@@ -26,12 +26,12 @@ import {
 } from './index';
 import { sortBy } from './go-table-utils';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
-import { detailButtonAnim, detailsAnimation } from '../../animations/table-details.animation';
+import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
 
 @Component({
   animations: [
     detailButtonAnim,
-    detailsAnimation,
+    tableRowBorderAnim,
     fadeTemplateAnimation
   ],
   selector: 'go-table',

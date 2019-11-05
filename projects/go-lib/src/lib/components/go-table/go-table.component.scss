@@ -219,9 +219,13 @@
 }
 
 .go-table__body-row--expanded {
-  border-bottom: none;
+  border-bottom-color: rgba(240, 240, 240, 0)
 }
 
 .go-table__details-button {
   display: block;
+}
+
+.go-table__icon-button-column {
+  padding: .375rem 1.25rem;
 }

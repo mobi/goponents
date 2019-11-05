@@ -40,8 +40,9 @@
         <ng-container *ngFor="let item of setDisplayData()">
           <tr class="go-table__body-row"
               [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }">
-            <td class="go-table__body-column"
+            <td class="go-table__body-column go-table__icon-button-column"
                 [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
+                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="40"
                 *ngIf="details">
               <go-icon-button
@@ -53,6 +54,7 @@
             </td>
             <td class="go-table__body-column"
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
                 *ngIf="localTableConfig.selectable">
               <input type="checkbox"
@@ -63,6 +65,7 @@
             <td *ngFor="let col of columns"
                 class="go-table__body-column"
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 [attr.width]="col.width">
               <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
                 {{ col.getFieldData(item) }}
@@ -72,7 +75,7 @@
               </ng-template>
             </td>
           </tr>
-          <tr class="go-table__body-row" *ngIf="details" [@detailsAnimation]="item.showDetails ? 'open' : 'close'">
+          <tr class="go-table__body-row" *ngIf="details">
             <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }" *ngIf="item.showDetails">
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
             </td>

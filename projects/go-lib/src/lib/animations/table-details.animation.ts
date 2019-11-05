@@ -21,14 +21,14 @@ export const detailButtonAnim: AnimationTriggerMetadata = trigger('detailButtonA
   ])
 ]);
 
-export const detailsAnimation: AnimationTriggerMetadata = trigger('detailsAnimation', [
+export const tableRowBorderAnim: AnimationTriggerMetadata  = trigger('tableRowBorderAnim', [
   state('open', style({
-    display: 'table-row'
+    'border-bottom-color': 'rgba(240, 240, 240, 0)'
   })),
   state('close', style({
-    display: 'none'
+    'border-bottom-color': 'rgba(240, 240, 240, 1)'
   })),
   transition('open <=> close', [
-    animate('.125s ' + easing)
+    animate(timing + easing)
   ])
 ]);
