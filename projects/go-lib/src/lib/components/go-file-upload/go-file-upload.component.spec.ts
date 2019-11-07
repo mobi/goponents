@@ -110,4 +110,40 @@ describe('GoFileUploadComponent', () => {
       expect(component.id).toContain('file-upload-');
     });
   });
+
+  describe('onFilePicked', () => {
+    const files: Object[] = [{
+      id: 1,
+      name: 'file'
+    }];
+
+    afterEach(() => {
+      component.files = component.fb.array([]);
+      component.filePreview = [];
+    });
+
+    it('doesn\'t error when dropping a file', () => {
+      component.onFilePicked({
+        dataTransfer: {
+          files: files
+        }
+      });
+
+      expect(component.files.length).toBe(1);
+      expect(component.filePreview.length).toBe(1);
+      expect(component.filePreview[0]).toBe('file');
+    });
+
+    it('doesn\t error when clicking on the file upload', () => {
+      component.onFilePicked({
+        target: {
+          files: files
+        }
+      });
+
+      expect(component.files.length).toBe(1);
+      expect(component.filePreview.length).toBe(1);
+      expect(component.filePreview[0]).toBe('file');
+    });
+  });
 });
