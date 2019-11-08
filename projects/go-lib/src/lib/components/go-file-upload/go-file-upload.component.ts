@@ -37,7 +37,8 @@ export class GoFileUploadComponent implements OnInit {
   }
 
   onFilePicked(evt: any): void {
-    const files: File[] = evt.dataTransfer.files;
+    const files: File[] = evt.dataTransfer ? evt.dataTransfer.files : evt.target.files;
+
     if (files.length > 0) {
       Array.from(files).forEach((file: any) => {
         this.files.push(this.patchValues(file));
