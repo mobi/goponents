@@ -6,6 +6,7 @@ export class GoTableConfig {
   noDataText: string = 'No Data';
   pageable: boolean = true;
   pageConfig: GoTablePageConfig = new GoTablePageConfig();
+  preselected: boolean = false;
   selectable: boolean = false;
   selectBy: string;
   sortConfig?: GoTableSortConfig;
@@ -18,6 +19,7 @@ export class GoTableConfig {
     noDataText?: string,
     pageable?: boolean,
     pageConfig?: GoTablePageConfig,
+    preselected?: boolean,
     selectable?: boolean,
     selectBy?: string,
     sortConfig?: GoTableSortConfig,
