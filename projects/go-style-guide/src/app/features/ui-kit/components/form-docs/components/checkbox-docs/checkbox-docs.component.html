@@ -13,9 +13,10 @@
     </code>
     </ng-container>
   </go-card>
+
   <go-card id="form-checkbox" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Simpliest Implementation</h1>
+      <h1 class="go-heading-5">Simplest Implementation</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -217,3 +218,40 @@
       </div>
     </ng-container>
   </go-card>
+
+  <go-card id="form-checkbox" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h1 class="go-heading-5">Checkbox Disabled</h1>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        This <code class="code-block--inline">@Input() disabled: boolean = false;</code> can be used to disable the checkbox.
+        This should be handled by the parent component.
+      </p>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
+          <go-checkbox-group legend="Options" [control]="checkboxGroup4">
+            <go-checkbox label="Option 1"
+                         [control]="checkboxGroup4.controls.option1"
+                         disabled="option1Disabled">
+            </go-checkbox>
+            <go-checkbox label="Option 2"
+                         [control]="checkboxGroup4.controls.option2"
+                         disabled="option2Disabled">
+            </go-checkbox>
+          </go-checkbox-group>
+        </div>
+        <div class="go-column go-column--50">
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
+          <code [highlight]="checkboxDisabledEx_ts"
+                class="code-block--no-bottom-margin">
+          </code>
+          <code [highlight]="checkboxDisabledEx"
+                class="code-block--no-bottom-margin">
+          </code>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+</section>

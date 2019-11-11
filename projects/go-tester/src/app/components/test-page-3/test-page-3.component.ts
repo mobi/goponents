@@ -27,7 +27,9 @@ export class TestPage3Component implements OnInit {
   form: FormGroup = new FormGroup({
     food: new FormGroup({
       apples: new FormControl(''),
-      bananas: new FormControl('')
+      bananas: new FormControl(''),
+      mangos: new FormControl(true),
+      oranges: new FormControl(true)
     }),
     name: new FormControl({ value: '', disabled: false }, Validators.required),
     notes: new FormControl(''),
