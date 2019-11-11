@@ -4,7 +4,6 @@ import { GoTableComponent } from './go-table.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoTableConfig } from './go-table-config.model';
-import { GoTablePageConfig } from './go-table-paging.model';
 
 describe('GoTableComponent', () => {
   let component: GoTableComponent;
@@ -99,6 +98,18 @@ describe('GoTableComponent', () => {
       component.tableConfig.sortable = true;
       component.toggleSort(undefined, 'value');
       expect(component.tableChange.emit).toHaveBeenCalled();
+    });
+  });
+
+  describe('afterViewInit', () => {
+    afterEach(() => {
+      component.selectAllChecked = false;
+    });
+
+    it('should select all rows if preselected', () => {
+      component.tableConfig.preselected = true;
+      component.ngAfterViewInit();
+      expect(component.selectAllChecked).toBe(true);
     });
   });
 });
