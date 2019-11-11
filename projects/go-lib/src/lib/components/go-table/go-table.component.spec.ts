@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoTableComponent } from './go-table.component';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoTableConfig } from './go-table-config.model';
@@ -17,6 +18,7 @@ describe('GoTableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GoTableComponent ],
       imports: [
+        GoIconButtonModule,
         GoIconModule,
         GoLoaderModule
       ]

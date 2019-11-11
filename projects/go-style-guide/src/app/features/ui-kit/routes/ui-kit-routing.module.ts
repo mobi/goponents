@@ -46,6 +46,7 @@ import { AccordionOverviewComponent } from '../components/accordion-docs/compone
 import { SwitchToggleDocsComponent } from '../components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 import { RadioButtonDocsComponent } from '../components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from '../components/form-docs/components/checkbox-docs/checkbox-docs.component';
+import { TableDetailsComponent } from '../components/table-docs/components/table-details/table-details.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -94,7 +95,8 @@ const routes: Routes = [
     { path: 'selection', component: TableSelectionComponent },
     { path: 'server-integration', component: ServerIntegrationComponent },
     { path: 'sorting', component: TableSortingComponent },
-    { path: 'templating', component: TableTemplatesComponent }
+    { path: 'templating', component: TableTemplatesComponent },
+    { path: 'details', component: TableDetailsComponent }
   ]},
   { path: 'ui-kit/toast', component: ToastDocsComponent }
 ];
