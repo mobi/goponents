@@ -111,6 +111,13 @@
               type="button">
         <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_left"></go-icon>
       </button>
+      <button class="go-table-toolbar__page-numbers"
+              type="button"
+              *ngFor="let page of pages"
+              (click)="setPageByPageNumber(page.number)"
+              [ngClass]="{ 'go-table-toolbar__page-numbers--active': page.active }">
+        {{page.number}}
+      </button>
       <button (click)="nextPage()"
               [disabled]="isLastPage()"
               [ngClass]="{ 'go-table-toolbar__button--disabled': isLastPage() }"
