@@ -40,8 +40,8 @@
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
-  background-color: $ui-color-positive;
-  border-color: $ui-color-positive;
+  background-color: $ui-color-primary;
+  border-color: $ui-color-primary;
 }
 
 .go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle::before {
@@ -49,7 +49,7 @@
 }
 
 .go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
-  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-positive);
+  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-primary);
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle::before {
