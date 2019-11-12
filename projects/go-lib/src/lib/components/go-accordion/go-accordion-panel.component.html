@@ -33,7 +33,10 @@
       class="go-accordion-panel__content"
       [ngClass]="{'go-accordion-panel__content--slim': slim }"
     >
-      <ng-content></ng-content>
+      <ng-container *ngIf="loaded">
+        <ng-container *ngTemplateOutlet="panelContent"></ng-container>
+      </ng-container>
+      <ng-content *ngIf="!panelContent"></ng-content>
     </div>
   </div>
 </section>

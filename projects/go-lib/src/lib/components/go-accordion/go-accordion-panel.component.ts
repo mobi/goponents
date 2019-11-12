@@ -1,6 +1,7 @@
 import {
   ChangeDetectorRef,
   Component,
+  ContentChild,
   EventEmitter,
   Input,
   OnChanges,
@@ -26,6 +27,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   containerClasses: object = {};
   headerClasses: object = {};
   brandColor: string;
+  loaded: boolean = false;
 
   @Input() borderless: boolean;
   @Input() boxShadow: boolean;
@@ -42,12 +44,17 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this._expanded = expanded;
     this.containerClasses['go-accordion-panel--active'] = expanded;
     this.headerClasses['go-accordion-panel__header--active'] = expanded;
+    if (expanded) {
+      this.loaded = true;
+    }
   }
   get expanded(): boolean {
     return this._expanded;
   }
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
+
+  @ContentChild('panelContent') panelContent: any;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
