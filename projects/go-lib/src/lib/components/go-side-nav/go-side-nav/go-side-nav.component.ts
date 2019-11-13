@@ -20,13 +20,14 @@ export class GoSideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.navService.setMenuItems(this.menuItems);
+    this.navService.setActiveItem(this.router.url);
+    this.configureExpanded(this.router.url);
+
     this.router.events
       .pipe(
         filter((event: any) => event instanceof NavigationEnd)
       ).subscribe((event: NavigationEnd) => {
-        this.menuItems.forEach((item: (NavGroup | NavItem)) => {
-          (item as NavGroup).expanded = this.setExpanded(item, event.url);
-        });
+        this.configureExpanded(event.url);
     });
   }
 
@@ -38,6 +39,12 @@ export class GoSideNavComponent implements OnInit {
   }
 
   //#region Private Methods
+
+  private configureExpanded(url: string): void {
+    this.menuItems.forEach((item: (NavGroup | NavItem)) => {
+      (item as NavGroup).expanded = this.setExpanded(item, url);
+    });
+  }
 
   private setExpanded(item: NavGroup | NavItem, url: string): boolean {
     if ((item as NavGroup).subRoutes) {

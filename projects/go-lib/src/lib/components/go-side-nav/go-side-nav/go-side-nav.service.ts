@@ -16,15 +16,7 @@ export class GoSideNavService {
   constructor(private router: Router) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        const obj: NavGroup | NavItem = this._menuItems.get(event.urlAfterRedirects);
-        if (obj) {
-          if (this.currentItem) {
-            this.currentItem.routeActive = false;
-          }
-
-          obj.routeActive = true;
-          this.currentItem = obj;
-        }
+        this.setActiveItem(event.urlAfterRedirects);
       }
     });
   }
@@ -38,6 +30,18 @@ export class GoSideNavService {
     this.navOpen = !this.navOpen;
   }
 
+  setActiveItem(url: string): void {
+    const obj: NavGroup | NavItem = this._menuItems.get(url);
+    if (obj) {
+      if (this.currentItem) {
+        this.currentItem.routeActive = false;
+      }
+
+      obj.routeActive = true;
+      this.currentItem = obj;
+    }
+  }
+
   private isNavGroup(item: NavGroup | NavItem): item is NavGroup {
     return (item as NavGroup).subRoutes !== undefined;
   }
@@ -47,7 +51,7 @@ export class GoSideNavService {
       if (this.isNavGroup(route)) {
         this.extractNested(route, base);
       } else {
-        this._menuItems.set('/' + route.route, base);
+        this._menuItems.set(this.formatUrl(route.route), base);
       }
     }
   }
@@ -57,10 +61,14 @@ export class GoSideNavService {
     for (let i: number = 0; i < this.menuItems.length; i++) {
       baseItem = this.menuItems[i];
       if (!this.isNavGroup(baseItem)) {
-        this._menuItems.set('/' + baseItem.route, baseItem);
+        this._menuItems.set(this.formatUrl(baseItem.route), baseItem);
       } else {
         this.extractNested(baseItem, baseItem);
       }
     }
+  }
+
+  private formatUrl(route: string): string {
+    return route[0] !== '/' ? '/' + route : route;
   }
 }
