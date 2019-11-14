@@ -61,7 +61,9 @@
             <li>
               <p class="go-body-copy">
                 To open the modal, use the service to call <code class="code-block--inline">openModal</code>. This method takes the component type
-                (ModalTestComponent in our case), and the bindings for that component as an object.
+                (ModalTestComponent in our case), and the bindings for that component as an object. There are two optional bindings <code class="code-block--inline">modalTitle</code>
+                (the title for modal) and <code class="code-block--inline">modalSize</code> which can be either <code class="code-block--inline">lg</code> or <code class="code-block--inline">xl</code>
+                (default <code class="code-block--inline">lg</code>).
               </p>
               <code [highlight]="ex_ModalDocsOpenModal"></code>
             </li>

@@ -61,7 +61,7 @@ export class ModalDocsComponent {
 
   ex_ModalDocsOpenModal: string = `
   openModal() {
-    this.goModalService.openModal(ModalTestComponent, { title: 'This is a modal!' });
+    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'Example Title', modalSize: 'xl', content: 'This is a modal!' });
   }
   `;
 
@@ -70,7 +70,7 @@ export class ModalDocsComponent {
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
-    this.goModalService.openModal(ModalTestComponent, { title: 'This is a modal!' });
+    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'Example Title', modalSize: 'xl', content: 'This is a modal!' });
   }
 
 }
