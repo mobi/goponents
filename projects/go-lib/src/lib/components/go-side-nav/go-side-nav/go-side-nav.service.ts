@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, UrlSegment } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class GoSideNavService {
   constructor(private router: Router) {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
-        this.setActiveItem(event.urlAfterRedirects);
+        this.setActiveItem(this.extractBaseUrl(event.urlAfterRedirects));
       }
     });
   }
@@ -30,8 +30,12 @@ export class GoSideNavService {
     this.navOpen = !this.navOpen;
   }
 
+  extractBaseUrl(url: string): string {
+    return this.router.parseUrl(url).root.children['primary'].segments.map((it: UrlSegment) => it.path).join('/');
+  }
+
   setActiveItem(url: string): void {
-    const obj: NavGroup | NavItem = this._menuItems.get(url);
+    const obj: NavGroup | NavItem = this._menuItems.get(this.formatUrl(url));
     if (obj) {
       if (this.currentItem) {
         this.currentItem.routeActive = false;

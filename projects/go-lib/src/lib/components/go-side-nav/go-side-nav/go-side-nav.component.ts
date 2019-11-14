@@ -20,7 +20,7 @@ export class GoSideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.navService.setMenuItems(this.menuItems);
-    this.navService.setActiveItem(this.router.url);
+    this.navService.setActiveItem(this.navService.extractBaseUrl(this.router.url));
     this.configureExpanded(this.router.url);
 
     this.router.events
