@@ -18,7 +18,6 @@ import {
   GoFooterModule,
   GoHeaderModule,
   GoIconButtonModule,
-  GoIconComponent,
   GoIconModule,
   GoInputModule,
   GoLayoutModule,
@@ -46,6 +45,7 @@ import { TestPage1Component } from './components/test-page-1/test-page-1.compone
 import { TestPage2Component } from './components/test-page-2/test-page-2.component';
 import { TestPage3Component } from './components/test-page-3/test-page-3.component';
 import { TestPage4Component } from './components/test-page-4/test-page-4.component';
+import { LayoutComponent } from './components/layout/layout.component';
 import { AppGuard } from './app.guard';
 
 @NgModule({
@@ -56,7 +56,8 @@ import { AppGuard } from './app.guard';
     TestPage1Component,
     TestPage2Component,
     TestPage3Component,
-    TestPage4Component
+    TestPage4Component,
+    LayoutComponent
   ],
   imports: [
     AppRoutesModule,
