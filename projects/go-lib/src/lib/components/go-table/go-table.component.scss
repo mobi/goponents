@@ -96,6 +96,7 @@
   height: .75rem;
   padding-left: .25rem;
 }
+
 .go-table__body-column {
   border-bottom: 1px solid $theme-light-app-bg;
   font-size: .875rem;
@@ -108,6 +109,14 @@
   .go-table__body-row:last-child & {
     border-bottom: 0;
   }
+}
+
+.go-table__body-row:nth-child(even) {
+  background: rgba($theme-light-app-bg, .5);
+}
+
+.go-table__body-row.go-table__body-row--selected {
+  background: $theme-light-app-bg;
 }
 
 .go-table-toolbar {
@@ -212,4 +221,16 @@
     padding: .875rem 1.25rem;
     text-align: center;
   }
+}
+
+.go-table__body-row--expanded {
+  border-bottom-color: rgba(240, 240, 240, 0)
+}
+
+.go-table__details-button {
+  display: block;
+}
+
+.go-table__icon-button-column {
+  padding: .375rem 1.25rem;
 }

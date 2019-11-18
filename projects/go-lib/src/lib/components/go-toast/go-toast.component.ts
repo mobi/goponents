@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class GoToastComponent implements OnInit {
   statusClass: string = 'go-toast-status--neutral';
   icon: string = 'notifications_none';
+  duration: number;
 
   @Input() dismissable: boolean = false;
   @Input() header: string;

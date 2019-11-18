@@ -11,4 +11,12 @@ import { toastAnimation } from '../../animations/toasts';
 })
 export class GoToasterComponent {
   constructor(public goToasterService: GoToasterService) { }
+
+  pauseTimers(): void {
+    this.goToasterService.pauseTimers();
+  }
+
+  restartTimers(): void {
+    this.goToasterService.startTimers();
+  }
 }
