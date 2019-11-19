@@ -16,6 +16,7 @@ import {
   GoDatepickerModule,
   GoFileUploadModule,
   GoFooterModule,
+  GoHeaderBarModule,
   GoHeaderModule,
   GoIconButtonModule,
   GoIconModule,
@@ -93,7 +94,8 @@ import { AppGuard } from './app.guard';
     GoTableModule,
     GoTextAreaModule,
     GoToastModule,
-    GoToasterModule
+    GoToasterModule,
+    GoHeaderBarModule
   ],
   providers: [
     AppService,
