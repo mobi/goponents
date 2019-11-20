@@ -1,10 +1,11 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
-  Output,
+  Output
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -48,6 +49,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
+    private changeDetector: ChangeDetectorRef,
     private configService: GoConfigService
   ) { }
 
@@ -64,6 +66,10 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.updateClasses();
+  }
+
+  detectChanges(): void {
+    this.changeDetector.detectChanges();
   }
 
   updateClasses(): void {

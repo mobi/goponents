@@ -37,6 +37,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
     this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
       this.updatePanelState(panel, index);
       this.subscribePanel(panel);
+      panel.detectChanges();
     });
   }
   //#endregion
