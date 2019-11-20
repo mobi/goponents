@@ -2,7 +2,7 @@
   <go-card [showHeader]="false" class="go-column go-column--100">
     <div go-card-content>
       <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-1">Usage</h1>
       <p class="go-body-copy">The Go Accordion Component should be used when multiple sets of data need to be rendered, but vertical space is a concern.</p>
 
       <p class="go-body-copy">
@@ -12,11 +12,11 @@
       </p>
 
       <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-1">Bindings</h1>
       <code [highlight]="componentBindings"></code>
 
       <!-- expandAll -->
-      <h2 class="go-heading-6">expandAll</h2>
+      <h2 class="go-heading-2">expandAll</h2>
       <p class="go-body-copy">
         <code class="code-block--inline">expandAll</code>
         will ensure each panel in the accordion is expanded on first render.
@@ -25,14 +25,14 @@
       </p>
       
       <!-- multiExpand -->
-      <h2 class="go-heading-6">multiExpand</h2>
+      <h2 class="go-heading-2">multiExpand</h2>
       <p class="go-body-copy">
         <code class="code-block--inline">multiExpand</code>
         will allow for multiple panels to be expanded at any given time.
       </p>
 
       <!-- showIcons -->
-      <h2 class="go-heading-6">showIcons</h2>
+      <h2 class="go-heading-2">showIcons</h2>
       <p class="go-body-copy">
         This will enable each panel to have an icon shown to the left of the heading.
       </p>
@@ -45,14 +45,14 @@
       </caption>
 
       <!-- slim -->
-      <h2 class="go-heading-6">slim</h2>
+      <h2 class="go-heading-2">slim</h2>
       <p class="go-body-copy">
         <code class="code-block--inline">slim</code>
         will reduce the height of the accordion panel, making it slimmer vertically.
       </p>
 
       <!-- theme -->
-      <h2 class="go-heading-6">theme</h2>
+      <h2 class="go-heading-2">theme</h2>
       <code [highlight]="themeOptions"></code>
       <p class="go-body-copy">
         This will set the appearance of the <code class="code-block--inline">accordion</code>. <code class="code-block--inline">light</code>
@@ -65,16 +65,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h1 class="go-heading-1">Default</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="defaultExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion>
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -93,16 +93,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Expand All</h1>
+      <h1 class="go-heading-1">Expand All</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="expandAllExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion [expandAll]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.
@@ -121,16 +121,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Multiple Expansion</h1>
+      <h1 class="go-heading-1">Multiple Expansion</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="multiExpandExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion [multiExpand]="true">
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -149,16 +149,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">With Icons</h1>
+      <h1 class="go-heading-1">With Icons</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="showIconsExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion [showIcons]="true">
             <go-accordion-panel heading="Test 1" icon="home" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -177,16 +177,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Slim</h1>
+      <h1 class="go-heading-1">Slim</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="slimExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion [slim]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.
@@ -205,16 +205,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Theme</h1>
+      <h1 class="go-heading-1">Theme</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="themeExample"></code>
         </div>
         <div class="go-column go-column--50 go-column--dark">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion theme="dark">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.
@@ -231,4 +231,3 @@
     </div>
   </go-card>
 </section>
-  

@@ -2,7 +2,7 @@
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
       
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-1">Usage</h1>
       <p class="go-body-copy">The Action Sheet component should be used when a list of actions or links need to be grouped and hidden behind a button.</p>
 
       <p class="go-body-copy">
@@ -11,10 +11,10 @@
           See <a [routerLink]="['/ui-kit/action-sheet/panel']">Panel</a> for details.
         </p>
 
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-1">Bindings</h1>
       <code [highlight]="bindings"></code>
 
-      <h2 class="go-heading-6">shiftLeft</h2>
+      <h2 class="go-heading-2">shiftLeft</h2>
       <p class="go-body-copy">
         If true, <code class="code-block--inline">shiftLeft</code>
         will move the pop up portion of the action sheet to the left and adjust the arrow to the right.
@@ -29,7 +29,7 @@
 
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
-      <h1 class="go-heading-5">Action Sheet Structure</h1>
+      <h1 class="go-heading-1">Action Sheet Structure</h1>
       <p class="go-body-copy">
         The action sheet component is split up into two sections. The trigger and the content.
         The simpliest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
@@ -41,7 +41,7 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Simple</h1>
+      <h1 class="go-heading-1">Simple</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -51,11 +51,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="simpleHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -78,7 +78,7 @@
 
   <go-card class="go-column go-column--100" #accordion>
     <header go-card-header>
-      <h1 class="go-heading-5">With an Accordion</h1>
+      <h1 class="go-heading-1">With an Accordion</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -88,11 +88,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="accordionHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>

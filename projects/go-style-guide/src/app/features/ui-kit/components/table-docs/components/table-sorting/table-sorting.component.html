@@ -1,7 +1,7 @@
 <section class="go-container">
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Implementing Sorting</h1>
+      <h1 class="go-heading-1">Implementing Sorting</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -11,12 +11,12 @@
 
       <code [highlight]="tableSortConfig"></code>
 
-      <h2 class="go-heading-6">column</h2>
+      <h2 class="go-heading-2">column</h2>
       <p class="go-body-copy">
         This property determines which column to set as the default sort as a string.
         To sort a column in a nested object in the array, you may pass the path to the property. <code class="code-block--inline">"address.state"</code>
       </p>
-      <h2 class="go-heading-6">direction</h2>
+      <h2 class="go-heading-2">direction</h2>
       <p class="go-body-copy">
         This property determines the direction to sort the data. By default, it will sort <code class="code-block--inline">ascending</code>.
         This property is an enum, <code class="code-block--inline">SortDirection</code> (see below).
@@ -27,12 +27,12 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Setting the Sort</h1>
+      <h1 class="go-heading-1">Setting the Sort</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">example.html</h2>
+      <h2 class="go-heading-2">example.html</h2>
       <code [highlight]="tableConfigEx_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h2 class="go-heading-2">example.ts</h2>
       <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
@@ -47,12 +47,12 @@
 
   <go-card class="go-column go-column--100" id="restrictingSort">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Restricting Sort Example</h1>
+      <h1 class="go-heading-1">Restricting Sort Example</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">example.html</h2>
+      <h2 class="go-heading-2">example.html</h2>
       <code [highlight]="tableConfigEx_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h2 class="go-heading-2">example.ts</h2>
       <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
@@ -67,7 +67,7 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Restricting by Column</h1>
+      <h1 class="go-heading-1">Restricting by Column</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -78,14 +78,14 @@
 
       <code [highlight]="tableSortConfig"></code>
 
-      <h2 class="go-heading-6">sortable</h2>
+      <h2 class="go-heading-2">sortable</h2>
       <p class="go-body-copy">
         This property exists on <code class="code-block--inline">go-table-column</code> and can be used to turn sorting on or
         off for a specific column.
       </p>
-      <h2 class="go-heading-6">example.html</h2>
+      <h2 class="go-heading-2">example.html</h2>
       <code [highlight]="tableConfigRestrictColumn_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h2 class="go-heading-2">example.ts</h2>
       <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
@@ -100,12 +100,12 @@
 
   <go-card class="go-column go-column--100" id="restrictingSort">
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Enabling by Column</h1>
+        <h1 class="go-heading-1">Enabling by Column</h1>
       </ng-container>
       <ng-container go-card-content>
-        <h2 class="go-heading-6">example.html</h2>
+        <h2 class="go-heading-2">example.html</h2>
         <code [highlight]="tableConfigEnableColumn_html"></code>
-        <h2 class="go-heading-6">example.ts</h2>
+        <h2 class="go-heading-2">example.ts</h2>
         <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
       </ng-container>
     </go-card>

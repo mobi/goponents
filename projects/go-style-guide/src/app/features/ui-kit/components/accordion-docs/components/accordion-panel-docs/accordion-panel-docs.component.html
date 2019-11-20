@@ -1,22 +1,22 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
     <div go-card-content>
       <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-1">Usage</h1>
       <p class="go-body-copy">
         The Go Accordion Panel should be used inside of a <code class="code-block--inline">&lt;go-accordion&gt;</code>
         component. See <a [routerLink]="['/ui-kit/accordion']">Accordion</a> for details.
       </p>
 
       <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-1">Bindings</h1>
       <code [highlight]="componentBindings"></code>
 
-      <h2 class="go-heading-6">expanded</h2>
+      <h2 class="go-heading-2">expanded</h2>
       <p class="go-body-copy">
         This will expand then panel. This is only true at at first render, depending on the Behavior
         of the parent <code class="code-block--inline">go-accordion</code> it will override this.
@@ -24,7 +24,7 @@
         for the first <code class="code-block--inline">go-accordion-panel</code> in the accordion.
       </p>
 
-      <h2 class="go-heading-6">icon</h2>
+      <h2 class="go-heading-2">icon</h2>
       <p class="go-body-copy">
         This will set an icon for the panel, shown to the left of the heading.
       </p>
@@ -33,7 +33,7 @@
         has <code class="code-block--inline">[showIcons]="true"</code> set.
       </caption>
 
-      <h2 class="go-heading-6">heading - (required)</h2>
+      <h2 class="go-heading-2">heading - (required)</h2>
       <p class="go-body-copy">
         The heading for the panel accepted as a string.
       </p>
@@ -43,16 +43,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h1 class="go-heading-1">Default</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="defaultExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion>
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for Test 1.
@@ -71,16 +71,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h2 class="go-heading-5">With Icons</h2>
+      <h2 class="go-heading-2">With Icons</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="showIconsExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-accordion [showIcons]="true">
             <go-accordion-panel heading="Test 1" icon="home" [expanded]="true">
               This is some content for Test 1.

@@ -1,7 +1,7 @@
 <section class="go-container">
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Integrating with a Server</h1>
+      <h1 class="go-heading-1">Integrating with a Server</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -17,7 +17,7 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Setting it up</h1>
+      <h1 class="go-heading-1">Setting it up</h1>
     </ng-container>
     <ng-container go-card-content>
       <div class="go-container">
@@ -31,7 +31,7 @@
             <li><code class="code-block--inline">[loadingData]</code> - to handle the loading of the table</li>
             <li><code class="code-block--inline">[tableConfig]</code> - because it's required</li>
           </ol>
-          <h2 class="go-heading-6">example.html</h2>
+          <h2 class="go-heading-2">example.html</h2>
           <code [highlight]="tableConfig_html"></code>
         </div>
         <div class="go-column go-column--100 go-column--no-padding">
@@ -45,7 +45,7 @@
             <li><code class="code-block--inline">sortConfig.column</code> - the current column that is sorted (if table is sorted)</li>
             <li><code class="code-block--inline">sortConfig.direction</code> - the current sort direction (if table is sorted)</li>
           </ol>
-          <h2 class="go-heading-6">example.ts</h2>
+          <h2 class="go-heading-2">example.ts</h2>
           <code [highlight]="tableConfig_ts"></code>
           <p class="go-body-copy">
             It is recommended to pass the entire <code class="code-block--inline">GoTableConfig</code>
@@ -64,10 +64,10 @@
   </go-card>
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Important Notes</h1>
+      <h1 class="go-heading-1">Important Notes</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">Total Results</h2>
+      <h2 class="go-heading-2">Total Results</h2>
       <p class="go-body-copy">
         For the best user experience with server-side integrations,
         the data returned from the server should have two properties:
@@ -78,7 +78,7 @@
         to the corresponding properties on the <code class="code-block--inline">GoTableConfig</code>,
         <code class="code-block--inline">tableData</code> and <code class="code-block--inline">totalCount</code>.
       </p>
-      <h2 class="go-heading-6">[loadingData]</h2>
+      <h2 class="go-heading-2">[loadingData]</h2>
       <p class="go-body-copy">
         When server mode is enabled, this property will be set to 
         <code class="code-block--inline">true</code> whenever the
@@ -89,7 +89,7 @@
         This is to provide a consistent and helpful experience to
         users and should not be overridden.
       </p>
-      <h2 class="go-heading-6">(tableChange)</h2>
+      <h2 class="go-heading-2">(tableChange)</h2>
       <p class="go-body-copy">
         The <code class="code-block--inline">tableChange</code>
         event is emitted anytime a trigger is fired in the table

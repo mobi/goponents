@@ -1,46 +1,46 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">Panels</h1>
+  <h1 class="go-heading-1">Panels</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
       
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-1">Usage</h1>
       <p class="go-body-copy">The <code class="code-block--inline">go-panel</code> should be used in conjuction with the Action Sheet.</p>
 
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-1">Bindings</h1>
       <code [highlight]="bindings"></code>
 
-      <h2 class="go-heading-6">danger</h2>
+      <h2 class="go-heading-2">danger</h2>
       <p class="go-body-copy">
         This binding will change the color of the text to Horizon red if true.
         (ex. to logout)
       </p>
 
-      <h2 class="go-heading-6">showHeader</h2>
+      <h2 class="go-heading-2">showHeader</h2>
       <p class="go-body-copy">
         This will alter the appearance of the panel to appear as a header for the action sheet.
         Ideally, this should only be used for the first panel in an action sheet.
       </p>
       
-      <h2 class="go-heading-6">icon</h2>
+      <h2 class="go-heading-2">icon</h2>
       <p class="go-body-copy">
         The Material Icons string for an icon. If not passed, the space for the icon goes away.
       </p>
       
-      <h2 class="go-heading-6">externalLink</h2>
+      <h2 class="go-heading-2">externalLink</h2>
       <p class="go-body-copy">
         This binding allows the implementer to target a route outside of Angular.
         This should not be used in conjuction with a <code class="code-block--inline">routerLink</code>
       </p>
 
-      <h2 class="go-heading-6">panelContent</h2>
+      <h2 class="go-heading-2">panelContent</h2>
       <p class="go-body-copy">
         This binding is the content of the panel. HTML can be passed into this. 
       </p>
       
-      <h2 class="go-heading-6">action</h2>
+      <h2 class="go-heading-2">action</h2>
       <p class="go-body-copy">
         This is an event that is emitted from the panel when a user clicks on the panel.
       </p>
@@ -49,7 +49,7 @@
 
   <go-card class="go-column go-column--100" id="icons">
     <header go-card-header>
-      <h1 class="go-heading-5">Icons</h1>
+      <h1 class="go-heading-1">Icons</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -59,11 +59,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="iconHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -86,7 +86,7 @@
 
   <go-card class="go-column go-column--100" #showHeader>
     <header go-card-header>
-      <h1 class="go-heading-5">Show Header</h1>
+      <h1 class="go-heading-1">Show Header</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -96,11 +96,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="headerHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -123,7 +123,7 @@
 
   <go-card class="go-column go-column--100" #danger>
     <header go-card-header>
-      <h1 class="go-heading-5">Danger</h1>
+      <h1 class="go-heading-1">Danger</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -133,11 +133,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="dangerHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -160,7 +160,7 @@
 
   <go-card class="go-column go-column--100" #externalLink>
     <header go-card-header>
-      <h1 class="go-heading-5">External Link</h1>
+      <h1 class="go-heading-1">External Link</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -170,11 +170,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="externalHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -197,7 +197,7 @@
 
   <go-card class="go-column go-column--100" #action>
     <header go-card-header>
-      <h1 class="go-heading-5">Actions</h1>
+      <h1 class="go-heading-1">Actions</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -207,11 +207,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="actionsHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
@@ -234,7 +234,7 @@
 
   <go-card class="go-column go-column--100" #router>
     <header go-card-header>
-      <h1 class="go-heading-5">Router</h1>
+      <h1 class="go-heading-1">Router</h1>
     </header>
     <div go-card-content>
       <div class="go-container">
@@ -244,11 +244,11 @@
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
-          <h2 class="go-heading-6">Code</h2>
+          <h2 class="go-heading-2">Code</h2>
           <code [highlight]="routerHtml"></code>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-          <h2 class="go-heading-6">View</h2>
+          <h2 class="go-heading-2">View</h2>
           <go-action-sheet>
             <ng-container go-action-sheet__button>
               <go-button>
