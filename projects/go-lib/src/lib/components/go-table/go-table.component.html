@@ -1,6 +1,6 @@
 <div class="go-table-container" *ngIf="showTable">
   <div class="go-table-header" [ngClass]="{ 'go-table-header--stacked': stackHeader }">
-    <h5 class="go-heading-5 go-heading--no-margin" *ngIf="tableTitle">{{ tableTitle }}</h5>
+    <h3 class="go-heading-3 go-heading--no-margin" *ngIf="tableTitle">{{ tableTitle }}</h3>
     <div class="go-table-header__actions" *ngIf="showTableActions">
       <ng-content select="[go-table-actions]"></ng-content>
     </div>
