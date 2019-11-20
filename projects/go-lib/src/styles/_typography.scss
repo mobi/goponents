@@ -3,46 +3,40 @@ body {
   font-weight: $weight-light;
 }
 
-.go-heading-1 {
+.go-heading {
   font-family: $primary-font-stack;
-  font-size: 1.875rem;
   font-weight: $weight-regular;
   margin-bottom: $heading-margin-bottom;
+}
+
+.go-heading-1 {
+  @extend .go-heading;
+  font-size: 1.875rem;
 }
 
 .go-heading-2 {
-  font-family: $primary-font-stack;
+  @extend .go-heading;
   font-size: 1.625rem;
-  font-weight: $weight-regular;
-  margin-bottom: $heading-margin-bottom;
 }
 
 .go-heading-3 {
-  font-family: $primary-font-stack;
+  @extend .go-heading;
   font-size: 1.375rem;
-  font-weight: $weight-regular;
-  margin-bottom: $heading-margin-bottom;
 }
 
 .go-heading-4 {
-  font-family: $primary-font-stack;
+  @extend .go-heading;
   font-size: 1.125rem;
-  font-weight: $weight-regular;
-  margin-bottom: $heading-margin-bottom;
 }
 
 .go-heading-5 {
-  font-family: $primary-font-stack;
+  @extend .go-heading;
   font-size: .875rem;
-  font-weight: $weight-regular;
-  margin-bottom: $heading-margin-bottom;
 }
 
 .go-heading-6 {
-  font-family: $primary-font-stack;
+  @extend .go-heading;
   font-size: .75rem;
-  font-weight: $weight-regular;
-  margin-bottom: $heading-margin-bottom;
 }
 
 .go-body-copy {
