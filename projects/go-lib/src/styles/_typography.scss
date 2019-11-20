@@ -9,34 +9,11 @@ body {
   margin-bottom: $heading-margin-bottom;
 }
 
-.go-heading-1 {
-  @extend .go-heading;
-  font-size: 1.875rem;
-}
-
-.go-heading-2 {
-  @extend .go-heading;
-  font-size: 1.625rem;
-}
-
-.go-heading-3 {
-  @extend .go-heading;
-  font-size: 1.375rem;
-}
-
-.go-heading-4 {
-  @extend .go-heading;
-  font-size: 1.125rem;
-}
-
-.go-heading-5 {
-  @extend .go-heading;
-  font-size: .875rem;
-}
-
-.go-heading-6 {
-  @extend .go-heading;
-  font-size: .75rem;
+@each $id, $size in $heading-sizes {
+  .go-heading-#{$id} {
+    @extend .go-heading;
+    font-size: $size;
+  }
 }
 
 .go-body-copy {
