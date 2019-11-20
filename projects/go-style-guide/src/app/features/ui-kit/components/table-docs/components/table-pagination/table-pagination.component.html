@@ -1,7 +1,7 @@
 <section class="go-container">
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Implementing Paging</h1>
+      <h1 class="go-heading-5">Implementing Paging</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -11,19 +11,19 @@
 
       <code [highlight]="pageConfig"></code>
 
-      <h2 class="go-heading-2">offset</h2>
+      <h2 class="go-heading-6">offset</h2>
       <p class="go-body-copy">
         This property represents the number of records to offset the paging by.
         This is set and updated internally by the table component, but it may need updated externally if you're implementing server-side paging.
         <br/>
         <caption>See <a [routerLink]="['../server-integration']">Server Integration</a> for more details.</caption>
       </p>
-      <h2 class="go-heading-2">pageSizes</h2>
+      <h2 class="go-heading-6">pageSizes</h2>
       <p class="go-body-copy">
         This property determines what page sizes are available to the user. It takes an array of numbers, but has defaults.
         It is recommended to stick with the predefined options, but if needed, pass whole numbers in increments of 5 for more options.
       </p>
-      <h2 class="go-heading-2">perPage</h2>
+      <h2 class="go-heading-6">perPage</h2>
       <p class="go-body-copy">
         This property represents the current items per page. It is set and updated internally by the table component.
         <br/>
@@ -35,7 +35,7 @@
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <div>
-        <h1 class="go-heading-1">Simple Paging</h1>
+        <h1 class="go-heading-5">Simple Paging</h1>
         <p class="go-body-copy">
           Nothing extra for client-side paging is required, it just works. To set different page sizes, the following is requried.
         </p>
@@ -44,9 +44,9 @@
     <ng-container go-card-content>
       <div class="go-container">
         <div class="go-column go-column--100">
-          <h2 class="go-heading-2">example.html</h2>
+          <h2 class="go-heading-6">example.html</h2>
           <code [highlight]="tableConfig_html"></code>
-          <h2 class="go-heading-2">example.ts</h2>
+          <h2 class="go-heading-6">example.ts</h2>
           <code [highlight]="tableConfig_ts" class="code-block--no-bottom-margin"></code>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <section class="go-container">
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Usage</h1>
+      <h1 class="go-heading-5">Usage</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -9,15 +9,15 @@
         of a data table throughout the app.
       </p>
 
-      <h1 class="go-heading-1">Bindings</h1>
+      <h1 class="go-heading-5">Bindings</h1>
       <code [highlight]="componentBindings"></code>
 
-      <h2 class="go-heading-2">loadingData</h2>
+      <h2 class="go-heading-6">loadingData</h2>
       <p class="go-body-copy">
         This binding can be used to apply a loading state to the table.
         Typically, this should only be used for server-side integration while awaiting data.
       </p>
-      <h2 class="go-heading-2">tableConfig</h2>
+      <h2 class="go-heading-6">tableConfig</h2>
       <p class="go-body-copy">
         This is a class to represent the entire table data and its configurations.
         The only required property is <code class="code-block--inline">tableData</code>.
@@ -26,7 +26,7 @@
         It has these properties:
         <code [highlight]="tableConfigClass"></code>
       </p>
-      <h2 class="go-heading-2">tableTitle</h2>
+      <h2 class="go-heading-6">tableTitle</h2>
       <p class="go-body-copy">
         This property adds a title above the table, this is optional.
       </p>
@@ -35,12 +35,12 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Default Usage</h1>
+      <h1 class="go-heading-5">Default Usage</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-2">example.html</h2>
+      <h2 class="go-heading-6">example.html</h2>
       <code [highlight]="basicExample_html"></code>
-      <h2 class="go-heading-2">example.ts</h2>
+      <h2 class="go-heading-6">example.ts</h2>
       <code [highlight]="basicExample_ts"></code>
     </ng-container>
   </go-card>

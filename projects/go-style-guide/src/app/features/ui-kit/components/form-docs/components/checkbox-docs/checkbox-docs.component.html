@@ -2,7 +2,7 @@
   <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
   <go-card id="setup" class="go-column--100 go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Setup</h1>
+      <h1 class="go-heading-5">Setup</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -16,7 +16,7 @@
 
   <go-card id="form-checkbox" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Simplest Implementation</h1>
+      <h1 class="go-heading-5">Simplest Implementation</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -30,12 +30,12 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
           <go-checkbox label="Checkbox 1" [control]="checkbox1">
           </go-checkbox>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkbox1Ex"
                 class="code-block--no-bottom-margin">
           </code>
@@ -46,7 +46,7 @@
 
   <go-card id="form-checkbox-group" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Group Implementation</h1>
+      <h1 class="go-heading-5">Group Implementation</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -60,7 +60,7 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
           <go-checkbox-group legend="Options" [control]="checkboxGroup1">
             <go-checkbox label="Option 1" [control]="checkboxGroup1.controls.option1">
             </go-checkbox>
@@ -69,7 +69,7 @@
           </go-checkbox-group>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkboxGroup1Ex_ts"
                 class="code-block--no-bottom-margin">
           </code>
@@ -83,7 +83,7 @@
 
   <go-card id="form-checkbox-key" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Checkbox Keys</h1>
+      <h1 class="go-heading-5">Checkbox Keys</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -96,19 +96,19 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
           <go-checkbox label="Checkbox 2"
                        [control]="checkbox2"
                        key="checkbox_2">
           </go-checkbox>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkbox2Ex" class="code-block--no-bottom-margin"></code>
         </div>
       </div>
       <div class="go-column go-column--100">
-        <h2 class="go-heading-2 go-heading--underlined">Example Output</h2>
+        <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
         <p class="go-body-copy">
           Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
           to both the <code class="code-block--inline">id</code> attribute on
@@ -122,7 +122,7 @@
 
   <go-card id="form-checkbox-hints" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Checkbox Hints</h1>
+      <h1 class="go-heading-5">Checkbox Hints</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -132,7 +132,7 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
           <div class="go-container">
             <div class="go-column go-column--100">
               <go-checkbox-group legend="Options"
@@ -159,7 +159,7 @@
           </div>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkbox3HintsCode"
                 class="code-block--no-bottom-margin">
           </code>
@@ -173,7 +173,7 @@
 
   <go-card id="form-checkbox-theme" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Checkbox Theme</h1>
+      <h1 class="go-heading-5">Checkbox Theme</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -183,7 +183,7 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50 go-column--dark">
-          <h2 class="go-heading-2 go-heading--underlined" style="color: #fff;">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined" style="color: #fff;">View</h2>
           <div class="go-container">
             <div class="go-column go-column--100">
               <go-checkbox-group legend="Options"
@@ -210,7 +210,7 @@
           </div>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkbox4Ex"
                 class="code-block--no-bottom-margin">
           </code>
@@ -221,7 +221,7 @@
 
   <go-card id="form-checkbox" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-1">Checkbox Disabled</h1>
+      <h1 class="go-heading-5">Checkbox Disabled</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -230,7 +230,7 @@
       </p>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">View</h2>
+          <h2 class="go-heading-6 go-heading--underlined">View</h2>
           <go-checkbox-group legend="Options" [control]="checkboxGroup4">
             <go-checkbox label="Option 1"
                          [control]="checkboxGroup4.controls.option1"
@@ -243,7 +243,7 @@
           </go-checkbox-group>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-2 go-heading--underlined">Code</h2>
+          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
           <code [highlight]="checkboxDisabledEx_ts"
                 class="code-block--no-bottom-margin">
           </code>

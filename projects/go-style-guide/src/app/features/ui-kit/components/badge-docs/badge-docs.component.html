@@ -1,5 +1,5 @@
 <header class="go-page-title">
-  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+  <h1 class="go-heading-3">{{ pageTitle }}</h1>
 </header>
 <div class="go-container">
   <div class="go-column go-column--100">
@@ -8,7 +8,7 @@
         <div class="go-container">
           <div class="go-column go-column--100">
             <!-- Intro -->
-            <h2 class="go-heading-2">Usage</h2>
+            <h2 class="go-heading-5">Usage</h2>
             <p class="go-body-copy">
               The <code class="code-block--inline">&lt;go-badge&gt;</code>
               component should be used for times when we want to show a short notification
@@ -18,15 +18,15 @@
             </p>
 
             <!-- Bindings -->
-            <h2 class="go-heading-2">Bindings</h2>
+            <h2 class="go-heading-5">Bindings</h2>
             <code [highlight]="componentBindings"></code>
           </div>
           <div class="go-column go-column--100">
-            <h3 class="go-heading-3">badgeData</h3>
+            <h3 class="go-heading-6">badgeData</h3>
             <p class="go-body-copy">
               This is the text or data that we want to show up inside of the badge
             </p>
-            <h3 class="go-heading-3">badgeColor</h3>
+            <h3 class="go-heading-6">badgeColor</h3>
             <p class="go-body-copy">
               The color can be one of three things <code class="code-block--inline">neutral</code>,
               <code class="code-block--inline">positive</code> or <code class="code-block--inline">negative</code>.
@@ -34,7 +34,7 @@
               defaults to `neutral`
             </p>
 
-            <h3 class="go-heading-3">displayData</h3>
+            <h3 class="go-heading-6">displayData</h3>
             <p class="go-body-copy">
               This can be used to override whether the information inside of the badge shows up or not.
               Setting this to false will cause the badge to just be an empty circle without displaying
@@ -48,12 +48,12 @@
     <go-card [showHeader]="false" class="go-column go-column--100">
       <ng-container go-card-content>
         <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-2">Basic Example</h2>
+          <h2 class="go-heading-5">Basic Example</h2>
           <p class="go-body-copy">
             The badge uses content projection to apply itself to an inline element inside of it. You
             can apply it to any element by wrapping the element in the <code class="code-block--inline">go-badge</code>
           </p>
-          <h3 class="go-heading-3">Icon</h3>
+          <h3 class="go-heading-6">Icon</h3>
           <section class="go-container">
             <div class="go-column go-column--50">
               <code [highlight]="iconBadge"></code>
@@ -71,8 +71,8 @@
     <go-card [showHeader]="false" class="go-column go-column--100">
       <ng-container go-card-content>
         <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-2">Badge Color</h2>
-          <h3 class="go-heading-3">Positive</h3>
+          <h2 class="go-heading-5">Badge Color</h2>
+          <h3 class="go-heading-6">Positive</h3>
           <section class="go-container">
             <div class="go-column go-column--50">
               <code [highlight]="iconBadgePositive"></code>
@@ -84,7 +84,7 @@
             </div>
           </section>
 
-          <h3 class="go-heading-3">Negative</h3>
+          <h3 class="go-heading-6">Negative</h3>
           <section class="go-container">
             <div class="go-column go-column--50">
               <code [highlight]="iconBadgeNegative"></code>
@@ -102,7 +102,7 @@
     <go-card [showHeader]="false" class="go-column go-column--100">
       <ng-container go-card-content>
         <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-2">Display Data</h2>
+          <h2 class="go-heading-5">Display Data</h2>
           <section class="go-container">
             <div class="go-column go-column--75">
               <code [highlight]="iconBadgeDisplay"></code>
