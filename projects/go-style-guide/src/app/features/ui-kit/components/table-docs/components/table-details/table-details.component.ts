@@ -22,12 +22,11 @@ export class TableDetailsComponent {
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
-    <go-table-details>
-      <ng-template #goTableDetails let-item>
-        <div>Email: <a class="go-link" href="mailto:{{ item.email }}">{{ item.email }}</a></div>
-        <div>Gender: {{ item.gender }}</div>
-      </ng-template>
-    </go-table-details>
+
+    <ng-template #goTableDetails let-item>
+      <div>Email: <a class="go-link" href="mailto:{{ item.email }}">{{ item.email }}</a></div>
+      <div>Gender: {{ item.gender }}</div>
+    </ng-template>
   </go-table>
   `;
 
@@ -39,11 +38,10 @@ export class TableDetailsComponent {
       <go-table-column field="name.first" title="First Name"></go-table-column>
       <go-table-column field="name.last" title="Last Name"></go-table-column>
       <go-table-column field="ip_address" title="IP Address"></go-table-column>
-      <go-table-details>
-        <ng-template #goTableDetails let-item>
-          <app-table-details-test [row]="item"></app-table-details-test>
-        </ng-template>
-      </go-table-details>
+
+      <ng-template #goTableDetails let-item>
+        <app-table-details-test [row]="item"></app-table-details-test>
+      </ng-template>
     </go-table>
   `;
 
