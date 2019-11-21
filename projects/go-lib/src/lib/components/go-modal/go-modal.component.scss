@@ -23,13 +23,20 @@
   box-shadow: $global-box-shadow--regular;
   color: $theme-light-color;
   max-height: 80%;
-  max-width: 32.5rem;
-  padding: 2rem 1rem 1rem;
+  max-width: 50rem;
+  min-width: 31.25rem;
+  padding: 1rem;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
   transform: scale(1.1);
   @include transition(all);
+}
+
+.go-modal__container-xl {
+  @extend .go-modal__container;
+
+  min-width: 50rem;
 }
 
 .go-modal.go-modal--visible {
@@ -41,11 +48,14 @@
   }
 }
 
+.go-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .go-modal__close {
-  color: $theme-light-color;
+  color: $base-light-secondary;
   cursor: pointer;
-  padding: 0.5rem;
-  position: absolute;
-  right: 0;
-  top: 0;
+  font-size: 1.25rem;
 }

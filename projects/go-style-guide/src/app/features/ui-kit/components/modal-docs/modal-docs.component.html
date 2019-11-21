@@ -35,53 +35,53 @@
       <h1 class="go-heading-5">Using the Modal service</h1>
     </ng-container>
     <ng-container go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column-100">
-          <p class="go-body-copy">
-            For this example, the component we want to render in the modal is <code class="code-block--inline">ModalTestComponent</code>.
-            This component lives in the <code class="code-block--inline">UiKitModule</code>.
-            To make use of the modal in our component:
-          </p>
-          <ol class="go-list go-list--ordered">
-            <li>
-              <p class="go-body-copy">
-                In the module that imports your component, import the <code class="code-block--inline">GoModalModule</code>,
-                add the component that will be rendered in the modal to the <code class="code-block--inline">entryComponents</code>,
-                and add the <code class="code-block--inline">GoModalService</code> to the providers.
-              </p>
-              <code [highlight]="ex_UiKitModule"></code>
-            </li>
-            <li>
-              <p class="go-body-copy">
-                In the component that is telling the modal to open, import the <code class="code-block--inline">GoModalService</code>,
-                and the component that is being rendered inside the modal.
-              </p>
-              <code [highlight]="ex_ModalDocsImports"></code>
-            </li>
-            <li>
-              <p class="go-body-copy">
-                To open the modal, use the service to call <code class="code-block--inline">openModal</code>. This method takes the component type
-                (ModalTestComponent in our case), and the bindings for that component as an object.
-              </p>
-              <code [highlight]="ex_ModalDocsOpenModal"></code>
-            </li>
-            <li>
-              <p class="go-body-copy">
-                Lastly, the button that triggers the openModal method.
-              </p>
-              <div class="go-container">
-                <div class="go-column go-column--50">
-                  <h2 class="go-heading-6">component.html</h2>
-                  <code [highlight]="ex_ModalDocsHtml"></code>
-                </div>
-                <div class="go-column go-column--50">
-                  <h2 class="go-heading-6">View</h2>
-                  <go-button (handleClick)="openModal()">Click Me</go-button>
-                </div>
+      <div class="go-column go-column-100">
+        <p class="go-body-copy">
+          For this example, the component we want to render in the modal is <code class="code-block--inline">ModalTestComponent</code>.
+          This component lives in the <code class="code-block--inline">UiKitModule</code>.
+          To make use of the modal in our component:
+        </p>
+        <ol class="go-list go-list--ordered">
+          <li>
+            <p class="go-body-copy">
+              In the module that imports your component, import the <code class="code-block--inline">GoModalModule</code>,
+              add the component that will be rendered in the modal to the <code class="code-block--inline">entryComponents</code>,
+              and add the <code class="code-block--inline">GoModalService</code> to the providers.
+            </p>
+            <code [highlight]="ex_UiKitModule"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              In the component that is telling the modal to open, import the <code class="code-block--inline">GoModalService</code>,
+              and the component that is being rendered inside the modal.
+            </p>
+            <code [highlight]="ex_ModalDocsImports"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              To open the modal, use the service to call <code class="code-block--inline">openModal</code>. This method takes the component type
+              (ModalTestComponent in our case), and the bindings for that component as an object. There are two optional bindings <code class="code-block--inline">modalTitle</code>
+              (the title for modal) and <code class="code-block--inline">modalSize</code> which can be either <code class="code-block--inline">lg</code> or <code class="code-block--inline">xl</code>
+              (default <code class="code-block--inline">lg</code>).
+            </p>
+            <code [highlight]="ex_ModalDocsOpenModal"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              Lastly, the button that triggers the openModal method.
+            </p>
+            <div class="go-container">
+              <div class="go-column go-column--50">
+                <h2 class="go-heading-6">component.html</h2>
+                <code [highlight]="ex_ModalDocsHtml"></code>
               </div>
-            </li>
-          </ol>
-        </div>
+              <div class="go-column go-column--50">
+                <h2 class="go-heading-6">View</h2>
+                <go-button (handleClick)="openModal()">Click Me</go-button>
+              </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </ng-container>
   </go-card>
