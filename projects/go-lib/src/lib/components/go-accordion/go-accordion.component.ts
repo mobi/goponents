@@ -14,6 +14,7 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit {
   @Input() borderless: boolean = false;
+  @Input() boxShadow: boolean = false;
   @Input() expandAll: boolean = false;
   @Input() multiExpand: boolean = false;
   @Input() showIcons: boolean = false;
@@ -62,6 +63,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
 
   private updatePanelState(panel: GoAccordionPanelComponent, index: number): void {
     panel.borderless = panel.borderless === undefined ? this.borderless : panel.borderless;
+    panel.boxShadow = panel.boxShadow === undefined ? this.boxShadow : panel.boxShadow;
     panel.slim = panel.slim === undefined ? this.slim : panel.slim;
     panel.theme = panel.theme || this.theme;
     panel.isFirst = index === 0;

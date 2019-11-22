@@ -28,6 +28,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   brandColor: string;
 
   @Input() borderless: boolean;
+  @Input() boxShadow: boolean;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
@@ -76,6 +77,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this.containerClasses = {
       'go-accordion-panel--active': this.expanded === true,
       'go-accordion-panel--borderless': this.borderless === true,
+      'go-accordion-panel--box-shadow': this.boxShadow === true,
       'go-accordion-panel--dark': this.theme === 'dark',
       'go-accordion-panel--first': this.isFirst === true,
       'go-accordion-panel--last': this.isLast === true,
