@@ -38,6 +38,14 @@
         The heading for the panel accepted as a string.
       </p>
 
+      <h2 class="go-heading-6">persistState</h2>
+      <p class="go-body-copy">
+        This is defaulted to true, but if set to false it will destroy any components inside of the 
+        panel when the panel is closed. This will cause any components inside to be recreated when the
+        accordion is opened every time. This is only useful if you are also using an ng-template to
+        not eager load the data inside the panel.
+      </p>
+
     </div>
   </go-card>
 
@@ -92,6 +100,53 @@
               This is a third thing. 
             </go-accordion-panel>
           </go-accordion>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-5">Delayed Loading</h2>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100">
+          The content inside of an accordion panel can be delayed in loading until a user expands the 
+          panel. This is useful when lots of data is being loaded inside of a child component inside 
+          of the panel. This can be done through using an ng-template to wrap the content inside the 
+          accordion panel.
+        </div>
+
+        <div class="go-column go-column--100">
+          <h2 class="go-heading-6">View</h2>
+          <go-accordion>
+            <go-accordion-panel heading="Not Delayed">
+              <app-loading-test></app-loading-test>
+            </go-accordion-panel>
+            <go-accordion-panel heading="Delay Loading">
+              <ng-template #panelContent>
+                <app-loading-test></app-loading-test>
+              </ng-template>
+            </go-accordion-panel>
+            <go-accordion-panel heading="Don't Persist State" [persistState]="false">
+              <ng-template #panelContent>
+                <app-loading-test></app-loading-test>
+              </ng-template>
+            </go-accordion-panel>
+          </go-accordion>
+        </div>
+        
+        <div class="go-column go-column--100">
+          <h2 class="go-heading-6">Code</h2>
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <code [highlight]="delayedLoadingExample"></code>
+            </div>
+            <div class="go-column go-column--50">
+              <code [highlight]="appLoadingTestExample"></code>
+            </div>
+          </div>
         </div>
       </div>
     </div>

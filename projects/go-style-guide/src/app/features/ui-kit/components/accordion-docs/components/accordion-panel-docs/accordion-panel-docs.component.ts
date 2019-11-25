@@ -37,6 +37,36 @@ export class AccordionPanelDocsComponent {
   </go-accordion>
   `;
 
+  delayedLoadingExample: string = `
+  <go-accordion>
+    <go-accordion-panel heading="Not Delayed">
+      <app-loading-test></app-loading-test>
+    </go-accordion-panel>
+    <go-accordion-panel heading="Delay Loading">
+      <ng-template #panelContent>
+        <app-loading-test></app-loading-test>
+      </ng-template>
+    </go-accordion-panel>
+    <go-accordion-panel heading="Don't Persist State" [persistState]="false">
+      <ng-template #panelContent>
+        <app-loading-test></app-loading-test>
+      </ng-template>
+    </go-accordion-panel>
+  </go-accordion>
+  `;
+
+  appLoadingTestExample: string = `
+  @Component({
+    selector: 'app-loading-test',
+    template: ''
+  })
+  export class LoadingTestComponent {
+    constructor(private toasterService: GoToasterService) {
+      this.toasterService.toastSuccess({ message: 'Component loaded' });
+    }
+  }
+  `;
+
   componentBindings: string = `
   @Input() expanded:  boolean = false;
   @Input() icon:      string  = null;

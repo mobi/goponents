@@ -35,6 +35,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
   @Input() isLast: boolean = false;
+  @Input() persistState: boolean = true;
   @Input() slim: boolean;
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
@@ -44,8 +45,10 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this._expanded = expanded;
     this.containerClasses['go-accordion-panel--active'] = expanded;
     this.headerClasses['go-accordion-panel__header--active'] = expanded;
-    if (expanded) {
+    if (this.panelContent && expanded) {
       this.loaded = true;
+    } else if (!this.persistState) {
+      this.loaded = false;
     }
   }
   get expanded(): boolean {
