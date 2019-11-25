@@ -261,4 +261,8 @@
 .go-table-toolbar__page-numbers--active { 
   background-color: $ui-color-positive;
   color: $theme-dark-color;
+
+  &:hover {
+    background-color: $ui-color-positive-hover;
+  }
 }
