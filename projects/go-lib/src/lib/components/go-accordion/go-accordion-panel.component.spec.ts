@@ -93,6 +93,22 @@ describe('GoAccordionPanelComponent', () => {
         expect(component.containerClasses['go-accordion-panel--borderless']).toBe(true);
       });
 
+      it('does NOT set the go-accordion-panel--box-shadow class if box-shadow is false', () => {
+        component.boxShadow = false;
+
+        component.updateClasses();
+
+        expect(component.containerClasses['go-accordion-panel--box-shadow']).toBe(false);
+      });
+
+      it('sets the go-accordion-panel--box-shadow class if box-shadow is true', () => {
+        component.boxShadow = true;
+
+        component.updateClasses();
+
+        expect(component.containerClasses['go-accordion-panel--box-shadow']).toBe(true);
+      });
+
       it('sets the go-accordion-panel--active class if expanded is true', () => {
         component._expanded = true;
 

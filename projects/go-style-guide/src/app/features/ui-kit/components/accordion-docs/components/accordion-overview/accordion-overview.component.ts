@@ -21,6 +21,34 @@ export class AccordionOverviewComponent {
   </go-accordion>
   `;
 
+  borderlessExample: string = `
+  <go-accordion [borderless]="true">
+    <go-accordion-panel heading="Test 1">
+      This is some content for Test 1.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 2">
+      This is a second thing.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 3">
+      This is a third thing.
+    </go-accordion-panel>
+  </go-accordion>
+  `;
+
+  boxShadowExample: string = `
+  <go-accordion [boxShadow]="true">
+    <go-accordion-panel heading="Test 1">
+      This is some content for Test 1.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 2">
+      This is a second thing.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 3">
+      This is a third thing.
+    </go-accordion-panel>
+  </go-accordion>
+  `;
+
   expandAllExample: string = `
   <go-accordion [expandAll]="true">
     <go-accordion-panel heading="Test 1">
@@ -92,6 +120,8 @@ export class AccordionOverviewComponent {
   `;
 
   componentBindings: string = `
+  @Input() borderless:  boolean = false;
+  @Input() boxShadow:   boolean = false;
   @Input() expandAll:   boolean = false;
   @Input() multiExpand: boolean = false;
   @Input() showIcons:   boolean = false;
