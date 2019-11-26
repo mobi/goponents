@@ -6,7 +6,8 @@ import {
   Input,
   OnChanges,
   OnInit,
-  Output
+  Output,
+  TemplateRef
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -45,7 +46,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this._expanded = expanded;
     this.containerClasses['go-accordion-panel--active'] = expanded;
     this.headerClasses['go-accordion-panel__header--active'] = expanded;
-    if (this.panelContent && expanded) {
+    if (expanded) {
       this.loaded = true;
     } else if (!this.persistState) {
       this.loaded = false;
@@ -57,7 +58,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
-  @ContentChild('panelContent') panelContent: any;
+  @ContentChild('panelContent') panelContent: TemplateRef<any>;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
