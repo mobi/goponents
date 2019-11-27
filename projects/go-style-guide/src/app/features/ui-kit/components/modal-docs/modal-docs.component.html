@@ -1,18 +1,31 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
       <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
+      <h3 class="go-heading-3">Usage</h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">&lt;go-modal&gt;</code> component should be the only instance
         of a modal in the app.
       </p>
 
-      <h1 class="go-heading-5">Setup</h1>
+      <h3 class="go-heading-3">Bindings</h3>
+      <code [highlight]="componentBindings"></code>
+
+      <h4 class="go-heading-4">modalTitle</h4>
+      <p class="go-body-copy">
+        <code class="code-block--inline">modalTitle</code> sets the title for the modal.
+      </p>
+
+      <h4 class="go-heading-4">modalSize</h4>
+      <p class="go-body-copy">
+        <code class="code-block--inline">modalSize</code> defines the width of the modal. Currently defaulted to <code class="code-block--inline">lg</code>.
+      </p>
+
+      <h3 class="go-heading-3">Setup</h3>
       <p class="go-body-copy">To use the modal anywhere in the app, you must first add it to the app level. This should only be done once per application.</p>
       <ol style="list-style: numeric;">
         <li>
@@ -32,7 +45,7 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Using the Modal service</h1>
+      <h3 class="go-heading-3">Using the Modal service</h3>
     </ng-container>
     <ng-container go-card-content>
       <div class="go-column go-column-100">
@@ -60,9 +73,7 @@
           <li>
             <p class="go-body-copy">
               To open the modal, use the service to call <code class="code-block--inline">openModal</code>. This method takes the component type
-              (ModalTestComponent in our case), and the bindings for that component as an object. There are two optional bindings <code class="code-block--inline">modalTitle</code>
-              (the title for modal) and <code class="code-block--inline">modalSize</code> which can be either <code class="code-block--inline">lg</code> or <code class="code-block--inline">xl</code>
-              (default <code class="code-block--inline">lg</code>).
+              (ModalTestComponent in our case), and the bindings for that component as an object.
             </p>
             <code [highlight]="ex_ModalDocsOpenModal"></code>
           </li>
@@ -72,11 +83,11 @@
             </p>
             <div class="go-container">
               <div class="go-column go-column--50">
-                <h2 class="go-heading-6">component.html</h2>
+                <h4 class="go-heading-4">component.html</h4>
                 <code [highlight]="ex_ModalDocsHtml"></code>
               </div>
               <div class="go-column go-column--50">
-                <h2 class="go-heading-6">View</h2>
+                <h4 class="go-heading-4">View</h4>
                 <go-button (handleClick)="openModal()">Click Me</go-button>
               </div>
             </div>
@@ -84,5 +95,32 @@
         </ol>
       </div>
     </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h3 class="go-heading-3">Modal Sizes</h3>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--75">
+          <h4 class="go-heading-4">LG Code (Default)</h4>
+          <code [highlight]="ex_ModalDocsOpenLgModal"></code>
+        </div>
+        <div class="go-column go-column--25">
+          <h4 class="go-heading-4">LG View</h4>
+          <go-button (handleClick)="openLgModal()">Click Me</go-button>
+        </div>
+
+        <div class="go-column go-column--75">
+          <h4 class="go-heading-4">XL Code</h4>
+          <code [highlight]="ex_ModalDocsOpenXlModal"></code>
+        </div>
+        <div class="go-column go-column--25">
+          <h4 class="go-heading-4">XL View</h4>
+          <go-button (handleClick)="openXlModal()">Click Me</go-button>
+        </div>
+      </div>
+    </div>
   </go-card>
 </section>
