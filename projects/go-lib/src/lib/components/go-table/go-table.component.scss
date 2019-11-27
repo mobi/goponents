@@ -234,3 +234,35 @@
 .go-table__icon-button-column {
   padding: .375rem 1.25rem;
 }
+
+.go-table-toolbar__page-numbers {
+  @include transition(background);
+
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.875rem;
+  margin: 0 0.125rem .2rem .125rem;
+  padding: 0.25rem .5rem;
+  outline: none;
+  user-select: none;
+  line-height: 1rem;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: $theme-light-bg-hover;
+  }
+}
+
+.go-table-toolbar__page-numbers--active { 
+  background-color: $ui-color-positive;
+  color: $theme-dark-color;
+
+  &:hover {
+    background-color: $ui-color-positive-hover;
+  }
+}
