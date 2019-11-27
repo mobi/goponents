@@ -87,6 +87,7 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
 import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
+import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 
 @NgModule({
   imports: [
@@ -164,7 +165,8 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     AccordionOverviewComponent,
     SwitchToggleDocsComponent,
     RadioButtonDocsComponent,
-    CheckboxDocsComponent
+    CheckboxDocsComponent,
+    LoadingTestComponent
   ],
   entryComponents: [
     BasicTestComponent,
