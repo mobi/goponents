@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'go-header-bar',
@@ -11,6 +11,8 @@ export class GoHeaderBarComponent implements OnInit {
   @Input() title: string;
   @Input() showBackArrow: boolean = false;
   @Input() goBackFn: Function;
+
+  @ViewChild('headerBar') headerBar: ElementRef;
 
   constructor(private location: Location) {}
 
@@ -26,5 +28,13 @@ export class GoHeaderBarComponent implements OnInit {
 
   disableBackButton(): boolean {
     return false;
+  }
+
+  getHeight(): string {
+    return this.headerBar.nativeElement.offsetHeight.toString() + 'px';
+  }
+
+  getWidth(): string {
+    return this.headerBar.nativeElement.parentElement.parentElement.offsetWidth.toString() + 'px';
   }
 }

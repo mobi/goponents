@@ -1,16 +1,13 @@
 @import "../../../styles/_variables.scss";
-:host {
-   flex: 1;
-}
-
 .go-header-bar {
-  margin: -2rem -1rem 2rem -1rem;
+  margin: -2rem;
   height: 68px;
   background: white;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: fixed;
 }
 
 .go-page-header__title {

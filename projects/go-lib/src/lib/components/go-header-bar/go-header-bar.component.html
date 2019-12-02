@@ -1,4 +1,4 @@
-<div class="go-header-bar">
+<div class="go-header-bar" #headerBar [ngStyle]="{ 'width': getWidth() }">
   <a *ngIf="showBackArrow" (click)="goBack()" class="go-page-header__back-arrow">
     <go-icon icon="arrow_back" [ngClass]="{ 'go-header-bar__back-arrow--disabled': disableBackButton() }"></go-icon>
   </a>
@@ -8,3 +8,4 @@
     <ng-content select="[go-header-bar-action]"></ng-content>
   </div>
 </div>
+<div [ngStyle]="{ 'height': getHeight() }"></div>
