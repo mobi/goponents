@@ -26,6 +26,11 @@
   font-size: 18px;
 }
 
+.go-header-bar__back-arrow--disabled {
+  color: $base-light-secondary;
+  cursor: default;
+}
+
 .go-page-header__actions {
   display: flex;
   justify-content: flex-end;
