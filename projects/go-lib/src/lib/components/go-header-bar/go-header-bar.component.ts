@@ -27,12 +27,10 @@ export class GoHeaderBarComponent implements OnInit {
   }
 
   backButtonDisabled(): boolean {
-    return window.history.length === 1;
+    return !this.goBackFn && window.history.length === 1;
   }
 
   getHeight(): string {
-    console.log(window.history);
-    console.log(location);
     return this.headerBar.nativeElement.offsetHeight.toString() + 'px';
   }
 
