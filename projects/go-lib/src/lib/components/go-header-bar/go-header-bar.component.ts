@@ -26,8 +26,8 @@ export class GoHeaderBarComponent implements OnInit {
     }
   }
 
-  disableBackButton(): boolean {
-    return false;
+  backButtonIsDisabled(): boolean {
+    return !this.showBackArrow;
   }
 
   getHeight(): string {

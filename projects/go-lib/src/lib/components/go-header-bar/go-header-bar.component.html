@@ -1,6 +1,6 @@
 <div class="go-header-bar" #headerBar [ngStyle]="{ 'width': getWidth() }">
   <a *ngIf="showBackArrow" (click)="goBack()" class="go-page-header__back-arrow">
-    <go-icon icon="arrow_back" [ngClass]="{ 'go-header-bar__back-arrow--disabled': disableBackButton() }"></go-icon>
+    <go-icon icon="arrow_back" [ngClass]="{ 'go-header-bar__back-arrow--disabled': backButtonIsDisabled() }"></go-icon>
   </a>
   <h5 class="go-heading-5 go-page-header__title">{{ title }}</h5>
 
