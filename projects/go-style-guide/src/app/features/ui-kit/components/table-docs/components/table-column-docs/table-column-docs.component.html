@@ -1,0 +1,65 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h3 class="go-heading-3">Implementing Table Columns</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        <code class="code-block--inline">GoTableColumnComponent</code> is required to render columns within
+        <code class="code-block--inline">go-table</code> and is exported within <code class="code-block--inline">GoTableModule</code>.
+        <code class="code-block--inline">go-table-column</code> cannot render outside of <code class="code-block--inline">go-table</code>.
+      </p>
+
+      <h3 class="go-heading-3">Bindings</h3>
+      <code [highlight]="componentBindings"></code>
+
+      <h4 class="go-heading-4">field</h4>
+      <p class="go-body-copy">
+        Defines data to be shown by linking column to the appropriate key within object defined in <code class="code-block--inline">tableData</code>
+        when constructing <code class="code-block--inline">GoTableConfig</code>. For example if <code class="code-block--inline">tableData</code>
+        was set to:
+
+        <code [highlight]="fieldExample"></code>
+
+        and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
+      </p>
+      
+      <h4 class="go-heading-4">title</h4>
+      <p class="go-body-copy">
+        This binding sets the column title.
+      </p>
+      
+      <h4 class="go-heading-4">width</h4>
+      <p class="go-body-copy">
+        This binding sets the width for column.
+      </p>
+      
+      <h4 class="go-heading-4">sortable</h4>
+      <p class="go-body-copy">
+        This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
+        must have <code class="code-block--inline">sortable</code> set to <code class="code-block--inline">true</code>.
+      </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h3 class="go-heading-3">Example Usage</h3>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="basicExample_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="basicExample_ts"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Example Usage">
+    <go-table-column field="id" title="ID" [sortable]="false" width="5"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email" width="50"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>

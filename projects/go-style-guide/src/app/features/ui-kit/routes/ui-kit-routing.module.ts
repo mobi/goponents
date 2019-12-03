@@ -37,6 +37,7 @@ import { SelectDocsComponent } from '../components/form-docs/components/select-d
 import { TextAreaDocsComponent } from '../components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from '../components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from '../components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { TableColumnDocsComponent } from '../components/table-docs/components/table-column-docs/table-column-docs.component';
 import { ConfigurationDocsComponent } from '../components/configuration-docs/configuration-docs.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetOverviewComponent } from '../components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
@@ -91,6 +92,7 @@ const routes: Routes = [
   { path: 'ui-kit/table', component: TableDocsComponent, children: [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },
+    { path: 'columns', component: TableColumnDocsComponent },
     { path: 'pagination', component: TablePaginationComponent },
     { path: 'selection', component: TableSelectionComponent },
     { path: 'server-integration', component: ServerIntegrationComponent },
