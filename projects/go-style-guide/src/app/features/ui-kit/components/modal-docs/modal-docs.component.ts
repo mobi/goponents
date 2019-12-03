@@ -13,8 +13,8 @@ export class ModalDocsComponent {
   pageTitle: string = 'Modal';
 
   componentBindings: string = `
-  @Input() modalTitle:  string      = '';
-  @Input() modalSize:   'lg' | 'xl' = 'lg';
+  @Input() modalTitle: string = '';
+  @Input() modalSize: 'lg' | 'xl' = 'lg';
   `;
 
   appModuleImport: string = `
@@ -73,7 +73,7 @@ export class ModalDocsComponent {
   ex_ModalDocsHtml: string = `<go-button (handleClick)="openModal()">Click Me</go-button>`;
 
   ex_ModalDocsOpenLgModal: string = `
-  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', modalSize: 'lg', content: 'This is a lg modal' });
+  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
   `;
 
   ex_ModalDocsOpenXlModal: string = `
@@ -87,7 +87,7 @@ export class ModalDocsComponent {
   }
 
   openLgModal(): void {
-    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', modalSize: 'lg', content: 'This is a lg modal' });
+    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
   }
 
   openXlModal(): void {
