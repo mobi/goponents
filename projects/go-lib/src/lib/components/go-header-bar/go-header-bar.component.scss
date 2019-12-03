@@ -1,9 +1,9 @@
 @import "../../../styles/_variables.scss";
 .go-header-bar {
-  margin: -2rem;
+  margin: -$column-gutter--double;
   height: 68px;
-  background: white;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
+  background: $base-light;
+  box-shadow: $global-box-shadow--regular;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11,19 +11,19 @@
 }
 
 .go-page-header__title {
-  padding: 0 2rem;
-  margin-bottom: -0.25rem;
+  padding: 0 $column-gutter--double;
+  margin-bottom: -$column-gutter--quarter;
 }
 
 .go-page-header__back-arrow {
   cursor: pointer;
   align-items: center;
-  padding: 1.5rem 1rem;
-  margin-right: -1rem;
-  border-right: solid 1px lighten($base-light-secondary, 17%);
-  flex-basis: 40px;
+  padding: $column-gutter+$column-gutter--half $column-gutter;
+  margin-right: -$column-gutter;
+  border-right: solid 1px $theme-light-border;
+  flex-basis: 2.5rem;
   color: $base-dark;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .go-header-bar__back-arrow--disabled {
@@ -35,5 +35,5 @@
   display: flex;
   justify-content: flex-end;
   flex: 1;
-  padding-right: 2rem;
+  padding-right: $column-gutter--double;
 }
