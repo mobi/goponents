@@ -1,7 +1,12 @@
-<go-header-bar title="This is the title" [showBackArrow]="true">
-  <go-button go-header-bar-action>Hello</go-button>
-  <go-button go-header-bar-action>Hello</go-button>
-  <go-button>Hello</go-button>
+<go-header-bar title="This is the title" [showBackArrow]="true" [goBackFn]="logStuff">
+  <ul class="go-button-group" go-header-bar-action>
+    <li class="go-button-group__item">
+      <go-button>Button 1</go-button>
+    </li>
+    <li class="go-button-group__item">
+      <go-button>Button 2</go-button>
+    </li>
+  </ul>
 </go-header-bar>
 <div class="go-container">
   <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
