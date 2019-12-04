@@ -12,7 +12,8 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  ViewChildren
 } from '@angular/core';
 
 import { GoTableColumnComponent } from './go-table-column.component';
@@ -64,12 +65,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   @ContentChild('goTableDetails') details: TemplateRef<any>;
 
   @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
+  @ViewChildren('goTableRow') rows: QueryList<ElementRef>;
 
   localTableConfig: GoTableConfig;
   selectAllChecked: boolean = false;
   targetedRows: any[] = [];
   showTable: boolean = false;
   pages: GoTablePage[] = [];
+  columnWidths: number[] = [];
 
   constructor(private changeDetector: ChangeDetectorRef) { }
 
@@ -88,8 +91,18 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.tableConfig.preselected) {
       this.toggleSelectAll();
-      this.changeDetector.detectChanges();
     }
+
+    this.calculateWidths();
+
+    this.changeDetector.detectChanges();
+  }
+
+  getStickyWidth(col: GoTableColumnComponent, index: number): string {
+    if (col.sticky && this.columnWidths.length) {
+      return this.columnWidths[index].toString() + 'px';
+    }
+    return '0px';
   }
 
   renderTable(): void {
@@ -400,6 +413,24 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     return startPage;
+  }
+
+  private calculateWidths(): void {
+    const htmlCollection: HTMLCollection = this.rows.first.nativeElement.children;
+    let width: number = 0;
+    if (this.details) {
+      width += 72;
+    }
+    if (this.localTableConfig.selectable) {
+      width += 60;
+    }
+    this.columnWidths.push(width);
+
+    for (let i: number = 0; i < htmlCollection.length - 1; i++) {
+      width = this.columnWidths[i];
+
+      this.columnWidths.push(width + htmlCollection[i].clientWidth);
+    }
   }
   //#endregion
 }

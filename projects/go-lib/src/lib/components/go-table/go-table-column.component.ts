@@ -7,6 +7,7 @@ import { extractFieldData } from './go-table-utils';
 })
 export class GoTableColumnComponent {
   @Input() field: string;
+  @Input() sticky: boolean = false;
   @Input() title: string;
   @Input() width: number;
   @Input() sortable?: boolean;

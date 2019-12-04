@@ -10,20 +10,23 @@
            *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
-          <td class="go-table__body-column"
+          <th class="go-table__head-column go-table__body-column--sticky"
               width="40"
+              [ngStyle]="{ left: 0 }"
               *ngIf="details">
-          </td>
-          <th class="go-table__head-column go-table__head--sortable"
+          </th>
+          <th class="go-table__head-column go-table__head--sortable go-table__body-column--sticky"
               width="60"
               *ngIf="localTableConfig.selectable"
+              [ngStyle]="{ left: 0 }"
               (click)="toggleSelectAll()">
             <input type="checkbox" [checked]="selectAllChecked" name="select_all" #selectAllCheckbox/>
           </th>
-          <th *ngFor="let col of columns"
+          <th *ngFor="let col of columns; index as i"
               class="go-table__head-column"
               (click)="toggleSort(col.sortable, col.field)"
-              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }">
+              [ngStyle]="{ left: getStickyWidth(col, i) }"
+              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable, 'go-table__body-column--sticky': col.sticky }">
             <div class="go-table__head-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
                 {{ col.title || col.field }}
@@ -39,11 +42,13 @@
       <tbody class="go-table__body">
         <ng-container *ngFor="let item of setDisplayData()">
           <tr class="go-table__body-row"
-              [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }">
-            <td class="go-table__body-column go-table__icon-button-column"
+              [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }"
+              #goTableRow>
+            <td class="go-table__body-column go-table__icon-button-column go-table__body-column--sticky"
                 [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="40"
+                [ngStyle]="{ left: 0 }"
                 *ngIf="details">
               <go-icon-button
                 class="go-table__details-button"
@@ -52,20 +57,22 @@
                 (handleClick)="toggleDetails(item)"
               ></go-icon-button>
             </td>
-            <td class="go-table__body-column"
+            <td class="go-table__body-column go-table__body-column--sticky"
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
+                [ngStyle]="{ left: 0 }"
                 *ngIf="localTableConfig.selectable">
               <input type="checkbox"
                     [checked]="isRowSelected(item)"
                     (change)="selectionChange($event, item)"
                     [name]="'selection_' + item[localTableConfig.selectBy]"/>
             </td>
-            <td *ngFor="let col of columns"
+            <td *ngFor="let col of columns; index as i"
                 class="go-table__body-column"
-                [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails, 'go-table__body-column--sticky': col.sticky }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
+                [ngStyle]="{ left: getStickyWidth(col, i) }"
                 [attr.width]="col.width">
               <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
                 {{ col.getFieldData(item) }}
