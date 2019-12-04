@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { GoTableConfig } from 'projects/go-lib/src/public_api';
 import { TableDocsService } from '../../table-docs.service';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-table-column-docs',
   templateUrl: './table-column-docs.component.html'
 })
 export class TableColumnDocsComponent {
-  constructor(private tableDocsService: TableDocsService) {}
+  constructor(private tableDocsService: TableDocsService, private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Table Columns';
+  }
 
   componentBindings: string = `
   @Input() field:     string;
   @Input() title:     string;
   @Input() width:     number;
-  @Input() sortable?: boolean;
+  @Input() sortable?: boolean = true;
   `;
 
   fieldExample: string = `
@@ -31,7 +34,7 @@ export class TableColumnDocsComponent {
   `;
 
   basicExample_html: string = `
-  <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Example Usage">
+  <go-table [tableConfig]="tableConfig" tableTitle="Example Usage">
     <go-table-column field="id" title="ID" [sortable]="false" width="5"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
