@@ -98,7 +98,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.setTotalCount();
       this.handleSort();
-      this.setPage();
+      this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
     this.showTable = Boolean(this.tableConfig);
@@ -156,7 +156,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
-  isLastPage(offset: number): boolean {
+  isLastPage(): boolean {
     const { pageConfig, tableData, totalCount }:
     {
       pageConfig: GoTablePageConfig,
@@ -164,7 +164,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       totalCount: number
     } = this.localTableConfig;
 
-    return ((offset + pageConfig.perPage) >= tableData.length) && ((offset + pageConfig.perPage) >= totalCount);
+    return ((pageConfig.offset + pageConfig.perPage) >= tableData.length) && ((pageConfig.offset + pageConfig.perPage) >= totalCount);
   }
 
   setLastPage(): void {
@@ -304,6 +304,8 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   setPageByPageNumber(pageNumber: number): void {
     this.setPage(this.localTableConfig.pageConfig.perPage * (pageNumber - 1));
+
+    this.tableChangeOutcome();
   }
 
   //#region Private Methods
