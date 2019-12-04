@@ -31,7 +31,10 @@ export class GoSideNavService {
   }
 
   extractBaseUrl(url: string): string {
-    return this.router.parseUrl(url).root.children['primary'].segments.map((it: UrlSegment) => it.path).join('/');
+    if (this.router.parseUrl(url).root.children['primary']) {
+      return this.router.parseUrl(url).root.children['primary'].segments.map((it: UrlSegment) => it.path).join('/');
+    }
+    return '/';
   }
 
   setActiveItem(url: string): void {
