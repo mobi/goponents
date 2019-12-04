@@ -12,6 +12,11 @@ export class ModalDocsComponent {
 
   pageTitle: string = 'Modal';
 
+  componentBindings: string = `
+  @Input() modalTitle: string = '';
+  @Input() modalSize: 'lg' | 'xl' = 'lg';
+  `;
+
   appModuleImport: string = `
   import { GoModalModule } from '@tangoe/goponents';
 
@@ -67,10 +72,26 @@ export class ModalDocsComponent {
 
   ex_ModalDocsHtml: string = `<go-button (handleClick)="openModal()">Click Me</go-button>`;
 
+  ex_ModalDocsOpenLgModal: string = `
+  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
+  `;
+
+  ex_ModalDocsOpenXlModal: string = `
+  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
+  `;
+
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
     this.goModalService.openModal(ModalTestComponent, { modalTitle: 'Example Title', modalSize: 'xl', content: 'This is a modal!' });
+  }
+
+  openLgModal(): void {
+    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
+  }
+
+  openXlModal(): void {
+    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
   }
 
 }

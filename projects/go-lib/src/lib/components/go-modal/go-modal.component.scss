@@ -23,8 +23,8 @@
   box-shadow: $global-box-shadow--regular;
   color: $theme-light-color;
   max-height: 80%;
-  max-width: 50rem;
-  min-width: 31.25rem;
+  min-width: map-get($modal-container-sizes, 'lg');
+  max-width: map-get($modal-container-sizes, 'lg');
   padding: 1rem;
   position: relative;
   overflow-x: hidden;
@@ -36,7 +36,8 @@
 .go-modal__container-xl {
   @extend .go-modal__container;
 
-  min-width: 50rem;
+  min-width: map-get($modal-container-sizes, 'xl');
+  max-width: map-get($modal-container-sizes, 'xl');
 }
 
 .go-modal.go-modal--visible {
