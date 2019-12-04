@@ -8,7 +8,7 @@
   <div class="sub-nav-submenu" [ngClass]="{ 'sub-nav-submenu--mobile-show': mobileSubmenuShown }" (click)="closeMobileMenu()">
 
     <ng-container *ngFor="let item of menuItems">
-      <h5 class="go-heading-5 sub-nav-submenu__title">{{ item.routeTitle }}</h5>
+      <h5 class="go-heading-3 sub-nav-submenu__title">{{ item.routeTitle }}</h5>
       <ul *ngIf="item.subRoutes" class="sub-nav-submenu__ul">
         <li *ngFor="let subRoute of item.subRoutes">
           <a class="go-link sub-nav-submenu__a"

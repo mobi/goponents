@@ -1,5 +1,5 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <div class="go-container">
@@ -10,7 +10,7 @@
           <div class="go-container">
             <div class="go-column go-column--100">
               <!-- Intro -->
-              <h2 class="go-heading-5">Usage</h2>
+              <h2 class="go-heading-3">Usage</h2>
               <p class="go-body-copy">
                 The <code class="code-block--inline">&lt;go-icon&gt;</code>
                 component should be the only way an icon is displayed in the
@@ -19,11 +19,11 @@
             </div>
             <div class="go-column go-column--100 go-column--no-padding">
               <!-- Bindings -->
-              <h2 class="go-heading-5">Bindings</h2>
+              <h2 class="go-heading-3">Bindings</h2>
               <code [highlight]="componentBindings"></code>
             </div>
             <div class="go-column go-column--100">
-              <h3 class="go-heading-6">icon - (required)</h3>
+              <h3 class="go-heading-4">icon - (required)</h3>
               <p class="go-body-copy">
                 The <code class="code-block--inline">icon</code>
                 binding must be passed. This component requires the
@@ -43,7 +43,7 @@
               </p>
             </div>
             <div class="go-column go-column--100">
-              <h3 class="go-heading-6">iconModifier</h3>
+              <h3 class="go-heading-4">iconModifier</h3>
               <p class="go-body-copy">
                 The <code class="code-block--inline">iconModifier</code>
                 binding can be used to modify the state of the icon. Icons
@@ -75,7 +75,7 @@
               </ol>
             </div>
             <div class="go-column go-column--100">
-              <h3 class="go-heading-6">iconClass</h3>
+              <h3 class="go-heading-4">iconClass</h3>
               <p class="go-body-copy">
                 The <code class="code-block--inline">iconClass</code>
                 binding can be used to add additional classes directly
@@ -94,12 +94,12 @@
   </go-card>
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Basic</h2>
+      <h2 class="go-heading-3">Basic</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h3 class="go-heading-6">Code</h3>
+      <h3 class="go-heading-4">Code</h3>
       <code [highlight]="basicExample"></code>
-      <h3 class="go-heading-6">View</h3>
+      <h3 class="go-heading-4">View</h3>
       <go-icon icon="home"></go-icon>
       <go-icon icon="delete"></go-icon>
       <go-icon icon="info"></go-icon>
@@ -109,12 +109,12 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Modified</h2>
+      <h2 class="go-heading-3">Modified</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h3 class="go-heading-6">Code</h3>
+      <h3 class="go-heading-4">Code</h3>
       <code [highlight]="modifiedExample"></code>
-      <h3 class="go-heading-6">View</h3>
+      <h3 class="go-heading-4">View</h3>
       <go-icon icon="home" iconModifier="light"></go-icon>
       <go-icon icon="delete" iconModifier="negative"></go-icon>
       <go-icon icon="info" iconModifier="neutral"></go-icon>
@@ -126,14 +126,14 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Overriding Icon Styles</h2>
+      <h2 class="go-heading-3">Overriding Icon Styles</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h3 class="go-heading-6">component.scss</h3>
+      <h3 class="go-heading-4">component.scss</h3>
       <code [highlight]="overriddenStyles"></code>
-      <h3 class="go-heading-6">component.html</h3>
+      <h3 class="go-heading-4">component.html</h3>
       <code [highlight]="overriddenExample"></code>
-      <h3 class="go-heading-6">View</h3>
+      <h3 class="go-heading-4">View</h3>
       <ul class="list">
         <li>
           <go-icon icon="face" iconClass="list__icon" iconModifier="positive"></go-icon>

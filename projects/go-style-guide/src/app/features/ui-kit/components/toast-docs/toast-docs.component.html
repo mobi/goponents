@@ -1,40 +1,40 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
       <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-3">Usage</h1>
       <p class="go-body-copy">
         The <code class="code-block--inline">&lt;go-toast&gt;</code> component should be used to notify the user of event responses
         or show notices. These should be used for short messages.
       </p>
 
       <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-3">Bindings</h1>
       <code [highlight]="componentBindings"></code>
 
-      <h2 class="go-heading-6">dismissable</h2>
+      <h2 class="go-heading-4">dismissable</h2>
       <p class="go-body-copy">
         By default this is false, but if set to true it will show an <go-icon icon="close"></go-icon> icon
         on the toast and allow the toast to be removed from the UI.
       </p>
 
-      <h2 class="go-heading-6">header</h2>
+      <h2 class="go-heading-4">header</h2>
       <p class="go-body-copy">
         The text to be displayed as the header of the toast. This is optional, however either this binding or the
         <code class="code-block--inline">message</code> binding must be set.
       </p>
 
-      <h2 class="go-heading-6">message</h2>
+      <h2 class="go-heading-4">message</h2>
       <p class="go-body-copy">
         The text or non-executable HTML to be displayed as the message of the toast. This is optional, however either this binding or the
         <code class="code-block--inline">header</code> binding must be set.
       </p>
 
-      <h2 class="go-heading-6">type</h2>
+      <h2 class="go-heading-4">type</h2>
       <p class="go-body-copy">
         This binding determines which type of toast to display. By default, it will be set to <code class="code-block--inline">neutral</code>.
         Options for this are:
@@ -45,7 +45,7 @@
         <li><code class="code-block--inline">negative</code></li>
       </ol>
 
-      <h2 class="go-heading-6">handleDismiss</h2>
+      <h2 class="go-heading-4">handleDismiss</h2>
       <p class="go-body-copy">
         This event gets emitted when the dismiss button is clicked. <code class="code-block--inline">dismissable</code> must be
         set to <code class="code-block--inline">true</code> for the button to appear.
@@ -55,7 +55,7 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Basic Example</h1>
+      <h1 class="go-heading-3">Basic Example</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -72,12 +72,12 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Dismiss Example</h1>
+      <h1 class="go-heading-3">Dismiss Example</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">component.html</h2>
+      <h2 class="go-heading-4">component.html</h2>
       <code [highlight]="dismiss_html"></code>
-      <h2 class="go-heading-6">component.ts</h2>
+      <h2 class="go-heading-4">component.ts</h2>
       <code [highlight]="dismiss_ts"></code>
     </ng-container>
   </go-card>
@@ -91,18 +91,18 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Toaster Example</h1>
+      <h1 class="go-heading-3">Toaster Example</h1>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
         There is by default a 3 second duration on the toast. A user can hover over the toast to pause that timer and
         then when they hover off of the toast the timer will start over.
       </p>
-      <h2 class="go-heading-6">component.ts</h2>
+      <h2 class="go-heading-4">component.ts</h2>
       <code [highlight]="toaster_ts"></code>
-      <h2 class="go-heading-6">app.module.ts</h2>
+      <h2 class="go-heading-4">app.module.ts</h2>
       <code [highlight]="toaster_app_ts"></code>
-      <h2 class="go-heading-6">app.component.html</h2>
+      <h2 class="go-heading-4">app.component.html</h2>
       <code [highlight]="toaster_app_html"></code>
       <go-button (handleClick)="sendToast()">Make Toast</go-button>
     </ng-container>

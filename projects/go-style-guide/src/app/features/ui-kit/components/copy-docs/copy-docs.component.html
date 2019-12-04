@@ -1,5 +1,5 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 <div class="go-container">
   <div class="go-column go-column--100">
@@ -8,7 +8,7 @@
         <div class="go-container">
           <div class="go-column go-column--100">
             <!-- Intro -->
-            <h2 class="go-heading-5">Usage</h2>
+            <h2 class="go-heading-3">Usage</h2>
             <p class="go-body-copy">
               The <code class="code-block--inline">&lt;go-copy&gt;</code>
               component should be used for any instance where we want to provide a user
@@ -16,11 +16,11 @@
             </p>
 
             <!-- Bindings -->
-            <h2 class="go-heading-5">Bindings</h2>
+            <h2 class="go-heading-3">Bindings</h2>
             <code [highlight]="componentBindings"></code>
           </div>
           <div class="go-column go-column--100 go-column--no-padding">
-            <h3 class="go-heading-6">text</h3>
+            <h3 class="go-heading-4">text</h3>
             <p class="go-body-copy">
               This is the text that will be copied to a users clipboard when they click the button.
             </p>
@@ -31,7 +31,7 @@
       
     <go-card [showHeader]="false" class="go-column go-column--100">
       <ng-container go-card-content>
-        <h2 class="go-heading-5">Basic Example</h2>
+        <h2 class="go-heading-3">Basic Example</h2>
         <p class="go-body-copy" class="copy-docs__inline-button">
           <a [href]="url" class="copy-docs__link">Click the button to copy the link!</a>
           <go-copy [text]="url"></go-copy>

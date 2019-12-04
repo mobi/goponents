@@ -1,20 +1,20 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-content>
       <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
+      <h1 class="go-heading-3">Usage</h1>
       <p class="go-body-copy">The <code class="code-block--inline">&lt;go-card&gt;</code> component should be the default container for all content.</p>
 
       <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
+      <h1 class="go-heading-3">Bindings</h1>
       <code [highlight]="componentBindings"></code>
 
       <!-- expandAll -->
-      <h2 class="go-heading-6">showHeader</h2>
+      <h2 class="go-heading-4">showHeader</h2>
       <p class="go-body-copy">
         <code class="code-block--inline">showHeader</code>
         by default is true, but if set to false it will hide the header
@@ -25,20 +25,20 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h1 class="go-heading-3">Default</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">Code (for this card)</h2>
+      <h2 class="go-heading-4">Code (for this card)</h2>
       <code [highlight]="defaultExample"></code>
     </ng-container>
   </go-card>
 
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h1 class="go-heading-3">Default</h1>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">Code (for this card, no header example)</h2>
+      <h2 class="go-heading-4">Code (for this card, no header example)</h2>
       <code [highlight]="showHeaderExample"></code>
     </ng-container>
   </go-card>
