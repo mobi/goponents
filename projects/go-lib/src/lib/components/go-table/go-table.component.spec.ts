@@ -168,5 +168,12 @@ describe('GoTableComponent', () => {
       }
       expect(component.pages.length).toBe(4);
     });
+
+    it('should emit a tableChange for server side pagination', () => {
+      spyOn(component.tableChange, 'emit');
+      component.setPageByPageNumber(2);
+
+      expect(component.tableChange.emit).toHaveBeenCalled();
+    });
   });
 });
