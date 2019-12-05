@@ -416,8 +416,15 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private calculateWidths(): void {
-    const htmlCollection: HTMLCollection = this.rows.first.nativeElement.children;
+    let htmlCollection: HTMLCollection;
     let width: number = 0;
+
+    if (!this.rows.length) {
+      return;
+    }
+
+    htmlCollection = this.rows.first.nativeElement.children;
+
     if (this.details) {
       width += 72;
     }
