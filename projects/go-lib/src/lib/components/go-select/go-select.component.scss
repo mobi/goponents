@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@ng-select/ng-select/scss/default.theme";
 
 .ng-select .ng-select-container {
   letter-spacing: 0.5pt;
@@ -14,7 +14,7 @@
 
 .ng-select.ng-select-single .ng-select-container,
 .ng-select.ng-select-multiple .ng-select-container {
-  height: calc(1.5rem + #{$column-gutter});  
+  height: calc(1.5rem + #{$column-gutter});
 }
 
 .ng-select.ng-select-focused .ng-select-container {
