@@ -13,10 +13,11 @@ export class TableColumnDocsComponent {
   }
 
   componentBindings: string = `
-  @Input() field:     string;
-  @Input() title:     string;
-  @Input() width:     number;
+  @Input() field: string;
   @Input() sortable?: boolean = true;
+  @Input() sticky?: boolean = false;
+  @Input() title: string;
+  @Input() width: number;
   `;
 
   fieldExample: string = `
@@ -35,7 +36,7 @@ export class TableColumnDocsComponent {
 
   basicExample_html: string = `
   <go-table [tableConfig]="tableConfig" tableTitle="Example Usage">
-    <go-table-column field="id" title="ID" [sortable]="false" width="5"></go-table-column>
+    <go-table-column field="id" title="ID" [sortable]="false" width="5" sticky="true"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
     <go-table-column field="email" title="Email" width="50"></go-table-column>

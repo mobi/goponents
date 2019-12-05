@@ -31,22 +31,8 @@
           and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
         </p>
       </div>
-      
+
       <div class="go-column go-column--100">
-        <h4 class="go-heading-4">title</h4>
-        <p class="go-body-copy go-body-copy--no-margin">
-          This binding sets the column title.
-        </p>
-      </div>
-      
-      <div class="go-column go-column--100">
-        <h4 class="go-heading-4">width</h4>
-        <p class="go-body-copy go-body-copy--no-margin">
-          This binding sets the width for column. The value must be in pixels.
-        </p>
-      </div>
-      
-      <div class="go-column go-column--100 go-column--no-padding">
         <h4 class="go-heading-4">sortable</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
@@ -56,6 +42,28 @@
         </p>
       </div>
 
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">sticky</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding sets the column as sticky so that when a user scrolls the column will stay on the page. This does not work
+          on IE, but will fail gracefully and the columns will just be scrollable. For this to work properly the sticky columns have
+          to be the first columns in the table.
+        </p>
+      </div>
+        
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">title</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding sets the column title.
+        </p>
+      </div>
+    
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">width</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding sets the width for column. The value must be in pixels.
+        </p>
+      </div>
     </div>
   </go-card>
 
@@ -72,7 +80,7 @@
   </go-card>
 
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Example Usage">
-    <go-table-column field="id" title="ID" [sortable]="false" width="5"></go-table-column>
+    <go-table-column field="id" title="ID" [sortable]="false" width="5" sticky="true"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
     <go-table-column field="email" title="Email" width="50"></go-table-column>
