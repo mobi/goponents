@@ -36,7 +36,7 @@ describe('GoModalComponent', () => {
     goModalHostFixture = TestBed.createComponent(GoTestModalHostComponent);
 
     component = fixture.componentInstance;
-    component.goModalHost = goModalHostFixture.componentInstance.goModalHostRef;
+    component.goModalHost = goModalHostFixture.componentInstance.goModalHost;
 
     fixture.detectChanges();
   });
@@ -108,8 +108,4 @@ describe('GoModalComponent', () => {
 })
 class GoTestModalHostComponent {
   @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
-
-  get goModalHostRef(): GoModalDirective {
-    return this.goModalHost;
-  }
 }
