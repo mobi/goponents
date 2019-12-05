@@ -1,17 +1,19 @@
 <div>
   <span class="go-calendar__header">
-    <div class="go-calendar__header--left">
-      {{dateAdapter.monthNames[month]}} - {{year.translated}}
-      <div class="go-calendar__header-dropdown">
-        <go-icon-button buttonIcon="keyboard_arrow_down" (handleClick)="switchView()"></go-icon-button>
-      </div>
-    </div>
-    <div class="go-calendar__header--right">
+    <div class="go-calendar__header--outside">
       <go-icon-button
         [buttonDisabled]="previousMonthDisabled"
         buttonIcon="keyboard_arrow_left"
         (handleClick)="previousMonth()"
       ></go-icon-button>
+    </div>
+    <div class="go-calendar__header--center go-calendar__header--center-offset">
+      {{dateAdapter.monthNames[month]}} {{year.translated}}
+      <div class="go-calendar__header-dropdown">
+        <go-icon-button buttonIcon="keyboard_arrow_down" (handleClick)="switchView()"></go-icon-button>
+      </div>
+    </div>
+    <div class="go-calendar__header--outside">
       <go-icon-button
         [buttonDisabled]="nextMonthDisabled"
         buttonIcon="keyboard_arrow_right"
@@ -23,15 +25,16 @@
 <div class="go-calendar__body">
   <table class="go-calendar__table">
     <tr>
-      <th class="go-calendar__body--header" *ngFor="let weekDay of dateAdapter.daysOfWeek">
+      <th class="go-calendar__body--header go-calendar__body--header-border" *ngFor="let weekDay of dateAdapter.daysOfWeek">
         {{weekDay}}
       </th>
     </tr>
+    <tr><td *ngFor="let weekDay of dateAdapter.daysOfWeek" class="go-calendar__body--padding"></td></tr>
     <tr *ngFor="let week of weeks">
       <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day.value)">
         <span *ngIf="!day.translated"></span>
         <button
-          class="go-calendar__cell"
+          class="go-calendar__cell go-calendar__cell--date"
           [disabled]="day.disabled"
           [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
           *ngIf="day.translated"

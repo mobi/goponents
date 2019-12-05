@@ -60,22 +60,18 @@ export class GoCalendarYearViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setUpYears(this.year.value - 15);
+    this.setUpYears(this.year.value - 6);
     this.setFocusedYear(this.year.value);
   }
 
   public nextYearGroup(): void {
     this.setUpYears(this.lastYear.value + 1);
-    this.setFocusedYear(this.focusedYear.value + 24);
+    this.setFocusedYear(this.focusedYear.value + (3 * 4));
   }
 
   public previousYearGroup(): void {
-    this.setUpYears(this.firstYear.value - (6 * 4));
-    this.setFocusedYear(this.focusedYear.value - 24);
-  }
-
-  public switchView(): void {
-    this.setView.emit('day');
+    this.setUpYears(this.firstYear.value - (3 * 4));
+    this.setFocusedYear(this.focusedYear.value - (3 * 4));
   }
 
   public pickYear(year: number): void {
@@ -87,7 +83,7 @@ export class GoCalendarYearViewComponent implements OnInit {
     this.years = [];
     this.firstYear = this.createYear(startYear);
 
-    for (let row: number = 0; row < 6; row++) {
+    for (let row: number = 0; row < 3; row++) {
       this.years.push([]);
       for (let col: number = 0; col < 4; col++) {
         const currentYear: number = startYear + (4 * row) + col;
@@ -98,7 +94,7 @@ export class GoCalendarYearViewComponent implements OnInit {
         }
       }
     }
-    this.lastYear = this.years[5][3];
+    this.lastYear = this.years[2][3];
 
     this.nextGroupDisabled = this.nextYearGroupInvalid();
     this.previousGroupDisabled = this.previousYearGroupInvalid();

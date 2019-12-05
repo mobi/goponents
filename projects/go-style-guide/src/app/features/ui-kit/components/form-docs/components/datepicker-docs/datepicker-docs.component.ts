@@ -6,7 +6,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
   templateUrl: './datepicker-docs.component.html'
 })
 export class DatepickerDocsComponent implements OnInit {
-  dob: FormControl = new FormControl('');
+  dob: FormControl = new FormControl('2015-08-15');
   dob2: FormControl = new FormControl('');
   dob3: FormControl = new FormControl('');
   dob4: FormControl = new FormControl('');
@@ -35,6 +35,12 @@ export class DatepickerDocsComponent implements OnInit {
   export class NameEditorComponent {
     name = new FormControl('');
   }
+  `;
+
+  basicInputExampleComponent: string = `
+  dob: FormControl = new FormControl('2015-08-15');
+  dob: FormControl = new FormControl('08-15-2015');
+  dob: FormControl = new FormControl(new Date('08-15-2015'));
   `;
 
   basicInputExample: string = `

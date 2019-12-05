@@ -1,17 +1,16 @@
 <div>
   <span class="go-calendar__header">
-    <div class="go-calendar__header--left">
-      {{firstYear.translated}} - {{lastYear.translated}}
-      <div class="go-calendar__header-dropdown">
-        <go-icon-button buttonIcon="keyboard_arrow_up" (handleClick)="switchView()"></go-icon-button>
-      </div>
-    </div>
-    <div class="go-calendar__header--right">
+    <div class="go-calendar__header--outside">
       <go-icon-button
         [buttonDisabled]=previousGroupDisabled
         buttonIcon="keyboard_arrow_left"
         (handleClick)="previousYearGroup()"
       ></go-icon-button>
+    </div>
+    <div class="go-calendar__header--center">
+      {{firstYear.translated}} - {{lastYear.translated}}
+    </div>
+    <div class="go-calendar__header--outside">
       <go-icon-button
         [buttonDisabled]="nextGroupDisabled"
         buttonIcon="keyboard_arrow_right"
@@ -19,10 +18,10 @@
       ></go-icon-button>
     </div>
   </span>
-  <div class="go-calendar__body go-calendar__body__border">
+  <div class="go-calendar__body">
     <table class="go-calendar__table">
       <tr *ngFor="let row of years" class="go-calendar__row">
-        <td *ngFor="let col of row" class="go-calendar__date">
+        <td *ngFor="let col of row" class="go-calendar__date go-calendar__date--tall">
           <button
             class="go-calendar__cell"
             [disabled]="col.disabled"

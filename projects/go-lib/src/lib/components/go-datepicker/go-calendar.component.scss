@@ -1,10 +1,11 @@
+@import '../../../styles/variables';
+
 .go-calendar {
   position: absolute;
-  border: 1px solid black;
-  border-radius: .5rem;
+  border: 1px solid $theme-light-border;
+  border-radius: .25rem;
   background: white;
   z-index: 500;
-  width: 300px;
 }
 
 .go-calendar--above {
