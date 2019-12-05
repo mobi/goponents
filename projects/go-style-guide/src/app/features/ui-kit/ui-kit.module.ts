@@ -78,6 +78,7 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { TableColumnDocsComponent } from './components/table-docs/components/table-column-docs/table-column-docs.component';
 import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-sheet-docs.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
@@ -159,6 +160,7 @@ import { LoadingTestComponent } from './components/accordion-docs/components/acc
     TableDetailsTestComponent,
     TableSelectionComponent,
     TableActionsDocsComponent,
+    TableColumnDocsComponent,
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
     ActionSheetPanelDocsComponent,
