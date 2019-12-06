@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'go-header-bar',
@@ -12,9 +12,9 @@ export class GoHeaderBarComponent implements OnInit {
   @Input() showBackArrow: boolean = false;
   @Input() goBackFn: Function;
 
-  @ViewChild('headerBar') headerBar: ElementRef;
+  constructor(private elemRef: ElementRef, private location: Location) {}
 
-  constructor(private location: Location) {}
+  @ViewChild('headerBar') headerBar: ElementRef;
 
   ngOnInit(): void {}
 
@@ -35,6 +35,6 @@ export class GoHeaderBarComponent implements OnInit {
   }
 
   getWidth(): string {
-    return this.headerBar.nativeElement.parentElement.parentElement.offsetWidth.toString() + 'px';
+    return this.elemRef.nativeElement.parentElement.offsetWidth.toString() + 'px';
   }
 }
