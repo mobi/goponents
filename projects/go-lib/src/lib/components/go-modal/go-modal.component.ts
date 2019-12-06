@@ -9,10 +9,12 @@ import { GoModalService } from './go-modal.service';
   styleUrls: ['./go-modal.component.scss']
 })
 export class GoModalComponent implements OnInit {
+  readonly defaultModalSize: 'lg' | 'xl' = 'lg';
+
   currentComponent: any;
   opened: boolean = false;
   modalTitle: string;
-  modalSize: 'lg' | 'xl' = 'lg';
+  modalSize: 'lg' | 'xl' = this.defaultModalSize;
 
   @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
   @ViewChild('goModalContainer') goModalContainer: any;
@@ -48,11 +50,15 @@ export class GoModalComponent implements OnInit {
     // Set title for modal if provided
     if (componentRef.instance['modalTitle']) {
       this.modalTitle = componentRef.instance['modalTitle'];
+    } else {
+      this.modalTitle = '';
     }
 
     // Set modal size if provided (by default set to 'lg')`
-    if (componentRef.instance['modalSize']) {
+    if (componentRef.instance['modalSize'] === 'lg' || componentRef.instance['modalSize'] === 'xl') {
       this.modalSize = componentRef.instance['modalSize'];
+    } else {
+      this.modalSize = this.defaultModalSize;
     }
   }
 
