@@ -224,7 +224,8 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       tableData: any[]
     } = this.localTableConfig;
 
-    if (this.isServerMode()) {
+    // show all data when in server mode or paging is disabled
+    if (this.isServerMode() || !this.showPaging()) {
       return tableData;
     } else {
       return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
