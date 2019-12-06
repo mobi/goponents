@@ -230,24 +230,67 @@
 </section>
 
 <section id="align-center-container" class="go-container">
-    <go-card class="go-column">
-      <ng-container go-card-header>
-        <h2 class="go-heading-2">Center Alignment</h2>
-      </ng-container>
-      <ng-container go-card-content>
-        <p class="go-body-copy">
-          In some cases, it may be necessary to align items in a container vertically centered.
-          A modifier class can be added to acheive this:
-        </p>
-        <section class="go-container go-container--align-center example-grid">
-          <div class="go-column go-column--50 example-grid__column">
-            <p class="go-body-copy">Column 1, Row 1</p>
-            <p class="go-body-copy">Column 1, Row 2</p>
-            <p class="go-body-copy--no-margin">Column 1, Row 3</p>
-          </div>
-          <div class="go-column go-column--50 example-grid__column">Column 2</div>
-        </section>
-        <code [highlight]="alignCenterContainer"></code>
-      </ng-container>
-    </go-card>
-  </section>
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Center Alignment</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        In some cases, it may be necessary to align items in a container vertically centered.
+        A modifier class can be added to acheive this:
+      </p>
+      <section class="go-container go-container--align-center example-grid">
+        <div class="go-column go-column--50 example-grid__column">
+          <p class="go-body-copy">Column 1, Row 1</p>
+          <p class="go-body-copy">Column 1, Row 2</p>
+          <p class="go-body-copy--no-margin">Column 1, Row 3</p>
+        </div>
+        <div class="go-column go-column--50 example-grid__column">Column 2</div>
+      </section>
+      <code [highlight]="alignCenterContainer"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="container-reset" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-4">Container Reset</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h3 class="go-heading-5">Problem:</h3>
+      <p class="go-body-copy">
+        If we apply <code class="code-block--inline">.go-container</code> to an element whose parent 
+        does not provide any left or right padding, the negative margin of the 
+        <code class="code-block--inline">.go-container</code> will cause any .go-columns within it to 
+        lack the correct amount of left and right spacing. 
+      </p>
+      <p class="go-body-copy">
+        For example, if we are using a <code class="code-block--inline">.go-container</code> within a 
+        <code class="code-block--inline">.go-off-canvas</code>, since the <code class="code-block--inline">.go-off-canvas</code> 
+        itself does not apply and left or right padding, and since the negative margin of the 
+        <code class="code-block--inline">.go-container</code> will cancel out the left and right padding of any 
+        <code class="code-block--inline">.go-column</code> it contains, any <code class="code-block--inline">.go-column</code> 
+        within our <code class="code-block--inline">.go-container</code> will fail to have the proper left
+        and right spacing. 
+      </p>
+      <h3 class="go-heading-5">Solution:</h3>
+      <p class="go-body-copy">
+        We can solve this problem by also applying the <code class="code-block--inline">.go-container--reset</code> 
+        class to the element with the <code class="code-block--inline">.go-container</code> class, which will add left 
+        and right padding to offset the negative margin from <code class="code-block--inline">.go-container</code>, 
+        thus ensuring that any contained <code class="code-block--inline">.go-column</code> will have the correct 
+        left and right spacing.
+      </p>
+      <h3 class="go-heading-5">Example:</h3>
+      <go-button
+        (handleClick)="openOffCanvas()"
+        buttonIcon="subdirectory_arrow_right"
+        buttonVariant="neutral"
+      >
+        Open Off Canvas With Container Reset
+      </go-button>
+      <code [highlight]="containerReset"></code>
+    </ng-container>
+  </go-card>
+</section>
