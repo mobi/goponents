@@ -1,6 +1,10 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+.go-form__switch-toggle__container {
+  display: flex;
+}
+
 .go-form__switch-toggle {
   display: inline-block;
   height: 1.125rem;
@@ -62,6 +66,7 @@
 }
 
 .go-form__switch-toggle__label {
+  flex: 1;
   line-height: 1.125rem;
   padding-bottom: 0;
   padding-left: 0.75rem;

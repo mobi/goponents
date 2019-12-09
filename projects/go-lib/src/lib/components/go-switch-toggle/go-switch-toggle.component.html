@@ -1,17 +1,19 @@
-<ng-container *ngTemplateOutlet="labelPosition === 'before' ? labelTemplate : null"></ng-container>
-<div class="go-form__switch-toggle" (click)="toggle()">
+<div class="go-form__switch-toggle__container">
+  <ng-container *ngTemplateOutlet="labelPosition === 'before' ? labelTemplate : null"></ng-container>
 
-  <input
-    [id]="id"
-    class="go-form__switch-toggle__input"
-    [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
-    type="checkbox"
-    [formControl]="control"
-  >
-  <span class="go-form__switch-toggle__toggle"></span>
+  <div class="go-form__switch-toggle" (click)="toggle()">
+    <input
+      [id]="id"
+      class="go-form__switch-toggle__input"
+      [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
+      type="checkbox"
+      [formControl]="control"
+    >
+    <span class="go-form__switch-toggle__toggle"></span>
+  </div>
+
+  <ng-container *ngTemplateOutlet="labelPosition === 'after' ? labelTemplate : null"></ng-container>
 </div>
-
-<ng-container *ngTemplateOutlet="labelPosition === 'after' ? labelTemplate : null"></ng-container>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
 
