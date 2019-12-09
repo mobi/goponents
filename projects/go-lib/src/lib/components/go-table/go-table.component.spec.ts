@@ -4,7 +4,7 @@ import { GoTableComponent } from './go-table.component';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
-import { GoTableConfig } from './go-table-config.model';
+import { GoTableConfig, GoTableDataSource } from './go-table-config.model';
 
 describe('GoTableComponent', () => {
   let component: GoTableComponent;
@@ -174,6 +174,42 @@ describe('GoTableComponent', () => {
       component.setPageByPageNumber(2);
 
       expect(component.tableChange.emit).toHaveBeenCalled();
+    });
+  });
+
+  describe('setDisplayData', () => {
+    const fakeTableData: any = [
+      { id: 1, value: 'a' },
+      { id: 2, value: 'b' },
+      { id: 3, value: 'c' },
+    ];
+
+    beforeEach(() => {
+      component.localTableConfig.tableData = fakeTableData;
+
+      // reset data mode and paging to default values
+      component.localTableConfig.dataMode = GoTableDataSource.client;
+      component.localTableConfig.pageable = true;
+
+      // ensures data is paginated when on
+      component.localTableConfig.pageConfig.offset = 0;
+      component.localTableConfig.pageConfig.perPage = 1;
+    });
+
+    it('returns all data when server mode is enabled', () => {
+      component.localTableConfig.dataMode = GoTableDataSource.server;
+
+      expect(component.setDisplayData()).toEqual(fakeTableData);
+    });
+
+    it('returns all data when paging mode is disabled', () => {
+      component.localTableConfig.pageable = false;
+
+      expect(component.setDisplayData()).toEqual(fakeTableData);
+    });
+
+    it('returns paginated data when paging mode is enabled and in client mode', () => {
+      expect(component.setDisplayData()).toEqual([ fakeTableData[0] ]);
     });
   });
 });
