@@ -1,120 +1,128 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
+
 <div class="go-container">
-  <div class="go-column go-column--100">
-    <go-card [showHeader]="false" class="go-column go-column--100" id="description">
-      <ng-container go-card-content>
-        <div class="go-container">
-          <div class="go-column go-column--100">
-            <!-- Intro -->
-            <h2 class="go-heading-5">Usage</h2>
-            <p class="go-body-copy">
-              The <code class="code-block--inline">&lt;go-badge&gt;</code>
-              component should be used for times when we want to show a short notification
-              to a user over an icon for more information. A good example of this would be
-              the number of notifications a user has over an icon that goes to their
-              notifications.
-            </p>
+  <go-card [showHeader]="false" class="go-column go-column--100" id="description">
+    <div class="go-container" go-card-content>
+      
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">&lt;go-badge&gt;</code>
+          component should be used for times when we want to show a short notification
+          to a user over an icon for more information. A good example of this would be
+          the number of notifications a user has over an icon that goes to their
+          notifications.
+        </p>
+      </div>
 
-            <!-- Bindings -->
-            <h2 class="go-heading-5">Bindings</h2>
-            <code [highlight]="componentBindings"></code>
-          </div>
-          <div class="go-column go-column--100">
-            <h3 class="go-heading-6">badgeData</h3>
-            <p class="go-body-copy">
-              This is the text or data that we want to show up inside of the badge
-            </p>
-            <h3 class="go-heading-6">badgeColor</h3>
-            <p class="go-body-copy">
-              The color can be one of three things <code class="code-block--inline">neutral</code>,
-              <code class="code-block--inline">positive</code> or <code class="code-block--inline">negative</code>.
-              These will denote what type of badge it is whether it's a good thing, bad thing or just information. The badgeColor
-              defaults to `neutral`
-            </p>
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-            <h3 class="go-heading-6">displayData</h3>
-            <p class="go-body-copy">
-              This can be used to override whether the information inside of the badge shows up or not.
-              Setting this to false will cause the badge to just be an empty circle without displaying
-              the `badgeData`.
-            </p>
-          </div>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">badgeData</h4>
+        <p class="go-body-copy">
+          This is the text or data that we want to show up inside of the badge
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">badgeColor</h4>
+        <p class="go-body-copy">
+          The color can be one of three things <code class="code-block--inline">neutral</code>,
+          <code class="code-block--inline">positive</code> or <code class="code-block--inline">negative</code>.
+          These will denote what type of badge it is whether it's a good thing, bad thing or just information. The badgeColor
+          defaults to `neutral`
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">displayData</h4>
+        <p class="go-body-copy">
+          This can be used to override whether the information inside of the badge shows up or not.
+          Setting this to false will cause the badge to just be an empty circle without displaying
+          the `badgeData`.
+        </p>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Basic Example</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The badge uses content projection to apply itself to an inline element inside of it. You
+        can apply it to any element by wrapping the element in the <code class="code-block--inline">go-badge</code>
+      </p>
+
+      <h3 class="go-heading-3">Icon</h3>
+      <section class="go-container">
+        <div class="go-column go-column--50 go-column--no-padding">
+          <code [highlight]="iconBadge"></code>
         </div>
-      </ng-container>
-    </go-card>
-
-    <go-card [showHeader]="false" class="go-column go-column--100">
-      <ng-container go-card-content>
-        <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-5">Basic Example</h2>
-          <p class="go-body-copy">
-            The badge uses content projection to apply itself to an inline element inside of it. You
-            can apply it to any element by wrapping the element in the <code class="code-block--inline">go-badge</code>
-          </p>
-          <h3 class="go-heading-6">Icon</h3>
-          <section class="go-container">
-            <div class="go-column go-column--50">
-              <code [highlight]="iconBadge"></code>
-            </div>
-            <div class="go-column go-column--50">
-              <go-badge badgeData="12">
-                <go-icon icon="notifications"></go-icon>
-              </go-badge>
-            </div>
-          </section>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <go-badge badgeData="12">
+            <go-icon icon="notifications"></go-icon>
+          </go-badge>
         </div>
-      </ng-container>
-    </go-card>
+      </section>
+    </ng-container>
+  </go-card>
 
-    <go-card [showHeader]="false" class="go-column go-column--100">
-      <ng-container go-card-content>
-        <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-5">Badge Color</h2>
-          <h3 class="go-heading-6">Positive</h3>
-          <section class="go-container">
-            <div class="go-column go-column--50">
-              <code [highlight]="iconBadgePositive"></code>
-            </div>
-            <div class="go-column go-column--50">
-              <go-badge badgeData="12" badgeColor="positive">
-                <go-icon icon="notifications"></go-icon>
-              </go-badge>
-            </div>
-          </section>
-
-          <h3 class="go-heading-6">Negative</h3>
-          <section class="go-container">
-            <div class="go-column go-column--50">
-              <code [highlight]="iconBadgeNegative"></code>
-            </div>
-            <div class="go-column go-column--50">
-              <go-badge badgeData="12" badgeColor="negative">
-                <go-icon icon="notifications"></go-icon>
-              </go-badge>
-            </div>
-          </section>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Badge Color</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h3 class="go-heading-3">Positive</h3>
+      <section class="go-container">
+        <div class="go-column go-column--50">
+          <code [highlight]="iconBadgePositive"></code>
         </div>
-      </ng-container>
-    </go-card>
-
-    <go-card [showHeader]="false" class="go-column go-column--100">
-      <ng-container go-card-content>
-        <div class="go-column go-column--100 go-column--no-padding">
-          <h2 class="go-heading-5">Display Data</h2>
-          <section class="go-container">
-            <div class="go-column go-column--75">
-              <code [highlight]="iconBadgeDisplay"></code>
-            </div>
-            <div class="go-column go-column--25">
-              <go-badge badgeData="really long text that we want to hide" [displayData]="false">
-                <go-icon icon="notifications"></go-icon>
-              </go-badge>
-            </div>
-          </section>
+        <div class="go-column go-column--50">
+          <go-badge badgeData="12" badgeColor="positive">
+            <go-icon icon="notifications"></go-icon>
+          </go-badge>
         </div>
-      </ng-container>
-    </go-card>
-  </div>
+      </section>
+
+      <h3 class="go-heading-3">Negative</h3>
+      <section class="go-container">
+        <div class="go-column go-column--50 go-column--no-padding">
+          <code [highlight]="iconBadgeNegative"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <go-badge badgeData="12" badgeColor="negative">
+            <go-icon icon="notifications"></go-icon>
+          </go-badge>
+        </div>
+      </section>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Display Data</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <section class="go-container">
+        <div class="go-column go-column--75 go-column--no-padding">
+          <code [highlight]="iconBadgeDisplay"></code>
+        </div>
+        <div class="go-column go-column--25 go-column--no-padding">
+          <go-badge badgeData="really long text that we want to hide" [displayData]="false">
+            <go-icon icon="notifications"></go-icon>
+          </go-badge>
+        </div>
+      </section>
+    </ng-container>
+  </go-card>
 </div>

@@ -1,105 +1,122 @@
 <section class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Integrating with a Server</h1>
+      <h2 class="go-heading-2">Integrating with a Server</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default the table component is setup for client side
-        data manipulation. What if there is too much data to send
-        to the front end? Implementing server-side data manipulation
-        is what is required.
-        <br>
-        <caption>(This means paging and sorting)</caption>
-      </p>
-    </ng-container>
+    <p class="go-body-copy go-body-copy--no-margin" go-card-content>
+      By default the table component is setup for client side
+      data manipulation. What if there is too much data to send
+      to the front end? Implementing server-side data manipulation
+      is what is required.
+      <br>
+      <caption>(This means paging and sorting)</caption>
+    </p>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Setting it up</h1>
+      <h2 class="go-heading-2">Setting it up</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column--100">
-          <p class="go-body-copy">
-            For server-side integration to work properly, the
-            following must be present on go-table:
-          </p>
-          <ol class="go-list go-list--ordered">
-            <li><code class="code-block--inline">(tableChange)</code> - to handle the table events</li>
-            <li><code class="code-block--inline">[loadingData]</code> - to handle the loading of the table</li>
-            <li><code class="code-block--inline">[tableConfig]</code> - because it's required</li>
-          </ol>
-          <h2 class="go-heading-6">example.html</h2>
-          <code [highlight]="tableConfig_html"></code>
-        </div>
-        <div class="go-column go-column--100 go-column--no-padding">
-          <p class="go-body-copy">
-            There are 4 properties of the table config that are
-            important when building out server-side integration:
-          </p>
-          <ol class="go-list go-list--ordered">
-            <li><code class="code-block--inline">pageConfig.offset</code> - the current place in the data set</li>
-            <li><code class="code-block--inline">pageConfig.perPage</code> - the current number of items on each page</li>
-            <li><code class="code-block--inline">sortConfig.column</code> - the current column that is sorted (if table is sorted)</li>
-            <li><code class="code-block--inline">sortConfig.direction</code> - the current sort direction (if table is sorted)</li>
-          </ol>
-          <h2 class="go-heading-6">example.ts</h2>
-          <code [highlight]="tableConfig_ts"></code>
-          <p class="go-body-copy">
-            It is recommended to pass the entire <code class="code-block--inline">GoTableConfig</code>
-            to the service that is retrieving the data and map
-            the properties of the object to the corresponding
-            parameters of the endpoint that is being hit.
-          </p>
-          <p class="go-body-copy">
-            When the data is successfully returned, the properties
-            shown below must be set.
-          </p>
-          <code [highlight]="tableConfig_ts_tableChange" class="code-block--no-bottom-margin"></code>
-        </div>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          For server-side integration to work properly, the
+          following must be present on go-table:
+        </p>
+        <ol class="go-list go-list--ordered">
+          <li><code class="code-block--inline">(tableChange)</code> - to handle the table events</li>
+          <li><code class="code-block--inline">[loadingData]</code> - to handle the loading of the table</li>
+          <li><code class="code-block--inline">[tableConfig]</code> - because it's required</li>
+        </ol>
       </div>
-    </ng-container>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">example.html</h4>
+        <code [highlight]="tableConfig_html"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          There are 4 properties of the table config that are
+          important when building out server-side integration:
+        </p>
+        <ol class="go-list go-list--ordered">
+          <li><code class="code-block--inline">pageConfig.offset</code> - the current place in the data set</li>
+          <li><code class="code-block--inline">pageConfig.perPage</code> - the current number of items on each page</li>
+          <li><code class="code-block--inline">sortConfig.column</code> - the current column that is sorted (if table is sorted)</li>
+          <li><code class="code-block--inline">sortConfig.direction</code> - the current sort direction (if table is sorted)</li>
+        </ol>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">example.ts</h4>
+        <code [highlight]="tableConfig_ts"></code>
+        <p class="go-body-copy">
+          It is recommended to pass the entire <code class="code-block--inline">GoTableConfig</code>
+          to the service that is retrieving the data and map
+          the properties of the object to the corresponding
+          parameters of the endpoint that is being hit.
+        </p>
+        <p class="go-body-copy">
+          When the data is successfully returned, the properties
+          shown below must be set.
+        </p>
+        <code [highlight]="tableConfig_ts_tableChange" class="code-block--no-bottom-margin"></code>
+      </div>
+
+    </div>
   </go-card>
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Important Notes</h1>
+      <h2 class="go-heading-2">Important Notes</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <h2 class="go-heading-6">Total Results</h2>
-      <p class="go-body-copy">
-        For the best user experience with server-side integrations,
-        the data returned from the server should have two properties:
-      </p>
-      <code [highlight]="server_response"></code>
-      <p class="go-body-copy">
-        These properties should then be set, upon a successful response,
-        to the corresponding properties on the <code class="code-block--inline">GoTableConfig</code>,
-        <code class="code-block--inline">tableData</code> and <code class="code-block--inline">totalCount</code>.
-      </p>
-      <h2 class="go-heading-6">[loadingData]</h2>
-      <p class="go-body-copy">
-        When server mode is enabled, this property will be set to 
-        <code class="code-block--inline">true</code> whenever the
-        <code class="code-block--inline">tableChange</code> event
-        is fired. The responsibility to set it back to
-        <code class="code-block--inline">false</code> falls upon
-        on the parent component after data is received from the server.
-        This is to provide a consistent and helpful experience to
-        users and should not be overridden.
-      </p>
-      <h2 class="go-heading-6">(tableChange)</h2>
-      <p class="go-body-copy">
-        The <code class="code-block--inline">tableChange</code>
-        event is emitted anytime a trigger is fired in the table
-        component. These triggers are:
-      </p>
-      <ol class="go-list go-list--ordered">
-        <li>Any page change</li>
-        <li>Page size change</li>
-        <li>Sort change</li>
-      </ol>
-    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">Total Results</h4>
+        <p class="go-body-copy">
+          For the best user experience with server-side integrations,
+          the data returned from the server should have two properties:
+        </p>
+        <code [highlight]="server_response"></code>
+        <p class="go-body-copy go-body-copy--no-margin">
+          These properties should then be set, upon a successful response,
+          to the corresponding properties on the <code class="code-block--inline">GoTableConfig</code>,
+          <code class="code-block--inline">tableData</code> and <code class="code-block--inline">totalCount</code>.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">[loadingData]</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          When server mode is enabled, this property will be set to 
+          <code class="code-block--inline">true</code> whenever the
+          <code class="code-block--inline">tableChange</code> event
+          is fired. The responsibility to set it back to
+          <code class="code-block--inline">false</code> falls upon
+          on the parent component after data is received from the server.
+          This is to provide a consistent and helpful experience to
+          users and should not be overridden.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">(tableChange)</h4>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">tableChange</code>
+          event is emitted anytime a trigger is fired in the table
+          component. These triggers are:
+        </p>
+        <ol class="go-list go-list--ordered">
+          <li>Any page change</li>
+          <li>Page size change</li>
+          <li>Sort change</li>
+        </ol>
+      </div>
+
+    </div>
   </go-card>
 </section>

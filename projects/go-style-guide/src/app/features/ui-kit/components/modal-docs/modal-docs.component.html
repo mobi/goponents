@@ -3,52 +3,66 @@
 </header>
 
 <section class="go-container">
+
   <go-card [showHeader]="false" class="go-column go-column--100">
-    <ng-container go-card-content>
-      <!-- Intro -->
-      <h3 class="go-heading-3">Usage</h3>
-      <p class="go-body-copy">
-        The <code class="code-block--inline">&lt;go-modal&gt;</code> component should be the only instance
-        of a modal in the app.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <h3 class="go-heading-3">Bindings</h3>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-modal&gt;</code> component should be the only instance
+          of a modal in the app.
+        </p>
+      </div>
 
-      <h4 class="go-heading-4">modalTitle</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">modalTitle</code> sets the title for the modal.
-      </p>
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-      <h4 class="go-heading-4">modalSize</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">modalSize</code> defines the width of the modal. Currently defaulted to <code class="code-block--inline">lg</code>.
-      </p>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">modalTitle</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code class="code-block--inline">modalTitle</code> sets the title for the modal.
+        </p>
+      </div>
 
-      <h3 class="go-heading-3">Setup</h3>
-      <p class="go-body-copy">To use the modal anywhere in the app, you must first add it to the app level. This should only be done once per application.</p>
-      <ol style="list-style: numeric;">
-        <li>
-          <p class="go-body-copy">
-            Import the <code class="code-block--inline">GoModalModule</code> into <code class="code-block--inline">app.module.ts</code>
-          </p>
-          <code [highlight]="appModuleImport"></code>
-        </li>
-        <li>
-          <p class="go-body-copy">
-            Add the <code class="code-block--inline">&lt;go-modal&gt;</code> element to <code class="code-block--inline">app.component.html</code>.
-          </p>
-        </li>
-      </ol>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">modalSize</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code class="code-block--inline">modalSize</code> defines the width of the modal. Currently defaulted to <code class="code-block--inline">lg</code>.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h3 class="go-heading-3">Setup</h3>
+        <p class="go-body-copy">To use the modal anywhere in the app, you must first add it to the app level. This should only be done once per application.</p>
+        <ol class="go-list go-list--ordered">
+          <li>
+            <p class="go-body-copy">
+              Import the <code class="code-block--inline">GoModalModule</code> into <code class="code-block--inline">app.module.ts</code>
+            </p>
+            <code [highlight]="appModuleImport"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              Add the <code class="code-block--inline">&lt;go-modal&gt;</code> element to <code class="code-block--inline">app.component.html</code>.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h3 class="go-heading-3">Using the Modal service</h3>
+      <h2 class="go-heading-2">Using the Modal service</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <div class="go-column go-column-100">
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column-100 go-column--no-padding">
         <p class="go-body-copy">
           For this example, the component we want to render in the modal is <code class="code-block--inline">ModalTestComponent</code>.
           This component lives in the <code class="code-block--inline">UiKitModule</code>.
@@ -94,33 +108,36 @@
           </li>
         </ol>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Modal Sizes</h3>
+      <h2 class="go-heading-2">Modal Sizes</h2>
     </header>
-    <div go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column--75">
-          <h4 class="go-heading-4">LG Code (Default)</h4>
-          <code [highlight]="ex_ModalDocsOpenLgModal"></code>
-        </div>
-        <div class="go-column go-column--25">
-          <h4 class="go-heading-4">LG View</h4>
-          <go-button (handleClick)="openLgModal()">Click Me</go-button>
-        </div>
+    <div class="go-container" go-card-content>
 
-        <div class="go-column go-column--75">
-          <h4 class="go-heading-4">XL Code</h4>
-          <code [highlight]="ex_ModalDocsOpenXlModal"></code>
-        </div>
-        <div class="go-column go-column--25">
-          <h4 class="go-heading-4">XL View</h4>
-          <go-button (handleClick)="openXlModal()">Click Me</go-button>
-        </div>
+      <div class="go-column go-column--75">
+        <h4 class="go-heading-4">LG Code (Default)</h4>
+        <code [highlight]="ex_ModalDocsOpenLgModal"></code>
       </div>
+
+      <div class="go-column go-column--25">
+        <h4 class="go-heading-4">LG View</h4>
+        <go-button (handleClick)="openLgModal()">Click Me</go-button>
+      </div>
+
+      <div class="go-column go-column--75">
+        <h4 class="go-heading-4">XL Code</h4>
+        <code [highlight]="ex_ModalDocsOpenXlModal"></code>
+      </div>
+
+      <div class="go-column go-column--25">
+        <h4 class="go-heading-4">XL View</h4>
+        <go-button (handleClick)="openXlModal()">Click Me</go-button>
+      </div>
+
     </div>
   </go-card>
 </section>

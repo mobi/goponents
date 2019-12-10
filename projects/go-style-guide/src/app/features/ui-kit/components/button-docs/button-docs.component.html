@@ -1,54 +1,73 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
-<div class="go-container">
-  <div class="go-column go-column--100">
-    <go-card [showHeader]="false" class="go-column go-column--100" id="description">
-      <ng-container go-card-content>
-        <div class="go-container">
-          <div class="go-column go-column--100">
-            <!-- Intro -->
-            <h2 class="go-heading-5">Usage</h2>
-            <p class="go-body-copy">
-              The <code class="code-block--inline">&lt;go-button&gt;</code>
-              component should be used for any instance of a button throughout
-              the app.
-            </p>
 
-            <!-- Bindings -->
-            <h2 class="go-heading-5">Bindings</h2>
-            <code [highlight]="componentBindings"></code>
-          </div>
-          <div class="go-column go-column--50">
-            <h3 class="go-heading-6">buttonDisabled</h3>
+<div class="go-container">
+
+  <go-card [showHeader]="false" class="go-column go-column--100" id="description">
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">&lt;go-button&gt;</code>
+          component should be used for any instance of a button throughout
+          the app.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">buttonDisabled</h4>
             <p class="go-body-copy">
               Disables the button. This should be handled by the parent
               component.
             </p>
+          </div>
 
-            <h3 class="go-heading-6">buttonIcon</h3>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">buttonIcon</h4>
             <p class="go-body-copy">
               Add an icon to the left of the text in the button. See the 
               <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
               page for available icons.
             </p>
+          </div>
 
-            <h3 class="go-heading-6">buttonType</h3>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">buttonType</h4>
             <p class="go-body-copy">
               Changes the type attribute of the button. This attribute
               defaults to <code class="code-block--inline">button</code> but other options are necessary when
               doing things like submitting (<code class="code-block--inline">submit</code>)
               or resetting (<code class="code-block--inline">reset</code>) forms.
             </p>
+          </div>
 
-            <h3 class="go-heading-6">handleClick</h3>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">handleClick</h4>
             <p class="go-body-copy">
               This event fires when the button is clicked. Use this event 
               to handle the click event.
             </p>
           </div>
-          <div class="go-column go-column--50">
-            <h3 class="go-heading-6">buttonVariant</h3>
+
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">buttonVariant</h4>
             <p class="go-body-copy">
               The <code class="code-block--inline">buttonVariant</code>
               binding controls the style of the button. This includes
@@ -62,15 +81,20 @@
               <li>Negative: <code class="code-block--inline">negative</code></li>
               <li>Neutral: <code class="code-block--inline">neutral</code></li>
             </ol>
+          </div>
 
-            <h3 class="go-heading-6">isProcessing</h3>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">isProcessing</h4>
             <p class="go-body-copy">
               Turns the loading state on/off. It is recommended to use this when
               processing data that will take longer than ~250ms. Examples:
               submitting a form, sorting data, refreshing data from the
               server, etc.
             </p>
-            <h3 class="go-heading-6">useDarkTheme</h3>
+          </div>
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">useDarkTheme</h4>
             <p class="go-body-copy">
               Applies a dark theme to the button component.
               The dark button styles can be applied by setting the
@@ -78,10 +102,12 @@
               binding to <code class="code-block--inline">true</code>.
             </p>
           </div>
+
         </div>
-      </ng-container>
-    </go-card>
-  </div>
+      </div>
+
+    </div>
+  </go-card>
 
   <div class="go-column go-column--100">
     <go-toast type="negative"
@@ -91,7 +117,7 @@
 
   <go-card class="go-column go-column--100" id="primary-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Primary Button</h2>
+      <h2 class="go-heading-2">Primary Button</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -115,7 +141,7 @@
 
   <go-card class="go-column go-column--100" id="secondary-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Secondary Button</h2>
+      <h2 class="go-heading-2">Secondary Button</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -139,7 +165,7 @@
 
   <go-card class="go-column go-column--100" id="tertiary-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Tertiary Button</h2>
+      <h2 class="go-heading-2">Tertiary Button</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -163,7 +189,7 @@
 
   <go-card class="go-column go-column--100" id="negative-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Negative Buttons</h2>
+      <h2 class="go-heading-2">Negative Buttons</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -190,7 +216,7 @@
 
   <go-card class="go-column go-column--100" id="neutral-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Neutral Buttons</h2>
+      <h2 class="go-heading-2">Neutral Buttons</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -218,7 +244,7 @@
 
   <go-card class="go-column go-column--100" id="loading-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Button with loader</h2>
+      <h2 class="go-heading-2">Button with loader</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -230,11 +256,11 @@
         a button will additionally be disabled to prevent the action
         from being taken more than once.
       </p>
-      <h3 class="go-heading-6">example.ts</h3>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="loadingExampleTS"></code>
-      <h3 class="go-heading-6">example.html</h3>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="loadingExampleHTML"></code>
-      <h6 class="go-heading-6">View</h6>
+      <h4 class="go-heading-4">View</h4>
       <div class="go-container">
         <div class="go-column go-column--50">
           <go-button
@@ -296,7 +322,7 @@
 
   <go-card class="go-column go-column--100" id="dark-buttons">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Dark buttons</h2>
+      <h2 class="go-heading-2">Dark buttons</h2>
     </ng-container>
     <ng-container go-card-content>
       <div class="go-container">
@@ -379,7 +405,7 @@
 
   <go-card class="go-column go-column--100 go-column--no-padding" id="button-group">
     <ng-container go-card-header>
-      <h2 class="go-heading-5">Button Groups</h2>
+      <h2 class="go-heading-2">Button Groups</h2>
     </ng-container>
     <ng-container go-card-content>
       <div class="go-container">

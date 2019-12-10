@@ -1,227 +1,281 @@
 <section class="go-container">
-  <app-form-control-docs
-    class="go-column go-column--100"
-  ></app-form-control-docs>
+  <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
+
   <go-card id="form-toggle-control" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Control</h1>
+      <h2 class="go-heading-2">Component Control</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        The switch toggle component requires a <code class="code-block--inline">FormControl</code> 
-        and a label to work properly.
-        The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
-        attribute on the <code class="code-block--inline">&lt;go-input&gt;</code> component. The label is just a string.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control1"
-                            label="Control">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="controlEx"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The switch toggle component requires a <code class="code-block--inline">FormControl</code> 
+          and a label to work properly.
+          The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
+          attribute on the <code class="code-block--inline">&lt;go-input&gt;</code> component. The label is just a string.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control1"
+                              label="Control">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="controlEx"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="form-toggle-label" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Label</h1>
+      <h2 class="go-heading-2">Component Label</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        All form components include an <code class="code-block--inline">@Input() label: string;</code>
-        that can be used to add a label to the component.
-        In addition to displaying an HTML label, the text passed
-        in via the <code class="code-block--inline">[label]</code>
-        attribute is used to generate a unique ID to associate the
-        label with the textarea. If no label is passed in, a generic,
-        but still unique ID will be generated.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control2"
-                            label="Label">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="labelEx"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          that can be used to add a label to the component.
+          In addition to displaying an HTML label, the text passed
+          in via the <code class="code-block--inline">[label]</code>
+          attribute is used to generate a unique ID to associate the
+          label with the textarea. If no label is passed in, a generic,
+          but still unique ID will be generated.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control2"
+                              label="Label">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="labelEx"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="form-toggle-key" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Key</h1>
+      <h2 class="go-heading-2">Component Key</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        As stated above the label attribute is used to generate a
-        unique ID to associate the label with the switch toggle. As this might
-        not be desired, the <code class="code-block--inline">@Input() key: string;</code>
-        can be used to configure the ID attribute directly.
-        Anything passed into the component via the <code class="code-block--inline">[key]</code>
-        attribute will be used to both assign the ID to the switch toggle and
-        the associated label.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control3" label="Key Label" key="custom-key"></go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="keyEx"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-        <div class="go-column go-column--100">
-          <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
-          <p class="go-body-copy">
-            Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
-            to both the <code class="code-block--inline">id</code> attribute on
-            the toggle and the <code class="code-block--inline">for</code> attribute
-            on the label.
-          </p>
-          <code
-            [highlight]="customKeyEx"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          As stated above the label attribute is used to generate a
+          unique ID to associate the label with the switch toggle. As this might
+          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          can be used to configure the ID attribute directly.
+          Anything passed into the component via the <code class="code-block--inline">[key]</code>
+          attribute will be used to both assign the ID to the switch toggle and
+          the associated label.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control3" label="Key Label" key="custom-key"></go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="keyEx"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
+            <p class="go-body-copy">
+              Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
+              to both the <code class="code-block--inline">id</code> attribute on
+              the toggle and the <code class="code-block--inline">for</code> attribute
+              on the label.
+            </p>
+            <code
+              [highlight]="customKeyEx"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="form-switch-hints" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Hints</h1>
+      <h2 class="go-heading-2">Component Hints</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Form hints exist to help give more information about the
-        toggles they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
-        can be used to pass in an array of hints to the component.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control4"
-                            label="Hints"
-                            [hints]="hints">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="hintsExTs"
-            class="code-block--no-bottom-margin"
-          ></code>
-          <code
-            [highlight]="hintsExHtml"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          Form hints exist to help give more information about the
+          toggles they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          can be used to pass in an array of hints to the component.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control4"
+                              label="Hints"
+                              [hints]="hints">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="hintsExTs"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="hintsExHtml"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="form-switch-errors" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Errors</h1>
+      <h2 class="go-heading-2">Component Errors</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
-        via the <code class="code-block--inline">setErrors()</code> function.
-        All goponents use this API to display errors on our components, but the
-        data needs to be displayed in a specific structure.
-      </p>
-      <p class="go-body-copy">
-        By default the error type is set to "Error", however this can be
-        overridden as shown below.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control5"
-                            label="Errors Toggle">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="errorsExTs"
-            class="code-block--no-bottom-margin"
-          ></code>
-          <code
-            [highlight]="errorsExHtml"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
+          via the <code class="code-block--inline">setErrors()</code> function.
+          All goponents use this API to display errors on our components, but the
+          data needs to be displayed in a specific structure.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the error type is set to "Error", however this can be
+          overridden as shown below.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control5"
+                              label="Errors Toggle">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="errorsExTs"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="errorsExHtml"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="switch-label-position" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Label Position</h1>
+      <h2 class="go-heading-2">Label Position</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default the label for the switch toggle appears after the toggle.
-        If there is a case where the label needs to be positioned before the switch,
-        there is a binding available for that.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-switch-toggle [control]="control6"
-                            label="On Your Left"
-                            labelPosition="before">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="labelPositionEx"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the label for the switch toggle appears after the toggle.
+          If there is a case where the label needs to be positioned before the switch,
+          there is a binding available for that.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-switch-toggle [control]="control6"
+                              label="On Your Left"
+                              labelPosition="before">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="labelPositionEx"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
+
   <go-card id="switch-theme" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Theme</h1>
+      <h2 class="go-heading-2">Theme</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default the theme for the switch toggle is 'light', but there could be
-        and instance where we need a 'dark' themed toggle. There is a binding
-        available for that.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50 go-column--dark">
-          <h2 class="go-heading-6 go-heading--underlined" style="color: #fff;">View</h2>
-          <go-switch-toggle [control]="control7"
-                            label="Dark Label"
-                            theme="dark">
-          </go-switch-toggle>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="themeEx"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the theme for the switch toggle is 'light', but there could be
+          and instance where we need a 'dark' themed toggle. There is a binding
+          available for that.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50 go-column--dark">
+            <h4 class="go-heading-4 go-heading--underlined" style="color: #fff;">View</h4>
+            <go-switch-toggle [control]="control7"
+                              label="Dark Label"
+                              theme="dark">
+            </go-switch-toggle>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="themeEx"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 </section>

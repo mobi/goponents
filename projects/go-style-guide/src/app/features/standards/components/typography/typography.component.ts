@@ -20,12 +20,12 @@ export class TypographyComponent implements OnInit {
   `;
 
   noMarginExample: string = `
-  <h1 class="go-heading-5 go-heading--no-margin">
+  <h3 class="go-heading-3 go-heading--no-margin">
     Heading without margin
-  </h1>
-  <h2 class="go-heading-6 go-heading--no-margin">
+  </h3>
+  <h4 class="go-heading-4 go-heading--no-margin">
     Heading without margin
-  </h2>
+  </h4>
   <p class="go-body-copy go-body-copy--no-margin">
     Body copy without margin
   </p>

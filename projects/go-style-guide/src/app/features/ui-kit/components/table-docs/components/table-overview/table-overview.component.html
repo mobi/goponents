@@ -1,49 +1,65 @@
 <section class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Usage</h1>
+      <h2 class="go-heading-2">Usage</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        The <code class="code-block--inline">&lt;go-table&gt;</code> component should be used for any instance
-        of a data table throughout the app.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <h1 class="go-heading-5">Bindings</h1>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-table&gt;</code> component should be used for any instance
+          of a data table throughout the app.
+        </p>
+      </div>
 
-      <h2 class="go-heading-6">loadingData</h2>
-      <p class="go-body-copy">
-        This binding can be used to apply a loading state to the table.
-        Typically, this should only be used for server-side integration while awaiting data.
-      </p>
-      <h2 class="go-heading-6">tableConfig</h2>
-      <p class="go-body-copy">
-        This is a class to represent the entire table data and its configurations.
-        The only required property is <code class="code-block--inline">tableData</code>.
-      </p>
-      <p class="go-body-copy">
-        It has these properties:
-        <code [highlight]="tableConfigClass"></code>
-      </p>
-      <h2 class="go-heading-6">tableTitle</h2>
-      <p class="go-body-copy">
-        This property adds a title above the table, this is optional.
-      </p>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">loadingData</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding can be used to apply a loading state to the table.
+          Typically, this should only be used for server-side integration while awaiting data.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">tableConfig</h4>
+        <p class="go-body-copy">
+          This is a class to represent the entire table data and its configurations.
+          The only required property is <code class="code-block--inline">tableData</code>.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          It has these properties:
+          <code [highlight]="tableConfigClass"></code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">tableTitle</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This property adds a title above the table, this is optional.
+        </p>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Default Usage</h1>
+      <h2 class="go-heading-2">Default Usage</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">example.html</h2>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="basicExample_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="basicExample_ts"></code>
     </ng-container>
   </go-card>
+
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Default Usage">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -52,4 +68,5 @@
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
+
 </section>

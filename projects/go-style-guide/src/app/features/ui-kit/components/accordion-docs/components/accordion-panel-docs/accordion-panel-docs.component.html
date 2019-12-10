@@ -1,66 +1,75 @@
-<header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
-</header>
-
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
-    <div go-card-content>
-      <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
-      <p class="go-body-copy">
-        The Go Accordion Panel should be used inside of a <code class="code-block--inline">&lt;go-accordion&gt;</code>
-        component. See <a [routerLink]="['/ui-kit/accordion']">Accordion</a> for details.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">
+          The Go Accordion Panel should be used inside of a <code class="code-block--inline">&lt;go-accordion&gt;</code>
+          component. See <a [routerLink]="['/ui-kit/accordion']">Accordion</a> for details.
+        </p>
+      </div>
 
-      <h2 class="go-heading-6">expanded</h2>
-      <p class="go-body-copy">
-        This will expand then panel. This is only true at at first render, depending on the Behavior
-        of the parent <code class="code-block--inline">go-accordion</code> it will override this.
-        Typically, you can set This binding to <code class="code-block--inline">true</code>
-        for the first <code class="code-block--inline">go-accordion-panel</code> in the accordion.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-      <h2 class="go-heading-6">icon</h2>
-      <p class="go-body-copy">
-        This will set an icon for the panel, shown to the left of the heading.
-      </p>
-      <caption>
-        Note: the icon will only appear if the parent <code class="code-block--inline">go-accordion</code>
-        has <code class="code-block--inline">[showIcons]="true"</code> set.
-      </caption>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">expanded</h4>
+        <p class="go-body-copy">
+          This will expand then panel. This is only true at at first render, depending on the Behavior
+          of the parent <code class="code-block--inline">go-accordion</code> it will override this.
+          Typically, you can set This binding to <code class="code-block--inline">true</code>
+          for the first <code class="code-block--inline">go-accordion-panel</code> in the accordion.
+        </p>
+      </div>
 
-      <h2 class="go-heading-6">heading - (required)</h2>
-      <p class="go-body-copy">
-        The heading for the panel accepted as a string.
-      </p>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">icon</h4>
+        <p class="go-body-copy">
+          This will set an icon for the panel, shown to the left of the heading.
+        </p>
+        <caption>
+          Note: the icon will only appear if the parent <code class="code-block--inline">go-accordion</code>
+          has <code class="code-block--inline">[showIcons]="true"</code> set.
+        </caption>
+      </div>
 
-      <h2 class="go-heading-6">persistState</h2>
-      <p class="go-body-copy">
-        This is defaulted to true, but if set to false it will destroy any components inside of the 
-        panel when the panel is closed. This will cause any components inside to be recreated when the
-        accordion is opened every time. This is only useful if you are also using an ng-template to
-        not eager load the data inside the panel.
-      </p>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">heading - (required)</h4>
+        <p class="go-body-copy">
+          The heading for the panel accepted as a string.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">persistState</h4>
+        <p class="go-body-copy">
+          This is defaulted to true, but if set to false it will destroy any components inside of the 
+          panel when the panel is closed. This will cause any components inside to be recreated when the
+          accordion is opened every time. This is only useful if you are also using an ng-template to
+          not eager load the data inside the panel.
+        </p>
+      </div>
 
     </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h2 class="go-heading-2">Default</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h3 class="go-heading-3">Code</h3>
           <code [highlight]="defaultExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h3 class="go-heading-3">View</h3>
           <go-accordion>
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for Test 1.
@@ -79,16 +88,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h2 class="go-heading-5">With Icons</h2>
+      <h2 class="go-heading-2">With Icons</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">Code</h2>
+          <h3 class="go-heading-3">Code</h3>
           <code [highlight]="showIconsExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h2 class="go-heading-6">View</h2>
+          <h3 class="go-heading-3">View</h3>
           <go-accordion [showIcons]="true">
             <go-accordion-panel heading="Test 1" icon="home" [expanded]="true">
               This is some content for Test 1.
@@ -107,11 +116,11 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h2 class="go-heading-5">Delayed Loading</h2>
+      <h2 class="go-heading-2">Delayed Loading</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
-        <div class="go-column go-column--100">
+        <div class="go-column go-column--100 go-body-copy">
           The content inside of an accordion panel can be delayed in loading until a user expands the 
           panel. This is useful when lots of data is being loaded inside of a child component inside 
           of the panel. This can be done through using an ng-template to wrap the content inside the 
@@ -119,7 +128,7 @@
         </div>
 
         <div class="go-column go-column--100">
-          <h2 class="go-heading-6">View</h2>
+          <h3 class="go-heading-3">View</h3>
           <go-accordion>
             <go-accordion-panel heading="Not Delayed">
               <app-loading-test></app-loading-test>
@@ -138,7 +147,7 @@
         </div>
         
         <div class="go-column go-column--100">
-          <h2 class="go-heading-6">Code</h2>
+          <h3 class="go-heading-3">Code</h3>
           <div class="go-container">
             <div class="go-column go-column--50">
               <code [highlight]="delayedLoadingExample"></code>

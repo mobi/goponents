@@ -1,22 +1,22 @@
 <section class="go-container">
+
     <go-card class="go-column go-column--100">
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Implementing Details</h1>
+        <h2 class="go-heading-2">Implementing Details</h2>
       </ng-container>
       <ng-container go-card-content>
-        <p class="go-body-copy">
+        <p class="go-body-copy go-body-copy--no-margin">
           Sometimes within a table row we might need more details then we can fit in the row. This is where the table details comes
           into play. This provides a dropdown for each table row that when opened can provide more details about the item in the row.
           With the table details component we allow the implementor to provide a template to use for each drop down and then we inject
           that template into the correct place in the interface.
         </p>
-  
       </ng-container>
     </go-card>
   
     <go-card class="go-column go-column--100">
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Details Template</h1>
+        <h2 class="go-heading-2">Details Template</h2>
       </ng-container>
       <ng-container go-card-content>
         <p class="go-body-copy">
@@ -46,29 +46,32 @@
 
     <go-card class="go-column go-column--100">
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Using a component</h1>
+        <h2 class="go-heading-2">Using a component</h2>
       </ng-container>
-      <ng-container go-card-content>
-        <p class="go-body-copy">
-          If there are a lot of details on a row that we don't want to load unless someone clicks on the row
-          we can accomplish this through a component. Putting a component inside of the template will allow us
-          to do something like use the id of the row to get results from the backend and only preload the items
-          that will actually show up in the columns. In the example below we are passing the row into a component
-          and then loading some results and then showing those results in the details section.
-        </p>
+      <div class="go-container" go-card-content>
 
-        <code [highlight]="tableDetailsComponentExample"></code>
-        <div class="go-container">
-          <div class="go-column go-column--50">
-            <h1 class="go-heading-6">Table Details Test Component</h1>
-            <code [highlight]="testComponent"></code>
-          </div>
-          <div class="go-column go-column--50">
-              <h1 class="go-heading-6">Table Details Test HTML</h1>
-            <code [highlight]="testComponentHtml"></code>
-          </div>
+        <div class="go-column go-column--100">
+          <p class="go-body-copy">
+            If there are a lot of details on a row that we don't want to load unless someone clicks on the row
+            we can accomplish this through a component. Putting a component inside of the template will allow us
+            to do something like use the id of the row to get results from the backend and only preload the items
+            that will actually show up in the columns. In the example below we are passing the row into a component
+            and then loading some results and then showing those results in the details section.
+          </p>
+  
+          <code [highlight]="tableDetailsComponentExample"></code>
         </div>
-      </ng-container>
+
+        <div class="go-column go-column--50">
+          <h1 class="go-heading-6">Table Details Test Component</h1>
+          <code [highlight]="testComponent"></code>
+        </div>
+        <div class="go-column go-column--50">
+            <h1 class="go-heading-6">Table Details Test HTML</h1>
+          <code [highlight]="testComponentHtml"></code>
+        </div>
+
+      </div>
     </go-card>
   
     <go-table class="go-column go-column--100"
