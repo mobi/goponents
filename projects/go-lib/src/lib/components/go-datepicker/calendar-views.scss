@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
 
 .go-calendar__header {
+  color: $theme-light-color;
   display: inline-flex;
   height: 1rem;
   margin-top: 0.5rem;
@@ -69,5 +70,6 @@
 }
 
 .go-calendar__table {
+  color: $theme-light-color;
   width: 100%;
 }
