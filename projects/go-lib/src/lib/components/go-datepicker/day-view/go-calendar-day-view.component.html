@@ -10,7 +10,10 @@
     <div class="go-calendar__header--center go-calendar__header--center-offset">
       {{dateAdapter.monthNames[month]}} {{year.translated}}
       <div class="go-calendar__header-dropdown">
-        <go-icon-button buttonIcon="keyboard_arrow_down" (handleClick)="switchView()"></go-icon-button>
+        <go-icon-button
+          buttonIcon="keyboard_arrow_down"
+          (handleClick)="switchView()"
+        ></go-icon-button>
       </div>
     </div>
     <div class="go-calendar__header--outside">
@@ -24,13 +27,15 @@
 </div>
 <div class="go-calendar__body">
   <table class="go-calendar__table">
-    <tr>
+    <tr class="go-calendar__row">
       <th class="go-calendar__body--header go-calendar__body--header-border" *ngFor="let weekDay of dateAdapter.daysOfWeek">
         {{weekDay}}
       </th>
     </tr>
-    <tr><td *ngFor="let weekDay of dateAdapter.daysOfWeek" class="go-calendar__body--padding"></td></tr>
-    <tr *ngFor="let week of weeks">
+    <tr class="go-calendar__row">
+      <td *ngFor="let weekDay of dateAdapter.daysOfWeek" class="go-calendar__body--padding"></td>
+    </tr>
+    <tr *ngFor="let week of weeks" class="go-calendar__row">
       <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day.value)">
         <span *ngIf="!day.translated"></span>
         <button
