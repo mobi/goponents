@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
 
 .go-tab__header {
+  border-radius: $global-radius $global-radius 0 0;
   display: inline-flex;
   font-size: 1.125rem;
   font-weight: normal;
@@ -10,27 +11,41 @@
     background-color: $theme-light-bg-hover;
     cursor: pointer;
   }
+
+  &.go-tab__header--active {
+    background: $theme-light-bg;
+
+    &:hover {
+      background: $theme-light-bg;
+    }
+  }
+}
+
+.go-tab__header--dark {
+  background: $theme-dark-bg-active;
+  color: $theme-dark-text-color;
+
+  &:hover {
+    background-color: $theme-dark-bg-hover;
+  }
+
+  &.go-tab__header--active {
+    background: $theme-dark-bg;
+
+    &:hover {
+      background: $theme-dark-bg;
+    }
+  }
 }
 
 .go-tab__header--active {
-  background: $theme-light-bg;
-  background-color: $theme-light-bg;
-  border-radius: $global-radius $global-radius 0 0;
   box-shadow: $global-box-shadow--regular;
   position: relative;
   z-index: 1;
 
   &:hover {
-    background-color: $theme-light-bg;
     cursor: auto;
   }
-}
-
-.go-tab__card--wrapper {
-  background: $theme-light-bg;
-  border-radius: $global-radius;
-  box-shadow: $global-box-shadow--regular;
-  position: relative;
 }
 
 .go-tab__card {
@@ -41,6 +56,18 @@
   padding: 1rem;
   position: relative;
   z-index: 2;
+}
+
+.go-tab__card--dark {
+  background: $theme-dark-bg;
+  color: $theme-dark-text-color;
+}
+
+.go-tab__card--wrapper {
+  background: $theme-light-bg;
+  border-radius: $global-radius;
+  box-shadow: $global-box-shadow--regular;
+  position: relative;
 }
 
 .go-tab__card--first-tab-active {

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, QueryList } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { GoTabComponent } from './go-tab.component';
 
 @Component({
@@ -9,6 +9,8 @@ import { GoTabComponent } from './go-tab.component';
 export class GoTabGroupComponent implements AfterViewInit {
   activeTab: number = 0;
   tabArray: GoTabComponent[];
+
+  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoTabComponent) tabs: QueryList<GoTabComponent>;
 

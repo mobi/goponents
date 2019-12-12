@@ -2,7 +2,7 @@
   <div
     *ngFor="let tab of tabArray; let i = index"
     class="go-tab__header"
-    [ngClass]="{ 'go-tab__header--active': tab.active }"
+    [ngClass]="{ 'go-tab__header--active': tab.active, 'go-tab__header--dark': theme === 'dark' }"
     (click)="activateTab(i)"
   >
     {{ tab.heading }}
@@ -10,7 +10,10 @@
 </div>
 
 <div class="go-tab__card--wrapper">
-  <div class="go-tab__card" [ngClass]="{ 'go-tab__card--first-tab-active': activeTab === 0 }">
+  <div
+    class="go-tab__card"
+    [ngClass]="{ 'go-tab__card--first-tab-active': activeTab === 0 || theme === 'dark', 'go-tab__card--dark': theme === 'dark' }"
+  >
     <ng-content></ng-content>
   </div>
 </div>
