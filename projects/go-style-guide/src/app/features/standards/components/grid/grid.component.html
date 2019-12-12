@@ -255,10 +255,10 @@
 <section id="container-reset" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h2 class="go-heading-4">Container Reset</h2>
+      <h2 class="go-heading-2">Container Reset</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h3 class="go-heading-5">Problem:</h3>
+      <h3 class="go-heading-3">Problem:</h3>
       <p class="go-body-copy">
         If we apply <code class="code-block--inline">.go-container</code> to an element whose parent 
         does not provide any left or right padding, the negative margin of the 
@@ -274,7 +274,7 @@
         within our <code class="code-block--inline">.go-container</code> will fail to have the proper left
         and right spacing. 
       </p>
-      <h3 class="go-heading-5">Solution:</h3>
+      <h3 class="go-heading-3">Solution:</h3>
       <p class="go-body-copy">
         We can solve this problem by also applying the <code class="code-block--inline">.go-container--reset</code> 
         class to the element with the <code class="code-block--inline">.go-container</code> class, which will add left 
@@ -282,12 +282,11 @@
         thus ensuring that any contained <code class="code-block--inline">.go-column</code> will have the correct 
         left and right spacing.
       </p>
-      <h3 class="go-heading-5">Example:</h3>
+      <h3 class="go-heading-3">Example:</h3>
       <go-button
         (handleClick)="openOffCanvas()"
         buttonIcon="subdirectory_arrow_right"
-        buttonVariant="neutral"
-      >
+        buttonVariant="neutral">
         Open Off Canvas With Container Reset
       </go-button>
       <code [highlight]="containerReset"></code>

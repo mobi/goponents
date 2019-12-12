@@ -102,29 +102,7 @@ export class GridComponent {
         <label for="first-name-input" class="go-form__label">First Name</label>
         <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">
       </div>
-      <div class="go-column go-column--50">
-        <label for="last-name-input" class="go-form__label">Last Name</label>
-        <input class="go-form__input" id="last-name-input" placeholder="Appleseed" type="text">
-      </div>
-      <div class="go-column go-column--100">
-        <label for="email-input" class="go-form__label">Email</label>
-        <input class="go-form__input" id="email-input" placeholder="your@email.com" type="email">
-      </div>
-      <div class="go-column go-column--100">
-        <label for="password-input" class="go-form__label">Password</label>
-        <input class="go-form__input" id="password-input" placeholder="**************" type="password">
-      </div>
-
-      <div class="go-column go-column--100">
-        <go-button
-          buttonVariant="positive"
-          (handleClick)="fakeSubmit()"
-          [useDarkTheme]="true"
-          #submitButton
-        >
-          Submit
-        </go-button>
-      </div>
+      <!-- ... -->
     </div>
   </form>
   `;
