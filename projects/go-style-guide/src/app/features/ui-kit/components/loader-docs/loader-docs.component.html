@@ -1,95 +1,110 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <div class="go-container">
+
   <go-card [showHeader]="false" class="go-column go-column--100">
-    <ng-container go-card-content>
-      <!-- Intro -->
-      <h5 class="go-heading-5">Usage</h5>
-      <p class="go-body-copy">
-        The <code class="code-block--inline">&lt;go-loader&gt;</code> component should be used to
-        indicate the processing of data, awaiting a server request, or any other time the user may
-        need to wait on the application to do something.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <!-- Bindings -->
-      <h5 class="go-heading-5">Bindings</h5>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-loader&gt;</code> component should be used to
+          indicate the processing of data, awaiting a server request, or any other time the user may
+          need to wait on the application to do something.
+        </p>
+      </div>
 
-      <h6 class="go-heading-6">loaderSize</h6>
-      <p class="go-body-copy">
-        This binding determines what size of loader is generated. The available options are:
-      </p>
-      <ol class="go-list">
-        <li><code class="code-block--inline">small</code></li>
-        <li><code class="code-block--inline">medium</code></li>
-        <li><code class="code-block--inline">large</code></li>
-      </ol>
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-      <h6 class="go-heading-6">loaderType</h6>
-      <p class="go-body-copy">
-        This binding determines what type of loader is generated. The available options are:
-      </p>
-      <ol class="go-list">
-        <li><code class="code-block--inline">negative</code></li>
-        <li><code class="code-block--inline">neutral</code></li>
-        <li><code class="code-block--inline">positive</code></li>
-        <li><code class="code-block--inline">dark</code></li>
-        <li><code class="code-block--inline">light</code></li>
-      </ol>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">loaderSize</h4>
+        <p class="go-body-copy">
+          This binding determines what size of loader is generated. The available options are:
+        </p>
+        <ul class="go-list">
+          <li><code class="code-block--inline">small</code></li>
+          <li><code class="code-block--inline">medium</code></li>
+          <li><code class="code-block--inline">large</code></li>
+        </ul>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">loaderType</h4>
+        <p class="go-body-copy">
+          This binding determines what type of loader is generated. The available options are:
+        </p>
+        <ul class="go-list">
+          <li><code class="code-block--inline">negative</code></li>
+          <li><code class="code-block--inline">neutral</code></li>
+          <li><code class="code-block--inline">positive</code></li>
+          <li><code class="code-block--inline">dark</code></li>
+          <li><code class="code-block--inline">light</code></li>
+        </ul>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h5 class="go-heading-5">Basic Example</h5>
+      <h2 class="go-heading-2">Basic Example</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Shows a basic use case of each type and size.
-      </p>
-      <code [highlight]="basicHtml"></code>
-      <div class="go-container">
-        <div class="go-column go-column--100">
-          <go-loader loaderSize="small" loaderType="negative"></go-loader>
-          <go-loader></go-loader>
-          <go-loader loaderSize="large" loaderType="positive"></go-loader>
-          <go-loader loaderType="dark"></go-loader>
-          <div style="background:lightgrey; display:inline-block;">
-            <go-loader loaderSize="small" loaderType="light"></go-loader>
-          </div>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Shows a basic use case of each type and size.
+        </p>
+        <code [highlight]="basicHtml"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <go-loader loaderSize="small" loaderType="negative"></go-loader>
+        <go-loader></go-loader>
+        <go-loader loaderSize="large" loaderType="positive"></go-loader>
+        <go-loader loaderType="dark"></go-loader>
+        <div style="background:lightgrey; display:inline-block;">
+          <go-loader loaderSize="small" loaderType="light"></go-loader>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h5 class="go-heading-5">Show/Hide Example</h5>
+      <h2 class="go-heading-2">Show/Hide Example</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <p class="go-body-copy">
-            The Loader has an animation built into Angular's <code class="code-block--inline">*ngIf</code>
-            syntax that fades the loader in/out. To implement this, simply throw an <code class="code-block--inline">*ngIf</code>
-            on the <code class="code-block--inline">&lt;go-loader&gt;</code>
-          </p>
-          <code [highlight]="fadeHtml"></code>
-        </div>
-        <div class="go-column go-column--50">
-          <div class="go-container">
-            <div class="go-column go-column--collapse">
-              <go-button (handleClick)="toggleLoader()">Toggle Me</go-button>
-            </div>
-            <div class="go-column">
-              <go-loader *ngIf="showLoader"></go-loader>
-            </div>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          The Loader has an animation built into Angular's <code class="code-block--inline">*ngIf</code>
+          syntax that fades the loader in/out. To implement this, simply throw an <code class="code-block--inline">*ngIf</code>
+          on the <code class="code-block--inline">&lt;go-loader&gt;</code>
+        </p>
+        <code [highlight]="fadeHtml"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--collapse">
+            <go-button (handleClick)="toggleLoader()">Toggle Me</go-button>
+          </div>
+          <div class="go-column">
+            <go-loader *ngIf="showLoader"></go-loader>
           </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
 </div>

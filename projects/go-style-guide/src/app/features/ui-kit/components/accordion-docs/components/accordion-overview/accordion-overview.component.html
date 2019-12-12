@@ -1,106 +1,116 @@
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
-    <div go-card-content>
-      <!-- Intro -->
-      <h3 class="go-heading-3">Usage</h3>
-      <p class="go-body-copy">The Go Accordion Component should be used when multiple sets of data need to be rendered, but vertical space is a concern.</p>
+    <div class="go-container" go-card-content>
 
-      <p class="go-body-copy">
-        The <code class="code-block--inline">go-accordion</code> element must be accompanied by
-        <code class="code-block--inline">go-accordion-panel</code> children.
-        See <a [routerLink]="['/ui-kit/accordion/panel']">Accordion Panel</a> for details.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">The Go Accordion Component should be used when multiple sets of data need to be rendered, but vertical space is a concern.</p>
+  
+        <p class="go-body-copy">
+          The <code class="code-block--inline">go-accordion</code> element must be accompanied by
+          <code class="code-block--inline">go-accordion-panel</code> children.
+          See <a [routerLink]="['/ui-kit/accordion/panel']">Accordion Panel</a> for details.
+        </p>
+      </div>
 
-      <!-- Bindings -->
-      <h3 class="go-heading-3">Bindings</h3>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-      <!-- borderless -->
-      <h4 class="go-heading-4">borderless</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">borderless</code> will render the panel without borders.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- borderless -->
+        <h4 class="go-heading-4">borderless</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">borderless</code> will render the panel without borders.
+        </p>
+      </div>
 
-      <!-- boxShadow -->
-      <h4 class="go-heading-4">boxShadow</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">boxShadow</code> will render the panel with box-shadows.
-        <br/>
-        <caption>
-          Hint: This can be used in conjunction with <code class="code-block--inline">borderless</code> to create a
-          "card" like experience.
-        </caption>
-      </p>
+      <div class="go-column go-column--100">
+        <!-- boxShadow -->
+        <h4 class="go-heading-4">boxShadow</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">boxShadow</code> will render the panel with box-shadows.
+          <br/>
+          <caption>
+            Hint: This can be used in conjunction with <code class="code-block--inline">borderless</code> to create a
+            "card" like experience.
+          </caption>
+        </p>
+      </div>
 
-      <!-- expandAll -->
-      <h4 class="go-heading-4">expandAll</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">expandAll</code>
-        will ensure each panel in the accordion is expanded on first render.
-        <code class="code-block--inline">expandAll</code> will also override
-        <code class="code-block--inline">multiExpand</code> and set it to true.
-      </p>
-
-      <!-- expandAll -->
-      <h4 class="go-heading-4">expandAll</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">expandAll</code>
-        will ensure each panel in the accordion is expanded on first render.
-        <code class="code-block--inline">expandAll</code> will also override
-        <code class="code-block--inline">multiExpand</code> and set it to true.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- expandAll -->
+        <h4 class="go-heading-4">expandAll</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">expandAll</code>
+          will ensure each panel in the accordion is expanded on first render.
+          <code class="code-block--inline">expandAll</code> will also override
+          <code class="code-block--inline">multiExpand</code> and set it to true.
+        </p>
+      </div>
       
-      <!-- multiExpand -->
-      <h4 class="go-heading-4">multiExpand</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">multiExpand</code>
-        will allow for multiple panels to be expanded at any given time.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- multiExpand -->
+        <h4 class="go-heading-4">multiExpand</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">multiExpand</code>
+          will allow for multiple panels to be expanded at any given time.
+        </p>
+      </div>
 
-      <!-- showIcons -->
-      <h4 class="go-heading-4">showIcons</h4>
-      <p class="go-body-copy">
-        This will enable each panel to have an icon shown to the left of the heading.
-      </p>
-      <caption>
-        Note: even if the <code class="code-block--inline">icon</code> binding is passed to an
-        <code class="code-block--inline">accordion-panel</code>, it will not be displayed unless
-        <code class="code-block--inline">showIcons</code> is set to <code class="code-block--inline">true</code>.
-        This is to encourage a consistent UI. If one <code class="code-block--inline">accordion-panel</code>
-        has an icon, they all should.
-      </caption>
+      <div class="go-column go-column--100">
+        <!-- showIcons -->
+        <h4 class="go-heading-4">showIcons</h4>
+        <p class="go-body-copy">
+          This will enable each panel to have an icon shown to the left of the heading.
+        </p>
+        <caption>
+          Note: even if the <code class="code-block--inline">icon</code> binding is passed to an
+          <code class="code-block--inline">accordion-panel</code>, it will not be displayed unless
+          <code class="code-block--inline">showIcons</code> is set to <code class="code-block--inline">true</code>.
+          This is to encourage a consistent UI. If one <code class="code-block--inline">accordion-panel</code>
+          has an icon, they all should.
+        </caption>
+      </div>
 
-      <!-- slim -->
-      <h4 class="go-heading-4">slim</h4>
-      <p class="go-body-copy">
-        <code class="code-block--inline">slim</code>
-        will reduce the height of the accordion panel, making it slimmer vertically.
-      </p>
+      <div class="go-column go-column--100">
+        <!-- slim -->
+        <h4 class="go-heading-4">slim</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">slim</code>
+          will reduce the height of the accordion panel, making it slimmer vertically.
+        </p>
+      </div>
 
-      <!-- theme -->
-      <h4 class="go-heading-4">theme</h4>
-      <code [highlight]="themeOptions"></code>
-      <p class="go-body-copy">
-        This will set the appearance of the <code class="code-block--inline">accordion</code>. <code class="code-block--inline">light</code>
-        is the default <code class="code-block--inline">theme</code> and should be used in most places. The only time the
-        <code class="code-block--inline">dark</code> theme should be used is when the accordion
-        lives inside a UI element that has a dark themed background by default. (ex: off-canvas)
-      </p>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <!-- theme -->
+        <h4 class="go-heading-4">theme</h4>
+        <code [highlight]="themeOptions"></code>
+        <p class="go-body-copy">
+          This will set the appearance of the <code class="code-block--inline">accordion</code>. <code class="code-block--inline">light</code>
+          is the default <code class="code-block--inline">theme</code> and should be used in most places. The only time the
+          <code class="code-block--inline">dark</code> theme should be used is when the accordion
+          lives inside a UI element that has a dark themed background by default. (ex: off-canvas)
+        </p>
+      </div>
     </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Default</h3>
+      <h2 class="go-heading-2">Default</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="defaultExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion>
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -119,16 +129,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Borderless</h3>
+      <h2 class="go-heading-2">Borderless</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="borderlessExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [borderless]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for Test 1.
@@ -147,16 +157,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Box Shadow</h3>
+      <h2 class="go-heading-2">Box Shadow</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="boxShadowExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [boxShadow]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for Test 1.
@@ -176,16 +186,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Expand All</h3>
+      <h2 class="go-heading-2">Expand All</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="expandAllExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [expandAll]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.
@@ -204,16 +214,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Multiple Expansion</h3>
+      <h2 class="go-heading-2">Multiple Expansion</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="multiExpandExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [multiExpand]="true">
             <go-accordion-panel heading="Test 1" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -232,16 +242,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">With Icons</h3>
+      <h2 class="go-heading-2">With Icons</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="showIconsExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [showIcons]="true">
             <go-accordion-panel heading="Test 1" icon="home" [expanded]="true">
               This is some content for <b>Test 1</b>.
@@ -260,16 +270,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Slim</h3>
+      <h2 class="go-heading-2">Slim</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="slimExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion [slim]="true">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.
@@ -288,16 +298,16 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
-      <h3 class="go-heading-3">Theme</h3>
+      <h2 class="go-heading-2">Theme</h2>
     </header>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">Code</h4>
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <code [highlight]="themeExample"></code>
         </div>
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4">View</h4>
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-accordion theme="dark">
             <go-accordion-panel heading="Test 1">
               This is some content for <b>Test 1</b>.

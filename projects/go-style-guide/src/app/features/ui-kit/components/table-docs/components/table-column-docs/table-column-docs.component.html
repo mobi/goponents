@@ -1,52 +1,67 @@
 <section class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h3 class="go-heading-3">Implementing Table Columns</h3>
+      <h2 class="go-heading-2">Implementing Table Columns</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        <code class="code-block--inline">GoTableColumnComponent</code> is required to render columns within
-        <code class="code-block--inline">go-table</code> and is exported within <code class="code-block--inline">GoTableModule</code>.
-        <code class="code-block--inline">go-table-column</code> cannot render outside of <code class="code-block--inline">go-table</code>.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <h3 class="go-heading-3">Bindings</h3>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code class="code-block--inline">GoTableColumnComponent</code> is required to render columns within
+          <code class="code-block--inline">go-table</code> and is exported within <code class="code-block--inline">GoTableModule</code>.
+          <code class="code-block--inline">go-table-column</code> cannot render outside of <code class="code-block--inline">go-table</code>.
+        </p>
+      </div>
 
-      <h4 class="go-heading-4">field</h4>
-      <p class="go-body-copy">
-        Defines data to be shown by linking column to the appropriate key within object defined in <code class="code-block--inline">tableData</code>
-        when constructing <code class="code-block--inline">GoTableConfig</code>. For example if <code class="code-block--inline">tableData</code>
-        was set to:
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
 
-        <code [highlight]="fieldExample"></code>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">field</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          Defines data to be shown by linking column to the appropriate key within object defined in <code class="code-block--inline">tableData</code>
+          when constructing <code class="code-block--inline">GoTableConfig</code>. For example if <code class="code-block--inline">tableData</code>
+          was set to:
 
-        and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
-      </p>
+          <code [highlight]="fieldExample"></code>
+  
+          and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
+        </p>
+      </div>
       
-      <h4 class="go-heading-4">title</h4>
-      <p class="go-body-copy">
-        This binding sets the column title.
-      </p>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">title</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding sets the column title.
+        </p>
+      </div>
       
-      <h4 class="go-heading-4">width</h4>
-      <p class="go-body-copy">
-        This binding sets the width for column. The value must be in pixels.
-      </p>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">width</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding sets the width for column. The value must be in pixels.
+        </p>
+      </div>
       
-      <h4 class="go-heading-4">sortable</h4>
-      <p class="go-body-copy">
-        This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
-        must have <code class="code-block--inline">sortable</code> set to <code class="code-block--inline">true</code>.
-        By default sorting is enabled when <code class="code-block--inline">sortable</code> is set to <code class="code-block--inline">true</code>
-        within <code class="code-block--inline">GoTableConfig</code>.
-      </p>
-    </ng-container>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">sortable</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
+          must have <code class="code-block--inline">sortable</code> set to <code class="code-block--inline">true</code>.
+          By default sorting is enabled when <code class="code-block--inline">sortable</code> is set to <code class="code-block--inline">true</code>
+          within <code class="code-block--inline">GoTableConfig</code>.
+        </p>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h3 class="go-heading-3">Example Usage</h3>
+      <h2 class="go-heading-2">Example Usage</h2>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>

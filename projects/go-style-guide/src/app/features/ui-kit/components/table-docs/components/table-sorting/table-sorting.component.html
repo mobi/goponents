@@ -1,41 +1,52 @@
 <section class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Implementing Sorting</h1>
+      <h2 class="go-heading-2">Implementing Sorting</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default, sorting is enabled. To set the sorted column and direction, you may pass an <code class="code-block--inline">GoTableSortConfig</code>
-        class to the <code class="code-block--inline">sortConfig</code> property on the <code class="code-block--inline">GoTableConfig</code> object.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <code [highlight]="tableSortConfig"></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          By default, sorting is enabled. To set the sorted column and direction, you may pass an <code class="code-block--inline">GoTableSortConfig</code>
+          class to the <code class="code-block--inline">sortConfig</code> property on the <code class="code-block--inline">GoTableConfig</code> object.
+        </p>
+  
+        <code [highlight]="tableSortConfig"></code>
+      </div>
 
-      <h2 class="go-heading-6">column</h2>
-      <p class="go-body-copy">
-        This property determines which column to set as the default sort as a string.
-        To sort a column in a nested object in the array, you may pass the path to the property. <code class="code-block--inline">"address.state"</code>
-      </p>
-      <h2 class="go-heading-6">direction</h2>
-      <p class="go-body-copy">
-        This property determines the direction to sort the data. By default, it will sort <code class="code-block--inline">ascending</code>.
-        This property is an enum, <code class="code-block--inline">SortDirection</code> (see below).
-      </p>
-      <code [highlight]="tableSortDir"></code>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">column</h4>
+        <p class="go-body-copy">
+          This property determines which column to set as the default sort as a string.
+          To sort a column in a nested object in the array, you may pass the path to the property. <code class="code-block--inline">"address.state"</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">direction</h4>
+        <p class="go-body-copy">
+          This property determines the direction to sort the data. By default, it will sort <code class="code-block--inline">ascending</code>.
+          This property is an enum, <code class="code-block--inline">SortDirection</code> (see below).
+        </p>
+        <code [highlight]="tableSortDir"></code>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Setting the Sort</h1>
+      <h2 class="go-heading-2">Setting the Sort</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">example.html</h2>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="tableConfigEx_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
+
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Sort Example">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -47,15 +58,16 @@
 
   <go-card class="go-column go-column--100" id="restrictingSort">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Restricting Sort Example</h1>
+      <h2 class="go-heading-2">Restricting Sort Example</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">example.html</h2>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="tableConfigEx_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
+
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig_nosort" tableTitle="Restricting Sort">
       <go-table-column field="id" title="ID"></go-table-column>
       <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -67,28 +79,41 @@
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Restricting by Column</h1>
+      <h2 class="go-heading-2">Restricting by Column</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Sometimes we want a table to be sortable, but only want certain columns to be sortable. This can be done in one
-        of two ways. We can either make the table sortable by default and then disable sorting on certain columns, or we
-        can disable sorting by default on the table and enable it on a couple columns we want to be sortable.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <code [highlight]="tableSortConfig"></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Sometimes we want a table to be sortable, but only want certain columns to be sortable. This can be done in one
+          of two ways. We can either make the table sortable by default and then disable sorting on certain columns, or we
+          can disable sorting by default on the table and enable it on a couple columns we want to be sortable.
+        </p>
+  
+        <code [highlight]="tableSortConfig"></code>
+      </div>
 
-      <h2 class="go-heading-6">sortable</h2>
-      <p class="go-body-copy">
-        This property exists on <code class="code-block--inline">go-table-column</code> and can be used to turn sorting on or
-        off for a specific column.
-      </p>
-      <h2 class="go-heading-6">example.html</h2>
-      <code [highlight]="tableConfigRestrictColumn_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
-      <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">sortable</h4>
+        <p class="go-body-copy">
+          This property exists on <code class="code-block--inline">go-table-column</code> and can be used to turn sorting on or
+          off for a specific column.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">example.html</h4>
+        <code [highlight]="tableConfigRestrictColumn_html"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">example.ts</h4>
+        <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+      </div>
+
+    </div>
   </go-card>
+
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Restricting Sort By Column">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -99,22 +124,24 @@
   </go-table>
 
   <go-card class="go-column go-column--100" id="restrictingSort">
-      <ng-container go-card-header>
-        <h1 class="go-heading-5">Enabling by Column</h1>
-      </ng-container>
-      <ng-container go-card-content>
-        <h2 class="go-heading-6">example.html</h2>
-        <code [highlight]="tableConfigEnableColumn_html"></code>
-        <h2 class="go-heading-6">example.ts</h2>
-        <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
-      </ng-container>
-    </go-card>
-    <go-table class="go-column go-column--100" [tableConfig]="tableConfig_nosort" tableTitle="Restricting Sort">
-      <go-table-column field="id" title="ID"></go-table-column>
-      <go-table-column field="name.first" title="First Name" [sortable]="true"></go-table-column>
-      <go-table-column field="name.last" title="Last Name" [sortable]="true"></go-table-column>
-      <go-table-column field="email" title="Email"></go-table-column>
-      <go-table-column field="gender" title="Gender"></go-table-column>
-      <go-table-column field="ip_address" title="IP Address"></go-table-column>
-    </go-table>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Enabling by Column</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="tableConfigEnableColumn_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100" [tableConfig]="tableConfig_nosort" tableTitle="Restricting Sort">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name" [sortable]="true"></go-table-column>
+    <go-table-column field="name.last" title="Last Name" [sortable]="true"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
 </section>

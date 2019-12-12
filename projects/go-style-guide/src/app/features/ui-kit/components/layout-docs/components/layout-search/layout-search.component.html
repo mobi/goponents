@@ -1,84 +1,84 @@
 <div class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h3 class="go-heading-5">Usage</h3>
+      <h2 class="go-heading-2">Usage</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column--100">
-          <p class="go-body-copy">
-            The <code class="code-block--inline">&lt;go-search&gt;</code> component should only be used once, at the root level component.
-            It should be placed inside the <code class="code-block--inline">&lt;go-header&gt;</code> and be given the attribute of 
-            <code class="code-block--inline">go-header-middle</code>.
-            This component acts as a search bar for the header. Upon implementation, it should act as a "global" search.
-          </p>
-        </div>
-  
-        <div class="go-column go-column--100">
-          <h5 class="go-heading-5">Bindings</h5>
-          <p class="go-body-copy">
-            There are none! Instead, to interact with this component, the <code class="code-block--inline">GoSearchService</code> can
-            be used.
-          </p>
-        </div>
+    <div class="go-container" go-card-content>
 
-        <div class="go-column go-column--100 go-column--no-padding" id="service">
-          <h5 class="go-heading-5">GoSearchService:</h5>
-          <p class="go-body-copy">The GoSearchService is how to interact with the GoSearchComponent. It has these available properties and methods:</p>
-          <ul class="go-list">
-            <li>
-              <strong>noResultsMessage </strong><caption class="method-type">(string)</caption> - The message to be shown when no results are returned from the server that match the search term.
-              By default the message is: 'No Results Found'.
-            </li>
-            <li>
-              <strong>searchTerm </strong><caption class="method-type">(Subject&lt;string&gt;)</caption> - The term entered by the user to search. This is a Subject which means it can be watched
-              for changes using a subscription.
-            </li>
-            <li>
-              <strong>termLength </strong><caption class="method-type">(number)</caption> - Minimum number of characters to trigger a search
-            </li>
-            <li>
-              <strong>successResponse </strong><caption class="method-type">(void method)</caption> - Use this method when you get a response from the server that was successful, with results
-            </li>
-            <li>
-              <strong>notFoundResponse </strong><caption class="method-type">(void method)</caption> - Use this method when you get a response from the server that was successful, but with no results
-            </li>
-          </ul>
-        </div>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-search&gt;</code> component should only be used once, at the root level component.
+          It should be placed inside the <code class="code-block--inline">&lt;go-header&gt;</code> and be given the attribute of 
+          <code class="code-block--inline">go-header-middle</code>.
+          This component acts as a search bar for the header. Upon implementation, it should act as a "global" search.
+        </p>
       </div>
-    </ng-container>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          There are none! Instead, to interact with this component, the <code class="code-block--inline">GoSearchService</code> can
+          be used.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding" id="service">
+        <h3 class="go-heading-3">GoSearchService:</h3>
+        <p class="go-body-copy">The GoSearchService is how to interact with the GoSearchComponent. It has these available properties and methods:</p>
+        <ul class="go-list">
+          <li>
+            <strong>noResultsMessage </strong><caption class="method-type">(string)</caption> - The message to be shown when no results are returned from the server that match the search term.
+            By default the message is: 'No Results Found'.
+          </li>
+          <li>
+            <strong>searchTerm </strong><caption class="method-type">(Subject&lt;string&gt;)</caption> - The term entered by the user to search. This is a Subject which means it can be watched
+            for changes using a subscription.
+          </li>
+          <li>
+            <strong>termLength </strong><caption class="method-type">(number)</caption> - Minimum number of characters to trigger a search
+          </li>
+          <li>
+            <strong>successResponse </strong><caption class="method-type">(void method)</caption> - Use this method when you get a response from the server that was successful, with results
+          </li>
+          <li>
+            <strong>notFoundResponse </strong><caption class="method-type">(void method)</caption> - Use this method when you get a response from the server that was successful, but with no results
+          </li>
+        </ul>
+      </div>
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100" id="setup">
     <ng-container go-card-header>
-      <h3 class="go-heading-5">Simple Setup</h3>
+      <h2 class="go-heading-2">Simple Setup</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <div class="go-container">
-        <div class="go-column go-column--100 go-column--no-padding">
-          <p class="go-body-copy">
-            For the sake of this example, it is being shown inside of the layout and header components because it's required to be inside it.
-          </p>
-          <p class="go-body-copy">
-            Because search implementation can vary greatly between projects, what the results look like are totally dependent upon your implementation.
-            For this reason, there is not styling associated with the results section and the GoSearchComponent does not render the results.
-            Start by creating a component that will interact with the GoSearchService and render the results. In this example, the component showing this
-            is named SearchTestComponent.
-          </p>
-          
-          <h6 class="go-heading-6">app.module</h6>
-          <code [highlight]="basicExample_module"></code>
-          
-          <h6 class="go-heading-6">app.component.html</h6>
-          <code [highlight]="basicExample_htmlLayout"></code>
-          
-          <h6 class="go-heading-6">search-test.component.ts</h6>
-          <code [highlight]="basicExample_ts"></code>
+    <div class="go-container" go-card-content>
+      
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          For the sake of this example, it is being shown inside of the layout and header components because it's required to be inside it.
+        </p>
+        <p class="go-body-copy">
+          Because search implementation can vary greatly between projects, what the results look like are totally dependent upon your implementation.
+          For this reason, there is not styling associated with the results section and the GoSearchComponent does not render the results.
+          Start by creating a component that will interact with the GoSearchService and render the results. In this example, the component showing this
+          is named SearchTestComponent.
+        </p>
+        
+        <h4 class="go-heading-4">app.module</h4>
+        <code [highlight]="basicExample_module"></code>
+        
+        <h4 class="go-heading-4">app.component.html</h4>
+        <code [highlight]="basicExample_htmlLayout"></code>
+        
+        <h4 class="go-heading-4">search-test.component.ts</h4>
+        <code [highlight]="basicExample_ts"></code>
 
-          <h6 class="go-heading-6">search-test.component.html</h6>
-          <code [highlight]="basicExample_html"></code>
-        </div>
+        <h4 class="go-heading-4">search-test.component.html</h4>
+        <code [highlight]="basicExample_html"></code>
       </div>
-    </ng-container>
+    </div>
   </go-card>
+
 </div>
