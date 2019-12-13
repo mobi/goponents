@@ -35,4 +35,24 @@ export class TabDocsComponent {
     </go-tab>
   </go-tab-group>
   `;
+
+  lazyLoadExample: string = `
+  <go-tab-group>
+    <go-tab heading="Tab 1">
+      <ng-template #tabContent>
+        This is some content for <b>Test 1</b>.
+      </ng-template>
+    </go-tab>
+    <go-tab heading="Tab 2">
+      <ng-template #tabContent>
+        This is a second thing.
+      </ng-template>
+    </go-tab>
+    <go-tab heading="Tab 3">
+      <ng-template #tabContent>
+        This is a third thing. 
+      </ng-template>
+    </go-tab>
+  </go-tab-group>
+  `;
 }

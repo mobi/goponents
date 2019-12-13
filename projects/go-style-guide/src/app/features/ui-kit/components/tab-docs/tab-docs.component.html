@@ -87,4 +87,45 @@
       </div>
     </div>
   </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-2">Lazy Loading</h2>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--100">
+          <p class="go-body-copy">
+            By default, components rendered inside of the tabs are eager loaded. This means they will
+            be initialized when the page get's loaded. The tab content can be lazy loaded by adding a
+            ng-template to the body of the content
+          </p>
+        </div>
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="lazyLoadExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-tab-group>
+            <go-tab heading="Tab 1">
+              <ng-template #tabContent>
+                This is some content for <b>Test 1</b>.
+              </ng-template>
+            </go-tab>
+            <go-tab heading="Tab 2">
+              <ng-template #tabContent>
+                This is a second thing.
+              </ng-template>
+            </go-tab>
+            <go-tab heading="Tab 3">
+              <ng-template #tabContent>
+                This is a third thing. 
+              </ng-template>
+            </go-tab>
+          </go-tab-group>
+        </div>
+      </div>
+    </div>
+  </go-card>
 </section>
