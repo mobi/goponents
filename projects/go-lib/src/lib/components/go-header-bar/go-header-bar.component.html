@@ -1,0 +1,4 @@
+<div class="go-header-bar" *ngIf="currentItem">
+  <h1 class="go-heading-1">{{ currentItem.title }}</h1>
+  <ng-container *ngTemplateOutlet="currentItem.templateRef"></ng-container>
+</div>

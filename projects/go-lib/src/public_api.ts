@@ -57,6 +57,11 @@ export * from './lib/components/go-footer/go-footer.module';
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';
 
+// Header Bar
+export * from './lib/components/go-header-bar/go-header-bar.directive';
+export * from './lib/components/go-header-bar/go-header-bar.component';
+export * from './lib/components/go-header-bar/go-header-bar.module';
+
 // Hint
 export * from './lib/components/go-hint/go-hint.component';
 export * from './lib/components/go-hint/go-hint.module';

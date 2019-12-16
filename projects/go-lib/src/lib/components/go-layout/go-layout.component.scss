@@ -17,6 +17,15 @@ body {
   display: flex;
   flex-grow: 1;
   height: calc(100vh - #{$header-height});
+  width: 100%;
+}
+
+.go-layout__view-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: calc(100vh - #{$header-height});
+  width: 0;
 }
 
 .go-layout__route-container {
