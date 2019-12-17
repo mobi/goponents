@@ -31,6 +31,7 @@ export class AppComponent {
       { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
       { route: 'ui-kit/forms', routeTitle: 'Forms' },
+      { route: 'ui-kit/header-bar', routeTitle: 'Header Bar' },
       { route: 'ui-kit/icon', routeTitle: 'Icon' },
       { route: 'ui-kit/icon-button', routeTitle: 'Icon Button' },
       { route: 'ui-kit/layout', routeTitle: 'Layout' },
