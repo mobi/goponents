@@ -12,6 +12,7 @@ import { DatepickerDocsComponent } from '../components/form-docs/components/date
 import { FileUploadDocsComponent } from '../components/form-docs/components/file-upload-docs/file-upload-docs.component';
 import { FormDocsComponent } from '../components/form-docs/form-docs.component';
 import { FormsOverviewComponent } from '../components/form-docs/components/forms-overview/forms-overview.component';
+import { HeaderBarDocsComponent } from '../components/header-bar-docs/header-bar-docs.component';
 import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from '../components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from '../components/form-docs/components/input-docs/input-docs.component';
@@ -65,6 +66,7 @@ const routes: Routes = [
   { path: 'ui-kit/card', component: CardDocsComponent },
   { path: 'ui-kit/configuration', component: ConfigurationDocsComponent },
   { path: 'ui-kit/copy', component: CopyDocsComponent },
+  { path: 'ui-kit/header-bar', component: HeaderBarDocsComponent },
   { path: 'ui-kit/forms', component: FormDocsComponent, children: [
     { path: '', component: FormsOverviewComponent },
     { path: 'checkbox', component: CheckboxDocsComponent },

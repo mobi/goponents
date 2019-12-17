@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -25,7 +26,7 @@ import {
   GoOffCanvasService,
   GoRadioModule,
   GoSelectComponent,
-  GoSelectModule,
+  GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
@@ -89,6 +90,7 @@ import { SwitchToggleDocsComponent } from './components/form-docs/components/swi
 import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
 import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
+import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
 
 @NgModule({
   imports: [
@@ -116,7 +118,9 @@ import { LoadingTestComponent } from './components/accordion-docs/components/acc
     GoToastModule,
     HighlightModule,
     SharedModule,
-    UiKitRoutesModule
+    UiKitRoutesModule,
+    GoSharedModule,
+    FormsModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -168,7 +172,8 @@ import { LoadingTestComponent } from './components/accordion-docs/components/acc
     SwitchToggleDocsComponent,
     RadioButtonDocsComponent,
     CheckboxDocsComponent,
-    LoadingTestComponent
+    LoadingTestComponent,
+    HeaderBarDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
