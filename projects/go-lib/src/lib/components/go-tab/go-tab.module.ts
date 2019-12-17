@@ -1,10 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { GoTabComponent } from './go-tab.component';
-import { CommonModule } from '@angular/common';
 import { GoTabGroupComponent } from './go-tab-group.component';
-import { GoButtonModule } from '../go-button/go-button.module';
-import { GoCardModule } from '../go-card/go-card.module';
 
 
 @NgModule({
@@ -13,9 +11,7 @@ import { GoCardModule } from '../go-card/go-card.module';
     GoTabGroupComponent
   ],
   imports: [
-    CommonModule,
-    GoButtonModule,
-    GoCardModule
+    CommonModule
   ],
   exports: [
     GoTabComponent,
