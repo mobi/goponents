@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { GoIconModule } from '../go-icon/go-icon.module';
 
 import { GoHeaderBarComponent } from './go-header-bar.component';
 
@@ -8,7 +9,8 @@ describe('GoHeaderBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoHeaderBarComponent ]
+      declarations: [ GoHeaderBarComponent ],
+      imports: [ GoIconModule ]
     })
     .compileComponents();
   }));

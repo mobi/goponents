@@ -7,6 +7,8 @@ import { GoHeaderBarService } from './go-header-bar.service';
 export class GoHeaderBarDirective implements OnInit {
 
   @Input() heading: string;
+  @Input() showBackArrow: boolean;
+  @Input() goBack: Function;
 
   constructor(
     private template: TemplateRef<any>,
@@ -16,7 +18,9 @@ export class GoHeaderBarDirective implements OnInit {
   ngOnInit(): void {
     this.goHeaderBarService.activeItem.next({
       templateRef: this.template,
-      title: this.heading
+      title: this.heading,
+      showBackArrow: this.showBackArrow,
+      goBack: this.goBack
     });
   }
 
