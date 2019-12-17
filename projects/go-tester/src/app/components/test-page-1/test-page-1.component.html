@@ -1,6 +1,12 @@
-<ng-template goHeaderBar heading="Test 1">
-  <go-button>save</go-button>
-  <go-button>cancel</go-button>
+<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" [goBack]="goBack">
+  <div class="go-button-group">
+    <div class="go-button-group__item">
+      <go-button (handleClick)="saveClick()">save</go-button>
+    </div>
+    <div class="go-button-group__item">
+      <go-button (handleClick)="cancelClick()">Cancel</go-button>
+    </div>
+  </div>
 </ng-template>
 
 <div class="go-container">
