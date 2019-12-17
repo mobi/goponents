@@ -2,6 +2,7 @@
   <span class="go-calendar__header">
     <div class="go-calendar__header--outside">
       <go-icon-button
+        class="go-calendar__icon"
         [buttonDisabled]=previousGroupDisabled
         buttonIcon="keyboard_arrow_left"
         (handleClick)="previousYearGroup()"
@@ -12,6 +13,7 @@
     </div>
     <div class="go-calendar__header--outside">
       <go-icon-button
+        class="go-calendar__icon"
         [buttonDisabled]="nextGroupDisabled"
         buttonIcon="keyboard_arrow_right"
         (handleClick)="nextYearGroup()"

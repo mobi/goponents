@@ -4,7 +4,7 @@
 .go-calendar {
   position: absolute;
   border: 1px solid $theme-light-border;
-  border-radius: .25rem;
+  border-radius: $global-radius;
   background: $theme-light-bg;
   z-index: z-index(toaster);
 }

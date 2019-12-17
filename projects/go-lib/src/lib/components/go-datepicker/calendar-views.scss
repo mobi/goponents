@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .go-calendar__header {
   display: inline-flex;
@@ -36,7 +37,7 @@
 
 .go-calendar__header-dropdown {
   padding-left: .25rem;
-  margin-top: -.2rem;
+  margin-top: -.25rem;
 }
 
 .go-calendar__body--header {
@@ -50,13 +51,15 @@
 }
 
 .go-calendar__cell {
+  @include transition(all);
+
   border-style: hidden;
   border-radius: 1.5rem;
   font-size: 0.75rem;
   padding: 0px;
   height: 1.375rem;
   width: 2.5rem;
-  font-weight: lighter;
+  font-weight: $weight-light;
   font-family: $primary-font-stack;
 
   &:hover, &:active, &:focus {
@@ -69,7 +72,7 @@
   }
 
   &.go-calendar__cell--selected {
-    font-weight: normal;
+    font-weight: $weight-regular;
     background-color: $ui-color-primary;
     color: $theme-dark-color;
   }
@@ -111,7 +114,7 @@
   }
 }
 
-:host ::ng-deep .go-icon--small {
+.go-calendar__icon {
   font-size: .875rem;
 }
 

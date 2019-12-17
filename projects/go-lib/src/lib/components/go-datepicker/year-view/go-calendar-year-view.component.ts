@@ -66,12 +66,12 @@ export class GoCalendarYearViewComponent implements OnInit {
 
   public nextYearGroup(): void {
     this.setUpYears(this.lastYear.value + 1);
-    this.setFocusedYear(this.focusedYear.value + (3 * 4));
+    this.setFocusedYear(this.focusedYear.value + 12);
   }
 
   public previousYearGroup(): void {
-    this.setUpYears(this.firstYear.value - (3 * 4));
-    this.setFocusedYear(this.focusedYear.value - (3 * 4));
+    this.setUpYears(this.firstYear.value - 12);
+    this.setFocusedYear(this.focusedYear.value - 12);
   }
 
   public pickYear(year: number): void {

@@ -2,6 +2,7 @@
   <span class="go-calendar__header">
     <div class="go-calendar__header--outside">
       <go-icon-button
+        class="go-calendar__icon"
         [buttonDisabled]="previousMonthDisabled"
         buttonIcon="keyboard_arrow_left"
         (handleClick)="previousMonth()"
@@ -11,6 +12,7 @@
       {{dateAdapter.monthNames[month]}} {{year.translated}}
       <div class="go-calendar__header-dropdown">
         <go-icon-button
+          class="go-calendar__icon"
           buttonIcon="keyboard_arrow_down"
           (handleClick)="switchView()"
         ></go-icon-button>
@@ -18,6 +20,7 @@
     </div>
     <div class="go-calendar__header--outside">
       <go-icon-button
+        class="go-calendar__icon"
         [buttonDisabled]="nextMonthDisabled"
         buttonIcon="keyboard_arrow_right"
         (handleClick)="nextMonth()"
