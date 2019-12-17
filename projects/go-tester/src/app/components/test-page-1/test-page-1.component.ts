@@ -69,7 +69,7 @@ export class TestPage1Component implements OnInit {
   }
 
   goBack(): void {
-    alert('going back');
+    this.toasterService.toastInfo({ message: 'Back button clicked' });
   }
 
   saveClick(): void {

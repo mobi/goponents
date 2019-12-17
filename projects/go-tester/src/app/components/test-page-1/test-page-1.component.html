@@ -1,4 +1,4 @@
-<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" [goBack]="goBack">
+<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" (handleBackButton)="goBack()">
   <div class="go-button-group">
     <div class="go-button-group__item">
       <go-button (handleClick)="saveClick()">save</go-button>
