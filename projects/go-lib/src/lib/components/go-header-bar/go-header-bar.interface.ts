@@ -1,8 +1,8 @@
-import { TemplateRef } from '@angular/core';
+import {EventEmitter, TemplateRef} from '@angular/core';
 
 export interface GoHeaderBarItem {
   templateRef: TemplateRef<any>;
   title: string;
-  goBack?: Function;
+  backButtonFn?: EventEmitter<any>;
   showBackArrow?: boolean;
 }

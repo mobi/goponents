@@ -1,11 +1,11 @@
 <div class="go-header-bar" *ngIf="currentItem">
   <a *ngIf="currentItem.showBackArrow"
-     (click)="currentItem.goBack()" class="go-page-header__back-arrow">
+     (click)="processBackBtn()" class="go-header-bar__back-arrow">
     <go-icon icon="arrow_back"></go-icon>
   </a>
-  <h5 class="go-heading-2 go-page-header__title">{{ currentItem.title }}</h5>
+  <h5 class="go-heading-2 go-header-bar__title">{{ currentItem.title }}</h5>
 
-  <div class="go-page-header__actions">
+  <div class="go-header-bar__actions">
     <ng-content select="[go-header-bar-action]"></ng-content>
   </div>
   <ng-container *ngTemplateOutlet="currentItem.templateRef"></ng-container>

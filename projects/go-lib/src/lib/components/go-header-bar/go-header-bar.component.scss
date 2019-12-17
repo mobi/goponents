@@ -11,12 +11,12 @@
   align-items: center;
 }
 
-.go-page-header__title {
+.go-header-bar__title {
   padding: 0 $column-gutter--double;
   margin-bottom: -$column-gutter--quarter;
 }
 
-.go-page-header__back-arrow {
+.go-header-bar__back-arrow {
   cursor: pointer;
   align-items: center;
   padding: $column-gutter+$column-gutter--half $column-gutter;
@@ -32,7 +32,7 @@
   cursor: default;
 }
 
-.go-page-header__actions {
+.go-header-bar__actions {
   display: flex;
   justify-content: flex-end;
   flex: 1;
