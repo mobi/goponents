@@ -1,6 +1,8 @@
-<label class="go-form__label"
-       [attr.for]="id"
-       [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+<label 
+  *ngIf="label"
+  class="go-form__label"
+  [attr.for]="id"
+  [ngClass]="{'go-form__label--dark': theme === 'dark'}">
   {{ label }}
 </label>
 <div [ngClass]="{ 'go-file-upload--disabled': state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
