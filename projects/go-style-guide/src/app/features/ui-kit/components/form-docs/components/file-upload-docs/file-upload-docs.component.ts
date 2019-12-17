@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-file-upload-docs',
@@ -96,6 +97,10 @@ export class FileUploadDocsComponent implements OnInit {
     theme="dark"
   ></go-file-upload>
   `;
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'File Upload';
+  }
 
   ngOnInit(): void {
     setTimeout((): void => {

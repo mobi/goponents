@@ -32,15 +32,30 @@ export class ColorsComponent {
   $theme-light-border: $base-light-secondary;
   `;
 
+  earthGreen: string = `
+  // Use this to apply the positive (success) state color
+  $ui-color-positive: #1D8915;
+
+  // Used when the ui color needs a hover state
+  $ui-color-positive-hover: darken($ui-color-positive, 3.5%);
+
+  // Used when the ui color needs an active state
+  $ui-color-positive-active: darken($ui-color-positive, 7%);
+
+  // Use this to apply the brand color as a gradient.
+  // Should only be used as a small accent
+  $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+  `;
+
   galaxyBlue: string = `
   // Use this to apply the positive (success) state color
   $ui-color-positive: #4EDED2;
 
-  // Used when the ui color needs an active state
-  $ui-color-positive-active: #47CCC1;
-
   // Used when the ui color needs a hover state
-  $ui-color-positive-hover: #41BAB0;
+  $ui-color-positive-hover: darken($ui-color-primary, 3.5%);
+
+  // Used when the ui color needs an active state
+  $ui-color-positive-active: darken($ui-color-primary, 7%);
 
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent
@@ -51,11 +66,11 @@ export class ColorsComponent {
   // Use this to apply the negative (error) state color
   $ui-color-negative: #DD4C4C;
 
-  // Used when the ui color needs an active state
-  $ui-color-negative-active: #BA3F3F;
-
   // Used when the ui color needs a hover state
-  $ui-color-negative-hover: #A83939;
+  $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
+
+  // Used when the ui color needs an active state
+  $ui-color-negative-active: darken($ui-color-negative, 7%);
 
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent
@@ -66,11 +81,11 @@ export class ColorsComponent {
   // Use this to apply the neutral (info) state color
   $ui-color-neutral: #8A4EDE;
 
-  // Used when the ui color needs an active state
-  $ui-color-neutral-active: #7F47CC;
-
   // Used when the ui color needs a hover state
-  $ui-color-neutral-hover: #7441BA;
+  $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
+\
+  // Used when the ui color needs an active state
+  $ui-color-neutral-active: darken($ui-color-neutral, 7%);
 
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent

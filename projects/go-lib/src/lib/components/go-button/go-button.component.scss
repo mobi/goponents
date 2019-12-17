@@ -51,23 +51,23 @@
 }
 
 .go-button--primary {
-  background: $ui-color-positive;
+  background: $ui-color-primary;
 
   &:hover,
   &:focus {
-    background: $ui-color-positive-hover;
+    background: $ui-color-primary-hover;
   }
 
   &:active {
-    background: $ui-color-positive-active;
+    background: $ui-color-primary-active;
   }
 
   &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-positive, 'light');
+    @include disabled-states($ui-color-primary, 'light');
 
     &:hover,
     &:focus {
-      @include disabled-states($ui-color-positive, 'light');
+      @include disabled-states($ui-color-primary, 'light');
     }
   }
 }
@@ -185,7 +185,7 @@
   width: 100%;
 
   &.go-button__loader--primary {
-    background: $ui-color-positive;
+    background: $ui-color-primary;
   }
 
   &.go-button__loader--light {

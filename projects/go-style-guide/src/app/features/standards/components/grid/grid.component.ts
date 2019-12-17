@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { GoOffCanvasService } from 'projects/go-lib/src/public_api';
+import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
 @Component({
   templateUrl: './grid.component.html',
@@ -92,4 +94,27 @@ export class GridComponent {
     <div class="go-column go-column--50">Column 2</div>
   </section>
   `;
+
+  containerReset: string = `
+  <form class="go-form go-form--dark">
+    <div class="go-container go-container--reset">
+      <div class="go-column go-column--50">
+        <label for="first-name-input" class="go-form__label">First Name</label>
+        <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">
+      </div>
+      <!-- ... -->
+    </div>
+  </form>
+  `;
+
+  constructor(
+    private goOffCanvasService: GoOffCanvasService,
+  ) { }
+
+  openOffCanvas(): void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestComponent,
+      bindings: {}
+    });
+  }
 }

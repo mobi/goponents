@@ -78,6 +78,7 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { TableColumnDocsComponent } from './components/table-docs/components/table-column-docs/table-column-docs.component';
 import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-sheet-docs.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
@@ -87,6 +88,7 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
 import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
+import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 
 @NgModule({
   imports: [
@@ -158,13 +160,15 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     TableDetailsTestComponent,
     TableSelectionComponent,
     TableActionsDocsComponent,
+    TableColumnDocsComponent,
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
     ActionSheetPanelDocsComponent,
     AccordionOverviewComponent,
     SwitchToggleDocsComponent,
     RadioButtonDocsComponent,
-    CheckboxDocsComponent
+    CheckboxDocsComponent,
+    LoadingTestComponent
   ],
   entryComponents: [
     BasicTestComponent,

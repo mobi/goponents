@@ -1,13 +1,14 @@
-@import "../../../styles/_variables.scss";
+@import "../../../styles/variables";
+
 .go-header-bar {
-  margin: -$column-gutter--double;
+  font-family:$primary-font-stack;
+  padding-right: $column-gutter--double;
   height: 4.25rem;
   background: $base-light;
   box-shadow: $global-box-shadow--regular;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  position: fixed;
 }
 
 .go-page-header__title {

@@ -36,17 +36,19 @@
   </go-accordion>
 
   <go-accordion [showIcons]="true" class="go-column go-column--100">
-    <go-accordion-panel title="Test 1" icon="home" expanded="true">
-      <div class="go-column go-column--100">
-        <go-select
-          [items]="selectData"
-          [control]="selectControl"
-          bindValue="value"
-          bindLabel="name"
-          placeholder="Select Box Placeholder"
-          label="Select Box Here">
-        </go-select>
-      </div>
+    <go-accordion-panel title="Test 1" icon="home">
+      <ng-template #panelContent>
+        <div class="go-column go-column--100">
+          <go-select
+            [items]="selectData"
+            [control]="selectControl"
+            bindValue="value"
+            bindLabel="name"
+            placeholder="Select Box Placeholder"
+            label="Select Box Here">
+          </go-select>
+        </div>
+      </ng-template>
     </go-accordion-panel>
     <go-accordion-panel title="Test 2" icon="home" expanded="true">
       <p class="go-body-copy">This is some content for Test 2.</p>

@@ -1,31 +1,41 @@
 <section class="go-container">
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Implementing Selection</h1>
+      <h2 class="go-heading-2">Implementing Selection</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default, selection is disabled. To add row selection capabilities to the table, there are two properties of the <code class="code-block--inline">GoTableConfig</code>
-        that must be set, <code class="code-block--inline">selectable</code> and <code class="code-block--inline">selectBy</code>.
-      </p>
+    <div class="go-container" go-card-content>
 
-      <code [highlight]="tableSelectConfig"></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          By default, selection is disabled. To add row selection capabilities to the table, there are two properties of the <code class="code-block--inline">GoTableConfig</code>
+          that must be set, <code class="code-block--inline">selectable</code> and <code class="code-block--inline">selectBy</code>.
+        </p>
+  
+        <code [highlight]="tableSelectConfig"></code>
+      </div>
 
-      <h6 class="go-heading-6">selectable</h6>
-      <p class="go-body-copy">
-        This property enables selection within the table. Without this enabled, selection will not be possible.
-      </p>
-      <h6 class="go-heading-6">selectBy</h6>
-      <p class="go-body-copy">
-        This property determines which column will be used to keep track of row selection. It corresponds to one of the fields in the columns. 
-        Typically, this should be an id, or some other unique identifier in the data set.
-      </p>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">selectable</h4>
+        <p class="go-body-copy">
+          This property enables selection within the table. Without this enabled, selection will not be possible.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">selectBy</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This property determines which column will be used to keep track of row selection. It corresponds to one of the fields in the columns. 
+          Typically, this should be an id, or some other unique identifier in the data set.
+        </p>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100" id="important-notes">
     <ng-container go-card-header>
-      <h5 class="go-heading-5">Imporant Notes</h5>
+      <h2 class="go-heading-2">Imporant Notes</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -37,7 +47,7 @@
 
   <go-card class="go-column go-column--100" id="interactive-selection">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Interacting with the Selection</h1>
+      <h2 class="go-heading-2">Interacting with the Selection</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -78,15 +88,15 @@
 
   <go-card class="go-column go-column--100" id="element-reference">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Element Reference Interaction</h1>
+      <h2 class="go-heading-2">Element Reference Interaction</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
         This approach should be used when an action is performed after a user has finished their selecting (ex. button click).
       </p>
-      <h2 class="go-heading-6">example.html</h2>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="eleRef_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="eleRef_ts" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>
@@ -109,15 +119,15 @@
 
   <go-card class="go-column go-column--100" id="row-event">
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Row Event Interaction</h1>
+        <h2 class="go-heading-2">Row Event Interaction</h2>
       </ng-container>
       <ng-container go-card-content>
         <p class="go-body-copy">
           This approach should be used when an action necessary upon individual row selection or deselection.
         </p>
-        <h2 class="go-heading-6">example.html</h2>
+        <h4 class="go-heading-4">example.html</h4>
         <code [highlight]="rowEvent_html"></code>
-        <h2 class="go-heading-6">example.ts</h2>
+        <h4 class="go-heading-4">example.ts</h4>
         <code [highlight]="rowEvent_ts" class="code-block--no-bottom-margin"></code>
       </ng-container>
     </go-card>
@@ -136,7 +146,7 @@
 
   <go-card class="go-column go-column--100" id="preselect-options">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Preselect All Rows</h1>
+      <h2 class="go-heading-2">Preselect All Rows</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -144,9 +154,9 @@
         with deselecting options instead of selecting them. This can be accomplished through the
         <code class="code-block--inline">preselected</code> option in the <code class="code-block--inline">GoTableConfig</code>.
       </p>
-      <h2 class="go-heading-6">example.html</h2>
+      <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="preselectedTable_html"></code>
-      <h2 class="go-heading-6">example.ts</h2>
+      <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="preselectedTable_ts" class="code-block--no-bottom-margin"></code>
     </ng-container>
   </go-card>

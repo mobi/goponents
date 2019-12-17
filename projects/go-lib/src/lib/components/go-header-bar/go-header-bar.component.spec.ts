@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoIconModule } from '../go-icon/go-icon.module';
 
@@ -8,17 +7,10 @@ describe('GoHeaderBarComponent', () => {
   let component: GoHeaderBarComponent;
   let fixture: ComponentFixture<GoHeaderBarComponent>;
 
-  const locationSpy: any = jasmine.createSpyObj('Location', ['goBack']);
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GoHeaderBarComponent ],
-      imports: [
-        GoIconModule
-      ],
-      providers: [
-        { provide: Location, useValue: locationSpy }
-      ]
+      imports: [ GoIconModule ]
     })
     .compileComponents();
   }));

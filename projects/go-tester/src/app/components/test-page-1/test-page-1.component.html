@@ -1,13 +1,14 @@
-<go-header-bar title="This is the title" [showBackArrow]="true" [goBackFn]="logStuff">
-  <ul class="go-button-group" go-header-bar-action>
-    <li class="go-button-group__item">
-      <go-button>Button 1</go-button>
-    </li>
-    <li class="go-button-group__item">
-      <go-button>Button 2</go-button>
-    </li>
-  </ul>
-</go-header-bar>
+<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" [goBack]="goBack">
+  <div class="go-button-group">
+    <div class="go-button-group__item">
+      <go-button (handleClick)="saveClick()">save</go-button>
+    </div>
+    <div class="go-button-group__item">
+      <go-button (handleClick)="cancelClick()">Cancel</go-button>
+    </div>
+  </div>
+</ng-template>
+
 <div class="go-container">
   <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
     <go-accordion-panel title="Test 1" icon="home" [expanded]="true">

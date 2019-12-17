@@ -1,10 +1,13 @@
 import {
+  ChangeDetectorRef,
   Component,
+  ContentChild,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
+  TemplateRef
 } from '@angular/core';
 
 import { accordionAnimation } from '../../animations/accordion.animation';
@@ -25,12 +28,15 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   containerClasses: object = {};
   headerClasses: object = {};
   brandColor: string;
+  loaded: boolean = false;
 
   @Input() borderless: boolean;
+  @Input() boxShadow: boolean;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
   @Input() isLast: boolean = false;
+  @Input() persistState: boolean = true;
   @Input() slim: boolean;
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
@@ -40,6 +46,11 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this._expanded = expanded;
     this.containerClasses['go-accordion-panel--active'] = expanded;
     this.headerClasses['go-accordion-panel__header--active'] = expanded;
+    if (expanded) {
+      this.loaded = true;
+    } else if (!this.persistState) {
+      this.loaded = false;
+    }
   }
   get expanded(): boolean {
     return this._expanded;
@@ -47,7 +58,10 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
+  @ContentChild('panelContent') panelContent: TemplateRef<any>;
+
   constructor(
+    private changeDetector: ChangeDetectorRef,
     private configService: GoConfigService
   ) { }
 
@@ -66,10 +80,15 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this.updateClasses();
   }
 
+  detectChanges(): void {
+    this.changeDetector.detectChanges();
+  }
+
   updateClasses(): void {
     this.containerClasses = {
       'go-accordion-panel--active': this.expanded === true,
       'go-accordion-panel--borderless': this.borderless === true,
+      'go-accordion-panel--box-shadow': this.boxShadow === true,
       'go-accordion-panel--dark': this.theme === 'dark',
       'go-accordion-panel--first': this.isFirst === true,
       'go-accordion-panel--last': this.isLast === true,

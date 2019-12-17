@@ -1,13 +1,12 @@
-<div class="go-header-bar" #headerBar [ngStyle]="{ 'width': getWidth() }">
-  <a *ngIf="showBackArrow"
-     [ngClass]="{ 'go-header-bar__back-arrow--disabled': backButtonDisabled() }"
-     (click)="goBack()" class="go-page-header__back-arrow">
+<div class="go-header-bar" *ngIf="currentItem">
+  <a *ngIf="currentItem.showBackArrow"
+     (click)="currentItem.goBack()" class="go-page-header__back-arrow">
     <go-icon icon="arrow_back"></go-icon>
   </a>
-  <h5 class="go-heading-5 go-page-header__title">{{ title }}</h5>
+  <h5 class="go-heading-2 go-page-header__title">{{ currentItem.title }}</h5>
 
   <div class="go-page-header__actions">
     <ng-content select="[go-header-bar-action]"></ng-content>
   </div>
+  <ng-container *ngTemplateOutlet="currentItem.templateRef"></ng-container>
 </div>
-<div [ngStyle]="{ 'height': getHeight() }"></div>

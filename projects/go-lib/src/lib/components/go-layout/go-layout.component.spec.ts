@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GoHeaderBarModule } from '../go-header-bar/go-header-bar.module';
 
 import { GoLayoutComponent } from './go-layout.component';
 import { RouterModule } from '@angular/router';
@@ -21,6 +22,7 @@ describe('GoLayoutComponent', () => {
       declarations: [ GoLayoutComponent ],
       imports: [
         BrowserAnimationsModule,
+        GoHeaderBarModule,
         GoLoaderModule,
         GoModalModule,
         GoOffCanvasModule,

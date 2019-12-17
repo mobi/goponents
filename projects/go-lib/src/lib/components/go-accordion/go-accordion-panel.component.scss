@@ -38,6 +38,10 @@
   border-radius: 0;
 }
 
+.go-accordion-panel--box-shadow {
+  box-shadow: $global-box-shadow--regular;
+}
+
 .go-accordion-panel--dark {
   background: $theme-dark-bg;
   border-color: $theme-dark-border;

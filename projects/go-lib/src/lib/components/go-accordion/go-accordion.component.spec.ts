@@ -82,6 +82,8 @@ describe('AccordionComponent', () => {
       panelTwo.slim = undefined;
       panelOne.borderless = undefined;
       panelTwo.borderless = undefined;
+      panelOne.boxShadow = undefined;
+      panelTwo.boxShadow = undefined;
 
       spyOn(panelOne, 'updateClasses');
       spyOn(panelTwo, 'updateClasses');
@@ -152,6 +154,31 @@ describe('AccordionComponent', () => {
       expect(component.borderless).toBe(false);
       expect(panelOne.borderless).toBe(true);
       expect(panelTwo.borderless).toBe(false);
+    });
+
+    it('sets the box-shadow property on the panel', () => {
+      expect(component.boxShadow).toBe(false);
+      expect(panelOne.boxShadow).toBeUndefined();
+      expect(panelTwo.boxShadow).toBeUndefined();
+
+      component.ngAfterContentInit();
+
+      expect(component.boxShadow).toBe(false);
+      expect(panelOne.boxShadow).toBe(false);
+      expect(panelTwo.boxShadow).toBe(false);
+    });
+
+    it('does NOT override theme box-shadow if explicitly set on the panel', () => {
+      expect(component.boxShadow).toBe(false);
+      expect(panelOne.boxShadow).toBeUndefined();
+      expect(panelTwo.boxShadow).toBeUndefined();
+
+      panelOne.boxShadow = true;
+      component.ngAfterContentInit();
+
+      expect(component.boxShadow).toBe(false);
+      expect(panelOne.boxShadow).toBe(true);
+      expect(panelTwo.boxShadow).toBe(false);
     });
 
     it('sets the theme property on the panel', () => {

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoConfigService } from '../../go-config.service';
+import { TemplateRef } from '@angular/core';
 
 describe('GoAccordionPanelComponent', () => {
   let component: GoAccordionPanelComponent;
@@ -76,6 +77,27 @@ describe('GoAccordionPanelComponent', () => {
       expect(component.containerClasses['go-accordion-panel--active']).toBe(true);
       expect(component.headerClasses['go-accordion-panel__header--active']).toBe(true);
     });
+
+    it('sets loaded to true if expanded and using panelContent', () => {
+      component.expanded = true;
+
+      expect(component.loaded).toBe(true);
+    });
+
+    it('doesn\'t set loaded to false if already loaded and persistState is false', () => {
+      component.expanded = true;
+      component.expanded = false;
+
+      expect(component.loaded).toBe(true);
+    });
+
+    it('sets loaded to fales if already loaded and persistState is true', () => {
+      component.persistState = false;
+      component.expanded = true;
+      component.expanded = false;
+
+      expect(component.loaded).toBe(false);
+    });
   });
 
   describe('updateClasses()', () => {
@@ -91,6 +113,22 @@ describe('GoAccordionPanelComponent', () => {
         component.updateClasses();
 
         expect(component.containerClasses['go-accordion-panel--borderless']).toBe(true);
+      });
+
+      it('does NOT set the go-accordion-panel--box-shadow class if box-shadow is false', () => {
+        component.boxShadow = false;
+
+        component.updateClasses();
+
+        expect(component.containerClasses['go-accordion-panel--box-shadow']).toBe(false);
+      });
+
+      it('sets the go-accordion-panel--box-shadow class if box-shadow is true', () => {
+        component.boxShadow = true;
+
+        component.updateClasses();
+
+        expect(component.containerClasses['go-accordion-panel--box-shadow']).toBe(true);
       });
 
       it('sets the go-accordion-panel--active class if expanded is true', () => {

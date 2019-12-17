@@ -1,44 +1,52 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
 <section class="go-container">
   <go-card [showHeader]="false" class="go-column go-column--100">
-    <ng-container go-card-content>
-      <!-- Intro -->
-      <h1 class="go-heading-5">Usage</h1>
-      <p class="go-body-copy">The <code class="code-block--inline">&lt;go-card&gt;</code> component should be the default container for all content.</p>
+    <div class="go-container" go-card-content>
 
-      <!-- Bindings -->
-      <h1 class="go-heading-5">Bindings</h1>
-      <code [highlight]="componentBindings"></code>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">The <code class="code-block--inline">&lt;go-card&gt;</code> component should be the default container for all content.</p>
+      </div>
 
-      <!-- expandAll -->
-      <h2 class="go-heading-6">showHeader</h2>
-      <p class="go-body-copy">
-        <code class="code-block--inline">showHeader</code>
-        by default is true, but if set to false it will hide the header
-        of the card even if one is passed.
-      </p>
-    </ng-container>
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <!-- expandAll -->
+        <h4 class="go-heading-4">showHeader</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">showHeader</code>
+          by default is true, but if set to false it will hide the header
+          of the card even if one is passed.
+        </p>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h2 class="go-heading-2">Default</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">Code (for this card)</h2>
+      <h3 class="go-heading-3">Code (for this card)</h3>
       <code [highlight]="defaultExample"></code>
     </ng-container>
   </go-card>
 
   <go-card [showHeader]="false" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Default</h1>
+      <h2 class="go-heading-2">Default</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 class="go-heading-6">Code (for this card, no header example)</h2>
+      <h3 class="go-heading-3">Code (for this card, no header example)</h3>
       <code [highlight]="showHeaderExample"></code>
     </ng-container>
   </go-card>

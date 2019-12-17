@@ -1,24 +1,42 @@
-<div class="basic-test">
-  <form class="go-form go-form--dark">
-    <div class="go-container">
-      <div class="go-column go-column--50">
-        <label for="first-name-input" class="go-form__label">First Name</label>
-        <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">
-      </div>
-      <div class="go-column go-column--50">
-        <label for="last-name-input" class="go-form__label">Last Name</label>
-        <input class="go-form__input" id="last-name-input" placeholder="Appleseed" type="text">
-      </div>
-      <div class="go-column go-column--100">
-        <label for="email-input" class="go-form__label">Email</label>
-        <input class="go-form__input" id="email-input" placeholder="your@email.com" type="email">
-      </div>
-      <div class="go-column go-column--100">
-        <label for="password-input" class="go-form__label">Password</label>
-        <input class="go-form__input" id="password-input" placeholder="**************" type="password">
-      </div>
+<form class="go-form go-form--dark">
+  <div class="go-container go-container--reset">
+    <div class="go-column go-column--50">
+      <go-input
+        [control]="firstName"
+        key="first-name-input"
+        label="First Name"
+        placeholder="Jonny"
+      ></go-input>
     </div>
+    <div class="go-column go-column--50">
+      <go-input
+        [control]="lastName"
+        key="last-name-input"
+        label="Last Name"
+        placeholder="Appleseed"
+      ></go-input>
+    </div>
+    <div class="go-column go-column--100">
+      <go-input
+        [control]="email"
+        inputType="email"
+        key="email-input"
+        label="Email"
+        placeholder="your@email.com"
+      ></go-input>
+    </div>
+    <div class="go-column go-column--100">
+      <go-input
+        [control]="password"
+        inputType="password"
+        key="password-input"
+        label="Password"
+        placeholder="**************"
+      ></go-input>
+    </div>
+  </div>
 
+  <div class="go-column go-column--100">
     <go-button
       buttonVariant="positive"
       (handleClick)="fakeSubmit()"
@@ -27,5 +45,5 @@
     >
       Submit
     </go-button>
-  </form>
-</div>
+  </div>
+</form>

@@ -32,6 +32,11 @@ $column-sizes: (
 $side-nav-width: 15.5rem;
 $side-nav-width--collapsed: 3.2rem;
 
+$modal-container-sizes: (
+  lg: 31.25rem,
+  xl: 50rem
+);
+
 $header-height: 4rem;
 
 // Breakpoints
@@ -42,6 +47,16 @@ $breakpoint-tablet: 1024px;
 $weight-light: 300;
 $weight-regular: 400;
 $weight-bold: 700;
+
+$heading-margin-bottom: 1.5rem;
+$heading-sizes: (
+  1: 1.875rem,
+  2: 1.625rem,
+  3: 1.375rem,
+  4: 1.125rem,
+  5: .875rem,
+  6: .75rem
+);
 
 $primary-font-stack: 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
@@ -80,25 +95,32 @@ $theme-dark-border: $base-dark-secondary;
 // Negative Colors -
 // These are used to portray dangerous actions, error states, or other negative states in the interface
 $ui-color-negative: #DD4C4C;
-$ui-color-negative-active: #BA3F3F;
-$ui-color-negative-hover: #A83939;
+$ui-color-negative-hover: darken($ui-color-negative, 3.5%);
+$ui-color-negative-active: darken($ui-color-negative, 7%);
 $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
 $ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
-$ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-active);
+$ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
 $ui-background-negative: rgba($ui-color-negative, .1);
 
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
 $ui-color-neutral: #8A4EDE;
-$ui-color-neutral-active: #7F47CC;
-$ui-color-neutral-hover: #7441BA;
-$ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-active);
+$ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
+$ui-color-neutral-active: darken($ui-color-neutral, 7%);
+$ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
 $ui-background-neutral: rgba($ui-color-neutral, .1);
 
 // Positive Colors -
 // These are used to portray good actions, states, or other generally positive states in the interface
-$ui-color-positive: #00838f;
-$ui-color-positive-active: #00737D;
-$ui-color-positive-hover: #00626B;
-$ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-active);
-$ui-background-positive: rgba($ui-color-positive, .2);
+$ui-color-positive: #1D8915;
+$ui-color-positive-hover: darken($ui-color-positive, 3.5%);
+$ui-color-positive-active: darken($ui-color-positive, 7%);
+$ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+
+// Primary Colors -
+// These are used to portray primary actions, states, or other generally primary items in the interface
+$ui-color-primary: #00838f;
+$ui-color-primary-hover: darken($ui-color-primary, 3.5%);
+$ui-color-primary-active: darken($ui-color-primary, 7%);
+$ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
+$ui-background-primary: rgba($ui-color-primary, .2);

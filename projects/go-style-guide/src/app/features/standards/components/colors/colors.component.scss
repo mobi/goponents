@@ -8,22 +8,28 @@ $colors: (
     $base-dark,
     $base-dark-secondary
   ),
+  primary: (
+    $ui-color-primary,
+    $ui-color-primary-hover,
+    $ui-color-primary-active,
+    $ui-color-primary-gradient
+  ),
   positive: (
     $ui-color-positive,
-    $ui-color-positive-active,
     $ui-color-positive-hover,
+    $ui-color-positive-active,
     $ui-color-positive-gradient
   ),
   negative: (
     $ui-color-negative,
-    $ui-color-negative-active,
     $ui-color-negative-hover,
+    $ui-color-negative-active,
     $ui-color-negative-gradient
   ),
   neutral: (
     $ui-color-neutral,
-    $ui-color-neutral-active,
     $ui-color-neutral-hover,
+    $ui-color-neutral-active,
     $ui-color-neutral-gradient
   )
 );

@@ -1,5 +1,6 @@
-import { Location } from '@angular/common';
-import {Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GoHeaderBarService } from './go-header-bar.service';
+import { GoHeaderBarItem } from './go-header-bar.interface';
 
 @Component({
   selector: 'go-header-bar',
@@ -8,33 +9,18 @@ import {Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@ang
 })
 export class GoHeaderBarComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() showBackArrow: boolean = false;
-  @Input() goBackFn: Function;
+  currentItem: GoHeaderBarItem;
 
-  constructor(private elemRef: ElementRef, private location: Location) {}
+  constructor(private goHeaderBarService: GoHeaderBarService) { }
 
-  @ViewChild('headerBar') headerBar: ElementRef;
-
-  ngOnInit(): void {}
-
-  goBack(): void {
-    if (this.goBackFn) {
-      this.goBackFn();
-    } else {
-      this.location.back();
-    }
+  ngOnInit(): void {
+    this.goHeaderBarService.activeItem.subscribe((activeItem: GoHeaderBarItem) => {
+      this.currentItem = activeItem;
+    });
   }
 
-  backButtonDisabled(): boolean {
-    return !this.goBackFn && window.history.length === 1;
+  reset(): void {
+    this.currentItem = null;
   }
 
-  getHeight(): string {
-    return this.headerBar.nativeElement.offsetHeight.toString() + 'px';
-  }
-
-  getWidth(): string {
-    return this.elemRef.nativeElement.parentElement.offsetWidth.toString() + 'px';
-  }
 }

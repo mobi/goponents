@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  ViewChild
 } from '@angular/core';
 
 import {
@@ -15,18 +16,25 @@ import {
 } from '@angular/router';
 
 import { routerAnimation } from '../../animations/route.animation';
-import { fadeTemplateAnimation } from '../../animations/fade.animation';
+import { fadeAnimation, fadeTemplateAnimation } from '../../animations/fade.animation';
+import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
 
 @Component({
   selector: 'go-layout',
   templateUrl: './go-layout.component.html',
   styleUrls: ['./go-layout.component.scss'],
-  animations: [routerAnimation, fadeTemplateAnimation],
+  animations: [
+    routerAnimation,
+    fadeAnimation,
+    fadeTemplateAnimation
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class GoLayoutComponent implements OnInit {
 
   routeLoader: boolean = false;
+
+  @ViewChild(GoHeaderBarComponent) headerBar: GoHeaderBarComponent;
 
   constructor(private router: Router) { }
 
@@ -35,6 +43,7 @@ export class GoLayoutComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
       } else if ((event instanceof NavigationEnd) || (event instanceof NavigationCancel) || (event instanceof NavigationError)) {
+        this.headerBar.reset();
         this.routeLoader = false;
       }
     });

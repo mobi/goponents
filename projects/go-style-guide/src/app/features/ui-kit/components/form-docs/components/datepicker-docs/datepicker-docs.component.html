@@ -1,353 +1,425 @@
 <section class="go-container">
-  <app-form-control-docs
-    class="go-column go-column--100"
-  ></app-form-control-docs>
+  <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
+
   <go-card id="form-input-control" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Control</h1>
+      <h2 class="go-heading-2">Component Control</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        As with most of the form components, the only <code class="code-block--inline">@Input</code>
-        required of the datepicker component is a <code class="code-block--inline">FormControl</code>.
-        The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
-        attribute on the &lt;go-datepicker&gt; component.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker [control]="dob"></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicInputExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          As with most of the form components, the only <code class="code-block--inline">@Input</code>
+          required of the datepicker component is a <code class="code-block--inline">FormControl</code>.
+          The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
+          attribute on the &lt;go-datepicker&gt; component.
+        </p>
       </div>
-    </ng-container>
-  </go-card>
-  <go-card id="form-input-label" class="go-column go-column--100">
-    <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Label</h1>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        All form components include an <code class="code-block--inline">@Input() label: string;</code>
-        that can be used to add a label to the input components.
-        In addition to displaying an HTML label, the text passed
-        in via the <code class="code-block--inline">[label]</code>
-        attribute is used to generate a unique ID to associate the
-        label with the datepicker. If no label is passed in, a generic,
-        but still unique ID will be generated.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="dob2"
-            label="Date of Birth"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicInputLabelExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-      </div>
-    </ng-container>
-  </go-card>
-  <go-card id="form-input-key" class="go-column go-column--100">
-    <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Key</h1>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        As stated above the label attribute is used to generate a
-        unique ID to associate the label with the datepicker. As this might
-        not be desired, the <code class="code-block--inline">@Input() key: string;</code>
-        can be used to configure the ID attribute of the datepicker directly.
-        Anything passed into the component via the <code class="code-block--inline">[key]</code>
-        attribute will be used to both assign the ID to the datepicker and
-        associate the label with the datepicker.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="dob3"
-            label="Date of Birth"
-            key="date-of-birth-datepicker"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicInputKeyExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-        <div class="go-column go-column--100">
-          <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
-          <p class="go-body-copy">
-            Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
-            to both the <code class="code-block--inline">id</code> attribute on
-            the input and the <code class="code-block--inline">for</code> attribute
-            on the label.
-          </p>
-          <code
-            [highlight]="basicInputKeyExampleOutput"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-      </div>
-    </ng-container>
-  </go-card>
-  <go-card id="form-input-hints" class="go-column go-column--100">
-    <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Hints</h1>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Form hints exist to help give more information about the
-        inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
-        can be used to pass in an array of hints to the datepicker component.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="dob4"
-            label="Date of Birth"
-            [hints]="hints"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicHintsTemplate"
-            class="code-block--no-bottom-margin"
-          ></code>
-          <code
-            [highlight]="basicInputHintsExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-      </div>
-    </ng-container>
-  </go-card>
-  <go-card id="form-input-errors" class="go-column go-column--100">
-    <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Errors</h1>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
-        via the <code class="code-block--inline">setErrors()</code> function.
-        All goponents use this API to display errors on our components, but the
-        data needs to be displayed in a specific structure.
-      </p>
-      <p class="go-body-copy">
-        By default the input type is set to "Error", however this can be
-        overrides as shown below.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="dob5"
-            label="Date of Birth"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicInputLabelExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-          <code
-            [highlight]="basicErrorsTemplate"
-            class="code-block--no-bottom-margin"
-          ></code>
-        </div>
-      </div>
-    </ng-container>
-  </go-card>
-  <go-card id="form-input-disabled" class="go-column go-column--100">
-    <ng-container go-card-header>
-      <h1 class="go-heading-5">Disable Component</h1>
-    </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        FormControls can be either created as disable or later disabled
-        and re-enabled directly after they are created.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <div class="go-container">
-            <div class="go-column go-column--100">
-              <go-datepicker
-                [control]="dob6"
-                label="First Date"
-              ></go-datepicker>
-            </div>
-            <div class="go-column go-column--100">
-              <go-datepicker
-                [control]="dob7"
-                label="Last Date"
-              ></go-datepicker>
-            </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker [control]="dob"></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicInputExample"
+              class="code-block--no-bottom-margin"
+            ></code>
           </div>
         </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicDisabledExample"
-            class="code-block--no-bottom-margin"
-          ></code>
-          <code
-            [highlight]="basicDisabledExample2"
-            class="code-block--no-bottom-margin"
-          ></code>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-input-label" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Label</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          that can be used to add a label to the input components.
+          In addition to displaying an HTML label, the text passed
+          in via the <code class="code-block--inline">[label]</code>
+          attribute is used to generate a unique ID to associate the
+          label with the datepicker. If no label is passed in, a generic,
+          but still unique ID will be generated.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob2"
+              label="Date of Birth"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicInputLabelExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-input-key" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Key</h2>
     </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          As stated above the label attribute is used to generate a
+          unique ID to associate the label with the datepicker. As this might
+          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          can be used to configure the ID attribute of the datepicker directly.
+          Anything passed into the component via the <code class="code-block--inline">[key]</code>
+          attribute will be used to both assign the ID to the datepicker and
+          associate the label with the datepicker.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob3"
+              label="Date of Birth"
+              key="date-of-birth-datepicker"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicInputKeyExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
+            <p class="go-body-copy">
+              Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
+              to both the <code class="code-block--inline">id</code> attribute on
+              the input and the <code class="code-block--inline">for</code> attribute
+              on the label.
+            </p>
+            <code
+              [highlight]="basicInputKeyExampleOutput"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-input-hints" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Hints</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          Form hints exist to help give more information about the
+          inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          can be used to pass in an array of hints to the datepicker component.
+        </p>
+      </div>
+      
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob4"
+              label="Date of Birth"
+              [hints]="hints"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicHintsTemplate"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="basicInputHintsExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-input-errors" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Errors</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
+          via the <code class="code-block--inline">setErrors()</code> function.
+          All goponents use this API to display errors on our components, but the
+          data needs to be displayed in a specific structure.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the input type is set to "Error", however this can be
+          overrides as shown below.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob5"
+              label="Date of Birth"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicInputLabelExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="basicErrorsTemplate"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-input-disabled" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Disable Component</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          FormControls can be either created as disable or later disabled
+          and re-enabled directly after they are created.
+        </p>
+      </div>
+ 
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  [control]="dob6"
+                  label="First Date"
+                ></go-datepicker>
+              </div>
+              <div class="go-column go-column--100">
+                <go-datepicker
+                  [control]="dob7"
+                  label="Last Date"
+                ></go-datepicker>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicDisabledExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="basicDisabledExample2"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </go-card>
 
   <go-card id="form-input-placeholder" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Placeholder</h1>
+      <h2 class="go-heading-2">Component Placeholder</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        The datepicker components placeholder attribute can be set via
-        <code class="code-block--inline">@Input() placeholder: string;</code>
-        and the <code class="code-block--inline">[placeholder]</code> attribute.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="dob8"
-            label="Date of Birth"
-            placeholder="10/28/1999"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicPlaceholderExample"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          The datepicker components placeholder attribute can be set via
+          <code class="code-block--inline">@Input() placeholder: string;</code>
+          and the <code class="code-block--inline">[placeholder]</code> attribute.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob8"
+              label="Date of Birth"
+              placeholder="10/28/1999"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicPlaceholderExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-input-type" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Locale</h1>
+      <h2 class="go-heading-2">Component Locale</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        The locale can be set via the
-        <code class="code-block--inline">@Input() locale: string;</code>
-        and the <code class="code-block--inline">[locale]</code> attribute.
-        By default this is set to 'en-US', but it should be used to reflect the locale
-        of the user logged in. This is important because the locale is how we decide what format
-        a date gets shown in and how we parse a date that the user types in. For example the
-        format for 'en-US' is <code class="code-block--inline">mm/dd/yyyy</code> while the format
-        for 'de' is <code class="code-block--inline">dd.mm.yyyy</code>. Regardless of locale a user
-        can always type in the date <code class="code-block--inline">yyyy/mm/dd</code> which is the
-        international date standard
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="locale"
-            label="Locale"
-            locale="de"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="basicLocaleExample"
-            class="code-block--no-bottom-margin"
-          ></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The locale can be set via the
+          <code class="code-block--inline">@Input() locale: string;</code>
+          and the <code class="code-block--inline">[locale]</code> attribute.
+          By default this is set to 'en-US', but it should be used to reflect the locale
+          of the user logged in. This is important because the locale is how we decide what format
+          a date gets shown in and how we parse a date that the user types in. For example the
+          format for 'en-US' is <code class="code-block--inline">mm/dd/yyyy</code> while the format
+          for 'de' is <code class="code-block--inline">dd.mm.yyyy</code>. Regardless of locale a user
+          can always type in the date <code class="code-block--inline">yyyy/mm/dd</code> which is the
+          international date standard
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="locale"
+              label="Locale"
+              locale="de"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicLocaleExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-datepicker-max-date" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Max Date</h1>
+      <h2 class="go-heading-2">Component Max Date</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        A max date can be set via the <code class="code-block--inline">@Input() maxDate: Date | string;</code>
-        and the <code class="code-block--inline">[maxDate]</code> attribute. The max date attribute can be 
-        used to restrict the date that a user can pick to a date before the max date. The date
-        can be passed in as a Date object or in the 'en-US' format which is 
-        <code class="code-block--inline">mm/dd/yyyy</code>
-      </p>
+    <div class="go-container" go-card-content>
 
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="max"
-            label="Date of Birth"
-            maxDate="10/15/2019"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="maxDateExample"
-            class="code-block--no-bottom-margin"
-          ></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          A max date can be set via the <code class="code-block--inline">@Input() maxDate: Date | string;</code>
+          and the <code class="code-block--inline">[maxDate]</code> attribute. The max date attribute can be 
+          used to restrict the date that a user can pick to a date before the max date. The date
+          can be passed in as a Date object or in the 'en-US' format which is 
+          <code class="code-block--inline">mm/dd/yyyy</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="max"
+              label="Date of Birth"
+              maxDate="10/15/2019"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="maxDateExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-datepicker-min-date" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Component Min Date</h1>
+      <h2 class="go-heading-2">Component Min Date</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        A min date can be set via the <code class="code-block--inline">@Input() minDate: Date | string;</code>
-        and the <code class="code-block--inline">[minDate]</code> attribute. The min date attribute can be 
-        used to restrict the date that a user can pick to a date after the min date. The date
-        can be passed in as a Date object or in the 'en-US' format which is 
-        <code class="code-block--inline">mm/dd/yyyy</code>
-      </p>
+    <div class="go-container" go-card-content>
 
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-datepicker
-            [control]="min"
-            label="Date of Birth"
-            minDate="5/10/2000"
-          ></go-datepicker>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code
-            [highlight]="minDateExample"
-            class="code-block--no-bottom-margin"
-          ></code>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          A min date can be set via the <code class="code-block--inline">@Input() minDate: Date | string;</code>
+          and the <code class="code-block--inline">[minDate]</code> attribute. The min date attribute can be 
+          used to restrict the date that a user can pick to a date after the min date. The date
+          can be passed in as a Date object or in the 'en-US' format which is 
+          <code class="code-block--inline">mm/dd/yyyy</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="min"
+              label="Date of Birth"
+              minDate="5/10/2000"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="minDateExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 </section>
