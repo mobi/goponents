@@ -29,6 +29,7 @@
 
 <ng-template #labelTemplate>
   <label
+    *ngIf="label"
     [attr.for]="id"
     class="go-form__label go-form__label--inline go-form__switch-toggle__label"
     [ngClass]="{'go-form__label--dark': theme === 'dark', 'go-form__switch-toggle__label--before': labelPosition === 'before'}"
