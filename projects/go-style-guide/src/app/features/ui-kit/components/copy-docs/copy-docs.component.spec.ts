@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CopyDocsComponent } from './copy-docs.component';
 
-describe('ButtonDocsComponent', () => {
+describe('CopyDocsComponent', () => {
   let component: CopyDocsComponent;
   let fixture: ComponentFixture<CopyDocsComponent>;
 
