@@ -68,9 +68,11 @@ export class AccordionPanelDocsComponent {
   `;
 
   componentBindings: string = `
-  @Input() expanded:  boolean = false;
-  @Input() icon:      string  = null;
-  @Input() heading:     string;
+  @Input() expanded: boolean = false;
+  @Input() icon: string  = null;
+  @Input() heading: string;
+  @Input() persistState: boolean = true;
+  @Input() removeContentPadding: boolean = false;
   `;
 
   constructor(private subNavService: SubNavService) {
