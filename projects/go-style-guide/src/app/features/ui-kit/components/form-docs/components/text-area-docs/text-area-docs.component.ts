@@ -97,6 +97,14 @@ export class TextAreaDocsComponent implements OnInit {
   ></go-text-area>
   `;
 
+  basicRowsExample: string = `
+  <go-text-area
+    [control]="message"
+    label="Your Message"
+    rows="5"
+  ></go-text-area>
+  `;
+
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Textarea';
   }
