@@ -14,6 +14,7 @@ export class TextAreaDocsComponent implements OnInit {
   message6: FormControl = new FormControl({ value: '', disabled: true });
   message7: FormControl = new FormControl('');
   message8: FormControl = new FormControl('');
+  message9: FormControl = new FormControl('');
 
   hints: Array<string> = [
     'Please type your message here',
