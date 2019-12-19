@@ -8,5 +8,6 @@ describe('GoHeaderBarService', () => {
   it('should be created', () => {
     const service: GoHeaderBarService = TestBed.get(GoHeaderBarService);
     expect(service).toBeTruthy();
+    expect(service.activeItem).not.toBeNull();
   });
 });
