@@ -259,10 +259,10 @@
 }
 
 .go-table-toolbar__page-numbers--active { 
-  background-color: $ui-color-positive;
+  background-color: $ui-color-primary;
   color: $theme-dark-color;
 
   &:hover {
-    background-color: $ui-color-positive-hover;
+    background-color: $ui-color-primary-hover;
   }
 }
