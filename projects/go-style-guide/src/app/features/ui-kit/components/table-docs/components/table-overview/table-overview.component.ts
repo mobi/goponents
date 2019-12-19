@@ -19,6 +19,8 @@ export class TableOverviewComponent {
 
   componentBindings: string = `
   @Input() loadingData: boolean = false;
+  @Input() renderBoxShadows: boolean = true;
+  @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
   `;
