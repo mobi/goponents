@@ -39,16 +39,6 @@
   padding: .875rem 1.25rem;
 }
 
-.go-table-header--stacked {
-  align-items: initial;
-  flex-direction: column;
-  justify-content: center;
-
-  .go-table-header__actions {
-    justify-content: initial;
-  }
-}
-
 .go-table {
   max-width: 100%;
   overflow-x: auto;
