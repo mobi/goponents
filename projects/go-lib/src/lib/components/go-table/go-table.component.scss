@@ -54,6 +54,7 @@
   border-spacing: 0;
   color: $theme-light-color;
   width: 100%;
+  border-collapse: separate;
 }
 
 .go-table__head-column {
@@ -281,4 +282,9 @@
 
 .go-table__details {
   left: 0;
+}
+
+
+.go-table__last-sticky-item {
+  border-right: solid 1px $theme-light-color;
 }

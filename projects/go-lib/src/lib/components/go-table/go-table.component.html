@@ -44,7 +44,7 @@
               [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }"
               #goTableRow>
             <td class="go-table__body-column go-table__icon-button-column go-table__body-column--sticky go-table__details"
-                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
+                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails, 'go-table__last-sticky-item': lastStickyColumn === 0 }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="40"
                 *ngIf="details">
@@ -56,7 +56,7 @@
               ></go-icon-button>
             </td>
             <td class="go-table__body-column go-table__body-column--sticky"
-                [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails, 'go-table__last-sticky-item': lastStickyColumn === 1 }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
                 [ngStyle]="{ left: selectableOffSet }"
@@ -68,7 +68,7 @@
             </td>
             <td *ngFor="let col of columns; index as i"
                 class="go-table__body-column"
-                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails, 'go-table__body-column--sticky': col.sticky }"
+                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails, 'go-table__body-column--sticky': col.sticky, 'go-table__last-sticky-item': lastStickyColumn === i + 2 }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 [ngStyle]="{ left: getStickyWidth(col, i) }"
                 [attr.width]="col.width">

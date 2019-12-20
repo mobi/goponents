@@ -68,6 +68,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChildren('goTableRow') rows: QueryList<ElementRef>;
 
   columnWidths: number[] = [];
+  lastStickyColumn: number = 0;
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
   selectableOffSet: string = '0px';
@@ -95,6 +96,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     this.calculateWidths();
+    this.calculateLastStickyColumn();
 
     this.changeDetector.detectChanges();
   }
@@ -442,10 +444,28 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
     this.columnWidths.push(width);
 
-    for (let i: number = index; i < htmlCollection.length - 1; i++) {
+    for (let i: number = 0; i < htmlCollection.length - 1; i++) {
       width = this.columnWidths[i];
 
-      this.columnWidths.push(width + htmlCollection[i].clientWidth);
+      this.columnWidths.push(width + htmlCollection[index].clientWidth);
+      index += 1;
+    }
+  }
+
+  private calculateLastStickyColumn(): void {
+    let index: number = 0;
+
+    this.columns.forEach((column: GoTableColumnComponent) => {
+      if (column.sticky) {
+        this.lastStickyColumn = index + 2;
+        index += 1;
+      } else {
+        return;
+      }
+    });
+
+    if (this.lastStickyColumn === 0 && this.localTableConfig.selectable) {
+      this.lastStickyColumn = 1;
     }
   }
   //#endregion
