@@ -67,12 +67,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
   @ViewChildren('goTableRow') rows: QueryList<ElementRef>;
 
-  localTableConfig: GoTableConfig;
-  selectAllChecked: boolean = false;
-  targetedRows: any[] = [];
-  showTable: boolean = false;
-  pages: GoTablePage[] = [];
   columnWidths: number[] = [];
+  localTableConfig: GoTableConfig;
+  pages: GoTablePage[] = [];
+  selectableOffSet: string = '0px';
+  selectAllChecked: boolean = false;
+  showTable: boolean = false;
+  targetedRows: any[] = [];
 
   constructor(private changeDetector: ChangeDetectorRef) { }
 
@@ -425,15 +426,23 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
     htmlCollection = this.rows.first.nativeElement.children;
 
+    let index: number = 0;
+
     if (this.details) {
+      // client width returns like 140 here which isn't correct...
+      // Not sure why so I'm just gonna hardcode this
       width += 72;
+      index += 1;
     }
+
     if (this.localTableConfig.selectable) {
-      width += 60;
+      this.selectableOffSet = width + 'px';
+      width += htmlCollection[index].clientWidth;
+      index += 1;
     }
     this.columnWidths.push(width);
 
-    for (let i: number = 0; i < htmlCollection.length - 1; i++) {
+    for (let i: number = index; i < htmlCollection.length - 1; i++) {
       width = this.columnWidths[i];
 
       this.columnWidths.push(width + htmlCollection[i].clientWidth);

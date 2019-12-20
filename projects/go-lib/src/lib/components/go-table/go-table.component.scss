@@ -10,7 +10,7 @@
 
 .go-table-header {
   align-items: center;
-  display: flex;  
+  display: flex;
 
   h3 {
     padding: .875rem 0 .875rem 1.25rem;
@@ -68,7 +68,7 @@
   text-align: left;
   text-transform: uppercase;
   white-space: nowrap;
-  background: rgba($theme-light-bg, 1);
+  background: $theme-light-bg;
 
   &:first-of-type {
     border-top-left-radius: $global-radius;
@@ -113,12 +113,12 @@
 }
 
 .go-table__body-row:nth-child(odd) > * {
-  background: rgba($theme-light-bg, 1);
+  background: $theme-light-bg;
   border-bottom: 1px solid $theme-light-app-bg;
 }
 
 .go-table__body-row:nth-child(even) > * {
-  background: rgba($theme-light-app-bg, 1);
+  background: $theme-light-app-bg;
   border-bottom: 1px solid $theme-light-app-bg;
 }
 
@@ -277,4 +277,8 @@
 .go-table__body-column--sticky {
   position: sticky;
   z-index: 1;
+}
+
+.go-table__details {
+  left: 0;
 }

@@ -10,15 +10,14 @@
            *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
-          <th class="go-table__head-column go-table__body-column--sticky"
+          <th class="go-table__head-column go-table__body-column--sticky go-table__details"
               width="40"
-              [ngStyle]="{ left: 0 }"
               *ngIf="details">
           </th>
           <th class="go-table__head-column go-table__head--sortable go-table__body-column--sticky"
               width="60"
               *ngIf="localTableConfig.selectable"
-              [ngStyle]="{ left: 0 }"
+              [ngStyle]="{ left: selectableOffSet }"
               (click)="toggleSelectAll()">
             <input type="checkbox" [checked]="selectAllChecked" name="select_all" #selectAllCheckbox/>
           </th>
@@ -44,11 +43,10 @@
           <tr class="go-table__body-row"
               [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }"
               #goTableRow>
-            <td class="go-table__body-column go-table__icon-button-column go-table__body-column--sticky"
+            <td class="go-table__body-column go-table__icon-button-column go-table__body-column--sticky go-table__details"
                 [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="40"
-                [ngStyle]="{ left: 0 }"
                 *ngIf="details">
               <go-icon-button
                 class="go-table__details-button"
@@ -61,7 +59,7 @@
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
-                [ngStyle]="{ left: 0 }"
+                [ngStyle]="{ left: selectableOffSet }"
                 *ngIf="localTableConfig.selectable">
               <input type="checkbox"
                     [checked]="isRowSelected(item)"
