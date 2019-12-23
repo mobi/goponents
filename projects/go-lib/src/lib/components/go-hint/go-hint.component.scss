@@ -4,7 +4,7 @@
   font-size: .875rem;
   font-style: italic;
   line-height: 1rem;
-  margin: $column-gutter--half 0;
+  margin: $column-gutter--quarter 0;
   padding-left: $column-gutter--three-quarters;
   position: relative;
 
@@ -14,6 +14,7 @@
     bottom: 0;
     content: '';
     left: 0;
+    opacity: .5;
     position: absolute;
     top: 0;
     width: 4px;
@@ -29,22 +30,27 @@
 }
 
 .go-hint--negative::before {
-  background-image: $ui-color-negative-gradient;
+  background-color: $ui-color-negative;
+  opacity: 1;
 }
 
 .go-hint--positive::before {
-  background-image: $ui-color-positive-gradient;
+  background-color: $ui-color-positive;
 }
 
 .go-hint--neutral::before {
-  background-image: $ui-color-neutral-gradient;
+  background-color: $ui-color-neutral;
 }
 
 .go-hint__label {
   display: block;
   font-size: .75rem;
   font-style: normal;
-  font-weight: $weight-bold;
+  font-weight: $weight-regular;
   margin-bottom: $column-gutter--quarter;
   text-transform: uppercase;
+}
+
+.go-hint__label--negative {
+  color: $ui-color-negative;
 }
