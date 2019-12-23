@@ -98,7 +98,7 @@ describe('GoHeaderBarComponent', () => {
 
       component.processBackBtn();
 
-      expect(window.history.back).toHaveBeenCalledTimes(1);
+      expect(window.history.back).toHaveBeenCalled();
     });
 
     it('calls custom method when observer is passed', () => {
@@ -107,7 +107,7 @@ describe('GoHeaderBarComponent', () => {
       component.currentItem.backButtonFn.subscribe(handlerSpy);
       component.processBackBtn();
 
-      expect(handlerSpy).toHaveBeenCalledTimes(1);
+      expect(handlerSpy).toHaveBeenCalled();
     });
   });
 });

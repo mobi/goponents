@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .go-header-bar {
+  position: relative;
   font-family:$primary-font-stack;
   padding-right: $column-gutter--double;
   height: 4.25rem;
@@ -25,11 +26,6 @@
   flex-basis: 2.5rem;
   color: $base-dark;
   font-size: 1.125rem;
-}
-
-.go-header-bar__back-arrow--disabled {
-  color: $base-light-secondary;
-  cursor: default;
 }
 
 .go-header-bar__actions {

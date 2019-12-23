@@ -28,12 +28,10 @@ export class GoHeaderBarComponent implements OnInit, OnDestroy {
   }
 
   processBackBtn(): void {
-    if (this.currentItem.backButtonFn.observers.length === 0) {
-      this.currentItem.backButtonFn.subscribe(() => {
-        window.history.back();
-      });
+    if (this.currentItem.backButtonFn.observers.length !== 0) {
+      this.currentItem.backButtonFn.emit();
+    } else {
+      window.history.back();
     }
-
-    this.currentItem.backButtonFn.emit();
   }
 }
