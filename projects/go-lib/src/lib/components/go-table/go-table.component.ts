@@ -286,7 +286,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       deselectedRows: this.selectAllChecked ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
       selectedRows: !this.selectAllChecked ? this.targetedRows : []
-     });
+    });
   }
 
   isRowSelected(row: any): boolean {
