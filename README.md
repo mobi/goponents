@@ -1,6 +1,6 @@
 # Goponents
 
-###### Currently `v1.3.1`
+###### Currently `v1.4.0`
 
 This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
@@ -8,6 +8,7 @@ This project houses a set of UI components for Angular 7+ and designed around th
 1. Take a look at our [code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md)
 2. Read through our [contribution guidelines](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md)
 3. Install the latest version of npm
+
    ```bash
    npm install -g npm@latest
    ```
@@ -22,9 +23,14 @@ This project houses a set of UI components for Angular 7+ and designed around th
    ```
 5. Start a development test server:
    ```bash
-   ng serve --project=go-tester
+   npm run tester
+   # This will serve the go-tester directory at localhost:4200
    ```
-   _This will serve the go-tester directory at `localhost:4200`_
+   or
+   ```bash
+   npm run style_guide
+   # This will serve the go-style-guide directory at localhost:4200
+   ```
 6. In a separate tab, start the tests for the go-lib components:
    ```bash
    ng test go-lib
@@ -32,26 +38,45 @@ This project houses a set of UI components for Angular 7+ and designed around th
    _Test will continue to run anytime a file is saved. This will help ensure that breaking changes aren't introduced when changes are introduced._
 
 # Directory structure
-The project is separated up into three project directories.
+The project is separated up into four project directories.
 
 ### go-lib
-[projects/go-lib](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-lib) is where all of our production components, services, and other items are built out. If you are adding that you would like to distribute, this is where you will do that work.
+[projects/go-lib](https://github.com/mobi/goponents/tree/master/projects/go-lib) is where all of our production components, services, and other items are built out. If you are adding that you would like to distribute, this is where you will do that work.
 
-The components are located [here](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-lib/src/lib/components):
+The components are located [here](https://github.com/mobi/goponents/tree/master/projects/go-lib/src/lib/components):
 ```bash
 projects/go-lib/src/lib/components
 ```
 
-### go-tester
-[projects/go-tester](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester) is separate app that allows us to test the implementation of our components as we build them out. If you want to test to make sure your go-lib components work as expected in a more real world setting, this is where you will do that work.
+The styles are located [here](https://github.com/mobi/goponents/tree/master/projects/go-lib/src/lib/styles):
+```bash
+projects/go-lib/src/lib/styles
+```
 
-The base tester app is located [here](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester/src/app);
+You can build this project by running `npm run build_lib`
+
+### go-style-guide
+[projects/go-style-guide](https://github.com/mobi/goponents/tree/master/projects/go-style-guide) is separate app contains all of the documentation for the styles and usage of all the components and available styles in the `go-lib` project.
+
+The base style guide app is located [here](https://github.com/mobi/goponents/tree/master/projects/go-style-guide/src/app);
+```bash
+projects/go-style-guide/src/app
+```
+
+You can start this project by running `npm run style_guide`
+
+### go-tester
+[projects/go-tester](https://github.com/mobi/goponents/tree/master/projects/go-tester) is separate app that allows us to test the implementation of our components as we build them out. If you want to test to make sure your go-lib components work as expected in a more real world setting, this is where you will do that work.
+
+The base tester app is located [here](https://github.com/mobi/goponents/tree/master/projects/go-tester/src/app);
 ```bash
 projects/go-tester/src/app
 ```
 
+You can start this project by running `npm run tester`
+
 ### go-tester-e2e
-[projects/go-tester](https://github.com/AlexOverbeck/goponents/tree/master/projects/go-tester-e2e) will eventually be where we will write all of our end to end testing for our go-tester app. We have not yet done this, but we would welcome any [contributions](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md).
+[projects/go-tester-e2e](https://github.com/mobi/goponents/tree/master/projects/go-tester-e2e) will eventually be where we will write all of our end to end testing for our go-tester app. We have not yet done this, but we would welcome any [contributions](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md).
 
 
 # Other Useful Things
@@ -84,6 +109,7 @@ To do this properly, you must export each individual file within the `public_api
 | Component      | Notes                                  |
 |----------------|----------------------------------------|
 | accordion      | Available                              |
+| action sheet   | Available                              |
 | badge          | Available                              |
 | button         | Available                              |
 | card           | Available                              |
@@ -91,12 +117,16 @@ To do this properly, you must export each individual file within the `public_api
 | checkbox group | Available                              |
 | copy button    | Available                              |
 | datepicker     | Available                              |
+| file upload    | Available                              |
+| footer         | Available                              |
 | header         | Available                              |
+| header bar     | Available                              |
+| hint           | Available                              |
 | icon           | Available                              |
 | icon button    | Available                              |
 | input          | Available                              |
-| hint           | Available                              |
 | layout         | Available                              |
+| loader         | Available                              |
 | modal          | Available                              |
 | off-canvas     | Available                              |
 | radio          | Available                              |
@@ -104,15 +134,14 @@ To do this properly, you must export each individual file within the `public_api
 | select         | Available                              |
 | search         | Available                              |
 | side nav       | Available                              |
-| slide toggle   | Available                              |
+| switch toggle  | Available                              |
 | table          | Available                              |
+| tabs           | Available                              |
 | textarea       | Available                              |
+| toaster        | Available                              |
 | toasts         | Available                              |
 |----------------|----------------------------------------|
-| autocomplete   | Will Need                              |
-| masked input   | Will Need                              |
-|----------------|----------------------------------------|
-| tabs           | Idea                                   |
+| masked input   | Idea                                   |
 | tooltip        | Idea                                   |
 | timepicker     | Idea                                   |
 | wysiwyg        | Idea                                   |
