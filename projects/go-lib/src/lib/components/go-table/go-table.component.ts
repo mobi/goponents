@@ -149,7 +149,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.setPage();
 
-      this.tableChange.emit(this.localTableConfig);
+      this.tableChangeOutcome();
       if (!this.isServerMode()) {
         this.handleSort();
       }
@@ -409,18 +409,16 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
-    if (this.localTableConfig.searchConfig.searchable) {
-      this.searchTerm.valueChanges.pipe(
-        debounceTime(500),
-        distinctUntilChanged()
-      ).subscribe((searchTerm: string) => {
-        this.localTableConfig.searchConfig.searchTerm = searchTerm;
-        if (this.localTableConfig.dataMode === GoTableDataSource.client) {
-          this.performSearch(searchTerm.toLowerCase());
-        }
-        this.tableChange.emit();
-      });
-    }
+    this.searchTerm.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((searchTerm: string) => {
+      this.localTableConfig.searchConfig.searchTerm = searchTerm;
+      if (!this.isServerMode()) {
+        this.performSearch(searchTerm.toLowerCase());
+      }
+      this.tableChangeOutcome();
+    });
   }
 
   private performSearch(searchTerm: string): void {

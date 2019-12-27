@@ -31,6 +31,26 @@
           and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
         </p>
       </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">searchable</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding is used in combination with the <code class="code-block--inline">searchConfig</code> in the <code class="code-block--inline">GoTableConfig</code>
+          to tell a column whether it's searchable or not. It defaults to <code class="code-block--inline">true</code>, but can be
+          turned off for columns that don't make sense with searching, like booleans, images or actionable icons. More information
+          can be found <a [routerLink]="['/ui-kit', 'table', 'searching']">here</a>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">sortable</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
+          must have <code class="code-block--inline">sortable</code> set to <code class="code-block--inline">true</code>.
+          By default sorting is enabled when <code class="code-block--inline">sortable</code> is set to <code class="code-block--inline">true</code>
+          within <code class="code-block--inline">GoTableConfig</code>.
+        </p>
+      </div>
       
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">title</h4>
@@ -39,20 +59,10 @@
         </p>
       </div>
       
-      <div class="go-column go-column--100">
+      <div class="go-column go-column--100 go-column--no-padding">
         <h4 class="go-heading-4">width</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           This binding sets the width for column. The value must be in pixels.
-        </p>
-      </div>
-      
-      <div class="go-column go-column--100 go-column--no-padding">
-        <h4 class="go-heading-4">sortable</h4>
-        <p class="go-body-copy go-body-copy--no-margin">
-          This binding defines if sorting is enabled for the column. For this binding to work, <code class="code-block--inline">GoTableConfig</code>
-          must have <code class="code-block--inline">sortable</code> set to <code class="code-block--inline">true</code>.
-          By default sorting is enabled when <code class="code-block--inline">sortable</code> is set to <code class="code-block--inline">true</code>
-          within <code class="code-block--inline">GoTableConfig</code>.
         </p>
       </div>
 

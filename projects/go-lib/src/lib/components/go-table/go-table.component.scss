@@ -289,10 +289,10 @@
   flex: 1;
   font-family: $primary-font-stack;
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: $weight-light;
   letter-spacing: 0.02rem;
   min-width: 250px;
-  padding: .5rem .5rem .5rem 0;
+  padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
 
   &:active, &:focus {
     outline: none;
