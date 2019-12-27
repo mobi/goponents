@@ -5,6 +5,14 @@
       <ng-content select="[go-table-actions]"></ng-content>
     </div>
   </div>
+  <div class="go-table__search-container" *ngIf="localTableConfig.searchConfig.searchable">
+    <go-icon icon="search" class="go-table__search-icon"></go-icon>
+    <input
+      class="go-table__search-input"
+      placeholder="Type to Search..."
+      [formControl]="searchTerm"
+    />
+  </div>
   <div class="go-table">
     <table class="go-table__table"
            *ngIf="hasData(); else noDataTable">

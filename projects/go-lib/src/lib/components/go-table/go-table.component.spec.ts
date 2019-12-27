@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
@@ -29,9 +30,11 @@ describe('GoTableComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GoTableComponent ],
       imports: [
+        FormsModule,
         GoIconButtonModule,
         GoIconModule,
-        GoLoaderModule
+        GoLoaderModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();
