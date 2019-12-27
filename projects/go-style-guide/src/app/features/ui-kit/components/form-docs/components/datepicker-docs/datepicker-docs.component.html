@@ -10,9 +10,12 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           As with most of the form components, the only <code class="code-block--inline">@Input</code>
-          required of the datepicker component is a <code class="code-block--inline">FormControl</code>.
-          The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
-          attribute on the &lt;go-datepicker&gt; component.
+        required of the datepicker component is a <code class="code-block--inline">FormControl</code>.
+        The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
+        attribute on the &lt;go-datepicker&gt; component. A date can be initialized into the datepicker
+        by setting a date on the control. It can be initialized by either a string or a datetime object.
+        If using a string it can be entered as either international format (yyyy-mm-dd) or by the en-US format
+        which is (mm/dd/yyyy). The seperators for the day, month and year can be any of the following ('/', '.', '-')
         </p>
       </div>
 
@@ -24,6 +27,10 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicInputExampleComponent"
+              class="code-block--no-bottom-margin"
+            ></code>
             <code
               [highlight]="basicInputExample"
               class="code-block--no-bottom-margin"

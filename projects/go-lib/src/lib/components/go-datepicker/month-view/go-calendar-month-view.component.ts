@@ -77,13 +77,9 @@ export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
     this.setYear.emit(this.year.value - 1);
   }
 
-  public switchView(): void {
-    this.setView.emit('day');
-  }
-
   public pickMonth(month: number): void {
     this.setMonth.emit(month);
-    this.switchView();
+    this.setView.emit('day');
   }
 
   private setUpMonths(): void {

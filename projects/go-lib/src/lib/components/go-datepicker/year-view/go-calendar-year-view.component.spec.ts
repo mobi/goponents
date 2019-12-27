@@ -41,7 +41,7 @@ describe('GoCalendarYearViewComponent', () => {
       fixture.detectChanges();
       component.nextYearGroup();
 
-      expect(component.years[0][0].value).toBe(2024);
+      expect(component.years[0][0].value).toBe(2021);
     });
   });
 
@@ -50,7 +50,7 @@ describe('GoCalendarYearViewComponent', () => {
       fixture.detectChanges();
       component.previousYearGroup();
 
-      expect(component.years[5][3].value).toBe(1999);
+      expect(component.years[2][3].value).toBe(2008);
     });
   });
 
@@ -61,16 +61,16 @@ describe('GoCalendarYearViewComponent', () => {
       component.year.value = 2015;
     });
 
-    it('sets up a first year 15 years before the selected year', () => {
+    it('sets up a first year 6 years before the selected year', () => {
       fixture.detectChanges();
-      expect(component.years[0][0].value).toBe(2000);
-      expect(component.firstYear.value).toBe(2000);
+      expect(component.years[0][0].value).toBe(2009);
+      expect(component.firstYear.value).toBe(2009);
     });
 
-    it('sets up a last year 15 years before the selected year', () => {
+    it('sets up a last year 5 years after the selected year', () => {
       fixture.detectChanges();
-      expect(component.years[5][3].value).toBe(2023);
-      expect(component.lastYear.value).toBe(2023);
+      expect(component.years[2][3].value).toBe(2020);
+      expect(component.lastYear.value).toBe(2020);
     });
 
     it('sets the focused year to be the year passed in', () => {
@@ -119,41 +119,41 @@ describe('GoCalendarYearViewComponent', () => {
     });
 
     it('should not change years if next year group is disabled and last year in group', () => {
-      component.focusedYear.value = 2023;
+      component.focusedYear.value = 2020;
       component.nextGroupDisabled = true;
       keyPress('ArrowRight');
 
-      expect(component.focusedYear.value).toEqual(2023);
+      expect(component.focusedYear.value).toEqual(2020);
     });
 
     it('should not change years if previous year group is disabled and first year in group', () => {
-      component.focusedYear.value = 2000;
+      component.focusedYear.value = 2009;
       component.previousGroupDisabled = true;
       keyPress('ArrowLeft');
 
-      expect(component.focusedYear.value).toEqual(2000);
+      expect(component.focusedYear.value).toEqual(2009);
     });
 
     it('should set year group to next year group if last year in group', () => {
-      component.focusedYear.value = 2023;
+      component.focusedYear.value = 2020;
       keyPress('ArrowRight');
 
-      expect(component.focusedYear.value).toEqual(2024);
-      expect(component.firstYear.value).toBe(2024);
-      expect(component.years[0][0].value).toBe(2024);
-      expect(component.lastYear.value).toBe(2047);
-      expect(component.years[5][3].value).toBe(2047);
+      expect(component.focusedYear.value).toEqual(2021);
+      expect(component.firstYear.value).toBe(2021);
+      expect(component.years[0][0].value).toBe(2021);
+      expect(component.lastYear.value).toBe(2032);
+      expect(component.years[2][3].value).toBe(2032);
     });
 
     it('should set year group to previous year group if first year in group', () => {
-      component.focusedYear.value = 2000;
+      component.focusedYear.value = 2009;
       keyPress('ArrowLeft');
 
-      expect(component.focusedYear.value).toEqual(1999);
-      expect(component.firstYear.value).toBe(1976);
-      expect(component.years[0][0].value).toBe(1976);
-      expect(component.lastYear.value).toBe(1999);
-      expect(component.years[5][3].value).toBe(1999);
+      expect(component.focusedYear.value).toEqual(2008);
+      expect(component.firstYear.value).toBe(1997);
+      expect(component.years[0][0].value).toBe(1997);
+      expect(component.lastYear.value).toBe(2008);
+      expect(component.years[2][3].value).toBe(2008);
     });
 
     it('should submit the year if valid year when enter pressed', () => {
