@@ -7,6 +7,7 @@ import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoModalModule } from '../go-modal/go-modal.module';
 import { GoOffCanvasModule } from '../go-off-canvas/go-off-canvas.module';
 import { GoToasterModule } from '../go-toaster/go-toaster.module';
+import { GoHeaderBarModule } from '../go-header-bar/go-header-bar.module';
 
 import { GoModalService } from '../go-modal/go-modal.service';
 import { GoOffCanvasService } from '../go-off-canvas/go-off-canvas.service';
@@ -24,6 +25,7 @@ import { GoLayoutComponent } from './go-layout.component';
     RouterModule,
     // Goponents
     GoHeaderModule,
+    GoHeaderBarModule,
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,

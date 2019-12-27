@@ -1,3 +1,14 @@
+<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" (handleBackButton)="goBack()">
+  <div class="go-button-group">
+    <div class="go-button-group__item">
+      <go-button (handleClick)="saveClick()">save</go-button>
+    </div>
+    <div class="go-button-group__item">
+      <go-button (handleClick)="cancelClick()">Cancel</go-button>
+    </div>
+  </div>
+</ng-template>
+
 <div class="go-container">
   <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
     <go-accordion-panel title="Test 1" icon="home" [expanded]="true">

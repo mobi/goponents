@@ -1,0 +1,36 @@
+@import "../../../styles/variables";
+
+.go-header-bar {
+  position: relative;
+  font-family:$primary-font-stack;
+  padding-right: $column-gutter--double;
+  height: 4.25rem;
+  background: $base-light;
+  box-shadow: $global-box-shadow--regular;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.go-header-bar__title {
+  padding: 0 $column-gutter--double;
+  margin-bottom: -$column-gutter--quarter;
+}
+
+.go-header-bar__back-arrow {
+  cursor: pointer;
+  align-items: center;
+  padding: $column-gutter+$column-gutter--half $column-gutter;
+  margin-right: -$column-gutter;
+  border-right: solid 1px $theme-light-border;
+  flex-basis: 2.5rem;
+  color: $base-dark;
+  font-size: 1.125rem;
+}
+
+.go-header-bar__actions {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  padding-right: $column-gutter--double;
+}
