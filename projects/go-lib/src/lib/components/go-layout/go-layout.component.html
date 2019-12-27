@@ -8,7 +8,11 @@
 
       <go-header-bar #headerBar [@routerAnimation]="routeAnimation(mainRouter)"></go-header-bar>
 
-      <main class="go-layout__route-container" [@routerAnimation]="routeAnimation(mainRouter)">
+      <main
+        class="go-layout__route-container"
+        [@routerAnimation]="routeAnimation(mainRouter)"
+        #routeContainer
+      >
   
         <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet">
         </router-outlet>
