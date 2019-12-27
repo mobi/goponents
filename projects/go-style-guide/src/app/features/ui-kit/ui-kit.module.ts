@@ -29,6 +29,7 @@ import {
   GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
   GoTableModule,
+  GoTabModule,
   GoTextAreaModule,
   GoToasterService,
   GoToastModule
@@ -91,6 +92,7 @@ import { RadioButtonDocsComponent } from './components/form-docs/components/radi
 import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
 import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
+import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
 
 @NgModule({
   imports: [
@@ -108,6 +110,7 @@ import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-
     GoIconModule,
     GoInputModule,
     GoSelectModule,
+    GoTabModule,
     GoTextAreaModule,
     GoLoaderModule,
     GoModalModule,
@@ -160,6 +163,7 @@ import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-
     LayoutHeaderComponent,
     LayoutSearchComponent,
     LayoutExampleComponent,
+    TabDocsComponent,
     TableDetailsComponent,
     TableDetailsTestComponent,
     TableSelectionComponent,

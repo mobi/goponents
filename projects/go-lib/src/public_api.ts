@@ -121,6 +121,11 @@ export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
 export * from './lib/components/go-switch-toggle/go-switch-toggle.component';
 export * from './lib/components/go-switch-toggle/go-switch-toggle.module';
 
+// Tab
+export * from './lib/components/go-tab/go-tab.component';
+export * from './lib/components/go-tab/go-tab.module';
+export * from './lib/components/go-tab/go-tab-group.component';
+
 // Table
 export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';

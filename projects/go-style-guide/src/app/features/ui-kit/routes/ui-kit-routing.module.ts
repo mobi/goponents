@@ -49,6 +49,7 @@ import { SwitchToggleDocsComponent } from '../components/form-docs/components/sw
 import { RadioButtonDocsComponent } from '../components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from '../components/form-docs/components/checkbox-docs/checkbox-docs.component';
 import { TableDetailsComponent } from '../components/table-docs/components/table-details/table-details.component';
+import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -91,6 +92,7 @@ const routes: Routes = [
   { path: 'ui-kit/icon', component: IconDocsComponent },
   { path: 'ui-kit/modal', component: ModalDocsComponent },
   { path: 'ui-kit/off-canvas', component: OffCanvasDocsComponent },
+  { path: 'ui-kit/tabs', component: TabDocsComponent },
   { path: 'ui-kit/table', component: TableDocsComponent, children: [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },

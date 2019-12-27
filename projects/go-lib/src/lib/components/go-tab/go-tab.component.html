@@ -1,0 +1,8 @@
+<ng-container *ngIf="active">
+  <ng-container *ngIf="tabContent; else tabContentElse">
+    <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+  </ng-container>
+  <ng-template #tabContentElse>
+    <ng-content></ng-content>
+  </ng-template>
+</ng-container>
