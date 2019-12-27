@@ -25,7 +25,8 @@
     "publish_local": "npm run package && node ./local_install.js",
     "sass-lint": "node_modules/.bin/sass-lint -c .sass-lint.yml",
     "style_guide": "ng serve --project=go-style-guide",
-    "style_guide_publish": "ng build --prod --project=go-style-guide"
+    "style_guide_publish": "ng build --prod --project=go-style-guide",
+    "tester": "ng serve --project=go-tester"
   },
   "private": true,
   "engines": {
