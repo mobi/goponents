@@ -1,53 +1,67 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .go-calendar__header {
+  color: $theme-light-color;
   display: inline-flex;
+  font-size: .875rem;
   height: 1rem;
   margin-top: 0.5rem;
+  padding: 0 .5rem;
   width: 100%;
   padding-bottom: 1.5rem;
+  justify-content: space-between;
 }
 
-.go-calendar__header--left {
+.go-calendar__header--center {
   display: flex;
-  flex: 1;
-  margin-left: .5rem;
-
-  &:hover, &:active, &:focus {
-    background: $theme-light-bg-hover;
-    cursor: pointer;
-  }
 }
 
-.go-calendar__header--right {
+.go-calendar__header--center-offset {
+  margin-left: .5rem;
+}
+
+.go-calendar__header--outside {
   align-items: center;
   display: flex;
-  padding-top: .5rem;
+  padding: .5rem;
 }
 
 .go-calendar__date {
-  line-height: 2rem;
-  text-align: right;
-  margin: 5px;
+  line-height: 1.5rem;
+  padding: 0 .25rem;
+}
+
+.go-calendar__date--tall {
+  padding: .5rem .25rem;
 }
 
 .go-calendar__header-dropdown {
-  margin-top: -.5rem;
+  padding-left: .25rem;
+  margin-top: -.25rem;
 }
 
 .go-calendar__body--header {
-  border-bottom: 1px solid black;
   padding-bottom: .5rem;
   padding-top: .5rem;
+  font-size: 0.875rem;
+}
+
+.go-calendar__body--header-border {
+  border-bottom: 1px solid $theme-light-border;
 }
 
 .go-calendar__cell {
+  @include transition(all);
+
   border-style: hidden;
   border-radius: 1.5rem;
-  font-size: .75rem;
-  height: 1.75rem;
-  width: 90%;
-  padding: 5%;
+  font-size: 0.75rem;
+  padding: 0px;
+  height: 1.375rem;
+  width: 2.5rem;
+  font-weight: $weight-light;
+  font-family: $primary-font-stack;
 
   &:hover, &:active, &:focus {
     background: $theme-light-bg-hover;
@@ -59,15 +73,53 @@
   }
 
   &.go-calendar__cell--selected {
-    background-color: $ui-color-neutral-hover;
-    color: $theme-dark-text-color;
+    font-weight: $weight-regular;
+    background-color: $ui-color-primary;
+    color: $theme-dark-color;
   }
 }
 
-.go-calendar__body__border {
-  border-top: 1px solid black;
+.go-calendar__cell--date {
+  width: 1.375rem;
 }
 
 .go-calendar__table {
+  color: $theme-light-color;
   width: 100%;
+}
+
+.go-calendar__body--padding {
+  padding-top: .5rem;
+}
+
+.go-calendar__row {
+  .go-calendar__date:first-child, .go-calendar__body--header:first-child {
+    padding-left: 1rem;
+  }
+
+  .go-calendar__date:last-child, .go-calendar__body--header:last-child {
+    padding-right: 1rem;
+  }
+}
+
+.go-calendar__row:last-child {
+  .go-calendar__date:last-child {
+    padding-right: 0;
+  }
+
+  .go-calendar__date {
+    padding-bottom: .625rem;
+  }
+
+  .go-calendar__date--tall {
+    padding-bottom: 1.5rem;
+  }
+}
+
+.go-calendar__icon {
+  font-size: .875rem;
+}
+
+:host ::ng-deep .go-icon-button {
+  padding: 4px;
 }

@@ -67,4 +67,16 @@ export class TestPage1Component implements OnInit {
     const action: string = selectionEvent.currentRow.selected ? 'Selected: ' : 'Deselected: ';
     this.toasterService.toastInfo({ message: action + selectionEvent.currentRow.data['email'] });
   }
+
+  goBack(): void {
+    this.toasterService.toastInfo({ message: 'Back button clicked' });
+  }
+
+  saveClick(): void {
+    this.toasterService.toastSuccess({ message: 'Save clicked!' });
+  }
+
+  cancelClick(): void {
+    this.toasterService.toastError({ message: 'Cancel clicked!' });
+  }
 }

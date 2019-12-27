@@ -4,18 +4,27 @@
     <nav>
       <ng-content select="[go-layout-nav]"></ng-content>
     </nav>
-    <main class="go-layout__route-container"
-          [@routerAnimation]="routeAnimation(mainRouter)">
-      <router-outlet class="go-layout__route-container-outlet"
-                    #mainRouter="outlet">
-      </router-outlet>
+    <div class="go-layout__view-container">
 
-      <ng-content
-        class="go--footer"
-        *ngIf="!routeLoader"
-        select="[go-layout-footer]"
-      ></ng-content>
-    </main>
+      <go-header-bar #headerBar [@routerAnimation]="routeAnimation(mainRouter)"></go-header-bar>
+
+      <main
+        class="go-layout__route-container"
+        [@routerAnimation]="routeAnimation(mainRouter)"
+        #routeContainer
+      >
+  
+        <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet">
+        </router-outlet>
+        
+        <ng-content class="go--footer"
+                    select="[go-layout-footer]"
+                    [@routerAnimation]="routeAnimation(mainRouter)">
+        </ng-content>
+
+      </main>
+
+    </div>
   </div>
   <div class="go-route-loader"
       *ngIf="routeLoader"

@@ -1,11 +1,11 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 <div class="go-container">
   <section class="go-column go-column--100">
     <go-card>
       <ng-container go-card-header>
-        <h1 class="go-heading-4">SASS Color Variables</h1>
+        <h2 class="go-heading-2">SASS Color Variables</h2>
       </ng-container>
       <ng-container go-card-content>
         <p class="go-body-copy">
@@ -21,7 +21,7 @@
   <section id="go-color-base" class="go-column go-column--100">
     <go-card>
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Base Colors</h1>
+        <h2 class="go-heading-2">Base Colors</h2>
       </ng-container>
       <ng-container go-card-content>
         <section class="go-container">
@@ -52,18 +52,18 @@
     </go-card>
   </section>
 
-  <section id="go-color-positive" class="go-column go-column--100">
+  <section id="go-color-primary" class="go-column go-column--100">
     <go-card>
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Galaxy Blue</h1>
+        <h2 class="go-heading-2">Galaxy Blue</h2>
       </ng-container>
       <ng-container go-card-content>
         <section class="go-container">
           <div class="go-column go-column--50">
             <p class="go-body-copy">
-              Galaxy Blue should be used when an action will result in a completion (ex: form submission), to indicate a positive event
-              (ex: form completion), a positive status (ex: indicator), or to show a numerical positive (ex: currency). <br/>
-              <caption>Base SASS variable: $ui-color-positive</caption>
+              Galaxy Blue should be used when there is a primary action on a page or other
+              minor accents in the UI.<br/>
+              <caption>Base SASS variable: $ui-color-primary</caption>
             </p>
             <div class="go-color-items">
               <div class="go-color-items__item">
@@ -88,10 +88,46 @@
     </go-card>
   </section>
 
+  <section id="go-color-positive" class="go-column go-column--100">
+    <go-card>
+      <ng-container go-card-header>
+        <h2 class="go-heading-2">Earth Green</h2>
+      </ng-container>
+      <ng-container go-card-content>
+        <section class="go-container">
+          <div class="go-column go-column--50">
+            <p class="go-body-copy">
+              Earth Green should be used to indicate a positive event (ex: form completion), a positive status (ex: indicator),
+               or to show a numerical positive (ex: currency). <br/>
+              <caption>Base SASS variable: $ui-color-positive</caption>
+            </p>
+            <div class="go-color-items">
+              <div class="go-color-items__item">
+                <span class="overline">#1D8915</span>
+              </div>
+              <div class="go-color-items__item">
+                <span class="overline">#1a7a13</span>
+              </div>
+              <div class="go-color-items__item">
+                <span class="overline">#166a10</span>
+              </div>
+              <div class="go-color-items__item">
+                <span class="overline">$ui-color-positive-gradient</span>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <code [highlight]="earthGreen"></code>
+          </div>
+        </section>
+      </ng-container>
+    </go-card>
+  </section>
+  
   <section id="go-color-negative" class="go-column go-column--100">
     <go-card>
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Horizon Red</h1>
+        <h2 class="go-heading-2">Horizon Red</h2>
       </ng-container>
       <ng-container go-card-content>
         <section class="go-container">
@@ -107,10 +143,10 @@
                 <span class="overline">#DD4C4C</span>
               </div>
               <div class="go-color-items__item">
-                <span class="overline">#BA3F3F</span>
+                <span class="overline">#DA3D3D</span>
               </div>
               <div class="go-color-items__item">
-                <span class="overline">#A83939</span>
+                <span class="overline">#D72E2E</span>
               </div>
               <div class="go-color-items__item">
                 <span class="overline">$ui-color-negative-gradient</span>
@@ -128,7 +164,7 @@
   <section id="go-color-neutral" class="go-column go-column--100">
     <go-card>
       <ng-container go-card-header>
-        <h1 class="go-heading-5">Nebula Purple</h1>
+        <h2 class="go-heading-2">Nebula Purple</h2>
       </ng-container>
       <ng-container go-card-content>
         <section class="go-container">
@@ -142,10 +178,10 @@
                 <span class="overline">#8A4EDE</span>
               </div>
               <div class="go-color-items__item">
-                <span class="overline">#7F47CC</span>
+                <span class="overline">#803FDB</span>
               </div>
               <div class="go-color-items__item">
-                <span class="overline">#7441BA</span>
+                <span class="overline">#7630D8</span>
               </div>
               <div class="go-color-items__item">
                 <span class="overline">$ui-color-neutral-gradient</span>

@@ -31,12 +31,14 @@ export class AppComponent {
       { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
       { route: 'ui-kit/forms', routeTitle: 'Forms' },
+      { route: 'ui-kit/header-bar', routeTitle: 'Header Bar' },
+      { route: 'ui-kit/icon', routeTitle: 'Icon' },
       { route: 'ui-kit/icon-button', routeTitle: 'Icon Button' },
       { route: 'ui-kit/layout', routeTitle: 'Layout' },
       { route: 'ui-kit/loader', routeTitle: 'Loader' },
-      { route: 'ui-kit/icon', routeTitle: 'Icon' },
       { route: 'ui-kit/modal', routeTitle: 'Modal' },
       { route: 'ui-kit/off-canvas', routeTitle: 'Off Canvas' },
+      { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' }
     ]}

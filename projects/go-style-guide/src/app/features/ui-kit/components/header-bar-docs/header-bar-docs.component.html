@@ -1,0 +1,60 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+</header>
+
+<ng-template #buttons>
+  <div class="go-button-group">
+    <div class="go-button-group__item">
+      <go-button (handleClick)="cancelClick()">Cancel</go-button>
+    </div>
+    <div class="go-button-group__item">
+      <go-button (handleClick)="saveClick()">Save</go-button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template *ngIf="!showBackArrow" goHeaderBar heading="Header Bar Example">
+  <ng-template *ngTemplateOutlet="buttons"></ng-template>
+</ng-template>
+
+<ng-template *ngIf="showBackArrow" goHeaderBar heading="Header Bar Example" (handleBackButton)="goBackClicked()"
+             [showBackArrow]="showBackArrow">
+  <ng-template *ngTemplateOutlet="buttons"></ng-template>
+</ng-template>
+
+<section class="go-container">
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-header-bar&gt;</code> component should be used for the title of a detail page and can incorporate form submit buttons
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-2">Back Arrow</h2>
+        <p class="go-body-copy">The Header Bar can optionally include a back arrow on the left and buttons on the right</p>
+        <go-switch-toggle [control]="backArrowSwitchControl" label="Back Arrow"></go-switch-toggle>
+        <code class="show-arrow-input code-block--inline">@Input() showBackArrow: boolean = {{ showBackArrow }}</code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-2">Bindings</h2>
+        <code [highlight]="inputsBindings"></code>
+        <p class="go-body-copy"><code class="code-block--inline">title</code> will display the title on the left side of the Header Bar</p>
+        <p class="go-body-copy"><code class="code-block--inline">showBackArrow</code> will show or hide the back arrow</p>
+        <p class="go-body-copy">
+          <code class="code-block--inline">handleBackButton</code> would be a custom function to be called when the back
+          button is clicked. If no function is bound, <code class="code-block--inline">window.history.back()</code> will be called.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-2">Example</h2>
+        <code [highlight]="exampleCode"></code>
+      </div>
+    </div>
+
+  </go-card>
+</section>

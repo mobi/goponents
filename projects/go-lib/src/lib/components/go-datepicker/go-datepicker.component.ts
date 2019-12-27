@@ -44,6 +44,13 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
       this.datePicked(this.initializeDate(this.control.value));
     }
 
+    this.initializePlaceholder();
+
+    if (!this.control.value && this.selectedDate) {
+      // valueChanges doesn't pick up the initialized date
+      this.control.setErrors([{ message: 'format is invalid' }]);
+    }
+
     this.subscription = this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {
         this.control.setErrors([{ message: 'format is invalid' }]);
@@ -101,5 +108,9 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     idArray.push(String(Math.round(Math.random() * 1000000)));
 
     return idArray.join('-');
+  }
+
+  private initializePlaceholder(): void {
+    this.placeholder = this.placeholder || LocaleFormat.format(this.locale);
   }
 }

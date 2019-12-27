@@ -1,8 +1,9 @@
 <section class="go-container">
   <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
+
   <go-card id="setup" class="go-column--100 go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Setup</h1>
+      <h2 class="go-heading-2">Setup</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -10,105 +11,126 @@
       </p>
       <code [highlight]="checkboxSetup"
             class="code-block--no-bottom-margin">
-    </code>
+      </code>
     </ng-container>
   </go-card>
 
   <go-card id="form-checkbox" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Simplest Implementation</h1>
+      <h2 class="go-heading-2">Simplest Implementation</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        This simpliest way to implement a checkbox requires a <code class="code-block--inline">&lt;go-checkbox&gt;</code> with the
-        <code class="code-block--inline">label</code> and <code class="code-block--inline">[control]</code> bindings
-      </p>
-      <p class="go-body-copy">
-        On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the 
-        <code class="code-block--inline">label</code> is the name that identifies this checkbox
-        and the <code class="code-block--inline">[control]</code> is the corresponding <code class="code-block--inline">FormControl</code>.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-checkbox label="Checkbox 1" [control]="checkbox1">
-          </go-checkbox>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkbox1Ex"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+      
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          This simpliest way to implement a checkbox requires a <code class="code-block--inline">&lt;go-checkbox&gt;</code> with the
+          <code class="code-block--inline">label</code> and <code class="code-block--inline">[control]</code> bindings
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the 
+          <code class="code-block--inline">label</code> is the name that identifies this checkbox
+          and the <code class="code-block--inline">[control]</code> is the corresponding <code class="code-block--inline">FormControl</code>.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-checkbox label="Checkbox 1" [control]="checkbox1">
+            </go-checkbox>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkbox1Ex"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-checkbox-group" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Group Implementation</h1>
+      <h2 class="go-heading-2">Group Implementation</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Sometimes it makes sense to combine a series of checkboxes into a group, there is a component for that,
-        <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>.
-      </p>
-      <p class="go-body-copy">
-        On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on 
-        this component are the <code class="code-block--inline">legend</code> (identifies this set of options)
-        and the <code class="code-block--inline">[control]</code> (corresponds to a <code class="code-block--inline">FormControl</code>).
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-checkbox-group legend="Options" [control]="checkboxGroup1">
-            <go-checkbox label="Option 1" [control]="checkboxGroup1.controls.option1">
-            </go-checkbox>
-            <go-checkbox label="Option 2" [control]="checkboxGroup1.controls.option2">
-            </go-checkbox>
-          </go-checkbox-group>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkboxGroup1Ex_ts"
-                class="code-block--no-bottom-margin">
-          </code>
-          <code [highlight]="checkboxGroup1Ex"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Sometimes it makes sense to combine a series of checkboxes into a group, there is a component for that,
+          <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on 
+          this component are the <code class="code-block--inline">legend</code> (identifies this set of options)
+          and the <code class="code-block--inline">[control]</code> (corresponds to a <code class="code-block--inline">FormControl</code>).
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-checkbox-group legend="Options" [control]="checkboxGroup1">
+              <go-checkbox label="Option 1" [control]="checkboxGroup1.controls.option1">
+              </go-checkbox>
+              <go-checkbox label="Option 2" [control]="checkboxGroup1.controls.option2">
+              </go-checkbox>
+            </go-checkbox-group>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkboxGroup1Ex_ts"
+                  class="code-block--no-bottom-margin">
+            </code>
+            <code [highlight]="checkboxGroup1Ex"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-checkbox-key" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Checkbox Keys</h1>
+      <h2 class="go-heading-2">Checkbox Keys</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        The label attribute is used to generate a unique ID to associate the label with the checkbox.
-        As this might not be desired, the <code class="code-block--inline">@Input() key: string;</code>
-        can be used to configure the ID attribute of the checkbox directly.
-        Anything passed into the component via the <code class="code-block--inline">[key]</code>
-        attribute will be used to both assign the ID to the checkbox and
-        associate the label with the checkbox button.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-checkbox label="Checkbox 2"
-                       [control]="checkbox2"
-                       key="checkbox_2">
-          </go-checkbox>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkbox2Ex" class="code-block--no-bottom-margin"></code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The label attribute is used to generate a unique ID to associate the label with the checkbox.
+          As this might not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          can be used to configure the ID attribute of the checkbox directly.
+          Anything passed into the component via the <code class="code-block--inline">[key]</code>
+          attribute will be used to both assign the ID to the checkbox and
+          associate the label with the checkbox button.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-checkbox label="Checkbox 2"
+                        [control]="checkbox2"
+                        key="checkbox_2">
+            </go-checkbox>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkbox2Ex" class="code-block--no-bottom-margin"></code>
+          </div>
         </div>
       </div>
-      <div class="go-column go-column--100">
-        <h2 class="go-heading-6 go-heading--underlined">Example Output</h2>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
         <p class="go-body-copy">
           Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
           to both the <code class="code-block--inline">id</code> attribute on
@@ -117,141 +139,163 @@
         </p>
         <code [highlight]="checkbox2KeyCode" class="code-block--no-bottom-margin"></code>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-checkbox-hints" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Checkbox Hints</h1>
+      <h2 class="go-heading-2">Checkbox Hints</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        Form hints exist to help give more information about the checkbox & checkbox groups they are attached to.
-        The <code class="code-block--inline">@Input() hints: Array&lt;string&gt;</code>
-        can be used to pass in an array of hints to either the checkbox group or an individual checkbox component.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <div class="go-container">
-            <div class="go-column go-column--100">
-              <go-checkbox-group legend="Options"
-                                 [control]="checkboxGroup2"
-                                 [hints]="groupHints">
-                <div>
-                  <go-checkbox label="Option 1"
-                               [control]="checkboxGroup2.controls.option1">
-                  </go-checkbox>
-                </div>
-                <div>
-                  <go-checkbox label="Option 2"
-                               [control]="checkboxGroup2.controls.option2">
-                  </go-checkbox>
-                </div>
-              </go-checkbox-group>
-            </div>
-            <div class="go-column--100 go-column">
-              <go-checkbox label="Checkbox 3"
-                          [control]="checkbox3"
-                          [hints]="checkbox3Hints">
-              </go-checkbox>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          Form hints exist to help give more information about the checkbox & checkbox groups they are attached to.
+          The <code class="code-block--inline">@Input() hints: Array&lt;string&gt;</code>
+          can be used to pass in an array of hints to either the checkbox group or an individual checkbox component.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-checkbox-group legend="Options"
+                                  [control]="checkboxGroup2"
+                                  [hints]="groupHints">
+                  <div>
+                    <go-checkbox label="Option 1"
+                                [control]="checkboxGroup2.controls.option1">
+                    </go-checkbox>
+                  </div>
+                  <div>
+                    <go-checkbox label="Option 2"
+                                [control]="checkboxGroup2.controls.option2">
+                    </go-checkbox>
+                  </div>
+                </go-checkbox-group>
+              </div>
+              <div class="go-column--100 go-column">
+                <go-checkbox label="Checkbox 3"
+                            [control]="checkbox3"
+                            [hints]="checkbox3Hints">
+                </go-checkbox>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkbox3HintsCode"
-                class="code-block--no-bottom-margin">
-          </code>
-          <code [highlight]="checkbox3Ex"
-                class="code-block--no-bottom-margin">
-          </code>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkbox3HintsCode"
+                  class="code-block--no-bottom-margin">
+            </code>
+            <code [highlight]="checkbox3Ex"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-checkbox-theme" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Checkbox Theme</h1>
+      <h2 class="go-heading-2">Checkbox Theme</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        By default the theme for the checkboxes is 'light', but there could be
-        and instance where we need a 'dark' theme. There is a binding
-        available for that on both the checkbox itself and a checkbox group.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50 go-column--dark">
-          <h2 class="go-heading-6 go-heading--underlined" style="color: #fff;">View</h2>
-          <div class="go-container">
-            <div class="go-column go-column--100">
-              <go-checkbox-group legend="Options"
-                                 [control]="checkboxGroup3"
-                                 theme="dark">
-                <div>
-                  <go-checkbox label="Option 1"
-                                [control]="checkboxGroup3.controls.option1">
-                  </go-checkbox>
-                </div>
-                <div>
-                  <go-checkbox label="Option 2"
-                                [control]="checkboxGroup3.controls.option2">
-                  </go-checkbox>
-                </div>
-              </go-checkbox-group>
-            </div>
-            <div class="go-column--100 go-column">
-              <go-checkbox label="Checkbox 4"
-                          [control]="checkbox4"
-                          theme="dark">
-              </go-checkbox>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the theme for the checkboxes is 'light', but there could be
+          and instance where we need a 'dark' theme. There is a binding
+          available for that on both the checkbox itself and a checkbox group.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50 go-column--dark">
+            <h4 class="go-heading-4 go-heading--underlined" style="color: #fff;">View</h4>
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-checkbox-group legend="Options"
+                                  [control]="checkboxGroup3"
+                                  theme="dark">
+                  <div>
+                    <go-checkbox label="Option 1"
+                                  [control]="checkboxGroup3.controls.option1">
+                    </go-checkbox>
+                  </div>
+                  <div>
+                    <go-checkbox label="Option 2"
+                                  [control]="checkboxGroup3.controls.option2">
+                    </go-checkbox>
+                  </div>
+                </go-checkbox-group>
+              </div>
+              <div class="go-column--100 go-column">
+                <go-checkbox label="Checkbox 4"
+                            [control]="checkbox4"
+                            theme="dark">
+                </go-checkbox>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkbox4Ex"
-                class="code-block--no-bottom-margin">
-          </code>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkbox4Ex"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 
   <go-card id="form-checkbox" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h1 class="go-heading-5">Checkbox Disabled</h1>
+      <h2 class="go-heading-2">Checkbox Disabled</h2>
     </ng-container>
-    <ng-container go-card-content>
-      <p class="go-body-copy">
-        This <code class="code-block--inline">@Input() disabled: boolean = false;</code> can be used to disable the checkbox.
-        This should be handled by the parent component.
-      </p>
-      <div class="go-container">
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">View</h2>
-          <go-checkbox-group legend="Options" [control]="checkboxGroup4">
-            <go-checkbox label="Option 1"
-                         [control]="checkboxGroup4.controls.option1"
-                         disabled="option1Disabled">
-            </go-checkbox>
-            <go-checkbox label="Option 2"
-                         [control]="checkboxGroup4.controls.option2"
-                         disabled="option2Disabled">
-            </go-checkbox>
-          </go-checkbox-group>
-        </div>
-        <div class="go-column go-column--50">
-          <h2 class="go-heading-6 go-heading--underlined">Code</h2>
-          <code [highlight]="checkboxDisabledEx_ts"
-                class="code-block--no-bottom-margin">
-          </code>
-          <code [highlight]="checkboxDisabledEx"
-                class="code-block--no-bottom-margin">
-          </code>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          This <code class="code-block--inline">@Input() disabled: boolean = false;</code> can be used to disable the checkbox.
+          This should be handled by the parent component.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-checkbox-group legend="Options" [control]="checkboxGroup4">
+              <go-checkbox label="Option 1"
+                          [control]="checkboxGroup4.controls.option1"
+                          disabled="option1Disabled">
+              </go-checkbox>
+              <go-checkbox label="Option 2"
+                          [control]="checkboxGroup4.controls.option2"
+                          disabled="option2Disabled">
+              </go-checkbox>
+            </go-checkbox-group>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="checkboxDisabledEx_ts"
+                  class="code-block--no-bottom-margin">
+            </code>
+            <code [highlight]="checkboxDisabledEx"
+                  class="code-block--no-bottom-margin">
+            </code>
+          </div>
         </div>
       </div>
-    </ng-container>
+
+    </div>
   </go-card>
 </section>

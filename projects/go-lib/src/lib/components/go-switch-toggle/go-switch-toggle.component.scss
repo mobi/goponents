@@ -1,6 +1,10 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+.go-form__switch-toggle__container {
+  display: flex;
+}
+
 .go-form__switch-toggle {
   display: inline-block;
   height: 1.125rem;
@@ -40,8 +44,8 @@
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
-  background-color: $ui-color-positive;
-  border-color: $ui-color-positive;
+  background-color: $ui-color-primary;
+  border-color: $ui-color-primary;
 }
 
 .go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle::before {
@@ -49,7 +53,7 @@
 }
 
 .go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
-  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-positive);
+  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-primary);
 }
 
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle::before {
@@ -62,6 +66,7 @@
 }
 
 .go-form__switch-toggle__label {
+  flex: 1;
   line-height: 1.125rem;
   padding-bottom: 0;
   padding-left: 0.75rem;

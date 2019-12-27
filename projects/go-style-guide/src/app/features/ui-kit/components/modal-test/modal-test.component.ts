@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ModalTestComponent {
 
-  @Input() title: string;
+  @Input() content: string;
 
 }

@@ -26,6 +26,7 @@ import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
 import { GoFooterModule } from './components/go-footer/go-footer.module';
+import { GoHeaderBarModule } from './components/go-header-bar/go-header-bar.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { GoFooterModule } from './components/go-footer/go-footer.module';
     GoDatepickerModule,
     GoFileUploadModule,
     GoFooterModule,
+    GoHeaderBarModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,
@@ -67,6 +69,7 @@ import { GoFooterModule } from './components/go-footer/go-footer.module';
     GoDatepickerModule,
     GoFileUploadModule,
     GoFooterModule,
+    GoHeaderBarModule,
     GoHeaderModule,
     GoHintModule,
     GoIconButtonModule,

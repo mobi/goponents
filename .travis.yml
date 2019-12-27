@@ -9,4 +9,4 @@ before_install:
 cache:
   npm: false
 script:
-  - ng test go-lib --watch=false --browsers=ChromeHeadless
+  - ng build go-lib && ng test go-lib --watch=false --browsers=ChromeHeadless

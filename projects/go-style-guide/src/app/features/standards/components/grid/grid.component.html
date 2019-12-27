@@ -1,10 +1,10 @@
 <header class="go-page-title">
-  <h1 class="go-heading-3">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 <section class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-4">Flexbox</h1>
+      <h2 class="go-heading-2">Flexbox</h2>
     </ng-container>
     <ng-container go-card-content class="go-container">
       <p class="go-body-copy">
@@ -33,10 +33,10 @@
 <section id="basic-grid-examples" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-4">Basic Examples</h1>
+      <h2 class="go-heading-2">Basic Examples</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 id="go-column-20" class="go-heading-5">5 Column <em>(~20%)</em></h2>
+      <h3 id="go-column-20" class="go-heading-3">5 Column <em>(~20%)</em></h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--20</code> will create
         a column that starts at 20% of the width of the container before filling
@@ -57,7 +57,7 @@
       </section>
       <code [highlight]="basicExample20"></code>
 
-      <h2 id="go-column-25" class="go-heading-5">4 Column <em>(~25%)</em></h2>
+      <h3 id="go-column-25" class="go-heading-3">4 Column <em>(~25%)</em></h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--25</code> will create
         a column that starts at 25% of the width of the container before filling
@@ -77,7 +77,7 @@
       </section>
       <code [highlight]="basicExample25"></code>
 
-      <h2 id="go-column-33" class="go-heading-5">3 Column <em>(~33%)</em></h2>
+      <h3 id="go-column-33" class="go-heading-3">3 Column <em>(~33%)</em></h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--33</code> will create
         a column that starts at 33% of the width of the container before filling
@@ -95,7 +95,7 @@
       </section>
       <code [highlight]="basicExample33"></code>
 
-      <h2 id="go-column-50" class="go-heading-5">2 Column <em>(~50%)</em></h2>
+      <h3 id="go-column-50" class="go-heading-3">2 Column <em>(~50%)</em></h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--50</code> will create
         a column that starts at 50% of the width of the container before filling
@@ -118,10 +118,10 @@
 <section id="offset-grid-examples" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-4">Offset Examples</h1>
+      <h2 class="go-heading-2">Offset Examples</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 id="go-column-66" class="go-heading-5">~66% Column</h2>
+      <h3 id="go-column-66" class="go-heading-3">~66% Column</h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--66</code> will create
         a column that starts at 66% of the width of the container before filling
@@ -138,7 +138,7 @@
       </section>
       <code [highlight]="offsetExample66"></code>
 
-      <h2 id="go-column-75" class="go-heading-5">~75% Column</h2>
+      <h3 id="go-column-75" class="go-heading-3">~75% Column</h3>
       <p class="go-body-copy">
         The <code class="code-block--inline">.go-column--75</code> will create
         a column that starts at 75% of the width of the container before filling
@@ -161,10 +161,10 @@
 <section id="advanced-grid-examples" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-4">Advanced Example</h1>
+      <h2 class="go-heading-2">Advanced Example</h2>
     </ng-container>
     <ng-container go-card-content>
-      <h2 id="go-column-mixed" class="go-heading-5">Mix Columns</h2>
+      <h3 id="go-column-mixed" class="go-heading-3">Mix Columns</h3>
       <p class="go-body-copy">
         Below is an example of a mixed column grid. All of the columns can be contained
         within a single <code class="code-block--inline">.go-container</code> element.
@@ -185,7 +185,7 @@
 <section id="nested-grid-examples" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h1 class="go-heading-4">Nested Grid Example</h1>
+      <h2 class="go-heading-2">Nested Grid Example</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -213,7 +213,7 @@
 <section id="collapsable-column" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
-      <h2 class="go-heading-4">Collapsable Column</h2>
+      <h2 class="go-heading-2">Collapsable Column</h2>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -230,24 +230,66 @@
 </section>
 
 <section id="align-center-container" class="go-container">
-    <go-card class="go-column">
-      <ng-container go-card-header>
-        <h2 class="go-heading-4">Center Alignment</h2>
-      </ng-container>
-      <ng-container go-card-content>
-        <p class="go-body-copy">
-          In some cases, it may be necessary to align items in a container vertically centered.
-          A modifier class can be added to acheive this:
-        </p>
-        <section class="go-container go-container--align-center example-grid">
-          <div class="go-column go-column--50 example-grid__column">
-            <p class="go-body-copy">Column 1, Row 1</p>
-            <p class="go-body-copy">Column 1, Row 2</p>
-            <p class="go-body-copy--no-margin">Column 1, Row 3</p>
-          </div>
-          <div class="go-column go-column--50 example-grid__column">Column 2</div>
-        </section>
-        <code [highlight]="alignCenterContainer"></code>
-      </ng-container>
-    </go-card>
-  </section>
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Center Alignment</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        In some cases, it may be necessary to align items in a container vertically centered.
+        A modifier class can be added to acheive this:
+      </p>
+      <section class="go-container go-container--align-center example-grid">
+        <div class="go-column go-column--50 example-grid__column">
+          <p class="go-body-copy">Column 1, Row 1</p>
+          <p class="go-body-copy">Column 1, Row 2</p>
+          <p class="go-body-copy--no-margin">Column 1, Row 3</p>
+        </div>
+        <div class="go-column go-column--50 example-grid__column">Column 2</div>
+      </section>
+      <code [highlight]="alignCenterContainer"></code>
+    </ng-container>
+  </go-card>
+</section>
+
+<section id="container-reset" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Container Reset</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h3 class="go-heading-3">Problem:</h3>
+      <p class="go-body-copy">
+        If we apply <code class="code-block--inline">.go-container</code> to an element whose parent 
+        does not provide any left or right padding, the negative margin of the 
+        <code class="code-block--inline">.go-container</code> will cause any .go-columns within it to 
+        lack the correct amount of left and right spacing. 
+      </p>
+      <p class="go-body-copy">
+        For example, if we are using a <code class="code-block--inline">.go-container</code> within a 
+        <code class="code-block--inline">.go-off-canvas</code>, since the <code class="code-block--inline">.go-off-canvas</code> 
+        itself does not apply and left or right padding, and since the negative margin of the 
+        <code class="code-block--inline">.go-container</code> will cancel out the left and right padding of any 
+        <code class="code-block--inline">.go-column</code> it contains, any <code class="code-block--inline">.go-column</code> 
+        within our <code class="code-block--inline">.go-container</code> will fail to have the proper left
+        and right spacing. 
+      </p>
+      <h3 class="go-heading-3">Solution:</h3>
+      <p class="go-body-copy">
+        We can solve this problem by also applying the <code class="code-block--inline">.go-container--reset</code> 
+        class to the element with the <code class="code-block--inline">.go-container</code> class, which will add left 
+        and right padding to offset the negative margin from <code class="code-block--inline">.go-container</code>, 
+        thus ensuring that any contained <code class="code-block--inline">.go-column</code> will have the correct 
+        left and right spacing.
+      </p>
+      <h3 class="go-heading-3">Example:</h3>
+      <go-button
+        (handleClick)="openOffCanvas()"
+        buttonIcon="subdirectory_arrow_right"
+        buttonVariant="neutral">
+        Open Off Canvas With Container Reset
+      </go-button>
+      <code [highlight]="containerReset"></code>
+    </ng-container>
+  </go-card>
+</section>

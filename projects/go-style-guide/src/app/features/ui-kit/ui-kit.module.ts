@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -25,9 +26,10 @@ import {
   GoOffCanvasService,
   GoRadioModule,
   GoSelectComponent,
-  GoSelectModule,
+  GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
   GoTableModule,
+  GoTabModule,
   GoTextAreaModule,
   GoToasterService,
   GoToastModule
@@ -78,6 +80,7 @@ import { LayoutExampleComponent } from './components/layout-docs/components/layo
 import { TextAreaDocsComponent } from './components/form-docs/components/text-area-docs/text-area-docs.component';
 import { TableSelectionComponent } from './components/table-docs/components/table-selection/table-selection.component';
 import { TableActionsDocsComponent } from './components/table-docs/components/table-actions-docs/table-actions-docs.component';
+import { TableColumnDocsComponent } from './components/table-docs/components/table-column-docs/table-column-docs.component';
 import { ActionSheetDocsComponent } from './components/action-sheet-docs/action-sheet-docs.component';
 // tslint:disable-next-line: max-line-length
 import { ActionSheetOverviewComponent } from './components/action-sheet-docs/components/action-sheet-overview/action-sheet-overview.component';
@@ -87,6 +90,9 @@ import { AccordionOverviewComponent } from './components/accordion-docs/componen
 import { SwitchToggleDocsComponent } from './components/form-docs/components/switch-toggle-docs/switch-toggle-docs.component';
 import { RadioButtonDocsComponent } from './components/form-docs/components/radio-button-docs/radio-button-docs.component';
 import { CheckboxDocsComponent } from './components/form-docs/components/checkbox-docs/checkbox-docs.component';
+import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
+import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
+import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
 
 @NgModule({
   imports: [
@@ -104,6 +110,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     GoIconModule,
     GoInputModule,
     GoSelectModule,
+    GoTabModule,
     GoTextAreaModule,
     GoLoaderModule,
     GoModalModule,
@@ -114,7 +121,9 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     GoToastModule,
     HighlightModule,
     SharedModule,
-    UiKitRoutesModule
+    UiKitRoutesModule,
+    GoSharedModule,
+    FormsModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -154,17 +163,21 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
     LayoutHeaderComponent,
     LayoutSearchComponent,
     LayoutExampleComponent,
+    TabDocsComponent,
     TableDetailsComponent,
     TableDetailsTestComponent,
     TableSelectionComponent,
     TableActionsDocsComponent,
+    TableColumnDocsComponent,
     ActionSheetDocsComponent,
     ActionSheetOverviewComponent,
     ActionSheetPanelDocsComponent,
     AccordionOverviewComponent,
     SwitchToggleDocsComponent,
     RadioButtonDocsComponent,
-    CheckboxDocsComponent
+    CheckboxDocsComponent,
+    LoadingTestComponent,
+    HeaderBarDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

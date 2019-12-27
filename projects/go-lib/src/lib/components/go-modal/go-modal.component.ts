@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, OnChanges, ViewChild } from '@angular/core';
+import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { GoModalDirective } from './go-modal.directive';
 import { GoModalService } from './go-modal.service';
@@ -9,8 +9,12 @@ import { GoModalService } from './go-modal.service';
   styleUrls: ['./go-modal.component.scss']
 })
 export class GoModalComponent implements OnInit {
+  readonly defaultModalSize: 'lg' | 'xl' = 'lg';
+
   currentComponent: any;
   opened: boolean = false;
+  modalTitle: string;
+  modalSize: 'lg' | 'xl' = this.defaultModalSize;
 
   @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
   @ViewChild('goModalContainer') goModalContainer: any;
@@ -32,16 +36,30 @@ export class GoModalComponent implements OnInit {
     });
   }
 
-  loadComponent() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
-    const viewContainerRef = this.goModalHost.viewContainerRef;
+  loadComponent(): void {
+    const componentFactory: ComponentFactory<{}> = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
+    const viewContainerRef: ViewContainerRef = this.goModalHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
+    const componentRef: ComponentRef<{}> = viewContainerRef.createComponent(componentFactory);
 
-    Object.keys(this.currentComponent.bindings).forEach(key => {
+    Object.keys(this.currentComponent.bindings).forEach((key: string) => {
       componentRef.instance[key] = this.currentComponent.bindings[key];
     });
+
+    // Set title for modal if provided
+    if (componentRef.instance['modalTitle']) {
+      this.modalTitle = componentRef.instance['modalTitle'];
+    } else {
+      this.modalTitle = '';
+    }
+
+    // Set modal size if provided (by default set to 'lg')`
+    if (componentRef.instance['modalSize'] === 'lg' || componentRef.instance['modalSize'] === 'xl') {
+      this.modalSize = componentRef.instance['modalSize'];
+    } else {
+      this.modalSize = this.defaultModalSize;
+    }
   }
 
   closeModalContainer(event) {

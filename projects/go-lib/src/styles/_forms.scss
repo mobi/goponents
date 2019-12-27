@@ -85,7 +85,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   font-size: 1rem;
   letter-spacing: .5pt;
   line-height: 1.5;
-  outline-color: $ui-color-positive;
+  outline-color: $ui-color-primary;
   padding: $column-gutter--half $column-gutter--three-quarters;
   resize: vertical;
   width: 100%;
@@ -181,7 +181,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   height: 1.5rem + $column-gutter;
   letter-spacing: .5pt;
   line-height: 1.5;
-  outline-color: $ui-color-positive;
+  outline-color: $ui-color-primary;
 
   &:disabled {
     @include disabled-input;

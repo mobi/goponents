@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   selector: 'app-radio-button-docs',
@@ -95,7 +96,9 @@ export class RadioButtonDocsComponent implements OnInit {
   </go-radio-group>
   `;
 
-  constructor() { }
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Radio Button';
+  }
 
   ngOnInit() {
   }

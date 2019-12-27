@@ -1,10 +1,12 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
 .go-calendar {
   position: absolute;
-  border: 1px solid black;
-  border-radius: .5rem;
-  background: white;
-  z-index: 500;
-  width: 300px;
+  border: 1px solid $theme-light-border;
+  border-radius: $global-radius;
+  background: $theme-light-bg;
+  z-index: z-index(toaster);
 }
 
 .go-calendar--above {

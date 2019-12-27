@@ -1,7 +1,10 @@
 <div class="go-modal" [ngClass]="goModalClasses()" (click)="closeModalContainer($event)">
-  <div class="go-modal__container" #goModalContainer>
-    <div class="go-modal__close" (click)="closeModal()">
-      <go-icon icon="close"></go-icon>
+  <div [ngClass]="{'go-modal__container': modalSize === 'lg', 'go-modal__container-xl': modalSize === 'xl'}" #goModalContainer>
+    <div class="go-modal__header">
+      <h3 class="go-heading-3">{{ modalTitle }}</h3>
+      <div class="go-modal__close" (click)="closeModal()">
+        <go-icon icon="close"></go-icon>
+      </div>
     </div>
     <ng-template go-modal-host>
     </ng-template>

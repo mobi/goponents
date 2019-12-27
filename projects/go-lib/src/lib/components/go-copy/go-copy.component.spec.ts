@@ -57,7 +57,7 @@ describe('goCopyComponent', () => {
       fixture.detectChanges();
 
       const goCopyFixture: HTMLElement = fixture.nativeElement;
-      const copyElement: HTMLElement = goCopyFixture.querySelector('div');
+      const copyElement: HTMLElement = goCopyFixture.querySelector('span');
 
       // expectations for copyStringToClipboard method
       expect(copyElement.children[1].innerHTML).toEqual('test');

@@ -29,6 +29,7 @@ import {
 import { sortBy } from './go-table-utils';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
+import { GoTablePage } from './go-table-page.model';
 
 @Component({
   animations: [
@@ -68,6 +69,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   selectAllChecked: boolean = false;
   targetedRows: any[] = [];
   showTable: boolean = false;
+  pages: GoTablePage[] = [];
 
   constructor(private changeDetector: ChangeDetectorRef) { }
 
@@ -96,6 +98,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.setTotalCount();
       this.handleSort();
+      this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
     this.showTable = Boolean(this.tableConfig);
@@ -138,7 +141,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
         this.localTableConfig.sortConfig = { column: columnField, direction: SortDirection.ascending };
       }
 
-      this.localTableConfig.pageConfig.offset = 0;
+      this.setPage();
 
       this.tableChange.emit(this.localTableConfig);
       if (!this.isServerMode()) {
@@ -148,7 +151,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   nextPage(): void {
-    this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage;
+    this.setPage(this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage);
 
     this.tableChangeOutcome();
   }
@@ -172,13 +175,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     } = this.localTableConfig;
 
     const offset: number = totalCount - (totalCount % pageConfig.perPage);
-    this.localTableConfig.pageConfig.offset = offset === totalCount ? totalCount - pageConfig.perPage : offset;
+    this.setPage(offset === totalCount ? totalCount - pageConfig.perPage : offset);
 
     this.tableChangeOutcome();
   }
 
   prevPage(): void {
-    this.localTableConfig.pageConfig.offset = this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage;
+    this.setPage(this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage);
 
     this.tableChangeOutcome();
   }
@@ -188,14 +191,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   setFirstPage(): void {
-    this.localTableConfig.pageConfig.offset = 0;
+    this.setPage();
 
     this.tableChangeOutcome();
   }
 
   setPerPage(event: any): void {
     this.localTableConfig.pageConfig.perPage = Number(event.target.value);
-    this.localTableConfig.pageConfig.offset = 0;
+    this.setPage();
 
     this.tableChangeOutcome();
   }
@@ -221,7 +224,8 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       tableData: any[]
     } = this.localTableConfig;
 
-    if (this.isServerMode()) {
+    // show all data when in server mode or paging is disabled
+    if (this.isServerMode() || !this.showPaging()) {
       return tableData;
     } else {
       return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
@@ -299,6 +303,12 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     row.showDetails = !row.showDetails;
   }
 
+  setPageByPageNumber(pageNumber: number): void {
+    this.setPage(this.localTableConfig.pageConfig.perPage * (pageNumber - 1));
+
+    this.tableChangeOutcome();
+  }
+
   //#region Private Methods
   private handleSort(): void {
     const { sortConfig, sortable, tableData }:
@@ -347,6 +357,49 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   private isRowInTargeted(row: any): boolean {
     return this.targetedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
+  }
+
+  private setPage(offset: number = 0): void {
+    const { pageConfig, totalCount }:
+    {
+      pageConfig: GoTablePageConfig,
+      totalCount: number
+    } = this.localTableConfig;
+
+    const lastPage: number = Math.ceil(totalCount / pageConfig.perPage);
+    const currentPage: number = (pageConfig.perPage + offset) / pageConfig.perPage;
+    const startPage: number = this.calculateStartPage(lastPage, currentPage);
+
+    this.pages = [];
+
+    for (let i: number = startPage; i < startPage + 5; i++) {
+      if (i > lastPage) { break; }
+
+      this.pages.push({
+        number: i,
+        active: i === currentPage
+      });
+    }
+
+    this.localTableConfig.pageConfig.offset = offset;
+  }
+
+  private calculateStartPage(lastPage: number, currentPage: number): number {
+    const pagesLeft: number = lastPage - currentPage;
+    let startPage: number = currentPage - 2;
+
+    if (startPage <= 1) {
+      startPage = 1;
+    }
+
+    if (lastPage - startPage < 4) {
+      startPage = currentPage - 4 + pagesLeft;
+      if (startPage < 1) {
+        startPage = 1;
+      }
+    }
+
+    return startPage;
   }
   //#endregion
 }
