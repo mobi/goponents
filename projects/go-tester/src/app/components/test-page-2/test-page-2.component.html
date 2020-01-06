@@ -24,7 +24,7 @@
         </go-panel>
         <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
           <go-accordion-panel title="Accordion" icon="home" [borderless]="true">
-            Another test 
+            Another test
           </go-accordion-panel>
         </go-accordion>
         <go-panel danger="true" panelContent="Logout" icon="lock">
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-      
+
   <div class="go-column go-column--100">
     <go-copy text="Copy this Text Here"></go-copy>
     <go-badge badgeData="1231" badgeColor="negative">
@@ -109,6 +109,12 @@
   </div>
 
   <div class="go-column go-column--100">
+    <h4 class="go-heading-4">Pills</h4>
+    <go-pill [removable]="false">non removable</go-pill>
+    <go-pill *ngIf="showPill" (removed)="pillRemoved()">I can be removed</go-pill>
+  </div>
+
+  <div class="go-column go-column--100">
     <h4 class="go-heading-4">Branding</h4>
     <div class="go-column go-column--25">
       <go-input
@@ -116,7 +122,7 @@
         label="Brand Color">
       </go-input>
     </div>
-    
+
     <div class="go-column">
       <go-button
         (handleClick)="updateColor()"
