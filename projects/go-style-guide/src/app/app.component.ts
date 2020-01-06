@@ -30,6 +30,7 @@ export class AppComponent {
       { route: 'ui-kit/card', routeTitle: 'Card' },
       { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
+      { route: 'ui-kit/filter-pills', routeTitle: 'Filter Pills' },
       { route: 'ui-kit/forms', routeTitle: 'Forms' },
       { route: 'ui-kit/header-bar', routeTitle: 'Header Bar' },
       { route: 'ui-kit/icon', routeTitle: 'Icon' },
