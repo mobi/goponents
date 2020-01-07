@@ -10,6 +10,7 @@ export class GoRadioButtonComponent implements OnInit {
   id: string;
   control: FormControl;
   theme: string;
+  name: string;
 
   @Input() formValue: string;
   @Input() label: string;
