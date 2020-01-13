@@ -54,6 +54,8 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     this.subscription = this.control.valueChanges.subscribe((value: Date) => {
       if (!value && this.selectedDate) {
         this.control.setErrors([{ message: 'format is invalid' }]);
+      } else {
+        this.selectedDate = LocaleFormat.formatDate(value, this.locale);
       }
     });
   }
