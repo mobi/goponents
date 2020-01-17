@@ -124,6 +124,34 @@
 
   <go-card class="go-column go-column--100">
     <header go-card-header>
+      <h2 class="go-heading-2">No Padding</h2>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="noPaddingExample"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-accordion>
+            <go-accordion-panel heading="Test 1" icon="home" [expanded]="true" [removeContentPadding]="true">
+              This content has no padding.
+            </go-accordion-panel>
+            <go-accordion-panel heading="Test 2" icon="settings">
+              This content has padding.
+            </go-accordion-panel>
+            <go-accordion-panel heading="Test 3" icon="landscape">
+              This content has padding.
+            </go-accordion-panel>
+          </go-accordion>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
       <h2 class="go-heading-2">Delayed Loading</h2>
     </header>
     <div go-card-content>
