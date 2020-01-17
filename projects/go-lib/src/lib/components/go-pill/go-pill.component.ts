@@ -9,8 +9,6 @@ export class GoPillComponent {
   @Input() removable: boolean = true;
   @Output() removed: EventEmitter<void> = new EventEmitter();
 
-  constructor() {}
-
   onClick(): void {
     this.removed.emit();
   }
