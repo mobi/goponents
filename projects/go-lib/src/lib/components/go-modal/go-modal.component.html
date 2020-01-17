@@ -1,5 +1,5 @@
-<div class="go-modal" [ngClass]="goModalClasses()" (click)="closeModalContainer($event)">
-  <div [ngClass]="{'go-modal__container': modalSize === 'lg', 'go-modal__container-xl': modalSize === 'xl'}" #goModalContainer>
+<div class="go-modal" [ngClass]="goModalClasses()" (click)="backdropClick($event)" #goModal>
+  <div [ngClass]="{'go-modal__container': modalSize === 'lg', 'go-modal__container-xl': modalSize === 'xl'}">
     <div class="go-modal__header">
       <h3 class="go-heading-3">{{ modalTitle }}</h3>
       <div class="go-modal__close" (click)="closeModal()">
