@@ -37,6 +37,20 @@ export class AccordionPanelDocsComponent {
   </go-accordion>
   `;
 
+  noPaddingExample: string = `
+  <go-accordion>
+    <go-accordion-panel heading="Test 1" icon="home" [expanded]="true" [removeContentPadding]="true">
+      This content has no padding.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 2" icon="settings">
+      This content has padding.
+    </go-accordion-panel>
+    <go-accordion-panel heading="Test 3" icon="landscape">
+      This content has padding.
+    </go-accordion-panel>
+  </go-accordion>
+  `;
+
   delayedLoadingExample: string = `
   <go-accordion>
     <go-accordion-panel heading="Not Delayed">
@@ -68,9 +82,11 @@ export class AccordionPanelDocsComponent {
   `;
 
   componentBindings: string = `
-  @Input() expanded:  boolean = false;
-  @Input() icon:      string  = null;
-  @Input() heading:     string;
+  @Input() expanded: boolean = false;
+  @Input() icon: string  = null;
+  @Input() heading: string;
+  @Input() persistState: boolean = true;
+  @Input() removeContentPadding: boolean = false;
   `;
 
   constructor(private subNavService: SubNavService) {

@@ -19,6 +19,8 @@ export class TableOverviewComponent {
 
   componentBindings: string = `
   @Input() loadingData: boolean = false;
+  @Input() renderBoxShadows: boolean = true;
+  @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
   `;
@@ -37,7 +39,7 @@ export class TableOverviewComponent {
   `;
 
   basicExample_html: string = `
-  <go-table [tableConfig]="tableConfig" tableTitle="Default Usage">
+  <go-table [tableConfig]="tableConfig" tableTitle="Default Example">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -51,6 +53,17 @@ export class TableOverviewComponent {
   tableConfig = new GoTableConfig({
     tableData: this.data
   });
+  `;
+
+  boxShadowExample_html: string = `
+  <go-table [tableConfig]="tableConfig" tableTitle="No Box-Shadow Example" [renderBoxShadows]="false">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
   `;
 
   tableConfig: object = new GoTableConfig({

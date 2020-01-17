@@ -44,8 +44,8 @@ import { GoTablePage } from './go-table-page.model';
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() loadingData: boolean = false;
+  @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
-  @Input() stackHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
 

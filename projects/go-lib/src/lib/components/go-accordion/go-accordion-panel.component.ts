@@ -37,6 +37,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Input() isFirst: boolean = false;
   @Input() isLast: boolean = false;
   @Input() persistState: boolean = true;
+  @Input() removeContentPadding: boolean = false;
   @Input() slim: boolean;
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
