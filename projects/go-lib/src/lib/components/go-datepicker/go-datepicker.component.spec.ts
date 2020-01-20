@@ -62,6 +62,18 @@ describe('GoDatepickerComponent', () => {
       expect(component.selectedDate).toEqual('5/15/2015');
     });
 
+    it('should allow the control value to be changed after initialization', () => {
+      // Confirm initialized date is set
+      component.control.setValue(new Date(2015, 4, 15));
+      fixture.detectChanges();
+      expect(component.selectedDate).toEqual('5/15/2015');
+
+      // Change date after initialization
+      component.control.setValue(new Date(2015, 5, 16));
+      fixture.detectChanges();
+      expect(component.selectedDate).toEqual('6/16/2015');
+    });
+
     it('should allow the control to be initialized with a date string', () => {
       component.control.setValue('05/15/2015');
 
