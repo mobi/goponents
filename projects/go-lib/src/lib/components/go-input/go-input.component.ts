@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'go-input',
-  templateUrl: './go-input.component.html'
+  templateUrl: './go-input.component.html',
+  styleUrls: ['./go-input.component.scss']
 })
 export class GoInputComponent implements OnInit {
   id: string;
