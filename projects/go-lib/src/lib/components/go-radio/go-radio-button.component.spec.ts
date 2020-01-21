@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRadioButtonComponent } from './go-radio-button.component';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoRadioButtonComponent', () => {
   let component: GoRadioButtonComponent;
@@ -14,6 +15,7 @@ describe('GoRadioButtonComponent', () => {
       imports: [
         FormsModule,
         GoHintModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })

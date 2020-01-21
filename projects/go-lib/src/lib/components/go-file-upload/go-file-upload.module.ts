@@ -9,6 +9,7 @@ import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { DragonDropDirective } from './go-dragon-drop.directive';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { GoLoaderModule } from '../go-loader/go-loader.module';
     GoIconModule,
     GoIconButtonModule,
     GoLoaderModule,
+    GoRequiredTextModule,
     ReactiveFormsModule
   ],
   exports: [GoFileUploadComponent]

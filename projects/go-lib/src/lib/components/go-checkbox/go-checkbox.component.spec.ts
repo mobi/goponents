@@ -3,6 +3,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoCheckboxComponent } from './go-checkbox.component';
 import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoCheckboxComponent', () => {
   let component: GoCheckboxComponent;
@@ -14,7 +15,8 @@ describe('GoCheckboxComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        GoHintModule
+        GoHintModule,
+        GoRequiredTextModule
       ]
     })
     .compileComponents();

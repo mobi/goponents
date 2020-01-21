@@ -5,6 +5,7 @@ import { GoCheckboxGroupComponent } from './go-checkbox-group.component';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoCheckboxComponent } from './go-checkbox.component';
 import { Component } from '@angular/core';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 @Component({
   selector: 'go-test',
@@ -35,7 +36,12 @@ describe('GoCheckboxGroupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoCheckboxGroupComponent, GoCheckboxComponent, GoTestCheckboxGroupComponent],
-      imports: [GoHintModule, FormsModule, ReactiveFormsModule]
+      imports: [
+        GoHintModule,
+        GoRequiredTextModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));

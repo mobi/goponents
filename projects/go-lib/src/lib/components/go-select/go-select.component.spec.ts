@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoSelectComponent', () => {
   let component: GoSelectComponent;
@@ -16,6 +17,7 @@ describe('GoSelectComponent', () => {
       imports: [
         CommonModule,
         GoHintModule,
+        GoRequiredTextModule,
         NgSelectModule,
         FormsModule,
         ReactiveFormsModule

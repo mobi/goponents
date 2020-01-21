@@ -3,6 +3,7 @@
   class="go-form__label"
   [ngClass]="{'go-form__label--dark': theme == 'dark'}">
   {{ label }}
+  <go-required-text [control]="control"></go-required-text>
 </label>
 
 <div class="go-datepicker">

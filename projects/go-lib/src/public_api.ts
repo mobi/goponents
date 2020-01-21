@@ -146,3 +146,6 @@ export * from './lib/components/go-toast/go-toast.module';
 export * from './lib/components/go-toaster/go-toaster.component';
 export * from './lib/components/go-toaster/go-toaster.module';
 export * from './lib/components/go-toaster/go-toaster.service';
+
+/***** Utils *****/
+export * from './lib/utilities/form.utils';
