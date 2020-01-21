@@ -20,6 +20,10 @@
       ></go-icon>
       <span class="go-accordion-panel__title-text">{{ heading }}</span>
     </div>
+    
+    <ng-container *ngIf="headerContent">
+      <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+    </ng-container>
 
     <go-icon
       class="go-accordion-panel__control"
