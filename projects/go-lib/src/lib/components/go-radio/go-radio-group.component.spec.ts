@@ -62,6 +62,8 @@ describe('GoRadioGroupComponent', () => {
       buttonTwo.theme = null;
       buttonOne.control = null;
       buttonTwo.control = null;
+      buttonOne.name = null;
+      buttonTwo.name = null;
     });
 
     it('should set a theme on each child component', () => {
@@ -70,6 +72,22 @@ describe('GoRadioGroupComponent', () => {
 
       expect(buttonOne.theme).toBe('dark');
       expect(buttonTwo.theme).toBe('dark');
+    });
+
+    it('should set a name on each child component when legend is provided', () => {
+      component.legend = 'Random Name';
+      component.ngAfterContentInit();
+
+      expect(buttonOne.name).toContain('Random-Name-');
+      expect(buttonTwo.name).toContain('Random-Name-');
+    });
+
+    it('should set a name on each child component when legend is NOT provided', () => {
+      component.legend = undefined;
+      component.ngAfterContentInit();
+
+      expect(buttonOne.name).toContain('radio-group-');
+      expect(buttonTwo.name).toContain('radio-group-');
     });
 
     it('should set a control on each child component', () => {
