@@ -100,6 +100,34 @@ describe('GoModalComponent', () => {
       expect(component.modalSize).toEqual(component.defaultModalSize);
     });
   });
+
+  describe('backdropClick', () => {
+    beforeEach(() => {
+      spyOn(component, 'closeModal');
+
+      component.goModal = <any> {
+        nativeElement: '<test-element></test-element>'
+      };
+    });
+
+    it('handles when $event is null', () => {
+      component.backdropClick(null);
+
+      expect(component.closeModal).not.toHaveBeenCalled();
+    });
+
+    it('handles when $event has target different from base modal', () => {
+      component.backdropClick(<any> { target: '<other-element></other-element>' });
+
+      expect(component.closeModal).not.toHaveBeenCalled();
+    });
+
+    it('handles when $event has target equal to base modal', () => {
+      component.backdropClick(<any> { target: component.goModal.nativeElement });
+
+      expect(component.closeModal).toHaveBeenCalled();
+    });
+  });
 });
 
 @Component({

@@ -1,4 +1,13 @@
-import { Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  ComponentFactory,
+  ComponentFactoryResolver,
+  ComponentRef,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 
 import { GoModalDirective } from './go-modal.directive';
 import { GoModalService } from './go-modal.service';
@@ -17,7 +26,7 @@ export class GoModalComponent implements OnInit {
   modalSize: 'lg' | 'xl' = this.defaultModalSize;
 
   @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
-  @ViewChild('goModalContainer') goModalContainer: any;
+  @ViewChild('goModal') goModal: ElementRef<HTMLElement>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -62,8 +71,13 @@ export class GoModalComponent implements OnInit {
     }
   }
 
-  closeModalContainer(event) {
-    if (!this.goModalContainer.nativeElement.contains(event.target)) {
+  /**
+   * Close modal when user clicks outside of the modal
+   *
+   * @param $event - Click event
+   */
+  backdropClick($event: MouseEvent): void {
+    if ($event && this.goModal.nativeElement === $event.target) {
       this.closeModal();
     }
   }
