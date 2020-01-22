@@ -196,4 +196,42 @@
       </div>
     </div>
   </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-2">Header Template</h2>
+    </header>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-body-copy">
+        The header inside of an accordion panel can contain additional HTML through an
+        Angular Content-Projection slot.
+      </div>
+
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        <go-accordion>
+          <go-accordion-panel heading="Base Heading">
+          </go-accordion-panel>
+          <go-accordion-panel heading="Projected Heading">
+            <ng-template #headerContent>
+              <div class="go-container go-container--justify-end">
+                <div class="go-column go-column--no-padding">
+                  <go-button>Projected</go-button>
+                </div>
+              </div>
+            </ng-template>
+          </go-accordion-panel>
+        </go-accordion>
+      </div>
+      
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <code [highlight]="headerTemplateExample"></code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
 </section>

@@ -81,6 +81,22 @@ export class AccordionPanelDocsComponent {
   }
   `;
 
+  headerTemplateExample: string = `
+  <go-accordion>
+    <go-accordion-panel heading="Base Heading">
+    </go-accordion-panel>
+    <go-accordion-panel heading="Projected Heading">
+      <ng-template #headerContent>
+        <div class="go-container go-container--justify-end">
+          <div class="go-column go-column--no-padding">
+            <go-button>Projected</go-button>
+          </div>
+        </div>
+      </ng-template>
+    </go-accordion-panel>
+  </go-accordion>
+  `;
+
   componentBindings: string = `
   @Input() expanded: boolean = false;
   @Input() icon: string  = null;
