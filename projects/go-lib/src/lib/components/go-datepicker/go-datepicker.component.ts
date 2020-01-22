@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@ang
 import { FormControl } from '@angular/forms';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
+import { generateId } from '../../utilities/form.utils';
 
 @Component({
   selector: 'go-datepicker',
@@ -37,7 +38,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.min = this.initializeDate(this.minDate);
     this.max = this.initializeDate(this.maxDate);
-    this.id = this.key || this.generateId(this.label);
+    this.id = this.key || generateId(this.label, 'datepicker');
 
     this.selectedDate = this.control.value;
     if (this.control.value) {
@@ -100,16 +101,6 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
       return date;
     }
     return LocaleFormat.parse(date, 'en-US');
-  }
-
-  private generateId(label: string): string {
-    const labelText: string = label || 'datepicker';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is only a one in a million chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
   }
 
   private initializePlaceholder(): void {

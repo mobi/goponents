@@ -4,6 +4,7 @@
   [attr.for]="id"
   [ngClass]="{'go-form__label--dark': theme === 'dark'}">
   {{ label }}
+  <go-required-text [control]="control"></go-required-text>
 </label>
 <div [ngClass]="{ 'go-file-upload--disabled': state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
   <div

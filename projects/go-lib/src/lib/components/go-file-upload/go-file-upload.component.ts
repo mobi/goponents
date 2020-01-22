@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { generateId } from '../../utilities/form.utils';
 
 @Component({
   selector: 'go-file-upload',
@@ -25,7 +26,7 @@ export class GoFileUploadComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || this.generateId(this.label);
+    this.id = this.key || generateId(this.label, 'file-upload');
     this.fb = new FormBuilder();
     this.form = this.fb.group({
       filesArray: this.fb.array([])
@@ -62,15 +63,5 @@ export class GoFileUploadComponent implements OnInit {
     return this.fb.group({
       file: [file]
     });
-  }
-
-  private generateId(label: string): string {
-    const labelText: string = label || 'file-upload';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is only a one in a million chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
   }
 }

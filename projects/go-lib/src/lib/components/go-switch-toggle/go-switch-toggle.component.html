@@ -35,5 +35,6 @@
     [ngClass]="{'go-form__label--dark': theme === 'dark', 'go-form__switch-toggle__label--before': labelPosition === 'before'}"
   >
     {{ label }}
+    <go-required-text [control]="control"></go-required-text>
   </label>
 </ng-template>

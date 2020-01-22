@@ -8,6 +8,7 @@ import { GoCalendarComponent } from './go-calendar.component';
 import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.component';
 import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
 import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-vie
     FormsModule,
     ReactiveFormsModule,
     GoIconButtonModule,
-    GoHintModule
+    GoHintModule,
+    GoRequiredTextModule
   ],
   exports: [GoDatepickerComponent]
 })

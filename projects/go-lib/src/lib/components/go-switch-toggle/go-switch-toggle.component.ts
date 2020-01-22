@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { generateId } from '../../utilities/form.utils';
 
 @Component({
   selector: 'go-switch-toggle',
@@ -19,20 +20,10 @@ export class GoSwitchToggleComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || this.generateId(this.label);
+    this.id = this.key || generateId(this.label, 'toggle');
   }
 
   toggle(): void {
     this.control.setValue(!this.control.value);
-  }
-
-  private generateId(label: string): string {
-    const labelText: string = label || 'toggle';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is only a one in a million chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
   }
 }

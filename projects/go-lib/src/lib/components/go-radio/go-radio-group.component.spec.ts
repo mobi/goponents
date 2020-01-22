@@ -5,6 +5,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRadioGroupComponent } from './go-radio-group.component';
 import { GoRadioButtonComponent } from './go-radio-button.component';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 @Component({
   selector: 'go-test',
@@ -35,6 +36,7 @@ describe('GoRadioGroupComponent', () => {
       imports: [
         FormsModule,
         GoHintModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })
