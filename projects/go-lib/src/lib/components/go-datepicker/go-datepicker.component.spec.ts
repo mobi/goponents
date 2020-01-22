@@ -156,6 +156,7 @@ describe('GoDatepickerComponent', () => {
     afterEach(() => {
       component.selectedDate = null;
       component.locale = null;
+      component.control.setValue(null);
     });
 
     it('should allow input based on locale', () => {
@@ -176,9 +177,20 @@ describe('GoDatepickerComponent', () => {
       expect(component.control.value).toEqual(new Date(2015, 11, 5));
     });
 
-    it('should set date to empty if invalid based on locale', () => {
+    it('should set date to null if invalid based on locale', () => {
       component.locale = 'de';
       component.selectedDate = '05.27.15';
+      component.control.setValue(new Date());
+
+      component.validateDate();
+
+      expect(component.control.value).toEqual(null);
+    });
+
+    it('should set date to null if year is more than 4 digits', () => {
+      component.locale = 'en-US';
+      component.selectedDate = '05/15/20121';
+      component.control.setValue(new Date());
 
       component.validateDate();
 
