@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GoTreeNodeConfig } from '../../../../../../../go-lib/src/lib/components/go-tree/go-tree-node-config.model';
+
+import { GoTreeNodeConfig } from 'projects/go-lib/src/public_api';
 
 @Component({
   templateUrl: './tree-docs.component.html'
