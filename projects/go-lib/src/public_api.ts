@@ -148,6 +148,7 @@ export * from './lib/components/go-toaster/go-toaster.module';
 export * from './lib/components/go-toaster/go-toaster.service';
 
 // Tree
+export * from './lib/components/go-tree/go-tree.component';
 export * from './lib/components/go-tree/go-tree.module';
 export * from './lib/components/go-tree/go-tree-node-config.model';
 
