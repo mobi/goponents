@@ -18,7 +18,8 @@
   [loading]="loading"
   [multiple]="multiple"
   [placeholder]="placeholder"
-  [typeahead]="typeahead">
+  [typeahead]="typeahead"
+  [searchable]="searchable">
   <ng-container *ngIf="multiple">
     <ng-template ng-header-tmp>
       <go-button buttonVariant="secondary" (handleClick)="onSelectAll()">Select All</go-button>
