@@ -50,6 +50,7 @@ import { RadioButtonDocsComponent } from '../components/form-docs/components/rad
 import { CheckboxDocsComponent } from '../components/form-docs/components/checkbox-docs/checkbox-docs.component';
 import { TableDetailsComponent } from '../components/table-docs/components/table-details/table-details.component';
 import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
+import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -104,7 +105,8 @@ const routes: Routes = [
     { path: 'templating', component: TableTemplatesComponent },
     { path: 'details', component: TableDetailsComponent }
   ]},
-  { path: 'ui-kit/toast', component: ToastDocsComponent }
+  { path: 'ui-kit/toast', component: ToastDocsComponent },
+  { path: 'ui-kit/tree', component: TreeDocsComponent }
 ];
 
 @NgModule({

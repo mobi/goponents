@@ -40,7 +40,8 @@ export class AppComponent {
       { route: 'ui-kit/off-canvas', routeTitle: 'Off Canvas' },
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
-      { route: 'ui-kit/toast', routeTitle: 'Toast' }
+      { route: 'ui-kit/toast', routeTitle: 'Toast' },
+      { route: 'ui-kit/tree', routeTitle: 'Tree' }
     ]}
   ];
 

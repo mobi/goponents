@@ -32,7 +32,8 @@ import {
   GoTabModule,
   GoTextAreaModule,
   GoToasterService,
-  GoToastModule
+  GoToastModule,
+  GoTreeModule
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -93,6 +94,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
 import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
 import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
+import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 
 @NgModule({
   imports: [
@@ -123,7 +125,8 @@ import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
     SharedModule,
     UiKitRoutesModule,
     GoSharedModule,
-    FormsModule
+    FormsModule,
+    GoTreeModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -177,7 +180,8 @@ import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
     RadioButtonDocsComponent,
     CheckboxDocsComponent,
     LoadingTestComponent,
-    HeaderBarDocsComponent
+    HeaderBarDocsComponent,
+    TreeDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

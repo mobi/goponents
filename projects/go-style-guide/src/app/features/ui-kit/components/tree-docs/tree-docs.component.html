@@ -1,0 +1,54 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+</header>
+
+<section class="go-container">
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">&lt;go-tree&gt;</code> component should be used for any instance
+          of "tree" like data, such as folder structures or groupings.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">nodeConfig</h4>
+        <p class="go-body-copy">
+          The layout of the tree. This binding is required. The interface <code class="code-block--inline">GoTreeNodeConfig</code>
+          supports the following options:
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code [highlight]="goTreeNodeConfig"></code>
+        </p>
+      </div>
+    </div>
+  </go-card>
+
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-2">Default</h2>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="exampleDefaultTreeDataHtml"></code>
+        </div>
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-tree [nodeConfig]="exampleDefaultTreeData"></go-tree>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+</section>
