@@ -52,11 +52,9 @@
         Shows a basic use case without the remove option.
       </p>
       <code [highlight]="basic_html"></code>
+      <go-pill [removable]="false">Without remove icon</go-pill>
     </ng-container>
   </go-card>
-  <div class="go-column go-column--100">
-    <go-pill [removable]="false">Without remove icon</go-pill>
-  </div>
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2">Remove Example</h2>
@@ -66,9 +64,7 @@
       <code [highlight]="dismiss_html"></code>
       <h4 class="go-heading-4">component.ts</h4>
       <code [highlight]="dismiss_ts"></code>
+      <go-pill *ngIf="showPill" (removed)="removed()">With remove icon</go-pill>
     </ng-container>
   </go-card>
-  <div class="go-column go-column--100">
-    <go-pill *ngIf="showPill" (removed)="removed()">With remove icon</go-pill>
-  </div>
 </div>
