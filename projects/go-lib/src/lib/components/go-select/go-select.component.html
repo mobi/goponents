@@ -9,15 +9,16 @@
 
 <ng-select
   [appendTo]="appendTo"
-  [labelForId]="id"
-  [items]="items"
   [bindLabel]="bindLabel"
   [bindValue]="bindValue"
+  [formControl]="control"
+  [groupBy]="groupBy"
+  [items]="items"
+  [labelForId]="id"
   [loading]="loading"
   [multiple]="multiple"
-  [formControl]="control"
-  [typeahead]="typeahead"
-  [placeholder]="placeholder">
+  [placeholder]="placeholder"
+  [typeahead]="typeahead">
 </ng-select>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

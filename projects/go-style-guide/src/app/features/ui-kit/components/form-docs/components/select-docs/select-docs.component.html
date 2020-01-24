@@ -467,4 +467,48 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-select-appendto" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component groupBy</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">@Input() groupBy: string;</code> binding is useful when implementing a 
+          <code class="code-block--inline">go-select</code> that has categories for the items being rendered in the dropdown.
+          The value should be a string of the key to group by on each item.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindLabel="name"
+              bindValue="value"
+              [control]="select12"
+              groupBy="manufacturer"
+              [items]="groupedItems"
+              label="Favorite Car"
+            ></go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select12Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="select12ComponentCode"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>
