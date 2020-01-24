@@ -37,6 +37,8 @@ export class SelectDocsComponent implements OnInit {
   select10: FormControl = new FormControl('');
   select11: FormControl = new FormControl('');
   select12: FormControl = new FormControl('');
+  select13: FormControl = new FormControl();
+  select14: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -215,6 +217,53 @@ export class SelectDocsComponent implements OnInit {
     { value: 3, name: 'Camero', manufacturer: 'Chevrolet' },
     { value: 4, name: 'Corvette', manufacturer: 'Chevrolet' },
     { value: 5, name: 'Silverado', manufacturer: 'Chevrolet' }
+  `;
+
+  select13Code: string = `
+  <go-select
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    label="Select an Option"
+  >
+    <ng-template #goSelectOption let-candy>
+      {{ candy.value }} - {{ candy.name }}
+    </ng-template>
+  </go-select>
+  `;
+
+  select13ComponentCode: string = `
+  items = [
+    { value: 1, name: 'Reeses' },
+    { value: 2, name: 'Mints' }
+  ];
+  `;
+
+  select14Code: string = `
+  <go-select
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    label="Select an Option"
+  >
+    <ng-template #goSelectSelectedOption let-candy>
+      {{ candy.name }}
+    </ng-template>
+    <ng-template #goSelectOption let-candy>
+      <div>
+        Value: {{ candy.value }}
+      </div>
+      <div>
+        Name: {{ candy.name }}
+      </div>
+    </ng-template>
+  </go-select>
+  `;
+
+  select14ComponentCode: string = `
+  items = [
+    { value: 1, name: 'Reeses' },
+    { value: 2, name: 'Mints' }
   ];
   `;
 
