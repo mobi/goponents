@@ -14,7 +14,7 @@
   transition: background-color $global-transition-duration;
 
   &:hover {
-    background-color: darken($ui-color-primary, 4);
+    background-color: $ui-color-primary-hover;
   }
 }
 
