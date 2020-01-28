@@ -24,6 +24,7 @@ import {
   GoModalService,
   GoOffCanvasModule,
   GoOffCanvasService,
+  GoPillModule,
   GoRadioModule,
   GoSelectComponent,
   GoSelectModule, GoSharedModule,
@@ -93,6 +94,7 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
 import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
 import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
+import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
 
 @NgModule({
   imports: [
@@ -115,6 +117,7 @@ import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,
+    GoPillModule,
     GoSwitchToggleModule,
     GoRadioModule,
     GoTableModule,
@@ -177,7 +180,8 @@ import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
     RadioButtonDocsComponent,
     CheckboxDocsComponent,
     LoadingTestComponent,
-    HeaderBarDocsComponent
+    HeaderBarDocsComponent,
+    PillDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

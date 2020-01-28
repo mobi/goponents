@@ -1,0 +1,70 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+</header>
+
+<div class="go-container">
+
+  <go-card [showHeader]="false" class="go-column go-column--100">
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <h2 class="go-heading-2">Usage</h2>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-pill&gt;</code> component should be used to
+          to show terms that are being used to filter results from a table.
+          These should populate the table following the use of an off-canvas with table-specific categories.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">removable</h4>
+        <p class="go-body-copy">
+          This binding determines whether or not to show the remove icon within the pill
+        </p>
+        <ul class="go-list">
+          <li><code class="code-block--inline">true</code></li>
+          <li><code class="code-block--inline">false</code></li>
+        </ul>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">removed</h4>
+        <p class="go-body-copy">
+          This is an event that is emitted from the pill when a user clicks on the remove icon.
+        </p>
+      </div>
+
+    </div>
+  </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Basic Example</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Shows a basic use case without the remove option.
+      </p>
+      <code [highlight]="basic_html"></code>
+      <go-pill [removable]="false">Without remove icon</go-pill>
+    </ng-container>
+  </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Remove Example</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="dismiss_html"></code>
+      <h4 class="go-heading-4">component.ts</h4>
+      <code [highlight]="dismiss_ts"></code>
+      <go-pill *ngIf="showPill" (removed)="removed()">With remove icon</go-pill>
+    </ng-container>
+  </go-card>
+</div>
