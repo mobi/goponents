@@ -17,6 +17,14 @@ export class SelectDocsComponent implements OnInit {
     { value: 2, name: 'Mints' }
   ];
 
+  groupedItems: any = [
+    { value: 1, name: 'Mustang', manufacturer: 'Ford' },
+    { value: 2, name: 'Focus', manufacturer: 'Ford' },
+    { value: 3, name: 'Camero', manufacturer: 'Chevrolet' },
+    { value: 4, name: 'Corvette', manufacturer: 'Chevrolet' },
+    { value: 5, name: 'Silverado', manufacturer: 'Chevrolet' }
+  ];
+
   select1: FormControl = new FormControl('');
   select2: FormControl = new FormControl('');
   select3: FormControl = new FormControl('');
@@ -28,6 +36,7 @@ export class SelectDocsComponent implements OnInit {
   select9: FormControl = new FormControl('');
   select10: FormControl = new FormControl('');
   select11: FormControl = new FormControl('');
+  select12: FormControl = new FormControl('');
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -186,6 +195,27 @@ export class SelectDocsComponent implements OnInit {
       map((input) => [input])
     )
   );
+  `;
+
+  select12Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    groupBy="manufacturer"
+    [items]="groupedItems"
+    label="Favorite Car"
+  ></go-select>
+  `;
+
+  select12ComponentCode: string = `
+  groupedItems = [
+    { value: 1, name: 'Mustang', manufacturer: 'Ford' },
+    { value: 2, name: 'Focus', manufacturer: 'Ford' },
+    { value: 3, name: 'Camero', manufacturer: 'Chevrolet' },
+    { value: 4, name: 'Corvette', manufacturer: 'Chevrolet' },
+    { value: 5, name: 'Silverado', manufacturer: 'Chevrolet' }
+  ];
   `;
 
   constructor(

@@ -16,6 +16,10 @@ export class GoSelectComponent implements OnInit {
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() control: FormControl;
+  /**
+   * A property on each item to group by
+   */
+  @Input() groupBy: string = null;
   @Input() hints: string[];
   @Input() items: any[];
   @Input() key: string;
