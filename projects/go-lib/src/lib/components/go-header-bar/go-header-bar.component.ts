@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { GoHeaderBarService } from './go-header-bar.service';
 import { GoHeaderBarItem } from './go-header-bar.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'go-header-bar',
@@ -10,17 +11,18 @@ import { GoHeaderBarItem } from './go-header-bar.interface';
 export class GoHeaderBarComponent implements OnInit, OnDestroy {
 
   currentItem: GoHeaderBarItem;
+  subscription: Subscription;
 
   constructor(private goHeaderBarService: GoHeaderBarService) { }
 
   ngOnInit(): void {
-    this.goHeaderBarService.activeItem.subscribe((activeItem: GoHeaderBarItem) => {
+    this.subscription = this.goHeaderBarService.activeItem.subscribe((activeItem: GoHeaderBarItem) => {
       this.currentItem = activeItem;
     });
   }
 
   ngOnDestroy(): void {
-    this.goHeaderBarService.activeItem.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   reset(): void {
