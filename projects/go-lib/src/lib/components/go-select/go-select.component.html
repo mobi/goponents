@@ -19,6 +19,19 @@
   [multiple]="multiple"
   [placeholder]="placeholder"
   [typeahead]="typeahead">
+  <ng-container *ngIf="goSelectSelectedOption">
+    <ng-template ng-label-tmp let-item="item">
+      <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="goSelectOption">
+    <ng-template *ngIf="!goSelectSelectedOption" ng-label-tmp let-item="item">
+      <ng-container *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"></ng-container>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item">
+      <ng-container *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"></ng-container>
+    </ng-template>
+  </ng-container>
 </ng-select>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

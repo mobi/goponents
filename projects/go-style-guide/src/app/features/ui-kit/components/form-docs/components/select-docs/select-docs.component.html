@@ -511,4 +511,103 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-select-template" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Template</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          It's possible to add a custom template with the select options by adding a <code class="code-block--inline">
+          ng-template</code> with a <code class="code-block--inline">#goSelectOption</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindValue="value"
+              [control]="select13"
+              [items]="items"
+              label="Select an Option"
+            >
+              <ng-template #goSelectOption let-candy>
+                {{ candy.value }} - {{ candy.name }}
+              </ng-template>
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select13Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="select13ComponentCode"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-select-template" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Label Template</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          There might be times where a template that is being used for options is long and we don't
+          need as much information after the option is selected. This can be achieved by adding a second
+          <code class="code-block--inline">ng-template</code> with a <code class="code-block--inline">#goSelectSelectedOption</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindValue="value"
+              [control]="select14"
+              [items]="items"
+              label="Select an Option"
+            >
+              <ng-template #goSelectSelectedOption let-candy>
+                {{ candy.name }}
+              </ng-template>
+              <ng-template #goSelectOption let-candy>
+                <div>
+                  Value: {{ candy.value }}
+                </div>
+                <div>
+                  Name: {{ candy.name }}
+                </div>
+              </ng-template>
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select14Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="select14ComponentCode"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>
