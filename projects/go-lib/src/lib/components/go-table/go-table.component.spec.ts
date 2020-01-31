@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
@@ -10,10 +11,33 @@ import { RowSelectionEvent, SelectionMode, SelectionState } from './go-table-sel
 import { GoTableSortConfig, SortDirection } from './go-table-sort.model';
 
 import { GoTableComponent } from './go-table.component';
+import { Component } from '@angular/core';
+import { GoTableColumnComponent } from './go-table-column.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@Component({
+  selector: 'go-table-test',
+  template: `
+    <go-table [tableConfig]="tableConfig">
+      <go-table-column field="id" title="ID" [searchable]="false"></go-table-column>
+      <go-table-column field="value" title="Value"></go-table-column>
+      <go-table-column field="animal" title="Animal"></go-table-column>
+    </go-table>
+  `
+})
+class GoTestTableComponent {
+  tableConfig: GoTableConfig = new GoTableConfig({
+    tableData: [
+      { id: 1, value: 'a', animal: 'puppy' },
+      { id: 2, value: 'b', animal: 'kitten' },
+      { id: 3, value: 'c', animal: 'koala bear' }
+    ]
+  });
+}
 
 describe('GoTableComponent', () => {
   let component: GoTableComponent;
-  let fixture: ComponentFixture<GoTableComponent>;
+  let fixture: ComponentFixture<GoTestTableComponent>;
   const tableConfig: GoTableConfig = new GoTableConfig({
     pageable: true,
     tableData: []
@@ -27,19 +51,22 @@ describe('GoTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoTableComponent ],
+      declarations: [ GoTableComponent, GoTableColumnComponent, GoTestTableComponent ],
       imports: [
+        FormsModule,
         GoIconButtonModule,
         GoIconModule,
-        GoLoaderModule
+        GoLoaderModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoTableComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(GoTestTableComponent);
+    component = fixture.debugElement.children[0].componentInstance;
     component.tableConfig = tableConfig;
 
     fixture.detectChanges();
@@ -863,8 +890,10 @@ describe('GoTableComponent', () => {
   });
 
   describe('ngOnInit', () => {
-    afterEach(() => {
+    beforeEach(() => {
       component.tableConfig = tableConfig;
+      component.tableConfig.dataMode = GoTableDataSource.client;
+      component.tableConfig.tableData = fakeTableData;
     });
 
     it('should throw error if tableConfig is not defined', () => {
@@ -888,6 +917,74 @@ describe('GoTableComponent', () => {
 
       expect(component.renderTable).toHaveBeenCalled();
     });
+
+    it('sets up a search term that filters table if config is set to searchable', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('koala bear');
+      tick(501);
+      expect(component.localTableConfig.searchConfig.searchTerm).toBe('koala bear');
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    }));
+
+    it('sets up a search term that filters table with partial search term matching', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('bear');
+      tick(501);
+      expect(component.localTableConfig.searchConfig.searchTerm).toBe('bear');
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    }));
+
+    it('sets up a search term that filters table and updates table count after filtering', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('koala bear');
+      tick(501);
+      expect(component.localTableConfig.totalCount).toBe(1);
+      expect(component.localTableConfig.tableData.length).toEqual(1);
+    }));
+
+    it('does not search on columns that are set to not be searchable', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('1');
+      tick(501);
+      expect(component.localTableConfig.searchConfig.searchTerm).toBe('1');
+      expect(component.localTableConfig.tableData).toEqual([]);
+    }));
+
+    it('does not search if datamode is server', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+      component.tableConfig.dataMode = GoTableDataSource.server;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('koala bear');
+      tick(501);
+      expect(component.localTableConfig.tableData).toEqual(fakeTableData);
+    }));
+
+    it('emits a table change event if search term changes', fakeAsync(() => {
+      spyOn(component.tableChange, 'emit');
+
+      component.tableConfig.searchConfig.searchable = true;
+      component.tableConfig.dataMode = GoTableDataSource.server;
+
+      component.ngOnInit();
+
+      component.searchTerm.setValue('koala bear');
+      tick(501);
+      expect(component.tableChange.emit).toHaveBeenCalled();
+    }));
   });
 
   describe('ngOnChanges', () => {

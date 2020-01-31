@@ -95,6 +95,7 @@ import { LoadingTestComponent } from './components/accordion-docs/components/acc
 import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
 import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
+import { TableSearchingComponent } from './components/table-docs/components/table-searching/table-searching.component';
 
 @NgModule({
   imports: [
@@ -153,6 +154,7 @@ import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
     TableDocsComponent,
     TableOverviewComponent,
     TablePaginationComponent,
+    TableSearchingComponent,
     TableSortingComponent,
     TableTemplatesComponent,
     TextAreaDocsComponent,
