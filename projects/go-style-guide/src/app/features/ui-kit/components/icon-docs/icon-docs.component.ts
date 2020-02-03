@@ -23,9 +23,6 @@ export class IconDocsComponent {
 
   modifiedExample: string = `
   <go-icon icon="home" iconModifier="light"></go-icon>
-  <go-icon icon="delete" iconModifier="negative"></go-icon>
-  <go-icon icon="info" iconModifier="neutral"></go-icon>
-  <go-icon icon="done_all" iconModifier="positive"></go-icon>
   `;
 
   overriddenStyles: string = `
