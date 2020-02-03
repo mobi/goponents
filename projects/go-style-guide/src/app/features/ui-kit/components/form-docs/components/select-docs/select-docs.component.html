@@ -44,11 +44,11 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           All form components include an <code class="code-block--inline">@Input() label: string;</code>
-          that can be used to add a label to the textarea components.
+          that can be used to add a label to the select components.
           In addition to displaying an HTML label, the text passed
           in via the <code class="code-block--inline">[label]</code>
           attribute is used to generate a unique ID to associate the
-          label with the textarea. If no label is passed in, a generic,
+          label with the select. If no label is passed in, a generic,
           but still unique ID will be generated.
         </p>
       </div>
@@ -86,10 +86,10 @@
           As stated above the label attribute is used to generate a
           unique ID to associate the label with the select. As this might
           not be desired, the <code class="code-block--inline">@Input() key: string;</code>
-          can be used to configure the ID attribute of the textarea directly.
+          can be used to configure the ID attribute of the select directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the select and
-          associate the label with the textarea.
+          associate the label with the select.
         </p>
       </div>
 
@@ -115,7 +115,7 @@
             <p class="go-body-copy">
               Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
               to both the <code class="code-block--inline">id</code> attribute on
-              the textarea and the <code class="code-block--inline">for</code> attribute
+              the select and the <code class="code-block--inline">for</code> attribute
               on the label.
             </p>
             <code
