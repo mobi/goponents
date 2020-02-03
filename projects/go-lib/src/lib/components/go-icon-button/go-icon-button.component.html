@@ -1,5 +1,6 @@
 <button
   class="go-icon-button"
+  [ngClass]="{ 'go-icon-button--disabled': buttonDisabled }"
   (click)="clicked()"
   [disabled]="buttonDisabled"
   [attr.title]="buttonTitle"

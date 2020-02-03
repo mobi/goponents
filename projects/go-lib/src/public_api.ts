@@ -96,6 +96,10 @@ export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 
+// Pill
+export * from './lib/components/go-pill/go-pill.component';
+export * from './lib/components/go-pill/go-pill.module';
+
 // Radio
 export * from './lib/components/go-radio/go-radio-button.component';
 export * from './lib/components/go-radio/go-radio-group.component';
@@ -146,3 +150,6 @@ export * from './lib/components/go-toast/go-toast.module';
 export * from './lib/components/go-toaster/go-toaster.component';
 export * from './lib/components/go-toaster/go-toaster.module';
 export * from './lib/components/go-toaster/go-toaster.service';
+
+/***** Utils *****/
+export * from './lib/utilities/form.utils';

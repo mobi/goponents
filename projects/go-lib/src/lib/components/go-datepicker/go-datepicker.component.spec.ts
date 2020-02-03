@@ -8,6 +8,7 @@ import { GoCalendarComponent } from './go-calendar.component';
 import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.component';
 import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
 import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoDatepickerComponent', () => {
   let component: GoDatepickerComponent;
@@ -27,6 +28,7 @@ describe('GoDatepickerComponent', () => {
         GoHintModule,
         FormsModule,
         GoHintModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })
@@ -60,6 +62,18 @@ describe('GoDatepickerComponent', () => {
       fixture.detectChanges();
 
       expect(component.selectedDate).toEqual('5/15/2015');
+    });
+
+    it('should allow the control value to be changed after initialization', () => {
+      // Confirm initialized date is set
+      component.control.setValue(new Date(2015, 4, 15));
+      fixture.detectChanges();
+      expect(component.selectedDate).toEqual('5/15/2015');
+
+      // Change date after initialization
+      component.control.setValue(new Date(2015, 5, 16));
+      fixture.detectChanges();
+      expect(component.selectedDate).toEqual('6/16/2015');
     });
 
     it('should allow the control to be initialized with a date string', () => {
@@ -144,6 +158,7 @@ describe('GoDatepickerComponent', () => {
     afterEach(() => {
       component.selectedDate = null;
       component.locale = null;
+      component.control.setValue(null);
     });
 
     it('should allow input based on locale', () => {
@@ -164,9 +179,20 @@ describe('GoDatepickerComponent', () => {
       expect(component.control.value).toEqual(new Date(2015, 11, 5));
     });
 
-    it('should set date to empty if invalid based on locale', () => {
+    it('should set date to null if invalid based on locale', () => {
       component.locale = 'de';
       component.selectedDate = '05.27.15';
+      component.control.setValue(new Date());
+
+      component.validateDate();
+
+      expect(component.control.value).toEqual(null);
+    });
+
+    it('should set date to null if year is more than 4 digits', () => {
+      component.locale = 'en-US';
+      component.selectedDate = '05/15/20121';
+      component.control.setValue(new Date());
 
       component.validateDate();
 

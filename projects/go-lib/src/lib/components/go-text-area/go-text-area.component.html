@@ -6,6 +6,7 @@
     [ngClass]="{'go-form__label--dark': theme === 'dark'}"
   >
     {{ label }}
+    <go-required-text [control]="control"></go-required-text>
   </label>
   <textarea
     class="go-form__input"

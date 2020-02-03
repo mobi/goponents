@@ -5,6 +5,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRadioGroupComponent } from './go-radio-group.component';
 import { GoRadioButtonComponent } from './go-radio-button.component';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 @Component({
   selector: 'go-test',
@@ -35,6 +36,7 @@ describe('GoRadioGroupComponent', () => {
       imports: [
         FormsModule,
         GoHintModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })
@@ -62,6 +64,8 @@ describe('GoRadioGroupComponent', () => {
       buttonTwo.theme = null;
       buttonOne.control = null;
       buttonTwo.control = null;
+      buttonOne.name = null;
+      buttonTwo.name = null;
     });
 
     it('should set a theme on each child component', () => {
@@ -70,6 +74,22 @@ describe('GoRadioGroupComponent', () => {
 
       expect(buttonOne.theme).toBe('dark');
       expect(buttonTwo.theme).toBe('dark');
+    });
+
+    it('should set a name on each child component when legend is provided', () => {
+      component.legend = 'Random Name';
+      component.ngAfterContentInit();
+
+      expect(buttonOne.name).toContain('Random-Name-');
+      expect(buttonTwo.name).toContain('Random-Name-');
+    });
+
+    it('should set a name on each child component when legend is NOT provided', () => {
+      component.legend = undefined;
+      component.ngAfterContentInit();
+
+      expect(buttonOne.name).toContain('radio-group-');
+      expect(buttonTwo.name).toContain('radio-group-');
     });
 
     it('should set a control on each child component', () => {

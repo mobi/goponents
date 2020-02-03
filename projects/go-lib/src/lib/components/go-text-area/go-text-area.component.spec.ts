@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoTextAreaComponent } from './go-text-area.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoTextAreaComponent', () => {
   let component: GoTextAreaComponent;
@@ -14,6 +15,7 @@ describe('GoTextAreaComponent', () => {
       imports: [
         FormsModule,
         GoHintModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })

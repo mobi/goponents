@@ -32,21 +32,18 @@ $icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
 }
 
 .go-icon--dark {
-  color: $theme-light-color;
+  color: $base-dark;
 
   &.go-icon--disabled {
-    color: rgba($theme-light-color, .7);
+    color: rgba($base-dark, .7);
   }
 }
 
-.go-icon--light,
-.go-icon--primary,
-.go-icon--negative,
-.go-icon--neutral {
-  color: $theme-dark-color;
+.go-icon--light {
+  color: $base-light;
 
   &.go-icon--disabled {
-    color: rgba($theme-dark-color, .7);
+    color: rgba($base-light, .7);
   }
 }
 

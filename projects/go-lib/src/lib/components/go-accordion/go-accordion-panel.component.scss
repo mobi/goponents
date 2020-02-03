@@ -112,6 +112,10 @@
   padding: 1.5rem 1rem;
 }
 
+.go-accordion-panel__content--no-padding {
+  padding: 0 0 0 4px; // 4px accounts for the selected bar to the left
+}
+
 .go-accordion-panel__content--slim {
   padding: 1rem;
 }

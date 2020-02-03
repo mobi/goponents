@@ -3,6 +3,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoSwitchToggleComponent } from './go-switch-toggle.component';
 import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoCheckboxComponent', () => {
   let component: GoSwitchToggleComponent;
@@ -11,7 +12,12 @@ describe('GoCheckboxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoSwitchToggleComponent],
-      imports: [FormsModule, GoHintModule, ReactiveFormsModule]
+      imports: [
+        FormsModule,
+        GoHintModule,
+        GoRequiredTextModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));

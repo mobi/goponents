@@ -9,6 +9,7 @@ import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { createHostListener } from '@angular/compiler/src/core';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 
 describe('GoFileUploadComponent', () => {
   let component: GoFileUploadComponent;
@@ -25,6 +26,7 @@ describe('GoFileUploadComponent', () => {
         GoIconModule,
         GoIconButtonModule,
         GoLoaderModule,
+        GoRequiredTextModule,
         ReactiveFormsModule
       ]
     })

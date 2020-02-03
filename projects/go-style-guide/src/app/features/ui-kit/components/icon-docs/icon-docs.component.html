@@ -46,34 +46,11 @@
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">iconModifier</h4>
         <p class="go-body-copy">
-          The <code class="code-block--inline">iconModifier</code>
-          binding can be used to modify the state of the icon. Icons
-          come in several different states that are represented with
-          different colors:
+          The <code class="code-block--inline">iconModifier</code> binding accepts a value of 
+          <code class="code-block--inline">'light'</code> or <code class="code-block--inline">'dark'</code> 
+          and will modify the icon color. This can be useful when using the icon on different backgrounds. 
+          The icon will inherit its color otherwise.
         </p>
-        <ol class="go-list go-list--ordered">
-          <li>
-            <code class="code-block--inline">light</code>
-            - Displays as a light gray color. Useful when
-            icons are of little importance.
-          </li>
-          <li>
-            <code class="code-block--inline">negative</code>
-            - Displays as a red color. Useful when icons
-            reinforce a dangerous or destructive content or
-            actions.
-          </li>
-          <li>
-            <code class="code-block--inline">neutral</code>
-            - Displays as a purple color. Useful when icons
-            reinforce informational content or actions.
-          </li>
-          <li>
-            <code class="code-block--inline">positive</code>
-            - Displays as a blue color. Useful when icons
-            reinforce positive content or actions.
-          </li>
-        </ol>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -89,7 +66,6 @@
           the icons to the thing that is implementing them.
         </p>
       </div>
-
     </div>
   </go-card>
 
@@ -116,10 +92,9 @@
       <h4 class="go-heading-4">Code</h4>
       <code [highlight]="modifiedExample"></code>
       <h4 class="go-heading-4">View</h4>
-      <go-icon icon="home" iconModifier="light"></go-icon>
-      <go-icon icon="delete" iconModifier="negative"></go-icon>
-      <go-icon icon="info" iconModifier="neutral"></go-icon>
-      <go-icon icon="done_all" iconModifier="positive"></go-icon>
+      <div class="dark-example-area">
+        <go-icon icon="home" iconModifier="light"></go-icon>
+      </div>
     </ng-container>
   </go-card>
   

@@ -13,10 +13,11 @@ export class TableColumnDocsComponent {
   }
 
   componentBindings: string = `
-  @Input() field:     string;
-  @Input() title:     string;
-  @Input() width:     number;
-  @Input() sortable?: boolean = true;
+  @Input() field:      string;
+  @Input() searchable: boolean = true;
+  @Input() sortable?:  boolean = true;
+  @Input() title:      string;
+  @Input() width:      number;
   `;
 
   fieldExample: string = `

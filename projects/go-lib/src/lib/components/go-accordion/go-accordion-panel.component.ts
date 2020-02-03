@@ -37,6 +37,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
   @Input() isFirst: boolean = false;
   @Input() isLast: boolean = false;
   @Input() persistState: boolean = true;
+  @Input() removeContentPadding: boolean = false;
   @Input() slim: boolean;
   @Input() theme: 'dark' | 'light';
   @Input() title: string;
@@ -58,6 +59,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
+  @ContentChild('headerContent') headerContent: TemplateRef<any>;
   @ContentChild('panelContent') panelContent: TemplateRef<any>;
 
   constructor(

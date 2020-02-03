@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { generateId } from '../../utilities/form.utils';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -15,6 +16,10 @@ export class GoSelectComponent implements OnInit {
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() control: FormControl;
+  /**
+   * A property on each item to group by
+   */
+  @Input() groupBy: string = null;
   @Input() hints: string[];
   @Input() items: any[];
   @Input() key: string;
@@ -25,17 +30,10 @@ export class GoSelectComponent implements OnInit {
   @Input() typeahead?: Subject<string>;
   @Input() theme: 'light' | 'dark' = 'light';
 
+  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
+
   ngOnInit(): void {
-    this.id = this.key || this.generateId(this.label);
-  }
-
-  private generateId(label: string): string {
-    const labelText: string = label || 'select';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is only a one in a million chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
+    this.id = this.key || generateId(this.label, 'select');
   }
 }

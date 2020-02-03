@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { generateId } from '../../utilities/form.utils';
 
 @Component({
   selector: 'go-checkbox',
@@ -18,16 +19,6 @@ export class GoCheckboxComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || this.generateId(this.label);
-  }
-
-  private generateId(label: string): string {
-    const labelText: string = label || 'checkbox';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is a chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
+    this.id = this.key || generateId(this.label, 'checkbox');
   }
 }
