@@ -36,4 +36,8 @@ export class GoSelectComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
   }
+
+  onSelectAll(): void {
+    this.control.patchValue(this.items.map((item: any) => item.value));
+  }
 }
