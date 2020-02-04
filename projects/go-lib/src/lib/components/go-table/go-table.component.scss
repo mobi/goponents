@@ -261,6 +261,8 @@
   }
 }
 
+// Search
+//=====================
 .go-table__search-container {
   @include transition(all);
 
@@ -297,4 +299,11 @@
   &:active, &:focus {
     outline: none;
   }
+}
+
+// Filter Table
+//=====================
+.go-table__filter-container {
+  display: flex;
+  padding: 0 1.25rem;
 }
