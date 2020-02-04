@@ -351,10 +351,10 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          Sometimes we may want to indicate that the items for our select have not yet been retrieved. We can achieve this through the 
+          Sometimes we may want to indicate that the items for our select have not yet been retrieved. We can achieve this through the
           <code class="code-block--inline">@Input() loading: boolean = false;</code> binding. Setting <code class="code-block--inline">loading</code>
-          to true will display a loading spinner within the select to indicate that the items are not yet available, 
-          while setting <code class="code-block--inline">loading</code> to false will remove the spinner and allow the select to function normally. 
+          to true will display a loading spinner within the select to indicate that the items are not yet available,
+          while setting <code class="code-block--inline">loading</code> to false will remove the spinner and allow the select to function normally.
         </p>
       </div>
 
@@ -397,7 +397,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a 
+          The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a
           <code class="code-block--inline">go-select</code> within a <code class="code-block--inline">go-modal</code>.
           Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
           the modal from closing automatically upon selecting an item from the select dropdown.
@@ -423,7 +423,7 @@
     </div>
   </go-card>
 
-  <go-card id="form-select-loading" class="go-column go-column--100">
+  <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2">Component Typeahead</h2>
     </ng-container>
@@ -468,6 +468,43 @@
     </div>
   </go-card>
 
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Search</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default, the component has search functionality, allowing for local typeahead on items already loaded into
+          the dropdown. The <code class="code-block--inline">@Input() searchable?: boolean;</code> binding
+          can be used to disable this feature, allowing the component to act as a regular dropdown.
+        </p>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindLabel="name"
+              bindValue="value"
+              [control]="select15"
+              [items]="items"
+              [searchable]="false"
+              label="Your Input"
+            ></go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select15Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
   <go-card id="form-select-appendto" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2">Component groupBy</h2>
@@ -476,7 +513,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() groupBy: string;</code> binding is useful when implementing a 
+          The <code class="code-block--inline">@Input() groupBy: string;</code> binding is useful when implementing a
           <code class="code-block--inline">go-select</code> that has categories for the items being rendered in the dropdown.
           The value should be a string of the key to group by on each item.
         </p>
