@@ -38,11 +38,6 @@ export class GoSelectComponent implements OnInit {
   }
 
   onSelectAll(): void {
-    const selected: any[] = this.items.map((item: any) => item.value);
     this.control.patchValue(this.items.map((item: any) => item.value));
-  }
-
-  onClearAll(): void {
-    this.control.patchValue([]);
   }
 }
