@@ -1,10 +1,9 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { GoModalService } from './go-modal.service';
-import { BasicTestComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/basic-test/basic-test.component';
-import { GoInputModule } from '../go-input/go-input.module';
 import { GoButtonModule } from '../go-button/go-button.module';
+import { GoInputModule } from '../go-input/go-input.module';
 import { GoModalItem } from './go-modal.item';
-
+import { GoModalService } from './go-modal.service';
 
 describe('GoModalService', () => {
   let service: GoModalService;
@@ -16,7 +15,7 @@ describe('GoModalService', () => {
         GoInputModule
       ],
       declarations: [
-        BasicTestComponent
+        GoTestModalComponent
       ],
       providers: [GoModalService]
     });
@@ -33,9 +32,9 @@ describe('GoModalService', () => {
       spyOn(service, 'setComponent');
       spyOn(service, 'toggleModal');
 
-      service.openModal(BasicTestComponent, { testingBinding: 'test'});
+      service.openModal(GoTestModalComponent, { testingBinding: 'test'});
 
-      expect(service.setComponent).toHaveBeenCalledWith(BasicTestComponent, { testingBinding: 'test'});
+      expect(service.setComponent).toHaveBeenCalledWith(GoTestModalComponent, { testingBinding: 'test'});
       expect(service.toggleModal).toHaveBeenCalledWith(true);
     });
   });
@@ -43,10 +42,10 @@ describe('GoModalService', () => {
   describe('setComponent', () => {
     it('emits the new component and its bindings from activeModalComponent', () => {
       service.activeModalComponent.subscribe((item: GoModalItem) => {
-        expect({...item}).toEqual({ component: BasicTestComponent, bindings: { testingBinding: 'test'} });
+        expect({...item}).toEqual({ component: GoTestModalComponent, bindings: { testingBinding: 'test'} });
       });
 
-      service.setComponent(BasicTestComponent, { testingBinding: 'test'});
+      service.setComponent(GoTestModalComponent, { testingBinding: 'test'});
     });
   });
 
@@ -68,3 +67,9 @@ describe('GoModalService', () => {
     });
   });
 });
+
+@Component({
+  selector: 'go-test',
+  template: '<div>This is a test modal component</div>'
+})
+class GoTestModalComponent {}
