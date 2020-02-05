@@ -10,13 +10,7 @@ describe('GoModalService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        GoButtonModule,
-        GoInputModule
-      ],
-      declarations: [
-        GoTestModalComponent
-      ],
+      declarations: [GoTestModalComponent],
       providers: [GoModalService]
     });
 
