@@ -52,6 +52,7 @@ import { TableDetailsComponent } from '../components/table-docs/components/table
 import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from '../components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from '../components/table-docs/components/table-searching/table-searching.component';
+import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -100,6 +101,7 @@ const routes: Routes = [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },
     { path: 'columns', component: TableColumnDocsComponent },
+    { path: 'filters', component: TableFiltersComponent },
     { path: 'pagination', component: TablePaginationComponent },
     { path: 'searching', component: TableSearchingComponent },
     { path: 'selection', component: TableSelectionComponent },

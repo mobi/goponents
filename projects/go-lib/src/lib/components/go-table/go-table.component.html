@@ -5,6 +5,9 @@
       <ng-content select="[go-table-actions]"></ng-content>
     </div>
   </div>
+  <div class="go-table__filter-container">
+    <ng-content select="[go-table-filters]"></ng-content>
+  </div>
   <div class="go-table__search-container" *ngIf="localTableConfig.searchConfig.searchable">
     <go-icon icon="search" class="go-table__search-icon"></go-icon>
     <input

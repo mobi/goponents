@@ -96,6 +96,7 @@ import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-
 import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from './components/table-docs/components/table-searching/table-searching.component';
+import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
 
 @NgModule({
   imports: [
@@ -183,7 +184,8 @@ import { TableSearchingComponent } from './components/table-docs/components/tabl
     CheckboxDocsComponent,
     LoadingTestComponent,
     HeaderBarDocsComponent,
-    PillDocsComponent
+    PillDocsComponent,
+    TableFiltersComponent
   ],
   entryComponents: [
     BasicTestComponent,
