@@ -105,20 +105,16 @@
       {{ localTableConfig.totalCount | number : '1.0-0' }} Results
     </div>
     <div class="go-table-toolbar__page-controls">
-      <button (click)="setFirstPage()"
-              [disabled]="isFirstPage()"
-              [ngClass]="{ 'go-table-toolbar__button--disabled': isFirstPage() }"
-              class="go-table-toolbar__button"
-              type="button">
-        <go-icon class="go-table-toolbar__page-controls-icon" icon="first_page"></go-icon>
-      </button>
-      <button (click)="prevPage()"
-              [disabled]="isFirstPage()"
-              [ngClass]="{ 'go-table-toolbar__button--disabled': isFirstPage() }"
-              class="go-table-toolbar__button"
-              type="button">
-        <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_left"></go-icon>
-      </button>
+      <go-icon-button
+        (handleClick)="setFirstPage()"
+        [buttonDisabled]="isFirstPage()"
+        buttonIcon="first_page">
+      </go-icon-button>
+      <go-icon-button
+        (handleClick)="prevPage()"
+        [buttonDisabled]="isFirstPage()"
+        buttonIcon="chevron_left">
+      </go-icon-button>
       <button class="go-table-toolbar__page-numbers"
               type="button"
               *ngFor="let page of pages"
@@ -126,20 +122,16 @@
               [ngClass]="{ 'go-table-toolbar__page-numbers--active': page.active }">
         {{page.number}}
       </button>
-      <button (click)="nextPage()"
-              [disabled]="isLastPage()"
-              [ngClass]="{ 'go-table-toolbar__button--disabled': isLastPage() }"
-              class="go-table-toolbar__button"
-              type="button">
-        <go-icon class="go-table-toolbar__page-controls-icon" icon="chevron_right"></go-icon>
-      </button>
-      <button (click)="setLastPage()"
-              [disabled]="isLastPage()"
-              [ngClass]="{ 'go-table-toolbar__button--disabled': isLastPage() }"
-              class="go-table-toolbar__button"
-              type="button">
-        <go-icon class="go-table-toolbar__page-controls-icon" icon="last_page"></go-icon>
-      </button>
+      <go-icon-button
+        (handleClick)="nextPage()"
+        [buttonDisabled]="isLastPage()"
+        buttonIcon="chevron_right">
+      </go-icon-button>
+      <go-icon-button
+        (handleClick)="setLastPage()"
+        [buttonDisabled]="isLastPage()"
+        buttonIcon="last_page">
+      </go-icon-button>
     </div>
   </div>
   <div class="go-table-loader"
