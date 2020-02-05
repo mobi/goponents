@@ -7,10 +7,11 @@
 }
 
 $z-index: (
-	navigation: 100,
-	search: 200,
+  header-bar: 50,
+  navigation: 100,
+  search: 200,
   off-canvas: 300,
-	modal: 400,
+  modal: 400,
   toaster: 500,
   loading-screen: 600,
 );

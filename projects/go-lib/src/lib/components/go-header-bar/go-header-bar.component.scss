@@ -1,15 +1,17 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .go-header-bar {
-  position: relative;
-  font-family:$primary-font-stack;
-  padding-right: $column-gutter--double;
-  height: 4.25rem;
+  align-items: center;
   background: $base-light;
   box-shadow: $global-box-shadow--regular;
   display: flex;
+  font-family: $primary-font-stack;
+  height: 4.25rem;
   justify-content: flex-start;
-  align-items: center;
+  padding-right: $column-gutter--double;
+  position: relative;
+  z-index: z-index(header-bar);
 }
 
 .go-header-bar__title {
@@ -18,19 +20,19 @@
 }
 
 .go-header-bar__back-arrow {
-  cursor: pointer;
   align-items: center;
-  padding: $column-gutter+$column-gutter--half $column-gutter;
-  margin-right: -$column-gutter;
   border-right: solid 1px $theme-light-border;
-  flex-basis: 2.5rem;
   color: $base-dark;
+  cursor: pointer;
+  flex-basis: 2.5rem;
   font-size: 1.125rem;
+  margin-right: -$column-gutter;
+  padding: $column-gutter+$column-gutter--half $column-gutter;
 }
 
 .go-header-bar__actions {
   display: flex;
-  justify-content: flex-end;
   flex: 1;
+  justify-content: flex-end;
   padding-right: $column-gutter--double;
 }
