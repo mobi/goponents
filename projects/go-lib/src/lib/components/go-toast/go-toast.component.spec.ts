@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoToastComponent } from './go-toast.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 describe('GoToastComponent', () => {
   let component: GoToastComponent;
@@ -10,7 +11,10 @@ describe('GoToastComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GoToastComponent ],
-      imports: [ GoIconModule ]
+      imports: [
+        GoIconButtonModule,
+        GoIconModule
+      ]
     })
     .compileComponents();
   }));
@@ -61,7 +65,7 @@ describe('GoToastComponent', () => {
       fixture.detectChanges();
 
       const goToastTemplate: HTMLElement = fixture.nativeElement;
-      const buttonElement: HTMLElement = goToastTemplate.querySelector('.go-toast-dismiss__icon');
+      const buttonElement: HTMLElement = goToastTemplate.querySelector('button');
 
       buttonElement.dispatchEvent(new Event('click'));
       fixture.detectChanges();
@@ -76,7 +80,7 @@ describe('GoToastComponent', () => {
       fixture.detectChanges();
 
       const goToastTemplate: HTMLElement = fixture.nativeElement;
-      const goToastDismissButton: HTMLElement = goToastTemplate.querySelector('.go-toast-dismiss__button');
+      const goToastDismissButton: HTMLElement = goToastTemplate.querySelector('go-icon-button');
 
       expect(goToastDismissButton).toBeNull();
     });
@@ -86,7 +90,7 @@ describe('GoToastComponent', () => {
       fixture.detectChanges();
 
       const goCardTemplate: HTMLElement = fixture.nativeElement;
-      const goToastDismissButton: HTMLElement = goCardTemplate.querySelector('.go-toast-dismiss__button');
+      const goToastDismissButton: HTMLElement = goCardTemplate.querySelector('go-icon-button');
 
       expect(goToastDismissButton).not.toBeNull();
     });

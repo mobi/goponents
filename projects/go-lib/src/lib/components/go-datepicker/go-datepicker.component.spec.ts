@@ -200,7 +200,14 @@ describe('GoDatepickerComponent', () => {
     });
   });
 
-  xdescribe('openDatepicker', () => {
-    // TODO figure out how to test this
+  describe('openDatepicker', () => {
+    it('should not open datepicker if control is disabled', () => {
+      spyOn(component.goCalendar, 'openCalendar');
+
+      component.control.disable();
+      component.openDatepicker(new Event('click'));
+      expect(component.goCalendar.openCalendar).not.toHaveBeenCalled();
+    });
+    // TODO figure out how to test the rest of this
   });
 });

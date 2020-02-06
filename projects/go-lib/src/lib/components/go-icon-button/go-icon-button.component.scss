@@ -18,10 +18,22 @@
   }
 
   &:hover, &:focus {
-    background: $theme-light-bg-hover;
+    background: transparentize($color: #DCDCDC, $amount: 0.7);
   }
 
   &:active {
     background: transparent;
+  }
+}
+
+.go-icon-button--disabled {
+  color: lighten($theme-light-color, 40);
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: none;
   }
 }

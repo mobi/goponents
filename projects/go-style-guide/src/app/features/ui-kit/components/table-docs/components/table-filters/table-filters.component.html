@@ -1,0 +1,38 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Implementing Table Filters</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Table filters are a series of <code class="code-block--inline">go-pill</code>
+        components used to show that the data within a table has been filtered. 
+        In the table you can provide a series of these via content projection.
+      </p>
+
+      <p class="go-body-copy">
+        <strong>
+          The table itself does not provide filtering capabilities, but provides a slot
+          for these filters to live.
+        </strong>
+      </p>
+
+      <code [highlight]="tableFilters_html"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table class="go-column go-column--100"
+            [tableConfig]="tableConfig"
+            tableTitle="Example of Table Filters">
+    <ng-container go-table-filters>
+      <go-pill>Filter 1</go-pill>
+      <go-pill>Filter 2</go-pill>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+</section>

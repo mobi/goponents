@@ -13,7 +13,9 @@ export class TableDocsComponent {
       { route: './actions', routeTitle: 'Actions' },
       { route: './columns', routeTitle: 'Columns' },
       { route: './details', routeTitle: 'Details' },
+      { route: './filters', routeTitle: 'Filters' },
       { route: './pagination', routeTitle: 'Pagination' },
+      { route: './searching', routeTitle: 'Searching' },
       { route: './selection', routeTitle: 'Selection' },
       { route: './sorting', routeTitle: 'Sorting' },
       { route: './templating', routeTitle: 'Templating' }

@@ -11,10 +11,10 @@
   role="dialog"
 >
   <div class="go-off-canvas__header">
-    <h2 *ngIf="header" class="go-off-canvas__title">
+    <h3 *ngIf="header" class="go-heading-3 go-heading--no-margin go-off-canvas__title">
       {{ header }}
-    </h2>
-    <go-icon-button buttonIcon="close"
+    </h3>
+    <go-icon-button buttonSize="medium" buttonIcon="close"
                     (handleClick)="closeOffCanvas()">
     </go-icon-button>
   </div>

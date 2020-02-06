@@ -60,10 +60,10 @@ describe('GoHeaderBarComponent', () => {
     beforeEach(() => {});
 
     it ('Removes all listeners on destroy', () => {
-      spyOn(goHeaderBarService.activeItem, 'unsubscribe');
+      spyOn(component.subscription, 'unsubscribe');
       component.ngOnDestroy();
 
-      expect(goHeaderBarService.activeItem.unsubscribe).toHaveBeenCalled();
+      expect(component.subscription.unsubscribe).toHaveBeenCalled();
     });
 
     afterEach(() => {

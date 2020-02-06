@@ -25,10 +25,9 @@
   align-items: center;
   background-color: $base-light-secondary;
   border-radius: 50%;
-  box-shadow: $global-box-shadow--regular;
   color: $base-light;
   display: flex;
-  font-size: 1rem;
+  font-size: 1.25rem;
   height: 2rem;
   justify-content: center;
   user-select: none;
@@ -37,17 +36,14 @@
 
 .go-toast-status--positive {
   background-color: $ui-color-positive;
-  background-image: $ui-color-positive-gradient;
 }
 
 .go-toast-status--neutral {
   background-color: $ui-color-neutral;
-  background-image: $ui-color-neutral-gradient;
 }
 
 .go-toast-status--negative {
   background-color: $ui-color-negative;
-  background-image: $ui-color-negative-gradient;
 }
 
 .go-toast-content {
@@ -56,51 +52,21 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: 0 1.25rem 0.75rem 0;
-}
-
-.go-toast-content--no-title {
-  padding: 1rem 1rem 1rem 0;
+  padding: 1rem 1.25rem 1rem 0;
 }
 
 .go-toast-content__title {
-  font-size: 1.25rem;
-  margin-top: 1.2rem;
-  margin-bottom: .6rem;
-  font-weight: $weight-bold;
+  margin-bottom: .25rem;
 }
 
 .go-toast-content__message {
-  font-size: 0.875rem;
+  font-size: .875rem;
   margin: 0;
 }
 
 .go-toast-dismiss {
-  padding: 0.25rem;
+  padding: .25rem;
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.go-toast-dismiss__button {
-  border: 0;
-  border-radius: 50%;
-  color: $theme-light-border;
-  cursor: pointer;
-  display: block;
-  outline: none;
-  padding: 0.5rem;
-  user-select: none;
-  @include transition(all);
-
-  &:hover, &:focus, &:active {
-    background: $theme-light-bg-hover;
-    color: darken($theme-light-border, 5%);
-  }
-}
-
-.go-toast-dismiss__icon {
-  display: block;
-  font-size: 1rem;
-  height: 1rem;
 }

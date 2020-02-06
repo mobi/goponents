@@ -20,6 +20,7 @@ export class TestPage2Component implements OnInit {
   shopping: boolean = false;
   loaderType: string = 'neutral';
   loading: boolean = true;
+  showPill: boolean = true;
 
   constructor(
     private goToasterService: GoToasterService,
@@ -60,5 +61,9 @@ export class TestPage2Component implements OnInit {
 
   updateColor(): void {
     this.goConfigService.setBrandColor(this.brandingControl.value);
+  }
+
+  pillRemoved(): void {
+    this.showPill = false;
   }
 }

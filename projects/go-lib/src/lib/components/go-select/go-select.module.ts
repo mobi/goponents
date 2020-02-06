@@ -1,16 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-
-import { GoSelectComponent } from './go-select.component';
+import { GoButtonModule } from '../go-button/go-button.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
-import { CommonModule } from '@angular/common';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoSelectComponent } from './go-select.component';
 
 @NgModule({
   declarations: [GoSelectComponent],
   imports: [
     CommonModule,
+    GoButtonModule,
     GoHintModule,
     GoRequiredTextModule,
     NgSelectModule,

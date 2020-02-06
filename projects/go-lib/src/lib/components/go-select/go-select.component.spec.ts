@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GoSelectComponent } from './go-select.component';
 import { CommonModule } from '@angular/common';
-import { GoHintModule } from '../go-hint/go-hint.module';
-import { NgSelectModule } from '@ng-select/ng-select';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { GoButtonModule } from '../go-button/go-button.module';
+import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoSelectComponent } from './go-select.component';
 
 describe('GoSelectComponent', () => {
   let component: GoSelectComponent;
@@ -16,6 +16,7 @@ describe('GoSelectComponent', () => {
       declarations: [GoSelectComponent],
       imports: [
         CommonModule,
+        GoButtonModule,
         GoHintModule,
         GoRequiredTextModule,
         NgSelectModule,
@@ -71,6 +72,20 @@ describe('GoSelectComponent', () => {
 
       expect(component.id).toBeDefined();
       expect(component.id).toContain('select-');
+    });
+  });
+
+  describe('onSelectAll()', () => {
+    it('adds all of the available items to the form control value', () => {
+      component.items = [
+        { value: 1, label: 'Label 1' },
+        { value: 2, label: 'Label 2' },
+        { value: 3, label: 'Label 3' }
+      ];
+
+      component.onSelectAll();
+
+      expect(component.control.value).toEqual([1, 2, 3]);
     });
   });
 });

@@ -14,6 +14,8 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { GoTableColumnComponent } from './go-table-column.component';
 import {
@@ -65,11 +67,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
 
+  allData: any[] = [];
   localTableConfig: GoTableConfig;
-  selectAllChecked: boolean = false;
-  targetedRows: any[] = [];
-  showTable: boolean = false;
   pages: GoTablePage[] = [];
+  searchTerm: FormControl = new FormControl();
+  selectAllChecked: boolean = false;
+  showTable: boolean = false;
+  targetedRows: any[] = [];
 
   constructor(private changeDetector: ChangeDetectorRef) { }
 
@@ -96,8 +100,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
 
+      this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
+      this.setupSearch();
       this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
@@ -143,7 +149,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
       this.setPage();
 
-      this.tableChange.emit(this.localTableConfig);
+      this.tableChangeOutcome();
       if (!this.isServerMode()) {
         this.handleSort();
       }
@@ -400,6 +406,36 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     return startPage;
+  }
+
+  private setupSearch(): void {
+    this.searchTerm.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe((searchTerm: string) => {
+      this.localTableConfig.searchConfig.searchTerm = searchTerm;
+      if (!this.isServerMode()) {
+        this.performSearch(searchTerm.toLowerCase());
+      }
+      this.tableChangeOutcome();
+    });
+  }
+
+  private performSearch(searchTerm: string): void {
+    if (searchTerm) {
+      this.loadingData = true;
+      this.localTableConfig.tableData = this.allData.filter((row: any) => {
+        return this.columns.some((column: GoTableColumnComponent) => {
+          return column.searchable && column.getFieldData(row).toString().toLowerCase().indexOf(searchTerm) !== -1;
+        });
+      });
+    } else {
+      this.localTableConfig.tableData = this.allData;
+    }
+
+    this.localTableConfig.totalCount = this.localTableConfig.tableData.length;
+    this.setFirstPage();
+    this.loadingData = false;
   }
   //#endregion
 }

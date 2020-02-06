@@ -1,5 +1,6 @@
 import { GoTablePageConfig } from './go-table-paging.model';
 import { GoTableSortConfig } from './go-table-sort.model';
+import { GoTableSearchConfig } from './go-table-search-config.model';
 
 export class GoTableConfig {
   dataMode: GoTableDataSource = GoTableDataSource.client;
@@ -7,6 +8,7 @@ export class GoTableConfig {
   pageable: boolean = true;
   pageConfig: GoTablePageConfig = new GoTablePageConfig();
   preselected: boolean = false;
+  searchConfig: GoTableSearchConfig = new GoTableSearchConfig();
   selectable: boolean = false;
   selectBy: string;
   sortConfig?: GoTableSortConfig;
@@ -20,6 +22,7 @@ export class GoTableConfig {
     pageable?: boolean,
     pageConfig?: GoTablePageConfig,
     preselected?: boolean,
+    searchConfig?: GoTableSearchConfig,
     selectable?: boolean,
     selectBy?: string,
     sortConfig?: GoTableSortConfig,

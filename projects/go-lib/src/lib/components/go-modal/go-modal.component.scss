@@ -9,12 +9,17 @@
   justify-content: center;
   left: 0;
   opacity: 0;
+  padding: 2rem;
   position: absolute;
   top: 0;
   visibility: hidden;
   width: 100%;
   z-index: z-index(modal);
   @include transition(all);
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 1rem;
+  }
 }
 
 .go-modal__container {
@@ -22,7 +27,6 @@
   border-radius: $global-radius;
   box-shadow: $global-box-shadow--regular;
   color: $theme-light-color;
-  max-height: 80%;
   min-width: map-get($modal-container-sizes, 'lg');
   max-width: map-get($modal-container-sizes, 'lg');
   padding: 1rem;
@@ -31,6 +35,11 @@
   overflow-y: auto;
   transform: scale(1.1);
   @include transition(all);
+
+  @media (max-width: $breakpoint-mobile) {
+    max-width: 100%;
+    min-width: 50%;
+  }
 }
 
 .go-modal__container-xl {
@@ -38,6 +47,11 @@
 
   min-width: map-get($modal-container-sizes, 'xl');
   max-width: map-get($modal-container-sizes, 'xl');
+
+  @media (max-width: $breakpoint-mobile) {
+    max-width: 100%;
+    min-width: 50%;
+  }
 }
 
 .go-modal.go-modal--visible {
@@ -59,4 +73,5 @@
   color: $base-light-secondary;
   cursor: pointer;
   font-size: 1.25rem;
+  margin-left: .5rem;
 }

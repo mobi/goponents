@@ -50,6 +50,9 @@ import { RadioButtonDocsComponent } from '../components/form-docs/components/rad
 import { CheckboxDocsComponent } from '../components/form-docs/components/checkbox-docs/checkbox-docs.component';
 import { TableDetailsComponent } from '../components/table-docs/components/table-details/table-details.component';
 import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
+import { PillDocsComponent } from '../components/pill-docs/pill-docs.component';
+import { TableSearchingComponent } from '../components/table-docs/components/table-searching/table-searching.component';
+import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 
 const routes: Routes = [
@@ -93,12 +96,15 @@ const routes: Routes = [
   { path: 'ui-kit/icon', component: IconDocsComponent },
   { path: 'ui-kit/modal', component: ModalDocsComponent },
   { path: 'ui-kit/off-canvas', component: OffCanvasDocsComponent },
+  { path: 'ui-kit/pills', component: PillDocsComponent },
   { path: 'ui-kit/tabs', component: TabDocsComponent },
   { path: 'ui-kit/table', component: TableDocsComponent, children: [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },
     { path: 'columns', component: TableColumnDocsComponent },
+    { path: 'filters', component: TableFiltersComponent },
     { path: 'pagination', component: TablePaginationComponent },
+    { path: 'searching', component: TableSearchingComponent },
     { path: 'selection', component: TableSelectionComponent },
     { path: 'server-integration', component: ServerIntegrationComponent },
     { path: 'sorting', component: TableSortingComponent },

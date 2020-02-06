@@ -24,6 +24,7 @@ import {
   GoModalService,
   GoOffCanvasModule,
   GoOffCanvasService,
+  GoPillModule,
   GoRadioModule,
   GoSelectComponent,
   GoSelectModule, GoSharedModule,
@@ -94,6 +95,9 @@ import { CheckboxDocsComponent } from './components/form-docs/components/checkbo
 import { LoadingTestComponent } from './components/accordion-docs/components/accordion-panel-docs/loading-test.component';
 import { HeaderBarDocsComponent } from './components/header-bar-docs/header-bar-docs.component';
 import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
+import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
+import { TableSearchingComponent } from './components/table-docs/components/table-searching/table-searching.component';
+import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 
 @NgModule({
@@ -117,6 +121,7 @@ import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
     GoLoaderModule,
     GoModalModule,
     GoOffCanvasModule,
+    GoPillModule,
     GoSwitchToggleModule,
     GoRadioModule,
     GoTableModule,
@@ -153,6 +158,7 @@ import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
     TableDocsComponent,
     TableOverviewComponent,
     TablePaginationComponent,
+    TableSearchingComponent,
     TableSortingComponent,
     TableTemplatesComponent,
     TextAreaDocsComponent,
@@ -181,7 +187,9 @@ import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
     CheckboxDocsComponent,
     LoadingTestComponent,
     HeaderBarDocsComponent,
-    TreeDocsComponent
+    TreeDocsComponent,
+    PillDocsComponent,
+    TableFiltersComponent
   ],
   entryComponents: [
     BasicTestComponent,

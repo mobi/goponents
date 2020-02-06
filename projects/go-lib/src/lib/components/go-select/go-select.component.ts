@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, Input, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { generateId } from '../../utilities/form.utils';
@@ -16,6 +16,10 @@ export class GoSelectComponent implements OnInit {
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() control: FormControl;
+  /**
+   * A property on each item to group by
+   */
+  @Input() groupBy: string = null;
   @Input() hints: string[];
   @Input() items: any[];
   @Input() key: string;
@@ -26,7 +30,14 @@ export class GoSelectComponent implements OnInit {
   @Input() typeahead?: Subject<string>;
   @Input() theme: 'light' | 'dark' = 'light';
 
+  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
+
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
+  }
+
+  onSelectAll(): void {
+    this.control.patchValue(this.items.map((item: any) => item.value));
   }
 }

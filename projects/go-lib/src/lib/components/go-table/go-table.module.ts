@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
@@ -15,9 +16,11 @@ import { GoTableComponent } from './go-table.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     GoIconModule,
     GoIconButtonModule,
-    GoLoaderModule
+    GoLoaderModule,
+    ReactiveFormsModule
   ],
   exports: [
     GoTableColumnComponent,

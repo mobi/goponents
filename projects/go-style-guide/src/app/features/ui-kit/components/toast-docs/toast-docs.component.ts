@@ -50,6 +50,9 @@ export class ToastDocsComponent {
   constructor(private toasterService: GoToasterService) { }
 
   this.toasterService.toastSuccess({ message: 'You clicked the button!' });
+
+  // you can adjust the duration of the toast by passing in the duration param:
+  this.toasterService.toastSuccess({ message: 'You clicked the button!' }, 7000);
   `;
 
   toaster_app_ts: string = `

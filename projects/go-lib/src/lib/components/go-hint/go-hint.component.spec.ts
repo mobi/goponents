@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoHintComponent } from './go-hint.component';
 import { SimpleChange } from '@angular/core';
 
-describe('GoInputComponent', () => {
+describe('GoHintComponent', () => {
   let component: GoHintComponent;
   let fixture: ComponentFixture<GoHintComponent>;
 
