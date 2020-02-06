@@ -135,4 +135,7 @@ $form-border-active: transparentize($ui-color-primary, .25);
 $form-shadow-error: 0 0 0 3px transparentize($ui-color-negative, .75);
 $form-border-error: transparentize($ui-color-negative, .25);
 
+$form-border-neutral: transparentize($ui-color-neutral, .25);
+$form-shadow-neutral: 0 0 0 3px transparentize($ui-color-neutral, .75);
+
 $form-shadow-hover: 0 0 0 3px transparentize($base-light-tertiary, .5);
