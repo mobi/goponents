@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-$icon-sizes: (small: 1rem, medium: 1.5rem, large: 2rem);
+$icon-sizes: (small: 1rem, medium: 1.25rem, large: 1.5rem);
 
 // This .go-icon selector styles are borrowed verbatim from the material
 // icons documentation and applied to our own bem style block class.
