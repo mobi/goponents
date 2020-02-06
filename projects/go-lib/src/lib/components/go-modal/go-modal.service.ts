@@ -12,16 +12,16 @@ export class GoModalService {
     this.modalOpen.next(false);
   }
 
-  openModal(component: any, bindings: {}) : void {
+  openModal(component: any, bindings: {}): void {
     this.setComponent(component, bindings);
     this.toggleModal(true);
   }
 
-  setComponent(component: any, bindings: {}) : void {
+  setComponent(component: any, bindings: {}): void {
     this.activeModalComponent.next(new GoModalItem(component, bindings));
   }
 
-  toggleModal(open: boolean = true) : void {
+  toggleModal(open: boolean = true): void {
     this.modalOpen.next(open);
   }
 }
