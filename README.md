@@ -1,6 +1,6 @@
 # Goponents
 
-###### Currently `v1.5.0`
+###### Currently `v1.5.1`
 
 This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
