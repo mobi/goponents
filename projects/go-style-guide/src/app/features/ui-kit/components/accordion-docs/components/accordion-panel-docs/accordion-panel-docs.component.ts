@@ -87,11 +87,7 @@ export class AccordionPanelDocsComponent {
     </go-accordion-panel>
     <go-accordion-panel heading="Projected Heading">
       <ng-template #headerContent>
-        <div class="go-container go-container--justify-end">
-          <div class="go-column go-column--no-padding">
-            <go-button>Projected</go-button>
-          </div>
-        </div>
+        <go-pill [removable]="false">Projected</go-pill>
       </ng-template>
     </go-accordion-panel>
   </go-accordion>
