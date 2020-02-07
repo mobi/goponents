@@ -32,6 +32,12 @@
   top: calc(100% - 2px);
 }
 
+// overrides placeholder positioning
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-placeholder,
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+  top: .75rem;
+}
+
 // overrides for multiselect selected options
 .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
   background: $ui-color-primary;
@@ -55,7 +61,7 @@
   }
 
   .ng-value-icon.left {
-    border-right: none;
+    border-right: 0;
   }
 }
 
