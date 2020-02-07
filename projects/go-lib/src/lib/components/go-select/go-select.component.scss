@@ -1,10 +1,10 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
 @import "~@ng-select/ng-select/scss/default.theme";
 
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
 .ng-select .ng-select-container {
-  letter-spacing: 0.5pt;
-  line-height: 1.5;
+  @include regular-input;
 
   input {
     font-size: 1rem;
@@ -17,22 +17,76 @@
   height: calc(1.5rem + #{$column-gutter});
 }
 
-.ng-select.ng-select-focused .ng-select-container {
-  border-color: $ui-color-primary;
-  box-shadow: none;
-  outline: $ui-color-primary auto 5px;
-  outline-offset: -2px;
+// overrides position of input element
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  top: .5rem;
 }
 
-.ng-select.ng-invalid.ng-touched .ng-select-container {
-  border-color: $ui-color-negative;
+// overrides input radius when opened
+.ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
+  border-radius: $global-radius;
 }
 
+// overrides options panel top placement
+.ng-dropdown-panel.ng-select-bottom {
+  top: calc(100% - 2px);
+}
+
+// overrides placeholder positioning
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-placeholder,
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+  top: .75rem;
+}
+
+// overrides for multiselect selected options
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background: $ui-color-primary;
+  border-radius: $global-radius;
+  color: $base-light;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  line-height: 1.5;
+
+  .ng-value-label {
+    padding: 2px .25rem 0 .5rem;
+  }
+
+  .ng-value-icon {
+    @include transition(background);
+
+    &:hover {
+      background: $ui-color-primary-hover;
+      border-radius: 0 $global-radius $global-radius 0;
+    }
+  }
+
+  .ng-value-icon.left {
+    border-right: 0;
+  }
+}
+
+// overrides base hover state
+.ng-select .ng-select-container:hover {
+  @include hover-input;
+}
+
+// overrides active/focus/hover state for selected
+.ng-select.ng-select-focused .ng-select-container,
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  @include active-input;
+
+  &:hover {
+    @include active-input;
+  }
+}
+
+// overrides active/focus/hover state for error
 .ng-select.ng-invalid.ng-select-focused .ng-select-container {
-  border-color: $ui-color-negative;
-  box-shadow: none;
-  outline: $ui-color-negative auto 5px;
-  outline-offset: -2px;
+  @include error-input;
+
+  &:hover {
+    @include error-input;
+  }
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked,

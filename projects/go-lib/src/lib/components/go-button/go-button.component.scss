@@ -28,7 +28,7 @@
   font-weight: $weight-regular;
   letter-spacing: .015rem;
   outline: none;
-  padding: $column-gutter--half $column-gutter;
+  padding: calc(0.625rem - 1px) $column-gutter;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -52,28 +52,40 @@
 
 .go-button--primary {
   background: $ui-color-primary;
+  border: 1px solid $ui-color-primary;
 
   &:hover,
   &:focus {
     background: $ui-color-primary-hover;
+    border: 1px solid $ui-color-primary-hover;
+    box-shadow: $form-shadow-active;
   }
 
   &:active {
     background: $ui-color-primary-active;
+    border: 1px solid $ui-color-primary-active;
+    box-shadow: $form-shadow-active;
   }
 
   &:disabled:not(.go-button--loading) {
     @include disabled-states($ui-color-primary, 'light');
+    border: 1px solid rgba($ui-color-primary, 0);
 
     &:hover,
     &:focus {
       @include disabled-states($ui-color-primary, 'light');
+      border: 1px solid rgba($ui-color-primary, 0);
+      box-shadow: none;
     }
   }
 }
 
 .go-button--secondary {
-  border: 1px solid $theme-light-border;
+  border: 1px solid lighten($base-light-secondary, 10%);
+}
+
+.go-button--tertiary {
+  border: 1px solid $theme-light-bg;
 }
 
 .go-button--secondary,
@@ -83,63 +95,102 @@
 
   &:hover,
   &:focus {
-    background: $theme-light-bg-hover;
+    background: $theme-light-bg-active;
+    border: 1px solid $theme-light-bg-active;
   }
 
   &:active {
-    background: $theme-light-bg-active;
+    background: $theme-light-bg-hover;
+    border: 1px solid $theme-light-bg-hover;
   }
 
   &:disabled:not(.go-button--loading) {
     @include disabled-states($theme-light-bg, 'dark');
+    border: 1px solid rgba($theme-light-bg, 0);
 
     &:hover,
     &:focus {
       @include disabled-states($theme-light-bg, 'dark');
+      border: 1px solid rgba($theme-light-bg, 0);
+      box-shadow: none;
+    }
+  }
+}
+
+.go-button--secondary {
+  &:hover,
+  &:focus,
+  &:active {
+    border: 1px solid lighten($base-light-secondary, 10%);
+    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+  }
+
+  &:disabled:not(.go-button--loading) {
+    border: 1px solid $theme-light-bg-active;
+
+    &:hover,
+    &:focus {
+      border: 1px solid $theme-light-bg-active;
     }
   }
 }
 
 .go-button--negative {
   background: $ui-color-negative;
+  border: 1px solid $ui-color-negative;
 
   &:hover,
   &:focus {
     background: $ui-color-negative-hover;
+    border: 1px solid $ui-color-negative-hover;
+    box-shadow: $form-shadow-error;
   }
 
   &:active {
     background: $ui-color-negative-active;
+    border: 1px solid $ui-color-negative-active;
+    box-shadow: $form-shadow-error;
   }
 
   &:disabled:not(.go-button--loading) {
     @include disabled-states($ui-color-negative, 'light');
+    border: 1px solid rgba($ui-color-negative, 0);
 
     &:hover,
     &:focus {
       @include disabled-states($ui-color-negative, 'light');
+      border: 1px solid rgba($ui-color-negative, 0);
+      box-shadow: none;
     }
   }
 }
 
 .go-button--neutral {
   background: $ui-color-neutral;
+  border: 1px solid $ui-color-neutral;
 
   &:hover,
   &:focus {
     background: $ui-color-neutral-hover;
+    border: 1px solid $ui-color-neutral-hover;
+    box-shadow: $form-shadow-neutral;
   }
 
   &:active {
     background: $ui-color-neutral-active;
+    border: 1px solid $ui-color-neutral-active;
+    box-shadow: $form-shadow-neutral;
   }
 
   &:disabled:not(.go-button--loading) {
     @include disabled-states($ui-color-neutral, 'light');
+    border: 1px solid rgba($ui-color-neutral, 0);
 
     &:hover,
     &:focus {
       @include disabled-states($ui-color-neutral, 'light');
+      border: 1px solid rgba($ui-color-neutral, 0);
+      box-shadow: none;
     }
   }
 }
@@ -150,23 +201,29 @@
   &.go-button--secondary,
   &.go-button--tertiary {
     background: $theme-dark-bg;
+    border: 1px solid $theme-dark-bg;
     color: $theme-dark-color;
 
     &:hover,
     &:focus {
       background: $theme-dark-bg-hover;
+      border: 1px solid $theme-dark-bg-hover;
     }
 
     &:active {
       background: $theme-dark-bg-active;
+      border: 1px solid $theme-dark-bg-active;
     }
 
     &:disabled:not(.go-button--loading) {
       @include disabled-states($theme-dark-bg, 'light', .4);
+      border: 1px solid rgba($theme-dark-bg, 0);
 
       &:hover,
       &:focus {
         @include disabled-states($theme-dark-bg, 'light', .4);
+        border: 1px solid rgba($theme-dark-bg, 0);
+        box-shadow: none;
       }
     }
   }

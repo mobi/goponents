@@ -7,8 +7,8 @@ export function extractFieldData(key: string, obj: object) {
 
 export function sortBy(key: string, reverse: boolean) {
   return (a: any, b: any) => {
-    let aFieldData = extractFieldData(key, a);
-    let bFieldData = extractFieldData(key, b);
+    let aFieldData = extractFieldData(key, a) || '';
+    let bFieldData = extractFieldData(key, b) || '';
     aFieldData = typeof aFieldData === 'string' ? aFieldData.toLowerCase() : aFieldData;
     bFieldData = typeof bFieldData === 'string' ? bFieldData.toLowerCase() : bFieldData;
 

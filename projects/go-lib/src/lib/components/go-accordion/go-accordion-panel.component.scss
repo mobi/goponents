@@ -82,8 +82,12 @@
 .go-accordion-panel__title {
   align-items: center;
   display: flex;
-  flex-grow: 1;
   font-weight: 300;
+  padding-right: 1rem;
+}
+
+.go-accordion-panel__projection {
+  flex: 1;
 }
 
 .go-accordion-panel__title-icon {

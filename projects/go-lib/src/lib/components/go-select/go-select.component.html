@@ -18,7 +18,13 @@
   [loading]="loading"
   [multiple]="multiple"
   [placeholder]="placeholder"
-  [typeahead]="typeahead">
+  [typeahead]="typeahead"
+  [searchable]="searchable">
+  <ng-container *ngIf="multiple">
+    <ng-template ng-header-tmp>
+      <go-button buttonVariant="secondary" (handleClick)="onSelectAll()">Select All</go-button>
+    </ng-template>
+  </ng-container>
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>

@@ -60,6 +60,7 @@ $heading-sizes: (
 
 $primary-font-stack: 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
+
 // Colors
 // ----------------------------------------------------------------------------
 
@@ -68,6 +69,7 @@ $base-dark: #313536;
 $base-dark-secondary: #202626;
 $base-light: #FFF;
 $base-light-secondary: #B1B1B1;
+$base-light-tertiary: #D3D3D3;
 $base-primary: #65B360;
 
 $base-primary-hover: darken($base-primary, 10%);
@@ -124,3 +126,16 @@ $ui-color-primary-hover: darken($ui-color-primary, 3.5%);
 $ui-color-primary-active: darken($ui-color-primary, 7%);
 $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
 $ui-background-primary: rgba($ui-color-primary, .2);
+
+// Forms
+// ----------------------------------------------------------------------------
+$form-shadow-active:  0 0 0 3px transparentize($ui-color-primary, .75);
+$form-border-active: transparentize($ui-color-primary, .25);
+
+$form-shadow-error: 0 0 0 3px transparentize($ui-color-negative, .75);
+$form-border-error: transparentize($ui-color-negative, .25);
+
+$form-border-neutral: transparentize($ui-color-neutral, .25);
+$form-shadow-neutral: 0 0 0 3px transparentize($ui-color-neutral, .75);
+
+$form-shadow-hover: 0 0 0 3px transparentize($base-light-tertiary, .5);

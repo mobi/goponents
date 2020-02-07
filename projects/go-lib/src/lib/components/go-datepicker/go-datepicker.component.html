@@ -16,9 +16,11 @@
     [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
     [(ngModel)]="selectedDate"
     (blur)="validateDate()"
+    [disabled]="control.disabled"
   />
   <go-icon-button
     class="go-datepicker__toggle"
+    [buttonDisabled]="control.disabled"
     buttonIcon="today"
     (click)="openDatepicker($event)"
   ></go-icon-button>

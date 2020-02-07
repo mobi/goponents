@@ -69,6 +69,12 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
 
   public openDatepicker(event: Event): void {
     event.stopPropagation();
+
+    // Have to disable this here because of the event that we need to stop propagation on.
+    if (this.control.disabled) {
+      return;
+    }
+
     const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
 
     this.displayFromRight = window.innerWidth - distance['left'] < 350;

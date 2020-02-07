@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin transition($prop){
 	-webkit-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
 	-moz-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
@@ -7,10 +9,11 @@
 }
 
 $z-index: (
-	navigation: 100,
-	search: 200,
+  header-bar: 50,
+  navigation: 100,
+  search: 200,
   off-canvas: 300,
-	modal: 400,
+  modal: 400,
   toaster: 500,
   loading-screen: 600,
 );
@@ -48,4 +51,63 @@ $z-index: (
     property: $property;
     timing-function: $timing;
   };
+}
+
+
+// Form Mixins
+// ----------------------------------------------------------------------------
+@mixin regular-input {
+  border: 1px solid lighten($theme-light-border, 13.5%);
+  border-radius: $global-radius;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: .875rem;
+  letter-spacing: .5pt;
+  outline: none;
+  width: 100%;
+}
+
+@mixin disabled-input {
+  background: {
+    color: $theme-light-app-bg;
+    position: right $column-gutter top .8rem;
+    repeat: no-repeat;
+    size: auto $column-gutter--three-quarters;
+  }
+  cursor: not-allowed;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+@mixin hover-input {
+  box-shadow: $form-shadow-hover;
+  outline: none;
+}
+
+@mixin active-input {
+  border-color: $form-border-active;
+  box-shadow: $form-shadow-active;
+  outline: none;
+}
+
+@mixin error-input {
+  border-color: $form-border-error;
+  box-shadow: $form-shadow-error;
+  outline: none;
+}
+
+@mixin input-states {
+  &:hover {
+    @include hover-input;
+  }
+
+  &:focus {
+    @include active-input;
+  }
+
+  &:disabled {
+    @include disabled-input;
+  }
 }

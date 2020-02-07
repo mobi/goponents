@@ -25,20 +25,21 @@ export class SelectDocsComponent implements OnInit {
     { value: 5, name: 'Silverado', manufacturer: 'Chevrolet' }
   ];
 
-  select1: FormControl = new FormControl('');
-  select2: FormControl = new FormControl('');
-  select3: FormControl = new FormControl('');
-  select4: FormControl = new FormControl('');
-  select5: FormControl = new FormControl('');
-  select6: FormControl = new FormControl('');
-  select7: FormControl = new FormControl('');
-  select8: FormControl = new FormControl('');
-  select9: FormControl = new FormControl('');
-  select10: FormControl = new FormControl('');
-  select11: FormControl = new FormControl('');
-  select12: FormControl = new FormControl('');
+  select1: FormControl = new FormControl();
+  select2: FormControl = new FormControl();
+  select3: FormControl = new FormControl();
+  select4: FormControl = new FormControl();
+  select5: FormControl = new FormControl();
+  select6: FormControl = new FormControl();
+  select7: FormControl = new FormControl();
+  select8: FormControl = new FormControl();
+  select9: FormControl = new FormControl();
+  select10: FormControl = new FormControl();
+  select11: FormControl = new FormControl();
+  select12: FormControl = new FormControl();
   select13: FormControl = new FormControl();
   select14: FormControl = new FormControl();
+  select15: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -46,23 +47,23 @@ export class SelectDocsComponent implements OnInit {
 
   select1Code: string = `
   <go-select
-    [control]="select"
-  ></go-select>
+    [control]="select">
+  </go-select>
   `;
 
   select2Code: string = `
   <go-select
     [control]="select"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select3Code: string = `
   <go-select
     [control]="select"
     label="Favorite Candy"
-    key="your-favorite-candy"
-  ></go-select>
+    key="your-favorite-candy">
+  </go-select>
   `;
 
   select3KeyCode: string = `
@@ -73,8 +74,8 @@ export class SelectDocsComponent implements OnInit {
   select4Code: string = `
   <go-select
     [control]="select"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select4HintsCode: string = `
@@ -86,8 +87,8 @@ export class SelectDocsComponent implements OnInit {
   select5Code: string = `
   <go-select
     [control]="select"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select5ErrorsCode: string = `
@@ -108,8 +109,8 @@ export class SelectDocsComponent implements OnInit {
     bindValue="value"
     [control]="select"
     [items]="items"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select6ItemCode: string = `
@@ -126,8 +127,8 @@ export class SelectDocsComponent implements OnInit {
     [control]="select"
     [items]="items"
     [multiple]="true"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select8Code: string = `
@@ -138,8 +139,8 @@ export class SelectDocsComponent implements OnInit {
     [items]="items"
     [multiple]="true"
     placeholder="Select a Candy"
-    label="Favorite Candy"
-  ></go-select>
+    label="Favorite Candy">
+  </go-select>
   `;
 
   select9Code: string = `
@@ -150,8 +151,8 @@ export class SelectDocsComponent implements OnInit {
     [items]="items"
     [multiple]="true"
     label="Favorite Candy"
-    [loading]="loadingSelectOptions"
-  ></go-select>
+    [loading]="loadingSelectOptions">
+  </go-select>
   `;
 
   select9LoadingCode: string = `
@@ -182,8 +183,8 @@ export class SelectDocsComponent implements OnInit {
     [items]="options$ | async"
     [multiple]="true"
     label="Your Input"
-    [typeahead]="itemInput"
-  ></go-select>
+    [typeahead]="itemInput">
+  </go-select>
   `;
 
   select11ComponentCode: string = `
@@ -206,8 +207,8 @@ export class SelectDocsComponent implements OnInit {
     [control]="select"
     groupBy="manufacturer"
     [items]="groupedItems"
-    label="Favorite Car"
-  ></go-select>
+    label="Favorite Car">
+  </go-select>
   `;
 
   select12ComponentCode: string = `
@@ -224,8 +225,7 @@ export class SelectDocsComponent implements OnInit {
     bindValue="value"
     [control]="select"
     [items]="items"
-    label="Select an Option"
-  >
+    label="Select an Option">
     <ng-template #goSelectOption let-candy>
       {{ candy.value }} - {{ candy.name }}
     </ng-template>
@@ -244,8 +244,7 @@ export class SelectDocsComponent implements OnInit {
     bindValue="value"
     [control]="select"
     [items]="items"
-    label="Select an Option"
-  >
+    label="Select an Option">
     <ng-template #goSelectSelectedOption let-candy>
       {{ candy.name }}
     </ng-template>
@@ -265,6 +264,17 @@ export class SelectDocsComponent implements OnInit {
     { value: 1, name: 'Reeses' },
     { value: 2, name: 'Mints' }
   ];
+  `;
+
+  select15Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    [searchable]="false"
+    label="Your Input">
+  </go-select>
   `;
 
   constructor(

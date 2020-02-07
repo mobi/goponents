@@ -27,6 +27,7 @@ export class GoSelectComponent implements OnInit {
   @Input() loading: boolean = false;
   @Input() multiple: boolean = false;
   @Input() placeholder: string;
+  @Input() searchable: boolean = true;
   @Input() typeahead?: Subject<string>;
   @Input() theme: 'light' | 'dark' = 'light';
 
@@ -35,5 +36,9 @@ export class GoSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
+  }
+
+  onSelectAll(): void {
+    this.control.patchValue(this.items.map((item: any) => item.value));
   }
 }
