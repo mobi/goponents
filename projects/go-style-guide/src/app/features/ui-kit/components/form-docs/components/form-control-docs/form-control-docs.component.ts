@@ -15,7 +15,7 @@ export class FormControlDocsComponent {
     styleUrls: ['./name-editor.component.css']
   })
   export class NameEditorComponent {
-    controlName = new FormControl('');
+    controlName = new FormControl();
   }
   `;
 }
