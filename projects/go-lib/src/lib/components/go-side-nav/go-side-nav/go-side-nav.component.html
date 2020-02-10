@@ -8,14 +8,17 @@
     </go-nav-group>
   </div>
 
-  <div class="go-side-nav__app">
+  <div class="go-side-nav__app" *ngIf="navAppDrawer">
     <go-icon class="go-side-nav__app-icon"
              [icon]="navAppDrawer.currentAppIcon"
-             *ngIf="navService.navOpen"></go-icon>
+             *ngIf="navService.navOpen || !navAppDrawer?.appDrawerConfig"></go-icon>
     <span class="go-side-nav__app-name"
           *ngIf="navService.navOpen">{{ navAppDrawer.currentAppDisplayName }}</span>
 
-    <go-action-sheet placement="right" class="go-side-nav__app-drawer" #appDrawerActionSheet>
+    <go-action-sheet placement="right"
+                     class="go-side-nav__app-drawer"
+                     *ngIf="navAppDrawer?.appDrawerConfig"
+                     #appDrawerActionSheet>
       <ng-container go-action-sheet__button>
         <go-icon class="go-side-nav__app-drawer--icon"
                  [ngClass]="{'go-side-nav__app-drawer--icon-collapsed': !navService.navOpen}"
