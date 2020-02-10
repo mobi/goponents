@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { NavAppDrawer } from '../nav-app-drawer.model';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from './go-side-nav.service';
@@ -12,6 +13,33 @@ import { GoSideNavService } from './go-side-nav.service';
 })
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;
+  @Input() navAppDrawer: NavAppDrawer = { // TODO: move object to docs (testing purposes for now)
+    currentAppIcon: 'power_settings_new',
+    currentAppDisplayName: 'go-design',
+    appDrawerConfig: [
+      {
+        displayName: 'GitHub',
+        icon: 'code',
+        url: 'https://github.com/'
+      },
+      {
+        displayName: 'Go Design',
+        icon: 'power_settings_new',
+        url: 'https://tangoe.design/getting-started'
+      },
+      {
+        displayName: 'Google',
+        icon: 'search',
+        url: 'https://www.google.com/'
+      },
+      {
+        displayName: 'Stack Overflow',
+        icon: 'contact_support',
+        url: 'https://stackoverflow.com/'
+      }
+    ]
+  };
+
 
   constructor (
     private router: Router,

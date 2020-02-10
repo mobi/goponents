@@ -10,8 +10,7 @@
   flex-grow: 1;
   font-family: $secondary-font-stack;
   height: 100%;
-  overflow-y: auto;
-  padding: 2rem 0;
+  padding: 2rem 0 0 0;
   width: $side-nav-width;
   z-index: z-index(navigation);
 
@@ -26,5 +25,35 @@
 
   &.go-side-nav--collapsed {
     width: $side-nav-width--collapsed;
+  }
+}
+
+.go-side-nav__nav-items {
+  overflow-y: auto;
+}
+
+.go-side-nav__app {
+  margin-top: auto;
+  background: $theme-dark-bg-hover;
+  color: $theme-dark-color;
+  height: 2.75rem;
+  padding: .5rem .625rem;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.go-side-nav__app-icon {
+  display: flex;
+  padding: 0 1rem 0 .5rem;
+}
+
+.go-side-nav__app-drawer {
+  cursor: pointer;
+  margin-left: auto;
+
+  ::ng-deep .go-side-nav__app-drawer--icon {
+    padding-top: .5rem;
+    display: flex;
   }
 }
