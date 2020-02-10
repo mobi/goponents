@@ -72,8 +72,10 @@ go-action-sheet-button {
 }
 
 .go-action-sheet__content-container--placement-right {
-  left: calc(100% + 3.5rem);
   bottom: calc(100% - 2.25rem);
+  left: 100%;
+  margin-left: 1.25rem;
+  transform: translate(0, 0);
 
   &::before {
     left: -.5rem;
