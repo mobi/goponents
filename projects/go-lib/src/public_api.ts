@@ -135,6 +135,7 @@ export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
 export * from './lib/components/go-table/go-table-config.model';
 export * from './lib/components/go-table/go-table-paging.model';
+export * from './lib/components/go-table/go-table-search-config.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
 

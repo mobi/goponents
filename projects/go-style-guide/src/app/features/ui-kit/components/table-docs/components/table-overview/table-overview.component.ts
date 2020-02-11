@@ -31,6 +31,10 @@ export class TableOverviewComponent {
     noDataText: string = 'No Data';
     pageable: boolean = true;
     pageConfig: GoTablePageConfig = new GoTablePageConfig();
+    preselected: boolean = false;
+    searchConfig: GoTableSearchConfig = new GoTableSearchConfig();
+    selectable: boolean = false;
+    selectBy: string;
     sortConfig?: GoTableSortConfig;
     sortable: boolean = true;
     tableData: any[]; // Only required property
