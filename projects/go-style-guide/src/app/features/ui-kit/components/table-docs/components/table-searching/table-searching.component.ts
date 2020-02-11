@@ -38,7 +38,9 @@ export class TableSearchingComponent {
 
   tableConfigEx: string = `
   tableConfig: GoTableConfig = new GoTableConfig({
-    searchable: true,
+    searchConfig: new GoTableSearchConfig({
+      searchable: true
+    }),
     tableData: data
   });
   `;

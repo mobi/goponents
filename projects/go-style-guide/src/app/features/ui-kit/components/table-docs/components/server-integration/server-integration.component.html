@@ -39,12 +39,13 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy">
-          There are 4 properties of the table config that are
+          There are 5 properties of the table config that are
           important when building out server-side integration:
         </p>
         <ol class="go-list go-list--ordered">
           <li><code class="code-block--inline">pageConfig.offset</code> - the current place in the data set</li>
           <li><code class="code-block--inline">pageConfig.perPage</code> - the current number of items on each page</li>
+          <li><code class="code-block--inline">searchConfig.searchTerm</code> - the current search term (if table search has value)</li>
           <li><code class="code-block--inline">sortConfig.column</code> - the current column that is sorted (if table is sorted)</li>
           <li><code class="code-block--inline">sortConfig.direction</code> - the current sort direction (if table is sorted)</li>
         </ol>
@@ -114,6 +115,7 @@
           <li>Any page change</li>
           <li>Page size change</li>
           <li>Sort change</li>
+          <li>Search change</li>
         </ol>
       </div>
 
