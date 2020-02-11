@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { NavAppDrawer } from '../nav-app-drawer.model';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from './go-side-nav.service';
@@ -12,6 +13,8 @@ import { GoSideNavService } from './go-side-nav.service';
 })
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;
+  @Input() navAppDrawer: NavAppDrawer;
+
 
   constructor (
     private router: Router,

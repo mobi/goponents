@@ -1,0 +1,84 @@
+<div class="go-container">
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Usage</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          This page details how to use the <code class="code-block--inline">navAppDrawer</code> binding associated with
+          the <code class="code-block--inline">&lt;go-side-nav&gt;</code> component. For any other information related to
+          <code class="code-block--inline">&lt;go-side-nav&gt;</code>, please reference the
+          <a [routerLink]="['/ui-kit/layout/side-nav']">Side Nav Documentation</a>.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Interface</h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code class="code-block--inline">NavAppDrawer</code> is the root interface that the <code class="code-block--inline">navAppDrawer</code>
+          binding requires.
+        </p>
+        <code [highlight]="interfaceHtml"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">NavAppDrawer.currentAppIcon</h4>
+        <p class="go-body-copy">
+          <strong>Required.</strong> Icon for current application. This should be a material theme icon.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">NavAppDrawer.currentAppDisplayName</h4>
+        <p class="go-body-copy">
+          <strong>Required.</strong> Name of application to display.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">NavAppDrawer.appDrawerConfig</h4>
+        <p class="go-body-copy">
+          <strong>Optional.</strong> An array consisting of applications user has access to. Must follow the
+          requirements of <code class="code-block--inline">NavAppDrawerItem</code> interface:
+        </p>
+        <p>
+          <code class="code-block--inline">NavAppDrawerItem.displayName</code> - name of application to display
+        </p>
+        <p>
+          <code class="code-block--inline">NavAppDrawerItem.icon</code> - icon for application (material theme icon)
+        </p>
+        <p>
+          <code class="code-block--inline">NavAppDrawerItem.url</code> - url for application, will open in a new tab
+        </p>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Example</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          Working example of the below code can be found on the bottom left of the side navigation. For details on required
+          imports and adding the <code class="code-block--inline">&lt;go-side-nav&gt;</code> component please reference the
+          <a [routerLink]="['/ui-kit/layout/side-nav']">Side Nav Documentation</a>.
+        </p>
+
+        <h4 class="go-heading-4">app.component.html</h4>
+        <code [highlight]="basicExample_html"></code>
+
+        <h4 class="go-heading-4">app.component.ts</h4>
+        <code [highlight]="basicExample_ts"></code>
+      </div>
+
+    </div>
+  </go-card>
+
+</div>

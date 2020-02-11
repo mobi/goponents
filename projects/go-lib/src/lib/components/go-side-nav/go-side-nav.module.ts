@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { GoActionSheetModule } from '../go-action-sheet/go-action-sheet.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 
 import { GoSideNavComponent } from './go-side-nav/go-side-nav.component';
@@ -18,7 +19,8 @@ import { GoConfigService } from '../../go-config.service';
   imports: [
     CommonModule,
     GoIconModule,
-    RouterModule
+    RouterModule,
+    GoActionSheetModule
   ],
   exports: [
     GoSideNavComponent,

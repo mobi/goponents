@@ -116,6 +116,7 @@ export * from './lib/components/go-select/go-select.module';
 
 // Side Nav
 export * from './lib/components/go-side-nav/go-side-nav.module';
+export * from './lib/components/go-side-nav/nav-app-drawer.model';
 export * from './lib/components/go-side-nav/nav-group.model';
 export * from './lib/components/go-side-nav/nav-item.model';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';

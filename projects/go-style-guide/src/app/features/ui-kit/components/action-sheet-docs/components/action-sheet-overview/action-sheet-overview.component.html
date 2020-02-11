@@ -19,6 +19,15 @@
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">placement</h4>
+        <p class="go-body-copy">
+          Optional binding that defines the placement of action sheet to render. Current supported positions:
+          <code class="code-block--inline">bottom</code>, <code class="code-block--inline">right</code>.
+          By default, action sheet will render with <code class="code-block--inline">bottom</code> set.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
         <h4 class="go-heading-4">shiftLeft</h4>
         <p class="go-body-copy">
           If true, <code class="code-block--inline">shiftLeft</code>
@@ -110,6 +119,64 @@
                   Stuff about home
                 </go-accordion-panel>
               </go-accordion>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-2">Placement</h2>
+    </header>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            A simple example to demo different placements defined by <code class="code-block--inline">placement</code>.
+            For example, to define a right placement action sheet the code would be:
+            <code [highlight]="placementGenericHtml"></code>
+          </p>
+        </div>
+      </div>
+
+      <div class="go-container">
+        <div class="go-column go-column--100 go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        </div>
+        <div class="go-column go-column--20">
+          <go-action-sheet placement="bottom">
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Bottom
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Panel 1">
+              </go-panel>
+              <go-panel panelContent="Panel 2">
+              </go-panel>
+              <go-panel panelContent="Panel 3">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+
+        <div class="go-column go-column--20">
+          <go-action-sheet placement="right">
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Right
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Panel 1">
+              </go-panel>
+              <go-panel panelContent="Panel 2">
+              </go-panel>
+              <go-panel panelContent="Panel 3">
+              </go-panel>
             </ng-container>
           </go-action-sheet>
         </div>

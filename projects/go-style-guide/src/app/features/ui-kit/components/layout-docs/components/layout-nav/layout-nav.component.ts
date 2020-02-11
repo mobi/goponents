@@ -10,6 +10,7 @@ export class LayoutNavComponent {
 
   componentBindings: string = `
   @Input() menuItems: Array<NavGroup | NavItem>;
+  @Input() navAppDrawer: NavAppDrawer;
   `;
 
   bindings_menuItems: string = `

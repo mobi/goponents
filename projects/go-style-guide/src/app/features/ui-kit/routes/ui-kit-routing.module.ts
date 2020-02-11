@@ -16,6 +16,7 @@ import { HeaderBarDocsComponent } from '../components/header-bar-docs/header-bar
 import { IconButtonDocsComponent } from '../components/icon-button-docs/icon-button-docs.component';
 import { IconDocsComponent } from '../components/icon-docs/icon-docs.component';
 import { InputDocsComponent } from '../components/form-docs/components/input-docs/input-docs.component';
+import { LayoutAppDrawerComponent } from '../components/layout-docs/components/layout-app-drawer/layout-app-drawer.component';
 import { LayoutFooterComponent } from '../components/layout-docs/components/layout-footer/layout-footer.component';
 import { ModalDocsComponent } from '../components/modal-docs/modal-docs.component';
 import { ServerIntegrationComponent } from '../components/table-docs/components/server-integration/server-integration.component';
@@ -85,6 +86,7 @@ const routes: Routes = [
   { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
     { path: '', component: LayoutOverviewComponent },
+    { path: 'app-drawer', component: LayoutAppDrawerComponent },
     { path: 'header', component: LayoutHeaderComponent },
     { path: 'search', component: LayoutSearchComponent },
     { path: 'side-nav', component: LayoutNavComponent },
