@@ -13,32 +13,7 @@ import { GoSideNavService } from './go-side-nav.service';
 })
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;
-  @Input() navAppDrawer: NavAppDrawer = { // TODO: move object to docs (testing purposes for now)
-    currentAppIcon: 'power_settings_new',
-    currentAppDisplayName: 'go-design',
-    appDrawerConfig: [
-      {
-        displayName: 'GitHub',
-        icon: 'code',
-        url: 'https://github.com/'
-      },
-      {
-        displayName: 'Go Design',
-        icon: 'power_settings_new',
-        url: 'https://tangoe.design/getting-started'
-      },
-      {
-        displayName: 'Google',
-        icon: 'search',
-        url: 'https://www.google.com/'
-      },
-      {
-        displayName: 'Stack Overflow',
-        icon: 'contact_support',
-        url: 'https://stackoverflow.com/'
-      }
-    ]
-  };
+  @Input() navAppDrawer: NavAppDrawer;
 
 
   constructor (
