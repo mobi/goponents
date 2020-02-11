@@ -7,7 +7,10 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 })
 export class ActionSheetOverviewComponent {
 
-  bindings: string = `@Input() shiftLeft: boolean = false;`;
+  bindings: string = `
+  @Input() placement: 'bottom' | 'right' = 'bottom';
+  @Input() shiftLeft: boolean = false;
+  `;
 
   structureHtml: string = `
   <go-action-sheet>
@@ -35,6 +38,12 @@ export class ActionSheetOverviewComponent {
       <go-panel panelContent="Panel 3">
       </go-panel>
     </ng-container>
+  </go-action-sheet>
+  `;
+
+  placementGenericHtml: string = `
+  <go-action-sheet placement="right">
+    ...
   </go-action-sheet>
   `;
 
