@@ -29,11 +29,11 @@
 }
 
 .go-side-nav__nav-items {
+  flex: 1;
   overflow-y: auto;
 }
 
 .go-side-nav__app {
-  margin-top: auto;
   background: $theme-dark-bg-hover;
   color: $theme-dark-color;
   height: 2.75rem;
