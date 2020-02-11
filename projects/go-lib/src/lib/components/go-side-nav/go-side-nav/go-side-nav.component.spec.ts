@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.module';
 import { GoSideNavComponent } from './go-side-nav.component';
 import { GoNavGroupComponent } from '../go-nav-group/go-nav-group.component';
 import { GoIconModule } from '../../go-icon/go-icon.module';
@@ -28,6 +29,7 @@ describe('GoSideNavComponent', () => {
         GoSideNavComponent
       ],
       imports: [
+        GoActionSheetModule,
         GoIconModule,
         RouterTestingModule
       ],
