@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerAnimation } from './app.animations';
 
-import { NavGroup, NavItem } from '../../../go-lib/src/public_api';
+import { NavAppDrawer, NavGroup, NavItem } from '../../../go-lib/src/public_api';
 
 @Component({
   selector: 'app-root',
@@ -44,6 +44,33 @@ export class AppComponent {
       { route: 'ui-kit/toast', routeTitle: 'Toast' }
     ]}
   ];
+
+  navAppDrawer: NavAppDrawer = {
+    currentAppIcon: 'power_settings_new',
+    currentAppDisplayName: 'go-design',
+    appDrawerConfig: [
+      {
+        displayName: 'GitHub',
+        icon: 'code',
+        url: 'https://github.com/'
+      },
+      {
+        displayName: 'Go Design',
+        icon: 'power_settings_new',
+        url: 'https://tangoe.design/getting-started'
+      },
+      {
+        displayName: 'Google',
+        icon: 'search',
+        url: 'https://www.google.com/'
+      },
+      {
+        displayName: 'Stack Overflow',
+        icon: 'contact_support',
+        url: 'https://stackoverflow.com/'
+      }
+    ]
+  };
 
   constructor (router: Router) { }
 

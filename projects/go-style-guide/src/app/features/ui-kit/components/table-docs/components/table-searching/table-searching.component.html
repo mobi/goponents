@@ -21,11 +21,13 @@
         </p>
       </div>
 
-      <div class="go-column go-column--100">
+      <div class="go-column go-column--100 go-column--no-padding">
         <h4 class="go-heading-4">searchTerm</h4>
         <p class="go-body-copy">
           This is the term that is being searched for. This is useful when implementing server side integration, as it is emitted
           as part of the <code class="code-block--inline">GoTableConfig</code> object and can be used for server side filtering.
+          <br/>
+          <caption>See <a class="go-link" [routerLink]="['../server-integration']">Server Integration</a> for more details.</caption>
         </p>
       </div>
 
@@ -60,6 +62,9 @@
       <h2 class="go-heading-2">Restricting by Column</h2>
     </ng-container>
     <ng-container go-card-content>
+      <p class="go-body-copy">
+        This approach will only affect client side searches.
+      </p>
       <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="tableConfigRestrictColumn_html"></code>
       <h4 class="go-heading-4">example.ts</h4>

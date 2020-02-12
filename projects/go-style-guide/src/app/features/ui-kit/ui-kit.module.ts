@@ -72,6 +72,7 @@ import { UiKitComponent } from './components/ui-kit/ui-kit.component';
 import { BasicTestComponent } from './components/basic-test/basic-test.component';
 import { OffCanvasDocsComponent } from './components/off-canvas-docs/off-canvas-docs.component';
 import { LoaderDocsComponent } from './components/loader-docs/loader-docs.component';
+import { LayoutAppDrawerComponent } from './components/layout-docs/components/layout-app-drawer/layout-app-drawer.component';
 import { LayoutDocsComponent } from './components/layout-docs/layout-docs.component';
 import { LayoutOverviewComponent } from './components/layout-docs/components/layout-overview/layout-overview.component';
 import { LayoutNavComponent } from './components/layout-docs/components/layout-nav/layout-nav.component';
@@ -163,6 +164,7 @@ import { TableFiltersComponent } from './components/table-docs/components/table-
     UiKitComponent,
     LoaderDocsComponent,
     LayoutDocsComponent,
+    LayoutAppDrawerComponent,
     LayoutFooterComponent,
     LayoutOverviewComponent,
     LayoutNavComponent,

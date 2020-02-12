@@ -11,6 +11,7 @@ export class LayoutDocsComponent {
   menuItems: Array<NavGroup> = [
     { routeTitle: 'Basics', subRoutes: [
       { route: './', routeTitle: 'Overview' },
+      { route: './app-drawer', routeTitle: 'App Drawer' },
       { route: './header', routeTitle: 'Header' },
       { route: './search', routeTitle: 'Search' },
       { route: './side-nav', routeTitle: 'Side Nav' },

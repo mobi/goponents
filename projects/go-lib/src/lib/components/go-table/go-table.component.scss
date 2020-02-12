@@ -136,6 +136,12 @@
   }
 }
 
+.go-table-toolbar__page-size {
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+}
+
 .go-table-toolbar__select {
   font-size: 0.875rem;
   height: 2rem;

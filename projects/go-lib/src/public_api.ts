@@ -116,6 +116,7 @@ export * from './lib/components/go-select/go-select.module';
 
 // Side Nav
 export * from './lib/components/go-side-nav/go-side-nav.module';
+export * from './lib/components/go-side-nav/nav-app-drawer.model';
 export * from './lib/components/go-side-nav/nav-group.model';
 export * from './lib/components/go-side-nav/nav-item.model';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';
@@ -135,6 +136,7 @@ export * from './lib/components/go-table/go-table.component';
 export * from './lib/components/go-table/go-table.module';
 export * from './lib/components/go-table/go-table-config.model';
 export * from './lib/components/go-table/go-table-paging.model';
+export * from './lib/components/go-table/go-table-search-config.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
 
