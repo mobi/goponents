@@ -6,20 +6,29 @@
 .ng-select .ng-select-container {
   @include regular-input;
 
-  input {
-    font-size: 1rem;
-    font-weight: 300;
+  .ng-value-container .ng-input > input {
+    font-family: $primary-font-stack;
+    font-size: .875rem;
+    font-weight: $weight-regular;
+    letter-spacing: .5pt;
   }
 }
 
 .ng-select.ng-select-single .ng-select-container,
 .ng-select.ng-select-multiple .ng-select-container {
-  height: calc(1.5rem + #{$column-gutter});
+  height: 2.25rem;
 }
 
 // overrides position of input element
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container,
 .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  padding-left: .5rem;
   top: .5rem;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-input {
+  padding-left: 0;
+  padding-top: 0;
 }
 
 // overrides input radius when opened
@@ -35,6 +44,8 @@
 // overrides placeholder positioning
 .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-placeholder,
 .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-placeholder {
+  color: $theme-light-border;
+  font-weight: $weight-light;
   top: .75rem;
 }
 
@@ -89,8 +100,17 @@
   }
 }
 
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  padding: .5rem;
+}
+
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked,
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
   background: $theme-light-bg-hover;
+}
+
+// overrides incorrect alignment when appendTo body is applied to an ng-select
+body > .ng-dropdown-panel {
+  margin-left: 4px;
 }
