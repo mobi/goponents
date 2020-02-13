@@ -33,6 +33,8 @@ describe('GoOffCanvasService', () => {
     });
 
     it('emits true from offCanvasOpen', () => {
+      service.closeOffCanvas();
+
       service.offCanvasOpen.subscribe((isOpen: boolean) => {
         expect(isOpen).toBe(true);
       });
@@ -43,6 +45,8 @@ describe('GoOffCanvasService', () => {
 
   describe('closeOffCanvas', () => {
     it('emits false from offCanvasOpen', () => {
+      service.openOffCanvas(offCanvasItemMock);
+
       service.offCanvasOpen.subscribe((isOpen: boolean) => {
         expect(isOpen).toBe(false);
       });
