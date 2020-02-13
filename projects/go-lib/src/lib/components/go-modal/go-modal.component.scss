@@ -23,18 +23,20 @@
 }
 
 .go-modal__container {
+  @include transition(all);
+
   background: $theme-light-bg;
   border-radius: $global-radius;
   box-shadow: $global-box-shadow--regular;
   color: $theme-light-color;
-  min-width: map-get($modal-container-sizes, 'lg');
+  max-height: 100%;
   max-width: map-get($modal-container-sizes, 'lg');
-  padding: 1rem;
-  position: relative;
+  min-width: map-get($modal-container-sizes, 'lg');
   overflow-x: hidden;
   overflow-y: auto;
+  padding: 1rem;
+  position: relative;
   transform: scale(1.1);
-  @include transition(all);
 
   @media (max-width: $breakpoint-mobile) {
     max-width: 100%;
