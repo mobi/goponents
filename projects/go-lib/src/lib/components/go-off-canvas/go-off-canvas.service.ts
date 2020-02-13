@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-import { GoOffCanvasItem } from "./go-off-canvas.interface";
+import { GoOffCanvasItem } from './go-off-canvas.interface';
 
 @Injectable({
   providedIn: 'root'
