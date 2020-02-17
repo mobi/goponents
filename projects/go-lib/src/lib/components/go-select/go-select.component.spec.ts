@@ -77,10 +77,24 @@ describe('GoSelectComponent', () => {
 
   describe('onSelectAll()', () => {
     it('adds all of the available items to the form control value', () => {
+      component.bindValue = undefined;
       component.items = [
         { value: 1, label: 'Label 1' },
         { value: 2, label: 'Label 2' },
         { value: 3, label: 'Label 3' }
+      ];
+
+      component.onSelectAll();
+
+      expect(component.control.value).toEqual(component.items);
+    });
+
+    it('uses bindValue to get value if bindValue exists', () => {
+      component.bindValue = 'id';
+      component.items = [
+        { id: 1, label: 'Label 1' },
+        { id: 2, label: 'Label 2' },
+        { id: 3, label: 'Label 3' }
       ];
 
       component.onSelectAll();
