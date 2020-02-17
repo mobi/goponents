@@ -81,7 +81,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (!this.tableConfig) {
       throw new Error('GoTableComponent: tableConfig is a required Input');
     } else {
-      this.renderTable();
+      // we have to do call setupSearch here because it creates a subscription
+      // if we call it in ngOnChanges it will create a new subscription
+      // everytime ngOnChanges is triggered, which is not good
+      this.setupSearch();
     }
   }
 
@@ -103,7 +106,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
-      this.setupSearch();
       this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
@@ -416,8 +418,9 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.localTableConfig.searchConfig.searchTerm = searchTerm;
       if (!this.isServerMode()) {
         this.performSearch(searchTerm.toLowerCase());
+      } else {
+        this.tableChangeOutcome();
       }
-      this.tableChangeOutcome();
     });
   }
 
