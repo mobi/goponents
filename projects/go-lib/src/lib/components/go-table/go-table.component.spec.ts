@@ -14,6 +14,7 @@ import { GoTableComponent } from './go-table.component';
 import { Component } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { detectChanges } from '@angular/core/src/render3';
 
 @Component({
   selector: 'go-table-test',
@@ -920,6 +921,19 @@ describe('GoTableComponent', () => {
       }
     });
 
+    it('sets the searchTerm if a searchTerm is passed in to the config', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+      component.searchTerm.reset();
+
+      component.renderTable();
+      component.ngOnInit();
+      tick(501);
+
+      expect(component.searchTerm.value).toEqual(component.tableConfig.searchConfig.searchTerm);
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    }));
+
     it('sets up a search term that filters table if config is set to searchable', fakeAsync(() => {
       component.tableConfig.searchConfig.searchable = true;
 
@@ -997,6 +1011,56 @@ describe('GoTableComponent', () => {
       component.ngOnChanges();
 
       expect(component.renderTable).toHaveBeenCalled();
+    });
+  });
+
+  describe('ngAfterViewInit', () => {
+    beforeEach(() => {
+      component.tableConfig = tableConfig;
+      component.tableConfig.dataMode = GoTableDataSource.client;
+      component.tableConfig.tableData = fakeTableData;
+    });
+
+    it('performs a search if datamode is client and table is searchable', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    });
+
+    it('does not perform a search if datamode is server and table is searchable', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+      component.tableConfig.dataMode = GoTableDataSource.server;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual(fakeTableData);
+    });
+
+    it('does not perform a search if datamode is client and table is not searchable', () => {
+      component.tableConfig.searchConfig.searchable = false;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual(fakeTableData);
+    });
+
+    it('calls detectChanges if a search is performed', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+
+      spyOn(component['changeDetector'], 'detectChanges');
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component['changeDetector'].detectChanges).toHaveBeenCalled();
     });
   });
 });

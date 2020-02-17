@@ -22,9 +22,12 @@
       *ngIf="searchTerm.value">
     </go-icon-button>
   </div>
-  <div class="go-table">
-    <table class="go-table__table"
-           *ngIf="hasData(); else noDataTable">
+  <div 
+    [ngStyle]="{ 'max-height': maxHeight }"
+    class="go-table">
+    <table
+      class="go-table__table"
+      *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
           <td class="go-table__body-column"

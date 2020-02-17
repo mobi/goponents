@@ -82,7 +82,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (!this.tableConfig) {
       throw new Error('GoTableComponent: tableConfig is a required Input');
     } else {
-      this.renderTable();
+      // we have to do call setupSearch here because it creates a subscription
+      // if we call it in ngOnChanges it will create a new subscription
+      // everytime ngOnChanges is triggered, which is not good
+      this.setupSearch();
     }
   }
 
@@ -95,6 +98,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.toggleSelectAll();
       this.changeDetector.detectChanges();
     }
+
+    if (!this.isServerMode() && this.localTableConfig.searchConfig.searchable) {
+      if (this.localTableConfig.searchConfig.searchTerm && this.localTableConfig.searchConfig.searchTerm !== '') {
+        this.performSearch(this.localTableConfig.searchConfig.searchTerm.toLowerCase());
+        this.changeDetector.detectChanges();
+      }
+    }
   }
 
   renderTable(): void {
@@ -104,7 +114,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
-      this.setupSearch();
       this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
@@ -414,6 +423,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
+    if (this.localTableConfig.searchConfig.searchTerm) {
+      this.searchTerm.setValue(this.localTableConfig.searchConfig.searchTerm);
+    }
+
     this.searchTerm.valueChanges.pipe(
       debounceTime(this.localTableConfig.searchConfig.debounce),
       distinctUntilChanged()
@@ -421,9 +434,9 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.localTableConfig.searchConfig.searchTerm = searchTerm;
       if (!this.isServerMode()) {
         this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
+      } else {
+        this.tableChangeOutcome();
       }
-
-      this.tableChangeOutcome();
     });
   }
 
