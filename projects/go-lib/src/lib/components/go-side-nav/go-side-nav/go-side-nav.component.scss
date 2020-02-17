@@ -10,7 +10,6 @@
   flex-grow: 1;
   font-family: $secondary-font-stack;
   height: 100%;
-  padding-top: 2rem;
   width: $side-nav-width;
   z-index: z-index(navigation);
 
@@ -31,6 +30,7 @@
 .go-side-nav__nav-items {
   flex: 1;
   overflow-y: auto;
+  padding-top: 2rem;
 }
 
 .go-side-nav__app {
