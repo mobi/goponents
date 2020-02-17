@@ -910,14 +910,6 @@ describe('GoTableComponent', () => {
       }
     });
 
-    it('should render table if tableConfig exists', () => {
-      spyOn(component, 'renderTable');
-
-      component.ngOnInit();
-
-      expect(component.renderTable).toHaveBeenCalled();
-    });
-
     it('sets up a search term that filters table if config is set to searchable', fakeAsync(() => {
       component.tableConfig.searchConfig.searchable = true;
 
@@ -966,6 +958,7 @@ describe('GoTableComponent', () => {
       component.tableConfig.searchConfig.searchable = true;
       component.tableConfig.dataMode = GoTableDataSource.server;
 
+      component.renderTable();
       component.ngOnInit();
 
       component.searchTerm.setValue('koala bear');
