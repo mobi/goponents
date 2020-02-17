@@ -241,7 +241,9 @@
   box-shadow: $global-box-shadow--small;
   color: $theme-light-border;
   display: flex;
+  height: 2rem;
   margin: 0.25rem 1.25rem 1rem 1.25rem;
+  position: relative;
 
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
@@ -267,6 +269,15 @@
   &:active, &:focus {
     outline: none;
   }
+}
+
+.go-table__search-close-icon {
+  color: $ui-color-negative;
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  user-select: none;
 }
 
 // Filter Table

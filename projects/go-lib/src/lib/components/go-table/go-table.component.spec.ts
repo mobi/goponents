@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
@@ -886,6 +886,16 @@ describe('GoTableComponent', () => {
       component.renderTable();
 
       expect(component.pages).toEqual(pages);
+    });
+  });
+
+  describe('clearSearch', () => {
+    it('resets the searchTerm control', () => {
+      component.searchTerm.setValue('voldemort');
+
+      component.clearSearch();
+
+      expect(component.searchTerm.value).toBeNull();
     });
   });
 

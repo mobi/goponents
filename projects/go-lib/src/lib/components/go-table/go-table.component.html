@@ -12,9 +12,15 @@
     <go-icon icon="search" class="go-table__search-icon"></go-icon>
     <input
       class="go-table__search-input"
-      placeholder="Search..."
+      [placeholder]="localTableConfig.searchConfig.placeholder"
       [formControl]="searchTerm"
     />
+    <go-icon-button
+      (handleClick)="clearSearch()"
+      buttonIcon="close"
+      class="go-table__search-close-icon"
+      *ngIf="searchTerm.value">
+    </go-icon-button>
   </div>
   <div class="go-table">
     <table class="go-table__table"

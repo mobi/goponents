@@ -46,6 +46,7 @@ import { GoTablePage } from './go-table-page.model';
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() loadingData: boolean = false;
+  @Input() maxHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
@@ -81,10 +82,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (!this.tableConfig) {
       throw new Error('GoTableComponent: tableConfig is a required Input');
     } else {
-      // we have to do call setupSearch here because it creates a subscription
-      // if we call it in ngOnChanges it will create a new subscription
-      // everytime ngOnChanges is triggered, which is not good
-      this.setupSearch();
+      this.renderTable();
     }
   }
 
@@ -106,6 +104,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
+      this.setupSearch();
       this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
@@ -317,6 +316,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
+  clearSearch(): void {
+    this.searchTerm.reset();
+  }
+
   //#region Private Methods
   private handleSort(): void {
     const { sortConfig, sortable, tableData }:
@@ -412,15 +415,15 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   private setupSearch(): void {
     this.searchTerm.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(this.localTableConfig.searchConfig.debounce),
       distinctUntilChanged()
     ).subscribe((searchTerm: string) => {
       this.localTableConfig.searchConfig.searchTerm = searchTerm;
       if (!this.isServerMode()) {
-        this.performSearch(searchTerm.toLowerCase());
-      } else {
-        this.tableChangeOutcome();
+        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
       }
+
+      this.tableChangeOutcome();
     });
   }
 
