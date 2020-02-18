@@ -44,11 +44,6 @@ body {
   flex-grow: 1;
 }
 
-.go-footer {
-  width: 100%;
-  padding: 0 2rem 2rem 2rem;
-}
-
 .go-route-loader {
   align-items: center;
   background: transparentize($theme-light-app-bg, 0.25%);
