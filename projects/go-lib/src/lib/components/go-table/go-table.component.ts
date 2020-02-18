@@ -46,6 +46,7 @@ import { GoTablePage } from './go-table-page.model';
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() loadingData: boolean = false;
+  @Input() maxHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
@@ -96,6 +97,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.tableConfig.preselected) {
       this.toggleSelectAll();
       this.changeDetector.detectChanges();
+    }
+
+    if (!this.isServerMode() && this.localTableConfig.searchConfig.searchable) {
+      if (this.localTableConfig.searchConfig.searchTerm && this.localTableConfig.searchConfig.searchTerm !== '') {
+        this.performSearch(this.localTableConfig.searchConfig.searchTerm.toLowerCase());
+        this.changeDetector.detectChanges();
+      }
     }
   }
 
@@ -317,6 +325,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
+  clearSearch(): void {
+    this.searchTerm.reset();
+  }
+
   //#region Private Methods
   private handleSort(): void {
     const { sortConfig, sortable, tableData }:
@@ -411,13 +423,17 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
+    if (this.localTableConfig.searchConfig.searchTerm) {
+      this.searchTerm.setValue(this.localTableConfig.searchConfig.searchTerm);
+    }
+
     this.searchTerm.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(this.localTableConfig.searchConfig.debounce),
       distinctUntilChanged()
     ).subscribe((searchTerm: string) => {
       this.localTableConfig.searchConfig.searchTerm = searchTerm;
       if (!this.isServerMode()) {
-        this.performSearch(searchTerm.toLowerCase());
+        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
       } else {
         this.tableChangeOutcome();
       }
