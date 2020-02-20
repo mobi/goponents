@@ -15,6 +15,7 @@
 
 @each $name, $size in $column-sizes {
   .go-column--#{$name} {
+    max-width: percentage($size);
     flex-basis: percentage($size);
     width: percentage($size);
 
@@ -31,18 +32,24 @@
 %mobile__flex-basis--100 {
   @media (max-width: $breakpoint_mobile) {
     flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
 %tablet__flex-basis--50 {
   @media (max-width: $breakpoint_tablet) {
     flex-basis: 50%;
+    max-width: 50%;
+    width: 50%;
   }
 }
 
 %tablet__flex-basis--100 {
   @media (max-width: $breakpoint_tablet) {
     flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
