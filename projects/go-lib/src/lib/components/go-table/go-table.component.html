@@ -95,8 +95,8 @@
               </ng-template>
             </td>
           </tr>
-          <tr class="go-table__body-row" *ngIf="details">
-            <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }" *ngIf="item.showDetails">
+          <tr class="go-table__body-row" *ngIf="details && item.showDetails">
+            <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
             </td>
           </tr>
@@ -106,10 +106,13 @@
   </div>
   <div class="go-table-toolbar" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
-      <select class="go-form__select go-table-toolbar__select" [value]="localTableConfig.pageConfig.perPage" (change)="setPerPage($event)">
-        <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
-                [value]="[size]">{{ size }}</option>
-      </select>
+      <go-select
+        class="go-table-toolbar__select"
+        [clearable]="false"
+        [control]="pageSizeControl"
+        [items]="localTableConfig.pageConfig.pageSizes"
+        [searchable]="false">
+      </go-select>
       <label class="go-table-toolbar__label">Page Size</label>
     </div>
     <div class="go-table-toolbar__label">

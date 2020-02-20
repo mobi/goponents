@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoSelectModule } from '../go-select/go-select.module';
 
 import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableComponent } from './go-table.component';
@@ -20,6 +21,7 @@ import { GoTableComponent } from './go-table.component';
     GoIconModule,
     GoIconButtonModule,
     GoLoaderModule,
+    GoSelectModule,
     ReactiveFormsModule
   ],
   exports: [

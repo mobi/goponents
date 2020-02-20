@@ -55,7 +55,7 @@
 
   color: $theme-light-color;
   font-size: .75rem;
-  font-weight: bold;
+  font-weight: $weight-medium;
   letter-spacing: 1pt;
   padding: 1rem 1.25rem;
   position: relative;
@@ -143,8 +143,7 @@
 }
 
 .go-table-toolbar__select {
-  font-size: 0.875rem;
-  height: 2rem;
+  min-width: 4.25rem;
 }
 
 .go-table-toolbar__label {
@@ -265,6 +264,10 @@
   letter-spacing: 0.02rem;
   min-width: 250px;
   padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
+
+  &::-ms-clear {
+    display: none;
+  }
 
   &:active, &:focus {
     outline: none;
