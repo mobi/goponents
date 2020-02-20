@@ -14,7 +14,7 @@ import { GoTableComponent } from './go-table.component';
 import { Component } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { detectChanges } from '@angular/core/src/render3';
+import { GoSelectModule } from '../go-select/go-select.module';
 
 @Component({
   selector: 'go-table-test',
@@ -58,6 +58,7 @@ describe('GoTableComponent', () => {
         GoIconButtonModule,
         GoIconModule,
         GoLoaderModule,
+        GoSelectModule,
         ReactiveFormsModule,
         BrowserAnimationsModule
       ]
@@ -485,27 +486,41 @@ describe('GoTableComponent', () => {
     });
   });
 
-  describe('setPerPage', () => {
-    const event: any = {
-      target: {
-        value: 5
-      }
-    };
-
-    beforeEach(() => {
-      spyOn(component.tableChange, 'emit');
-    });
-
-    afterEach(() => {
-      expect(component.tableChange.emit).toHaveBeenCalled();
-    });
-
-    it('should set perPage and update pagination data', () => {
+  describe('setupPageSizes', () => {
+    it('should set value of pageSizeControl to that of pageConfig.perPage', () => {
+      component.pageSizeControl.reset();
       component.localTableConfig.pageConfig.perPage = 25;
 
-      component.setPerPage(event);
+      component.setupPageSizes();
 
-      expect(component.localTableConfig.pageConfig.perPage).toBe(5);
+      expect(component.pageSizeControl.value).toEqual(component.localTableConfig.pageConfig.perPage);
+    });
+
+    it('should set pageConfig.perPage to new page size when pageSizeControl changes', () => {
+      component.pageSizeControl.setValue(50);
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component.localTableConfig.pageConfig.perPage).toEqual(component.pageSizeControl.value);
+    });
+
+    it('should call set page when pageSizeControl changes', () => {
+      spyOn<any>(component, 'setPage');
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component['setPage']).toHaveBeenCalled();
+    });
+
+    it('should emit table change event when pageSizeControl changes', () => {
+      spyOn(component.tableChange, 'emit');
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component.tableChange.emit).toHaveBeenCalled();
     });
   });
 

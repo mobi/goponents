@@ -222,8 +222,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.setPage();
       this.tableChangeOutcome();
     });
-
-
   }
 
   outputResultsPerPage(): string {
