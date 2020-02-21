@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
@@ -14,6 +14,7 @@ import { GoTableComponent } from './go-table.component';
 import { Component } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoSelectModule } from '../go-select/go-select.module';
 
 @Component({
   selector: 'go-table-test',
@@ -57,6 +58,7 @@ describe('GoTableComponent', () => {
         GoIconButtonModule,
         GoIconModule,
         GoLoaderModule,
+        GoSelectModule,
         ReactiveFormsModule,
         BrowserAnimationsModule
       ]
@@ -484,27 +486,41 @@ describe('GoTableComponent', () => {
     });
   });
 
-  describe('setPerPage', () => {
-    const event: any = {
-      target: {
-        value: 5
-      }
-    };
-
-    beforeEach(() => {
-      spyOn(component.tableChange, 'emit');
-    });
-
-    afterEach(() => {
-      expect(component.tableChange.emit).toHaveBeenCalled();
-    });
-
-    it('should set perPage and update pagination data', () => {
+  describe('setupPageSizes', () => {
+    it('should set value of pageSizeControl to that of pageConfig.perPage', () => {
+      component.pageSizeControl.reset();
       component.localTableConfig.pageConfig.perPage = 25;
 
-      component.setPerPage(event);
+      component.setupPageSizes();
 
-      expect(component.localTableConfig.pageConfig.perPage).toBe(5);
+      expect(component.pageSizeControl.value).toEqual(component.localTableConfig.pageConfig.perPage);
+    });
+
+    it('should set pageConfig.perPage to new page size when pageSizeControl changes', () => {
+      component.pageSizeControl.setValue(50);
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component.localTableConfig.pageConfig.perPage).toEqual(component.pageSizeControl.value);
+    });
+
+    it('should call set page when pageSizeControl changes', () => {
+      spyOn<any>(component, 'setPage');
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component['setPage']).toHaveBeenCalled();
+    });
+
+    it('should emit table change event when pageSizeControl changes', () => {
+      spyOn(component.tableChange, 'emit');
+
+      component.setupPageSizes();
+      component.pageSizeControl.setValue(25);
+
+      expect(component.tableChange.emit).toHaveBeenCalled();
     });
   });
 
@@ -889,6 +905,16 @@ describe('GoTableComponent', () => {
     });
   });
 
+  describe('clearSearch', () => {
+    it('resets the searchTerm control', () => {
+      component.searchTerm.setValue('voldemort');
+
+      component.clearSearch();
+
+      expect(component.searchTerm.value).toBeNull();
+    });
+  });
+
   describe('ngOnInit', () => {
     beforeEach(() => {
       component.tableConfig = tableConfig;
@@ -910,13 +936,18 @@ describe('GoTableComponent', () => {
       }
     });
 
-    it('should render table if tableConfig exists', () => {
-      spyOn(component, 'renderTable');
+    it('sets the searchTerm if a searchTerm is passed in to the config', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+      component.searchTerm.reset();
 
+      component.renderTable();
       component.ngOnInit();
+      tick(501);
 
-      expect(component.renderTable).toHaveBeenCalled();
-    });
+      expect(component.searchTerm.value).toEqual(component.tableConfig.searchConfig.searchTerm);
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    }));
 
     it('sets up a search term that filters table if config is set to searchable', fakeAsync(() => {
       component.tableConfig.searchConfig.searchable = true;
@@ -966,6 +997,7 @@ describe('GoTableComponent', () => {
       component.tableConfig.searchConfig.searchable = true;
       component.tableConfig.dataMode = GoTableDataSource.server;
 
+      component.renderTable();
       component.ngOnInit();
 
       component.searchTerm.setValue('koala bear');
@@ -994,6 +1026,56 @@ describe('GoTableComponent', () => {
       component.ngOnChanges();
 
       expect(component.renderTable).toHaveBeenCalled();
+    });
+  });
+
+  describe('ngAfterViewInit', () => {
+    beforeEach(() => {
+      component.tableConfig = tableConfig;
+      component.tableConfig.dataMode = GoTableDataSource.client;
+      component.tableConfig.tableData = fakeTableData;
+    });
+
+    it('performs a search if datamode is client and table is searchable', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual([{ id: 3, value: 'c', animal: 'koala bear' }]);
+    });
+
+    it('does not perform a search if datamode is server and table is searchable', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+      component.tableConfig.dataMode = GoTableDataSource.server;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual(fakeTableData);
+    });
+
+    it('does not perform a search if datamode is client and table is not searchable', () => {
+      component.tableConfig.searchConfig.searchable = false;
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component.localTableConfig.tableData).toEqual(fakeTableData);
+    });
+
+    it('calls detectChanges if a search is performed', () => {
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+
+      spyOn(component['changeDetector'], 'detectChanges');
+
+      component.renderTable();
+      component.ngAfterViewInit();
+
+      expect(component['changeDetector'].detectChanges).toHaveBeenCalled();
     });
   });
 });

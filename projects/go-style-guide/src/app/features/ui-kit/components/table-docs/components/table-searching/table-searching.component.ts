@@ -20,6 +20,8 @@ export class TableSearchingComponent {
 
   tableSearchConfig: string = `
   class GoTableSearchConfig {
+    debounce: number = 500;
+    placeholder: string = 'Search...';
     searchable: boolean = false;
     searchTerm: string;
   }

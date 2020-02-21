@@ -15,6 +15,7 @@ export class GoSelectComponent implements OnInit {
   @Input() appendTo: string;
   @Input() bindLabel: string;
   @Input() bindValue: string;
+  @Input() clearable: boolean = true;
   @Input() control: FormControl;
   /**
    * A property on each item to group by
@@ -39,6 +40,6 @@ export class GoSelectComponent implements OnInit {
   }
 
   onSelectAll(): void {
-    this.control.patchValue(this.items.map((item: any) => item.value));
+    this.control.patchValue(this.items.map((item: any) => this.bindValue ? item[this.bindValue] : item));
   }
 }

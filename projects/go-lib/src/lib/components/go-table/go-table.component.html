@@ -12,13 +12,22 @@
     <go-icon icon="search" class="go-table__search-icon"></go-icon>
     <input
       class="go-table__search-input"
-      placeholder="Search..."
+      [placeholder]="localTableConfig.searchConfig.placeholder"
       [formControl]="searchTerm"
     />
+    <go-icon-button
+      (handleClick)="clearSearch()"
+      buttonIcon="close"
+      class="go-table__search-close-icon"
+      *ngIf="searchTerm.value">
+    </go-icon-button>
   </div>
-  <div class="go-table">
-    <table class="go-table__table"
-           *ngIf="hasData(); else noDataTable">
+  <div 
+    [ngStyle]="{ 'max-height': maxHeight }"
+    class="go-table">
+    <table
+      class="go-table__table"
+      *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
           <td class="go-table__body-column"
@@ -86,8 +95,8 @@
               </ng-template>
             </td>
           </tr>
-          <tr class="go-table__body-row" *ngIf="details">
-            <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }" *ngIf="item.showDetails">
+          <tr class="go-table__body-row" *ngIf="details && item.showDetails">
+            <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
             </td>
           </tr>
@@ -97,10 +106,13 @@
   </div>
   <div class="go-table-toolbar" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
-      <select class="go-form__select go-table-toolbar__select" [value]="localTableConfig.pageConfig.perPage" (change)="setPerPage($event)">
-        <option *ngFor="let size of localTableConfig.pageConfig.pageSizes"
-                [value]="[size]">{{ size }}</option>
-      </select>
+      <go-select
+        class="go-table-toolbar__select"
+        [clearable]="false"
+        [control]="pageSizeControl"
+        [items]="localTableConfig.pageConfig.pageSizes"
+        [searchable]="false">
+      </go-select>
       <label class="go-table-toolbar__label">Page Size</label>
     </div>
     <div class="go-table-toolbar__label">

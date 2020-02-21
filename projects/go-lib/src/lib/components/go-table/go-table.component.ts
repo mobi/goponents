@@ -46,6 +46,7 @@ import { GoTablePage } from './go-table-page.model';
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() loadingData: boolean = false;
+  @Input() maxHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
@@ -70,6 +71,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   allData: any[] = [];
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
+  pageSizeControl: FormControl = new FormControl();
   searchTerm: FormControl = new FormControl();
   selectAllChecked: boolean = false;
   showTable: boolean = false;
@@ -81,7 +83,11 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     if (!this.tableConfig) {
       throw new Error('GoTableComponent: tableConfig is a required Input');
     } else {
-      this.renderTable();
+      // we have to do call setupSearch here because it creates a subscription
+      // if we call it in ngOnChanges it will create a new subscription
+      // everytime ngOnChanges is triggered, which is not good
+      this.setupSearch();
+      this.setupPageSizes();
     }
   }
 
@@ -94,6 +100,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.toggleSelectAll();
       this.changeDetector.detectChanges();
     }
+
+    if (!this.isServerMode() && this.localTableConfig.searchConfig.searchable) {
+      if (this.localTableConfig.searchConfig.searchTerm && this.localTableConfig.searchConfig.searchTerm !== '') {
+        this.performSearch(this.localTableConfig.searchConfig.searchTerm.toLowerCase());
+        this.changeDetector.detectChanges();
+      }
+    }
   }
 
   renderTable(): void {
@@ -103,7 +116,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
-      this.setupSearch();
       this.setPage(this.localTableConfig.pageConfig.offset);
     }
 
@@ -202,11 +214,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
-  setPerPage(event: any): void {
-    this.localTableConfig.pageConfig.perPage = Number(event.target.value);
-    this.setPage();
+  setupPageSizes(): void {
+    this.pageSizeControl.setValue(this.localTableConfig.pageConfig.perPage);
 
-    this.tableChangeOutcome();
+    this.pageSizeControl.valueChanges.subscribe((value: number) => {
+      this.localTableConfig.pageConfig.perPage = value;
+      this.setPage();
+      this.tableChangeOutcome();
+    });
   }
 
   outputResultsPerPage(): string {
@@ -315,6 +330,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
+  clearSearch(): void {
+    this.searchTerm.reset();
+  }
+
   //#region Private Methods
   private handleSort(): void {
     const { sortConfig, sortable, tableData }:
@@ -409,15 +428,20 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
+    if (this.localTableConfig.searchConfig.searchTerm) {
+      this.searchTerm.setValue(this.localTableConfig.searchConfig.searchTerm);
+    }
+
     this.searchTerm.valueChanges.pipe(
-      debounceTime(500),
+      debounceTime(this.localTableConfig.searchConfig.debounce),
       distinctUntilChanged()
     ).subscribe((searchTerm: string) => {
       this.localTableConfig.searchConfig.searchTerm = searchTerm;
       if (!this.isServerMode()) {
-        this.performSearch(searchTerm.toLowerCase());
+        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
+      } else {
+        this.tableChangeOutcome();
       }
-      this.tableChangeOutcome();
     });
   }
 

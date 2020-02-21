@@ -1,6 +1,6 @@
 # Goponents
 
-###### Currently `v1.5.2`
+###### Currently `v1.5.3`
 
 This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
@@ -110,6 +110,7 @@ To do this properly, you must export each individual file within the `public_api
 |----------------|----------------------------------------|
 | accordion      | Available                              |
 | action sheet   | Available                              |
+| app drawer     | Available                              |
 | badge          | Available                              |
 | button         | Available                              |
 | card           | Available                              |
@@ -129,6 +130,7 @@ To do this properly, you must export each individual file within the `public_api
 | loader         | Available                              |
 | modal          | Available                              |
 | off-canvas     | Available                              |
+| pill           | Available                              |
 | radio          | Available                              |
 | radio group    | Available                              |
 | select         | Available                              |

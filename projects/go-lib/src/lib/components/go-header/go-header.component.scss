@@ -64,10 +64,17 @@ $breakpoint-header-mobile-small: 500px;
 }
 
 .go-header__logo {
-  display: block;
-  flex: 0;
+  align-items: center;
+  display: flex;
+  flex: 1;
   height: 100%;
-  max-width: 100%;
+  width: 100%;
+
+  img {
+    flex-shrink: 0;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 .go-header__left {

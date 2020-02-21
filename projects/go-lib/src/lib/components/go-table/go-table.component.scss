@@ -55,7 +55,7 @@
 
   color: $theme-light-color;
   font-size: .75rem;
-  font-weight: bold;
+  font-weight: $weight-medium;
   letter-spacing: 1pt;
   padding: 1rem 1.25rem;
   position: relative;
@@ -143,8 +143,7 @@
 }
 
 .go-table-toolbar__select {
-  font-size: 0.875rem;
-  height: 2rem;
+  min-width: 4.25rem;
 }
 
 .go-table-toolbar__label {
@@ -241,7 +240,9 @@
   box-shadow: $global-box-shadow--small;
   color: $theme-light-border;
   display: flex;
+  height: 2rem;
   margin: 0.25rem 1.25rem 1rem 1.25rem;
+  position: relative;
 
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
@@ -264,9 +265,19 @@
   min-width: 250px;
   padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
 
+  &::-ms-clear {
+    display: none;
+  }
+
   &:active, &:focus {
     outline: none;
   }
+}
+
+.go-table__search-close-icon {
+  position: absolute;
+  right: 2px;
+  top: 2px;
 }
 
 // Filter Table

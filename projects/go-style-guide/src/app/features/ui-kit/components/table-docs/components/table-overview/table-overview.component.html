@@ -27,6 +27,14 @@
       </div>
 
       <div class="go-column go-column--100">
+        <h4 class="go-heading-4">maxHeight</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding can be used to specify a maximum height of the table content.
+          By default the table will grow to fit the size of its content. A pixel value should be passed in to override this.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">renderBoxShadows</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           This binding toggles box-shadows for the table. By default, it is set to <code class="code-block--inline">true</code>.
@@ -98,6 +106,31 @@
   </go-card>
 
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="No Box-Shadow Example" [renderBoxShadows]="false">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Max Height</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="maxHeightExample_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="basicExample_ts"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    tableTitle="Max Height Example"
+    maxHeight="300px">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

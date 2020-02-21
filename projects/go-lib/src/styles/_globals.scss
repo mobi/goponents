@@ -1,5 +1,11 @@
 @import "./variables";
 
+* {
+  box-sizing: border-box;
+  scrollbar-color: $base-light-secondary transparent;
+  scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
