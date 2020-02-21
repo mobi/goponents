@@ -505,7 +505,7 @@
       </div>
     </div>
   </go-card>
-  <go-card id="form-select-appendto" class="go-column go-column--100">
+  <go-card id="form-select-groupby" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2">Component groupBy</h2>
     </ng-container>
@@ -540,6 +540,50 @@
             ></code>
             <code
               [highlight]="select12ComponentCode"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-select-clearable" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component clearable</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">@Input() clearable: boolean = true;</code> binding is useful when implementing a
+          <code class="code-block--inline">go-select</code> that should always have a value from the drop down assigned.
+          This binding removes the "x" button on the right end of the input so that the value cannot be cleared.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindLabel="name"
+              bindValue="value"
+              [clearable]="false"
+              [control]="select16"
+              [items]="items"
+              label="Select an option">
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select16Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+            <code
+              [highlight]="select16ComponentCode"
               class="code-block--no-bottom-margin"
             ></code>
           </div>

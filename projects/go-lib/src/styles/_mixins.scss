@@ -65,6 +65,10 @@ $z-index: (
   letter-spacing: .5pt;
   outline: none;
   width: 100%;
+
+  &::-ms-clear {
+    display: none;
+  }
 }
 
 @mixin disabled-input {

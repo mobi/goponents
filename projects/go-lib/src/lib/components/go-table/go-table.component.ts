@@ -71,6 +71,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   allData: any[] = [];
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
+  pageSizeControl: FormControl = new FormControl();
   searchTerm: FormControl = new FormControl();
   selectAllChecked: boolean = false;
   showTable: boolean = false;
@@ -86,6 +87,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       // if we call it in ngOnChanges it will create a new subscription
       // everytime ngOnChanges is triggered, which is not good
       this.setupSearch();
+      this.setupPageSizes();
     }
   }
 
@@ -212,11 +214,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.tableChangeOutcome();
   }
 
-  setPerPage(event: any): void {
-    this.localTableConfig.pageConfig.perPage = Number(event.target.value);
-    this.setPage();
+  setupPageSizes(): void {
+    this.pageSizeControl.setValue(this.localTableConfig.pageConfig.perPage);
 
-    this.tableChangeOutcome();
+    this.pageSizeControl.valueChanges.subscribe((value: number) => {
+      this.localTableConfig.pageConfig.perPage = value;
+      this.setPage();
+      this.tableChangeOutcome();
+    });
   }
 
   outputResultsPerPage(): string {
