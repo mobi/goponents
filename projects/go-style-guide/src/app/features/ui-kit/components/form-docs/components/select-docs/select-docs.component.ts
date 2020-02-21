@@ -40,6 +40,7 @@ export class SelectDocsComponent implements OnInit {
   select13: FormControl = new FormControl();
   select14: FormControl = new FormControl();
   select15: FormControl = new FormControl();
+  select16: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -274,6 +275,24 @@ export class SelectDocsComponent implements OnInit {
     [items]="items"
     [searchable]="false"
     label="Your Input">
+  </go-select>
+  `;
+
+  select16ComponentCode: string = `
+  items = [
+    { value: 1, name: 'Reeses' },
+    { value: 2, name: 'Mints' }
+  ];
+  `;
+
+  select16Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [clearable]="false"
+    [control]="select16"
+    [items]="items"
+    label="Select an option">
   </go-select>
   `;
 
