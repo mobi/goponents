@@ -1,5 +1,23 @@
 <go-layout>
   <go-header go-layout-header logo="assets/images/goDesign.svg">
+    <ng-container go-header-right>
+      <go-action-sheet [shiftLeft]="true">
+        <ng-container go-action-sheet__button>
+          <go-icon-button buttonIcon="code">
+          </go-icon-button>
+        </ng-container>
+        <ng-container go-action-sheet-content>
+          <go-panel
+            panelContent="GitHub"
+            externalLink="https://github.com/mobi/goponents">
+          </go-panel>
+          <go-panel
+            panelContent="NPM"
+            externalLink="https://www.npmjs.com/package/@tangoe/goponents">
+          </go-panel>
+        </ng-container>
+      </go-action-sheet>
+    </ng-container>
   </go-header>
   <go-side-nav go-layout-nav [menuItems]="menuItems" [navAppDrawer]="navAppDrawer">
   </go-side-nav>

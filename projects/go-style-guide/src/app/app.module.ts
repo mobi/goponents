@@ -4,14 +4,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './config/routes/app-routing.module';
 
 import {
+  GoActionSheetModule,
+  GoFooterModule,
   GoHeaderModule,
   GoIconButtonModule,
   GoLayoutModule,
   GoModalModule,
   GoOffCanvasModule,
   GoSideNavModule,
-  GoToasterModule,
-  GoFooterModule
+  GoToasterModule
 } from '../../../go-lib/src/public_api';
 
 import { CoreModule } from './core/core.module';
@@ -40,6 +41,7 @@ export function hljsLanguages(): any[] {
     AppRoutingModule,
     CoreModule,
     FeaturesModule,
+    GoActionSheetModule,
     GoFooterModule,
     GoIconButtonModule,
     GoHeaderModule,

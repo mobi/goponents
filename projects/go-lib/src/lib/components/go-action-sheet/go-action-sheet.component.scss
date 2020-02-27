@@ -1,6 +1,10 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$as-before-borders: 2px;
+$as-before-box-half-width: 7.5px;
+$as-before-box-diag-width: 21.21px;
+
 .go-action-sheet {
   display: inline-block;
   position: relative;
@@ -53,20 +57,12 @@ go-action-sheet-button {
   }
 }
 
-.go-action-sheet__content-container--shift-left {
-  transform: translateX(-90%);
-
-  &::before {
-    left: calc(90% - 7.5px);
-  }
-}
-
 .go-action-sheet__content-container--placement-bottom {
   left: 50%;
-  top: calc(100% + 1rem);
+  top: calc(100% + 1.1rem);
 
   &::before {
-    left: calc(50% - 7.5px);
+    right: calc(50% - 7.5px);
     top: -7.5px;
   }
 }
@@ -78,7 +74,17 @@ go-action-sheet-button {
   transform: translate(0, 0);
 
   &::before {
-    left: -.5rem;
     bottom: .75rem;
+    left: -.5rem;
+  }
+}
+
+.go-action-sheet__content-container--shift-left {
+  margin-left: (($as-before-box-diag-width + $as-before-box-half-width) / 2) + $as-before-borders;
+  transform: translateX(-100%);
+
+  &::before {
+    right: $as-before-box-half-width + $as-before-box-diag-width + $as-before-borders;
+    transform: rotate(45deg) translate(100%, -100%);
   }
 }
