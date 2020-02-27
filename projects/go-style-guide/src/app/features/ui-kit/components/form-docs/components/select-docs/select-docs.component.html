@@ -275,7 +275,7 @@
         </p>
       </div>
 
-      <div class="go-column go-column--100 go-column--no-padding">
+      <div class="go-column go-column--100">
         <div class="go-container">
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -292,6 +292,34 @@
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
               [highlight]="select7Code"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            If need be, you can also remove the "Select All" button using the
+            <code class="code-block--inline">@Input() showSelecAll: boolean = false;</code> binding.
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindLabel="name"
+              bindValue="value"
+              [control]="select7"
+              [items]="items"
+              [multiple]="true"
+              [showSelectAll]="false"
+              label="Favorite Candy"
+            ></go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select7Code_noSelectAll"
               class="code-block--no-bottom-margin"
             ></code>
           </div>
