@@ -30,13 +30,15 @@
   box-shadow: $global-box-shadow--regular;
   color: $theme-light-color;
   max-height: 100%;
-  max-width: map-get($modal-container-sizes, 'lg');
-  min-width: map-get($modal-container-sizes, 'lg');
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 1rem;
   position: relative;
   transform: scale(1.1);
+}
+
+.go-modal__container--lg {
+  max-width: map-get($modal-container-sizes, 'lg');
+  min-width: map-get($modal-container-sizes, 'lg');
 
   @media (max-width: $breakpoint-mobile) {
     max-width: 100%;
@@ -44,9 +46,7 @@
   }
 }
 
-.go-modal__container-xl {
-  @extend .go-modal__container;
-
+.go-modal__container--xl {
   min-width: map-get($modal-container-sizes, 'xl');
   max-width: map-get($modal-container-sizes, 'xl');
 
@@ -66,9 +66,10 @@
 }
 
 .go-modal__header {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   justify-content: space-between;
+  padding: 1rem 1rem 0;
 }
 
 .go-modal__close {
@@ -76,4 +77,12 @@
   cursor: pointer;
   font-size: 1.25rem;
   margin-left: .5rem;
+}
+
+.go-modal__content {
+  padding: 0 1rem 1rem;
+}
+
+.go-modal__content--no-padding {
+  padding: 0;
 }

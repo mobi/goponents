@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, ViewChild } from '@angular/core';
 
-import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoModalComponent } from './go-modal.component';
 import { GoModalDirective } from './go-modal.directive';
 import { GoModalItem } from './go-modal.item';
@@ -20,7 +20,7 @@ describe('GoModalComponent', () => {
         GoTestModalHostComponent,
         GoModalDirective
       ],
-      imports: [ GoIconModule ],
+      imports: [ GoIconButtonModule ],
       providers: [ GoModalService ]
     })
     .overrideModule(BrowserDynamicTestingModule, {

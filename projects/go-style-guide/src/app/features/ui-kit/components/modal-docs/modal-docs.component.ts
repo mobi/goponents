@@ -80,6 +80,14 @@ export class ModalDocsComponent {
   this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
   `;
 
+  ex_ModalDocsNoPadding: string = `
+  this.goModalService.openModal(ModalTestComponent, {
+    modalTitle: 'No Padding Example',
+    content: 'This area has no padding',
+    noContentPadding: true
+  });
+  `;
+
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
@@ -92,6 +100,14 @@ export class ModalDocsComponent {
 
   openXlModal(): void {
     this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
+  }
+
+  openNoPaddingModal(): void {
+    this.goModalService.openModal(ModalTestComponent, {
+      modalTitle: 'No Padding Example',
+      content: 'This area has no padding',
+      noContentPadding: true
+    });
   }
 
 }
