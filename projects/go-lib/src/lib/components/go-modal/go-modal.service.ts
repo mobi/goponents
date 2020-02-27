@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { GoModalItem } from './go-modal.item';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class GoModalService {
