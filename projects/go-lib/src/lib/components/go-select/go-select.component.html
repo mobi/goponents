@@ -21,7 +21,7 @@
   [placeholder]="placeholder"
   [typeahead]="typeahead"
   [searchable]="searchable">
-  <ng-container *ngIf="multiple">
+  <ng-container *ngIf="multiple && showSelectAll">
     <ng-template ng-header-tmp>
       <go-button buttonVariant="secondary" (handleClick)="onSelectAll()">Select All</go-button>
     </ng-template>

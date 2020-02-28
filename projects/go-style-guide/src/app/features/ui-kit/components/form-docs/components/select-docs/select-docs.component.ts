@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { GoModalService, GoSelectComponent } from 'projects/go-lib/src/public_api';
-import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
+import { GoModalService, GoSelectComponent } from '../../../../../../../../../go-lib/src/public_api';
+import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 import { debounceTime, map } from 'rxjs/operators';
 import { concat, of, Subject } from 'rxjs';
 
@@ -128,6 +128,20 @@ export class SelectDocsComponent implements OnInit {
     [control]="select"
     [items]="items"
     [multiple]="true"
+    label="Favorite Candy">
+  </go-select>
+  `;
+
+  select7Code_noSelectAll: string = `
+  <!-- add: [showSelectAll]="false" -->
+
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    [multiple]="true"
+    [showSelectAll]="false"
     label="Favorite Candy">
   </go-select>
   `;
