@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GoModalComponent } from './go-modal.component';
 import { GoModalDirective } from './go-modal.directive';
 
-import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { GoIconModule } from '../go-icon/go-icon.module';
   ],
   imports: [
     CommonModule,
-    GoIconModule
+    GoIconButtonModule
   ],
   exports: [GoModalComponent]
 })
