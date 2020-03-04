@@ -18,7 +18,7 @@
         <code [highlight]="bindings"></code>
       </div>
 
-      <div class="go-column go-column--100 go-column--no-padding">
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">placement</h4>
         <p class="go-body-copy">
           Optional binding that defines the placement of action sheet to render. Current supported positions:
@@ -133,9 +133,9 @@
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <p class="go-body-copy">
             A simple example to demo different placements defined by <code class="code-block--inline">placement</code>.
-            For example, to define a right placement action sheet the code would be:
             <code [highlight]="placementGenericHtml"></code>
           </p>
         </div>
@@ -150,6 +150,24 @@
             <ng-container go-action-sheet__button>
               <go-button>
                 Bottom
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Panel 1">
+              </go-panel>
+              <go-panel panelContent="Panel 2">
+              </go-panel>
+              <go-panel panelContent="Panel 3">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+
+        <div class="go-column go-column--20">
+          <go-action-sheet placement="bottom" [shiftLeft]="true">
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Shift Left
               </go-button>
             </ng-container>
             <ng-container go-action-sheet-content>
