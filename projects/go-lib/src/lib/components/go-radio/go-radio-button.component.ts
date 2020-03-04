@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 
@@ -17,7 +17,13 @@ export class GoRadioButtonComponent implements OnInit {
   @Input() label: string;
   @Input() key: string;
 
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'radio');
+  }
+
+  detectChanges(): void {
+    this.changeDetector.detectChanges();
   }
 }

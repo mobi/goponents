@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { AfterContentChecked, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 
@@ -6,7 +6,9 @@ import { GoRadioButtonComponent } from './go-radio-button.component';
   selector: 'go-radio-group',
   templateUrl: './go-radio-group.component.html'
 })
-export class GoRadioGroupComponent implements AfterContentInit {
+export class GoRadioGroupComponent implements AfterContentChecked {
+  radioButtonCount: number = 0;
+
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() legend: string;
@@ -14,14 +16,19 @@ export class GoRadioGroupComponent implements AfterContentInit {
 
   @ContentChildren(GoRadioButtonComponent) radioButtons: QueryList<GoRadioButtonComponent>;
 
-  ngAfterContentInit(): void {
-    const radioGroupName: string = this.generateRadioGroupName(this.legend);
+  ngAfterContentChecked(): void {
+    // Only want to set all of these if the number of radio buttons change
+    if (this.radioButtons.length !== this.radioButtonCount) {
+      const radioGroupName: string = this.generateRadioGroupName(this.legend);
+      this.radioButtonCount = this.radioButtons.length;
 
-    this.radioButtons.toArray().forEach((button: GoRadioButtonComponent) => {
-      button.theme = this.theme;
-      button.control = this.control;
-      button.name = radioGroupName;
-    });
+      this.radioButtons.toArray().forEach((button: GoRadioButtonComponent) => {
+        button.theme = this.theme;
+        button.control = this.control;
+        button.name = radioGroupName;
+        button.detectChanges();
+      });
+    }
   }
 
   private generateRadioGroupName(label: string): string {
