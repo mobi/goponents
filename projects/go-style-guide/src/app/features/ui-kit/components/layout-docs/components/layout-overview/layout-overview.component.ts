@@ -10,6 +10,7 @@ export class LayoutOverviewComponent {
   basicExample_module: string = `
   // Required imports for the layout:
   import {
+    GoFooterModule,
     GoHeaderModule,
     GoIconButtonModule,
     GoLayoutModule,
@@ -21,6 +22,7 @@ export class LayoutOverviewComponent {
       AppComponent
     ],
     imports: [
+      GoFooterModule,
       GoHeaderModule,
       GoIconButtonModule,
       GoLayoutModule,
@@ -39,6 +41,12 @@ export class LayoutOverviewComponent {
     <go-side-nav go-layout-nav>
       <!-- Content for the nav is covered in the nav docs -->
     </go-side-nav>
+    <div go-layout-main>
+      <!-- Any content that will appear at the top of every page goes here -->
+    </div>
+    <go-footer go-layout-footer>
+      <!-- Content for the footer is covered in the footer docs -->
+    </go-footer>
   </go-layout>
   `;
 
