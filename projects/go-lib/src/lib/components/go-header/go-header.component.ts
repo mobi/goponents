@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
@@ -10,7 +10,7 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service
   templateUrl: './go-header.component.html',
   styleUrls: ['./go-header.component.scss']
 })
-export class GoHeaderComponent implements OnChanges {
+export class GoHeaderComponent implements OnChanges, OnDestroy {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
@@ -50,6 +50,10 @@ export class GoHeaderComponent implements OnChanges {
       });
   }
 
+  ngOnDestroy(): void {
+    this.resizeSubscription.unsubscribe();
+  }
+
   isNavCollapsed(): boolean {
     return window.innerWidth <= this.minWidthBreakpoint ? true : !this.sideNavService.navOpen;
   }
@@ -67,13 +71,13 @@ export class GoHeaderComponent implements OnChanges {
   }
 
   middleContentExists(): boolean {
-    return this.middleSection.nativeElement.childElementCount > 0;
+    return this.middleSection && this.middleSection.nativeElement.childElementCount > 0;
   }
 
   private setupResizeSubscription(): void {
     this.resizeSubscription = this.resizeObservable
       .pipe(debounceTime(250))
-      .subscribe(event => {
+      .subscribe(() => {
         this.setMobileNav();
     });
   }
