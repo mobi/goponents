@@ -41,6 +41,7 @@ export class SelectDocsComponent implements OnInit {
   select14: FormControl = new FormControl();
   select15: FormControl = new FormControl();
   select16: FormControl = new FormControl();
+  select17: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -128,20 +129,6 @@ export class SelectDocsComponent implements OnInit {
     [control]="select"
     [items]="items"
     [multiple]="true"
-    label="Favorite Candy">
-  </go-select>
-  `;
-
-  select7Code_noSelectAll: string = `
-  <!-- add: [showSelectAll]="false" -->
-
-  <go-select
-    bindLabel="name"
-    bindValue="value"
-    [control]="select"
-    [items]="items"
-    [multiple]="true"
-    [showSelectAll]="false"
     label="Favorite Candy">
   </go-select>
   `;
@@ -307,6 +294,20 @@ export class SelectDocsComponent implements OnInit {
     [control]="select16"
     [items]="items"
     label="Select an option">
+  </go-select>
+  `;
+
+  select17Code_noSelectAll: string = `
+  <!-- add: [showSelectAll]="false" -->
+
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [control]="select"
+    [items]="items"
+    [multiple]="true"
+    [showSelectAll]="false"
+    label="Favorite Candy">
   </go-select>
   `;
 
