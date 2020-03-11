@@ -21,9 +21,10 @@ export class GoModalComponent implements OnInit {
   readonly defaultModalSize: 'lg' | 'xl' = 'lg';
 
   currentComponent: any;
-  opened: boolean = false;
   modalTitle: string;
   modalSize: 'lg' | 'xl' = this.defaultModalSize;
+  noContentPadding: boolean = false;
+  opened: boolean = false;
 
   @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
   @ViewChild('goModal') goModal: ElementRef<HTMLElement>;
@@ -34,13 +35,13 @@ export class GoModalComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
-    this.goModalService.activeModalComponent.subscribe((value) => {
+  ngOnInit(): void {
+    this.goModalService.activeModalComponent.subscribe((value: any) => {
       this.currentComponent = value;
       this.loadComponent();
     });
 
-    this.goModalService.modalOpen.subscribe((value) => {
+    this.goModalService.modalOpen.subscribe((value: boolean) => {
       this.opened = value;
     });
   }
@@ -69,6 +70,9 @@ export class GoModalComponent implements OnInit {
     } else {
       this.modalSize = this.defaultModalSize;
     }
+
+    // set content padding if provided
+    this.noContentPadding = componentRef.instance['noContentPadding'];
   }
 
   /**
@@ -82,11 +86,11 @@ export class GoModalComponent implements OnInit {
     }
   }
 
-  closeModal() {
+  closeModal(): void {
     this.goModalService.toggleModal(false);
   }
 
-  goModalClasses() {
-    return { 'go-modal--visible': this.opened }
+  goModalClasses(): object {
+    return { 'go-modal--visible': this.opened };
   }
 }

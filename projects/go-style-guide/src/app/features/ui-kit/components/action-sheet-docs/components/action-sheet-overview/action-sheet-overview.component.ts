@@ -42,6 +42,16 @@ export class ActionSheetOverviewComponent {
   `;
 
   placementGenericHtml: string = `
+  <go-action-sheet placement="bottom">
+    ...
+  </go-action-sheet>
+
+  <go-action-sheet
+    placement="bottom"
+    [shiftLeft]="true">
+    ...
+  </go-action-sheet>
+
   <go-action-sheet placement="right">
     ...
   </go-action-sheet>

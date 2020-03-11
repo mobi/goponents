@@ -35,6 +35,13 @@
         </p>
       </div>
 
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">noContentPadding</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <code class="code-block--inline">noContentPadding</code> determines whether or not to render padding on the modal content. Defaults to false.
+        </p>
+      </div>
+
       <div class="go-column go-column--100 go-column--no-padding">
         <h3 class="go-heading-3">Setup</h3>
         <p class="go-body-copy">To use the modal anywhere in the app, you must first add it to the app level. This should only be done once per application.</p>
@@ -136,6 +143,25 @@
       <div class="go-column go-column--25">
         <h4 class="go-heading-4">XL View</h4>
         <go-button (handleClick)="openXlModal()">Click Me</go-button>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <header go-card-header>
+      <h2 class="go-heading-2">Modal Padding</h2>
+    </header>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--75">
+        <h4 class="go-heading-4">Code</h4>
+        <code [highlight]="ex_ModalDocsNoPadding"></code>
+      </div>
+
+      <div class="go-column go-column--25">
+        <h4 class="go-heading-4">View</h4>
+        <go-button (handleClick)="openNoPaddingModal()">Click Me</go-button>
       </div>
 
     </div>

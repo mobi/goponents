@@ -2,6 +2,7 @@
   class="go-form__label go-form__label--inline"
   [attr.for]="id"
   [ngClass]="{'go-form__label--dark': theme == 'dark'}"
+  *ngIf="control"
 >
   <input type="radio"
          class="go-radio__input"

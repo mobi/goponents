@@ -1,12 +1,24 @@
-<div class="go-modal" [ngClass]="goModalClasses()" (click)="backdropClick($event)" #goModal>
-  <div [ngClass]="{'go-modal__container': modalSize === 'lg', 'go-modal__container-xl': modalSize === 'xl'}">
+<div
+  class="go-modal"
+  [ngClass]="goModalClasses()"
+  (click)="backdropClick($event)"
+  #goModal>
+  <div
+    class="go-modal__container"
+    [ngClass]="{'go-modal__container--lg': modalSize === 'lg', 'go-modal__container--xl': modalSize === 'xl'}">
     <div class="go-modal__header">
       <h3 class="go-heading-3">{{ modalTitle }}</h3>
-      <div class="go-modal__close" (click)="closeModal()">
-        <go-icon icon="close"></go-icon>
-      </div>
+      <go-icon-button
+        buttonIcon="close"
+        class="go-modal__close"
+        (handleClick)="closeModal()">
+      </go-icon-button>
     </div>
-    <ng-template go-modal-host>
-    </ng-template>
+    <div
+      class="go-modal__content"
+      [ngClass]="{ 'go-modal__content--no-padding': noContentPadding }">
+      <ng-template go-modal-host>
+      </ng-template>
+    </div>
   </div>
 </div>

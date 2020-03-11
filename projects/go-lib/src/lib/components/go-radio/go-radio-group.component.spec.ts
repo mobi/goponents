@@ -58,7 +58,7 @@ describe('GoRadioGroupComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngAfterContentInit', () => {
+  describe('ngAfterContentChecked', () => {
     beforeEach(() => {
       buttonOne.theme = null;
       buttonTwo.theme = null;
@@ -66,11 +66,12 @@ describe('GoRadioGroupComponent', () => {
       buttonTwo.control = null;
       buttonOne.name = null;
       buttonTwo.name = null;
+      component.radioButtonCount = 0;
     });
 
     it('should set a theme on each child component', () => {
       component.theme = 'dark';
-      component.ngAfterContentInit();
+      component.ngAfterContentChecked();
 
       expect(buttonOne.theme).toBe('dark');
       expect(buttonTwo.theme).toBe('dark');
@@ -78,7 +79,7 @@ describe('GoRadioGroupComponent', () => {
 
     it('should set a name on each child component when legend is provided', () => {
       component.legend = 'Random Name';
-      component.ngAfterContentInit();
+      component.ngAfterContentChecked();
 
       expect(buttonOne.name).toContain('Random-Name-');
       expect(buttonTwo.name).toContain('Random-Name-');
@@ -86,7 +87,7 @@ describe('GoRadioGroupComponent', () => {
 
     it('should set a name on each child component when legend is NOT provided', () => {
       component.legend = undefined;
-      component.ngAfterContentInit();
+      component.ngAfterContentChecked();
 
       expect(buttonOne.name).toContain('radio-group-');
       expect(buttonTwo.name).toContain('radio-group-');
@@ -96,7 +97,7 @@ describe('GoRadioGroupComponent', () => {
       const newControl: FormControl = new FormControl('option1');
 
       component.control = newControl;
-      component.ngAfterContentInit();
+      component.ngAfterContentChecked();
 
       expect(buttonOne.control).toBe(newControl);
       expect(buttonTwo.control).toBe(newControl);

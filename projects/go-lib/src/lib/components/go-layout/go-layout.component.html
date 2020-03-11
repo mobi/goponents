@@ -13,6 +13,7 @@
         [@routerAnimation]="routeAnimation(mainRouter)"
         #routeContainer
       >
+        <ng-content select="[go-layout-main]"></ng-content>
 
         <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet">
         </router-outlet>
