@@ -214,9 +214,11 @@ export class FormsComponent {
           </div>
           <div class="go-column go-column--100">
             <label for="advanced-bio" class="go-form__label">Personal Bio</label>
-            <textarea class="go-form__input"
-                      id="advanced-bio"
-                      placeholder="Tell us a little bit about yourself."></textarea>
+            <textarea
+              class="go-form__input"
+              id="advanced-bio"
+              placeholder="Tell us a little bit about yourself.">
+            </textarea>
           </div>
         </div>
       </div>
@@ -227,10 +229,11 @@ export class FormsComponent {
           <div class="go-container">
             <div class="go-column go-column--100">
               <label for="advanced-employee-id" class="go-form__label">Employee ID</label>
-              <input class="go-form__input"
-                      id="advanced-employee-id"
-                      placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
-                      type="text">
+              <input
+                class="go-form__input"
+                id="advanced-employee-id"
+                placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+                type="text">
             </div>
             <div class="go-column go-column--100">
               <label for="country-input" class="go-form__label">Country</label>
@@ -249,28 +252,31 @@ export class FormsComponent {
               <fieldset class="go-form__fieldset">
                 <legend class="go-form__legend">Select a Favorite Character</legend>
                 <div>
-                  <input class="go-form__checkbox"
-                        id="advanced-radio-1"
-                        name="character"
-                        type="radio">
+                  <input
+                    class="go-form__checkbox"
+                    id="advanced-radio-1"
+                    name="character"
+                    type="radio">
                   <label for="advanced-radio-1" class="go-form__label go-form__label--inline">
                     Draco Malfoy
                   </label>
                 </div>
                 <div>
-                  <input class="go-form__checkbox"
-                          id="advanced-radio-2"
-                          name="character"
-                          type="radio">
+                  <input
+                    class="go-form__checkbox"
+                    id="advanced-radio-2"
+                    name="character"
+                    type="radio">
                   <label for="advanced-radio-2" class="go-form__label go-form__label--inline">
                     The Owl
                   </label>
                 </div>
                 <div>
-                  <input class="go-form__checkbox"
-                        id="advanced-radio-3"
-                        name="character"
-                        type="radio">
+                  <input
+                    class="go-form__checkbox"
+                    id="advanced-radio-3"
+                    name="character"
+                    type="radio">
                   <label for="advanced-radio-3" class="go-form__label go-form__label--inline">
                     Harry Potter
                   </label>
@@ -287,21 +293,23 @@ export class FormsComponent {
                 <div class="go-container">
                   <div class="go-column go-column--50 go-column--no-padding">
                     <div>
-                      <input class="go-form__checkbox"
-                          id="advanced-checkbox-1"
-                          name="character"
-                          type="checkbox"
-                          checked>
+                      <input
+                        class="go-form__checkbox"
+                        id="advanced-checkbox-1"
+                        name="character"
+                        type="checkbox"
+                        checked>
                       <label for="advanced-checkbox-1" class="go-form__label go-form__label--inline">
                         Rose
                       </label>
                     </div>
                     <div>
-                      <input class="go-form__checkbox"
-                              id="advanced-checkbox-2"
-                              name="character"
-                              type="checkbox"
-                              checked>
+                      <input
+                        class="go-form__checkbox"
+                        id="advanced-checkbox-2"
+                        name="character"
+                        type="checkbox"
+                        checked>
                       <label for="advanced-checkbox-2" class="go-form__label go-form__label--inline">
                         Blanche
                       </label>
@@ -309,21 +317,23 @@ export class FormsComponent {
                   </div>
                   <div class="go-column go-column--50 go-column--no-padding">
                     <div>
-                      <input class="go-form__checkbox"
-                              id="advanced-checkbox-3"
-                              name="character"
-                              type="checkbox"
-                              checked>
+                      <input
+                        class="go-form__checkbox"
+                        id="advanced-checkbox-3"
+                        name="character"
+                        type="checkbox"
+                        checked>
                       <label for="advanced-checkbox-3" class="go-form__label go-form__label--inline">
                         Sophia
                       </label>
                     </div>
                     <div>
-                      <input class="go-form__checkbox"
-                              id="advanced-checkbox-4"
-                              name="character"
-                              type="checkbox"
-                              checked>
+                      <input
+                        class="go-form__checkbox"
+                        id="advanced-checkbox-4"
+                        name="character"
+                        type="checkbox"
+                        checked>
                       <label for="advanced-checkbox-4" class="go-form__label go-form__label--inline">
                         Dorothy
                       </label>
