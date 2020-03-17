@@ -22,6 +22,8 @@ export class GoSideNavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.generateIds(this.menuItems);
+
     this.navService.setMenuItems(this.menuItems);
     this.navService.setActiveItem(this.navService.extractBaseUrl(this.router.url));
     this.configureExpanded(this.router.url);
@@ -42,6 +44,15 @@ export class GoSideNavComponent implements OnInit {
   }
 
   //#region Private Methods
+
+  private generateIds(items: (NavGroup | NavItem)[]) {
+    items.forEach(item => {
+      if (item.subRoutes) {
+        item.id = Math.round(Math.random() * 1000000);
+        this.generateIds(item.subRoutes);
+      }
+    });
+  }
 
   private configureExpanded(url: string): void {
     this.menuItems.forEach((item: (NavGroup | NavItem)) => {
@@ -74,7 +85,9 @@ export class GoSideNavComponent implements OnInit {
    */
   private openAccordion(group: NavGroup, item: NavGroup): boolean {
     if (group.subRoutes) {
-      if (group.routeTitle !== item.routeTitle) {
+      if (group.id !== item.id) {
+      // if (group.routeTitle !== item.routeTitle) {
+      // if ((group.routeTitle !== item.routeTitle) || (group.routeIcon !== item.routeIcon)) {
         group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
           return this.openAccordion((subRoute as NavGroup), item);
         });
