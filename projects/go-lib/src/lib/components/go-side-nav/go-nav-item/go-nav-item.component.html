@@ -1,4 +1,5 @@
-<div class="go-nav-item"
+<div #navItemRef
+     class="go-nav-item"
      [attr.title]="navItem.description"
      [ngClass]="{ 'go-nav-item--collapsed': !navService.navOpen }">
   <a class="go-nav-item__link"

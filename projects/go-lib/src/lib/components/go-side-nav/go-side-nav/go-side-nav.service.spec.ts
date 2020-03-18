@@ -1,12 +1,14 @@
+import { ElementRef, Renderer2 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { GoSideNavService } from './go-side-nav.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NavItem } from '../nav-item.model';
+import { CustomNavAttribute } from '../custom-nav-attribute.model';
 import { NavGroup } from '../nav-group.model';
-
+import { NavItem } from '../nav-item.model';
+import { GoSideNavService } from './go-side-nav.service';
 
 describe('GoSideNavService', () => {
   let service: GoSideNavService;
+
   const navItems: (NavItem | NavGroup)[] = [
     {
       routeTitle: 'Group',
@@ -49,6 +51,22 @@ describe('GoSideNavService', () => {
       service.setMenuItems(navItems);
 
       expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('setAttributes', () => {
+    it('should set the attributes onto the element passed in', () => {
+      const attributesMock: CustomNavAttribute[] = [
+        { name: 'attribute1', value: 'value1' },
+        { name: 'attribute1', value: 'value1' }
+      ];
+      const elementRefMock: ElementRef = { nativeElement: { attributes: [] } };
+      const renderer2Mock: Renderer2 = jasmine.createSpyObj('renderer2Mock', ['setAttribute']);
+
+      service.setAttributes(attributesMock, elementRefMock, renderer2Mock);
+
+      expect(renderer2Mock.setAttribute).toHaveBeenCalledWith(elementRefMock.nativeElement, 'attribute1', 'value1');
+      expect(renderer2Mock.setAttribute).toHaveBeenCalledTimes(2);
     });
   });
 
