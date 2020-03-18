@@ -82,6 +82,15 @@ describe('GoSideNavComponent', () => {
   });
 
   describe('ngOnInit', () => {
+    it('should add an id to only NavGroup items of menuItems', () => {
+      component.ngOnInit();
+
+      expect(Object.keys(component.menuItems[0])).toContain('id');
+      expect(Object.keys(component.menuItems[1])).toContain('id');
+      expect(Object.keys((component.menuItems[1] as NavGroup).subRoutes[1])).toContain('id');
+      expect(Object.keys((component.menuItems[1] as NavGroup).subRoutes[0])).not.toContain('id');
+    });
+
     it('should expand navGroup of route', () => {
       component.ngOnInit();
       expect(component.menuItems[0]['expanded']).toBe(true);

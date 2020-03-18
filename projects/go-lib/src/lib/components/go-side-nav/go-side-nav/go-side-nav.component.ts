@@ -22,6 +22,8 @@ export class GoSideNavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.generateIds(this.menuItems);
+
     this.navService.setMenuItems(this.menuItems);
     this.navService.setActiveItem(this.navService.extractBaseUrl(this.router.url));
     this.configureExpanded(this.router.url);
@@ -42,6 +44,17 @@ export class GoSideNavComponent implements OnInit {
   }
 
   //#region Private Methods
+
+  // This recursively adds ids to all NavGroups. We need these ids below within openAccordion()
+  // when checking which accordions should be closed upon clicking a NavGroup.
+  private generateIds(items: (NavGroup | NavItem)[]): void {
+    items.forEach((item: (NavGroup | NavItem)) => {
+      if ('subRoutes' in item) {
+        item.id = `${item.routeTitle}-${Math.round(Math.random() * 1000000)}`;
+        this.generateIds(item.subRoutes);
+      }
+    });
+  }
 
   private configureExpanded(url: string): void {
     this.menuItems.forEach((item: (NavGroup | NavItem)) => {
@@ -74,7 +87,7 @@ export class GoSideNavComponent implements OnInit {
    */
   private openAccordion(group: NavGroup, item: NavGroup): boolean {
     if (group.subRoutes) {
-      if (group.routeTitle !== item.routeTitle) {
+      if (group.id !== item.id) {
         group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
           return this.openAccordion((subRoute as NavGroup), item);
         });
