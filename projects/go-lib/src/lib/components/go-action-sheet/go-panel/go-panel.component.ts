@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GoActionSheetComponent } from '../go-action-sheet.component';
 
 @Component({
   selector: 'go-panel',
@@ -15,16 +16,21 @@ export class GoPanelComponent {
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private parent: GoActionSheetComponent) { }
 
   panelClasses(): object {
     return {
       'go-panel--danger': this.danger,
       'go-panel--header': this.showHeader
-    }
+    };
   }
 
   handleAction(): void {
     this.action.emit();
+    this.closeActionSheet();
+  }
+
+  closeActionSheet(): void {
+    this.parent.showContent = false;
   }
 }

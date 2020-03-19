@@ -3,7 +3,8 @@
    rel="noreferrer"
    [ngClass]="panelClasses()"
    [attr.href]="externalLink"
-   *ngIf="externalLink; else noLink">
+   *ngIf="externalLink; else noLink"
+   (click)="closeActionSheet()">
   <span class="go-panel__title">
     <span *ngIf="icon" class="go-panel__icon material-icons">{{icon}}</span>
     <span class="go-panel__title-text" [innerHtml]="panelContent"></span>
