@@ -1,44 +1,50 @@
-<div
-  class="go-calendar"
-  [ngClass]="{'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight}"
-  *ngIf="opened"
->
-  <div *ngIf="view === 'day'">
-    <go-calendar-day-view
-      [day]="selectedDate"
-      [dateAdapter]="dateAdapter"
-      [month]="currentMonth"
-      [year]="currentYear"
-      [minDate]="minDate"
-      [maxDate]="maxDate"
-      (setMonth)="setMonth($event)"
-      (setYear)="updateYear($event)"
-      (datePicked)="pickDay($event)"
-      (setView)="switchView($event)"
-    ></go-calendar-day-view>
-  </div>
+<div class="go-calendar--wrapper">
+  <div
+    class="go-calendar"
+    [ngClass]="{'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight, 'go-calendar--append-to-content': appendToContent}"
+    *ngIf="opened">
+    <div *ngIf="view === 'day'">
+      <go-calendar-day-view
+        [day]="selectedDate"
+        [dateAdapter]="dateAdapter"
+        [month]="currentMonth"
+        [year]="currentYear"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        (setMonth)="setMonth($event)"
+        (setYear)="updateYear($event)"
+        (datePicked)="pickDay($event)"
+        (setView)="switchView($event)">
+      </go-calendar-day-view>
+    </div>
 
-  <div *ngIf="view === 'year'">
-    <go-calendar-year-view
-      [year]="currentYear"
-      [dateAdapter]="dateAdapter"
-      [minDate]="minDate"
-      [maxDate]="maxDate"
-      (setYear)="updateYear($event)"
-      (setView)="switchView($event)"
-    ></go-calendar-year-view>
+    <div *ngIf="view === 'year'">
+      <go-calendar-year-view
+        [year]="currentYear"
+        [dateAdapter]="dateAdapter"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        (setYear)="updateYear($event)"
+        (setView)="switchView($event)">
+      </go-calendar-year-view>
+    </div>
+    
+    <div *ngIf="view === 'month'">
+      <go-calendar-month-view
+        [month]="currentMonth"
+        [dateAdapter]="dateAdapter"
+        [year]="currentYear"
+        [minDate]="minDate"
+        [maxDate]="maxDate"
+        (setMonth)="setMonth($event)"
+        (setView)="switchView($event)"
+        (setYear)="updateYear($event)">
+      </go-calendar-month-view>
+    </div>
   </div>
-  
-  <div *ngIf="view === 'month'">
-    <go-calendar-month-view
-      [month]="currentMonth"
-      [dateAdapter]="dateAdapter"
-      [year]="currentYear"
-      [minDate]="minDate"
-      [maxDate]="maxDate"
-      (setMonth)="setMonth($event)"
-      (setView)="switchView($event)"
-      (setYear)="updateYear($event)"
-    ></go-calendar-month-view>
+  <div
+    *ngIf="appendToContent"
+    class="go-calendar__close-calendar-content"
+    (click)="closeCalendar()">
   </div>
 </div>

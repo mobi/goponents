@@ -16,3 +16,15 @@
 .go-calendar--right {
   right: 0;
 }
+
+.go-calendar--append-to-content {
+  position: static;
+}
+
+.go-calendar--wrapper {
+  display: flex;
+}
+
+.go-calendar__close-calendar-content {
+  flex-grow: 1;
+}

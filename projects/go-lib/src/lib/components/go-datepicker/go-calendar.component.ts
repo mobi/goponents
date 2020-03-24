@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -22,6 +22,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   subscription: any;
   view: string = 'day';
 
+  @Input() appendToContent: boolean;
   @Input() calendar: GoCalendar;
   @Input() displayAbove: boolean;
   @Input() displayFromRight: boolean;
