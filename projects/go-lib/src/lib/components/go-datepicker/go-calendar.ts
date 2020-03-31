@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs';
 
 export class GoCalendar {
+  private _calendarOpen: boolean = false;
   calendarOpen: Subject<boolean> = new Subject<boolean>();
   selectedDate: Date;
 
@@ -27,7 +28,12 @@ export class GoCalendar {
     return false;
   }
 
+  get isOpen(): boolean {
+    return this._calendarOpen;
+  }
+
   private setCalendarStatus(isOpen: boolean = true): void {
+    this._calendarOpen = isOpen;
     this.calendarOpen.next(isOpen);
   }
 }
