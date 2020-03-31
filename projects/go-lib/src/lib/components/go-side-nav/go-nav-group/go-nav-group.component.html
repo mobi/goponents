@@ -1,4 +1,5 @@
-<div class="go-nav-group"
+<div #navGroupRef
+     class="go-nav-group"
      [ngClass]="{ 'go-nav-group--expanded': group.expanded }"
      *ngIf="group.subRoutes && group.subRoutes.length > 0; else noSubRoutes">
   <div class="go-nav-group__dropdown"

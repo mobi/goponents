@@ -29,6 +29,14 @@
           <code class="code-block--inline">NavGroup</code> model. These models have the following properties:
         </p>
         <code [highlight]="bindings_menuItems"></code>
+        <p class="go-body-copy">
+          Setting a value for <code class="code-block--inline">attributes</code> on a <code class="code-block--inline">NavItem</code>
+          or <code class="code-block--inline">NavGroup</code> will add html attributes to the top level html element for
+          that menu item with the names and values you specify. The <code class="code-block--inline">CustomNavAttributes</code>
+          model, which defines how the value of each item in the array set to <code class="code-block--inline">attributes</code>
+          should be structured, has the following properties:
+        </p>
+        <code [highlight]="bindings_attributes"></code>
       </div>
 
       <div class="go-column go-column--100">

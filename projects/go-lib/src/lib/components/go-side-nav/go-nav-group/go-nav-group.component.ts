@@ -1,17 +1,20 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
   Output,
+  Renderer2,
+  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { NavGroup } from '../nav-group.model';
-import { NavItem } from '../nav-item.model';
-import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
-import { GoConfigService } from '../../../go-config.service';
 import { distinctUntilKeyChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
+import { GoConfigService } from '../../../go-config.service';
+import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
+import { NavGroup } from '../nav-group.model';
+import { NavItem } from '../nav-item.model';
 
 @Component({
   selector: 'go-nav-group',
@@ -29,9 +32,18 @@ export class GoNavGroupComponent implements OnInit {
   brandColor: string;
   group: NavGroup;
 
+  // We are using a setter on this ViewChild because of the *ngIf on the element.
+  // This enables us to check whether the element exists before attempting to set its attributes.
+  @ViewChild('navGroupRef') set content(navGroupRef: ElementRef) {
+    if (navGroupRef && this.navItem.attributes) {
+      this.navService.setAttributes(this.navItem.attributes, navGroupRef, this.renderer);
+    }
+  }
+
   constructor (
     public navService: GoSideNavService,
-    private configService: GoConfigService
+    private configService: GoConfigService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
