@@ -51,16 +51,16 @@ export class DatepickerDocsComponent implements OnInit {
   basicInputLabelExample: string = `
   <go-datepicker
     [control]="dob"
-    label="Date of Birth"
-  ></go-datepicker>
+    label="Date of Birth">
+  </go-datepicker>
   `;
 
   basicInputKeyExample: string = `
   <go-datepicker
     [control]="dob"
     label="Date of Birth"
-    key="date-of-birth-datepicker"
-  ></go-datepicker>
+    key="date-of-birth-datepicker">
+  </go-datepicker>
   `;
 
   basicInputKeyExampleOutput: string = `
@@ -79,8 +79,8 @@ export class DatepickerDocsComponent implements OnInit {
   <go-datepicker
     label="Date of Birth"
     [control]="dob"
-    [hints]="hints"
-  ></go-datepicker>
+    [hints]="hints">
+  </go-datepicker>
   `;
 
   basicErrorsTemplate: string = `
@@ -115,32 +115,32 @@ export class DatepickerDocsComponent implements OnInit {
   <go-datepicker
     [control]="dob"
     label="Date of Birth"
-    placeholder="10/28/1999"
-  ></go-datepicker>
+    placeholder="10/28/1999">
+  </go-datepicker>
   `;
 
   basicLocaleExample: string = `
   <go-datepicker
     [control]="locale"
     label="Date of Birth"
-    locale="de"
-  ></go-datepicker>
+    locale="de">
+  </go-datepicker>
   `;
 
   maxDateExample: string = `
   <go-datepicker
     [control]="max"
     label="Date of Birth"
-    maxDate="10/15/2019"
-  ></go-datepicker>
+    maxDate="10/15/2019">
+  </go-datepicker>
   `;
 
   minDateExample: string = `
   <go-datepicker
     [control]="min"
     label="Date of Birth"
-    minDate="5/10/2000"
-  ></go-datepicker>
+    minDate="5/10/2000">
+  </go-datepicker>
   `;
 
   appendToContentExample: string = `
