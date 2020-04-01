@@ -23,23 +23,23 @@ export class FileUploadDocsComponent implements OnInit {
 
   basicExample: string = `
   <go-file-upload
-    [control]="fileControl"
-  ></go-file-upload>
+    [control]="fileControl">
+  </go-file-upload>
   `;
 
   basicLabelExample: string = `
   <go-file-upload
     [control]="fileControl"
-    label="Most Awesome Picture"
-  ></go-file-upload>
+    label="Most Awesome Picture">
+  </go-file-upload>
   `;
 
   basicKeyExample: string = `
   <go-file-upload
     [control]="fileControl"
     label="Most Awesome Picture"
-    key="most-awesome-picture"
-  ></go-file-upload>
+    key="most-awesome-picture">
+  </go-file-upload>
   `;
 
   basicKeyExampleOutput: string = `
@@ -58,8 +58,8 @@ export class FileUploadDocsComponent implements OnInit {
   <go-file-upload
     [control]="fileControl"
     label="Most Awesome Picture"
-    [hints]="hints"
-  ></go-file-upload>
+    [hints]="hints">
+  </go-file-upload>
   `;
 
   basicErrorsExample: string = `
@@ -78,24 +78,24 @@ export class FileUploadDocsComponent implements OnInit {
   <go-file-upload
     [control]="fileControl5"
     label="Most Awesome Pictures"
-    [multiple]="true"
-  ></go-file-upload>
+    [multiple]="true">
+  </go-file-upload>
   `;
 
   basicLoadingExample: string = `
   <go-file-upload
     [control]="fileControl"
     label="Most Awesome Pictures"
-    [isLoading]="true"
-  ></go-file-upload>
+    [isLoading]="true">
+  </go-file-upload>
   `;
 
   basicThemeExample: string = `
   <go-file-upload
     [control]="fileControl"
     label="Most Awesome Pictures"
-    theme="dark"
-  ></go-file-upload>
+    theme="dark">
+  </go-file-upload>
   `;
 
   constructor(private subNavService: SubNavService) {
