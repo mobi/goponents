@@ -74,9 +74,10 @@ export class CheckboxDocsComponent {
   `;
 
   checkbox2Ex: string = `
-  <go-checkbox label="Checkbox 2"
-               [control]="checkbox2"
-               key="checkbox_2">
+  <go-checkbox
+    label="Checkbox 2"
+    [control]="checkbox2"
+    key="checkbox_2">
   </go-checkbox>
   `;
 
@@ -107,9 +108,10 @@ export class CheckboxDocsComponent {
   </go-checkbox-group>
 
   <!-- hints for an individual checkbox -->
-  <go-checkbox label="Checkbox 3"
-               [control]="checkbox3"
-               [hints]="checkbox3Hints">
+  <go-checkbox
+    label="Checkbox 3"
+    [control]="checkbox3"
+    [hints]="checkbox3Hints">
   </go-checkbox>
   `;
 
@@ -127,9 +129,10 @@ export class CheckboxDocsComponent {
   </go-checkbox-group>
 
   <!-- theme for an individual checkbox -->
-  <go-checkbox label="Checkbox 3"
-               [control]="checkbox3"
-               theme="dark">
+  <go-checkbox
+    label="Checkbox 3"
+    [control]="checkbox3"
+    theme="dark">
   </go-checkbox>
   `;
 
@@ -149,13 +152,15 @@ export class CheckboxDocsComponent {
   <!-- component.html -->
 
   <go-checkbox-group legend="Options" [control]="checkboxGroup4">
-    <go-checkbox label="Option 1"
-                [control]="checkboxGroup4.controls.option1"
-                disabled="option1Disabled">
+    <go-checkbox
+      label="Option 1"
+      [control]="checkboxGroup4.controls.option1"
+      disabled="option1Disabled">
     </go-checkbox>
-    <go-checkbox label="Option 2"
-                [control]="checkboxGroup4.controls.option2"
-                disabled="option2Disabled">
+    <go-checkbox
+      label="Option 2"
+      [control]="checkboxGroup4.controls.option2"
+      disabled="option2Disabled">
     </go-checkbox>
   </go-checkbox-group>
   `;

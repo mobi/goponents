@@ -9,8 +9,9 @@
       <p class="go-body-copy">
         To use the checkbox components, you'll need to import the CheckboxModule into your module:
       </p>
-      <code [highlight]="checkboxSetup"
-            class="code-block--no-bottom-margin">
+      <code
+        [highlight]="checkboxSetup"
+        class="code-block--no-bottom-margin">
       </code>
     </ng-container>
   </go-card>
@@ -42,8 +43,9 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkbox1Ex"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkbox1Ex"
+              class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>
@@ -83,11 +85,13 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkboxGroup1Ex_ts"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkboxGroup1Ex_ts"
+              class="code-block--no-bottom-margin">
             </code>
-            <code [highlight]="checkboxGroup1Ex"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkboxGroup1Ex"
+              class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>
@@ -117,9 +121,10 @@
         <div class="go-container">
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
-            <go-checkbox label="Checkbox 2"
-                        [control]="checkbox2"
-                        key="checkbox_2">
+            <go-checkbox
+              label="Checkbox 2"
+              [control]="checkbox2"
+              key="checkbox_2">
             </go-checkbox>
           </div>
           <div class="go-column go-column--50">
@@ -163,36 +168,42 @@
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
             <div class="go-container">
               <div class="go-column go-column--100">
-                <go-checkbox-group legend="Options"
-                                  [control]="checkboxGroup2"
-                                  [hints]="groupHints">
+                <go-checkbox-group
+                  legend="Options"
+                  [control]="checkboxGroup2"
+                  [hints]="groupHints">
                   <div>
-                    <go-checkbox label="Option 1"
-                                [control]="checkboxGroup2.controls.option1">
+                    <go-checkbox
+                      label="Option 1"
+                      [control]="checkboxGroup2.controls.option1">
                     </go-checkbox>
                   </div>
                   <div>
-                    <go-checkbox label="Option 2"
-                                [control]="checkboxGroup2.controls.option2">
+                    <go-checkbox
+                      label="Option 2"
+                      [control]="checkboxGroup2.controls.option2">
                     </go-checkbox>
                   </div>
                 </go-checkbox-group>
               </div>
               <div class="go-column--100 go-column">
-                <go-checkbox label="Checkbox 3"
-                            [control]="checkbox3"
-                            [hints]="checkbox3Hints">
+                <go-checkbox
+                  label="Checkbox 3"
+                  [control]="checkbox3"
+                  [hints]="checkbox3Hints">
                 </go-checkbox>
               </div>
             </div>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkbox3HintsCode"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkbox3HintsCode"
+              class="code-block--no-bottom-margin">
             </code>
-            <code [highlight]="checkbox3Ex"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkbox3Ex"
+              class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>
@@ -221,33 +232,38 @@
             <h4 class="go-heading-4 go-heading--underlined" style="color: #fff;">View</h4>
             <div class="go-container">
               <div class="go-column go-column--100">
-                <go-checkbox-group legend="Options"
-                                  [control]="checkboxGroup3"
-                                  theme="dark">
+                <go-checkbox-group
+                  legend="Options"
+                  [control]="checkboxGroup3"
+                  theme="dark">
                   <div>
-                    <go-checkbox label="Option 1"
-                                  [control]="checkboxGroup3.controls.option1">
+                    <go-checkbox
+                      label="Option 1"
+                      [control]="checkboxGroup3.controls.option1">
                     </go-checkbox>
                   </div>
                   <div>
-                    <go-checkbox label="Option 2"
-                                  [control]="checkboxGroup3.controls.option2">
+                    <go-checkbox
+                      label="Option 2"
+                      [control]="checkboxGroup3.controls.option2">
                     </go-checkbox>
                   </div>
                 </go-checkbox-group>
               </div>
               <div class="go-column--100 go-column">
-                <go-checkbox label="Checkbox 4"
-                            [control]="checkbox4"
-                            theme="dark">
+                <go-checkbox
+                  label="Checkbox 4"
+                  [control]="checkbox4"
+                  theme="dark">
                 </go-checkbox>
               </div>
             </div>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkbox4Ex"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkbox4Ex"
+              class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>
@@ -274,23 +290,27 @@
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
             <go-checkbox-group legend="Options" [control]="checkboxGroup4">
-              <go-checkbox label="Option 1"
-                          [control]="checkboxGroup4.controls.option1"
-                          disabled="option1Disabled">
+              <go-checkbox
+                label="Option 1"
+                [control]="checkboxGroup4.controls.option1"
+                disabled="option1Disabled">
               </go-checkbox>
-              <go-checkbox label="Option 2"
-                          [control]="checkboxGroup4.controls.option2"
-                          disabled="option2Disabled">
+              <go-checkbox
+                label="Option 2"
+                [control]="checkboxGroup4.controls.option2"
+                disabled="option2Disabled">
               </go-checkbox>
             </go-checkbox-group>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkboxDisabledEx_ts"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkboxDisabledEx_ts"
+              class="code-block--no-bottom-margin">
             </code>
-            <code [highlight]="checkboxDisabledEx"
-                  class="code-block--no-bottom-margin">
+            <code
+              [highlight]="checkboxDisabledEx"
+              class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>
