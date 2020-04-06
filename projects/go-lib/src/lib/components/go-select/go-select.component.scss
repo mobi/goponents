@@ -5,6 +5,7 @@
 
 .ng-select .ng-select-container {
   @include regular-input;
+  @include transition(all);
 
   .ng-value-container .ng-input > input {
     font-family: $primary-font-stack;
