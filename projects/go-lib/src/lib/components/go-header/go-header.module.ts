@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { GoIconModule} from '../go-icon/go-icon.module';
 import { GoSideNavModule } from '../go-side-nav/go-side-nav.module';
@@ -15,7 +16,8 @@ import { GoHeaderComponent } from './go-header.component';
   imports: [
     CommonModule,
     GoIconModule,
-    GoSideNavModule
+    GoSideNavModule,
+    RouterModule
   ],
   exports: [
     GoHeaderComponent

@@ -14,6 +14,8 @@ export class GoHeaderComponent implements OnChanges, OnDestroy {
 
   @Input() altText: string = '';
   @Input() logo: string = '';
+  @Input() logoLink: string = '';
+  @Input() logoLinkUseRouterLink: boolean = true;
 
   @ViewChild('middleSection') middleSection: ElementRef;
 
