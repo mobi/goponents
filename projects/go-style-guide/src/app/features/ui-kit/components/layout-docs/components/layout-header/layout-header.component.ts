@@ -10,6 +10,8 @@ export class LayoutHeaderComponent {
   componentBindings: string = `
   @Input() altText: string = '';
   @Input() logo: string = '';
+  @Input() logoLink: string = '';
+  @Input() logoLinkUseRouterLink: boolean = true;
   `;
 
   basicExample_module: string = `
