@@ -1,4 +1,7 @@
+import { CustomNavAttribute } from './custom-nav-attribute.model';
+
 export interface NavItem {
+  attributes?: CustomNavAttribute[];
   description?: string;
   route: string;
   routeIcon?: string;

@@ -22,9 +22,10 @@
     class="go-datepicker__toggle"
     [buttonDisabled]="control.disabled"
     buttonIcon="today"
-    (click)="openDatepicker($event)"
+    (click)="toggleDatepicker($event)"
   ></go-icon-button>
   <go-calendar
+    [appendToContent]="appendToContent"
     (datePicked)="datePicked($event)"
     [maxDate]="max"
     [minDate]="min"

@@ -14,6 +14,7 @@ export class DatepickerDocsComponent implements OnInit {
   dob6: FormControl = new FormControl({ value: '', disabled: true });
   dob7: FormControl = new FormControl('');
   dob8: FormControl = new FormControl('');
+  dob9: FormControl = new FormControl('');
   locale: FormControl = new FormControl('');
   max: FormControl = new FormControl('');
   min: FormControl = new FormControl('');
@@ -139,6 +140,14 @@ export class DatepickerDocsComponent implements OnInit {
     [control]="min"
     label="Date of Birth"
     minDate="5/10/2000"
+  ></go-datepicker>
+  `;
+
+  appendToContentExample: string = `
+  <go-datepicker
+    [control]="dob"
+    label="Date of Birth"
+    [appendToContent]="true"
   ></go-datepicker>
   `;
 

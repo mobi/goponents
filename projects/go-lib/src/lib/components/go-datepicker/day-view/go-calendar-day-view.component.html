@@ -39,13 +39,14 @@
       <td *ngFor="let weekDay of dateAdapter.daysOfWeek" class="go-calendar__body--padding"></td>
     </tr>
     <tr *ngFor="let week of weeks" class="go-calendar__row">
-      <td *ngFor="let day of week" class="go-calendar__date" (click)="pickDay(day.value)">
+      <td *ngFor="let day of week" class="go-calendar__date">
         <span *ngIf="!day.translated"></span>
         <button
           class="go-calendar__cell go-calendar__cell--date"
           [disabled]="day.disabled"
           [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
           *ngIf="day.translated"
+          (click)="pickDay(day.value)"
         >
           {{day.translated}}
         </button>

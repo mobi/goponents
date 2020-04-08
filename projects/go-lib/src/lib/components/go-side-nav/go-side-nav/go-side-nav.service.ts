@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable, Renderer2 } from '@angular/core';
+import { NavigationEnd, Router, UrlSegment } from '@angular/router';
+import { CustomNavAttribute } from '../custom-nav-attribute.model';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
-import { NavigationEnd, Router, UrlSegment } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,12 @@ export class GoSideNavService {
   setMenuItems(val: (NavGroup | NavItem)[]): void {
     this.menuItems = val;
     this.createNavMap();
+  }
+
+  setAttributes(attributes: CustomNavAttribute[], elemRef: ElementRef, renderer: Renderer2): void {
+    attributes.forEach((attr: CustomNavAttribute) => {
+      renderer.setAttribute(elemRef.nativeElement, attr.name, attr.value);
+    });
   }
 
   toggleNav(): void {

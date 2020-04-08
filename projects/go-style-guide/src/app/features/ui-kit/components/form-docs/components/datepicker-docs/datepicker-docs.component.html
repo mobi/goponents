@@ -429,4 +429,40 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-datepicker-append-to-content" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Component Append To Content</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          There are times where overflow is a problem with the datepicker, especially when regarding using a datepicker
+          within a modal. If that's the case we can set <code class="code-block--inline">[appendToContent]="true"</code> 
+          and the calendar will be added to the content of the page instead of positioning over the content on the page.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-datepicker
+              [control]="dob9"
+              label="Date of Birth"
+              [appendToContent]="true"
+            ></go-datepicker>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="appendToContentExample"
+              class="code-block--no-bottom-margin"
+            ></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>

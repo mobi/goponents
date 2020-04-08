@@ -19,6 +19,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   selectedDate: string;
   subscription: any;
 
+  @Input() appendToContent: boolean = false;
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() key: string;
@@ -67,7 +68,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     }
   }
 
-  public openDatepicker(event: Event): void {
+  public toggleDatepicker(event: Event): void {
     event.stopPropagation();
 
     // Have to disable this here because of the event that we need to stop propagation on.
@@ -75,11 +76,15 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
       return;
     }
 
-    const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
+    if (this.goCalendar.isOpen) {
+      this.goCalendar.closeCalendar();
+    } else {
+      const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
 
-    this.displayFromRight = window.innerWidth - distance['left'] < 350;
-    this.displayAbove = window.innerHeight - distance['top'] < 350;
-    this.goCalendar.openCalendar(this.control.value);
+      this.displayFromRight = window.innerWidth - distance['left'] < 350;
+      this.displayAbove = window.innerHeight - distance['top'] < 350 && !this.appendToContent;
+      this.goCalendar.openCalendar(this.control.value);
+    }
   }
 
   public datePicked(date: Date): void {

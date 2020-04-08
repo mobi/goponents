@@ -200,14 +200,29 @@ describe('GoDatepickerComponent', () => {
     });
   });
 
-  describe('openDatepicker', () => {
+  describe('toggleDatepicker', () => {
     it('should not open datepicker if control is disabled', () => {
       spyOn(component.goCalendar, 'openCalendar');
 
       component.control.disable();
-      component.openDatepicker(new Event('click'));
+      component.toggleDatepicker(new Event('click'));
       expect(component.goCalendar.openCalendar).not.toHaveBeenCalled();
     });
-    // TODO figure out how to test the rest of this
+
+    it('should open if calendar is previously closed', () => {
+      component.goCalendar.closeCalendar();
+
+      component.toggleDatepicker(new Event('click'));
+
+      expect(component.goCalendar.isOpen).toBe(true);
+    });
+
+    it('should close calendar if previously opened', () => {
+      component.goCalendar.openCalendar(new Date());
+
+      component.toggleDatepicker(new Event('click'));
+
+      expect(component.goCalendar.isOpen).toBe(false);
+    });
   });
 });

@@ -13,11 +13,23 @@
       class="go-header__logo-container"
       [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
       [ngStyle]="{ 'background': getLogoBackground() }">
-      <div class="go-header__logo">
+      <a
+        *ngIf="logoLinkUseRouterLink; else logoNotRouterLink"
+        [routerLink]="[logoLink]"
+        class="go-header__logo">
         <img
           alt="{{ altText }}"
           [src]="logo"/>
-      </div>
+      </a>
+      <ng-template #logoNotRouterLink>
+        <a 
+          [href]="logoLink"
+          class="go-header__logo">
+          <img
+            alt="{{ altText }}"
+            [src]="logo"/> 
+        </a>
+      </ng-template>
     </div>
   </div>
   <div
