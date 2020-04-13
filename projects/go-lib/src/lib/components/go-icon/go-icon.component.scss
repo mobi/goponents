@@ -48,6 +48,30 @@ $icon-sizes: (small: 1rem, medium: 1.25rem, large: 1.5rem);
   }
 }
 
+.go-icon--positive {
+  color: $ui-color-positive;
+
+  &.go-icon--disabled {
+    color: rgba($ui-color-positive, .7);
+  }
+}
+
+.go-icon--negative {
+  color: $ui-color-negative;
+
+  &.go-icon--disabled {
+    color: rgba($ui-color-negative, .7);
+  }
+}
+
+.go-icon--neutral {
+  color: $ui-color-neutral;
+
+  &.go-icon--disabled {
+    color: rgba($ui-color-neutral, .7);
+  }
+}
+
 @each $name, $size in $icon-sizes {
   .go-icon--#{$name} {
     font-size: $size;

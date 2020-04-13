@@ -9,7 +9,7 @@ export class GoIconComponent implements OnChanges {
   classObject: object = {};
 
   @Input() icon: string;
-  @Input() iconModifier: string;
+  @Input() iconModifier: 'light' | 'dark' | 'positive' | 'negative' | 'neutral';
   @Input() iconClass: string;
   @Input() disabled: boolean = false;
 
