@@ -10,7 +10,7 @@ export class IconDocsComponent {
 
   componentBindings: string = `
   @Input() icon: string;
-  @Input() iconModifier: string;
+  @Input() iconModifier: 'light' | 'dark' | 'positive' | 'negative' | 'neutral';
   @Input() iconClass: string;
   `;
 
@@ -22,7 +22,11 @@ export class IconDocsComponent {
   `;
 
   modifiedExample: string = `
-  <go-icon icon="home" iconModifier="light"></go-icon>
+  <go-icon icon="home" iconModifier="light" class="dark-example-area"></go-icon>
+  <go-icon icon="home" iconModifier="dark"></go-icon>
+  <go-icon icon="check" iconModifier="positive"></go-icon>
+  <go-icon icon="close" iconModifier="negative"></go-icon>
+  <go-icon icon="help" iconModifier="neutral"></go-icon>
   `;
 
   overriddenStyles: string = `
