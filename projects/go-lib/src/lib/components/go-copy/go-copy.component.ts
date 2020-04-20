@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
 
 @Component({
   animations: [],
@@ -7,6 +7,9 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
   styleUrls: ['./go-copy.component.scss']
 })
 export class GoCopyComponent {
+
+  @HostBinding('class.go-copy')
+
   @Input() text: string;
 
   @ViewChild('copyText') copyText: ElementRef;
