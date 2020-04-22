@@ -32,10 +32,7 @@
       </ng-template>
     </div>
   </div>
-  <div
-    class="go-header__middle"
-    [ngClass]="{ 'go-header__middle--hide': !middleContentExists() }"
-    #middleSection>
+  <div class="go-header__middle">
     <ng-content select="[go-header-middle]"></ng-content>
   </div>
   <div class="go-header__right">

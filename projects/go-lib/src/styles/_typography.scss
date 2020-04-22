@@ -29,19 +29,21 @@ body {
 }
 
 .go-link {
+  @include transition(all);
+
   color: $theme-light-color;
   display: inline-block;
   text-decoration: underline;
-  transition: $global-transition-duration $global-transition-timing;
 
   &:active,
-  &:focus,
   &:visited {
     color: $theme-light-color;
   }
-
+  
+  &:focus,
   &:hover {
     color: $ui-color-neutral;
+    outline: none;
   }
 }
 

@@ -10,7 +10,9 @@
              placeholder="Search..."
              (focus)="toggleActive()"
              (blur)="leaveInput($event)"
-             formControlName="term"/>
+             (keydown)="keyDown($event)"
+             formControlName="term"
+             #searchInput/>
     </form>
     <div @searchLoaderAnim
          *ngIf="goSearchService.showLoader"
@@ -25,7 +27,7 @@
          *ngIf="goSearchService.hasResults && !goSearchService.showLoader">
       <ng-content></ng-content>
     </div>
-    <div class="go-search__results"
+    <div class="go-search__results go-search__results--none"
          @searchResultsAnim
          (@searchResultsAnim.start)="resultsStarted($event)"
          (@searchResultsAnim.done)="resultsEnded($event)"
