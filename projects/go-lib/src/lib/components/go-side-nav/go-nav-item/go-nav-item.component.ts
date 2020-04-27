@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { distinctUntilKeyChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
 import { GoConfigService } from '../../../go-config.service';
@@ -10,7 +10,7 @@ import { NavItem } from '../nav-item.model';
   templateUrl: './go-nav-item.component.html',
   styleUrls: ['./go-nav-item.component.scss']
 })
-export class GoNavItemComponent implements OnInit {
+export class GoNavItemComponent implements AfterViewInit, OnInit {
   brandColor: string;
 
   @Input() navItem: NavItem;
@@ -25,14 +25,16 @@ export class GoNavItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.navItem.attributes) {
-      this.navService.setAttributes(this.navItem.attributes, this.navItemRef, this.renderer);
-    }
-
     this.configService.config
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.navItem.attributes) {
+      this.navService.setAttributes(this.navItem.attributes, this.navItemRef, this.renderer);
+    }
   }
 }
