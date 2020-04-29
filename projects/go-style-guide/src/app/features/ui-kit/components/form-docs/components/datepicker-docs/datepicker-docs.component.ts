@@ -147,8 +147,8 @@ export class DatepickerDocsComponent implements OnInit {
   <go-datepicker
     [control]="dob"
     label="Date of Birth"
-    [appendToContent]="true"
-  ></go-datepicker>
+    [appendToContent]="true">
+  </go-datepicker>
   `;
 
   constructor(private subNavService: SubNavService) {
