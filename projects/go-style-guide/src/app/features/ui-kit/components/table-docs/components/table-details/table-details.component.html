@@ -31,9 +31,10 @@
       </ng-container>
     </go-card>
 
-    <go-table class="go-column go-column--100"
-              [tableConfig]="tableDetailsConfig"
-              tableTitle="Table Details">
+    <go-table
+      class="go-column go-column--100"
+      [tableConfig]="tableDetailsConfig"
+      tableTitle="Table Details">
       <go-table-column field="id" title="ID"></go-table-column>
       <go-table-column field="name.first" title="First Name"></go-table-column>
       <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -67,16 +68,17 @@
           <code [highlight]="testComponent"></code>
         </div>
         <div class="go-column go-column--50">
-            <h1 class="go-heading-6">Table Details Test HTML</h1>
+          <h1 class="go-heading-6">Table Details Test HTML</h1>
           <code [highlight]="testComponentHtml"></code>
         </div>
 
       </div>
     </go-card>
   
-    <go-table class="go-column go-column--100"
-              [tableConfig]="tableDetailsConfig"
-              tableTitle="Table Details">
+    <go-table
+      class="go-column go-column--100"
+      [tableConfig]="tableDetailsConfig"
+      tableTitle="Table Details">
       <go-table-column field="id" title="ID"></go-table-column>
       <go-table-column field="name.first" title="First Name"></go-table-column>
       <go-table-column field="name.last" title="Last Name"></go-table-column>

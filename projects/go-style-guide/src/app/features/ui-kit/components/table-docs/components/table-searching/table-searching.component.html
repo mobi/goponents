@@ -62,9 +62,10 @@
     </ng-container>
   </go-card>
 
-  <go-table class="go-column go-column--100"
-            [tableConfig]="tableConfig"
-            tableTitle="Example of Table Searching">
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    tableTitle="Example of Table Searching">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -88,9 +89,10 @@
     </ng-container>
   </go-card>
 
-  <go-table class="go-column go-column--100"
-            [tableConfig]="tableConfig"
-            tableTitle="Restricting Search By Column">
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    tableTitle="Restricting Search By Column">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

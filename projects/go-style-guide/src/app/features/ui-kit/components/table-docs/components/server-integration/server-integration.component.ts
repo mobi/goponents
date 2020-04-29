@@ -38,10 +38,11 @@ export class ServerIntegrationComponent {
   `;
 
   tableConfig_html: string = `
-  <go-table *ngIf="tableConfig"
-            (tableChange)="handleTableChange($event)"
-            [loadingData]="tableLoading"
-            [tableConfig]="tableConfig">
+  <go-table
+    *ngIf="tableConfig"
+    (tableChange)="handleTableChange($event)"
+    [loadingData]="tableLoading"
+    [tableConfig]="tableConfig">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
