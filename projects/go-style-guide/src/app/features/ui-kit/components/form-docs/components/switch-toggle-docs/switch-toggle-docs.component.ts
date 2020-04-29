@@ -27,9 +27,10 @@ export class SwitchToggleDocsComponent implements OnInit {
   `;
 
   keyEx: string = `
-  <go-switch-toggle [control]="control3"
-                    label="Key Label"
-                    key="custom-key">
+  <go-switch-toggle
+    [control]="control3"
+    label="Key Label"
+    key="custom-key">
   </go-switch-toggle>
   `;
 
@@ -39,9 +40,10 @@ export class SwitchToggleDocsComponent implements OnInit {
   `;
 
   hintsExHtml: string = `
-  <go-switch-toggle [control]="control4"
-                    label="Hints"
-                    [hints]="hints">
+  <go-switch-toggle
+    [control]="control4"
+    label="Hints"
+    [hints]="hints">
   </go-select>
   `;
 
@@ -52,8 +54,9 @@ export class SwitchToggleDocsComponent implements OnInit {
   `;
 
   errorsExHtml: string = `
-  <go-switch-toggle [control]="control5"
-                    label="Errors Toggle">
+  <go-switch-toggle
+    [control]="control5"
+    label="Errors Toggle">
   </go-switch-toggle>
   `;
 
@@ -70,16 +73,18 @@ export class SwitchToggleDocsComponent implements OnInit {
   `;
 
   labelPositionEx: string = `
-  <go-switch-toggle [control]="control6"
-                    label="On Your Left"
-                    labelPosition="before">
+  <go-switch-toggle
+    [control]="control6"
+    label="On Your Left"
+    labelPosition="before">
   </go-switch-toggle>
   `;
 
   themeEx: string = `
-  <go-switch-toggle [control]="control7"
-                    label="Dark Label"
-                    theme="dark">
+  <go-switch-toggle
+    [control]="control7"
+    label="Dark Label"
+    theme="dark">
   </go-switch-toggle>
   `;
 
