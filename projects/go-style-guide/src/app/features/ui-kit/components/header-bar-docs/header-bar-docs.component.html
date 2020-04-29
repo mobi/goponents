@@ -17,8 +17,11 @@
   <ng-template *ngTemplateOutlet="buttons"></ng-template>
 </ng-template>
 
-<ng-template *ngIf="showBackArrow" goHeaderBar heading="Header Bar Example" (handleBackButton)="goBackClicked()"
-             [showBackArrow]="showBackArrow">
+<ng-template
+  *ngIf="showBackArrow"
+  goHeaderBar heading="Header Bar Example"
+  (handleBackButton)="goBackClicked()"
+  [showBackArrow]="showBackArrow">
   <ng-template *ngTemplateOutlet="buttons"></ng-template>
 </ng-template>
 
