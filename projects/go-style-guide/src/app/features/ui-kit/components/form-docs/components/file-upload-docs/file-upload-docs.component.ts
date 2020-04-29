@@ -22,8 +22,7 @@ export class FileUploadDocsComponent implements OnInit {
   ];
 
   basicExample: string = `
-  <go-file-upload
-    [control]="fileControl">
+  <go-file-upload [control]="fileControl">
   </go-file-upload>
   `;
 
