@@ -27,15 +27,15 @@ export class InputDocsComponent implements OnInit {
   basicInputLabelExample: string = `
   <go-input
     [control]="name"
-    label="Your Name"
-  ></go-input>
+    label="Your Name">
+  </go-input>
   `;
   basicInputKeyExample: string = `
   <go-input
     [control]="name"
     label="Your Name"
-    key="your-name-input"
-  ></go-input>
+    key="your-name-input">
+  </go-input>
   `;
   basicInputKeyExampleOutput: string = `
   <label for="your-name-input">Your Name</label>
@@ -51,8 +51,8 @@ export class InputDocsComponent implements OnInit {
   <go-input
     label="Your Name"
     [control]="name"
-    [hints]="hints"
-  ></go-input>
+    [hints]="hints">
+  </go-input>
   `;
   basicErrorsTemplate: string = `
   this.name.setErrors([
@@ -83,15 +83,15 @@ export class InputDocsComponent implements OnInit {
   <go-input
     [control]="name"
     label="Your Name"
-    placeholder="Nymphadora Tonks"
-  ></go-input>
+    placeholder="Nymphadora Tonks">
+  </go-input>
   `;
   basicPasswordExample: string = `
   <go-input
     [control]="password"
     label="Your Password"
-    inputType="password"
-  ></go-input>
+    inputType="password">
+  </go-input>
   `;
 
   constructor(private subNavService: SubNavService) {
