@@ -29,9 +29,9 @@ body {
 }
 
 .go-link {
-  border-bottom: 1px solid;
   color: $theme-light-color;
   display: inline-block;
+  text-decoration: underline;
   transition: $global-transition-duration $global-transition-timing;
 
   &:active,
