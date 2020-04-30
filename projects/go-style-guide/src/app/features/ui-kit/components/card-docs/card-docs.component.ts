@@ -34,6 +34,14 @@ export class CardDocsComponent {
   </go-card>
   `;
 
+  hrExample: string = `
+    <hr class="go-hr">
+  `;
+
+  hrAllowPaddingExample: string = `
+    <hr class="go-hr go-hr--allow-padding">
+  `;
+
   constructor() { }
 
 }
