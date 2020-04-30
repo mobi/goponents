@@ -24,3 +24,13 @@
     width: 0;
   }
 }
+
+.go-hr {
+  border: 1px solid $theme-light-app-bg;
+  margin: 1rem -1rem;
+}
+
+.go-hr--allow-padding {
+  margin-right: 0;
+  margin-left: 0;
+}
