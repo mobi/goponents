@@ -54,10 +54,11 @@ export class TableSelectionComponent {
   `;
 
   eleRef_html: string = `
-  <go-table [tableConfig]="eleRefTableConfig"
-            tableTitle="Element Reference Example"
-            [showTableActions]="true"
-            #eleRefTable>
+  <go-table
+    [tableConfig]="eleRefTableConfig"
+    tableTitle="Element Reference Example"
+    [showTableActions]="true"
+    #eleRefTable>
     <ng-container go-table-actions>
       <go-button (handleClick)="getSelectionState()">Selection State</go-button>
     </ng-container>
@@ -93,9 +94,10 @@ export class TableSelectionComponent {
   `;
 
   rowEvent_html: string = `
-  <go-table [tableConfig]="rowEventTableConfig"
-            tableTitle="Row Event Example"
-            (rowSelectionEvent)="rowEventExample($event)">
+  <go-table
+    [tableConfig]="rowEventTableConfig"
+    tableTitle="Row Event Example"
+    (rowSelectionEvent)="rowEventExample($event)">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -124,9 +126,10 @@ export class TableSelectionComponent {
   `;
 
   preselectedTable_html: string = `
-  <go-table class="go-column go-column--100"
-            [tableConfig]="preselectedTableConfig"
-            tableTitle="Preselect All Rows">
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="preselectedTableConfig"
+    tableTitle="Preselect All Rows">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

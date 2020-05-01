@@ -67,11 +67,12 @@ export class ConfigurationDocsComponent implements OnInit {
   `;
 
   colorEx_html: string = `
-  <go-select [control]="colorControl"
-             label="Specify Font Color"
-             bindValue="value"
-             bindLabel="label"
-             [items]="colorOptions">
+  <go-select
+    [control]="colorControl"
+    label="Specify Font Color"
+    bindValue="value"
+    bindLabel="label"
+    [items]="colorOptions">
   </go-select>
   `;
 

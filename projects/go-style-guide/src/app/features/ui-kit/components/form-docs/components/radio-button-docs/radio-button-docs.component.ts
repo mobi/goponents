@@ -41,15 +41,17 @@ export class RadioButtonDocsComponent {
   radio2Ex: string = `
   <go-radio-group legend="Options" [control]="radio2">
     <div>
-      <go-radio-button label="Option 1"
-                        formValue="option1"
-                        key="option_1">
+      <go-radio-button
+        label="Option 1"
+        formValue="option1"
+        key="option_1">
       </go-radio-button>
     </div>
     <div>
-      <go-radio-button label="Option 2"
-                        formValue="option2"
-                        key="option_2">
+      <go-radio-button
+        label="Option 2"
+        formValue="option2"
+        key="option_2">
       </go-radio-button>
     </div>
   </go-radio-group>
@@ -67,9 +69,10 @@ export class RadioButtonDocsComponent {
   `;
 
   radio3Ex: string = `
-  <go-radio-group legend="Options"
-                  [control]="radio3"
-                  [hints]="hints">
+  <go-radio-group
+    legend="Options"
+    [control]="radio3"
+    [hints]="hints">
     <div>
       <go-radio-button label="Option 1" formValue="option1">
       </go-radio-button>
@@ -82,9 +85,10 @@ export class RadioButtonDocsComponent {
   `;
 
   radio4Ex: string = `
-  <go-radio-group legend="Options"
-                  [control]="radio4"
-                  theme="dark">
+  <go-radio-group
+    legend="Options"
+    [control]="radio4"
+    theme="dark">
     <div>
       <go-radio-button label="Option 1" formValue="option1">
       </go-radio-button>

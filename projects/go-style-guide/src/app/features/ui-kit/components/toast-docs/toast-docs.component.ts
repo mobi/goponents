@@ -21,19 +21,33 @@ export class ToastDocsComponent {
   `;
 
   basic_html: string = `
-  <go-toast header="Success!" message="The thing you did saved successfully." type="positive"></go-toast>
-  <go-toast header="Hey!" message="Did you know that this is pretty cool?"></go-toast>
-  <go-toast header="Oh No!" message="The thing you did didn't work right." type="negative"></go-toast>
-  <go-toast header="HTML Example" type="positive"
-            message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'></go-toast>
+  <go-toast
+    header="Success!"
+    message="The thing you did saved successfully." type="positive">
+  </go-toast>
+  <go-toast
+    header="Hey!"
+    message="Did you know that this is pretty cool?">
+  </go-toast>
+  <go-toast
+    header="Oh No!"
+    message="The thing you did didn't work right." type="negative">
+  </go-toast>
+  <go-toast
+    header="HTML Example"
+    type="positive"
+    message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'>
+  </go-toast>
   `;
 
   dismiss_html: string = `
-  <go-toast *ngIf="showDismissToast"
-            header="Heads Up!"
-            message="We use cookies and stuff, so watch out.  You can dismiss me."
-            [dismissable]="true"
-            (handleDismiss)="dismissed()"></go-toast>
+  <go-toast
+    *ngIf="showDismissToast"
+    header="Heads Up!"
+    message="We use cookies and stuff, so watch out.  You can dismiss me."
+    [dismissable]="true"
+    (handleDismiss)="dismissed()">
+  </go-toast>
   `;
 
   dismiss_ts: string = `

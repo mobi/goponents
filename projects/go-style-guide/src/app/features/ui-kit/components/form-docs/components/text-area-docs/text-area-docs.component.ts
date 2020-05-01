@@ -22,24 +22,23 @@ export class TextAreaDocsComponent implements OnInit {
   ];
 
   basicExample: string = `
-  <go-text-area
-    [control]="message"
-  ></go-text-area>
+  <go-text-area [control]="message">
+  </go-text-area>
   `;
 
   basicLabelExample: string = `
   <go-text-area
     [control]="message"
-    label="Your Message"
-  ></go-text-area>
+    label="Your Message">
+  </go-text-area>
   `;
 
   basicKeyExample: string = `
   <go-text-area
     [control]="message"
     label="Your Message"
-    key="your-message-input"
-  ></go-text-area>
+    key="your-message-input">
+  </go-text-area>
   `;
 
   basicKeyExampleOutput: string = `
@@ -58,8 +57,8 @@ export class TextAreaDocsComponent implements OnInit {
   <go-text-area
     label="Your Message"
     [control]="message"
-    [hints]="hints"
-  ></go-text-area>
+    [hints]="hints">
+  </go-text-area>
   `;
 
   basicErrorsTemplate: string = `
@@ -94,16 +93,16 @@ export class TextAreaDocsComponent implements OnInit {
   <go-text-area
     [control]="message"
     label="Your Message"
-    placeholder="Tell us a little bit about yourself."
-  ></go-text-area>
+    placeholder="Tell us a little bit about yourself.">
+  </go-text-area>
   `;
 
   basicRowsExample: string = `
   <go-text-area
     [control]="message"
     label="Your Message"
-    rows="5"
-  ></go-text-area>
+    rows="5">
+  </go-text-area>
   `;
 
   constructor(private subNavService: SubNavService) {
