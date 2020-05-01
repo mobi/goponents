@@ -26,7 +26,9 @@
 }
 
 .go-hr {
-  border: 1px solid $theme-light-app-bg;
+  background: $theme-light-app-bg;
+  border: 0;
+  height: 1px;
   margin: 1rem -1rem;
 }
 
