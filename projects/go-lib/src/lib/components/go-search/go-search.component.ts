@@ -81,7 +81,7 @@ export class GoSearchComponent implements OnInit {
     }
   }
 
-  keyDown(event: KeyboardEvent): void {
+  keyDown(event: Partial<KeyboardEvent>): void {
     if (event.code === 'ArrowDown') {
       this.goSearchService.arrowDownEvent.emit();
     }
