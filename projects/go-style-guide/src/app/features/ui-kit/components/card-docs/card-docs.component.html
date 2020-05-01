@@ -50,4 +50,34 @@
       <code [highlight]="showHeaderExample"></code>
     </ng-container>
   </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">With Horizontal Rules</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">Full Width</h4>
+      <p class="go-body-copy">
+        A horizontal rule that spans the entire width of the card can be implemented by adding the
+        <code class="code-block--inline">go-hr</code> class on an <code class="code-block--inline">hr</code> tag
+        within the card's <code class="code-block--inline">go-card-content</code>.
+      </p>
+      <hr class="go-hr">
+      <code
+        [highlight]="hrExample"
+        class="code-block">
+      </code>
+
+      <h4 class="go-heading-4">With Padding</h4>
+      <p class="go-body-copy">
+        Also adding the <code class="code-block--inline">go-hr--padding</code> modifier class will
+        cause the width of the horizontal rule to respect the padding of the card containing it.
+      </p>
+      <hr class="go-hr go-hr--allow-padding">
+      <code
+        [highlight]="hrAllowPaddingExample"
+        class="code-block">
+      </code>
+    </ng-container>
+  </go-card>
 </section>
