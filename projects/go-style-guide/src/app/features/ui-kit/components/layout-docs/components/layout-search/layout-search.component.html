@@ -28,6 +28,14 @@
         <p class="go-body-copy">The GoSearchService is how to interact with the GoSearchComponent. It has these available properties and methods:</p>
         <ul class="go-list">
           <li>
+            <strong>arrowDownEvent </strong><caption class="method-type">(EventEmitter&lt;void&gt;)</caption> - event that is emitted from the <code class="code-block--inline">go-search</code>
+            component when the user presses the down arrow on the keyboard while focused on the search input. Useful when implementing arrow keys to navigate through results.
+          </li>
+          <li>
+            <strong>focusOnSearchEvent </strong><caption class="method-type">(EventEmitter&lt;void&gt;)</caption> - event that you can trigger to tell the <code class="code-block--inline">go-search</code>
+            component to focus on the search input. Useful when implementing arrow keys to navigate through results.
+          </li>
+          <li>
             <strong>noResultsMessage </strong><caption class="method-type">(string)</caption> - The message to be shown when no results are returned from the server that match the search term.
             By default the message is: 'No Results Found'.
           </li>
