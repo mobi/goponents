@@ -56,7 +56,6 @@ export class GoSearchComponent implements OnInit {
         this.goSearchService.showNoResultsMessage = false;
         this.goSearchService.hasResults = false;
         this.goSearchService.showLoader = false;
-        this.goSearchService.updateSearchTerm();
       }
     });
 
