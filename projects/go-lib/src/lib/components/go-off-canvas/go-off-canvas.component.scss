@@ -13,8 +13,7 @@
 }
 
 .go-off-canvas {
-  background-color: $base-dark;
-  border-left: 2px solid $base-dark-secondary;
+  background-color: $theme-dark-bg;
   bottom: 0;
   color: $base-light;
   display: flex;
@@ -43,7 +42,7 @@
 }
 
 .go-off-canvas__button {
-  background: $base-dark-secondary;
+  background: $theme-dark-bg;
   border: 0;
   color: $base-light;
   cursor: pointer;

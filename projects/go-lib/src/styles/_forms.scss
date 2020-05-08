@@ -25,7 +25,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 .go-form--dark .go-form__fieldset,
 .go-form__fieldset--dark {
   &:disabled {
-    background: $base-dark-secondary;
+    background: $theme-dark-border;
   }
 }
 
@@ -189,7 +189,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &:disabled {
     background-color: $input--disabled-background;
-    border-color:  $base-dark-secondary;
+    border-color: $theme-dark-border;
     color: $theme-light-border;
   }
 }
