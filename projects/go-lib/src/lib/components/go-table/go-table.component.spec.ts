@@ -903,6 +903,16 @@ describe('GoTableComponent', () => {
 
       expect(component.pages).toEqual(pages);
     });
+
+    it('should reset the searchTerm if passed in', () => {
+      component.searchTerm.reset();
+      component.tableConfig.searchConfig.searchTerm = 'koala';
+      component.tableConfig.searchConfig.searchable = true;
+
+      component.renderTable();
+
+      expect(component.searchTerm.value).toEqual(component.tableConfig.searchConfig.searchTerm);
+    });
   });
 
   describe('clearSearch', () => {
