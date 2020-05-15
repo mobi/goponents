@@ -17,8 +17,6 @@ export class GoHeaderComponent implements OnChanges, OnDestroy {
   @Input() logoLink: string = '';
   @Input() logoLinkUseRouterLink: boolean = true;
 
-  @ViewChild('middleSection') middleSection: ElementRef;
-
   public brandColor: string;
   public brandColorIsDark: boolean;
 
@@ -70,10 +68,6 @@ export class GoHeaderComponent implements OnChanges, OnDestroy {
 
   toggleSideMenu(): void {
     this.sideNavService.toggleNav();
-  }
-
-  middleContentExists(): boolean {
-    return this.middleSection && this.middleSection.nativeElement.childElementCount > 0;
   }
 
   private setupResizeSubscription(): void {

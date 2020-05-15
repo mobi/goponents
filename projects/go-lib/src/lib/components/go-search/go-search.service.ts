@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
@@ -6,6 +6,16 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class GoSearchService {
+
+  /**
+   * Event that get's emitted when the down arrow key is pressed while focused on the search input
+   */
+  arrowDownEvent: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * Event that the go-search component watches for to apply focus to the search input itself
+   */
+  focusOnSearchEvent: EventEmitter<void> = new EventEmitter<void>();
 
   /**
    * Whether or not the service making requests returned results
@@ -41,7 +51,7 @@ export class GoSearchService {
    * Use this method to update the search term
    * @param term {string} The search term entered by the user
    */
-  updateSearchTerm(term: string): void {
+  updateSearchTerm(term?: string): void {
     this.searchTerm.next(term);
   }
 
