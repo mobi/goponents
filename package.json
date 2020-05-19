@@ -21,7 +21,7 @@
     "test_app": "ng test go-tester",
     "npm_pack": "cd dist/go-lib && npm pack",
     "package": "npm run build_lib && npm run npm_pack",
-    "publish": "npm run package && cd dist/go-lib && npm publish",
+    "publish": "npm run build_lib && cd dist/go-lib && npm publish",
     "publish_local": "npm run package && node ./local_install.js",
     "sass-lint": "node_modules/.bin/sass-lint -c .sass-lint.yml",
     "style_guide": "ng serve --project=go-style-guide",
