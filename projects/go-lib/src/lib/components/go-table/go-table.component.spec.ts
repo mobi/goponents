@@ -1015,6 +1015,20 @@ describe('GoTableComponent', () => {
       expect(component.localTableConfig.tableData).toEqual(fakeTableData);
     }));
 
+    it('resets the page offset if datamode is server', fakeAsync(() => {
+      component.tableConfig.searchConfig.searchable = true;
+      component.tableConfig.dataMode = GoTableDataSource.server;
+
+      component.renderTable();
+      component.ngOnInit();
+
+      component.localTableConfig.pageConfig.offset = 10;
+
+      component.searchTerm.setValue('koala bear');
+      tick(501);
+      expect(component.localTableConfig.pageConfig.offset).toEqual(0);
+    }));
+
     it('emits a table change event if search term changes', fakeAsync(() => {
       spyOn(component.tableChange, 'emit');
 

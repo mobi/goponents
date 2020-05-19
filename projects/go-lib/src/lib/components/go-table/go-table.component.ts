@@ -437,7 +437,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       if (!this.isServerMode()) {
         this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
       } else {
-        this.tableChangeOutcome();
+        this.setFirstPage();
       }
     });
     this.setSearchTerm();
