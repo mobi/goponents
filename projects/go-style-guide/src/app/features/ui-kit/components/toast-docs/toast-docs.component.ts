@@ -49,6 +49,27 @@ export class ToastDocsComponent {
     (handleDismiss)="dismissed()">
   </go-toast>
   `;
+  action_btn_html: string = `
+  <go-toast 
+    type="neutral" 
+    header="Hey!" 
+    message="Did you know that this is pretty cool?" 
+    [showToastActions]="true">
+    <ng-container go-toast-action>
+      <div class="go-button-group">
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button1</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button2</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button3</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-toast>
+  `;
 
   dismiss_ts: string = `
   showDismissToast = true;

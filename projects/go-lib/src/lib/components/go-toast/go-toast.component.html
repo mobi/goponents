@@ -28,4 +28,7 @@
       (handleClick)="dismiss()">
     </go-icon-button>
   </div>
+  <div class="go-toast__actions" *ngIf="showToastActions">
+    <ng-content select="[go-toast-action]"></ng-content>
+  </div>
 </div>

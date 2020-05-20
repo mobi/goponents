@@ -31,8 +31,8 @@ export class TestPage2Component implements OnInit {
     this.brandingControl = new FormControl(this.goConfigService.config.getValue().brandColor);
 
     setTimeout(() => {
-      this.goToasterService.toastInfo({ message: 'Check this out'});
-      this.goToasterService.toastSuccess({message: 'Check this out' });
+      this.goToasterService.toastInfo({ message: 'Check this out' });
+      this.goToasterService.toastSuccess({ message: 'Check this out' });
       this.goToasterService.toastError({ message: 'Check this out' });
     }, 1500);
   }
@@ -56,7 +56,7 @@ export class TestPage2Component implements OnInit {
   }
 
   openToast(): void {
-    this.goToasterService.toastInfo({ message: 'From the action sheet'});
+    this.goToasterService.toastInfo({ message: 'From the action sheet' });
   }
 
   updateColor(): void {
@@ -65,5 +65,9 @@ export class TestPage2Component implements OnInit {
 
   pillRemoved(): void {
     this.showPill = false;
+  }
+
+  actionClick(action_type: string): void {
+    alert(action_type + ' Click');
   }
 }

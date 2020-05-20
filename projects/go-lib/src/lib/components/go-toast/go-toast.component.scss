@@ -70,3 +70,10 @@
   right: 0;
   top: 0;
 }
+.go-toast__actions {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding: 0.875rem 1.25rem;
+}

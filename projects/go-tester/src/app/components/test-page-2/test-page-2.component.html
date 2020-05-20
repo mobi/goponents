@@ -106,6 +106,21 @@
               message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'
               [dismissable]="true">
     </go-toast>
+    <go-toast type="neutral" header="Hey!" message="Did you know that this is pretty cool?" [showToastActions]="true">
+      <ng-container go-toast-action>
+        <div class="go-button-group">
+          <div class="go-button-group__item">
+            <go-button (handleClick)="actionClick('btn-1')" buttonVariant="neutral">Button1</go-button>
+          </div>
+          <div class="go-button-group__item">
+            <go-button (handleClick)="actionClick('btn-2')" buttonVariant="neutral">Button2</go-button>
+          </div>
+          <div class="go-button-group__item">
+            <go-button (handleClick)="actionClick('btn-3')" buttonVariant="neutral">Button3</go-button>
+          </div>
+        </div>
+      </ng-container>
+    </go-toast>
   </div>
 
   <div class="go-column go-column--100">

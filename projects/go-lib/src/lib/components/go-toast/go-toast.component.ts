@@ -14,7 +14,8 @@ export class GoToastComponent implements OnInit {
   @Input() header: string;
   @Input() message: string;
   @Input() type: string;
-
+  @Input() showToastActions: boolean = false;
+  
   @Output() handleDismiss = new EventEmitter();
 
   ngOnInit(): void {

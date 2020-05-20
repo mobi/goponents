@@ -143,4 +143,39 @@
       <go-button (handleClick)="sendToast()">Make Toast</go-button>
     </ng-container>
   </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Button Example</h2>
+    </ng-container>
+    <ng-container go-card-content>
+        <p class="go-body-copy">
+        Toast actions are a set of buttons and other tools meant to perform actions on the Toast.
+       <code class="code-block--inline">showToastActions</code> must be
+          set to <code class="code-block--inline">true</code> for the action button to appear.
+        </p>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="action_btn_html"></code>
+    </ng-container>
+  </go-card>
+  <go-toast 
+    type="neutral" 
+    header="Hey!"
+    class="go-column go-column--100"
+    message="Did you know that this is pretty cool?" 
+    [showToastActions]="true"
+    >
+    <ng-container go-toast-action>
+      <div class="go-button-group">
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button1</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button2</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button3</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-toast>
 </section>
