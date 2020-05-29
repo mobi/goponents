@@ -3,7 +3,41 @@
 </header>
 
 <section class="go-container">
-  <go-card class="go-column go-column--100" id="branding">
+  <go-card
+    id="branding"
+    [showHeader]="false"
+    class="go-column go-column--100">
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          The <code class="code-block--inline">GoConfigurationService</code> is used to apply a global set of configutions
+          for the app. Primarily this service is focused on branding configurations.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The service uses a <code class="code-block--inline">GoConfigInterface</code> to store the configuration data. This
+          interface looked like this:
+        </p>
+        <code [highlight]="configInterfaceExample">
+        </code>
+        <h3 class="go-heading-3">Defaults & Simple Setup</h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          When the <code class="code-block--inline">GoConfigurationService</code> is initalized, the defaults for
+          <code class="code-block--inline">brandColor</code> and <code class="code-block--inline">brandingMode</code> are:
+        </p>
+        <code [highlight]="configServiceDefaults">
+        </code>
+        <p class="go-body-copy go-body-copy--no-margin">
+          To use the configuration in its simplest form, only the logo portion needs to be configured.
+        </p>
+        <code [highlight]="configServiceSimple">
+        </code>
+      </div>
+    </div>
+  </go-card>
+</section>
+
+<section class="go-container">
+  <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Branding</h2>
       <go-copy cardId="branding" goCopyDocLink></go-copy>
@@ -55,7 +89,7 @@
 
   <go-card class="go-column go-column--100" id="header-branding">
     <ng-container go-card-header>
-      <h2 class="go-heading-2 go-heading--no-wrap">Enable Header Branding</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Enable Client Branding</h2>
       <go-copy cardId="header-branding" goCopyDocLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
@@ -71,8 +105,8 @@
         <div class="go-container">
           <div class="go-column go-column--50">
             <go-switch-toggle
-              [control]="toggleControl"
-              label="Toggle Header Branding">
+              [control]="configModeControl"
+              label="Enable Client Branding">
             </go-switch-toggle>
           </div>
   
@@ -89,6 +123,11 @@
     </div>
   </go-card>
 
+  <!-- 
+  NOTE: Commenting this out because it contains good information on why we
+  introduced this originally. Hopefully we can come back to implementing something
+  like this in the future.
+   
   <go-card class="go-column go-column--100" id="override-accessibility">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Override Accessibility Color</h2>
@@ -134,4 +173,5 @@
       </div>
     </div>
   </go-card>
+  -->
 </section>

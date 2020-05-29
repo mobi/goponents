@@ -20,16 +20,9 @@ $breakpoint-header-mobile-small: 500px;
 
 .go-header__menu-container {
   align-items: center;
-  cursor: pointer;
   display: flex;
   justify-content: center;
   width: $side-nav-width--collapsed;
-
-  &:hover {
-    .go-header__menu {
-      opacity: .5;
-    }
-  }
 }
 
 .go-header__menu {
@@ -38,6 +31,7 @@ $breakpoint-header-mobile-small: 500px;
   align-items: center;
   align-self: center;
   border-radius: 50%;
+  cursor: pointer;
   display: flex;
   flex-shrink: 0;
   font-size: 1.5rem;

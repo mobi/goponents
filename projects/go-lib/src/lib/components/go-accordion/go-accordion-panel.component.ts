@@ -71,7 +71,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     // NOTE: `title` is deprecated and will be removed in later version
     this.heading = this.heading || this.title;
 
-    this.configService.config
+    this.configService.config$
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;

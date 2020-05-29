@@ -161,3 +161,4 @@ export * from './lib/components/go-tree/go-tree-node-config.model';
 
 /***** Utils *****/
 export * from './lib/utilities/form.utils';
+export * from './lib/utilities/colors.util';
