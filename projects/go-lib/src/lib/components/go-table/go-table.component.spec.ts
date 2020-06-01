@@ -11,7 +11,7 @@ import { RowSelectionEvent, SelectionMode, SelectionState } from './go-table-sel
 import { GoTableSortConfig, SortDirection } from './go-table-sort.model';
 
 import { GoTableComponent } from './go-table.component';
-import { Component } from '@angular/core';
+import { Component, SimpleChange } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoSelectModule } from '../go-select/go-select.module';
@@ -1047,7 +1047,7 @@ describe('GoTableComponent', () => {
     it('should render table', () => {
       spyOn(component, 'renderTable');
 
-      component.ngOnChanges();
+      component.ngOnChanges({ tableConfig: {} as SimpleChange });
 
       expect(component.renderTable).toHaveBeenCalled();
     });
