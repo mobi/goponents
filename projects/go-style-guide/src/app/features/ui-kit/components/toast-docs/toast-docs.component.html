@@ -82,11 +82,27 @@
     </ng-container>
   </go-card>
 
-  <go-toast class="go-column go-column--100" header="Success!" message="The thing you did saved successfully." type="positive"></go-toast>
-  <go-toast class="go-column go-column--100" header="Hey!" message="Did you know that this is pretty cool?"></go-toast>
-  <go-toast class="go-column go-column--100" header="Oh No!" message="The thing you did didn't work right." type="negative"></go-toast>
-  <go-toast class="go-column go-column--100" header="HTML Example" type="positive"
-            message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'></go-toast>
+  <go-toast
+    class="go-column go-column--100"
+    header="Success!"
+    message="The thing you did saved successfully." type="positive">
+  </go-toast>
+  <go-toast
+    class="go-column go-column--100"
+    header="Hey!"
+    message="Did you know that this is pretty cool?">
+  </go-toast>
+  <go-toast 
+    class="go-column go-column--100"
+    header="Oh No!"
+    message="The thing you did didn't work right." type="negative">
+  </go-toast>
+  <go-toast
+    class="go-column go-column--100"
+    header="HTML Example"
+    type="positive"
+    message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'>
+  </go-toast>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
@@ -100,12 +116,14 @@
     </ng-container>
   </go-card>
 
-  <go-toast *ngIf="showDismissToast"
-            class="go-column go-column--100"
-            header="Heads Up!"
-            message="We use cookies and stuff, so watch out. You can dismiss me."
-            [dismissable]="true"
-            (handleDismiss)="dismissed()"></go-toast>
+  <go-toast
+    *ngIf="showDismissToast"
+    class="go-column go-column--100"
+    header="Heads Up!"
+    message="We use cookies and stuff, so watch out. You can dismiss me."
+    [dismissable]="true"
+    (handleDismiss)="dismissed()">
+  </go-toast>
 
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
@@ -125,4 +143,38 @@
       <go-button (handleClick)="sendToast()">Make Toast</go-button>
     </ng-container>
   </go-card>
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Button Example</h2>
+    </ng-container>
+    <ng-container go-card-content>
+        <p class="go-body-copy">
+          Toast actions are a set of buttons and other tools meant to perform actions on the Toast.
+          <code class="code-block--inline">showToastActions</code> must be
+          set to <code class="code-block--inline">true</code> for the action button to appear.
+        </p>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="action_btn_html"></code>
+    </ng-container>
+  </go-card>
+  <go-toast 
+    type="neutral" 
+    header="Hey!"
+    class="go-column go-column--100"
+    message="Did you know that this is pretty cool?" 
+    [showToastActions]="true">
+    <ng-container go-toast-action>
+      <div class="go-button-group">
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button1</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button2</go-button>
+        </div>
+        <div class="go-button-group__item">
+          <go-button buttonVariant="neutral">Button3</go-button>
+        </div>
+      </div>
+    </ng-container>
+  </go-toast>
 </section>

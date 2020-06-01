@@ -2,6 +2,13 @@
 @import '../../../styles/mixins';
 
 $icon-sizes: (small: 1rem, medium: 1.25rem, large: 1.5rem);
+$icon-colors: (
+  dark: $base-dark,
+  light: $base-light,
+  positive: $ui-color-positive,
+  negative: $ui-color-negative,
+  neutral: $ui-color-neutral
+);
 
 // This .go-icon selector styles are borrowed verbatim from the material
 // icons documentation and applied to our own bem style block class.
@@ -32,25 +39,18 @@ $icon-sizes: (small: 1rem, medium: 1.25rem, large: 1.5rem);
   font-feature-settings: 'liga';
 }
 
-.go-icon--dark {
-  color: $base-dark;
-
-  &.go-icon--disabled {
-    color: rgba($base-dark, .7);
-  }
-}
-
-.go-icon--light {
-  color: $base-light;
-
-  &.go-icon--disabled {
-    color: rgba($base-light, .7);
-  }
-}
-
 @each $name, $size in $icon-sizes {
   .go-icon--#{$name} {
     font-size: $size;
+  }
+}
+
+@each $name, $color in $icon-colors {
+  .go-icon--#{$name} {
+    color: $color;
+      &.go-icon--disabled {
+        color: rgba($color, .7);
+      }
   }
 }
 

@@ -3,7 +3,8 @@ import {
   ElementRef,
   HostBinding,
   HostListener,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -24,9 +25,11 @@ export class GoSearchComponent implements OnInit {
   searchActive: boolean = false;
   resultsOverflow: string = 'hidden';
 
+  @ViewChild('searchInput') searchInput: ElementRef;
+
   @HostBinding('class.go-search__parent')
   @HostListener('document:click', ['$event.target'])
-  onDocumentClick(target: HTMLElement) {
+  onDocumentClick(target: HTMLElement): void {
     this.closeSearchEvent(target);
   }
 
@@ -44,7 +47,7 @@ export class GoSearchComponent implements OnInit {
     this.goSearchForm.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged()
-    ).subscribe(changes => {
+    ).subscribe((changes: string) => {
       if (changes['term'].length >= this.goSearchService.termLength) {
         this.goSearchService.showNoResultsMessage = false;
         this.goSearchService.showLoader = true;
@@ -55,6 +58,8 @@ export class GoSearchComponent implements OnInit {
         this.goSearchService.showLoader = false;
       }
     });
+
+    this.focusOnSearch();
   }
 
   resultsStarted(event: AnimationEvent): void {
@@ -73,6 +78,18 @@ export class GoSearchComponent implements OnInit {
     if (event.relatedTarget && !this.elementRef.nativeElement.contains(event.relatedTarget)) {
       this.closeSearch();
     }
+  }
+
+  keyDown(event: Partial<KeyboardEvent>): void {
+    if (event.code === 'ArrowDown') {
+      this.goSearchService.arrowDownEvent.emit();
+    }
+  }
+
+  focusOnSearch(): void {
+    this.goSearchService.focusOnSearchEvent.subscribe(() => {
+      this.searchInput.nativeElement.focus();
+    });
   }
 
   private closeSearchEvent(target: HTMLElement): void {

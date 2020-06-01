@@ -1,10 +1,14 @@
-.go-copy__textarea {
-  position: absolute;
-  left: 99999px;
+:host.go-copy {
+  position: relative;
 }
 
-.go-copy {
-  overflow: hidden;
-  position: relative;
+.go-copy__textarea {
+  left: 99999px;
+  position: absolute;
+}
+
+.go-copy__content {
   cursor: pointer;
+  overflow: hidden;
+  position: absolute;
 }

@@ -117,6 +117,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.setTotalCount();
       this.handleSort();
       this.setPage(this.localTableConfig.pageConfig.offset);
+      this.setSearchTerm();
     }
 
     this.showTable = Boolean(this.tableConfig);
@@ -428,10 +429,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
-    if (this.localTableConfig.searchConfig.searchTerm) {
-      this.searchTerm.setValue(this.localTableConfig.searchConfig.searchTerm);
-    }
-
     this.searchTerm.valueChanges.pipe(
       debounceTime(this.localTableConfig.searchConfig.debounce),
       distinctUntilChanged()
@@ -440,9 +437,16 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       if (!this.isServerMode()) {
         this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
       } else {
-        this.tableChangeOutcome();
+        this.setFirstPage();
       }
     });
+    this.setSearchTerm();
+  }
+
+  private setSearchTerm(): void {
+    if (this.localTableConfig.searchConfig.searchTerm) {
+      this.searchTerm.setValue(this.localTableConfig.searchConfig.searchTerm);
+    }
   }
 
   private performSearch(searchTerm: string): void {

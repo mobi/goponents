@@ -67,6 +67,7 @@ $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
 // Base Colors
 $base-dark: #313536;
 $base-dark-secondary: #202626;
+$base-dark-tertiary: #474747;
 $base-light: #FFF;
 $base-light-secondary: #B1B1B1;
 $base-light-tertiary: #D3D3D3;
@@ -85,13 +86,13 @@ $theme-light-color-hover: lighten($base-dark, 20);
 $theme-light-border: $base-light-secondary;
 
 // Dark Theme
-$theme-dark-bg: $base-dark;
-$theme-dark-bg-active: darken($base-dark, 4);
-$theme-dark-bg-hover: darken($base-dark, 7);
+$theme-dark-bg: $base-dark-secondary;
+$theme-dark-bg-active: darken($base-dark-secondary, 4);
+$theme-dark-bg-hover: darken($base-dark-secondary, 7);
 $theme-dark-color: $base-light;
 $theme-dark-text-color: mix($base-light, $base-light-secondary);
 $theme-dark-color-hover: darken($base-light, 20);
-$theme-dark-border: $base-dark-secondary;
+$theme-dark-border: darken($base-dark-secondary, 7);
 
 // UI Colors
 // Negative Colors -

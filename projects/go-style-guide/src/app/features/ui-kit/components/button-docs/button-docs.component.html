@@ -110,9 +110,11 @@
   </go-card>
 
   <div class="go-column go-column--100">
-    <go-toast type="negative"
-              header="Note!"
-              [message]="variantNotice"></go-toast>
+    <go-toast
+      type="negative"
+      header="Note!"
+      [message]="variantNotice">
+    </go-toast>
   </div>
 
   <go-card class="go-column go-column--100" id="primary-buttons">
@@ -267,8 +269,7 @@
             (handleClick)="testSubmit('primaryButton')"
             [isProcessing]="primaryButtonLoading"
             buttonIcon="close"
-            #primaryButton
-          >
+            #primaryButton>
             Primary
           </go-button>
         </div>
@@ -278,8 +279,7 @@
             [isProcessing]="secondaryButtonLoading"
             buttonIcon="check"
             buttonVariant="secondary"
-            #secondaryButton
-          >
+            #secondaryButton>
             Secondary
           </go-button>
         </div>
@@ -289,8 +289,7 @@
             [isProcessing]="tertiaryButtonLoading"
             buttonIcon="check"
             buttonVariant="tertiary"
-            #tertiaryButton
-          >
+            #tertiaryButton>
             Tertiary
           </go-button>
         </div>
@@ -300,8 +299,7 @@
             [isProcessing]="negativeButtonLoading"
             buttonIcon="delete"
             buttonVariant="negative"
-            #negativeButton
-          >
+            #negativeButton>
             Negative Loading
           </go-button>
         </div>
@@ -311,8 +309,7 @@
             [isProcessing]="neutralButtonLoading"
             buttonIcon="info"
             buttonVariant="neutral"
-            #neutralButton
-          >
+            #neutralButton>
             Neutral Loading
           </go-button>
         </div>
@@ -350,30 +347,33 @@
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button (handleClick)="testSubmit('secondaryDarkButton')"
-                           [useDarkTheme]="true"
-                           buttonVariant="secondary"
-                           buttonIcon="home"
-                           [isProcessing]="secondaryDarkButtonLoading"
-                           #secondaryDarkButton>
+                <go-button
+                  (handleClick)="testSubmit('secondaryDarkButton')"
+                  [useDarkTheme]="true"
+                  buttonVariant="secondary"
+                  buttonIcon="home"
+                  [isProcessing]="secondaryDarkButtonLoading"
+                  #secondaryDarkButton>
                   Secondary
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button (handleClick)="testSubmit('tertiaryDarkButton')"
-                           [useDarkTheme]="true"
-                           buttonVariant="tertiary"
-                           buttonIcon="home"
-                           [isProcessing]="tertiaryDarkButtonLoading"
-                           #tertiaryDarkButton>
+                <go-button
+                  (handleClick)="testSubmit('tertiaryDarkButton')"
+                  [useDarkTheme]="true"
+                  buttonVariant="tertiary"
+                  buttonIcon="home"
+                  [isProcessing]="tertiaryDarkButtonLoading"
+                  #tertiaryDarkButton>
                   Tertiary
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button (handleClick)="testClick()"
-                           [useDarkTheme]="true"
-                           buttonVariant="neutral"
-                           buttonIcon="live_help">
+                <go-button
+                  (handleClick)="testClick()"
+                  [useDarkTheme]="true"
+                  buttonVariant="neutral"
+                  buttonIcon="live_help">
                   With Icon
                 </go-button>
               </div>
@@ -384,15 +384,15 @@
                   buttonIcon="delete"
                   buttonVariant="negative"
                   [isProcessing]="negativeDarkButtonLoading"
-                  #negativeDarkButton
-                >
+                  #negativeDarkButton>
                   Negative Loading
                 </go-button>
               </div>
               <div class="go-column go-column--50">
-                <go-button [useDarkTheme]="true"
-                           buttonIcon="check"
-                           buttonDisabled="true">
+                <go-button
+                  [useDarkTheme]="true"
+                  buttonIcon="check"
+                  buttonDisabled="true">
                   Disabled
                 </go-button>
               </div>

@@ -15,9 +15,10 @@ export class TableDetailsComponent {
   });
 
   tableDetailsExample: string = `
-  <go-table class="go-column go-column--100"
-            [tableConfig]="tableDetailsConfig"
-            tableTitle="Table Details">
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableDetailsConfig"
+    tableTitle="Table Details">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -31,18 +32,19 @@ export class TableDetailsComponent {
   `;
 
   tableDetailsComponentExample: string = `
-  <go-table class="go-column go-column--100"
-              [tableConfig]="tableDetailsConfig"
-              tableTitle="Table Details">
-      <go-table-column field="id" title="ID"></go-table-column>
-      <go-table-column field="name.first" title="First Name"></go-table-column>
-      <go-table-column field="name.last" title="Last Name"></go-table-column>
-      <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableDetailsConfig"
+    tableTitle="Table Details">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
 
-      <ng-template #goTableDetails let-item>
-        <app-table-details-test [row]="item"></app-table-details-test>
-      </ng-template>
-    </go-table>
+    <ng-template #goTableDetails let-item>
+      <app-table-details-test [row]="item"></app-table-details-test>
+    </ng-template>
+  </go-table>
   `;
 
   testComponent: string = `
@@ -61,7 +63,7 @@ export class TableDetailsComponent {
   testComponentHtml: string = `
   <go-loader *ngIf="loading"></go-loader>
 
-  <span  *ngIf="!loading">
+  <span *ngIf="!loading">
     <go-icon [icon]="row.icon"></go-icon>
     Id: {{ row.id }}
   </span>

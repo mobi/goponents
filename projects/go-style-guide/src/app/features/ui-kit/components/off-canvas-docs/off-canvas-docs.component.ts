@@ -68,8 +68,7 @@ export class OffCanvasDocsComponent {
   <go-button
     (handleClick)="openOffCanvas()"
     buttonIcon="subdirectory_arrow_right"
-    buttonVariant="positive"
-  >
+    buttonVariant="positive">
     Open Off Canvas
   </go-button>
   `;

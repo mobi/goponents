@@ -10,9 +10,10 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 export class TableActionsDocsComponent {
 
   tableActions_html: string = `
-  <go-table tableTitle="Example of Table Actions"
-            [tableConfig]="tableConfig"
-            [showTableActions]="true">
+  <go-table
+    tableTitle="Example of Table Actions"
+    [tableConfig]="tableConfig"
+    [showTableActions]="true">
     <ng-container go-table-actions>
       <go-icon-button buttonIcon="filter"></go-icon-button>
       <go-icon-button buttonIcon="settings"></go-icon-button>

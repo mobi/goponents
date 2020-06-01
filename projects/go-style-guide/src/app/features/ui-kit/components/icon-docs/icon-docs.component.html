@@ -47,9 +47,10 @@
         <h4 class="go-heading-4">iconModifier</h4>
         <p class="go-body-copy">
           The <code class="code-block--inline">iconModifier</code> binding accepts a value of 
-          <code class="code-block--inline">'light'</code> or <code class="code-block--inline">'dark'</code> 
-          and will modify the icon color. This can be useful when using the icon on different backgrounds. 
-          The icon will inherit its color otherwise.
+          <code class="code-block--inline">'light'</code>, <code class="code-block--inline">'dark'</code>, 
+          <code class="code-block--inline">'positive'</code>, <code class="code-block--inline">'negative'</code>, 
+          or <code class="code-block--inline">'neutral'</code>
+          and will modify the icon color. The icon will inherit its color otherwise.
         </p>
       </div>
 
@@ -92,9 +93,11 @@
       <h4 class="go-heading-4">Code</h4>
       <code [highlight]="modifiedExample"></code>
       <h4 class="go-heading-4">View</h4>
-      <div class="dark-example-area">
-        <go-icon icon="home" iconModifier="light"></go-icon>
-      </div>
+      <go-icon icon="home" iconModifier="light" class="dark-example-area"></go-icon>
+      <go-icon icon="home" iconModifier="dark"></go-icon>
+      <go-icon icon="check" iconModifier="positive"></go-icon>
+      <go-icon icon="close" iconModifier="negative"></go-icon>
+      <go-icon icon="help" iconModifier="neutral"></go-icon>
     </ng-container>
   </go-card>
   
