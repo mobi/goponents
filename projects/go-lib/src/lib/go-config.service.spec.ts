@@ -1,11 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { skip } from 'rxjs/operators';
-import { GoConfigInterface } from './go-config.model';
+import { BrandingMode, GoConfigInterface } from './go-config.model';
 import { GoConfigService } from './go-config.service';
 
 
-describe('GoConfigService', () => {
+fdescribe('GoConfigService', () => {
   let service: GoConfigService;
+
+  const configMock: GoConfigInterface = {
+    brandColor: '#ffffff',
+    brandingMode: BrandingMode.company,
+    logoConfig: {
+      logo: 'hedwig.jpg'
+    }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -23,35 +31,57 @@ describe('GoConfigService', () => {
   describe('setBrandColor', () => {
     it('sets config.brandColor to a new color', () => {
       spyOn(service, 'setBrandColor').and.callThrough();
-      service.config
+
+      service.config$
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
           expect(updatedConfig.brandColor).toBe('#f6f6f6');
         });
+
       service.setBrandColor('#f6f6f6');
     });
   });
 
-  describe('toggleHeaderBrandingEnabled', () => {
-    it('toggles config.headerBrandingEnabled', () => {
-      spyOn(service, 'setBrandColor').and.callThrough();
-      service.config
+  describe('setLogo', () => {
+    it('updates logoConfig on config$', () => {
+      service.config$
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
-          expect(updatedConfig.headerBrandingEnabled).toBe(true);
+          expect(updatedConfig.logoConfig.logo).toEqual(configMock.logoConfig.logo);
         });
-      service.toggleHeaderBrandingEnabled();
+
+      service.setLogo(configMock.logoConfig);
     });
   });
 
-  describe('contrastIsAccessible', () => {
-    it('returns false when given a color combo that is not accessible', () => {
-      expect(service.contrastIsAccessible('#ffffff', '#bababa')).toBeFalsy();
-    });
+  describe('setConfig', () => {
+    it('sets the config$ to the new config provided', () => {
+      service.config$.next({
+        brandColor: '#000000',
+        brandingMode: BrandingMode.client,
+        logoConfig: { }
+      });
 
-    it('returns true when given a color combo that is accessible', () => {
-      expect(service.contrastIsAccessible('#ffffff', '#000000')).toBeTruthy();
+      service.config$
+        .pipe(skip(1))
+        .subscribe((updatedConfig: GoConfigInterface) => {
+          expect(updatedConfig).toEqual(configMock);
+        });
+
+      service.setConfig(configMock);
+    });
+  });
+
+  describe('getConfig', () => {
+    it('gets the current configuration', () => {
+      service.config$.next(configMock);
+
+      service.config$
+        .pipe(skip(1))
+        .subscribe((updatedConfig: GoConfigInterface) => {
+          const config: GoConfigInterface = service.getConfig();
+          expect(config).toEqual(configMock);
+        });
     });
   });
 });
-
