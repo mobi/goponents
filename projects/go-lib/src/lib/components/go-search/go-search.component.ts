@@ -47,7 +47,7 @@ export class GoSearchComponent implements OnInit {
     this.goSearchForm.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged()
-    ).subscribe((changes: any) => {
+    ).subscribe((changes: string) => {
       if (changes['term'].length >= this.goSearchService.termLength) {
         this.goSearchService.showNoResultsMessage = false;
         this.goSearchService.showLoader = true;
