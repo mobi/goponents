@@ -30,7 +30,14 @@
 .go-side-nav__nav-items {
   flex: 1;
   overflow-y: auto;
-  padding-top: 2rem;
+
+  go-nav-group:first-of-type go-nav-item .go-nav-item__link {
+    padding-top: .625rem;
+
+    &.go-nav-item__link--active .go-nav-item--selected {
+      top: calc(50% + (.625rem / 2));
+    }
+  }
 }
 
 .go-side-nav__app {
