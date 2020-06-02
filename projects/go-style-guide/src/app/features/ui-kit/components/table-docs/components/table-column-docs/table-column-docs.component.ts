@@ -13,6 +13,7 @@ export class TableColumnDocsComponent {
   }
 
   componentBindings: string = `
+  @Input() alignment: 'top' | 'middle' | 'bottom' = 'middle';
   @Input() field:      string;
   @Input() searchable: boolean = true;
   @Input() sortable?:  boolean = true;

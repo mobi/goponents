@@ -84,7 +84,8 @@
             </td>
             <td *ngFor="let col of columns"
                 class="go-table__body-column"
-                [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
+                [ngStyle]="{ 'vertical-align': col.alignment }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 [attr.width]="col.width">
               <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
