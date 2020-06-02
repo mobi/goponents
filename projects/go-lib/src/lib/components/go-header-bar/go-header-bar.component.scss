@@ -3,10 +3,9 @@
 
 .go-header-bar {
   align-items: center;
-  background: $base-light;
+  background: $theme-light-bg;
   box-shadow: $global-box-shadow--regular;
   display: flex;
-  font-family: $primary-font-stack;
   height: 4.25rem;
   justify-content: flex-start;
   padding-right: $column-gutter--double;
@@ -16,18 +15,20 @@
 
 .go-header-bar__title {
   padding: 0 $column-gutter--double;
-  margin-bottom: -$column-gutter--quarter;
+  margin-bottom: 0;
 }
 
 .go-header-bar__back-arrow {
   align-items: center;
-  border-right: solid 1px $theme-light-border;
-  color: $base-dark;
+  align-self: stretch;
+  border-right: solid 1px $base-light-tertiary;
+  color: $theme-light-color;
   cursor: pointer;
-  flex-basis: 2.5rem;
-  font-size: 1.125rem;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
   margin-right: -$column-gutter;
-  padding: $column-gutter+$column-gutter--half $column-gutter;
+  width: 2rem;
 }
 
 .go-header-bar__actions {
