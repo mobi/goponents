@@ -3,6 +3,10 @@ body {
   font-weight: $weight-light;
 }
 
+strong {
+  font-weight: $weight-medium;
+}
+
 .go-heading {
   font-family: $primary-font-stack;
   font-weight: $weight-regular;
