@@ -128,14 +128,17 @@
       </p>
       <code [highlight]="primaryExample"></code>
       <div class="go-container">
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()">Primary</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -152,14 +155,17 @@
       </p>
       <code [highlight]="secondaryExample"></code>
       <div class="go-container">
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -176,14 +182,17 @@
       </p>
       <code [highlight]="tertiaryExample"></code>
       <div class="go-container">
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="tertiary" (handleClick)="testClick()">Tertiary</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -203,14 +212,17 @@
       </p>
       <code [highlight]="negativeExample"></code>
       <div class="go-container">
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="negative">Negative</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="negative" buttonDisabled="true">Disabled</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="negative" buttonIcon="delete">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button (handleClick)="testClick()" buttonVariant="negative" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -231,14 +243,17 @@
       </p>
       <code [highlight]="neutralExample"></code>
       <div class="go-container">
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="neutral">Neutral</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="neutral" buttonDisabled="true">Disabled</go-button>
         </div>
-        <div class="go-column go-column--33">
+        <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="neutral" buttonIcon="live_help">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button (handleClick)="testClick()" buttonVariant="neutral" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -312,6 +327,16 @@
             #neutralButton>
             Neutral Loading
           </go-button>
+        </div>
+        <div class="go-column go-column--50">
+          <go-button
+            (handleClick)="testSubmit('neutralButtonIcon')"
+            [isProcessing]="neutralButtonIconLoading"
+            buttonIcon="info"
+            buttonVariant="neutral"
+            #neutralButtonIcon>
+          </go-button>
+          Neutral, Icon Only Loading
         </div>
       </div>
     </ng-container>

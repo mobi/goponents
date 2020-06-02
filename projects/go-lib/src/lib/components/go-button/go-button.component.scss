@@ -18,11 +18,12 @@
 .go-button {
   @include transition(all);
 
+  align-items: center;
   border: 0;
   border-radius: $global-radius;
   color: $base-dark;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-family: $primary-font-stack;
   font-size: .875rem;
   font-weight: $weight-regular;
@@ -35,6 +36,19 @@
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
+  }
+}
+
+.go-button__icon {
+  display: inline-flex;
+  padding-right: .5rem;
+}
+
+.go-button--icon-only {
+  padding: calc(.625rem + (.3125rem / 2) - 1px);
+
+  .go-button__icon {
+    padding: 0;
   }
 }
 
@@ -237,8 +251,9 @@
   display: flex;
   height: 100%;
   justify-content: center;
-  margin: -#{ $column-gutter--half } -#{ $column-gutter };
+  left: 0;
   position: absolute;
+  top: 0;
   width: 100%;
 
   &.go-button__loader--primary {
