@@ -61,6 +61,7 @@ export * from './lib/components/go-header/go-header.module';
 export * from './lib/components/go-header-bar/go-header-bar.directive';
 export * from './lib/components/go-header-bar/go-header-bar.component';
 export * from './lib/components/go-header-bar/go-header-bar.module';
+export * from './lib/components/go-header-bar/go-header-bar.service';
 
 // Hint
 export * from './lib/components/go-hint/go-hint.component';
