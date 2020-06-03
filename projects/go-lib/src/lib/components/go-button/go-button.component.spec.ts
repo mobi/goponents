@@ -105,6 +105,37 @@ describe('GoButtonComponent', () => {
       expect(component.classObject['go-button--dark']).toBe(true);
       expect(component.classObject['go-button--loading']).toBe(true);
     });
+
+    it('returns an object that sets go-button--icon-only to false if buttonIcon is set and there is content in the button', () => {
+      component.buttonIcon = 'wizard';
+
+      component.ngOnChanges();
+
+      expect(component.classObject['go-button--icon-only']).toBeTruthy();
+
+      const goButtonTemplate: HTMLElement = fixture.nativeElement;
+      const buttonContentElement: HTMLButtonElement = goButtonTemplate.querySelector('button span:not(.go-button__loader)');
+      buttonContentElement.innerHTML = 'Harry Potter';
+      component.ngOnChanges();
+
+      expect(component.classObject['go-button--icon-only']).toBeFalsy();
+    });
+
+    it('returns an object that sets go-button--icon-only to true if buttonIcon is set and there is no content in the button', () => {
+      component.buttonIcon = 'wizard';
+      const goButtonTemplate: HTMLElement = fixture.nativeElement;
+      const buttonContentElement: HTMLButtonElement = goButtonTemplate.querySelector('button span:not(.go-button__loader)');
+      buttonContentElement.innerHTML = 'Harry Potter';
+
+      component.ngOnChanges();
+
+      expect(component.classObject['go-button--icon-only']).toBeFalsy();
+
+      buttonContentElement.innerHTML = null;
+      component.ngOnChanges();
+
+      expect(component.classObject['go-button--icon-only']).toBeTruthy();
+    });
   });
 
   describe('the template', () => {
