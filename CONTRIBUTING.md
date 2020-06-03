@@ -29,7 +29,7 @@ Before you submit your pull request (PR) consider the following guidelines:
 3. Fork the [mobi/goponents](https://github.com/mobi/goponents) repo.
 4. Make your changes in a new git branch:
    ```bash
-   git checkout -b my-branch-name master
+   git checkout -b my-branch-name dev
    ```
 5. Write your code, **including appropriate test cases.**
 6. Run the test as described in the [developer documentation](https://github.com/mobi/goponents#goponents), and ensure that all tests pass.
