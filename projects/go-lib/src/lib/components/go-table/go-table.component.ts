@@ -11,6 +11,7 @@ import {
   OnInit,
   Output,
   QueryList,
+  SimpleChanges,
   TemplateRef,
   ViewChild
 } from '@angular/core';
@@ -91,8 +92,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  ngOnChanges(): void {
-    this.renderTable();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.tableConfig) {
+      this.renderTable();
+    }
   }
 
   ngAfterViewInit(): void {
