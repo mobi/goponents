@@ -18,6 +18,8 @@ export class ConfigurationDocsComponent implements OnInit {
   configModeControl: FormControl = new FormControl(false);
 
   updateColorExample: string = `
+  constructor(private goConfigService: GoConfigService) { }
+
   updateColor(): void {
     this.goConfigService.setBrandColor(this.color);
   }
