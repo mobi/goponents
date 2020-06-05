@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { NavAppDrawer } from '../nav-app-drawer.model';
@@ -9,7 +9,9 @@ import { GoSideNavService } from './go-side-nav.service';
 @Component({
   selector: 'go-side-nav',
   templateUrl: './go-side-nav.component.html',
-  styleUrls: ['./go-side-nav.component.scss']
+  styleUrls: ['./go-side-nav.component.scss'],
+  // tslint:disable-next-line: use-component-view-encapsulation
+  encapsulation: ViewEncapsulation.None
 })
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;

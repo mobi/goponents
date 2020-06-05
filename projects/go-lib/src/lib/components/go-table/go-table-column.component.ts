@@ -6,18 +6,18 @@ import { extractFieldData } from './go-table-utils';
   template: ''
 })
 export class GoTableColumnComponent {
+
+  @Input() alignment: 'top' | 'middle' | 'bottom' = 'middle';
   @Input() field: string;
-  @Input() title: string;
-  @Input() width: number;
   @Input() searchable: boolean = true;
   @Input() sortable?: boolean;
+  @Input() title: string;
+  @Input() width: number;
 
   @ContentChild('goTableCell') goTableCell: TemplateRef<any>;
   @ContentChild('goTableHead') goTableHead: TemplateRef<any>;
 
-  constructor() { }
-
-  getFieldData(item: any) {
+  getFieldData(item: any): any {
     return extractFieldData(this.field, item);
   }
 }

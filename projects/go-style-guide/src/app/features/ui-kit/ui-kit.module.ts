@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { CommonModule, TitleCasePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -198,7 +198,8 @@ import { TableFiltersComponent } from './components/table-docs/components/table-
     GoConfigService,
     GoModalService,
     GoOffCanvasService,
-    GoToasterService
+    GoToasterService,
+    TitleCasePipe
   ]
 })
 

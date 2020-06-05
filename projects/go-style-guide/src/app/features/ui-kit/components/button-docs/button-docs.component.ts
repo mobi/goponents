@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { GoButtonComponent } from '../../../../../../../go-lib/src/public_api';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-button-docs',
@@ -24,6 +25,7 @@ export class ButtonDocsComponent {
   tertiaryDarkButtonLoading: boolean = false;
   negativeButtonLoading: boolean = false;
   neutralButtonLoading: boolean = false;
+  neutralButtonIconLoading: boolean = false;
   negativeDarkButtonLoading: boolean = false;
 
   pageTitle: string = 'Button';
@@ -45,30 +47,9 @@ export class ButtonDocsComponent {
   reach out to UX for clarification.
   `;
 
-  primaryExample: string = `
-  <go-button (handleClick)="testClick()">Primary</go-button>
-
-  <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
-
-  <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
-  `;
-
-  secondaryExample: string = `
-  <go-button (handleClick)="testClick()">Secondary</go-button>
-
-  <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
-
-  <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
-  `;
-
-  tertiaryExample: string = `
-  <go-button buttonVariant="tertiary" (handleClick)="testClick()">Tertiary</go-button>
-
-  <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
-
-  <go-button buttonVariant="tertiary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
-  `;
-
+  primaryExample: string = this.buttonTemplate('primary', 'work');
+  secondaryExample: string = this.buttonTemplate('secondary', 'work');
+  tertiaryExample: string = this.buttonTemplate('tertiary', 'work');
   negativeExample: string = this.buttonTemplate('negative', 'delete');
   neutralExample: string = this.buttonTemplate('neutral', 'live_help');
 
@@ -108,11 +89,13 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
-  public testClick(): void {
+  constructor(private titleCasePipe: TitleCasePipe) { }
+
+  testClick(): void {
     alert('Button clicked!');
   }
 
-  public testSubmit(button: string): void {
+  testSubmit(button: string): void {
     this[button + 'Loading'] = true;
     setTimeout(() => {
       this[button + 'Loading'] = false;
@@ -120,10 +103,10 @@ export class ButtonDocsComponent {
   }
 
 
-  private buttonTemplate (variant: string, icon: string): string {
+  private buttonTemplate(variant: string, icon: string): string {
     return `
   <go-button (handleClick)="testClick()" buttonVariant="${variant}">
-    Negative
+    ${this.titleCasePipe.transform(variant)}
   </go-button>
 
   <go-button (handleClick)="testClick()" buttonVariant="${variant}" buttonDisabled="true">
@@ -132,6 +115,9 @@ export class ButtonDocsComponent {
 
   <go-button (handleClick)="testClick()" buttonVariant="${variant}" buttonIcon="${icon}">
     With Icon
+  </go-button>
+
+  <go-button (handleClick)="testClick()" buttonVariant="${variant}" buttonIcon="${icon}">
   </go-button>
     `;
   }
