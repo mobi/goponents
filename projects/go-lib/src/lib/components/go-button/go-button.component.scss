@@ -28,6 +28,7 @@
   font-size: .875rem;
   font-weight: $weight-regular;
   letter-spacing: .015rem;
+  line-height: 1.2;
   outline: none;
   padding: calc(0.625rem - 1px) $column-gutter;
   position: relative;
@@ -45,7 +46,7 @@
 }
 
 .go-button--icon-only {
-  padding: calc(.625rem + (.3125rem / 2) - 1px);
+  padding: calc(.625rem - 1px) .625rem;
 
   .go-button__icon {
     padding: 0;
