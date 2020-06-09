@@ -31,7 +31,8 @@
   flex: 1;
   overflow-y: auto;
 
-  go-nav-group:first-of-type go-nav-item .go-nav-item__link {
+  .go-nav-item--first .go-nav-item__link,
+  .go-nav-group__dropdown--first {
     padding-top: .625rem;
 
     &.go-nav-item__link--active .go-nav-item--selected {
