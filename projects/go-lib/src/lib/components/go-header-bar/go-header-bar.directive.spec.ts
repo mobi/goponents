@@ -23,13 +23,13 @@ describe('GoHeaderBarDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  it('ngOnInit', () => {
+  it('ngOnChanges', () => {
     spyOn(service.activeItem, 'next');
     directive.showBackArrow = true;
     directive.handleBackButton = new EventEmitter<any>();
     directive.heading = 'Heading';
 
-    directive.ngOnInit();
+    directive.ngOnChanges();
 
     expect(service.activeItem.next).toHaveBeenCalledWith({
       templateRef: templateRef,
