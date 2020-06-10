@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  TemplateRef
+} from '@angular/core';
 
 @Component({
   selector: 'go-toast',
@@ -15,8 +23,20 @@ export class GoToastComponent implements OnInit {
   @Input() message: string;
   @Input() type: string;
   @Input() showToastActions: boolean = false;
-  
-  @Output() handleDismiss = new EventEmitter();
+
+  @Output() handleDismiss: EventEmitter<void> = new EventEmitter();
+
+  /**
+   * Used to render Angular components and HTML inside of the header
+   * instead of using just a string
+   */
+  @ContentChild('headerContent') headerContent: TemplateRef<any>;
+
+  /**
+   * Used to render Angular components and HTML inside of the message
+   * instead of using just a string
+   */
+  @ContentChild('messageContent') messageContent: TemplateRef<any>;
 
   ngOnInit(): void {
     this.statusClass = this.getStatus();

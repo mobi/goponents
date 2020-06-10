@@ -12,13 +12,26 @@
     [ngClass]="{ 'go-toast-content--no-title': !header }">
     <h4
       class="go-heading-4 go-toast-content__title"
-      *ngIf="header">
-      {{ header }}
+      *ngIf="header || headerContent">
+      <ng-container *ngIf="headerContent; else headerContentElse">
+        <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+      </ng-container>
+      <ng-template #headerContentElse>
+        {{ header }}
+      </ng-template>
     </h4>
-    <p
-      class="go-toast-content__message"
-      [innerHTML]="message">
-    </p>
+
+    <ng-container *ngIf="messageContent; else messageContentElse">
+      <p class="go-toast-content__message">
+       <ng-container *ngTemplateOutlet="messageContent"></ng-container>
+      </p>
+    </ng-container>
+    <ng-template #messageContentElse>
+      <p
+        class="go-toast-content__message"
+        [innerHTML]="message">
+      </p>
+    </ng-template>
   </div>
   <div
     class="go-toast-dismiss"

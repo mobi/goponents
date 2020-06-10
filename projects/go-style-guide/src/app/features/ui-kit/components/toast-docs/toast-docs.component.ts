@@ -104,6 +104,24 @@ export class ToastDocsComponent {
   <go-toaster></go-toaster>
   `;
 
+  toast_header_template_html: string = `
+  <go-toast
+    message="This toast is an example that uses a header template">
+    <ng-template #headerContent>
+      Header Content Template <go-icon icon="home"></go-icon>
+    </ng-template>
+  </go-toast>
+  `;
+
+  toast_message_template_html: string = `
+  <go-toast
+    header="Message Content Template">
+    <ng-template #messageContent>
+      This toast is an example that uses a message template <go-icon icon="home"></go-icon>
+    </ng-template>
+  </go-toast>
+  `;
+
   constructor(private toasterService: GoToasterService) { }
 
   dismissed(): void {
