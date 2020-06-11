@@ -1,12 +1,22 @@
-<div class="go-header-bar" *ngIf="currentItem">
-  <a *ngIf="currentItem.showBackArrow"
-     (click)="processBackBtn()" class="go-header-bar__back-arrow">
-    <go-icon icon="arrow_back"></go-icon>
-  </a>
-  <h2 class="go-heading-2 go-header-bar__title">{{ currentItem.title }}</h2>
+<div
+  class="go-header-bar"
+  *ngIf="currentItem">
+
+  <go-icon
+    *ngIf="currentItem.showBackArrow"
+    (click)="processBackBtn()"
+    class="go-header-bar__back-arrow"
+    icon="arrow_back">
+  </go-icon>
+
+  <h2
+    class="go-heading-2 go-header-bar__title"
+    [ngClass]="{ 'go-header-bar__title--no-arrow': !currentItem.showBackArrow }">
+    {{ currentItem.title }}
+  </h2>
 
   <div class="go-header-bar__actions">
-    <ng-content select="[go-header-bar-action]"></ng-content>
+    <ng-container *ngTemplateOutlet="currentItem.templateRef"></ng-container>
   </div>
-  <ng-container *ngTemplateOutlet="currentItem.templateRef"></ng-container>
+  
 </div>

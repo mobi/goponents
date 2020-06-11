@@ -1,4 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { GoHeaderBarService } from './go-header-bar.service';
 import { GoHeaderBarItem } from './go-header-bar.interface';
 import { Subscription } from 'rxjs';
