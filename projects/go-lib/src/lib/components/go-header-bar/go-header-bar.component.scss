@@ -14,8 +14,12 @@
 }
 
 .go-header-bar__title {
-  padding: 0 $column-gutter--double;
+  padding: 0 $column-gutter;
   margin-bottom: 0;
+}
+
+.go-header-bar__title--no-arrow {
+  padding-left: $column-gutter--double;
 }
 
 .go-header-bar__back-arrow {
@@ -27,7 +31,6 @@
   display: flex;
   font-size: 1rem;
   justify-content: center;
-  margin-right: -$column-gutter;
   width: 2rem;
 }
 

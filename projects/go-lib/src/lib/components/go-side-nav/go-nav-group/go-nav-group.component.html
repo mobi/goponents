@@ -5,7 +5,7 @@
   <div class="go-nav-group__dropdown"
        (click)="expand(group)"
        [attr.title]="group.description"
-       [ngClass]="{ 'go-nav-group__dropdown--expanded': group.expanded }">
+       [ngClass]="{ 'go-nav-group__dropdown--expanded': group.expanded, 'go-nav-group__dropdown--first': index === 0 }">
     <div class="go-nav-group__link">
       <span class="go-nav-item--selected"
             [ngStyle]="{ 'background': brandColor }"
@@ -38,5 +38,9 @@
   </div>
 </div>
 <ng-template #noSubRoutes>
-  <go-nav-item [navItem]="navItem" [level]="level"></go-nav-item>
+  <go-nav-item
+    [navItem]="navItem"
+    [level]="level"
+    [ngClass]="{ 'go-nav-item--first': index === 0 }">
+  </go-nav-item>
 </ng-template>

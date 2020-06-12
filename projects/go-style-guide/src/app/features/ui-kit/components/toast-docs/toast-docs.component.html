@@ -143,6 +143,7 @@
       <go-button (handleClick)="sendToast()">Make Toast</go-button>
     </ng-container>
   </go-card>
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2">Button Example</h2>
@@ -157,6 +158,7 @@
       <code [highlight]="action_btn_html"></code>
     </ng-container>
   </go-card>
+
   <go-toast 
     type="neutral" 
     header="Hey!"
@@ -177,4 +179,57 @@
       </div>
     </ng-container>
   </go-toast>
+
+  <go-card class="go-column go-column--100" id="header-template">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin">Header Template</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Instead of passing just a string to the header of the toast, an
+        Angular template can be utilized. This will allow use of Angular components
+        and HTML inside of the header of the toast.
+        <strong>
+          Note: This will replace anything passed into the <code class="code-block code-block--inline">header</code> input.
+        </strong>
+      </p>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="toast_header_template_html"></code>
+    </ng-container>
+  </go-card>
+
+  <go-toast 
+    class="go-column go-column--100"
+    message="This toast is an example that uses a header template">
+    <ng-template #headerContent>
+      Header Content Template <go-icon icon="home"></go-icon>
+    </ng-template>
+  </go-toast>
+
+  <go-card class="go-column go-column--100" id="message-template">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Message Template</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Instead of passing just a string to the message of the toast, an
+        Angular template can be utilized. This will allow use of Angular components
+        and HTML inside of the message of the toast.
+        <strong>
+          Note: This will replace anything passed into the <code class="code-block code-block--inline">message</code> input.
+        </strong>
+      </p>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="toast_message_template_html"></code>
+    </ng-container>
+  </go-card>
+
+  <go-toast 
+    class="go-column go-column--100"
+    header="Message Content Template">
+    <ng-template #messageContent>
+      This toast is an example that uses a message template <go-icon icon="home"></go-icon>
+    </ng-template>
+  </go-toast>
+
 </section>

@@ -6,13 +6,13 @@
     </nav>
     <div class="go-layout__view-container">
 
-      <go-header-bar #headerBar [@routerAnimation]="routeAnimation(mainRouter)"></go-header-bar>
+      <go-header-bar #headerBar></go-header-bar>
 
       <main
         class="go-layout__route-container"
         [@routerAnimation]="routeAnimation(mainRouter)"
-        #routeContainer
-      >
+        #routeContainer>
+
         <ng-content select="[go-layout-main]"></ng-content>
 
         <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet">

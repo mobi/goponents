@@ -26,6 +26,7 @@ import { NavItem } from '../nav-item.model';
 export class GoNavGroupComponent implements OnInit {
   @Input() navItem: NavGroup | NavItem;
   @Input() class: string;
+  @Input() index: number;
   @Input() level: number;
   @Output() closeNavs: EventEmitter<NavGroup> = new EventEmitter<NavGroup>();
 
