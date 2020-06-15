@@ -10,7 +10,7 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 })
 class TestParentComponent {}
 
-fdescribe('GoCopyDocLinkDirective', () => {
+describe('GoCopyDocLinkDirective', () => {
   let fixture: ComponentFixture<TestParentComponent>;
   let elementRef: ElementRef;
   let goCopyComponent: GoCopyComponent;
