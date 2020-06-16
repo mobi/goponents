@@ -30,7 +30,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @ViewChild('buttonContent') buttonContent: ElementRef;
+  @ViewChild('buttonContent', { static: true }) buttonContent: ElementRef;
 
   clicked(): void {
     this.handleClick.emit(this.isProcessing);

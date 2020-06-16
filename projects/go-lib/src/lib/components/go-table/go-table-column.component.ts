@@ -14,8 +14,8 @@ export class GoTableColumnComponent {
   @Input() title: string;
   @Input() width: number;
 
-  @ContentChild('goTableCell') goTableCell: TemplateRef<any>;
-  @ContentChild('goTableHead') goTableHead: TemplateRef<any>;
+  @ContentChild('goTableCell', { static: false }) goTableCell: TemplateRef<any>;
+  @ContentChild('goTableHead', { static: false }) goTableHead: TemplateRef<any>;
 
   getFieldData(item: any): any {
     return extractFieldData(this.field, item);

@@ -30,13 +30,13 @@ export class GoToastComponent implements OnInit {
    * Used to render Angular components and HTML inside of the header
    * instead of using just a string
    */
-  @ContentChild('headerContent') headerContent: TemplateRef<any>;
+  @ContentChild('headerContent', { static: false }) headerContent: TemplateRef<any>;
 
   /**
    * Used to render Angular components and HTML inside of the message
    * instead of using just a string
    */
-  @ContentChild('messageContent') messageContent: TemplateRef<any>;
+  @ContentChild('messageContent', { static: false }) messageContent: TemplateRef<any>;
 
   ngOnInit(): void {
     this.statusClass = this.getStatus();

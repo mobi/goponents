@@ -22,7 +22,7 @@ export class GoOffCanvasComponent implements OnInit {
   opened: boolean = false;
   header: string;
 
-  @ViewChild(GoOffCanvasDirective) goOffCanvasHost: GoOffCanvasDirective;
+  @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

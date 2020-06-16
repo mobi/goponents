@@ -25,7 +25,7 @@ export class GoSearchComponent implements OnInit {
   searchActive: boolean = false;
   resultsOverflow: string = 'hidden';
 
-  @ViewChild('searchInput') searchInput: ElementRef;
+  @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
 
   @HostBinding('class.go-search__parent')
   @HostListener('document:click', ['$event.target'])

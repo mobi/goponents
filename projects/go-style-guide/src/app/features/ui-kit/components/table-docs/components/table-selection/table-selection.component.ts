@@ -15,8 +15,8 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 })
 export class TableSelectionComponent {
 
-  @ViewChild('interactiveTable') interactiveTable: GoTableComponent;
-  @ViewChild('eleRefTable') eleRefTable: GoTableComponent;
+  @ViewChild('interactiveTable', { static: true }) interactiveTable: GoTableComponent;
+  @ViewChild('eleRefTable', { static: true }) eleRefTable: GoTableComponent;
 
   tableSelectConfig: string = `
   class GoTableConfig {

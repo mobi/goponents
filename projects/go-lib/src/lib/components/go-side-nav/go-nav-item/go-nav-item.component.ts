@@ -16,7 +16,7 @@ export class GoNavItemComponent implements AfterViewInit, OnInit {
   @Input() navItem: NavItem;
   @Input() level: number;
 
-  @ViewChild('navItemRef') navItemRef: ElementRef;
+  @ViewChild('navItemRef', { static: true }) navItemRef: ElementRef;
 
   constructor (
     public navService: GoSideNavService,

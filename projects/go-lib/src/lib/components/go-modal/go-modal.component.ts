@@ -26,8 +26,8 @@ export class GoModalComponent implements OnInit {
   noContentPadding: boolean = false;
   opened: boolean = false;
 
-  @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
-  @ViewChild('goModal') goModal: ElementRef<HTMLElement>;
+  @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;
+  @ViewChild('goModal', { static: true }) goModal: ElementRef<HTMLElement>;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
