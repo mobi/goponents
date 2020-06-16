@@ -2,6 +2,12 @@
   position: relative;
 }
 
+:host.go-copy--card-header {
+  position: absolute;
+  margin-left: 0.75rem;
+  padding-top: 0.25rem;
+}
+
 .go-copy__textarea {
   left: 99999px;
   position: absolute;
