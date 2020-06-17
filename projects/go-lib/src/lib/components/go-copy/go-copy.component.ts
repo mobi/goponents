@@ -12,7 +12,7 @@ export class GoCopyComponent {
 
   @Input() text: string;
 
-  @ViewChild('copyText', { static: true }) copyText: ElementRef;
+  @ViewChild('copyText', { static: false }) copyText: ElementRef;
 
   constructor() { }
 
