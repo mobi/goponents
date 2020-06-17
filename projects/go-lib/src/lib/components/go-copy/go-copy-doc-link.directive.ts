@@ -16,8 +16,17 @@ export class GoCopyDocLinkDirective implements OnInit {
   ngOnInit(): void {
     this.elementRef.nativeElement.classList.add('go-copy--card-header');
     this.elementRef.nativeElement.title = 'Copy the URL to this card';
-    // TODO: need to remove previous id, if there is one, before adding new one
-    this.baseComponent.text = `${window.location.href}/#${this.cardId}`;
+    this.setGoCopyText();
+  }
+
+  setGoCopyText(): void {
+    /**
+     * If the current url already has an id selector, remove it before adding a new one.
+     */
+    const currentUrl: string = window.location.href;
+    const endIndex: number = currentUrl.includes('#') ? currentUrl.lastIndexOf('#') : currentUrl.length;
+    const urlToCopy: string = `${window.location.href.substr(0, endIndex)}/#${this.cardId}`;
+    this.baseComponent.text = urlToCopy;
   }
 
 }
