@@ -6,6 +6,7 @@ import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
 import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoCopyModule } from './components/go-copy/go-copy.module';
+import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-card-link.module';
 import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
 import { GoFileUploadModule } from './components/go-file-upload/go-file-upload.module';
 import { GoFooterModule } from './components/go-footer/go-footer.module';
@@ -14,6 +15,7 @@ import { GoHeaderModule } from './components/go-header/go-header.module';
 import { GoHintModule } from './components/go-hint/go-hint.module';
 import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
+import { GoInfiniteScrollModule } from './directives/go-infinite-scroll/go-infinite-scroll.module';
 import { GoInputModule } from './components/go-input/go-input.module';
 import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
@@ -27,7 +29,6 @@ import { GoTableModule } from './components/go-table/go-table.module';
 import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
-import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-card-link.module';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoHintModule,
     GoIconButtonModule,
     GoIconModule,
+    GoInfiniteScrollModule,
     GoInputModule,
     GoLayoutModule,
     GoLoaderModule,
@@ -77,6 +79,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoHintModule,
     GoIconButtonModule,
     GoIconModule,
+    GoInfiniteScrollModule,
     GoInputModule,
     GoLayoutModule,
     GoLoaderModule,

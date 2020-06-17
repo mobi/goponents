@@ -56,6 +56,7 @@ import { TableSearchingComponent } from '../components/table-docs/components/tab
 import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from '../components/table-docs/components/table-title-template/table-title-template.component';
+import { InfiniteScrollDocsComponent } from '../components/infinite-scroll-docs/infinite-scroll-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -86,6 +87,7 @@ const routes: Routes = [
     { path: 'textarea', component: TextAreaDocsComponent }
   ]},
   { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
+  { path: 'ui-kit/infinite-scroll', component: InfiniteScrollDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
     { path: '', component: LayoutOverviewComponent },
     { path: 'app-drawer', component: LayoutAppDrawerComponent },

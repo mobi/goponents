@@ -18,6 +18,7 @@ import {
   GoFileUploadModule,
   GoIconButtonModule,
   GoIconModule,
+  GoInfiniteScrollModule,
   GoInputModule,
   GoLoaderModule,
   GoModalModule,
@@ -101,6 +102,7 @@ import { TableSearchingComponent } from './components/table-docs/components/tabl
 import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from './components/table-docs/components/table-title-template/table-title-template.component';
+import { InfiniteScrollDocsComponent } from './components/infinite-scroll-docs/infinite-scroll-docs.component';
 
 @NgModule({
   imports: [
@@ -116,6 +118,7 @@ import { TableTitleTemplateComponent } from './components/table-docs/components/
     GoFileUploadModule,
     GoIconButtonModule,
     GoIconModule,
+    GoInfiniteScrollModule,
     GoInputModule,
     GoSelectModule,
     GoTabModule,
@@ -151,6 +154,7 @@ import { TableTitleTemplateComponent } from './components/table-docs/components/
     FormsOverviewComponent,
     IconButtonDocsComponent,
     IconDocsComponent,
+    InfiniteScrollDocsComponent,
     InputDocsComponent,
     ModalDocsComponent,
     ModalTestComponent,

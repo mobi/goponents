@@ -75,6 +75,12 @@ export * from './lib/components/go-icon/go-icon.module';
 export * from './lib/components/go-icon-button/go-icon-button.component';
 export * from './lib/components/go-icon-button/go-icon-button.module';
 
+// Infinite Scroll
+export * from './lib/directives/go-infinite-scroll/go-infinite-scroll-config.model';
+export * from './lib/directives/go-infinite-scroll/go-infinite-scroll.directive';
+export * from './lib/directives/go-infinite-scroll/go-infinite-scroll.module';
+export * from './lib/directives/go-infinite-scroll/go-infinite-scroll.service';
+
 // Input
 export * from './lib/components/go-input/go-input.component';
 export * from './lib/components/go-input/go-input.module';

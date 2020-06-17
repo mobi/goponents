@@ -1,0 +1,143 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Usage</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">&lt;go-infinite-scroll&gt;</code> directive should be used
+          when there is a lot of data being shown as scrollable content.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">scrolledToBottom</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This is used when we need to load more data from the backend. When the user scrolls to the bottom
+          of the scrollable content this will be called.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">config</h4>
+        <p class="go-body-copy">
+          This is a class to represent the configurations for the infinite scroll.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          It has these properties:
+          <code [highlight]="configClass"></code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">dataMode</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This attribute on the config is used to determine whether the frontend will be paginating the data,
+          or if we need to make a call to the server to load more data when we scroll to the bottom.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">identifier</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This is what the data is going to be saved under in the InfiniteScrollService. We need to make sure
+          we're modifying the same data that is being saved in the service. This is required if the dataMode is client,
+          but not neccessary if the dataMode is server
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">index</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This is the number of items that have been loaded into the dom already. This is useful when the dataMode is
+          server to know what index the next set of data will start at.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">perPage</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This is the number of items that will be loaded at a time.
+        </p>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Default Usage</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4">example.html</h4>
+        <code [highlight]="basicExample_html"></code>
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4">example.ts</h4>
+        <code [highlight]="basicExample_ts"></code>
+      </div>
+
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">Default Example</h4>
+        <div
+          goInfiniteScroll
+          [config]="config"
+          class="scrollable go-container">
+          <go-card
+            *ngFor="let item of scrollItems"
+            class="go-column go-column--50">
+            <ng-container go-card-header>
+              {{ item }}
+            </ng-container>
+          </go-card>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Server Side Rendering</h2>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4">example.html</h4>
+        <code [highlight]="serverExample_html"></code>
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4">example.ts</h4>
+        <code [highlight]="serverExample_ts"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">Server Side Example</h4>
+        <div
+          goInfiniteScroll
+          [config]="serverConfig"
+          (scrolledToBottom)="loadMoreItems()"
+          class="scrollable go-container">
+          <go-card
+            *ngFor="let item of serverItems"
+            class="go-column go-column--50">
+            <ng-container go-card-header>
+              {{ item }}
+            </ng-container>
+          </go-card>
+          <div 
+            class="go-column go-column--100 infinite-scroll__loader"
+            *ngIf="loading">
+            <go-loader></go-loader>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
+</section>

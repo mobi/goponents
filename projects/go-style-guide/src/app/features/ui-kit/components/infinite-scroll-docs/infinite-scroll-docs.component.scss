@@ -1,0 +1,9 @@
+.scrollable {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.infinite-scroll__loader {
+  display: flex;
+  justify-content: center;
+}
