@@ -3,9 +3,12 @@
 }
 
 :host.go-copy--card-header {
-  position: absolute;
+  position: relative;
   margin-left: 0.75rem;
-  padding-top: 0.25rem;
+
+  .go-copy__content {
+    padding-top: 0.25rem;
+  }
 }
 
 .go-copy__textarea {
