@@ -26,10 +26,13 @@
 </ng-template>
 
 <section class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-header-bar&gt;</code> component should be used for the title of a detail page and can incorporate form submit buttons
         </p>
