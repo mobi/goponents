@@ -3,12 +3,15 @@
 </header>
 
 <div class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">
           The <code class="code-block--inline">&lt;go-icon&gt;</code>
           component should be the only way an icon is displayed in the
@@ -70,9 +73,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="basic">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Basic</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Basic</h2>
+      <go-copy cardId="basic" goCopyDocLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">Code</h4>
@@ -85,9 +89,10 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="modified">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Modified</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Modified</h2>
+      <go-copy cardId="modified" goCopyDocLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">Code</h4>
@@ -103,9 +108,10 @@
   
   <go-toast class="go-column go-column--100" type="negative" header="Wait!" [message]="iconOverrideWarning"></go-toast>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="overriding-icon-styles">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Overriding Icon Styles</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Overriding Icon Styles</h2>
+      <go-copy cardId="overriding-icon-styles" goCopyDocLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">component.scss</h4>
