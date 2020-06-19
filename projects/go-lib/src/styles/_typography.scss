@@ -32,6 +32,10 @@ strong {
   @extend %element--no-margin;
 }
 
+.go-heading--inline {
+  display: inline;
+}
+
 .go-link {
   @include transition(all);
 

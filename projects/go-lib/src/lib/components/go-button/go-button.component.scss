@@ -42,15 +42,14 @@
 
 .go-button__icon {
   display: inline-flex;
-  padding-right: .5rem;
 }
 
 .go-button--icon-only {
   padding: calc(.625rem - 1px) .625rem;
+}
 
-  .go-button__icon {
-    padding: 0;
-  }
+.go-button__icon ~ .go-button__text:not(:empty) {
+  padding-left: .5rem;
 }
 
 .go-button--loading {
