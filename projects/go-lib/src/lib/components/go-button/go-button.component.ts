@@ -1,12 +1,10 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
-  ViewChild
 } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
@@ -30,8 +28,6 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @ViewChild('buttonContent', { static: true }) buttonContent: ElementRef;
-
   clicked(): void {
     this.handleClick.emit(this.isProcessing);
   }
@@ -53,7 +49,6 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.classObject = {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
-      'go-button--icon-only': this.buttonIcon && !this.buttonContent.nativeElement.innerHTML
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;

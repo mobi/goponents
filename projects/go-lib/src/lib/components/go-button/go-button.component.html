@@ -3,6 +3,7 @@
   (click)="clicked()"
   [disabled]="buttonDisabled || isProcessing"
   [ngClass]="classObject"
+  [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
   [type]="buttonType">
   <span class="go-button__loader"
         *ngIf="isProcessing"
@@ -19,7 +20,7 @@
     [disabled]="buttonDisabled || isProcessing"
     *ngIf="buttonIcon">
   </go-icon>
-  <span #buttonContent>
+  <span #buttonContent class="go-button__text">
     <ng-content></ng-content>
   </span>
 </button>
