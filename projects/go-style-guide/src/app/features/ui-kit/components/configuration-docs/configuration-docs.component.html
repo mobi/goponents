@@ -94,10 +94,9 @@
     </ng-container>
     <div class="go-container" go-card-content>
 
-      <div class="go-column go-column--100">
-        <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">public toggleHeaderBrandingEnabled(): void</code> method can 
-          be used to enable/disable header branding.
+      <div class="go-column go-column--50">
+        <p class="go-body-copy">
+          To enable the "Client Branding" mode, the config on the service must be reset.
         </p>
       </div>
 
@@ -135,43 +134,24 @@
     </ng-container>
     <div class="go-container" go-card-content>
 
-      <div class="go-column go-column--100">
-        <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">overrideMenuColor()</code> method can 
-          be used to override the accessibility check that is performed on the header.
-          You can specify <code class="code-block--inline">light</code>, <code class="code-block--inline">dark</code>
-          or leave it <code class="code-block--inline">undefined</code> to allow the accessibility check.
-          This feature is only activated if <code class="code-block--inline">headerBrandingEnabled</code> is enabled.
+        <p class="go-body-copy">
+          <go-switch-toggle
+            [control]="configModeControl"
+            [hints]="configHints"
+            label="Enable Client Branding">
+          </go-switch-toggle>
         </p>
       </div>
 
-      <div class="go-column go-column--100 go-column--no-padding">
-        <div class="go-container">
-          <div class="go-column go-column--50">
-            <p class="go-body-copy">
-              <go-select
-                [control]="colorControl"
-                label="Specify Font Color"
-                bindValue="value"
-                bindLabel="label"
-                [items]="colorOptions">
-              </go-select>
-            </p>
-            <p class="go-body-copy">
-              Note: to see this example take affect, toggle the "Enable Header Branding" above to true.
-            </p>
-          </div>
-
-          <div class="go-column go-column--50">
-            <code [highlight]="colorEx">
-            </code>
-            
-            <code [highlight]="colorEx_html">
-            </code>
-          </div>
-        </div>
+      <div class="go-column go-column--50 go-column--no-padding">
+        <code [highlight]="toggleExample">
+        </code>
+        
+        <code [highlight]="toggleHeaderEnabledExample">
+        </code>
       </div>
+
     </div>
   </go-card>
-  -->
+
 </section>

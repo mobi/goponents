@@ -16,6 +16,7 @@ export class ConfigurationDocsComponent implements OnInit {
   pageTitle: string = 'Configuration Service';
   inputControl: FormControl = new FormControl(false);
   configModeControl: FormControl = new FormControl(false);
+  configHints: string[] = [`Showing ${BrandingMode.company} mode`];
 
   updateColorExample: string = `
   constructor(private goConfigService: GoConfigService) { }
@@ -40,26 +41,51 @@ export class ConfigurationDocsComponent implements OnInit {
 
   toggleExample: string = `
   <go-switch-toggle
-    [control]="toggleControl"
+    [control]="configModeControl"
     label="Header Branding">
   </go-switch-toggle>
   `;
 
   toggleHeaderEnabledExample: string = `
+  configModeControl: FormControl = new FormControl(false);
+
+  defaultConfig: GoConfigInterface = {
+    brandColor: ThemeColors.brand,
+    brandingMode: BrandingMode.company,
+    logoConfig: {
+      logo: 'assets/images/goDesign.svg',
+      logoCollapsed: 'assets/images/goDesign_green.svg'
+    }
+  };
+
+  clientConfig: GoConfigInterface = {
+    brandColor: ThemeColors.brand,
+    brandingMode: BrandingMode.client,
+    logoConfig: {
+      logo: 'assets/images/goDesign_green.svg'
+    }
+  };
+
   ngOnInit(): void {
-    this.toggleControl.valueChanges.subscribe(() => {
-      this.goConfigService.toggleHeaderBrandingEnabled();
+    this.configModeControl.valueChanges.subscribe((value: boolean) => {
+      if (value) {
+        this.goConfigService.setConfig(this.clientConfig);
+      } else {
+        this.goConfigService.setConfig(this.defaultConfig);
+      }
     });
   }
   `;
 
   configInterfaceExample: string = `
   export interface GoConfigInterface {
+
     /**
      * The specific color used throughout Goponents to
      * add a branded element to a UI component.
      */
     brandColor: string;
+
     /**
      * See 'BrandingMode' for explanation
      */
@@ -112,31 +138,12 @@ export class ConfigurationDocsComponent implements OnInit {
     this.configModeControl.valueChanges.subscribe((value: boolean) => {
       if (value) {
         this.goConfigService.setConfig(this.clientConfig);
+        this.configHints = [`Showing ${BrandingMode.client} mode`];
       } else {
         this.goConfigService.setConfig(this.defaultConfig);
+        this.configHints = [`Showing ${BrandingMode.company} mode`];
       }
     });
-
-    // const theme: any = this.runtimeService.theme;
-
-    // if (theme.business_id === 1) {
-    //   this.goConfigService.setConfig({
-    //     brandColor: theme.brandColor,
-    //     brandingMode: BrandingMode.company,
-    //     logoConfig: {
-    //       logo: theme.logo,
-    //       logoCollapsed: theme.logo_secondary
-    //     }
-    //   });
-    // } else {
-    //   this.goConfigService.setConfig({
-    //     brandColor: theme.brandColor,
-    //     brandingMode: BrandingMode.client,
-    //     logoConfig: {
-    //       logo: theme.logo
-    //     }
-    //   });
-    // }
   }
 
   updateColor(): void {
