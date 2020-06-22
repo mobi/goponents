@@ -6,7 +6,6 @@ import { GoTreeNodeConfig } from 'projects/go-lib/src/public_api';
   templateUrl: './tree-docs.component.html'
 })
 export class TreeDocsComponent {
-  readonly pageTitle: string = 'Tree';
 
   readonly componentBindings: string = `
   @Input() nodeConfig: GoTreeNodeConfig[];

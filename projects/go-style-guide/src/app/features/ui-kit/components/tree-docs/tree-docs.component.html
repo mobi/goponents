@@ -1,5 +1,5 @@
 <header class="go-page-title">
-  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+  <h1 class="go-heading-1">Tree</h1>
 </header>
 
 <section class="go-container">
@@ -40,12 +40,12 @@
     <div go-card-content>
       <div class="go-container">
         <div class="go-column go-column--50">
-          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="exampleDefaultTreeDataHtml"></code>
-        </div>
-        <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
           <go-tree [nodeConfig]="exampleDefaultTreeData"></go-tree>
+        </div>
+        <div class="go-column go-column--50">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="exampleDefaultTreeDataHtml"></code>
         </div>
       </div>
     </div>
