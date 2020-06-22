@@ -4,12 +4,15 @@
 
 <div class="go-container">
 
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-loader&gt;</code> component should be used to
           indicate the processing of data, awaiting a server request, or any other time the user may
@@ -52,9 +55,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="basic-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Basic Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Basic Example</h2>
+      <go-copy cardId="basic-example" goCopyDocLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -78,9 +82,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="show-hide-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Show/Hide Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Show/Hide Example</h2>
+      <go-copy cardId="show-hide-example" goCopyDocLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
