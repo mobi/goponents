@@ -54,6 +54,7 @@ import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from '../components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from '../components/table-docs/components/table-searching/table-searching.component';
 import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
+import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -112,7 +113,8 @@ const routes: Routes = [
     { path: 'templating', component: TableTemplatesComponent },
     { path: 'details', component: TableDetailsComponent }
   ]},
-  { path: 'ui-kit/toast', component: ToastDocsComponent }
+  { path: 'ui-kit/toast', component: ToastDocsComponent },
+  { path: 'ui-kit/tree', component: TreeDocsComponent }
 ];
 
 @NgModule({

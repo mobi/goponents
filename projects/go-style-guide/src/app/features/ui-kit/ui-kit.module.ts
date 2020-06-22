@@ -33,7 +33,8 @@ import {
   GoTabModule,
   GoTextAreaModule,
   GoToasterService,
-  GoToastModule
+  GoToastModule,
+  GoTreeModule
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -98,6 +99,7 @@ import { TabDocsComponent } from './components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from './components/table-docs/components/table-searching/table-searching.component';
 import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
+import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 
 @NgModule({
   imports: [
@@ -129,7 +131,8 @@ import { TableFiltersComponent } from './components/table-docs/components/table-
     SharedModule,
     UiKitRoutesModule,
     GoSharedModule,
-    FormsModule
+    FormsModule,
+    GoTreeModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -186,6 +189,7 @@ import { TableFiltersComponent } from './components/table-docs/components/table-
     CheckboxDocsComponent,
     LoadingTestComponent,
     HeaderBarDocsComponent,
+    TreeDocsComponent,
     PillDocsComponent,
     TableFiltersComponent
   ],

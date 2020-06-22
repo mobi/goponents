@@ -41,7 +41,8 @@ export class AppComponent {
       { route: 'ui-kit/pills', routeTitle: 'Pills' },
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
-      { route: 'ui-kit/toast', routeTitle: 'Toast' }
+      { route: 'ui-kit/toast', routeTitle: 'Toast' },
+      { route: 'ui-kit/tree', routeTitle: 'Tree' }
     ]}
   ];
 
