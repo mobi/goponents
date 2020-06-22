@@ -27,6 +27,7 @@ export class GoHeaderComponent implements OnDestroy {
   private minWidthBreakpoint: number = 768;
   private resizeObservable: Observable<Event> = fromEvent(window, 'resize');
   private resizeSubscription: Subscription;
+  private configSubscription: Subscription;
 
   constructor (
     public sideNavService: GoSideNavService,
@@ -38,7 +39,7 @@ export class GoHeaderComponent implements OnDestroy {
   }
 
   setupConfig(): void {
-    this.configService.config$
+    this.configSubscription = this.configService.config$
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
         this.logoConfig = value.logoConfig;
@@ -56,7 +57,7 @@ export class GoHeaderComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.resizeSubscription.unsubscribe();
-    this.configService.config$.unsubscribe();
+    this.configSubscription.unsubscribe();
   }
 
   isNavCollapsed(): boolean {
