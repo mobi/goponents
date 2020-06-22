@@ -92,5 +92,5 @@ describe('GoOffCanvasComponent', () => {
   template: '<ng-template go-off-canvas-host></ng-template>'
 })
 class GoTestOffCanvasHostComponent {
-  @ViewChild(GoOffCanvasDirective) goOffCanvasHost: GoOffCanvasDirective;
+  @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
 }

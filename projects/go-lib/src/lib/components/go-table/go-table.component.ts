@@ -65,9 +65,9 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
-  @ContentChild('goTableDetails') details: TemplateRef<any>;
+  @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
 
-  @ViewChild('selectAllCheckbox') selectAllCheckbox: ElementRef;
+  @ViewChild('selectAllCheckbox', { static: false }) selectAllCheckbox: ElementRef;
 
   allData: any[] = [];
   localTableConfig: GoTableConfig;

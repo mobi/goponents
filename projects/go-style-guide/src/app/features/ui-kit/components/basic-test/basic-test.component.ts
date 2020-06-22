@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./basic-test.component.scss']
 })
 export class BasicTestComponent {
-  @ViewChild('submitButton') submitButton: GoButtonComponent;
+  @ViewChild('submitButton', { static: true }) submitButton: GoButtonComponent;
 
   email: FormControl = new FormControl('');
   fakeTitle: string = faker.company.companyName();

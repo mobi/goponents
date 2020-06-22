@@ -3,6 +3,12 @@ import { TestBed } from '@angular/core/testing';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
 import { GoOffCanvasService } from './go-off-canvas.service';
 
+@Component({
+  selector: 'go-test',
+  template: '<div>This is a test off-canvas component</div>'
+})
+class GoTestOffCanvasComponent {}
+
 describe('GoOffCanvasService', () => {
   let service: GoOffCanvasService;
   const offCanvasItemMock: GoOffCanvasItem = {
@@ -56,8 +62,3 @@ describe('GoOffCanvasService', () => {
   });
 });
 
-@Component({
-  selector: 'go-test',
-  template: '<div>This is a test off-canvas component</div>'
-})
-class GoTestOffCanvasComponent {}

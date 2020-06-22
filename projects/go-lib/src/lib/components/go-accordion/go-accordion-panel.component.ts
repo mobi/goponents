@@ -59,8 +59,8 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
 
-  @ContentChild('headerContent') headerContent: TemplateRef<any>;
-  @ContentChild('panelContent') panelContent: TemplateRef<any>;
+  @ContentChild('headerContent', { static: false }) headerContent: TemplateRef<any>;
+  @ContentChild('panelContent', { static: false }) panelContent: TemplateRef<any>;
 
   constructor(
     private changeDetector: ChangeDetectorRef,

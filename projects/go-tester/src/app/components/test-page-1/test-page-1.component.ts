@@ -19,7 +19,7 @@ export class TestPage1Component implements OnInit {
   tableConfig: GoTableConfig;
   tableLoading: boolean = true;
 
-  @ViewChild('peopleTable') peopleTable: GoTableComponent;
+  @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
 
   constructor(
     private appService: AppService,
