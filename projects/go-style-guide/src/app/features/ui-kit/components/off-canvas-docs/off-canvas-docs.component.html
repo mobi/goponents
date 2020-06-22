@@ -4,11 +4,14 @@
 
 <div class="go-container">
   
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-off-canvas&gt;</code>
           component should be the only instance of the off canvas in the app.
@@ -47,9 +50,10 @@
     [message]="noteMessage">
   </go-toast>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="service">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Using the Off Canvas service</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Using the Off Canvas service</h2>
+      <go-copy cardId="service" goCopyDocLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
