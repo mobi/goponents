@@ -81,7 +81,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   @include input-states;
 
   background: transparent;
-  padding: .5625rem $column-gutter--half;
+  padding: $column-gutter--half;
 
   &:-ms-input-placeholder {
     color: $theme-light-border;

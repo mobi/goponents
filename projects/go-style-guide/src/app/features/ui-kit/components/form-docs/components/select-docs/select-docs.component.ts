@@ -14,7 +14,12 @@ export class SelectDocsComponent implements OnInit {
 
   items: any = [
     { value: 1, name: 'Reeses' },
-    { value: 2, name: 'Mints' }
+    { value: 2, name: 'Mints' },
+    { value: 3, name: 'Snickers' },
+    { value: 4, name: 'Twizzlers' },
+    { value: 5, name: 'Skittles' },
+    { value: 6, name: 'Starburst' },
+    { value: 7, name: 'Sour Patch Kids' }
   ];
 
   groupedItems: any = [
