@@ -20,7 +20,7 @@ export class GoCopyDocLinkDirective implements OnInit {
   }
 
   /**
-   * Sets the text property on the go-copy component to the url that leads to the current the doc example.
+   * Sets the text property on the go-copy component to the url that leads to the current doc example.
   */
   private setGoCopyText(): void {
     /**
