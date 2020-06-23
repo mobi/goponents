@@ -49,7 +49,7 @@ export class GoConfigService {
    * @param config New config to be used
    */
   public setConfig(config: GoConfigInterface): void {
-    this.config = Object.assign({}, config);
+    this.config = JSON.parse(JSON.stringify(config));
     this.config$.next(config);
   }
 

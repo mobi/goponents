@@ -4,7 +4,7 @@ import { BrandingMode, GoConfigInterface } from './go-config.model';
 import { GoConfigService } from './go-config.service';
 
 
-fdescribe('GoConfigService', () => {
+describe('GoConfigService', () => {
   let service: GoConfigService;
 
   const configMock: GoConfigInterface = {
