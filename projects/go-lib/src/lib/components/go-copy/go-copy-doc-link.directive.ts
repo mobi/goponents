@@ -19,13 +19,18 @@ export class GoCopyDocLinkDirective implements OnInit {
     this.setGoCopyText();
   }
 
-  setGoCopyText(): void {
+  /**
+   * Sets the text property on the go-copy component to the url that leads to the current the doc example.
+  */
+  private setGoCopyText(): void {
     /**
-     * If the current url already has an id selector, remove it before adding a new one.
+     * If the current url already has an id selector at the end,
+     * remove it before adding an id selector to the urlToCopy.
      */
     const currentUrl: string = window.location.href;
-    const endIndex: number = currentUrl.includes('#') ? currentUrl.lastIndexOf('#') : currentUrl.length;
-    const urlToCopy: string = `${window.location.href.substr(0, endIndex)}/#${this.cardId}`;
+    const endOfBaseUrlIndex: number = currentUrl.includes('#') ? currentUrl.lastIndexOf('#') : currentUrl.length;
+    const baseUrl: string = currentUrl.substr(0, endOfBaseUrlIndex);
+    const urlToCopy: string = `${baseUrl}/#${this.cardId}`;
     this.baseComponent.text = urlToCopy;
   }
 
