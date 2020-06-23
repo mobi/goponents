@@ -1,6 +1,11 @@
 <div class="go-table-container" *ngIf="showTable" [ngClass]="{ 'go-table-container__disable-box-shadow': !renderBoxShadows }">
   <div class="go-table-header">
-    <h3 class="go-heading-3 go-heading--no-margin" *ngIf="tableTitle">{{ tableTitle }}</h3>
+    <ng-container *ngIf="tableTitleTemplate; else tableTitleTemplateElse">
+      <ng-container *ngTemplateOutlet="tableTitleTemplate"></ng-container>
+    </ng-container>
+    <ng-template #tableTitleTemplateElse>
+      <h3 class="go-heading-3 go-heading--no-margin go-table-header__title" *ngIf="tableTitle">{{ tableTitle }}</h3>
+    </ng-template>
     <div class="go-table-header__actions" *ngIf="showTableActions">
       <ng-content select="[go-table-actions]"></ng-content>
     </div>
