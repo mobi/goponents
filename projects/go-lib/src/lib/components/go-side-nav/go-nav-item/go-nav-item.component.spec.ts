@@ -4,6 +4,9 @@ import { GoNavItemComponent } from './go-nav-item.component';
 import { GoIconModule } from '../../go-icon/go-icon.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoConfigService } from '../../../go-config.service';
+import { GoConfigInterface } from '../../../go-config.model';
+import { skip } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 describe('GoNavItemComponent', () => {
   let component: GoNavItemComponent;
@@ -46,6 +49,9 @@ describe('GoNavItemComponent', () => {
     it('should set up a subscription that updates brandColor when ConfigService updates brandColor', () => {
       const newBrandColor: string = '#000000';
       expect(component.brandColor).not.toEqual(newBrandColor);
+
+      spyOn(configService.config$, 'pipe').and.returnValue(of({ brandColor: newBrandColor }));
+
       component.ngOnInit();
 
       configService.setBrandColor(newBrandColor);
