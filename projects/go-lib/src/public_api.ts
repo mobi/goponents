@@ -162,3 +162,6 @@ export * from './lib/components/go-tree/go-tree-node-config.model';
 /***** Utils *****/
 export * from './lib/utilities/form.utils';
 export * from './lib/utilities/colors.util';
+
+/***** Directives *****/
+export * from './lib/directives/go-copy-card-link/go-copy-card-link.directive';
