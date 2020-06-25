@@ -1,20 +1,20 @@
 import { Component, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GoCopyDocLinkDirective } from './go-copy-doc-link.directive';
-import { GoCopyComponent } from './go-copy.component';
-import { GoCopyModule } from './go-copy.module';
-import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoCopyCardLinkDirective } from './go-copy-card-link.directive';
+import { GoCopyComponent } from '../../components/go-copy/go-copy.component';
+import { GoCopyModule } from '../../components/go-copy/go-copy.module';
+import { GoIconModule } from '../../components/go-icon/go-icon.module';
 
 @Component({
   template: `<go-copy cardId="testId" goCopyDocLink></go-copy>`
 })
 class TestParentComponent {}
 
-describe('GoCopyDocLinkDirective', () => {
+describe('GoCopyCardLinkDirective', () => {
   let fixture: ComponentFixture<TestParentComponent>;
   let elementRef: ElementRef;
   let goCopyComponent: GoCopyComponent;
-  let directive: GoCopyDocLinkDirective;
+  let directive: GoCopyCardLinkDirective;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,7 +30,7 @@ describe('GoCopyDocLinkDirective', () => {
     fixture = TestBed.createComponent(TestParentComponent);
     elementRef = fixture.elementRef;
     goCopyComponent = TestBed.createComponent(GoCopyComponent).componentInstance;
-    directive = new GoCopyDocLinkDirective(elementRef, goCopyComponent);
+    directive = new GoCopyCardLinkDirective(elementRef, goCopyComponent);
   });
 
   it('creates an instance', () => {

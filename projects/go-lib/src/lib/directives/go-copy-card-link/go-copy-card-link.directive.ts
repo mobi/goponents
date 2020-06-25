@@ -1,10 +1,10 @@
 import { Directive, ElementRef, Host, Input, OnInit } from '@angular/core';
-import { GoCopyComponent } from './go-copy.component';
+import { GoCopyComponent } from '../../components/go-copy/go-copy.component';
 
 @Directive({
   selector: '[goCopyDocLink]'
 })
-export class GoCopyDocLinkDirective implements OnInit {
+export class GoCopyCardLinkDirective implements OnInit {
 
   @Input() cardId: string;
 
