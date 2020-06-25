@@ -6,7 +6,7 @@ import { GoCopyModule } from '../../components/go-copy/go-copy.module';
 import { GoIconModule } from '../../components/go-icon/go-icon.module';
 
 @Component({
-  template: `<go-copy cardId="testId" goCopyDocLink></go-copy>`
+  template: `<go-copy cardId="testId" goCopyCardLink></go-copy>`
 })
 class TestParentComponent {}
 
