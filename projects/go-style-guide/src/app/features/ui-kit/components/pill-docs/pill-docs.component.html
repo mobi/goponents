@@ -4,12 +4,15 @@
 
 <div class="go-container">
 
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-pill&gt;</code> component should be used to
           to show terms that are being used to filter results from a table.
@@ -43,9 +46,11 @@
 
     </div>
   </go-card>
-  <go-card class="go-column go-column--100">
+
+  <go-card class="go-column go-column--100" id="basic-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Basic Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Basic Example</h2>
+      <go-copy cardId="basic-example" goCopyDocLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -55,9 +60,11 @@
       <go-pill [removable]="false">Without remove icon</go-pill>
     </ng-container>
   </go-card>
-  <go-card class="go-column go-column--100">
+
+  <go-card class="go-column go-column--100" id="remove-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Remove Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Remove Example</h2>
+      <go-copy cardId="remove-example" goCopyDocLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">component.html</h4>

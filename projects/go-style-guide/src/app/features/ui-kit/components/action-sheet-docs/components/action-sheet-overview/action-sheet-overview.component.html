@@ -1,9 +1,12 @@
 <section class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyDocLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
-      
+
       <div class="go-column go-column--100">
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">The Action Sheet component should be used when a list of actions or links need to be grouped and hidden behind a button.</p>
   
         <p class="go-body-copy">
@@ -39,22 +42,26 @@
     </div>
   </go-card>
 
-  <go-card [showHeader]="false" class="go-column go-column--100">
-    <ng-container go-card-content>
-      <h2 class="go-heading-2">Action Sheet Structure</h2>
+  <go-card class="go-column go-column--100" id="action-sheet-structure">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Action Sheet Structure</h2>
+      <go-copy cardId="action-sheet-structure" goCopyDocLink></go-copy>
+    </ng-container>
+    <div go-card-content>
       <p class="go-body-copy">
         The action sheet component is split up into two sections. The trigger and the content.
         The simpliest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
       </p>
 
       <code [highlight]="structureHtml"></code>
-    </ng-container>
+    </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Simple</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="simple">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Simple</h2>
+      <go-copy cardId="simple" goCopyDocLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -88,10 +95,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #accordion>
-    <header go-card-header>
-      <h2 class="go-heading-2">With an Accordion</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="with-an-accordion" #accordion>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">With an Accordion</h2>
+      <go-copy cardId="with-an-accordion" goCopyDocLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -126,10 +134,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Placement</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="placement">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Placement</h2>
+      <go-copy cardId="placement" goCopyDocLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">

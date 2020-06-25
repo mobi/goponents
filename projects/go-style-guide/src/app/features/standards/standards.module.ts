@@ -5,6 +5,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { StandardsRoutesModule } from './routes/standards-routing.module';
 
 import { GoCardModule } from '../../../../../go-lib/src/public_api';
+import { GoCopyModule } from '../../../../../go-lib/src/public_api';
 import { GoButtonModule } from '../../../../../go-lib/src/public_api';
 
 // Module Components
@@ -19,6 +20,7 @@ import { TypographyComponent } from './components/typography/typography.componen
     HighlightModule,
     StandardsRoutesModule,
     GoCardModule,
+    GoCopyModule,
     GoButtonModule
   ],
   declarations: [
