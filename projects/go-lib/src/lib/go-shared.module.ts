@@ -27,12 +27,9 @@ import { GoTableModule } from './components/go-table/go-table.module';
 import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
-import { GoCopyCardLinkDirective } from './directives/go-copy-card-link/go-copy-card-link.directive';
+import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-card-link.module';
 
 @NgModule({
-  declarations: [
-    GoCopyCardLinkDirective
-  ],
   imports: [
     GoAccordionModule,
     GoActionSheetModule,
@@ -41,6 +38,7 @@ import { GoCopyCardLinkDirective } from './directives/go-copy-card-link/go-copy-
     GoCardModule,
     GoCheckboxModule,
     GoCopyModule,
+    GoCopyCardLinkModule,
     GoDatepickerModule,
     GoFileUploadModule,
     GoFooterModule,
@@ -69,7 +67,7 @@ import { GoCopyCardLinkDirective } from './directives/go-copy-card-link/go-copy-
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
-    GoCopyCardLinkDirective,
+    GoCopyCardLinkModule,
     GoCopyModule,
     GoDatepickerModule,
     GoFileUploadModule,
