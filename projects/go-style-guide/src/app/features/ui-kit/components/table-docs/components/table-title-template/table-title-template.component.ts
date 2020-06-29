@@ -16,9 +16,15 @@ export class TableTitleTemplateComponent {
   headerTemplating: string = `
   <go-table [tableConfig]="tableConfig">
     <ng-template #goTableTitle>
-      <go-button (handleClick)="makeToast()">
-        Make Toast
-      </go-button>
+      <h4
+        class="go-heading-4 go-heading--no-margin"
+        style="padding: 1rem;">
+        Example Title Template
+      </h4>
+      <go-icon-button
+        buttonIcon="save_alt"
+        (handleClick)="makeToast()">
+      </go-icon-button>
     </ng-template>
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -43,7 +49,7 @@ export class TableTitleTemplateComponent {
 
   makeToast(): void {
     this.toasterService.toastSuccess({
-      message: 'Toast in the title!'
+      message: 'Save Icon Clicked!'
     });
   }
 
