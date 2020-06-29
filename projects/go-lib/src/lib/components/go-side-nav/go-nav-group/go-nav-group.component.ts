@@ -50,7 +50,7 @@ export class GoNavGroupComponent implements OnInit {
   ngOnInit(): void {
     // Using this to do type checking between NavGroup and NavItem in the html
     this.group = this.navItem as NavGroup;
-    this.configService.config$
+    this.configService.config
       .pipe(distinctUntilKeyChanged('brandColor'))
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;

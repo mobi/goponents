@@ -39,7 +39,7 @@ export class GoHeaderComponent implements OnDestroy {
   }
 
   setupConfig(): void {
-    this.configSubscription = this.configService.config$
+    this.configSubscription = this.configService.config
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
         this.logoConfig = value.logoConfig;

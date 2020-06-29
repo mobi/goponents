@@ -28,7 +28,7 @@ export class TestPage2Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.brandingControl = new FormControl(this.goConfigService.config$.getValue().brandColor);
+    this.brandingControl = new FormControl(this.goConfigService.config.getValue().brandColor);
 
     setTimeout(() => {
       this.goToasterService.toastInfo({ message: 'Check this out' });

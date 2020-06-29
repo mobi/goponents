@@ -74,5 +74,5 @@ export interface GoConfigInterface {
   /**
    * See `LogoConfig` interface for explanation
    */
-  logoConfig: Partial<LogoConfig>;
+  logoConfig?: Partial<LogoConfig>;
 }
