@@ -32,7 +32,7 @@ describe('GoConfigService', () => {
     it('sets config.brandColor to a new color', () => {
       spyOn(service, 'setBrandColor').and.callThrough();
 
-      service.config$
+      service.config
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
           expect(updatedConfig.brandColor).toBe('#f6f6f6');
@@ -42,9 +42,25 @@ describe('GoConfigService', () => {
     });
   });
 
+  describe('setBrandingMode', () => {
+    it('sets config.brandingMode to a new mode', () => {
+      service.setBrandingMode(BrandingMode.company);
+
+      spyOn(service, 'setBrandingMode').and.callThrough();
+
+      service.config
+        .pipe(skip(1))
+        .subscribe((updatedConfig: GoConfigInterface) => {
+          expect(updatedConfig.brandingMode).toBe(BrandingMode.client);
+        });
+
+      service.setBrandingMode(BrandingMode.client);
+    });
+  });
+
   describe('setLogo', () => {
-    it('updates logoConfig on config$', () => {
-      service.config$
+    it('updates logoConfig on config', () => {
+      service.config
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
           expect(updatedConfig.logoConfig.logo).toEqual(configMock.logoConfig.logo);
@@ -55,14 +71,14 @@ describe('GoConfigService', () => {
   });
 
   describe('setConfig', () => {
-    it('sets the config$ to the new config provided', () => {
-      service.config$.next({
+    it('sets the config to the new config provided', () => {
+      service.config.next({
         brandColor: '#000000',
         brandingMode: BrandingMode.client,
         logoConfig: { }
       });
 
-      service.config$
+      service.config
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
           expect(updatedConfig).toEqual(configMock);
@@ -74,9 +90,9 @@ describe('GoConfigService', () => {
 
   describe('getConfig', () => {
     it('gets the current configuration', () => {
-      service.config$.next(configMock);
+      service.config.next(configMock);
 
-      service.config$
+      service.config
         .pipe(skip(1))
         .subscribe((updatedConfig: GoConfigInterface) => {
           const config: GoConfigInterface = service.getConfig();

@@ -30,6 +30,15 @@ export class GoConfigService {
   }
 
   /**
+   * Use this method to specify a branding mode for the configuraiton
+   * @param mode The branding mode to be used
+   */
+  public setBrandingMode(mode: BrandingMode): void {
+    this._config.brandingMode = mode;
+    this.setConfig(this._config);
+  }
+
+  /**
    * Use this method to change the logo configuration
    * @param logoConfig The new logoConfig to apply to the global config
    */

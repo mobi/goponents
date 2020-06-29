@@ -50,7 +50,7 @@ describe('GoNavItemComponent', () => {
       const newBrandColor: string = '#000000';
       expect(component.brandColor).not.toEqual(newBrandColor);
 
-      spyOn(configService.config$, 'pipe').and.returnValue(of({ brandColor: newBrandColor }));
+      spyOn(configService.config, 'pipe').and.returnValue(of({ brandColor: newBrandColor }));
 
       component.ngOnInit();
 
