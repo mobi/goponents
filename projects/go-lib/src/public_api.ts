@@ -165,3 +165,4 @@ export * from './lib/utilities/colors.util';
 
 /***** Directives *****/
 export * from './lib/directives/go-copy-card-link/go-copy-card-link.directive';
+export * from './lib/directives/go-copy-card-link/go-copy-card-link.module';
