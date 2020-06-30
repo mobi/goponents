@@ -64,7 +64,7 @@ export class ColorsComponent {
 
   horizonRed: string = `
   // Use this to apply the negative (error) state color
-  $ui-color-negative: #DD4C4C;
+  $ui-color-negative: #DB3939;
 
   // Used when the ui color needs a hover state
   $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
@@ -79,7 +79,7 @@ export class ColorsComponent {
 
   nebulaPurple: string = `
   // Use this to apply the neutral (info) state color
-  $ui-color-neutral: #8A4EDE;
+  $ui-color-neutral: #7F47CC;
 
   // Used when the ui color needs a hover state
   $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
