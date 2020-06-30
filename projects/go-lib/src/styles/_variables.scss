@@ -79,7 +79,7 @@ $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-h
 // Light Theme
 $theme-light-app-bg: #F0F0F0;
 $theme-light-bg: $base-light;
-$theme-light-bg-active: darken($base-light, 4);
+$theme-light-bg-active: darken($base-light, 3.5);
 $theme-light-bg-hover: darken($base-light, 7);
 $theme-light-color: $base-dark;
 $theme-light-color-hover: lighten($base-dark, 20);
@@ -87,7 +87,7 @@ $theme-light-border: $base-light-secondary;
 
 // Dark Theme
 $theme-dark-bg: $base-dark-secondary;
-$theme-dark-bg-active: darken($base-dark-secondary, 4);
+$theme-dark-bg-active: darken($base-dark-secondary, 3.5);
 $theme-dark-bg-hover: darken($base-dark-secondary, 7);
 $theme-dark-color: $base-light;
 $theme-dark-text-color: mix($base-light, $base-light-secondary);
