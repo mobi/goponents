@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
 
 // Module Imports
-import { GoCardModule } from '../../../../../go-lib/src/public_api';
-import { GoCopyModule } from '../../../../../go-lib/src/public_api';
+import { GoCardModule, GoCopyCardLinkModule, GoCopyModule } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
 import { DashboardRoutesModule } from './routes/dashboard-routing.module';
@@ -16,6 +15,7 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
   imports: [
     DashboardRoutesModule,
     GoCardModule,
+    GoCopyCardLinkModule,
     GoCopyModule,
     HighlightModule
   ],
