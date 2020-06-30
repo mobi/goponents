@@ -4,8 +4,6 @@ import { GoNavItemComponent } from './go-nav-item.component';
 import { GoIconModule } from '../../go-icon/go-icon.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoConfigService } from '../../../go-config.service';
-import { GoConfigInterface } from '../../../go-config.model';
-import { skip } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 describe('GoNavItemComponent', () => {
