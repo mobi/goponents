@@ -2,10 +2,11 @@
 @import '../../../styles/mixins';
 
 .go-calendar {
-  position: absolute;
+  background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
-  background: $theme-light-bg;
+  position: absolute;
+  right: 0;
   z-index: z-index(toaster);
 }
 
