@@ -100,6 +100,7 @@ import { PillDocsComponent } from './components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from './components/table-docs/components/table-searching/table-searching.component';
 import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
+import { TableTitleTemplateComponent } from './components/table-docs/components/table-title-template/table-title-template.component';
 
 @NgModule({
   imports: [
@@ -191,7 +192,8 @@ import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
     HeaderBarDocsComponent,
     TreeDocsComponent,
     PillDocsComponent,
-    TableFiltersComponent
+    TableFiltersComponent,
+    TableTitleTemplateComponent
   ],
   entryComponents: [
     BasicTestComponent,

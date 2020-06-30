@@ -66,6 +66,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
   @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
+  @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
 
   @ViewChild('selectAllCheckbox', { static: false }) selectAllCheckbox: ElementRef;
 
