@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoFileUploadComponent } from './go-file-upload.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormArray, FormGroup, FormControl } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoButtonModule } from '../go-button/go-button.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
@@ -42,6 +42,66 @@ describe('GoFileUploadComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('onDragOver', () => {
+    it('should set state to "selecting" if it\'s not loading', () => {
+      component.state = 'selected';
+      component.isLoading = false;
+
+      component.onDragOver();
+
+      expect(component.state).toEqual('selecting');
+    });
+  });
+
+  describe('onDragLeave', () => {
+    it('should set state to "selected" if any files are uploaded', () => {
+      const file: FormGroup = new FormGroup({
+        file: new FormControl('whatever')
+      });
+
+      component.files = new FormArray([file]);
+      component.state = 'selecting';
+
+      component.onDragLeave();
+
+      expect(component.state).toEqual('selected');
+    });
+  });
+
+  describe('reset', () => {
+    it('calls reset on files', () => {
+      spyOn(component.files, 'reset').and.callThrough();
+
+      component.reset();
+
+      expect(component.files.reset).toHaveBeenCalled();
+    });
+
+    it('sets filePreview to empty array', () => {
+      component.filePreview = ['whatever'];
+
+      component.reset();
+
+      expect(component.filePreview).toEqual([]);
+    });
+
+    it('sets isLoading to false', () => {
+      component.isLoading = true;
+
+      component.reset();
+
+      expect(component.isLoading).toBeFalsy();
+    });
+
+    it('sets state to "selecting"', () => {
+      component.state = 'selected';
+
+      component.reset();
+
+      expect(component.state).toEqual('selecting');
+    });
   });
 
   describe('removeFile', () => {

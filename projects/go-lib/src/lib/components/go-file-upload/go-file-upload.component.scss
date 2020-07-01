@@ -7,6 +7,7 @@
 }
 
 .go-file-upload__input {
+  height: 0;
   visibility: hidden;
 }
 
@@ -19,7 +20,6 @@
 .go-file-upload--disabled {
   color: lighten($theme-light-color, 40);
   cursor: not-allowed;
-  pointer-events: none;
   border-style: solid;
 }
 
@@ -71,7 +71,10 @@
 }
 
 .go-file-upload__container--loading {
-  padding-top: 1rem;
+  align-items: center;
+  cursor: not-allowed;
+  display: flex;
+  pointer-events: none;
 }
 
 .file-name__label {

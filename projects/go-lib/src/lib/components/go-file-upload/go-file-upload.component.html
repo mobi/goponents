@@ -6,34 +6,62 @@
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
-<div [ngClass]="{ 'go-file-upload--disabled': state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
-  <div
-    goDragonDrop
-    class="go-file-upload go-file-upload__container"
-    activeClass="go-file-upload--active"
-    (click)="filePicker.click()"
-    (dropped)="onFilePicked($event)"
-  >
-    <div class="go-file-upload__container" *ngIf="state === 'selecting' && !isLoading">
-      <go-icon icon="publish" iconModifier="large"></go-icon>
-      Drag and Drop File or Click to Browse
+<div [ngClass]="{ 'go-file-upload--disabled': this.state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
+
+  <ng-container *ngIf="!isLoading; else loading">
+    <div
+      goDragonDrop
+      class="go-file-upload go-file-upload__container"
+      activeClass="go-file-upload--active"
+      (click)="filePicker.click()"
+      (dropped)="onFilePicked($event)"
+      (dragonDropOver)="onDragOver()"
+      (dragonDropleave)="onDragLeave()">
+
+      <div
+        *ngIf="state === 'selecting'"
+        class="go-file-upload__container">
+        <go-icon
+          icon="publish"
+          iconModifier="large">
+        </go-icon>
+        Drag and Drop File or Click to Browse
+      </div>
+
+      <div
+        *ngIf="state === 'selected'"
+        class="go-file-upload__container go-file-upload__container--selected">
+        <go-icon
+          icon="check"
+          class="go-file-upload__selected-checkmark"
+          iconClass="go-icon--large">
+        </go-icon>
+        File Selected
+      </div>
+
+      <input
+        type="file"
+        [id]="id"
+        #filePicker
+        class="go-file-upload__input"
+        (change)="onFilePicked($event)"
+        [attr.multiple]="multiple ? true : null">
+
     </div>
-    <div class="go-file-upload__container go-file-upload__container--loading" *ngIf="isLoading">
-      <go-loader *ngIf="isLoading" loaderSize="small"></go-loader>
-      <span class="go-file-upload__container--loading-text">Uploading File...</span>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="go-file-upload go-file-upload__container go-file-upload__container--loading">
+      <go-loader
+        *ngIf="isLoading"
+        loaderSize="small">
+      </go-loader>
+      <span class="go-file-upload__container--loading-text">
+        Uploading File...
+      </span>
     </div>
-    <div class="go-file-upload__container go-file-upload__container--selected" *ngIf="state === 'selected' && !isLoading">
-      <go-icon icon="check" class="go-file-upload__selected-checkmark" iconClass="go-icon--large"></go-icon>
-      File Selected
-    </div>
-    <input
-      type="file"
-      [id]="id"
-      #filePicker
-      class="go-file-upload__input"
-      (change)="onFilePicked($event)"
-      [attr.multiple]="multiple ? true : null">
-  </div>
+  </ng-template>
+
 </div>
 
 <div *ngIf="filePreview.length" class="go-file-upload__file-name">
