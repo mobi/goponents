@@ -6,7 +6,7 @@
   <go-card class="go-column go-column--100" id="usage">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
-      <go-copy cardId="usage" goCopyDocLink></go-copy>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -38,7 +38,7 @@
   <go-card class="go-column go-column--100" id="basic-example">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Basic Example</h2>
-      <go-copy cardId="basic-example" goCopyDocLink></go-copy>
+      <go-copy cardId="basic-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy" class="copy-docs__inline-button">
@@ -46,6 +46,47 @@
         <go-copy [text]="url"></go-copy>
       </p>
       <code [highlight]="exampleCopy"></code>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="go-copy-card-link-directive">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">goCopyCardLink Directive</h2>
+      <go-copy cardId="go-copy-card-link-directive" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">GoCopyCardLink</code> directive can be applied to a
+        <code class="code-block--inline">go-copy</code> within a <code class="code-block--inline">go-card</code>
+        to enable the ability to copy the url to that specific <code class="code-block--inline">go-card</code>.
+      </p>
+      <p class="go-body-copy">
+        To use the directive, complete the following steps:
+      </p>
+      <ol class="go-ordered-list">
+        <li class="go-ordered-list__item">
+          Add a <code class="code-block--inline">go-copy</code> with a <code class="code-block--inline">goCopyCardLink</code>
+          directive to the <code class="code-block--inline">go-card-header</code> element of the
+          <code class="code-block--inline">go-card</code> you wish to be able to copy a link to.
+        </li>
+        <li class="go-ordered-list__item">
+          Add an <code class="code-block--inline">id</code> attribute to the <code class="code-block--inline">go-card</code>.
+        </li>
+        <li class="go-ordered-list__item">
+          Pass the same value you set for the <code class="code-block--inline">go-card</code>’s id attribute to the
+          <code class="code-block--inline">cardId</code> input of the
+          <code class="code-block--inline">goCopyCardLink</code> directive.
+        </li>
+        <li class="go-ordered-list__item">
+          Add a class of <code class="code-block--inline">go-heading--no-wrap</code> to the
+          <code class="code-block--inline">h2</code> tag within the card’s <code class="code-block--inline">go-card-header</code>
+          (this is necessary to enable the go-copy to be positioned correctly next to the card header).
+        </li>
+      </ol>
+      <h4 class="go-heading-4">
+        Example implementation (code for this card):
+      </h4>
+      <code [highlight]="goCopyCardLinkDirectiveExample"></code>
     </ng-container>
   </go-card>
 
