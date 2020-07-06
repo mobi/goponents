@@ -11,7 +11,7 @@ import { generateId } from '../../utilities/form.utils';
 })
 export class GoDatepickerComponent implements OnDestroy, OnInit {
   displayAbove: boolean = false;
-  displayFromRight: boolean = false;
+  displayFromRight: boolean = true;
   goCalendar: GoCalendar;
   id: string;
   max: Date;
@@ -81,7 +81,6 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     } else {
       const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
 
-      this.displayFromRight = window.innerWidth - distance['left'] < 350;
       this.displayAbove = window.innerHeight - distance['top'] < 350 && !this.appendToContent;
       this.goCalendar.openCalendar(this.control.value);
     }
