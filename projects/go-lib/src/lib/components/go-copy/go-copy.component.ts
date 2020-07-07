@@ -14,10 +14,15 @@ export class GoCopyComponent {
 
   @ViewChild('copyText', { static: false }) copyText: ElementRef;
 
-  constructor() { }
+  icon: string = 'content_copy';
 
   copyStringToClipboard(): void {
     this.copyText.nativeElement.select();
     document.execCommand('copy');
+
+    this.icon = 'check';
+    setTimeout(() => {
+      this.icon = 'content_copy';
+    }, 2000);
   }
 }

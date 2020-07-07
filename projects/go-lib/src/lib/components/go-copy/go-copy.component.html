@@ -1,4 +1,4 @@
 <span class="go-copy__content" (click)="copyStringToClipboard()">
-  <go-icon icon="content_copy"></go-icon>
+  <go-icon [ngClass]="{ 'go-copy__icon--clicked': icon === 'check' }" [icon]="icon"></go-icon>
   <textarea class="go-copy__textarea" #copyText tabIndex="-1">{{text}}</textarea>
 </span>
