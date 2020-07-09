@@ -126,6 +126,32 @@ export class ActionSheetPanelDocsComponent {
   </go-action-sheet>
   `;
 
+  contentProjectionHtml: string = `
+    <go-action-sheet>
+      <ng-container go-action-sheet__button>
+        <go-button>
+          Sheet With Content Projection
+        </go-button>
+      </ng-container>
+      <ng-container go-action-sheet-content>
+        <go-panel>
+          <ol class="go-ordered-list">
+            <li class="go-ordered-list__item">One</li>
+            <li class="go-ordered-list__item">Two</li>
+            <li class="go-ordered-list__item">Three</li>
+          </ol>
+        </go-panel>
+        <go-panel>
+          <ol class="go-ordered-list">
+            <li class="go-ordered-list__item">Four</li>
+            <li class="go-ordered-list__item">Five</li>
+            <li class="go-ordered-list__item">Six</li>
+          </ol>
+        </go-panel>
+      </ng-container>
+    </go-action-sheet>
+  `;
+
   constructor(
     private toasterService: GoToasterService,
     private subNavService: SubNavService
