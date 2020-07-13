@@ -30,6 +30,22 @@ export class SelectDocsComponent implements OnInit {
     { value: 5, name: 'Silverado', manufacturer: 'Chevrolet' }
   ];
 
+  groupedItemsArray: any = [
+    {
+      manufacturer: 'Ford', cars: [
+        {value: 1, name: 'Mustang'},
+        {value: 2, name: 'Focus'}
+      ]
+    },
+    {
+      manufacturer: 'chevrolet',
+      cars: [
+        {value: 3, name: 'Camero'},
+        {value: 4, name: 'Corvette'},
+        {value: 5, name: 'Silverado'}]
+    }
+  ];
+
   select1: FormControl = new FormControl();
   select2: FormControl = new FormControl();
   select3: FormControl = new FormControl();
@@ -47,6 +63,7 @@ export class SelectDocsComponent implements OnInit {
   select15: FormControl = new FormControl();
   select16: FormControl = new FormControl();
   select17: FormControl = new FormControl();
+  select18: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -314,6 +331,39 @@ export class SelectDocsComponent implements OnInit {
     [showSelectAll]="false"
     label="Favorite Candy">
   </go-select>
+  `;
+
+  select18Code: string = `
+  <go-select
+    bindValue="value"
+    [control]="select"
+    [items]="groupedItemsArray"
+    groupBy="cars"
+    label="Select an Option">
+    <ng-template #goSelectOptionGroup let-item>
+      {{ item.manufacturer | uppercase }}
+    </ng-template>
+  </go-select>
+  `;
+
+  select18ComponentCode: string = `
+  groupedItemsArray: any = [
+    {
+      manufacturer: 'Ford',
+      cars: [
+        {value: 1, name: 'Mustang'},
+        {value: 2, name: 'Focus'}
+      ]
+    },
+    {
+      manufacturer: 'chevrolet',
+      cars: [
+        {value: 3, name: 'Camero'},
+        {value: 4, name: 'Corvette'},
+        {value: 5, name: 'Silverado'}
+      ]
+    }
+  ]
   `;
 
   constructor(
