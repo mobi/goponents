@@ -34,6 +34,7 @@ export class GoSelectComponent implements OnInit {
   @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChild('goSelectOption', { static: false }) goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectOptionGroup', { static: false }) goSelectOptionGroup: TemplateRef<any>;
   @ContentChild('goSelectSelectedOption', { static: false }) goSelectSelectedOption: TemplateRef<any>;
 
   ngOnInit(): void {

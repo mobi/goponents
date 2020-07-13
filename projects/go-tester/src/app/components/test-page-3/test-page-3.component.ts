@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-test-page-3',
@@ -21,6 +21,28 @@ export class TestPage3Component implements OnInit {
   }, {
     value: 5,
     name: 'Snake'
+  }
+  ];
+
+  groupedSelectData: any = [{
+    title: 'Good', people: [{
+      value: 1,
+      name: 'Harry'
+    }, {
+      value: 2,
+      name: 'Hermione'
+    }, {
+      value: 3,
+      name: 'Ron'
+    }, ]
+  }, {
+    title: 'Evil', people: [{
+      value: 4,
+      name: 'Voldermort'
+    }, {
+      value: 5,
+      name: 'Snake'
+    }]
   }];
 
   fileControl: FormControl = new FormControl();
@@ -31,7 +53,7 @@ export class TestPage3Component implements OnInit {
       mangos: new FormControl(true),
       oranges: new FormControl(true)
     }),
-    name: new FormControl({ value: '', disabled: false }, Validators.required),
+    name: new FormControl({value: '', disabled: false}, Validators.required),
     notes: new FormControl(''),
     radio: new FormControl({value: '', disabled: false}),
     toggle: new FormControl(false),
@@ -43,10 +65,10 @@ export class TestPage3Component implements OnInit {
   loadingSelectOptions: boolean = true;
 
   otherThing: FormControl = new FormControl('test');
-  testOtherThing: FormControl = new FormControl({ value: 'Disabled Input', disabled: true });
+  testOtherThing: FormControl = new FormControl({value: 'Disabled Input', disabled: true});
   selectControl: FormControl = new FormControl();
-  otherSelectControl: FormControl = new FormControl({ value: 'Disabled Select', disabled: true });
-  validationSelectControl: FormControl = new FormControl({ value: 'Hermione', disabled: false });
+  otherSelectControl: FormControl = new FormControl({value: 'Disabled Select', disabled: true});
+  validationSelectControl: FormControl = new FormControl({value: 'Hermione', disabled: false});
   multiSelectControl: FormControl = new FormControl();
 
   constructor() { }
@@ -74,7 +96,7 @@ export class TestPage3Component implements OnInit {
           message: 'This is an invalid name.'
         }
       ],
-      notes: [{ message: 'test' }],
+      notes: [{message: 'test'}],
       radio: [{message: 'some test error'}],
       food: [{message: 'some test error'}],
       validationSelectControl: [{message: 'You need to select Ron.'}]
