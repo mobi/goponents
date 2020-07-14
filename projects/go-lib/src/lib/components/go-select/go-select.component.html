@@ -35,6 +35,11 @@
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
     </ng-template>
   </ng-container>
+  <ng-container *ngIf="goSelectOptionGroup">
+    <ng-template ng-optgroup-tmp let-item="item">
+      <ng-container *ngTemplateOutlet="goSelectOptionGroup; context: { $implicit: item }"></ng-container>
+    </ng-template>
+  </ng-container>
   <ng-container *ngIf="goSelectOption">
     <ng-template *ngIf="!goSelectSelectedOption" ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"></ng-container>

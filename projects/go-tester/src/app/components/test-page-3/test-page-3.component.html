@@ -121,14 +121,16 @@
 
               <div class="go-column go-column--50">
                 <go-select
-                  [items]="selectData"
+                  [items]="groupedSelectData"
                   [control]="selectControl"
                   bindValue="value"
                   bindLabel="name"
+                  groupBy="people"
                   [hints]="['Select an option here, whatever you want']"
                   [loading]="loadingSelectOptions"
                   placeholder="Select Box Placeholder"
                   label="Select Box Here">
+                  <ng-template #goSelectOptionGroup let-item>{{item.title}}</ng-template>
                 </go-select>
               </div>
               <div class="go-column go-column--50">
