@@ -42,8 +42,8 @@ export class GoFileUploadComponent implements OnInit {
 
     if (files.length > 0) {
       if (!this.multiple) {
-        this.files.reset();
-        this.filePreview = [];
+        this.reset();
+        this.files.removeAt(0);
         this.state = 'selected';
       }
 
