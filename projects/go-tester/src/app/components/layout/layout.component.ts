@@ -34,7 +34,8 @@ export class LayoutComponent implements OnInit {
       routeTitle: 'External Link (In a New Tab)',
       description: 'Test external link opening in new tab',
       route: 'https://www.google.com/',
-      isExternalLink: true
+      isExternalLink: true,
+      externalLinkTarget: 'Google'
     },
     {
       routeIcon: 'search',
