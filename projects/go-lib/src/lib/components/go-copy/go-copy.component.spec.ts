@@ -59,10 +59,10 @@ describe('goCopyComponent', () => {
       component.copyStringToClipboard();
       expect(component.icon).toBe('check');
 
-      tick(2999);
+      tick(1499);
       expect(component.icon).toBe('check');
 
-      tick(3001);
+      tick(1501);
       expect(component.icon).toBe('content_copy');
     }));
   });

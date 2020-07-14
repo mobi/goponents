@@ -12,7 +12,7 @@ import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/c
       })),
       transition('content_copy => check', [
         group([
-          animate('3s', keyframes([
+          animate('1.5s', keyframes([
             style({ opacity: '0', offset: 0 }),
             style({ opacity: '1', offset: 0.1 }),
             style({ opacity: '1', offset: 0.9 }),
@@ -51,6 +51,6 @@ export class GoCopyComponent {
     this.icon = 'check';
     setTimeout(() => {
       this.icon = 'content_copy';
-    }, 3000);
+    }, 1500);
   }
 }
