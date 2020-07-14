@@ -292,3 +292,52 @@
     </div>
   </go-card>
 </section>
+
+<go-card class="go-column go-column--100" id="content-projection">
+  <ng-container go-card-header>
+    <h2 class="go-heading-2 go-heading--no-wrap">Content Projection</h2>
+    <go-copy cardId="content-projection" goCopyCardLink></go-copy>
+  </ng-container>
+  <div go-card-content>
+    <div class="go-container">
+      <div class="go-column--100 go-column go-column--no-padding">
+        <p class="go-body-copy">
+          Content can be projected into a <code class="code-block--inline">go-panel</code>
+          to enable more complex structure and stylings. Content projection only works, however,
+          when nothing is passed to the <code class="code-block--inline">panelContent</code>
+          or <code class="code-block--inline">externalLink</code> inputs.
+        </p>
+      </div>
+      <div class="go-column go-column--50 go-column--no-padding">
+        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+        <code [highlight]="contentProjectionHtml"></code>
+      </div>
+      <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+        <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        <go-action-sheet>
+          <ng-container go-action-sheet__button>
+            <go-button>
+              Sheet With Content Projection
+            </go-button>
+          </ng-container>
+          <ng-container go-action-sheet-content>
+            <go-panel>
+              <ol class="go-ordered-list">
+                <li class="go-ordered-list__item">One</li>
+                <li class="go-ordered-list__item">Two</li>
+                <li class="go-ordered-list__item">Three</li>
+              </ol>
+            </go-panel>
+            <go-panel>
+              <ol class="go-ordered-list">
+                <li class="go-ordered-list__item">Four</li>
+                <li class="go-ordered-list__item">Five</li>
+                <li class="go-ordered-list__item">Six</li>
+              </ol>
+            </go-panel>
+          </ng-container>
+        </go-action-sheet>
+      </div>
+    </div>
+  </div>
+</go-card>
