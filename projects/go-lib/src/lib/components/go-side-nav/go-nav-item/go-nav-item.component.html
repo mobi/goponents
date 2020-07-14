@@ -15,8 +15,7 @@
   <a class="go-nav-item__link"
      *ngIf="navItem.isExternalLink"
      [href]="navItem.route"
-     [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'"
-     rel="noreferrer">
+     [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'">
     <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
     <go-icon *ngIf="(!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank') && navService.navOpen"
              icon="launch"
