@@ -32,6 +32,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
 
   @Input() borderless: boolean;
   @Input() boxShadow: boolean;
+  @Input() forActionSheet: boolean = false;
   @Input() heading: string;
   @Input() icon: string = null;
   @Input() isFirst: boolean = false;
@@ -94,6 +95,7 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
       'go-accordion-panel--dark': this.theme === 'dark',
       'go-accordion-panel--first': this.isFirst === true,
       'go-accordion-panel--last': this.isLast === true,
+      'go-accordion-panel--action-sheet': this.forActionSheet === true
     };
 
     this.headerClasses = {
