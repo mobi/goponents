@@ -63,4 +63,22 @@ describe('GoHeaderComponent', () => {
       configService.setConfig(configMock);
     });
   });
+
+  describe('ngOnDestroy', () => {
+    it('unsubscribes from resizeSubscription', () => {
+      spyOn(component['resizeSubscription'], 'unsubscribe').and.callThrough();
+
+      component.ngOnDestroy();
+
+      expect(component['resizeSubscription'].unsubscribe).toHaveBeenCalled();
+    });
+
+    it('unsubscribes from configSubscription', () => {
+      spyOn(component['configSubscription'], 'unsubscribe').and.callThrough();
+
+      component.ngOnDestroy();
+
+      expect(component['configSubscription'].unsubscribe).toHaveBeenCalled();
+    });
+  });
 });
