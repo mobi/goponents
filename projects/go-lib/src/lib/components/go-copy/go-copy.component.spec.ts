@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GoCopyComponent } from './go-copy.component';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoCopyComponent } from './go-copy.component';
 
 describe('goCopyComponent', () => {
   let component: GoCopyComponent;
@@ -10,7 +10,10 @@ describe('goCopyComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ GoCopyComponent ],
-      imports: [ GoIconModule ]
+      imports: [
+        BrowserAnimationsModule,
+        GoIconModule
+      ]
     })
     .compileComponents();
   }));
@@ -49,6 +52,19 @@ describe('goCopyComponent', () => {
 
       expect(document.execCommand).toHaveBeenCalledWith('copy');
     });
+
+    it('sets the icon to a check mark for three seconds', fakeAsync(() => {
+      expect(component.icon).toBe('content_copy');
+
+      component.copyStringToClipboard();
+      expect(component.icon).toBe('check');
+
+      tick(1499);
+      expect(component.icon).toBe('check');
+
+      tick(1501);
+      expect(component.icon).toBe('content_copy');
+    }));
   });
 
   describe('template', () => {
