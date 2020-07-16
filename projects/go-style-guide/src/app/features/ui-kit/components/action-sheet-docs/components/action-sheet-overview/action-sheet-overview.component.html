@@ -105,6 +105,9 @@
         <div class="go-column--100 go-column go-column--no-padding">
           <p class="go-body-copy">
             This example shows an instance where an accordion is being used inside of an action sheet.
+            Passing <code class="code-block--inline">true</code> to the accordion's
+            <code class="code-block--inline">forActionSheet</code> input is necessary for the accordion's styles
+            to match the rest of the action sheet.
           </p>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
@@ -122,7 +125,7 @@
             <ng-container go-action-sheet-content>
               <go-panel panelContent="Home" icon="home">
               </go-panel>
-              <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
+              <go-accordion showIcons="true" [slim]="true" [forActionSheet]="true">
                 <go-accordion-panel title="Home Stuff" icon="home" [borderless]="true">
                   Stuff about home
                 </go-accordion-panel>
