@@ -207,7 +207,8 @@ export class SelectDocsComponent implements OnInit {
     [items]="options$ | async"
     [multiple]="true"
     label="Your Input"
-    [typeahead]="itemInput">
+    [typeahead]="itemInput"
+    typeToSearchText="Search The Thing">
   </go-select>
   `;
 
