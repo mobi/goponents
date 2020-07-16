@@ -109,13 +109,13 @@
 
   &:hover,
   &:focus {
-    background: $theme-light-bg-active;
-    border: 1px solid $theme-light-bg-active;
+    background: $theme-light-bg-hover;
+    border: 1px solid $theme-light-bg-hover;
   }
 
   &:active {
-    background: $theme-light-bg-hover;
-    border: 1px solid $theme-light-bg-hover;
+    background: $theme-light-bg-active;
+    border: 1px solid $theme-light-bg-active;
   }
 
   &:disabled:not(.go-button--loading) {

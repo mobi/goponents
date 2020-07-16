@@ -58,19 +58,19 @@
   position: relative;
 
   &:hover {
-    background-color: $theme-light-bg-hover;
+    background-color: darken($base-light, 7%);
   }
 
   &.go-accordion-panel__header--dark:hover {
-    background-color: $theme-dark-bg-hover;
+    background-color: darken($base-dark-secondary, 3.5%);
   }
 }
 
 .go-accordion-panel__header--active {
-  background-color: $theme-light-bg-active;
+  background-color:  darken($base-light, 3.5%);
 
   &.go-accordion-panel__header--dark {
-    background-color: $theme-dark-bg-active;
+    background-color: darken($base-dark-secondary, 7%);
   }
 }
 
