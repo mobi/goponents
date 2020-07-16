@@ -32,7 +32,7 @@ export class GoFileUploadComponent implements OnInit {
       filesArray: this.fb.array([])
     });
     this.files = <FormArray>this.form.controls['filesArray'];
-    this.files.valueChanges.subscribe( (fileChanges: any) => {
+    this.files.valueChanges.subscribe((fileChanges: any) => {
       this.control.setValue(fileChanges);
     });
   }
@@ -43,7 +43,6 @@ export class GoFileUploadComponent implements OnInit {
     if (files.length > 0) {
       if (!this.multiple) {
         this.reset();
-        this.files.removeAt(0);
         this.state = 'selected';
       }
 
@@ -75,7 +74,7 @@ export class GoFileUploadComponent implements OnInit {
   }
 
   reset(): void {
-    this.files.reset();
+    this.files.clear();
     this.filePreview = [];
     this.isLoading = false;
     this.state = 'selecting';
