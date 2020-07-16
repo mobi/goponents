@@ -146,4 +146,24 @@ describe('GoHeaderComponent', () => {
       expect(component.getLogo()).toBe('hedwig.jpg');
     });
   });
+
+  describe('enableMenuHover', () => {
+    it('sets menuBgHover to menuBgHoverValue', () => {
+      expect(component.menuBgHover).toBe(undefined);
+
+      component.enableMenuHover();
+
+      expect(component.menuBgHover).toBe(component.menuBgHoverValue);
+    });
+  });
+
+  describe('disableMenuHover', () => {
+    it('sets menuBgHover to null', () => {
+      component.menuBgHover = '#5ba156';
+
+      component.disableMenuHover();
+
+      expect(component.menuBgHover).toBe(null);
+    });
+  });
 });
