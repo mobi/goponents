@@ -71,12 +71,12 @@ describe('GoFileUploadComponent', () => {
   });
 
   describe('reset', () => {
-    it('calls reset on files', () => {
-      spyOn(component.files, 'reset').and.callThrough();
+    it('calls clear on files', () => {
+      spyOn(component.files, 'clear').and.callThrough();
 
       component.reset();
 
-      expect(component.files.reset).toHaveBeenCalled();
+      expect(component.files.clear).toHaveBeenCalled();
     });
 
     it('sets filePreview to empty array', () => {
