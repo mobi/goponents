@@ -6,12 +6,14 @@ import { skip } from 'rxjs/operators';
 import { BrandingMode, GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
 import { GoHeaderComponent } from './go-header.component';
 
 describe('GoHeaderComponent', () => {
   let component: GoHeaderComponent;
   let fixture: ComponentFixture<GoHeaderComponent>;
   let configService: GoConfigService;
+  let sideNavService: GoSideNavService;
 
   const configMock: GoConfigInterface = {
     brandColor: '#ffffff',
@@ -31,7 +33,8 @@ describe('GoHeaderComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        GoConfigService
+        GoConfigService,
+        GoSideNavService
       ]
     })
     .compileComponents();
@@ -41,6 +44,7 @@ describe('GoHeaderComponent', () => {
     fixture = TestBed.createComponent(GoHeaderComponent);
     component = fixture.componentInstance;
     configService = TestBed.get(GoConfigService);
+    sideNavService = TestBed.get(GoSideNavService);
     fixture.detectChanges();
   });
 
@@ -79,6 +83,51 @@ describe('GoHeaderComponent', () => {
       component.ngOnDestroy();
 
       expect(component['configSubscription'].unsubscribe).toHaveBeenCalled();
+    });
+  });
+
+  // describe('isNavCollapsed', () => {
+  //   it('returns true if the window width is less than 768px', () => {
+  //     Object.defineProperty(window, 'innerWidth', {
+  //       writable: true,
+  //       configurable: true,
+  //       value: 750
+  //     });
+  //     console.log('window.innerWidth 1', window.innerWidth);
+
+  //     expect(component.isNavCollapsed()).toBe(true);
+  //   });
+
+  //   it('returns true if the side nav is collapsed and window width is greater than 768px', () => {
+  //     Object.defineProperty(window, 'innerWidth', {
+  //       writable: true,
+  //       configurable: true,
+  //       value: 800
+  //     });
+  //     console.log('window.innerWidth 2', window.innerWidth);
+
+  //     expect(component.isNavCollapsed()).toBe(true);
+  //   });
+
+  //   it('returns false if the side nav is open and window width is greater than 768px', () => {
+  //     Object.defineProperty(window, 'innerWidth', {
+  //       writable: true,
+  //       configurable: true,
+  //       value: 800
+  //     });
+
+  //     expect(component.isNavCollapsed()).toBe(false);
+  //   });
+  // });
+
+  describe('getLogoBackground', () => {
+    it('returns brandColor if it is defined and the side nav is not collapsed', () => {
+      expect(component.getLogoBackground()).toBe(component.brandColor);
+    });
+
+    it('returns null if side nav is collapsed', () => {
+      sideNavService.navOpen = false;
+      expect(component.getLogoBackground()).toBe(null);
     });
   });
 });
