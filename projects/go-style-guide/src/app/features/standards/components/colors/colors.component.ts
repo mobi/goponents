@@ -21,13 +21,13 @@ export class ColorsComponent {
   // Used as the base background for all components
   $theme-light-bg: $base-light;
   // Used when the background needs an active state
-  $theme-light-bg-active: darken($base-light, 4);
+  $theme-light-bg-hover: darken($base-light, 3.5%);
   // Used when the background needs a hover state
-  $theme-light-bg-hover: darken($base-light, 7);
+  $theme-light-bg-active: darken($base-light, 7%);
   // Used for the font color
   $theme-light-color: $base-dark;
   // Used when the font color needs a hover state
-  $theme-light-color-hover: lighten($base-dark, 20);
+  $theme-light-color-hover: lighten($base-dark, 20%);
   // Used to apply a border to an element
   $theme-light-border: $base-light-secondary;
   `;
