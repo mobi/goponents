@@ -8,6 +8,8 @@ export class DragonDropDirective {
   @Input() class: string = ''; // override the standard class attr with a new one.
   @Input() activeClass: string = '';
   @Output() dropped: EventEmitter<any> = new EventEmitter<any>();
+  @Output() dragonDropOver: EventEmitter<void> = new EventEmitter<void>();
+  @Output() dragonDropleave: EventEmitter<void> = new EventEmitter<void>();
 
   @HostBinding('class')
     get hostClasses(): string {
@@ -21,6 +23,7 @@ export class DragonDropDirective {
   @HostListener('dragover', ['$event']) onDragOver(evt: Event): void {
     evt.preventDefault();
     evt.stopPropagation();
+    this.dragonDropOver.emit();
     this.active = true;
   }
 
@@ -28,6 +31,7 @@ export class DragonDropDirective {
   @HostListener('dragleave', ['$event']) public onDragLeave(evt: Event): void {
     evt.preventDefault();
     evt.stopPropagation();
+    this.dragonDropleave.emit();
     this.active = false;
   }
 
@@ -35,7 +39,7 @@ export class DragonDropDirective {
   @HostListener('drop', ['$event']) public ondrop(evt: any): void {
     evt.preventDefault();
     evt.stopPropagation();
-    this.active = false;
     this.dropped.emit(evt);
+    this.active = false;
   }
 }

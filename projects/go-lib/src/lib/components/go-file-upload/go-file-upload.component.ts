@@ -32,7 +32,7 @@ export class GoFileUploadComponent implements OnInit {
       filesArray: this.fb.array([])
     });
     this.files = <FormArray>this.form.controls['filesArray'];
-    this.files.valueChanges.subscribe( (fileChanges: any) => {
+    this.files.valueChanges.subscribe((fileChanges: any) => {
       this.control.setValue(fileChanges);
     });
   }
@@ -41,13 +41,15 @@ export class GoFileUploadComponent implements OnInit {
     const files: File[] = evt.dataTransfer ? evt.dataTransfer.files : evt.target.files;
 
     if (files.length > 0) {
+      if (!this.multiple) {
+        this.reset();
+        this.state = 'selected';
+      }
+
       Array.from(files).forEach((file: any) => {
         this.files.push(this.patchValues(file));
         this.filePreview.push(file.name);
       });
-      if (!this.multiple) {
-        this.state = 'selected';
-      }
     }
   }
 
@@ -57,6 +59,25 @@ export class GoFileUploadComponent implements OnInit {
     if (this.state === 'selected') {
       this.state = 'selecting';
     }
+  }
+
+  onDragOver(): void {
+    if (!this.isLoading) {
+      this.state = 'selecting';
+    }
+  }
+
+  onDragLeave(): void {
+    if (this.files.length) {
+      this.state = 'selected';
+    }
+  }
+
+  reset(): void {
+    this.files.clear();
+    this.filePreview = [];
+    this.isLoading = false;
+    this.state = 'selecting';
   }
 
   private patchValues(file: any): AbstractControl {
