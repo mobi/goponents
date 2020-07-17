@@ -86,39 +86,32 @@ describe('GoHeaderComponent', () => {
     });
   });
 
-  // describe('isNavCollapsed', () => {
-  //   it('returns true if the window width is less than 768px', () => {
-  //     Object.defineProperty(window, 'innerWidth', {
-  //       writable: true,
-  //       configurable: true,
-  //       value: 750
-  //     });
-  //     console.log('window.innerWidth 1', window.innerWidth);
+  describe('isNavCollapsed', () => {
+    it('returns true if the window width is less than minWidthBreakpoint', () => {
+      spyOnProperty(window, 'innerWidth').and.returnValue(750);
+      window.dispatchEvent(new Event('resize'));
 
-  //     expect(component.isNavCollapsed()).toBe(true);
-  //   });
+      expect(component.isNavCollapsed()).toBe(true);
+    });
 
-  //   it('returns true if the side nav is collapsed and window width is greater than 768px', () => {
-  //     Object.defineProperty(window, 'innerWidth', {
-  //       writable: true,
-  //       configurable: true,
-  //       value: 800
-  //     });
-  //     console.log('window.innerWidth 2', window.innerWidth);
+    it('returns true if the window width is greater than minWidthBreakpoint but side nav is collapsed', () => {
+      sideNavService.navOpen = false;
 
-  //     expect(component.isNavCollapsed()).toBe(true);
-  //   });
+      spyOnProperty(window, 'innerWidth').and.returnValue(800);
+      window.dispatchEvent(new Event('resize'));
 
-  //   it('returns false if the side nav is open and window width is greater than 768px', () => {
-  //     Object.defineProperty(window, 'innerWidth', {
-  //       writable: true,
-  //       configurable: true,
-  //       value: 800
-  //     });
+      expect(component.isNavCollapsed()).toBe(true);
+    });
 
-  //     expect(component.isNavCollapsed()).toBe(false);
-  //   });
-  // });
+    it('returns false window width is greater than minWidthBreakpoint but side nav is expanded', () => {
+      sideNavService.navOpen = true;
+
+      spyOnProperty(window, 'innerWidth').and.returnValue(800);
+      window.dispatchEvent(new Event('resize'));
+
+      expect(component.isNavCollapsed()).toBe(false);
+    });
+  });
 
   describe('getLogoBackground', () => {
     it('returns brandColor if it is defined and the side nav is expanded', () => {
@@ -141,6 +134,7 @@ describe('GoHeaderComponent', () => {
     });
 
     it('returns the normal version of the logo if the side nav is expanded', () => {
+      sideNavService.navOpen = true;
       component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
 
       expect(component.getLogo()).toBe('hedwig.jpg');
