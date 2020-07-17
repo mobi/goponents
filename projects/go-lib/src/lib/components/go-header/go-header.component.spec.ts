@@ -53,7 +53,7 @@ describe('GoHeaderComponent', () => {
   });
 
   describe('setupConfig', () => {
-    it('subscribes to configuration subject of configService', () => {
+    it('updates brandColor, logoConfig, menuBgHoverValue, and fontColor on events from configService.config', () => {
       expect(component.brandColor).toBe('#65B360');
       expect(component.logoConfig).toBe(undefined);
 
@@ -103,7 +103,7 @@ describe('GoHeaderComponent', () => {
       expect(component.isNavCollapsed()).toBe(true);
     });
 
-    it('returns false window width is greater than minWidthBreakpoint but side nav is expanded', () => {
+    it('returns false if window width is greater than minWidthBreakpoint and side nav is expanded', () => {
       sideNavService.navOpen = true;
 
       spyOnProperty(window, 'innerWidth').and.returnValue(800);
