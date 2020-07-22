@@ -101,6 +101,7 @@ import { TableSearchingComponent } from './components/table-docs/components/tabl
 import { TableFiltersComponent } from './components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from './components/table-docs/components/table-title-template/table-title-template.component';
+import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scroll.component';
 
 @NgModule({
   imports: [
@@ -193,7 +194,8 @@ import { TableTitleTemplateComponent } from './components/table-docs/components/
     TreeDocsComponent,
     PillDocsComponent,
     TableFiltersComponent,
-    TableTitleTemplateComponent
+    TableTitleTemplateComponent,
+    VirtualScrollComponent
   ],
   entryComponents: [
     BasicTestComponent,

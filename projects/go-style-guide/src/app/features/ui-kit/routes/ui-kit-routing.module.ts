@@ -56,6 +56,7 @@ import { TableSearchingComponent } from '../components/table-docs/components/tab
 import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
 import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from '../components/table-docs/components/table-title-template/table-title-template.component';
+import { VirtualScrollComponent } from '../components/virtual-scroll/virtual-scroll.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -116,7 +117,8 @@ const routes: Routes = [
     { path: 'templating', component: TableTemplatesComponent }
   ]},
   { path: 'ui-kit/toast', component: ToastDocsComponent },
-  { path: 'ui-kit/tree', component: TreeDocsComponent }
+  { path: 'ui-kit/tree', component: TreeDocsComponent },
+  { path: 'ui-kit/virtual-scroll', component: VirtualScrollComponent }
 ];
 
 @NgModule({

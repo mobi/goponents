@@ -47,7 +47,8 @@ export class AppComponent {
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' },
-      { route: 'ui-kit/tree', routeTitle: 'Tree' }
+      { route: 'ui-kit/tree', routeTitle: 'Tree' },
+      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' }
     ]}
   ];
 
