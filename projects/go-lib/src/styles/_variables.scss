@@ -48,6 +48,9 @@ $weight-light: 300;
 $weight-regular: 400;
 $weight-medium: 500;
 
+$secondary-weight-light: 300;
+$secondary-weight-medium: 600;
+
 $heading-margin-bottom: 1.5rem;
 $heading-sizes: (
   1: 1.875rem,
@@ -79,25 +82,25 @@ $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-h
 // Light Theme
 $theme-light-app-bg: #F0F0F0;
 $theme-light-bg: $base-light;
-$theme-light-bg-active: darken($base-light, 4);
-$theme-light-bg-hover: darken($base-light, 7);
+$theme-light-bg-hover: darken($base-light, 3.5%);
+$theme-light-bg-active: darken($base-light, 7%);
 $theme-light-color: $base-dark;
-$theme-light-color-hover: lighten($base-dark, 20);
+$theme-light-color-hover: lighten($base-dark, 20%);
 $theme-light-border: $base-light-secondary;
 
 // Dark Theme
 $theme-dark-bg: $base-dark-secondary;
-$theme-dark-bg-active: darken($base-dark-secondary, 4);
-$theme-dark-bg-hover: darken($base-dark-secondary, 7);
+$theme-dark-bg-hover: darken($base-dark-secondary, 3.5%);
+$theme-dark-bg-active: darken($base-dark-secondary, 7%);
 $theme-dark-color: $base-light;
 $theme-dark-text-color: mix($base-light, $base-light-secondary);
-$theme-dark-color-hover: darken($base-light, 20);
-$theme-dark-border: darken($base-dark-secondary, 7);
+$theme-dark-color-hover: darken($base-light, 20%);
+$theme-dark-border: darken($base-dark-secondary, 7%);
 
 // UI Colors
 // Negative Colors -
 // These are used to portray dangerous actions, error states, or other negative states in the interface
-$ui-color-negative: #DD4C4C;
+$ui-color-negative: #DB3939;
 $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
 $ui-color-negative-active: darken($ui-color-negative, 7%);
 $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
@@ -107,7 +110,7 @@ $ui-background-negative: rgba($ui-color-negative, .1);
 
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
-$ui-color-neutral: #8A4EDE;
+$ui-color-neutral: #7F47CC;
 $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
 $ui-color-neutral-active: darken($ui-color-neutral, 7%);
 $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);

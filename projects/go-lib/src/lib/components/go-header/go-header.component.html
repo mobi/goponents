@@ -1,35 +1,40 @@
 <header class="go-header">
-  <div
-    class="go-header__left"
-    [ngClass]="{ 'go-header__left--dark': brandColorIsDark }">
+  <div class="go-header__left">
     <div
       class="go-header__menu-container"
-      [ngStyle]="{ 'background': brandColor }"
-      (click)="toggleSideMenu()">
-      <go-icon class="go-header__menu" icon="menu">
+      [ngStyle]="{ 'background': brandColor, 'color': fontColor }">
+      <go-icon
+        (click)="sideNavService.toggleNav()"
+        (mouseenter)="enableMenuHover()"
+        (mouseleave)="disableMenuHover()"
+        [ngStyle]="{ 'background': menuBgHover }"
+        class="go-header__menu"
+        icon="menu">
       </go-icon>
     </div>
     <div
       class="go-header__logo-container"
       [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
       [ngStyle]="{ 'background': getLogoBackground() }">
-      <a
-        *ngIf="logoLinkUseRouterLink; else logoNotRouterLink"
-        [routerLink]="[logoLink]"
-        class="go-header__logo">
-        <img
-          alt="{{ altText }}"
-          [src]="logo"/>
-      </a>
-      <ng-template #logoNotRouterLink>
-        <a 
-          [href]="logoLink"
+      <ng-container *ngIf="logoConfig">
+        <a
+          *ngIf="!logoConfig.useHref; else logoNotRouterLink"
+          [routerLink]="[logoConfig.logoLink]"
           class="go-header__logo">
           <img
-            alt="{{ altText }}"
-            [src]="logo"/> 
+            alt="{{ logoConfig.altText }}"
+            [src]="getLogo()"/>
         </a>
-      </ng-template>
+        <ng-template #logoNotRouterLink>
+          <a 
+            [href]="logoConfig.logoLink"
+            class="go-header__logo">
+            <img
+              alt="{{ logoConfig.altText }}"
+              [src]="getLogo()"/> 
+          </a>
+        </ng-template>
+      </ng-container>
     </div>
   </div>
   <div class="go-header__middle">

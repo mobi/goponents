@@ -54,6 +54,7 @@
 .go-calendar__cell {
   @include transition(all);
 
+  background: none;
   border-style: hidden;
   border-radius: 1.5rem;
   font-size: 0.75rem;

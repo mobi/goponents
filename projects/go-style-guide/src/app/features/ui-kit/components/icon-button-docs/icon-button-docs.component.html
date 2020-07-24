@@ -3,12 +3,15 @@
 </header>
 
 <div class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100" id="description">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">
           The <code class="code-block--inline">&lt;go-icon-button&gt;</code>
           component should be used for buttons that have no text.
@@ -63,7 +66,8 @@
 
   <go-card class="go-column go-column--100" id="button-disabled">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Button Disabled</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Disabled</h2>
+      <go-copy cardId="button-disabled" goCopyCardLink></go-copy>
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
@@ -81,7 +85,8 @@
 
   <go-card class="go-column go-column--100" id="button-icon">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Button Icon</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Icon</h2>
+      <go-copy cardId="button-icon" goCopyCardLink></go-copy>
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
@@ -112,7 +117,8 @@
 
   <go-card class="go-column go-column--100" id="button-size">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Button Size</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Size</h2>
+      <go-copy cardId="button-size" goCopyCardLink></go-copy>
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
@@ -146,7 +152,8 @@
 
   <go-card class="go-column go-column--100" id="button-title">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Button Title</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Title</h2>
+      <go-copy cardId="button-title" goCopyCardLink></go-copy>
     </ng-container>
     <section class="go-container" go-card-content>
 

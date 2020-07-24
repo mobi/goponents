@@ -1,9 +1,12 @@
 <section class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
       
       <div class="go-column go-column--100">
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">The <code class="code-block--inline">go-panel</code> should be used in conjuction with the Action Sheet.</p>
       </div>
 
@@ -62,9 +65,10 @@
   </go-card>
 
   <go-card class="go-column go-column--100" id="icons">
-    <header go-card-header>
-      <h2 class="go-heading-2">Icons</h2>
-    </header>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Icons</h2>
+      <go-copy cardId="icons" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -98,10 +102,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #showHeader>
-    <header go-card-header>
-      <h2 class="go-heading-2">Show Header</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="show-header" #showHeader>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Show Header</h2>
+      <go-copy cardId="show-header" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -135,10 +140,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #danger>
-    <header go-card-header>
-      <h2 class="go-heading-2">Danger</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="danger" #danger>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Danger</h2>
+      <go-copy cardId="danger" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -172,10 +178,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #externalLink>
-    <header go-card-header>
-      <h2 class="go-heading-2">External Link</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="external-link" #externalLink>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">External Link</h2>
+      <go-copy cardId="external-link" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -209,10 +216,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #action>
-    <header go-card-header>
-      <h2 class="go-heading-2">Actions</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="actions" #action>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Actions</h2>
+      <go-copy cardId="actions" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -246,10 +254,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" #router>
-    <header go-card-header>
-      <h2 class="go-heading-2">Router</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="router" #router>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Router</h2>
+      <go-copy cardId="router" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content>
       <div class="go-container">
         <div class="go-column--100 go-column go-column--no-padding">
@@ -283,3 +292,52 @@
     </div>
   </go-card>
 </section>
+
+<go-card class="go-column go-column--100" id="content-projection">
+  <ng-container go-card-header>
+    <h2 class="go-heading-2 go-heading--no-wrap">Content Projection</h2>
+    <go-copy cardId="content-projection" goCopyCardLink></go-copy>
+  </ng-container>
+  <div go-card-content>
+    <div class="go-container">
+      <div class="go-column--100 go-column go-column--no-padding">
+        <p class="go-body-copy">
+          Content can be projected into a <code class="code-block--inline">go-panel</code>
+          to enable more complex structure and stylings. Content projection only works, however,
+          when nothing is passed to the <code class="code-block--inline">panelContent</code>
+          or <code class="code-block--inline">externalLink</code> inputs.
+        </p>
+      </div>
+      <div class="go-column go-column--50 go-column--no-padding">
+        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+        <code [highlight]="contentProjectionHtml"></code>
+      </div>
+      <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+        <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        <go-action-sheet>
+          <ng-container go-action-sheet__button>
+            <go-button>
+              Sheet With Content Projection
+            </go-button>
+          </ng-container>
+          <ng-container go-action-sheet-content>
+            <go-panel>
+              <ol class="go-ordered-list">
+                <li class="go-ordered-list__item">One</li>
+                <li class="go-ordered-list__item">Two</li>
+                <li class="go-ordered-list__item">Three</li>
+              </ol>
+            </go-panel>
+            <go-panel>
+              <ol class="go-ordered-list">
+                <li class="go-ordered-list__item">Four</li>
+                <li class="go-ordered-list__item">Five</li>
+                <li class="go-ordered-list__item">Six</li>
+              </ol>
+            </go-panel>
+          </ng-container>
+        </go-action-sheet>
+      </div>
+    </div>
+  </div>
+</go-card>

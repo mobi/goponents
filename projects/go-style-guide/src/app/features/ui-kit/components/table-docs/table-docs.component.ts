@@ -8,20 +8,19 @@ import { NavGroup } from 'projects/go-lib/src/public_api';
 export class TableDocsComponent {
 
   menuItems: Array<NavGroup> = [
-    { routeTitle: 'Basics', subRoutes: [
+    { routeTitle: 'Features', subRoutes: [
       { route: './', routeTitle: 'Overview' },
-      { route: './actions', routeTitle: 'Actions' },
       { route: './columns', routeTitle: 'Columns' },
-      { route: './details', routeTitle: 'Details' },
+      { route: './templating', routeTitle: 'Column Templates' },
       { route: './filters', routeTitle: 'Filters' },
+      { route: './actions', routeTitle: 'Header Actions' },
       { route: './pagination', routeTitle: 'Pagination' },
+      { route: './details', routeTitle: 'Row Details' },
+      { route: './selection', routeTitle: 'Row Selection' },
       { route: './searching', routeTitle: 'Searching' },
-      { route: './selection', routeTitle: 'Selection' },
+      { route: './server-integration', routeTitle: 'Server-Side Integration' },
       { route: './sorting', routeTitle: 'Sorting' },
-      { route: './templating', routeTitle: 'Templating' }
-    ]},
-    { routeTitle: 'Advanced', subRoutes: [
-      { route: './server-integration', routeTitle: 'Server-Side Integration' }
+      { route: './title-template', routeTitle: 'Title Template' }
     ]}
   ];
 }

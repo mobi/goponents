@@ -3,12 +3,15 @@
 </header>
 
 <section class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">The <code class="code-block--inline">&lt;go-card&gt;</code> component should be the default container for all content.</p>
       </div>
 
@@ -31,9 +34,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="default">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Default</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Default</h2>
+      <go-copy cardId="default" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h3 class="go-heading-3">Code (for this card)</h3>
@@ -51,9 +55,10 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="horizontal-rules">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">With Horizontal Rules</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">With Horizontal Rules</h2>
+      <go-copy cardId="horizontal-rules" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">Full Width</h4>

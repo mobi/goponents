@@ -4,12 +4,15 @@
 
 <section class="go-container">
 
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-toast&gt;</code> component should be used to notify the user of event responses
           or show notices. These should be used for short messages.
@@ -70,9 +73,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="basic-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Basic Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Basic Example</h2>
+      <go-copy cardId="basic-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -104,9 +108,10 @@
     message='&#x2192; <a href="https://github.com/mobi/goponents" target="_blank">#1 Design System</a> &#x2190;'>
   </go-toast>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="dismiss-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Dismiss Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Dismiss Example</h2>
+      <go-copy cardId="dismiss-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">component.html</h4>
@@ -125,9 +130,10 @@
     (handleDismiss)="dismissed()">
   </go-toast>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="toaster-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Toaster Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Toaster Example</h2>
+      <go-copy cardId="toaster-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -144,9 +150,10 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="button-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Button Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Example</h2>
+      <go-copy cardId="button-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
         <p class="go-body-copy">
@@ -159,8 +166,8 @@
     </ng-container>
   </go-card>
 
-  <go-toast 
-    type="neutral" 
+  <go-toast
+    type="neutral"
     header="Hey!"
     class="go-column go-column--100"
     message="Did you know that this is pretty cool?" 
@@ -182,7 +189,8 @@
 
   <go-card class="go-column go-column--100" id="header-template">
     <ng-container go-card-header>
-      <h2 class="go-heading-2 go-heading--no-margin">Header Template</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Header Template</h2>
+      <go-copy cardId="header-template" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -208,7 +216,8 @@
 
   <go-card class="go-column go-column--100" id="message-template">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Message Template</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Message Template</h2>
+      <go-copy cardId="message-template" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">

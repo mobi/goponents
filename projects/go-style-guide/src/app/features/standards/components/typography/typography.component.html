@@ -2,9 +2,10 @@
   <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 <section class="go-container">
-  <go-card class="go-column go-column--50">
+  <go-card class="go-column go-column--50" id="default-usage">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Default Usage</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Default Usage</h2>
+      <go-copy cardId="default-usage" goCopyCardLink></go-copy>
     </ng-container>
 
     <ng-container go-card-content>
@@ -27,9 +28,10 @@
 </section>
 
 <section class="go-container">
-  <go-card class="go-column go-column--50">
+  <go-card class="go-column go-column--50" id="removing-margin">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Removing Margin</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Removing Margin</h2>
+      <go-copy cardId="removing-margin" goCopyCardLink></go-copy>
     </ng-container>
 
     <ng-container go-card-content>

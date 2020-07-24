@@ -54,6 +54,9 @@ import { TabDocsComponent } from '../components/tab-docs/tab-docs.component';
 import { PillDocsComponent } from '../components/pill-docs/pill-docs.component';
 import { TableSearchingComponent } from '../components/table-docs/components/table-searching/table-searching.component';
 import { TableFiltersComponent } from '../components/table-docs/components/table-filters/table-filters.component';
+import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
+import { TableTitleTemplateComponent } from '../components/table-docs/components/table-title-template/table-title-template.component';
+import { VirtualScrollComponent } from '../components/virtual-scroll/virtual-scroll.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -103,16 +106,19 @@ const routes: Routes = [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },
     { path: 'columns', component: TableColumnDocsComponent },
+    { path: 'details', component: TableDetailsComponent },
     { path: 'filters', component: TableFiltersComponent },
+    { path: 'title-template', component: TableTitleTemplateComponent },
     { path: 'pagination', component: TablePaginationComponent },
     { path: 'searching', component: TableSearchingComponent },
     { path: 'selection', component: TableSelectionComponent },
     { path: 'server-integration', component: ServerIntegrationComponent },
     { path: 'sorting', component: TableSortingComponent },
-    { path: 'templating', component: TableTemplatesComponent },
-    { path: 'details', component: TableDetailsComponent }
+    { path: 'templating', component: TableTemplatesComponent }
   ]},
-  { path: 'ui-kit/toast', component: ToastDocsComponent }
+  { path: 'ui-kit/toast', component: ToastDocsComponent },
+  { path: 'ui-kit/tree', component: TreeDocsComponent },
+  { path: 'ui-kit/virtual-scroll', component: VirtualScrollComponent }
 ];
 
 @NgModule({

@@ -67,7 +67,7 @@ export class ActionSheetOverviewComponent {
     <ng-container go-action-sheet-content>
       <go-panel panelContent="Home" icon="home">
       </go-panel>
-      <go-accordion showIcons="true" [slim]="true" class="go-action-sheet__go-accordion">
+      <go-accordion showIcons="true" [slim]="true" [forActionSheet]="true">
         <go-accordion-panel title="Home Stuff" icon="home" [borderless]="true">
           Stuff about home
         </go-accordion-panel>

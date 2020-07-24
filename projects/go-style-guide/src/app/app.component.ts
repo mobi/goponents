@@ -1,15 +1,20 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { routerAnimation } from './app.animations';
+import {
+  Component,
+  ViewEncapsulation
+} from '@angular/core';
 
-import { NavAppDrawer, NavGroup, NavItem } from '../../../go-lib/src/public_api';
+import {
+  GoConfigService,
+  NavAppDrawer,
+  NavGroup,
+  NavItem
+} from '../../../go-lib/src/public_api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  animations: [routerAnimation]
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   date: Date = new Date();
@@ -41,7 +46,9 @@ export class AppComponent {
       { route: 'ui-kit/pills', routeTitle: 'Pills' },
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
-      { route: 'ui-kit/toast', routeTitle: 'Toast' }
+      { route: 'ui-kit/toast', routeTitle: 'Toast' },
+      { route: 'ui-kit/tree', routeTitle: 'Tree' },
+      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' }
     ]}
   ];
 
@@ -72,9 +79,12 @@ export class AppComponent {
     ]
   };
 
-  constructor (router: Router) { }
-
-  getRouteAnimation(outlet: any): void {
-    return outlet.isActivated ? outlet.activatedRoute : '';
+  constructor (
+    private goConfigService: GoConfigService
+  ) {
+    this.goConfigService.setLogo({
+      logo: 'assets/images/goDesign.svg',
+      logoCollapsed: 'assets/images/goDesign_green.svg'
+    });
   }
 }

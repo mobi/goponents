@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
+import { GoFileUploadComponent } from 'projects/go-lib/src/lib/components/go-file-upload/go-file-upload.component';
 
 @Component({
   selector: 'app-file-upload-docs',
@@ -15,6 +16,7 @@ export class FileUploadDocsComponent implements OnInit {
   fileControl6: FormControl = new FormControl('');
   fileControl7: FormControl = new FormControl('');
   fileControl8: FormControl = new FormControl('');
+  fileControl9: FormControl = new FormControl();
 
   hints: Array<string> = [
     'Please upload your best picture',
@@ -81,6 +83,27 @@ export class FileUploadDocsComponent implements OnInit {
   </go-file-upload>
   `;
 
+  basicResetExample_html: string = `
+  <go-file-upload
+    [control]="fileControl9"
+    label="Most Awesome Pictures"
+    #fileUploadReset>
+  </go-file-upload>
+
+  <go-button
+    (handleClick)="resetFileUpload()">
+    Reset
+  </go-button>
+  `;
+
+  basicResetExample_ts: string = `
+  @ViewChild('fileUploadReset', { static: false }) fileUploadReset: GoFileUploadComponent;
+
+  resetFileUpload(): void {
+    this.fileUploadReset.reset();
+  }
+  `;
+
   basicLoadingExample: string = `
   <go-file-upload
     [control]="fileControl"
@@ -96,6 +119,8 @@ export class FileUploadDocsComponent implements OnInit {
     theme="dark">
   </go-file-upload>
   `;
+
+  @ViewChild('fileUploadReset', { static: false }) fileUploadReset: GoFileUploadComponent;
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'File Upload';
@@ -113,5 +138,9 @@ export class FileUploadDocsComponent implements OnInit {
         }
       ]);
     }, 500);
+  }
+
+  resetFileUpload(): void {
+    this.fileUploadReset.reset();
   }
 }

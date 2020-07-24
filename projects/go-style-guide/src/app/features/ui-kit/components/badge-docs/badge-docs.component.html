@@ -2,13 +2,16 @@
   <h1 class="go-heading-1">{{ pageTitle }}</h1>
 </header>
 
-<div class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100" id="description">
-    <div class="go-container" go-card-content>
+<section class="go-container">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container class="go-container" go-card-content>
       
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">
           The <code class="code-block--inline">&lt;go-badge&gt;</code>
           component should be used for times when we want to show a short notification
@@ -50,12 +53,13 @@
         </p>
       </div>
 
-    </div>
+    </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="basic-example">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Basic Example</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Basic Example</h2>
+      <go-copy cardId="basic-example" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
@@ -77,9 +81,10 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="badge-color">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Badge Color</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Badge Color</h2>
+      <go-copy cardId="badge-color" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h3 class="go-heading-3">Positive</h3>
@@ -108,9 +113,10 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="display-data">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Display Data</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Display Data</h2>
+      <go-copy cardId="display-data" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <section class="go-container">
@@ -125,4 +131,4 @@
       </section>
     </ng-container>
   </go-card>
-</div>
+</section>

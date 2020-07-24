@@ -35,7 +35,7 @@ export class GoNavGroupComponent implements OnInit {
 
   // We are using a setter on this ViewChild because of the *ngIf on the element.
   // This enables us to check whether the element exists before attempting to set its attributes.
-  @ViewChild('navGroupRef') set content(navGroupRef: ElementRef) {
+  @ViewChild('navGroupRef', { static: false }) set content(navGroupRef: ElementRef) {
     if (navGroupRef && this.navItem.attributes) {
       this.navService.setAttributes(this.navItem.attributes, navGroupRef, this.renderer);
     }

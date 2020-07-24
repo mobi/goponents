@@ -1,10 +1,13 @@
 <section class="go-container">
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy">The Go Tab Component should be used when multiple sets of data need to be rendered, but vertical space is a concern.</p>
   
         <p class="go-body-copy">
@@ -32,10 +35,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Default</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="default">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Default</h2>
+      <go-copy cardId="default" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content class="go-container">
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
@@ -58,10 +62,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Theme</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="theme">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Theme</h2>
+      <go-copy cardId="theme" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content class="go-container">
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
@@ -84,10 +89,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Lazy Loading</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="lazy-loading">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Lazy Loading</h2>
+      <go-copy cardId="lazy-loading" goCopyCardLink></go-copy>
+    </ng-container>
     <div go-card-content class="go-container">
       <div class="go-column go-column--100">
         <p class="go-body-copy">

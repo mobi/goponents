@@ -1,0 +1,47 @@
+<section class="go-container">
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Implementing a Title Template</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        It is possible to add a custom template for the table title
+        by using <code class="code-block--inline">#goTableTitle</code>.
+      </p>
+      <p class="go-body-copy">
+        The content within these areas can be any HTML and is supported by
+        Angular so you can make use of components, pipes, etc.
+      </p>
+      <p class="go-body-copy">
+        <strong>
+          If a table title template is used, it will replace the normal table title area.
+        </strong>
+      </p>
+      <code [highlight]="headerTemplating" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig">
+    <ng-template #goTableTitle>
+      <h4
+        class="go-heading-4 go-heading--no-margin"
+        style="padding: 1rem;">
+        Example Title Template
+      </h4>
+      <go-icon-button
+        buttonIcon="save_alt"
+        (handleClick)="makeToast()">
+      </go-icon-button>
+    </ng-template>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+</section>

@@ -4,12 +4,15 @@
 
 <section class="go-container">
 
-  <go-card [showHeader]="false" class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
         <!-- Intro -->
-        <h2 class="go-heading-2">Usage</h2>
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">&lt;go-modal&gt;</code> component should be the only instance
           of a modal in the app.
@@ -63,9 +66,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card class="go-column go-column--100" id="service-usage">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Using the Modal service</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Using the Modal service</h2>
+      <go-copy cardId="service-usage" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -119,10 +123,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Modal Sizes</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="sizes">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Modal Sizes</h2>
+      <go-copy cardId="sizes" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--75">
@@ -148,10 +153,11 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
-    <header go-card-header>
-      <h2 class="go-heading-2">Modal Padding</h2>
-    </header>
+  <go-card class="go-column go-column--100" id="padding">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Modal Padding</h2>
+      <go-copy cardId="padding" goCopyCardLink></go-copy>
+    </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--75">

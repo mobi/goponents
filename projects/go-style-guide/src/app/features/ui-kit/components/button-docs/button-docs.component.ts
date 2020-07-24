@@ -9,14 +9,14 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class ButtonDocsComponent {
 
-  @ViewChild('primaryButton') primaryButton: GoButtonComponent;
-  @ViewChild('secondaryButton') secondaryButton: GoButtonComponent;
-  @ViewChild('secondaryDarkButton') secondaryDarkButton: GoButtonComponent;
-  @ViewChild('tertiaryButton') tertiaryButton: GoButtonComponent;
-  @ViewChild('tertiaryDarkButton') tertiaryDarkButton: GoButtonComponent;
-  @ViewChild('negativeButton') negativeButton: GoButtonComponent;
-  @ViewChild('negativeDarkButton') negativeDarkButton: GoButtonComponent;
-  @ViewChild('neutralButton') neutralButton: GoButtonComponent;
+  @ViewChild('primaryButton', { static: true }) primaryButton: GoButtonComponent;
+  @ViewChild('secondaryButton', { static: true }) secondaryButton: GoButtonComponent;
+  @ViewChild('secondaryDarkButton', { static: true }) secondaryDarkButton: GoButtonComponent;
+  @ViewChild('tertiaryButton', { static: true }) tertiaryButton: GoButtonComponent;
+  @ViewChild('tertiaryDarkButton', { static: true }) tertiaryDarkButton: GoButtonComponent;
+  @ViewChild('negativeButton', { static: true }) negativeButton: GoButtonComponent;
+  @ViewChild('negativeDarkButton', { static: true }) negativeDarkButton: GoButtonComponent;
+  @ViewChild('neutralButton', { static: true }) neutralButton: GoButtonComponent;
 
   primaryButtonLoading: boolean = false;
   secondaryButtonLoading: boolean = false;

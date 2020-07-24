@@ -154,5 +154,15 @@ export * from './lib/components/go-toaster/go-toaster.component';
 export * from './lib/components/go-toaster/go-toaster.module';
 export * from './lib/components/go-toaster/go-toaster.service';
 
+// Tree
+export * from './lib/components/go-tree/go-tree.component';
+export * from './lib/components/go-tree/go-tree.module';
+export * from './lib/components/go-tree/go-tree-node-config.model';
+
 /***** Utils *****/
 export * from './lib/utilities/form.utils';
+export * from './lib/utilities/colors.util';
+
+/***** Directives *****/
+export * from './lib/directives/go-copy-card-link/go-copy-card-link.directive';
+export * from './lib/directives/go-copy-card-link/go-copy-card-link.module';

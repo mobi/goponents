@@ -20,15 +20,25 @@
   [multiple]="multiple"
   [placeholder]="placeholder"
   [typeahead]="typeahead"
-  [searchable]="searchable">
+  [searchable]="searchable"
+  [typeToSearchText]="typeToSearchText">
   <ng-container *ngIf="multiple && showSelectAll">
     <ng-template ng-header-tmp>
-      <go-button buttonVariant="secondary" (handleClick)="onSelectAll()">Select All</go-button>
+      <button
+        (click)="onSelectAll()"
+        class="go-select__select-all-button">
+        Select All
+      </button>
     </ng-template>
   </ng-container>
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="goSelectOptionGroup">
+    <ng-template ng-optgroup-tmp let-item="item">
+      <ng-container *ngTemplateOutlet="goSelectOptionGroup; context: { $implicit: item }"></ng-container>
     </ng-template>
   </ng-container>
   <ng-container *ngIf="goSelectOption">

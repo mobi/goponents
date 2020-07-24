@@ -1,6 +1,6 @@
 # Goponents
 
-###### Currently `v1.5.9`
+###### Currently `v1.6.0`
 
 This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
@@ -117,6 +117,7 @@ To do this properly, you must export each individual file within the `public_api
 | checkbox       | Available                              |
 | checkbox group | Available                              |
 | copy button    | Available                              |
+| copy docs link | Available                              |
 | datepicker     | Available                              |
 | file upload    | Available                              |
 | footer         | Available                              |
@@ -142,6 +143,7 @@ To do this properly, you must export each individual file within the `public_api
 | textarea       | Available                              |
 | toaster        | Available                              |
 | toasts         | Available                              |
+| tree           | Available                              |
 |----------------|----------------------------------------|
 | masked input   | Idea                                   |
 | tooltip        | Idea                                   |

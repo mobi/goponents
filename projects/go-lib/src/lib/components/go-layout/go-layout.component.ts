@@ -38,8 +38,8 @@ export class GoLayoutComponent implements OnInit {
 
   routeLoader: boolean = false;
 
-  @ViewChild(GoHeaderBarComponent) headerBar: GoHeaderBarComponent;
-  @ViewChild('routeContainer') routeContainer: ElementRef<any>;
+  @ViewChild(GoHeaderBarComponent, { static: true }) headerBar: GoHeaderBarComponent;
+  @ViewChild('routeContainer', { static: true }) routeContainer: ElementRef<any>;
 
   constructor(private router: Router) { }
 

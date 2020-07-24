@@ -31,10 +31,12 @@ export class GoSelectComponent implements OnInit {
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
   @Input() typeahead?: Subject<string>;
+  @Input() typeToSearchText: string = 'Type to Search';
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
-  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
+  @ContentChild('goSelectOption', { static: false }) goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectOptionGroup', { static: false }) goSelectOptionGroup: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption', { static: false }) goSelectSelectedOption: TemplateRef<any>;
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');

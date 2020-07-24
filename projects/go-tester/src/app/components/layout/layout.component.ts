@@ -18,7 +18,6 @@ import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.compo
 })
 export class LayoutComponent implements OnInit {
 
-  logo: string = 'https://mobi.thefutureis.mobi/images/assets/theme_logo/000/000/000/178/header.png?1556627290';
   title: string = 'go-tester';
 
   menuItems: Array<NavGroup | NavItem> = [
@@ -35,7 +34,8 @@ export class LayoutComponent implements OnInit {
       routeTitle: 'External Link (In a New Tab)',
       description: 'Test external link opening in new tab',
       route: 'https://www.google.com/',
-      isExternalLink: true
+      isExternalLink: true,
+      externalLinkTarget: 'Google'
     },
     {
       routeIcon: 'search',
@@ -71,11 +71,6 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.goConfigService.setBrandColor('#8A4EDE');
-    this.goConfigService.overrideMenuColor('light');
-
-    this.toggleControl.valueChanges.subscribe(() => {
-      this.goConfigService.toggleHeaderBrandingEnabled();
-    });
   }
 
   openOffCanvas(): void {

@@ -17,4 +17,16 @@ export class CopyDocsComponent {
 
   url: string = 'google.com';
   pageTitle: string = 'Copy';
+
+  goCopyCardLinkDirectiveExample: string = `
+  <go-card class="go-column go-column--100" id="go-copy-card-link-directive">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">goCopyCardLink Directive</h2>
+      <go-copy cardId="go-copy-card-link-directive" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <!-- card content here -->
+    </ng-container>
+  </go-card>
+  `;
 }

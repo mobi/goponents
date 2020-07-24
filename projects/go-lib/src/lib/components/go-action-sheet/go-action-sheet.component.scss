@@ -28,7 +28,7 @@ go-action-sheet-button {
   @include transition;
 
   background: $theme-light-bg;
-  border: 1px solid $theme-light-border;
+  border: 1px solid $base-light-tertiary;
   border-radius: $global-radius;
   box-shadow: $global-box-shadow--small;
   opacity: 0;
@@ -41,7 +41,7 @@ go-action-sheet-button {
     @include transition;
 
     background: $theme-light-bg;
-    border: 1px solid $theme-light-border;
+    border: 1px solid $base-light-tertiary;
     box-shadow: $global-box-shadow--small;
     content: "";
     height: 15px;

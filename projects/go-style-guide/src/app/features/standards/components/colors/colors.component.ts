@@ -21,13 +21,13 @@ export class ColorsComponent {
   // Used as the base background for all components
   $theme-light-bg: $base-light;
   // Used when the background needs an active state
-  $theme-light-bg-active: darken($base-light, 4);
+  $theme-light-bg-hover: darken($base-light, 3.5%);
   // Used when the background needs a hover state
-  $theme-light-bg-hover: darken($base-light, 7);
+  $theme-light-bg-active: darken($base-light, 7%);
   // Used for the font color
   $theme-light-color: $base-dark;
   // Used when the font color needs a hover state
-  $theme-light-color-hover: lighten($base-dark, 20);
+  $theme-light-color-hover: lighten($base-dark, 20%);
   // Used to apply a border to an element
   $theme-light-border: $base-light-secondary;
   `;
@@ -64,7 +64,7 @@ export class ColorsComponent {
 
   horizonRed: string = `
   // Use this to apply the negative (error) state color
-  $ui-color-negative: #DD4C4C;
+  $ui-color-negative: #DB3939;
 
   // Used when the ui color needs a hover state
   $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
@@ -79,7 +79,7 @@ export class ColorsComponent {
 
   nebulaPurple: string = `
   // Use this to apply the neutral (info) state color
-  $ui-color-neutral: #8A4EDE;
+  $ui-color-neutral: #7F47CC;
 
   // Used when the ui color needs a hover state
   $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);

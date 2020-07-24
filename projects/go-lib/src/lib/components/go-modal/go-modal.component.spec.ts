@@ -135,5 +135,5 @@ describe('GoModalComponent', () => {
   template: '<ng-template go-modal-host></ng-template>'
 })
 class GoTestModalHostComponent {
-  @ViewChild(GoModalDirective) goModalHost: GoModalDirective;
+  @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;
 }

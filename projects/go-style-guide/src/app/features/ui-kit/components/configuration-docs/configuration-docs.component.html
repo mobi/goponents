@@ -3,24 +3,56 @@
 </header>
 
 <section class="go-container">
+  <go-card
+    id="branding"
+    [showHeader]="false"
+    class="go-column go-column--100">
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          The <code class="code-block--inline">GoConfigurationService</code> is used to apply a global set of configutions
+          for the app. Primarily this service is focused on branding configurations.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          The service uses a <code class="code-block--inline">GoConfigInterface</code> to store the configuration data. This
+          interface looks like this:
+        </p>
+        <code [highlight]="configInterfaceExample"></code>
+        <h3 class="go-heading-3">Defaults & Simple Setup</h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          When the <code class="code-block--inline">GoConfigurationService</code> is initalized, the defaults for
+          <code class="code-block--inline">brandColor</code> and <code class="code-block--inline">brandingMode</code> are:
+        </p>
+        <code [highlight]="configServiceDefaults"></code>
+        <p class="go-body-copy go-body-copy--no-margin">
+          <strong>To use the configuration in its simplest form, only the logo portion needs to be configured.</strong>
+        </p>
+        <code [highlight]="configServiceSimple"></code>
+      </div>
+    </div>
+  </go-card>
+</section>
+
+<section class="go-container">
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Branding</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Branding</h2>
+      <go-copy cardId="branding" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           The <code class="code-block--inline">GoConfigurationService</code> can be used to brand a few select 
           pieces of our design system. Currently the only things that can be branded are the active indicators 
-          on the sidenav and accordions as well as the left portion of the header.
+          on the sidenav, accordions, and the left portion of the header.
         </p>
       </div>
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Update Branding Color</h3>
-        <p class="go-body-copy">
-          The <code class="code-block--inline">public setBrandColor(color: string): void</code> method can be used
-          to update the branding color by passing in a hex code.
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">setBrandColor(color: string)</code> method can be used
+          to update the branding color by passing in a full 6-digit hex code.
         </p>
       </div>
 
@@ -52,16 +84,16 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100" id="header-branding">
+  <go-card class="go-column go-column--100" id="client-branding">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Enable Header Branding</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Enable Client Branding</h2>
+      <go-copy cardId="client-branding" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
-      <div class="go-column go-column--100">
-        <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">public toggleHeaderBrandingEnabled(): void</code> method can 
-          be used to enable/disable header branding.
+      <div class="go-column go-column--50">
+        <p class="go-body-copy">
+          To enable the "Client Branding" mode, the config on the service must be reset.
         </p>
       </div>
 
@@ -69,8 +101,8 @@
         <div class="go-container">
           <div class="go-column go-column--50">
             <go-switch-toggle
-              [control]="toggleControl"
-              label="Toggle Header Branding">
+              [control]="configModeControl"
+              label="Enable Client Branding">
             </go-switch-toggle>
           </div>
   
@@ -86,49 +118,3 @@
 
     </div>
   </go-card>
-
-  <go-card class="go-column go-column--100" id="override-accessibility">
-    <ng-container go-card-header>
-      <h2 class="go-heading-2">Override Accessibility Color</h2>
-    </ng-container>
-    <div class="go-container" go-card-content>
-
-      <div class="go-column go-column--100">
-        <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">overrideMenuColor()</code> method can 
-          be used to override the accessibility check that is performed on the header.
-          You can specify <code class="code-block--inline">light</code>, <code class="code-block--inline">dark</code>
-          or leave it <code class="code-block--inline">undefined</code> to allow the accessibility check.
-          This feature is only activated if <code class="code-block--inline">headerBrandingEnabled</code> is enabled.
-        </p>
-      </div>
-
-      <div class="go-column go-column--100 go-column--no-padding">
-        <div class="go-container">
-          <div class="go-column go-column--50">
-            <p class="go-body-copy">
-              <go-select
-                [control]="colorControl"
-                label="Specify Font Color"
-                bindValue="value"
-                bindLabel="label"
-                [items]="colorOptions">
-              </go-select>
-            </p>
-            <p class="go-body-copy">
-              Note: to see this example take affect, toggle the "Enable Header Branding" above to true.
-            </p>
-          </div>
-
-          <div class="go-column go-column--50">
-            <code [highlight]="colorEx">
-            </code>
-            
-            <code [highlight]="colorEx_html">
-            </code>
-          </div>
-        </div>
-      </div>
-    </div>
-  </go-card>
-</section>

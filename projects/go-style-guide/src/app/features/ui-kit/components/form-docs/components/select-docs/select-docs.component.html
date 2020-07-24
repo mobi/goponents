@@ -3,7 +3,8 @@
 
   <go-card id="form-select-control" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Control</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Control</h2>
+      <go-copy cardId="form-select-control" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -37,7 +38,8 @@
 
   <go-card id="form-select-label" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Label</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Label</h2>
+      <go-copy cardId="form-select-label" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -77,7 +79,8 @@
 
   <go-card id="form-select-key" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Key</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Key</h2>
+      <go-copy cardId="form-select-key" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -131,7 +134,8 @@
 
   <go-card id="form-select-hints" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Hints</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Hints</h2>
+      <go-copy cardId="form-select-hints" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -172,7 +176,8 @@
 
   <go-card id="form-select-errors" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Errors</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Errors</h2>
+      <go-copy cardId="form-select-errors" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -217,7 +222,8 @@
 
   <go-card id="form-select-items" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Items</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Items</h2>
+      <go-copy cardId="form-select-items" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -263,7 +269,8 @@
 
   <go-card id="form-select-multiple" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Multiple</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Multiple</h2>
+      <go-copy cardId="form-select-multiple" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -331,7 +338,8 @@
 
   <go-card id="form-select-placeholder" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Placeholder</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Placeholder</h2>
+      <go-copy cardId="form-select-placeholder" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -373,7 +381,8 @@
 
   <go-card id="form-select-loading" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Loading</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Loading</h2>
+      <go-copy cardId="form-select-loading" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -419,7 +428,8 @@
 
   <go-card id="form-select-appendto" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component appendTo</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component appendTo</h2>
+      <go-copy cardId="form-select-appendto" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -451,9 +461,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card id="form-select-typeahead" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Typeahead</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Typeahead</h2>
+      <go-copy cardId="form-select-typeahead" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -476,7 +487,8 @@
               [items]="options$ | async"
               [multiple]="true"
               label="Your Input"
-              [typeahead]="itemInput">
+              [typeahead]="itemInput"
+              typeToSearchText="Search The Thing">
             </go-select>
           </div>
           <div class="go-column go-column--50">
@@ -496,9 +508,10 @@
     </div>
   </go-card>
 
-  <go-card class="go-column go-column--100">
+  <go-card id="form-select-search" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Search</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Search</h2>
+      <go-copy cardId="form-select-search" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -533,9 +546,11 @@
       </div>
     </div>
   </go-card>
+
   <go-card id="form-select-groupby" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component groupBy</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component groupBy</h2>
+      <go-copy cardId="form-select-groupby" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -579,7 +594,8 @@
 
   <go-card id="form-select-clearable" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component clearable</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component clearable</h2>
+      <go-copy cardId="form-select-clearable" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -623,7 +639,8 @@
 
   <go-card id="form-select-template" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Template</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Template</h2>
+      <go-copy cardId="form-select-template" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -665,9 +682,60 @@
     </div>
   </go-card>
 
+  <go-card id="form-select-template-optgroup" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Optgroup Label Template</h2>
+      <go-copy cardId="form-select-template-optgroup" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          When grouping, you may need to customize the optgroup label, for example when using the
+          <a
+            href="https://github.com/ng-select/ng-select/tree/0eec42cb8df68b1ca57d305f25a36a8e8618ce6e/src/demo/app/examples/group-children-example"
+            target="_blank">grouped children array</a> from ng-select where the label cannot be inferred.
+          You can add a custom template by adding a <code class="code-block--inline">ng-template</code> with a <code class="code-block--inline">#goSelectOptionGroup</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindValue="value"
+              bindLabel="name"
+              [control]="select18"
+              [items]="groupedItemsArray"
+              groupBy="cars"
+              label="Select an Option">
+              <ng-template #goSelectOptionGroup let-item>
+                {{ item.manufacturer | uppercase }}
+              </ng-template>
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select18Code"
+              class="code-block--no-bottom-margin">
+            </code>
+            <code
+              [highlight]="select18ComponentCode"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
   <go-card id="form-select-template" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2">Component Label Template</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Label Template</h2>
+      <go-copy cardId="form-select-template" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
