@@ -53,7 +53,7 @@ describe('goCopyComponent', () => {
       expect(document.execCommand).toHaveBeenCalledWith('copy');
     });
 
-    it('sets the icon to a check mark for three seconds', fakeAsync(() => {
+    it('sets the icon to a check mark for 1.5 seconds', fakeAsync(() => {
       expect(component.icon).toBe('content_copy');
 
       component.copyStringToClipboard();
