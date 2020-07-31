@@ -87,6 +87,10 @@
   flex-grow: 0;
 }
 
+.go-column--expandable {
+  max-width: 100%;
+}
+
 .go-column--collapse {
   flex-basis: auto;
   flex-grow: 0;
