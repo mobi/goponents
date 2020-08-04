@@ -10,8 +10,8 @@ import { easing, timing } from './_configs';
 
 export const offCanvasAnimation = trigger('offCanvas', [
   state('slideIn', style({
-    transform: 'translateX(-300px)'
-  })),
+    transform: 'translateX(-{{width}})'
+  }), {params: {width: '300px'}}),
   state('slideOut', style({
     transform: 'translateX(0)',
     visibility: 'hidden'

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  GoConfigService,
+  GoModalService,
+  GoOffCanvasItem,
+  GoOffCanvasService,
+  GoSelectComponent,
+  GoSideNavService,
+  GoToasterService,
   NavGroup,
   NavItem,
-  GoConfigService,
-  GoToasterService,
-  GoOffCanvasService,
-  GoSideNavService,
-  GoModalService,
-  GoSelectComponent
 } from '../../../../../go-lib/src/public_api';
 import { FormControl } from '@angular/forms';
 import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.component';
@@ -73,12 +74,13 @@ export class LayoutComponent implements OnInit {
     this.goConfigService.setBrandColor('#8A4EDE');
   }
 
-  openOffCanvas(): void {
+  openOffCanvas(size: GoOffCanvasItem['size'] = 'small'): void {
     this.goOffCanvasService.openOffCanvas({
       component: OffCanvasTestComponent,
       bindings: {
       },
-      header: 'Test Header'
+      header: 'Test Header',
+      size
     });
   }
 

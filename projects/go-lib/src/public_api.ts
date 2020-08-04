@@ -96,6 +96,7 @@ export * from './lib/components/go-modal/go-modal.service';
 export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
+export * from './lib/components/go-off-canvas/go-off-canvas.interface';
 
 // Pill
 export * from './lib/components/go-pill/go-pill.component';

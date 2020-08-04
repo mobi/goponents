@@ -25,6 +25,11 @@
   z-index: z-index(off-canvas);
 }
 
+.go-off-canvas.large {
+  width: 75vw;
+  background-color: $theme-light-bg;
+}
+
 .go-off-canvas__header {
   align-self: flex-start;
   flex: 0 0 auto;
