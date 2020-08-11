@@ -25,6 +25,7 @@ import {
   GoLoaderModule,
   GoOffCanvasModule,
   GoPillModule,
+  GoPortalModule,
   GoRadioModule,
   GoSearchModule,
   GoSelectComponent,
@@ -97,7 +98,8 @@ import { AppGuard } from './app.guard';
     GoToastModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoPortalModule
   ],
   providers: [
     AppService,

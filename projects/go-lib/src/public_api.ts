@@ -102,6 +102,9 @@ export * from './lib/components/go-off-canvas/go-off-canvas.interface';
 export * from './lib/components/go-pill/go-pill.component';
 export * from './lib/components/go-pill/go-pill.module';
 
+// Portal
+export * from './lib/components/go-portal/go-portal.module';
+
 // Radio
 export * from './lib/components/go-radio/go-radio-button.component';
 export * from './lib/components/go-radio/go-radio-group.component';

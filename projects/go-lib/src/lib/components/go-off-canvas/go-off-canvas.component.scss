@@ -27,7 +27,8 @@
 
 .go-off-canvas.large {
   width: 75vw;
-  background-color: $theme-light-bg;
+  background-color: $theme-light-app-bg;
+  color: inherit;
 }
 
 .go-off-canvas__header {
@@ -65,4 +66,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.go-off-canvas__content.large {
+  background-color: $theme-light-app-bg;
 }
