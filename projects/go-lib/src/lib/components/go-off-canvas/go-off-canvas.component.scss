@@ -28,7 +28,17 @@
 .go-off-canvas.large {
   width: 75vw;
   background-color: $theme-light-app-bg;
-  color: inherit;
+  color: $base-dark;
+  .go-off-canvas__header {
+    background-color: $base-light;
+    box-shadow: $global-box-shadow--regular;
+  }
+  .go-off-canvas__title {
+    color: $base-dark;
+  }
+  .go-off-canvas__content {
+    padding: 1rem;
+  }
 }
 
 .go-off-canvas__header {
