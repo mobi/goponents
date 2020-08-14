@@ -13,11 +13,15 @@ export class GoPortalService {
   }
 
   attachToTarget(targetName: string, template: TemplateRef<any>): void {
-    this.getTarget(targetName).createEmbeddedView(template);
+    if (this.targets.has(targetName)) {
+      this.getTarget(targetName).createEmbeddedView(template);
+    }
   }
 
   clearTarget(targetName: string): void {
-    this.getTarget(targetName).clear();
+    if (this.targets.has(targetName)) {
+      this.getTarget(targetName).clear();
+    }
   }
 
   private getTarget(targetName: string): ViewContainerRef | null {
