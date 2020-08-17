@@ -25,17 +25,20 @@
   z-index: z-index(off-canvas);
 }
 
-.go-off-canvas.large {
-  width: 75vw;
+.go-off-canvas--large {
   background-color: $theme-light-app-bg;
-  color: $base-dark;
+  color: $theme-light-color;
+  width: 75vw;
+
   .go-off-canvas__header {
-    background-color: $base-light;
+    background-color: $theme-light-bg;
     box-shadow: $global-box-shadow--regular;
   }
+
   .go-off-canvas__title {
-    color: $base-dark;
+    color: $theme-light-color;
   }
+
   .go-off-canvas__content {
     padding: 1rem;
   }
@@ -76,7 +79,4 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-}
-.go-off-canvas__content.large {
-  background-color: $theme-light-app-bg;
 }

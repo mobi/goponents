@@ -1,6 +1,8 @@
-import {Injectable, TemplateRef, ViewContainerRef} from '@angular/core';
+import { Injectable, TemplateRef, ViewContainerRef } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+  providedIn: 'root'
+})
 export class GoPortalService {
   private targets: Map<string, ViewContainerRef>;
 
