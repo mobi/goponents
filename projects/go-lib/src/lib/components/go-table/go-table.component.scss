@@ -56,7 +56,7 @@
   color: $theme-light-color;
   font-size: .75rem;
   font-weight: $weight-medium;
-  letter-spacing: 1pt;
+  letter-spacing: 0.08px;
   padding: 1rem 1.25rem;
   position: relative;
   text-align: left;
@@ -236,9 +236,8 @@
 
   align-items: center;
   background: $theme-light-bg;
-  border: 1px solid $theme-light-bg-active;
+  border: 1px solid $base-light-tertiary;
   border-radius: 1rem;
-  box-shadow: $global-box-shadow--small;
   color: $theme-light-border;
   display: flex;
   height: 2rem;
@@ -247,6 +246,7 @@
 
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
+    box-shadow: $global-box-shadow--search;
   }
 }
 
@@ -264,7 +264,7 @@
   font-weight: $weight-light;
   letter-spacing: 0.02rem;
   min-width: 250px;
-  padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
+  padding: 0.625rem $column-gutter--half 0.625rem 0;
 
   &::-ms-clear {
     display: none;
