@@ -27,6 +27,13 @@ export class TableActionsDocsComponent {
   </go-table>
   `;
 
+  buttonSizeExample: string = `
+  <ng-container go-table-actions>
+    <go-icon-button buttonIcon="filter" buttonSize="medium"></go-icon-button>
+    <go-icon-button buttonIcon="settings" buttonSize="medium"></go-icon-button>
+  </ng-container>
+  `;
+
   tableConfig: GoTableConfig = new GoTableConfig({
     selectBy: 'id',
     selectable: true,
