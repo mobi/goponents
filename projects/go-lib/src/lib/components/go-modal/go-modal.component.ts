@@ -43,13 +43,15 @@ export class GoModalComponent implements OnInit {
 
     this.goModalService.modalOpen.subscribe((value: boolean) => {
       this.opened = value;
+      if (this.opened === false) {
+        this.destroyComponent();
+      }
     });
   }
 
   loadComponent(): void {
     const componentFactory: ComponentFactory<{}> = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
     const viewContainerRef: ViewContainerRef = this.goModalHost.viewContainerRef;
-    viewContainerRef.clear();
 
     const componentRef: ComponentRef<{}> = viewContainerRef.createComponent(componentFactory);
 
@@ -92,5 +94,9 @@ export class GoModalComponent implements OnInit {
 
   goModalClasses(): object {
     return { 'go-modal--visible': this.opened };
+  }
+
+  private destroyComponent(): void {
+    this.goModalHost.viewContainerRef.clear();
   }
 }

@@ -54,7 +54,6 @@ describe('GoOffCanvasComponent', () => {
 
   describe('ngOnInit', () => {
     it('loads the component', () => {
-      spyOn(component.goOffCanvasHost.viewContainerRef, 'clear');
       spyOn(component.goOffCanvasHost.viewContainerRef, 'createComponent');
 
       offCanvasService.openOffCanvas({
@@ -68,9 +67,28 @@ describe('GoOffCanvasComponent', () => {
         bindings: {},
         header: 'Test Header',
       });
-      expect(component.goOffCanvasHost.viewContainerRef.clear).toHaveBeenCalled();
+      
       expect(component.goOffCanvasHost.viewContainerRef.createComponent).toHaveBeenCalled();
       expect(component.header).toEqual('Test Header');
+    });
+
+    it('sets up a subscription to clear the view container if the off canvas is closed', () => {
+      spyOn(component.goOffCanvasHost.viewContainerRef, 'clear');
+
+      offCanvasService.openOffCanvas({
+        component: GoTestOffCanvasHostComponent,
+        bindings: {},
+        header: 'Test Header'
+      });
+
+      expect(component.currentOffCanvasItem).toEqual({
+        component: GoTestOffCanvasHostComponent,
+        bindings: {},
+        header: 'Test Header'
+      });
+
+      offCanvasService.closeOffCanvas();
+      expect(component.goOffCanvasHost.viewContainerRef.clear).toHaveBeenCalled();
     });
   });
 
