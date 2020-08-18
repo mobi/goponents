@@ -15,8 +15,8 @@ export class TableActionsDocsComponent {
     [tableConfig]="tableConfig"
     [showTableActions]="true">
     <ng-container go-table-actions>
-      <go-icon-button buttonIcon="filter"></go-icon-button>
-      <go-icon-button buttonIcon="settings"></go-icon-button>
+      <go-icon-button buttonIcon="filter" buttonSize="medium"></go-icon-button>
+      <go-icon-button buttonIcon="settings" buttonSize="medium"></go-icon-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
@@ -25,13 +25,6 @@ export class TableActionsDocsComponent {
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
-  `;
-
-  buttonSizeExample: string = `
-  <ng-container go-table-actions>
-    <go-icon-button buttonIcon="filter" buttonSize="medium"></go-icon-button>
-    <go-icon-button buttonIcon="settings" buttonSize="medium"></go-icon-button>
-  </ng-container>
   `;
 
   tableConfig: GoTableConfig = new GoTableConfig({
