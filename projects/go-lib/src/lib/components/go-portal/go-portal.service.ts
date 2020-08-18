@@ -15,14 +15,18 @@ export class GoPortalService {
   }
 
   attachToTarget(targetName: string, template: TemplateRef<any>): void {
-    if (this.targets.has(targetName)) {
-      this.getTarget(targetName).createEmbeddedView(template);
+    const target: ViewContainerRef = this.getTarget(targetName);
+
+    if (target) {
+      target.createEmbeddedView(template);
     }
   }
 
   clearTarget(targetName: string): void {
-    if (this.targets.has(targetName)) {
-      this.getTarget(targetName).clear();
+    const target: ViewContainerRef = this.getTarget(targetName);
+
+    if (target) {
+      target.clear();
     }
   }
 
