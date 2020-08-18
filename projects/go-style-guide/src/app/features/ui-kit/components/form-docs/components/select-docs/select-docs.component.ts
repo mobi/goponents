@@ -110,7 +110,7 @@ export class SelectDocsComponent implements OnInit {
 
   select5Code: string = `
   <go-select
-    [control]="select"
+    [control]="select5"
     label="Favorite Candy">
   </go-select>
   `;
