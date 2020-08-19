@@ -126,7 +126,8 @@
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100 go-column--no-padding">
         <p class="go-body-copy">
-          To render a large off canvas, add the size option to the openOffCanvas method.
+          To render a large off canvas, add the <code class="code-block--inline">size</code> option to the <code
+          class="code-block--inline">openOffCanvas</code> method.
         </p>
       </div>
       <div class="go-column go-column--50">
@@ -144,8 +145,13 @@
       <div class="go-column go-column--100 go-column--no-padding">
         <h3 class="go-heading-3">Header</h3>
         <p class="go-body-copy">
-          To project stuff into the header use the go-off-canvas-header-component
+          To project items from the component into the header (like a submit or close button) just wrap it in <code
+          class="code-block--inline">go-off-canvas-header</code> and it will be rendered in the right side of the
+          header.
         </p>
+      </div>
+      <div class="go-column go-column--50">
+        <code [highlight]="headerExample"></code>
       </div>
     </div>
   </go-card>

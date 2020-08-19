@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 
 import { BasicTestComponent } from '../basic-test/basic-test.component';
+import {BasicTestLargeComponent} from '../basic-test-large/basic-test-large.component';
 
 @Component({
   selector: 'app-off-canvas-docs',
@@ -80,10 +81,20 @@ export class OffCanvasDocsComponent {
       bindings: {
         someBinding: 'monkey'
       },
-      header: 'Test Header'
+      header: 'Test Header',
+      size: 'large'
     });
   }
   `;
+
+  headerExample: string = `
+  <!-- template of the component rendered in the large off canvas -->
+  <go-off-canvas-header>
+    <!-- this will be rendered in the header -->
+    <go-button (handleClick)="closeOffCanvas()">Close</go-button>
+  </go-off-canvas-header>
+  <div>This will render in the off canvas as usual</div>
+  `
 
   constructor(
     private goOffCanvasService: GoOffCanvasService
@@ -101,7 +112,7 @@ export class OffCanvasDocsComponent {
 
   public openLargeOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: BasicTestComponent,
+      component: BasicTestLargeComponent,
       bindings: {
         someBinding: 'Basic Off Canvas Component'
       },

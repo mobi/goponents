@@ -103,6 +103,7 @@ import { TableFiltersComponent } from './components/table-docs/components/table-
 import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from './components/table-docs/components/table-title-template/table-title-template.component';
 import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scroll.component';
+import { BasicTestLargeComponent } from './components/basic-test-large/basic-test-large.component';
 
 @NgModule({
   imports: [
@@ -141,6 +142,7 @@ import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scro
     AccordionDocsComponent,
     AccordionPanelDocsComponent,
     BasicTestComponent,
+    BasicTestLargeComponent,
     BadgeDocsComponent,
     ButtonDocsComponent,
     CardDocsComponent,
@@ -201,6 +203,7 @@ import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scro
   ],
   entryComponents: [
     BasicTestComponent,
+    BasicTestLargeComponent,
     GoSelectComponent,
     ModalTestComponent
   ],
