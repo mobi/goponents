@@ -15,10 +15,12 @@
     <h3 *ngIf="header" class="go-heading-3 go-heading--no-margin go-off-canvas__title">
       {{ header }}
     </h3>
-    <go-icon-button *ngIf="size === 'small'" buttonSize="medium" buttonIcon="close"
-                    (handleClick)="closeOffCanvas()">
-    </go-icon-button>
-    <ng-container *ngIf="size === 'large'" goPortalTarget="offCanvasHeader"></ng-container>
+    <ng-container [ngSwitch]="size">
+      <go-icon-button *ngSwitchCase="'small'" buttonSize="medium" buttonIcon="close"
+                      (handleClick)="closeOffCanvas()">
+      </go-icon-button>
+      <ng-container *ngSwitchCase="'large'" goPortalTarget="offCanvasHeader"></ng-container>
+    </ng-container>
   </div>
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>
