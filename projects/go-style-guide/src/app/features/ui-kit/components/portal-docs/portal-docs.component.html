@@ -1,0 +1,65 @@
+<header class="go-page-title">
+    <h1 class="go-heading-1">Portal</h1>
+  </header>
+  
+  <div class="go-container">
+    
+    <go-card class="go-column go-column--100" id="usage">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+        <go-copy cardId="usage" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            A <code class="code-block--inline">portal</code>
+            gives you the ability to render dynamic content into any part of the UI.
+          </p>
+          <br>
+          <p class="go-body-copy go-body-copy--no-margin">
+            It does this with the help of two directives: <code class="code-block--inline">goPortalAttachTo</code> and 
+            <code class="code-block--inline">goPortalTarget</code>.
+          </p>
+          <br>
+          <p class="go-body-copy go-body-copy--no-margin">
+            The <code class="code-block--inline">goPortalAttachTo</code>
+            is the template that you want to render and the <code class="code-block--inline">goPortalTarget</code>
+            is the destination where you want to render the template into.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <h3 class="go-heading-3">Setup</h3>
+          <p class="go-body-copy">
+            To use the portal feature anywhere in the app, you must follow the following steps:
+          </p>
+          <ol class="go-list go-list--ordered">
+            <li>
+              <p class="go-body-copy">
+                Specify the template for the <code class="code-block--inline">goPortalAttachTo</code>
+                directive.
+              </p>
+              <code [highlight]="goPortalAttachToExample"></code>
+            </li>
+            <li>
+              <p class="go-body-copy">
+                Then, specify the destination via the <code class="code-block--inline">goTarget</code>
+                directive.
+              </p>
+              <code [highlight]="goPortalTargetExample"></code>
+            </li>
+          </ol>
+        </div>
+  
+      </div>
+    </go-card>
+  
+    <go-toast
+      class="go-column go-column--100"
+      header="Note!"
+      [message]="noteMessage">
+    </go-toast>
+    
+  </div>
+  
