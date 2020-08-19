@@ -72,6 +72,7 @@ import { ToastDocsComponent } from './components/toast-docs/toast-docs.component
 import { UiKitComponent } from './components/ui-kit/ui-kit.component';
 import { BasicTestComponent } from './components/basic-test/basic-test.component';
 import { OffCanvasDocsComponent } from './components/off-canvas-docs/off-canvas-docs.component';
+import { PortalDocsComponent } from './components/portal-docs/portal-docs.component'
 import { LoaderDocsComponent } from './components/loader-docs/loader-docs.component';
 import { LayoutAppDrawerComponent } from './components/layout-docs/components/layout-app-drawer/layout-app-drawer.component';
 import { LayoutDocsComponent } from './components/layout-docs/layout-docs.component';
@@ -156,6 +157,7 @@ import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scro
     ModalDocsComponent,
     ModalTestComponent,
     OffCanvasDocsComponent,
+    PortalDocsComponent,
     SelectDocsComponent,
     ServerIntegrationComponent,
     TableDocsComponent,
