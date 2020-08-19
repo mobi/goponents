@@ -73,6 +73,18 @@ export class OffCanvasDocsComponent {
   </go-button>
   `;
 
+  largeOffCanvasExample: string = `
+  openOffCanvas() : void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestComponent,
+      bindings: {
+        someBinding: 'monkey'
+      },
+      header: 'Test Header'
+    });
+  }
+  `;
+
   constructor(
     private goOffCanvasService: GoOffCanvasService
   ) { }
@@ -84,6 +96,17 @@ export class OffCanvasDocsComponent {
         someBinding: 'Basic Off Canvas Component'
       },
       header: 'Test Header'
+    });
+  }
+
+  public openLargeOffCanvas(): void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestComponent,
+      bindings: {
+        someBinding: 'Basic Off Canvas Component'
+      },
+      header: 'Test Header',
+      size: 'large'
     });
   }
 }
