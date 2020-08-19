@@ -56,7 +56,7 @@
             #peopleTable
             *ngIf="tableConfig">
     <ng-container go-table-actions>
-      <go-button (handleClick)="outputSelectionCount()">Selection Count</go-button>
+      <go-icon-button  buttonIcon="save_alt" (handleClick)="outputSelectionCount()">Selection Count</go-icon-button>
       <go-button (handleClick)="showCurrentSelection()">Selection State</go-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>

@@ -56,7 +56,7 @@
   color: $theme-light-color;
   font-size: .75rem;
   font-weight: $weight-medium;
-  letter-spacing: 1pt;
+  letter-spacing: 0.08px;
   padding: 1rem 1.25rem;
   position: relative;
   text-align: left;
@@ -236,17 +236,16 @@
 
   align-items: center;
   background: $theme-light-bg;
-  border: 1px solid $theme-light-bg-active;
+  border: 1px solid $base-light-tertiary;
   border-radius: 1rem;
-  box-shadow: $global-box-shadow--small;
   color: $theme-light-border;
   display: flex;
-  height: 2rem;
   margin: 0.25rem 1.25rem 1rem 1.25rem;
   position: relative;
 
   &:hover {
     background: lighten($theme-light-app-bg, 3%);
+    box-shadow: $global-box-shadow--search;
   }
 }
 
@@ -259,6 +258,7 @@
   background: transparent;
   border: 0;
   flex: 1;
+  line-height: 1.3;
   font-family: $primary-font-stack;
   font-size: 0.875rem;
   font-weight: $weight-light;
