@@ -21,7 +21,4 @@ export class PortalDocsComponent {
 
   ) { }
 
-  public openOffCanvas(): void {
-  
-  }
 }
