@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './portal-docs.component.html'
 })
 export class PortalDocsComponent {
-  noteMessage: string = `Please know that the source (goPortalAttachTo) and target (goPortalTarget) can either be in the same template file or different template files.`;
-
   goPortalAttachToExample: string = `
   <ng-template goPortalAttachTo="enterprise">
     <span id="kirk">Beam me up, Scotty!</span>
@@ -19,9 +17,4 @@ export class PortalDocsComponent {
     <ng-container goPortalTarget="enterprise"></ng-container>
   </div>
   `;
-
-  constructor(
-
-  ) { }
-
 }
