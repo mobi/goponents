@@ -4,4 +4,5 @@ export interface GoOffCanvasItem {
   component: Type<{}>;
   bindings: {};
   header?: string;
+  size?: 'large' | 'small';
 }

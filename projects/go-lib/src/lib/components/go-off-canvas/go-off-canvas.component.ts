@@ -31,6 +31,7 @@ export class GoOffCanvasComponent implements OnInit {
   header: string;
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
+  size: 'large' | 'small' = 'small';
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -66,6 +67,7 @@ export class GoOffCanvasComponent implements OnInit {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
     });
 
+    this.size = this.currentOffCanvasItem.size || 'small';
     this.header = this.currentOffCanvasItem.header;
   }
 

@@ -28,6 +28,7 @@ import { TableTemplatesComponent } from '../components/table-docs/components/tab
 import { ToastDocsComponent } from '../components/toast-docs/toast-docs.component';
 import { UiKitComponent } from '../components/ui-kit/ui-kit.component';
 import { OffCanvasDocsComponent } from '../components/off-canvas-docs/off-canvas-docs.component';
+import { PortalDocsComponent } from '../components/portal-docs/portal-docs.component';
 import { LoaderDocsComponent } from '../components/loader-docs/loader-docs.component';
 import { LayoutDocsComponent } from '../components/layout-docs/layout-docs.component';
 import { LayoutOverviewComponent } from '../components/layout-docs/components/layout-overview/layout-overview.component';
@@ -100,6 +101,7 @@ const routes: Routes = [
   { path: 'ui-kit/icon', component: IconDocsComponent },
   { path: 'ui-kit/modal', component: ModalDocsComponent },
   { path: 'ui-kit/off-canvas', component: OffCanvasDocsComponent },
+  { path: 'ui-kit/portal', component: PortalDocsComponent },
   { path: 'ui-kit/pills', component: PillDocsComponent },
   { path: 'ui-kit/tabs', component: TabDocsComponent },
   { path: 'ui-kit/table', component: TableDocsComponent, children: [

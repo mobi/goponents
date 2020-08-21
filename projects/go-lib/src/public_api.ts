@@ -96,10 +96,14 @@ export * from './lib/components/go-modal/go-modal.service';
 export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
+export * from './lib/components/go-off-canvas/go-off-canvas.interface';
 
 // Pill
 export * from './lib/components/go-pill/go-pill.component';
 export * from './lib/components/go-pill/go-pill.module';
+
+// Portal
+export * from './lib/components/go-portal/go-portal.module';
 
 // Radio
 export * from './lib/components/go-radio/go-radio-button.component';

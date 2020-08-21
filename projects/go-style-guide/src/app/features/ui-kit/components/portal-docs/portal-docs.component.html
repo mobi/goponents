@@ -1,0 +1,60 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">Portal</h1>
+</header>
+<div class="go-container">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          A <code class="code-block--inline">portal</code>
+          gives you the ability to "teleport" a template to a different part of the UI while keeping its context where
+          it is defined. It is similar to content projection, only much more dynamic. You are not bound to render it as
+          a child of the component you want to render the template into, rather you can render it anywhere in the UI
+          that you want.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h3 class="go-heading-3">Setup</h3>
+        <p class="go-body-copy">
+          The Portal mechanism is done with the help of two directives: <code
+          class="code-block--inline">goPortalAttachTo</code> and
+          <code class="code-block--inline">goPortalTarget</code>. Both directives take a string binding that is used to
+          connect the two templates. The strings must match in order for the portal to work.
+        </p>
+        <p class="go-body-copy">
+          Apply the <code class="code-block--inline">goPortalAttachTo</code>
+          directive to the template that you want to "port", and the <code
+          class="code-block--inline">goPortalTarget</code>
+          directive on the destination where you want the "ported" template to render into.
+        </p>
+        <h3 class="go-heading-3">Example</h3>
+        <ol class="go-list go-list--ordered">
+          <li>
+            <p class="go-body-copy">
+              Specify the template for the <code class="code-block--inline">goPortalAttachTo</code>
+              directive.
+            </p>
+            <code [highlight]="goPortalAttachToExample"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              Then, specify the destination via the <code class="code-block--inline">goPortalTarget</code>
+              directive.
+            </p>
+            <code [highlight]="goPortalTargetExample"></code>
+          </li>
+          <li>
+            <p class="go-body-copy">
+              The first template will render in the place that the second template is declared.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </go-card>
+</div>

@@ -3,7 +3,7 @@
 </header>
 
 <div class="go-container">
-  
+
   <go-card class="go-column go-column--100" id="usage">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
@@ -116,6 +116,43 @@
         </ol>
       </div>
 
+    </div>
+  </go-card>
+  <go-card class="go-column go-column--100" id="large">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Large Off Canvas</h2>
+      <go-copy cardId="large" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          To render a large off canvas, add the <code class="code-block--inline">size</code> option to the <code
+          class="code-block--inline">openOffCanvas</code> method.
+        </p>
+      </div>
+      <div class="go-column go-column--50">
+        <code [highlight]="largeOffCanvasExample"></code>
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4">View</h4>
+        <go-button
+          (handleClick)="openLargeOffCanvas()"
+          buttonIcon="subdirectory_arrow_right"
+          buttonVariant="neutral">
+          Open Large Off Canvas
+        </go-button>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h3 class="go-heading-3">Header</h3>
+        <p class="go-body-copy">
+          To project content from the component being rendered in the off-canvas into the header (like a submit or
+          close button) wrap it in a <code class="code-block--inline">go-off-canvas-header</code> component and it will
+          be rendered in the right side of the off-canvas header.
+        </p>
+      </div>
+      <div class="go-column go-column--50">
+        <code [highlight]="headerExample"></code>
+      </div>
     </div>
   </go-card>
 </div>
