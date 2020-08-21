@@ -12,6 +12,7 @@ describe('GoModalComponent', () => {
   let component: GoModalComponent;
   let fixture: ComponentFixture<GoModalComponent>;
   let goModalHostFixture: ComponentFixture<GoTestModalHostComponent>;
+  let goModalService: GoModalService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -37,6 +38,7 @@ describe('GoModalComponent', () => {
 
     component = fixture.componentInstance;
     component.goModalHost = goModalHostFixture.componentInstance.goModalHost;
+    goModalService = TestBed.get(GoModalService);
 
     fixture.detectChanges();
   });
@@ -45,17 +47,25 @@ describe('GoModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('loadComponent', () => {
-    beforeEach(() => {
+  describe('ngOnInit', () => {
+    it('sets up a subscription to clear the view container if the off canvas is closed', () => {
       spyOn(component.goModalHost.viewContainerRef, 'clear');
 
+      goModalService.openModal(GoTestModalHostComponent, { });
+
+      expect(component.currentComponent).toBeDefined();
+
+      goModalService.toggleModal(false);
+
+      expect(component.goModalHost.viewContainerRef.clear).toHaveBeenCalled();
+    });
+  });
+
+  describe('loadComponent', () => {
+    beforeEach(() => {
       // Variables reset to initial component state
       component.modalTitle = undefined;
       component.modalSize = component.defaultModalSize;
-    });
-
-    afterEach(() => {
-      expect(component.goModalHost.viewContainerRef.clear).toHaveBeenCalled();
     });
 
     it('handles when no title and no modal size is set', () => {
