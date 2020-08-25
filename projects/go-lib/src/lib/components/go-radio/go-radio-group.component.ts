@@ -12,7 +12,7 @@ export class GoRadioGroupComponent implements AfterContentChecked {
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() legend: string;
-  @Input() fieldset: boolean = true;
+  @Input() enableFieldset: boolean = true;
   @Input() enableLegend: boolean = true;
   @Input() theme: 'light' | 'dark' = 'light';
 
