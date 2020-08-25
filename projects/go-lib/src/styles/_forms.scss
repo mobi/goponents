@@ -22,6 +22,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 }
 
+.go-form__fieldset--disable {
+  margin-bottom: $column-gutter--double;
+}
+
 .go-form--dark .go-form__fieldset,
 .go-form__fieldset--dark {
   &:disabled {
