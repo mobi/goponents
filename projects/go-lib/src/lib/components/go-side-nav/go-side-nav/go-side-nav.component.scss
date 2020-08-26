@@ -71,4 +71,16 @@
     padding-right: 3.5px;
     padding-top: 3px;
   }
+
+  .go-side-nav__app-drawer--switch-to {
+    color: $base-light-secondary;
+    cursor: default;
+    font-size: 0.6875rem;
+    padding: 0.75rem;
+    width: 100%;
+
+    &:hover {
+      background: $theme-light-bg;
+    }
+  }
 }
