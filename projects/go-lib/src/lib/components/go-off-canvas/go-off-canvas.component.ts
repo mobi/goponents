@@ -1,4 +1,12 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ComponentFactory,
+  ComponentFactoryResolver,
+  ComponentRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
@@ -23,6 +31,7 @@ export class GoOffCanvasComponent implements OnInit {
   header: string;
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
+  size: 'large' | 'small' = 'small';
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -30,13 +39,16 @@ export class GoOffCanvasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.goOffCanvasService.activeOffCanvasComponent.subscribe((goOffCanvasItem) => {
+    this.goOffCanvasService.activeOffCanvasComponent.subscribe((goOffCanvasItem: GoOffCanvasItem) => {
       this.currentOffCanvasItem = goOffCanvasItem;
       this.loadComponent();
     });
 
-    this.goOffCanvasService.offCanvasOpen.subscribe((value) => {
+    this.goOffCanvasService.offCanvasOpen.subscribe((value: boolean) => {
       this.opened = value;
+      if (this.opened === false) {
+        this.destroyComponent();
+      }
     });
   }
 
@@ -45,19 +57,21 @@ export class GoOffCanvasComponent implements OnInit {
   }
 
   private loadComponent(): void {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+    const componentFactory: ComponentFactory<any> = this.componentFactoryResolver.resolveComponentFactory(
       this.currentOffCanvasItem.component
     );
-    const viewContainerRef = this.goOffCanvasHost.viewContainerRef;
+    const viewContainerRef: ViewContainerRef = this.goOffCanvasHost.viewContainerRef;
+    const componentRef: ComponentRef<any> = viewContainerRef.createComponent(componentFactory);
 
-    viewContainerRef.clear();
-
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-
-    Object.keys(this.currentOffCanvasItem.bindings).forEach(key => {
+    Object.keys(this.currentOffCanvasItem.bindings).forEach((key: string) => {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
     });
 
+    this.size = this.currentOffCanvasItem.size || 'small';
     this.header = this.currentOffCanvasItem.header;
+  }
+
+  private destroyComponent(): void {
+    this.goOffCanvasHost.viewContainerRef.clear();
   }
 }

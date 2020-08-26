@@ -61,3 +61,23 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.go-off-canvas--large {
+  background-color: $theme-light-app-bg;
+  color: $theme-light-color;
+  width: 75vw;
+
+  .go-off-canvas__header {
+    background-color: $theme-light-bg;
+    box-shadow: $global-box-shadow--regular;
+    flex-wrap: wrap;
+  }
+
+  .go-off-canvas__title {
+    color: $theme-light-color;
+  }
+
+  .go-off-canvas__content {
+    padding: 1rem;
+  }
+}

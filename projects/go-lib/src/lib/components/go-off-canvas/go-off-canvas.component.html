@@ -6,17 +6,21 @@
 >
 </div>
 <div
-  [@offCanvas]="opened ? 'slideIn' : 'slideOut'"
+  [@offCanvas]="{value: opened ? 'slideIn' : 'slideOut', params: {width: size === 'large' ? '75vw' : '300px'}}"
   class="go-off-canvas"
+  [ngClass]="{'go-off-canvas--large': size === 'large'}"
   role="dialog"
 >
   <div class="go-off-canvas__header">
     <h3 *ngIf="header" class="go-heading-3 go-heading--no-margin go-off-canvas__title">
       {{ header }}
     </h3>
-    <go-icon-button buttonSize="medium" buttonIcon="close"
-                    (handleClick)="closeOffCanvas()">
-    </go-icon-button>
+    <ng-container [ngSwitch]="size">
+      <go-icon-button *ngSwitchCase="'small'" buttonSize="medium" buttonIcon="close"
+                      (handleClick)="closeOffCanvas()">
+      </go-icon-button>
+      <ng-container *ngSwitchCase="'large'" goPortalTarget="offCanvasHeader"></ng-container>
+    </ng-container>
   </div>
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>

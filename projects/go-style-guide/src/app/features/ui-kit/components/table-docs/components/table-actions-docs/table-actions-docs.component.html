@@ -15,6 +15,12 @@
       <p class="go-body-copy">
         For the table actions to appear, you must toggle them on by using <code class="code-block--inline">showTableActions</code>
       </p>
+      <p class="go-body-copy">
+        Also, the size of the button icons can be controlled via the binding <code class="code-block--inline">buttonSize</code>.
+        The design guidelines suggest using <code class="code-block--inline">buttonSize="medium"</code>.
+        For more details, you can refer to the Button Size section on the 
+        <a routerLink="/ui-kit/icon-button">Icon Button documentation</a>.
+      </p>
     </ng-container>
   </go-card>
 
@@ -24,8 +30,8 @@
     tableTitle="Example of Table Actions"
     [showTableActions]="true">
     <ng-container go-table-actions>
-      <go-icon-button buttonIcon="filter"></go-icon-button>
-      <go-icon-button buttonIcon="settings"></go-icon-button>
+      <go-icon-button buttonIcon="filter" buttonSize="medium"></go-icon-button>
+      <go-icon-button buttonIcon="settings" buttonSize="medium"></go-icon-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
