@@ -70,6 +70,7 @@
   .go-off-canvas__header {
     background-color: $theme-light-bg;
     box-shadow: $global-box-shadow--regular;
+    flex-wrap: wrap;
   }
 
   .go-off-canvas__title {
