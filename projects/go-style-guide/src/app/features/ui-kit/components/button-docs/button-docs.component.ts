@@ -30,6 +30,7 @@ export class ButtonDocsComponent {
 
   pageTitle: string = 'Button';
 
+
   componentBindings: string = `
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
@@ -102,6 +103,9 @@ export class ButtonDocsComponent {
     }, 3800);
   }
 
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button','_blank')
+  }
 
   private buttonTemplate(variant: string, icon: string): string {
     return `
