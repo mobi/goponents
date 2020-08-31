@@ -1,15 +1,19 @@
 <div class="go-form__switch-toggle__container">
   <ng-container *ngTemplateOutlet="labelPosition === 'before' ? labelTemplate : null"></ng-container>
 
-  <div class="go-form__switch-toggle" (click)="toggle()">
+  <div
+    class="go-form__switch-toggle"
+    (click)="toggle()">
     <input
       [id]="id"
       class="go-form__switch-toggle__input"
       [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
       type="checkbox"
-      [formControl]="control"
-    >
-    <span class="go-form__switch-toggle__toggle"></span>
+      [formControl]="control">
+    <span
+      class="go-form__switch-toggle__toggle"
+      [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': isDisabled }">
+    </span>
   </div>
 
   <ng-container *ngTemplateOutlet="labelPosition === 'after' ? labelTemplate : null"></ng-container>
@@ -32,8 +36,11 @@
     *ngIf="label"
     [attr.for]="id"
     class="go-form__label go-form__label--inline go-form__switch-toggle__label"
-    [ngClass]="{'go-form__label--dark': theme === 'dark', 'go-form__switch-toggle__label--before': labelPosition === 'before'}"
-  >
+    [ngClass]="{
+      'go-form__label--dark': theme === 'dark',
+      'go-form__switch-toggle__label--before': labelPosition === 'before',
+      'go-form__switch-toggle__label--disabled': isDisabled
+    }">
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
   </label>
