@@ -12,7 +12,7 @@
       [formControl]="control">
     <span
       class="go-form__switch-toggle__toggle"
-      [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': isDisabled }">
+      [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': disabled }">
     </span>
   </div>
 
@@ -43,7 +43,7 @@
     [ngClass]="{
       'go-form__label--dark': theme === 'dark',
       'go-form__switch-toggle__label--before': labelPosition === 'before',
-      'go-form__switch-toggle__label--disabled': isDisabled
+      'go-form__switch-toggle__label--disabled': disabled
     }">
     {{ label }}
     <go-required-text [control]="control"></go-required-text>

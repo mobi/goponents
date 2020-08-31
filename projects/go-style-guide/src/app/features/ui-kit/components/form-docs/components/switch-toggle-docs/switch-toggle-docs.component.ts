@@ -89,11 +89,11 @@ export class SwitchToggleDocsComponent implements OnInit {
   </go-switch-toggle>
   `;
 
-  isDisabledEx: string = `
+  disabledEx: string = `
   <go-switch-toggle
     [control]="control8"
     label="Control"
-    [isDisabled]="true">
+    [disabled]="true">
   </go-switch-toggle>
   `;
 

@@ -297,7 +297,7 @@
 
   <go-card id="form-toggle-disabled" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2 go-heading--no-wrap">Component isDisabled</h2>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component disabled</h2>
       <go-copy cardId="form-toggle-disabled" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
@@ -305,7 +305,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           A switch toggle can be disabled by passing a truthy value to the
-          <code class="code-block--inline">@Input() isDisabled: false</code>.
+          <code class="code-block--inline">@Input() disabled: false</code>.
         </p>
       </div>
 
@@ -316,13 +316,13 @@
             <go-switch-toggle
               [control]="control8"
               label="Control"
-              [isDisabled]="true">
+              [disabled]="true">
             </go-switch-toggle>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
-              [highlight]="isDisabledEx"
+              [highlight]="disabledEx"
               class="code-block--no-bottom-margin">
             </code>
           </div>
