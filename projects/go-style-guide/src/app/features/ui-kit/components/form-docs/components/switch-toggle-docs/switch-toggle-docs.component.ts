@@ -15,6 +15,7 @@ export class SwitchToggleDocsComponent implements OnInit {
   control5: FormControl = new FormControl('');
   control6: FormControl = new FormControl('');
   control7: FormControl = new FormControl('');
+  control8: FormControl = new FormControl('');
 
   hints: Array<string> = ['Toggling this does something.'];
 
@@ -85,6 +86,14 @@ export class SwitchToggleDocsComponent implements OnInit {
     [control]="control7"
     label="Dark Label"
     theme="dark">
+  </go-switch-toggle>
+  `;
+
+  isDisabledEx: string = `
+  <go-switch-toggle
+    [control]="control8"
+    label="Control"
+    [isDisabled]="true">
   </go-switch-toggle>
   `;
 
