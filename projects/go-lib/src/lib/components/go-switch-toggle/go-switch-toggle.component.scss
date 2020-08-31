@@ -79,11 +79,11 @@
   user-select: none;
 }
 
-.go-form__switch-toggle__label--disabled {
-  color: $base-light-secondary;
-}
-
 .go-form__switch-toggle__label--before {
   padding-left: 0;
   padding-right: 0.75rem;
+}
+
+.go-form__switch-toggle__label--disabled {
+  color: $base-light-secondary;
 }
