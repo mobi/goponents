@@ -19,7 +19,11 @@
   <ng-container *ngTemplateOutlet="labelPosition === 'after' ? labelTemplate : null"></ng-container>
 </div>
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+<go-hint
+  *ngFor="let hint of hints"
+  [message]="hint"
+  [theme]="theme">
+</go-hint>
 
 <div *ngIf="control?.errors?.length">
   <go-hint
@@ -27,8 +31,8 @@
     [message]="error.message"
     [label]="error.type"
     [theme]="theme"
-    type="negative"
-  ></go-hint>
+    type="negative">
+  </go-hint>
 </div>
 
 <ng-template #labelTemplate>
