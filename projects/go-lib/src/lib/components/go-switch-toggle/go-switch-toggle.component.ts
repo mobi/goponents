@@ -11,7 +11,6 @@ export class GoSwitchToggleComponent implements OnInit {
   id: string;
 
   @Input() control: FormControl;
-  @Input() disabled: boolean = false;
   @Input() key: string;
   @Input() hints: string[];
   @Input() label: string;
@@ -25,7 +24,7 @@ export class GoSwitchToggleComponent implements OnInit {
   }
 
   toggle(): void {
-    if (!this.disabled) {
+    if (!this.control.disabled) {
       this.control.setValue(!this.control.value);
     }
   }

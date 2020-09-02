@@ -9,11 +9,10 @@
       class="go-form__switch-toggle__input"
       [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
       type="checkbox"
-      [formControl]="control"
-      [attr.disabled]="disabled">
+      [formControl]="control">
     <span
       class="go-form__switch-toggle__toggle"
-      [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': disabled }">
+      [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': control.disabled }">
     </span>
   </div>
 
@@ -44,7 +43,7 @@
     [ngClass]="{
       'go-form__label--dark': theme === 'dark',
       'go-form__switch-toggle__label--before': labelPosition === 'before',
-      'go-form__switch-toggle__label--disabled': disabled
+      'go-form__switch-toggle__label--disabled': control.disabled
     }">
     {{ label }}
     <go-required-text [control]="control"></go-required-text>

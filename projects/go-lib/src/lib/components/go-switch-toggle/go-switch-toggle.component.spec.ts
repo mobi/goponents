@@ -41,18 +41,18 @@ describe('GoCheckboxComponent', () => {
   });
 
   describe('toggle', () => {
-    it('should toggle the value of control if disabled is false', () => {
-      component.disabled = false;
-      component.control.setValue(false);
+    it('should toggle the value of control if control is not disabled', () => {
+      const toggleControl: FormControl = new FormControl({ value: false, disabled: false });
+      component.control = toggleControl;
 
       component.toggle();
 
       expect(component.control.value).toBe(true);
     });
 
-    it('should not toggle the value of control if disabled is true', () => {
-      component.disabled = true;
-      component.control.setValue(false);
+    it('should not toggle the value of control if the control is disabled', () => {
+      const toggleControl: FormControl = new FormControl({ value: false, disabled: true });
+      component.control = toggleControl;
 
       component.toggle();
 
