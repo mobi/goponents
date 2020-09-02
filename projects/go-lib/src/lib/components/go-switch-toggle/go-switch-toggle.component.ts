@@ -22,10 +22,6 @@ export class GoSwitchToggleComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'toggle');
-
-    if (this.disabled) {
-      this.control.disable();
-    }
   }
 
   toggle(): void {
