@@ -85,6 +85,18 @@ describe('GoRadioGroupComponent', () => {
       expect(buttonTwo.name).toContain('Random-Name-');
     });
 
+    it('should have enableLegend set to true by default on page load', () => {
+      component.ngAfterContentChecked();
+
+      expect(component.enableLegend).toBeTruthy();
+    });
+
+    it('should have enableFieldset set to true by default on page load', () => {
+      component.ngAfterContentChecked();
+
+      expect(component.enableLegend).toBeTruthy();
+    });
+    
     it('should set a name on each child component when legend is NOT provided', () => {
       component.legend = undefined;
       component.ngAfterContentChecked();
