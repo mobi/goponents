@@ -94,7 +94,7 @@ describe('GoRadioGroupComponent', () => {
     it('should have enableFieldset set to true by default on page load', () => {
       component.ngAfterContentChecked();
 
-      expect(component.enableLegend).toBeTruthy();
+      expect(component.enableFieldset).toBeTruthy();
     });
     
     it('should set a name on each child component when legend is NOT provided', () => {
