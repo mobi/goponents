@@ -38,22 +38,6 @@ describe('GoCheckboxComponent', () => {
 
       expect(component.id.startsWith('toggle')).toBe(true);
     });
-
-    it('should not disable the form control if disabled is false', () => {
-      component.disabled = false;
-
-      component.ngOnInit();
-
-      expect(component.control.disabled).toBe(false);
-    });
-
-    it('should disable the form control if disabled is true', () => {
-      component.disabled = true;
-
-      component.ngOnInit();
-
-      expect(component.control.disabled).toBe(true);
-    });
   });
 
   describe('toggle', () => {

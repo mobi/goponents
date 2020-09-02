@@ -10,7 +10,7 @@
       [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
       type="checkbox"
       [formControl]="control"
-      [disabled]="disabled">
+      [attr.disabled]="disabled">
     <span
       class="go-form__switch-toggle__toggle"
       [ngClass]="{ 'go-form__switch-toggle__toggle--disabled': disabled }">
