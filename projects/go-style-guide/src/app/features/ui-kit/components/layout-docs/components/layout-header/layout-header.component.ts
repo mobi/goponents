@@ -54,5 +54,6 @@ export class LayoutHeaderComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Header';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-header';
   }
 }

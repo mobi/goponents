@@ -44,4 +44,7 @@ export class CardDocsComponent {
 
   constructor() { }
 
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-card','_blank')
+  }
 }

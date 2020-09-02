@@ -30,4 +30,8 @@ export class LoaderDocsComponent {
   toggleLoader(): void {
     this.showLoader = !this.showLoader;
   }
+
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-loader','_blank')
+  }
 }

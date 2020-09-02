@@ -107,6 +107,7 @@ export class TextAreaDocsComponent implements OnInit {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Textarea';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-text-area';
   }
 
   ngOnInit(): void {

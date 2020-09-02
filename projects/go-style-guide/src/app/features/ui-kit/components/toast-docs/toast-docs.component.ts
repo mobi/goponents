@@ -137,4 +137,8 @@ export class ToastDocsComponent {
     this.toasterService.toastSuccess({ message: 'You clicked the button!' });
   }
 
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-toast','_blank')
+  }
+
 }

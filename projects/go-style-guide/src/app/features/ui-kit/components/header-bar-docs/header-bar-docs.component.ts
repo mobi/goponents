@@ -56,4 +56,8 @@ export class HeaderBarDocsComponent implements OnInit {
     console.log(this);
     this.toaster.toastInfo({ message: 'Go Back Clicked' });
   }
+
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-header-bar','_blank')
+  }
 }

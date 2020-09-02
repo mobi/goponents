@@ -110,4 +110,8 @@ export class ModalDocsComponent {
     });
   }
 
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-modal','_blank')
+  }
+
 }

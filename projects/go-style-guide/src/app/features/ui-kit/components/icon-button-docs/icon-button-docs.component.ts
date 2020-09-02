@@ -85,4 +85,8 @@ export class IconButtonDocsComponent {
   public testClick(): void {
     alert('Button clicked!');
   }
+
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-icon-button','_blank')
+  }
 }

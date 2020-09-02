@@ -96,6 +96,7 @@ export class InputDocsComponent implements OnInit {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Input';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-input';
   }
 
   ngOnInit(): void {

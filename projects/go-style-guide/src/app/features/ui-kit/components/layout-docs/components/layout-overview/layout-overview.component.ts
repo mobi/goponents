@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
@@ -52,5 +53,6 @@ export class LayoutOverviewComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Layout Overview';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-layout';
   }
 }

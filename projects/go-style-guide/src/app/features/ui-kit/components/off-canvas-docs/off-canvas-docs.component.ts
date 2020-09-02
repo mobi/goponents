@@ -120,4 +120,8 @@ export class OffCanvasDocsComponent {
       size: 'large'
     });
   }
+
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-off-canvas','_blank')
+  }
 }

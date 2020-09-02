@@ -55,4 +55,8 @@ export class TabDocsComponent {
     </go-tab>
   </go-tab-group>
   `;
+
+  linkToSource(): void {
+    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-tab','_blank')
+  }
 }
