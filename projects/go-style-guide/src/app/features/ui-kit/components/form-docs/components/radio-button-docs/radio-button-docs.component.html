@@ -74,47 +74,6 @@
         </div>
       </div>
 
-      <div class="go-column go-column--100">
-        <p class="go-body-copy">
-          Additionally, there are two more bindings: <code class="code-block--inline">enableFieldset</code> and
-          <code class="code-block--inline">enableLegend</code>. You can use these to show/ hide the fieldset and (or)
-          the legend, respectively. By default, both are set to <code class="code-block--inline">true</code>.
-        </p>
-        <p class="go-body-copy">
-          Refer to the example below:
-        </p>
-      </div>
-
-      <div class="go-column go-column--100 go-column--no-padding">
-        <div class="go-container">
-          <div class="go-column go-column--50">
-            <h4 class="go-heading-4 go-heading--underlined">View</h4>
-            <go-radio-group
-              [enableFieldset]="false"
-              [enableLegend]="false"
-              [control]="radio5">
-              <div>
-                <go-radio-button
-                  label="Option 1"
-                  formValue="option1">
-                </go-radio-button>
-                <go-radio-button
-                  label="Option 2"
-                  formValue="option2">
-                </go-radio-button>
-              </div>
-            </go-radio-group>
-          </div>
-          <div class="go-column go-column--50">
-            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio5Ex"
-              class="code-block--no-bottom-margin">
-            </code>
-          </div>
-        </div>
-      </div>
-
     </div>
   </go-card>
 
@@ -235,10 +194,10 @@
     </div>
   </go-card>
 
-  <go-card id="form-radio-hints" class="go-column go-column--100">
+  <go-card id="form-radio-theme" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Radio Theme</h2>
-      <go-copy cardId="form-radio-hints" goCopyCardLink></go-copy>
+      <go-copy cardId="form-radio-theme" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
@@ -272,6 +231,54 @@
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
               [highlight]="radio4Ex"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-radio-bindings" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Additional Radio Bindings</h2>
+      <go-copy cardId="form-radio-bindings" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          There are two more bindings: <code class="code-block--inline">enableFieldset</code> and
+          <code class="code-block--inline">enableLegend</code>. You can use these to show/ hide the fieldset and (or)
+          the legend, respectively. By default, both are set to <code class="code-block--inline">true</code>.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-radio-group
+              [enableFieldset]="false"
+              [enableLegend]="false"
+              [control]="radio5">
+              <div>
+                <go-radio-button
+                  label="Option 1"
+                  formValue="option1">
+                </go-radio-button>
+                <go-radio-button
+                  label="Option 2"
+                  formValue="option2">
+                </go-radio-button>
+              </div>
+            </go-radio-group>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="radio5Ex"
               class="code-block--no-bottom-margin">
             </code>
           </div>
