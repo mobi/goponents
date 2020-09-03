@@ -36,10 +36,6 @@ export class SubNavComponent {
     return this.mobileSubmenuShown ? 'chevron_right' : 'chevron_left';
   }
 
-  linkToSource(): void {
-    window.open(this.subNavService.linkToSource,'_blank')
-  }
-
   closeMobileMenu(): void {
     this.mobileSubmenuShown = false;
   }

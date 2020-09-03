@@ -1,6 +1,10 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">{{ subNavService.pageTitle }}</h1>
-  <go-button (handleClick)="linkToSource()" buttonVariant="neutral"> Link To Source </go-button>
+  <a
+  [href]="subNavService.linkToSource"
+  target="_blank">
+  <go-button buttonVariant="neutral">View on GitHub</go-button>
+</a>
 </header>
 <div class="sub-nav-container">
   <div class="sub-nav-outlet" [@routerAnimation]="getRouteAnimation(o)">
