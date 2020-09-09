@@ -12,6 +12,7 @@ export class RadioButtonDocsComponent {
   radio2: FormControl = new FormControl('');
   radio3: FormControl = new FormControl('');
   radio4: FormControl = new FormControl('');
+  radio5: FormControl = new FormControl('');
 
   hints: Array<string> = ['this is a hint for the radio group'];
 
@@ -94,6 +95,20 @@ export class RadioButtonDocsComponent {
       </go-radio-button>
     </div>
     <div>
+      <go-radio-button label="Option 2" formValue="option2">
+      </go-radio-button>
+    </div>
+  </go-radio-group>
+  `;
+
+  radio5Ex: string = `
+  <go-radio-group
+    [enableFieldset]="false"
+    [enableLegend]="false"
+    [control]="radio5">
+    <div>
+      <go-radio-button label="Option 1" formValue="option1">
+      </go-radio-button>
       <go-radio-button label="Option 2" formValue="option2">
       </go-radio-button>
     </div>
