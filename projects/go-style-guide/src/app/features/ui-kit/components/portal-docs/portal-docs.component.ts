@@ -18,7 +18,6 @@ export class PortalDocsComponent {
   </div>
   `;
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-portal','_blank')
-  }
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-portal';
+
 }

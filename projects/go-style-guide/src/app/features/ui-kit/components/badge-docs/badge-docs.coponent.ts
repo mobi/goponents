@@ -36,7 +36,8 @@ export class BadgeDocsComponent {
   `;
 
   pageTitle: string = 'Badge';
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge','_blank')
-  }
+  // linkToSource(): void {
+  //   window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge','_blank')
+  // }
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge';
 }

@@ -1,6 +1,10 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">Tree</h1>
-  <go-button (handleClick)="linkToSource()" buttonVariant="neutral"> View On GitHub </go-button>
+  <a
+  [href]="linkToSource"
+  target="_blank">
+    <go-button buttonVariant="neutral"> View on GitHub </go-button>
+  </a>
 </header>
 
 <section class="go-container">

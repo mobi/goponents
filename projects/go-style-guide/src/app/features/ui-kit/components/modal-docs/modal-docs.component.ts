@@ -88,6 +88,8 @@ export class ModalDocsComponent {
   });
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-modal';
+
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
@@ -108,10 +110,6 @@ export class ModalDocsComponent {
       content: 'This area has no padding',
       noContentPadding: true
     });
-  }
-
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-modal','_blank')
   }
 
 }

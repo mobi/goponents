@@ -42,9 +42,8 @@ export class CardDocsComponent {
     <hr class="go-hr go-hr--allow-padding">
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-card';
+
   constructor() { }
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-card','_blank')
-  }
 }

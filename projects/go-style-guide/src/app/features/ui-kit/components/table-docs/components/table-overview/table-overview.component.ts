@@ -13,6 +13,7 @@ export class TableOverviewComponent {
     private tableDocsService: TableDocsService
   ) {
     this.subNavService.pageTitle = 'Table Overview';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   ////////////////////////////

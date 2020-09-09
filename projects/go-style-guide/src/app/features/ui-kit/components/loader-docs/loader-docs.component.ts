@@ -27,11 +27,10 @@ export class LoaderDocsComponent {
   <go-loader *ngIf="showLoader"></go-loader>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-loader';
+
   toggleLoader(): void {
     this.showLoader = !this.showLoader;
   }
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-loader','_blank')
-  }
 }

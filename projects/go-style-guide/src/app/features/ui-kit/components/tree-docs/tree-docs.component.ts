@@ -44,6 +44,8 @@ export class TreeDocsComponent {
   <go-tree [nodeConfig]="exampleDefaultTreeData"></go-tree>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-tree';
+
   exampleDefaultTreeData: GoTreeNodeConfig[] = [
     {
       name: 'Fruit',
@@ -65,7 +67,4 @@ export class TreeDocsComponent {
     }
   ];
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-tree','_blank')
-  }
 }

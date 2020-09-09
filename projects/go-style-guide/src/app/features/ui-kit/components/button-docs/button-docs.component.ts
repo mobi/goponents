@@ -90,6 +90,8 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button';
+
   constructor(private titleCasePipe: TitleCasePipe) { }
 
   testClick(): void {
@@ -101,10 +103,6 @@ export class ButtonDocsComponent {
     setTimeout(() => {
       this[button + 'Loading'] = false;
     }, 3800);
-  }
-
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button','_blank')
   }
 
   private buttonTemplate(variant: string, icon: string): string {

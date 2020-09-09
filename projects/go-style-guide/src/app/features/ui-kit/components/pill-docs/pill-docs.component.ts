@@ -29,11 +29,10 @@ export class PillDocsComponent {
   }
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-pill';
+
   removed(): void {
     this.showPill = false;
   }
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-pill','_blank')
-  }
 }

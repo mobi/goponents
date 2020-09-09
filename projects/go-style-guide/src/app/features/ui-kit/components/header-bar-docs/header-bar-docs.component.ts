@@ -33,6 +33,8 @@ export class HeaderBarDocsComponent implements OnInit {
     </div>
   </ng-template> `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-header-bar';
+
   constructor(private toaster: GoToasterService) {
     this.backArrowSwitchControl.setValue(true);
   }
@@ -57,7 +59,4 @@ export class HeaderBarDocsComponent implements OnInit {
     this.toaster.toastInfo({ message: 'Go Back Clicked' });
   }
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-header-bar','_blank')
-  }
 }

@@ -30,7 +30,6 @@ export class CopyDocsComponent {
   </go-card>
   `;
 
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-copy','_blank')
-  }
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-copy';
+
 }

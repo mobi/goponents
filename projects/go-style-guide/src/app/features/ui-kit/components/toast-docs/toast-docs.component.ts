@@ -122,6 +122,8 @@ export class ToastDocsComponent {
   </go-toast>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-toast';
+
   constructor(private toasterService: GoToasterService) { }
 
   dismissed(): void {
@@ -135,10 +137,6 @@ export class ToastDocsComponent {
 
   sendToast(): void {
     this.toasterService.toastSuccess({ message: 'You clicked the button!' });
-  }
-
-  linkToSource(): void {
-    window.open('https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-toast','_blank')
   }
 
 }
