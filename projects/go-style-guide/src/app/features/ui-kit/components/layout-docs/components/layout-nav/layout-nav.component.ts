@@ -108,5 +108,6 @@ export class LayoutNavComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Side Navigation';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-side-nav';
   }
 }

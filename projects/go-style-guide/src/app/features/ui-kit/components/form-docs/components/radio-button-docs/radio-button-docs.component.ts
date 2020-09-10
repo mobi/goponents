@@ -117,5 +117,6 @@ export class RadioButtonDocsComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Radio Button';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-radio';
   }
 }

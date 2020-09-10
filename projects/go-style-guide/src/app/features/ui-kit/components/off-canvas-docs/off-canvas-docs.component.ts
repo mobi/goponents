@@ -94,7 +94,9 @@ export class OffCanvasDocsComponent {
     <go-button (handleClick)="closeOffCanvas()">Close</go-button>
   </go-off-canvas-header>
   <div>This will render in the off canvas as usual</div>
-  `
+  `;
+
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-off-canvas';
 
   constructor(
     private goOffCanvasService: GoOffCanvasService
@@ -120,4 +122,5 @@ export class OffCanvasDocsComponent {
       size: 'large'
     });
   }
+
 }

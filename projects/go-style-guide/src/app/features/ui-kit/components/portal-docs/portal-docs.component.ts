@@ -17,4 +17,7 @@ export class PortalDocsComponent {
     <ng-container goPortalTarget="enterprise"></ng-container>
   </div>
   `;
+
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-portal';
+
 }

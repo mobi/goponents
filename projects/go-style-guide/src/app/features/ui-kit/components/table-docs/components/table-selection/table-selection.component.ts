@@ -183,6 +183,7 @@ export class TableSelectionComponent {
     private toasterService: GoToasterService
   ) {
     this.subNavService.pageTitle = 'Table Selection';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   tableRowEvent(rowEvent: RowSelectionEvent): void {

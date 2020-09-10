@@ -122,6 +122,8 @@ export class ToastDocsComponent {
   </go-toast>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-toast';
+
   constructor(private toasterService: GoToasterService) { }
 
   dismissed(): void {

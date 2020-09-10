@@ -41,6 +41,7 @@ export class TableTitleTemplateComponent {
     private toasterService: GoToasterService
   ) {
     this.subNavService.pageTitle = 'Title Template';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   tableConfig: GoTableConfig = new GoTableConfig({

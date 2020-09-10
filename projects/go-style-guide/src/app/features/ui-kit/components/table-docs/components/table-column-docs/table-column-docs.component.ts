@@ -10,6 +10,7 @@ import { TableDocsService } from '../../table-docs.service';
 export class TableColumnDocsComponent {
   constructor(private tableDocsService: TableDocsService, private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Table Columns';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   componentBindings: string = `

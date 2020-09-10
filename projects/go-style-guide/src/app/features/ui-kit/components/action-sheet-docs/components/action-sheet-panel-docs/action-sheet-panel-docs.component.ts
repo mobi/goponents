@@ -157,6 +157,8 @@ export class ActionSheetPanelDocsComponent {
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Action Sheet Panel';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-action-sheet/go-panel';
+
   }
 
   toast(): void {

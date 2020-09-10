@@ -30,6 +30,7 @@ export class ButtonDocsComponent {
 
   pageTitle: string = 'Button';
 
+
   componentBindings: string = `
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
@@ -89,6 +90,8 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button';
+
   constructor(private titleCasePipe: TitleCasePipe) { }
 
   testClick(): void {
@@ -101,7 +104,6 @@ export class ButtonDocsComponent {
       this[button + 'Loading'] = false;
     }, 3800);
   }
-
 
   private buttonTemplate(variant: string, icon: string): string {
     return `

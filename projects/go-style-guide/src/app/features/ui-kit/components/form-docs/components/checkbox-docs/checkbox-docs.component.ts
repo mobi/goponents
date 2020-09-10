@@ -167,6 +167,7 @@ export class CheckboxDocsComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Checkboxes';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-checkbox';
   }
 
 }

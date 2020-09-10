@@ -88,6 +88,8 @@ export class ModalDocsComponent {
   });
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-modal';
+
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {

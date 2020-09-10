@@ -372,6 +372,7 @@ export class SelectDocsComponent implements OnInit {
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Select';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-select';
   }
 
   ngOnInit(): void {

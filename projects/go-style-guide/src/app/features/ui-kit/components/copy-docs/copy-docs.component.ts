@@ -29,4 +29,7 @@ export class CopyDocsComponent {
     </ng-container>
   </go-card>
   `;
+
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-copy';
+
 }
