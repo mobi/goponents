@@ -27,7 +27,7 @@
       </ng-container>
       <ng-container go-action-sheet-content>
         <go-panel [showHeader]="true">
-          <p class="go-side-nav__app-drawer--launch">{{ headerText }}</p>
+          <p class="go-side-nav__app-drawer--launch">{{ appDrawerHeader }}</p>
         </go-panel>
         <go-panel *ngFor="let appDrawerItem of (navAppDrawer?.appDrawerConfig || [])"
                   [icon]="appDrawerItem.icon"

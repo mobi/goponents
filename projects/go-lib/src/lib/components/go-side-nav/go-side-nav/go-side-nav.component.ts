@@ -16,7 +16,7 @@ import { GoSideNavService } from './go-side-nav.service';
 export class GoSideNavComponent implements OnInit {
   @Input() menuItems: Array<NavGroup | NavItem>;
   @Input() navAppDrawer: NavAppDrawer;
-  @Input() headerText: string = 'Launch';
+  @Input() appDrawerHeader: string = 'Launch';
 
 
   constructor (
