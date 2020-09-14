@@ -11,6 +11,7 @@ export class LayoutNavComponent {
   componentBindings: string = `
   @Input() menuItems: Array<NavGroup | NavItem>;
   @Input() navAppDrawer: NavAppDrawer;
+  @Input() appDrawerHeader: string = 'Launch';
   `;
 
   bindings_menuItems: string = `
