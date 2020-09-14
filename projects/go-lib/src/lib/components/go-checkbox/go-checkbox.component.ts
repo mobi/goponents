@@ -10,7 +10,6 @@ export class GoCheckboxComponent implements OnInit {
   id: string;
 
   @Input() control: FormControl;
-  @Input() disabled: boolean = false;
   @Input() hints: string[];
   @Input() key: string;
   @Input() label: string;
