@@ -50,7 +50,7 @@ export class TestPage3Component implements OnInit {
     food: new FormGroup({
       apples: new FormControl(''),
       bananas: new FormControl({value: '', disabled: true}),
-      mangos: new FormControl({value: true, disabled: true}),
+      mangoes: new FormControl({value: true, disabled: true}),
       oranges: new FormControl(true)
     }),
     name: new FormControl({value: '', disabled: false}, Validators.required),
