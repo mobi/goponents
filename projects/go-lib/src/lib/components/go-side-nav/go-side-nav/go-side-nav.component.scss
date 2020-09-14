@@ -58,6 +58,7 @@
 }
 
 .go-side-nav__app-drawer {
+  border-radius: 50%;
   cursor: pointer;
   margin-left: auto;
 
@@ -65,6 +66,15 @@
     padding-top: .5rem;
     display: flex;
   }
+
+  &:hover {
+    background: $theme-dark-bg-hover;
+  }
+
+  &:active {
+    background: $theme-dark-bg-active;
+  }
+
 
   .go-side-nav__app-drawer--icon-collapsed {
     display: flex;
