@@ -72,6 +72,11 @@
   }
 }
 
+.go-table__select-all-checkbox {
+  top: -0.4rem;
+  position: relative;
+}
+
 .go-table__head--sortable {
   cursor: pointer;
 
@@ -104,6 +109,10 @@
   .go-table__body-row:last-child & {
     border-bottom: 0;
   }
+}
+
+.go-table__body-column--selectable {
+  padding-top: 0.4rem;
 }
 
 .go-table__body-row:nth-child(even) {

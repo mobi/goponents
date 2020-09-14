@@ -23,14 +23,14 @@
       <go-copy cardId="form-checkbox" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
-      
+
       <div class="go-column go-column--100">
         <p class="go-body-copy">
           This simplest way to implement a checkbox requires a <code class="code-block--inline">&lt;go-checkbox&gt;</code> with the
           <code class="code-block--inline">label</code> and <code class="code-block--inline">[control]</code> bindings
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
-          On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the 
+          On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the
           <code class="code-block--inline">label</code> is the name that identifies this checkbox
           and the <code class="code-block--inline">[control]</code> is the corresponding <code class="code-block--inline">FormControl</code>.
         </p>
@@ -69,7 +69,7 @@
           <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>.
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
-          On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on 
+          On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on
           this component are the <code class="code-block--inline">legend</code> (identifies this set of options)
           and the <code class="code-block--inline">[control]</code> (corresponds to a <code class="code-block--inline">FormControl</code>).
         </p>
@@ -269,6 +269,46 @@
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
               [highlight]="checkbox4Ex"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-checkbox-indeterminate" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Checkbox Indeterminate</h2>
+      <go-copy cardId="form-checkbox-indeterminate" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          The <code class="code-block--inline">@Input() indeterminate: boolean = false;</code> can be used to set the display state of the
+          checkbox to <code class="code-block--inline">indeterminate</code>.
+        </p>
+        <p class="go-body-copy go-body-copy--no-margin">
+          Note that this will only alter the way that the checkbox is displayed and has no effect on the value of the checkbox form control.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-checkbox
+              label="Checkbox 5"
+              [control]="checkbox5"
+              [indeterminate]="true">
+            </go-checkbox>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="checkboxIndeterminateEx"
               class="code-block--no-bottom-margin">
             </code>
           </div>

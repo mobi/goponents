@@ -145,14 +145,19 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
 // When the checkbox is checked, change the background and border color of the custom checkbox
 .go-form__checkbox:checked ~ .go-form__custom-checkbox {
-  background-color: $ui-color-positive;
-  border-color: $ui-color-positive;
+  background-color: $ui-color-primary;
+  border-color: $ui-color-primary;
 }
 
 // When the checkbox is disabled, change the background color of the custom checkbox
 .go-form__checkbox:disabled ~ .go-form__custom-checkbox {
   background-color: $theme-light-app-bg;
   cursor: not-allowed;
+}
+
+// When the checkbox is indeterminate, change the background color of the custom checkbox
+.go-form__checkbox:indeterminate ~ .go-form__custom-checkbox {
+  background-color: $theme-light-app-bg;
 }
 
 // When the checkbox is disabled and checked, change the background and border color of the custom checkbox
@@ -174,6 +179,18 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   top: 1px;
   transform: rotate(45deg);
   width: 3px;
+}
+
+// Modify the custom checkmark to a dash for indeterminate state
+.go-form__checkbox:indeterminate ~ .go-form__custom-checkbox::after {
+  border: 1px solid $theme-light-border;
+  content: '';
+  display: block;
+  height: 0px;
+  left: 3px;
+  transform: none;
+  top: 5px;
+  width: 4px;
 }
 
 // Show the custom checkmark when checked

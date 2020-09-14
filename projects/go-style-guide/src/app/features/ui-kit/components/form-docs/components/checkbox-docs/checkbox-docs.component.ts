@@ -11,6 +11,7 @@ export class CheckboxDocsComponent {
   checkbox2: FormControl = new FormControl('');
   checkbox3: FormControl = new FormControl('');
   checkbox4: FormControl = new FormControl('');
+  checkbox5: FormControl = new FormControl('');
 
   checkboxGroup1: FormGroup = new FormGroup({
     option1: new FormControl(''),
@@ -130,6 +131,14 @@ export class CheckboxDocsComponent {
     label="Checkbox 3"
     [control]="checkbox3"
     theme="dark">
+  </go-checkbox>
+  `;
+
+  checkboxIndeterminateEx: string = `
+  <go-checkbox
+    label="Checkbox 5"
+    [control]="checkbox5"
+    [indeterminate]="true">
   </go-checkbox>
   `;
 
