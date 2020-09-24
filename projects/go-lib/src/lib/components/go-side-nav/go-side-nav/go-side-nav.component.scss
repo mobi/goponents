@@ -67,11 +67,15 @@
     display: flex;
   }
 
-  &:hover {
+  .go-icon-button:hover {
     background: $theme-dark-bg-hover;
   }
 
-  &:active {
+  .go-icon-button:active {
+    background: $theme-dark-bg-active;
+  }
+
+  .go-icon-button:focus {
     background: $theme-dark-bg-active;
   }
 
