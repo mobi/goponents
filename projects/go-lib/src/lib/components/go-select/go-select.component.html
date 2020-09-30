@@ -21,7 +21,10 @@
   [placeholder]="placeholder"
   [typeahead]="typeahead"
   [searchable]="searchable"
-  [typeToSearchText]="typeToSearchText">
+  [typeToSearchText]="typeToSearchText"
+  [virtualScroll]="virtualScroll"
+  (scrollToEnd)="onScrollToEnd()"
+  (scroll)="onScroll($event)">
   <ng-container *ngIf="multiple && showSelectAll">
     <ng-template ng-header-tmp>
       <button

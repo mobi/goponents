@@ -785,4 +785,48 @@
 
     </div>
   </go-card>
+  <go-card id="form-select-template" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Virtual scroll</h2>
+      <go-copy cardId="form-select-template" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          At times there might be loading many items but only limited of them are rendered in the DOM. <code
+            class="code-block--inline">scrollToEnd</code> allows users to load a set of data when user scrolls till the
+          end in the DOM. <br />
+          Scroll event will work only after enabling <code class="code-block--inline">virtualScroll</code> to true.
+        </p>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select 
+              [items]="selectData" 
+              [control]="select19" 
+              bindValue="value" 
+              bindLabel="name" 
+              [hints]="[
+              'Scroll to end for loading more data.'
+              ]" 
+              label="Select an Option" 
+              (scrollToEnd)="scrollToEnd()" 
+              (onVirtualScroll)="onVirtualScroll($event)"
+              [virtualScroll]="virtualScroll">
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="select19Code" class="code-block--no-bottom-margin">
+            </code>
+            <code [highlight]="select19ComponentCode" class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </go-card>
 </section>
