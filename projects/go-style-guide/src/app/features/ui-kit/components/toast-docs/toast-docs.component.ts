@@ -27,7 +27,7 @@ export class ToastDocsComponent {
   </go-toast>
   <go-toast
     header="Hey!"
-    message="Did you know that this is pretty cool?">
+    message="Did you know that this is pretty cool?" type="neutral">
   </go-toast>
   <go-toast
     header="Oh No!"
