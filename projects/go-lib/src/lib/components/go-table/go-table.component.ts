@@ -13,12 +13,12 @@ import {
   QueryList,
   SimpleChanges,
   TemplateRef,
-  ViewChild
-} from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+  ViewChild,
+} from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
-import { GoTableColumnComponent } from './go-table-column.component';
+import { GoTableColumnComponent } from "./go-table-column.component";
 import {
   GoTableConfig,
   GoTableDataSource,
@@ -27,25 +27,23 @@ import {
   RowSelectionEvent,
   SelectionMode,
   SelectionState,
-  SortDirection
-} from './index';
-import { sortBy } from './go-table-utils';
-import { fadeTemplateAnimation } from '../../animations/fade.animation';
-import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
-import { GoTablePage } from './go-table-page.model';
+  SortDirection,
+} from "./index";
+import { sortBy } from "./go-table-utils";
+import { fadeTemplateAnimation } from "../../animations/fade.animation";
+import {
+  detailButtonAnim,
+  tableRowBorderAnim,
+} from "../../animations/table-details.animation";
+import { GoTablePage } from "./go-table-page.model";
 
 @Component({
-  animations: [
-    detailButtonAnim,
-    tableRowBorderAnim,
-    fadeTemplateAnimation
-  ],
-  selector: 'go-table',
-  templateUrl: './go-table.component.html',
-  styleUrls: ['./go-table.component.scss']
+  animations: [detailButtonAnim, tableRowBorderAnim, fadeTemplateAnimation],
+  selector: "go-table",
+  templateUrl: "./go-table.component.html",
+  styleUrls: ["./go-table.component.scss"],
 })
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
-
   @Input() loadingData: boolean = false;
   @Input() maxHeight: string;
   @Input() renderBoxShadows: boolean = true;
@@ -61,14 +59,24 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
    * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
    * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
    */
-  @Output() rowSelectionEvent: EventEmitter<RowSelectionEvent> = new EventEmitter<RowSelectionEvent>();
-  @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
+  @Output() rowSelectionEvent: EventEmitter<
+    RowSelectionEvent
+  > = new EventEmitter<RowSelectionEvent>();
+  @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<
+    GoTableConfig
+  >();
 
-  @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
-  @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
-  @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
-
-  @ViewChild('selectAllCheckbox', { static: false }) selectAllCheckbox: ElementRef;
+  @ContentChildren(GoTableColumnComponent) columns: QueryList<
+    GoTableColumnComponent
+  >;
+  @ContentChild("goTableDetails", { static: false }) details: TemplateRef<any>;
+  @ContentChild("goTableTitle", { static: false })
+  tableTitleTemplate: TemplateRef<any>;
+  @ContentChild("goTableRowDetails", { static: false }) rowDetails: TemplateRef<
+    any
+  >;
+  @ViewChild("selectAllCheckbox", { static: false })
+  selectAllCheckbox: ElementRef;
 
   allData: any[] = [];
   localTableConfig: GoTableConfig;
@@ -79,11 +87,11 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   showTable: boolean = false;
   targetedRows: any[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     if (!this.tableConfig) {
-      throw new Error('GoTableComponent: tableConfig is a required Input');
+      throw new Error("GoTableComponent: tableConfig is a required Input");
     } else {
       // we have to do call setupSearch here because it creates a subscription
       // if we call it in ngOnChanges it will create a new subscription
@@ -106,8 +114,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     if (!this.isServerMode() && this.localTableConfig.searchConfig.searchable) {
-      if (this.localTableConfig.searchConfig.searchTerm && this.localTableConfig.searchConfig.searchTerm !== '') {
-        this.performSearch(this.localTableConfig.searchConfig.searchTerm.toLowerCase());
+      if (
+        this.localTableConfig.searchConfig.searchTerm &&
+        this.localTableConfig.searchConfig.searchTerm !== ""
+      ) {
+        this.performSearch(
+          this.localTableConfig.searchConfig.searchTerm.toLowerCase()
+        );
         this.changeDetector.detectChanges();
       }
     }
@@ -116,7 +129,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   renderTable(): void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
-
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
@@ -137,9 +149,9 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   sortIcons(columnField: string): string {
     if (this.sortClasses(columnField, SortDirection.ascending)) {
-      return 'arrow_upward';
+      return "arrow_upward";
     } else if (this.sortClasses(columnField, SortDirection.descending)) {
-      return 'arrow_downward';
+      return "arrow_downward";
     }
   }
 
@@ -148,20 +160,28 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   toggleSort(columnSortable: boolean, columnField: string): void {
-    const { sortable, sortConfig, tableData }:
-    {
-      sortable: boolean,
-      sortConfig?: GoTableSortConfig,
-      tableData: any[]
+    const {
+      sortable,
+      sortConfig,
+      tableData,
+    }: {
+      sortable: boolean;
+      sortConfig?: GoTableSortConfig;
+      tableData: any[];
     } = this.localTableConfig;
 
     columnSortable = columnSortable !== undefined ? columnSortable : sortable;
 
     if (tableData && columnSortable) {
       if (sortConfig && sortConfig.column === columnField) {
-        this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
+        this.localTableConfig.sortConfig.direction = this.toggleSortDir(
+          sortConfig.direction
+        );
       } else {
-        this.localTableConfig.sortConfig = { column: columnField, direction: SortDirection.ascending };
+        this.localTableConfig.sortConfig = {
+          column: columnField,
+          direction: SortDirection.ascending,
+        };
       }
 
       this.setPage();
@@ -174,37 +194,53 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   nextPage(): void {
-    this.setPage(this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage);
+    this.setPage(
+      this.localTableConfig.pageConfig.offset +
+        this.localTableConfig.pageConfig.perPage
+    );
 
     this.tableChangeOutcome();
   }
 
   isLastPage(): boolean {
-    const { pageConfig, tableData, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      tableData: any[],
-      totalCount: number
+    const {
+      pageConfig,
+      tableData,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      tableData: any[];
+      totalCount: number;
     } = this.localTableConfig;
 
-    return ((pageConfig.offset + pageConfig.perPage) >= tableData.length) && ((pageConfig.offset + pageConfig.perPage) >= totalCount);
+    return (
+      pageConfig.offset + pageConfig.perPage >= tableData.length &&
+      pageConfig.offset + pageConfig.perPage >= totalCount
+    );
   }
 
   setLastPage(): void {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const offset: number = totalCount - (totalCount % pageConfig.perPage);
-    this.setPage(offset === totalCount ? totalCount - pageConfig.perPage : offset);
+    this.setPage(
+      offset === totalCount ? totalCount - pageConfig.perPage : offset
+    );
 
     this.tableChangeOutcome();
   }
 
   prevPage(): void {
-    this.setPage(this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage);
+    this.setPage(
+      this.localTableConfig.pageConfig.offset -
+        this.localTableConfig.pageConfig.perPage
+    );
 
     this.tableChangeOutcome();
   }
@@ -230,31 +266,39 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   outputResultsPerPage(): string {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const beginning: number = this.localTableConfig.pageConfig.offset + 1;
     const endingEstimate: number = pageConfig.offset + pageConfig.perPage;
-    const ending: number = endingEstimate <= totalCount ? endingEstimate : totalCount;
+    const ending: number =
+      endingEstimate <= totalCount ? endingEstimate : totalCount;
 
-    return beginning + ' - ' + ending;
+    return beginning + " - " + ending;
   }
 
   setDisplayData(): any[] {
-    const { pageConfig, tableData }:
-    {
-      pageConfig: GoTablePageConfig,
-      tableData: any[]
+    const {
+      pageConfig,
+      tableData,
+    }: {
+      pageConfig: GoTablePageConfig;
+      tableData: any[];
     } = this.localTableConfig;
 
     // show all data when in server mode or paging is disabled
     if (this.isServerMode() || !this.showPaging()) {
       return tableData;
     } else {
-      return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
+      return tableData.slice(
+        pageConfig.offset,
+        pageConfig.offset + pageConfig.perPage
+      );
     }
   }
 
@@ -270,7 +314,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     return {
       deselectedRows: this.selectAllChecked ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.targetedRows : []
+      selectedRows: !this.selectAllChecked ? this.targetedRows : [],
     };
   }
 
@@ -307,11 +351,11 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.rowSelectionEvent.emit({
       currentRow: {
         data: row,
-        selected: event.target.checked
+        selected: event.target.checked,
       },
       deselectedRows: this.selectAllChecked ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.targetedRows : []
+      selectedRows: !this.selectAllChecked ? this.targetedRows : [],
     });
   }
 
@@ -341,36 +385,52 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   //#region Private Methods
   private handleSort(): void {
-    const { sortConfig, sortable, tableData }:
-    {
-      sortConfig?: GoTableSortConfig,
-      sortable: boolean,
-      tableData: any[]
+    const {
+      sortConfig,
+      sortable,
+      tableData,
+    }: {
+      sortConfig?: GoTableSortConfig;
+      sortable: boolean;
+      tableData: any[];
     } = this.localTableConfig;
 
     if (sortConfig && sortable && tableData && sortConfig.column) {
-      this.localTableConfig.tableData.sort(sortBy(sortConfig.column, Boolean(sortConfig.direction)));
+      this.localTableConfig.tableData.sort(
+        sortBy(sortConfig.column, Boolean(sortConfig.direction))
+      );
     }
   }
 
   private toggleSortDir(currDir: SortDirection): SortDirection {
-    return currDir === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
+    return currDir === SortDirection.ascending
+      ? SortDirection.descending
+      : SortDirection.ascending;
   }
 
   private sortClasses(columnField: string, direction: SortDirection): boolean {
-    const { sortConfig }: { sortConfig?: GoTableSortConfig } = this.localTableConfig;
+    const {
+      sortConfig,
+    }: { sortConfig?: GoTableSortConfig } = this.localTableConfig;
 
-    return sortConfig && sortConfig.column === columnField && sortConfig.direction === direction;
+    return (
+      sortConfig &&
+      sortConfig.column === columnField &&
+      sortConfig.direction === direction
+    );
   }
 
   private setTotalCount(): void {
-    const { totalCount, tableData }:
-    {
-      totalCount: number,
-      tableData: any[]
+    const {
+      totalCount,
+      tableData,
+    }: {
+      totalCount: number;
+      tableData: any[];
     } = this.localTableConfig;
 
-    this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
+    this.localTableConfig.totalCount =
+      totalCount !== null ? totalCount : tableData.length;
   }
 
   private isServerMode(): boolean {
@@ -382,32 +442,43 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private determineSelectionMode(): SelectionMode {
-    return this.selectAllChecked ? SelectionMode.deselection : SelectionMode.selection;
+    return this.selectAllChecked
+      ? SelectionMode.deselection
+      : SelectionMode.selection;
   }
 
   private isRowInTargeted(row: any): boolean {
-    return this.targetedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
+    return this.targetedRows.find(
+      (i: any) =>
+        i[this.localTableConfig.selectBy] ===
+        row[this.localTableConfig.selectBy]
+    );
   }
 
   private setPage(offset: number = 0): void {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const lastPage: number = Math.ceil(totalCount / pageConfig.perPage);
-    const currentPage: number = (pageConfig.perPage + offset) / pageConfig.perPage;
+    const currentPage: number =
+      (pageConfig.perPage + offset) / pageConfig.perPage;
     const startPage: number = this.calculateStartPage(lastPage, currentPage);
 
     this.pages = [];
 
     for (let i: number = startPage; i < startPage + 5; i++) {
-      if (i > lastPage) { break; }
+      if (i > lastPage) {
+        break;
+      }
 
       this.pages.push({
         number: i,
-        active: i === currentPage
+        active: i === currentPage,
       });
     }
 
@@ -433,17 +504,19 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
-    this.searchTerm.valueChanges.pipe(
-      debounceTime(this.localTableConfig.searchConfig.debounce),
-      distinctUntilChanged()
-    ).subscribe((searchTerm: string) => {
-      this.localTableConfig.searchConfig.searchTerm = searchTerm;
-      if (!this.isServerMode()) {
-        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
-      } else {
-        this.setFirstPage();
-      }
-    });
+    this.searchTerm.valueChanges
+      .pipe(
+        debounceTime(this.localTableConfig.searchConfig.debounce),
+        distinctUntilChanged()
+      )
+      .subscribe((searchTerm: string) => {
+        this.localTableConfig.searchConfig.searchTerm = searchTerm;
+        if (!this.isServerMode()) {
+          this.performSearch(searchTerm ? searchTerm.toLowerCase() : "");
+        } else {
+          this.setFirstPage();
+        }
+      });
     this.setSearchTerm();
   }
 
@@ -458,7 +531,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.loadingData = true;
       this.localTableConfig.tableData = this.allData.filter((row: any) => {
         return this.columns.some((column: GoTableColumnComponent) => {
-          return column.searchable && column.getFieldData(row).toString().toLowerCase().indexOf(searchTerm) !== -1;
+          return (
+            column.searchable &&
+            column
+              .getFieldData(row)
+              .toString()
+              .toLowerCase()
+              .indexOf(searchTerm) !== -1
+          );
         });
       });
     } else {
