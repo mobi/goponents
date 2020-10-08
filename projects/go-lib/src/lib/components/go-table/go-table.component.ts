@@ -34,14 +34,10 @@ import {
 } from './index';
 
 @Component({
-  animations: [
-    detailButtonAnim,
-    tableRowBorderAnim,
-    fadeTemplateAnimation
-  ],
-  selector: 'go-table',
-  templateUrl: './go-table.component.html',
-  styleUrls: ['./go-table.component.scss']
+  animations: [detailButtonAnim, tableRowBorderAnim, fadeTemplateAnimation],
+  selector: "go-table",
+  templateUrl: "./go-table.component.html",
+  styleUrls: ["./go-table.component.scss"],
 })
 export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
 
@@ -74,6 +70,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
   @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
+  @ContentChild('goTableRowDetails', { static: false }) rowDetails: TemplateRef<any>;
   @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
 
   allData: any[] = [];
@@ -120,8 +117,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     }
 
     if (!this.isServerMode() && this.localTableConfig.searchConfig.searchable) {
-      if (this.localTableConfig.searchConfig.searchTerm && this.localTableConfig.searchConfig.searchTerm !== '') {
-        this.performSearch(this.localTableConfig.searchConfig.searchTerm.toLowerCase());
+      if (
+        this.localTableConfig.searchConfig.searchTerm &&
+        this.localTableConfig.searchConfig.searchTerm !== ""
+      ) {
+        this.performSearch(
+          this.localTableConfig.searchConfig.searchTerm.toLowerCase()
+        );
         this.changeDetector.detectChanges();
       }
     }
@@ -137,7 +139,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   renderTable(): void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
-
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
@@ -173,20 +174,28 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   toggleSort(columnSortable: boolean, columnField: string): void {
-    const { sortable, sortConfig, tableData }:
-    {
-      sortable: boolean,
-      sortConfig?: GoTableSortConfig,
-      tableData: any[]
+    const {
+      sortable,
+      sortConfig,
+      tableData,
+    }: {
+      sortable: boolean;
+      sortConfig?: GoTableSortConfig;
+      tableData: any[];
     } = this.localTableConfig;
 
     columnSortable = columnSortable !== undefined ? columnSortable : sortable;
 
     if (tableData && columnSortable) {
       if (sortConfig && sortConfig.column === columnField) {
-        this.localTableConfig.sortConfig.direction = this.toggleSortDir(sortConfig.direction);
+        this.localTableConfig.sortConfig.direction = this.toggleSortDir(
+          sortConfig.direction
+        );
       } else {
-        this.localTableConfig.sortConfig = { column: columnField, direction: SortDirection.ascending };
+        this.localTableConfig.sortConfig = {
+          column: columnField,
+          direction: SortDirection.ascending,
+        };
       }
 
       this.setPage();
@@ -199,37 +208,53 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   nextPage(): void {
-    this.setPage(this.localTableConfig.pageConfig.offset + this.localTableConfig.pageConfig.perPage);
+    this.setPage(
+      this.localTableConfig.pageConfig.offset +
+        this.localTableConfig.pageConfig.perPage
+    );
 
     this.tableChangeOutcome();
   }
 
   isLastPage(): boolean {
-    const { pageConfig, tableData, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      tableData: any[],
-      totalCount: number
+    const {
+      pageConfig,
+      tableData,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      tableData: any[];
+      totalCount: number;
     } = this.localTableConfig;
 
-    return ((pageConfig.offset + pageConfig.perPage) >= tableData.length) && ((pageConfig.offset + pageConfig.perPage) >= totalCount);
+    return (
+      pageConfig.offset + pageConfig.perPage >= tableData.length &&
+      pageConfig.offset + pageConfig.perPage >= totalCount
+    );
   }
 
   setLastPage(): void {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const offset: number = totalCount - (totalCount % pageConfig.perPage);
-    this.setPage(offset === totalCount ? totalCount - pageConfig.perPage : offset);
+    this.setPage(
+      offset === totalCount ? totalCount - pageConfig.perPage : offset
+    );
 
     this.tableChangeOutcome();
   }
 
   prevPage(): void {
-    this.setPage(this.localTableConfig.pageConfig.offset - this.localTableConfig.pageConfig.perPage);
+    this.setPage(
+      this.localTableConfig.pageConfig.offset -
+        this.localTableConfig.pageConfig.perPage
+    );
 
     this.tableChangeOutcome();
   }
@@ -257,15 +282,18 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   outputResultsPerPage(): string {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const beginning: number = this.localTableConfig.pageConfig.offset + 1;
     const endingEstimate: number = pageConfig.offset + pageConfig.perPage;
-    const ending: number = endingEstimate <= totalCount ? endingEstimate : totalCount;
+    const ending: number =
+      endingEstimate <= totalCount ? endingEstimate : totalCount;
 
     return beginning + ' - ' + ending;
   }
@@ -281,7 +309,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     if (this.isServerMode() || !this.showPaging()) {
       return tableData;
     } else {
-      return tableData.slice(pageConfig.offset, pageConfig.offset + pageConfig.perPage);
+      return tableData.slice(
+        pageConfig.offset,
+        pageConfig.offset + pageConfig.perPage
+      );
     }
   }
 
@@ -359,36 +390,52 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   //#region Private Methods
   private handleSort(): void {
-    const { sortConfig, sortable, tableData }:
-    {
-      sortConfig?: GoTableSortConfig,
-      sortable: boolean,
-      tableData: any[]
+    const {
+      sortConfig,
+      sortable,
+      tableData,
+    }: {
+      sortConfig?: GoTableSortConfig;
+      sortable: boolean;
+      tableData: any[];
     } = this.localTableConfig;
 
     if (sortConfig && sortable && tableData && sortConfig.column) {
-      this.localTableConfig.tableData.sort(sortBy(sortConfig.column, Boolean(sortConfig.direction)));
+      this.localTableConfig.tableData.sort(
+        sortBy(sortConfig.column, Boolean(sortConfig.direction))
+      );
     }
   }
 
   private toggleSortDir(currDir: SortDirection): SortDirection {
-    return currDir === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
+    return currDir === SortDirection.ascending
+      ? SortDirection.descending
+      : SortDirection.ascending;
   }
 
   private sortClasses(columnField: string, direction: SortDirection): boolean {
-    const { sortConfig }: { sortConfig?: GoTableSortConfig } = this.localTableConfig;
+    const {
+      sortConfig,
+    }: { sortConfig?: GoTableSortConfig } = this.localTableConfig;
 
-    return sortConfig && sortConfig.column === columnField && sortConfig.direction === direction;
+    return (
+      sortConfig &&
+      sortConfig.column === columnField &&
+      sortConfig.direction === direction
+    );
   }
 
   private setTotalCount(): void {
-    const { totalCount, tableData }:
-    {
-      totalCount: number,
-      tableData: any[]
+    const {
+      totalCount,
+      tableData,
+    }: {
+      totalCount: number;
+      tableData: any[];
     } = this.localTableConfig;
 
-    this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
+    this.localTableConfig.totalCount =
+      totalCount !== null ? totalCount : tableData.length;
   }
 
   private isServerMode(): boolean {
@@ -408,24 +455,29 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   private setPage(offset: number = 0): void {
-    const { pageConfig, totalCount }:
-    {
-      pageConfig: GoTablePageConfig,
-      totalCount: number
+    const {
+      pageConfig,
+      totalCount,
+    }: {
+      pageConfig: GoTablePageConfig;
+      totalCount: number;
     } = this.localTableConfig;
 
     const lastPage: number = Math.ceil(totalCount / pageConfig.perPage);
-    const currentPage: number = (pageConfig.perPage + offset) / pageConfig.perPage;
+    const currentPage: number =
+      (pageConfig.perPage + offset) / pageConfig.perPage;
     const startPage: number = this.calculateStartPage(lastPage, currentPage);
 
     this.pages = [];
 
     for (let i: number = startPage; i < startPage + 5; i++) {
-      if (i > lastPage) { break; }
+      if (i > lastPage) {
+        break;
+      }
 
       this.pages.push({
         number: i,
-        active: i === currentPage
+        active: i === currentPage,
       });
     }
 
@@ -483,7 +535,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       this.loadingData = true;
       this.localTableConfig.tableData = this.allData.filter((row: any) => {
         return this.columns.some((column: GoTableColumnComponent) => {
-          return column.searchable && column.getFieldData(row).toString().toLowerCase().indexOf(searchTerm) !== -1;
+          return (
+            column.searchable &&
+            column
+              .getFieldData(row)
+              .toString()
+              .toLowerCase()
+              .indexOf(searchTerm) !== -1
+          );
         });
       });
     } else {

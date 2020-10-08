@@ -11,22 +11,24 @@ import {
 import { AppService } from '../../app.service';
 
 @Component({
-  selector: 'app-test-page-1',
-  templateUrl: './test-page-1.component.html'
+  selector: "app-test-page-1",
+  templateUrl: "./test-page-1.component.html",
+  styleUrls: ["./test-page-1.scss"],
 })
-export class TestPage1Component implements OnInit, OnDestroy {
-
+export class TestPage1Component implements OnInit {
   tableConfig: GoTableConfig;
   tableLoading: boolean = true;
 
   private destroy$: Subject<void> = new Subject();
 
+  tableDetailsConfig: GoTableConfig;
+  tableDetailsLoading: boolean = true;
   @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
 
   constructor(
     private appService: AppService,
     private toasterService: GoToasterService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.appService.getMockData(new GoTableConfig())
@@ -40,7 +42,15 @@ export class TestPage1Component implements OnInit, OnDestroy {
           totalCount: data.totalCount,
           sortable: false
         });
+        this.tableDetailsConfig = new GoTableConfig({
+          dataMode: GoTableDataSource.server,
+          tableData: data.results,
+          totalCount: data.totalCount,
+          sortable: false,
+        });
+
         this.tableLoading = false;
+        this.tableDetailsLoading = false;
       });
   }
 
@@ -52,12 +62,10 @@ export class TestPage1Component implements OnInit, OnDestroy {
   handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.tableLoading = true;
-      this.appService.getMockData(currentTableConfig)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(data => {
-          setTimeout(() => {
-            currentTableConfig.tableData = data.results;
-            currentTableConfig.totalCount = data.totalCount;
+      this.appService.getMockData(currentTableConfig).subscribe((data) => {
+        setTimeout(() => {
+          currentTableConfig.tableData = data.results;
+          currentTableConfig.totalCount = data.totalCount;
 
             this.tableConfig = currentTableConfig;
             this.tableLoading = false;
@@ -67,7 +75,9 @@ export class TestPage1Component implements OnInit, OnDestroy {
   }
 
   outputSelectionCount(): void {
-    this.toasterService.toastSuccess({ message: 'Rows Selected: ' + this.peopleTable.getSelectionCount() });
+    this.toasterService.toastSuccess({
+      message: "Rows Selected: " + this.peopleTable.getSelectionCount(),
+    });
   }
 
   showCurrentSelection(): void {
@@ -75,19 +85,23 @@ export class TestPage1Component implements OnInit, OnDestroy {
   }
 
   handleSelection(selectionEvent: RowSelectionEvent): void {
-    const action: string = selectionEvent.currentRow.selected ? 'Selected: ' : 'Deselected: ';
-    this.toasterService.toastInfo({ message: action + selectionEvent.currentRow.data['email'] });
+    const action: string = selectionEvent.currentRow.selected
+      ? "Selected: "
+      : "Deselected: ";
+    this.toasterService.toastInfo({
+      message: action + selectionEvent.currentRow.data["email"],
+    });
   }
 
   goBack(): void {
-    this.toasterService.toastInfo({ message: 'Back button clicked' });
+    this.toasterService.toastInfo({ message: "Back button clicked" });
   }
 
   saveClick(): void {
-    this.toasterService.toastSuccess({ message: 'Save clicked!' });
+    this.toasterService.toastSuccess({ message: "Save clicked!" });
   }
 
   cancelClick(): void {
-    this.toasterService.toastError({ message: 'Cancel clicked!' });
+    this.toasterService.toastError({ message: "Cancel clicked!" });
   }
 }
