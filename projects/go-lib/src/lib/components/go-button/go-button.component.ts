@@ -16,6 +16,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 })
 export class GoButtonComponent implements OnChanges, OnInit {
   classObject: object = {};
+  dropdownClassObject: object = {};
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
 
@@ -54,6 +55,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;
+    this.dropdownClassObject['go-button--' + this.buttonVariant] = true;
   }
 
   private buttonLoader(): void {

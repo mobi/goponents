@@ -45,7 +45,7 @@
 }
 
 .go-button--icon-only {
-  padding: calc(.625rem - 1px) .625rem;
+  padding: calc(.625rem - 2px) .625rem;
 }
 
 .go-button__icon ~ .go-button__text:not(:empty) {
@@ -300,17 +300,40 @@
 
 // Split Button
 //=========================
-.go-button--split {
-  padding-right: 2rem + $column-gutter;
+.go-button-container {
+  display: inline-flex;
 }
 
-.split-button {
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  right: 0;
-  background: rgba(0,0,0,.1);
+.go-button--split {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.dropdown {
+  border-bottom-right-radius: $global-radius;
+  border-top-right-radius: $global-radius;
+  box-sizing: content-box;
+  cursor: pointer;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  height: 2rem;
+  position: relative;
+  right: 0;
+  width: 2rem;
+
+  // TODO: Check with UX if this is really what's intended
+  &:before {
+    background: rgba(0,0,0,.1);
+    bottom: 0;
+    content: " ";
+    display: block;
+    height: 2rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2rem;
+    z-index: 10;
+  }
 }

@@ -1,45 +1,46 @@
-<button
-  class="go-button"
-  (click)="clicked()"
-  [disabled]="buttonDisabled || isProcessing"
-  [ngClass]="classObject"
-  [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
-  [type]="buttonType">
-  <span class="go-button__loader"
-        *ngIf="isProcessing"
-        [ngClass]="loaderClassObject"
-        @fadeTemplate>
-    <go-loader [loaderType]="loaderType"
-               loaderSize="xsmall"
-               class="go-button__loader-container">
-    </go-loader>
-  </span>
-  <go-icon
-    [icon]="buttonIcon"
-    class="go-button__icon"
+<div class="go-button-container">
+  <button
+    class="go-button"
+    (click)="clicked()"
     [disabled]="buttonDisabled || isProcessing"
-    *ngIf="buttonIcon">
-  </go-icon>
-  <span #buttonContent class="go-button__text">
-    <ng-content></ng-content>
-  </span>
+    [ngClass]="classObject"
+    [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
+    [type]="buttonType">
+    <span class="go-button__loader"
+          *ngIf="isProcessing"
+          [ngClass]="loaderClassObject"
+          @fadeTemplate>
+      <go-loader [loaderType]="loaderType"
+                loaderSize="xsmall"
+                class="go-button__loader-container">
+      </go-loader>
+    </span>
+    <go-icon
+      [icon]="buttonIcon"
+      class="go-button__icon"
+      [disabled]="buttonDisabled || isProcessing"
+      *ngIf="buttonIcon">
+    </go-icon>
+    <span #buttonContent class="go-button__text">
+      <ng-content></ng-content>
+    </span>
+  </button>
 
-  <div class="split-button">
-    <div class="split-button__dropdown-button" (click)="openDropdown()">
+  <div class="dropdown" [ngClass]="dropdownClassObject">
+    <div class="dropdown__button" (click)="openDropdown()">
       <go-icon
         icon="arrow_drop_down"
         iconModifier="light">
       </go-icon>
     </div>
-
     <!-- <div
-      class="split-button__content-container"
+      class="dropdown__content-container"
       aria-expanded="true">
-      <div class="split-button__content">
-        <div class="split-button__scroll-container">
-          <ng-content select="[split-button-content]"></ng-content>
+      <div class="dropdown__content">
+        <div class="dropdown__scroll-container">
+          <ng-content select="[dropdown-content]"></ng-content>
         </div>
       </div>
     </div> -->
   </div>
-</button>
+</div>
