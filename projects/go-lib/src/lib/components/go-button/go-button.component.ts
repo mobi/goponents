@@ -49,6 +49,8 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.classObject = {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
+      // TODO: set this based on Input
+      'go-button--split': true
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;

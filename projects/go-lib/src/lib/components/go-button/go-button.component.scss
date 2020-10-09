@@ -297,3 +297,20 @@
     margin-right: 0;
   }
 }
+
+// Split Button
+//=========================
+.go-button--split {
+  padding-right: 2rem + $column-gutter;
+}
+
+.split-button {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  right: 0;
+  background: rgba(0,0,0,.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

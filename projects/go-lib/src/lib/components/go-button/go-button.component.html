@@ -23,4 +23,23 @@
   <span #buttonContent class="go-button__text">
     <ng-content></ng-content>
   </span>
+
+  <div class="split-button">
+    <div class="split-button__dropdown-button" (click)="openDropdown()">
+      <go-icon
+        icon="arrow_drop_down"
+        iconModifier="light">
+      </go-icon>
+    </div>
+
+    <!-- <div
+      class="split-button__content-container"
+      aria-expanded="true">
+      <div class="split-button__content">
+        <div class="split-button__scroll-container">
+          <ng-content select="[split-button-content]"></ng-content>
+        </div>
+      </div>
+    </div> -->
+  </div>
 </button>
