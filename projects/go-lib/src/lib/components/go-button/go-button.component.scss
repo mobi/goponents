@@ -127,8 +127,7 @@
   }
 }
 
-.go-button--secondary,
-.dropdown__button--secondary {
+.go-button--secondary {
   border: 1px solid lighten($base-light-secondary, 10%);
 }
 
@@ -165,37 +164,6 @@
   }
 }
 
-.dropdown__button--secondary {
-  background: $theme-light-bg-hover;
-  color: $theme-light-color;
-
-  &:hover,
-  &:focus {
-    background: $theme-light-bg-active;
-    border-left: none;
-  }
-
-  &:active {
-    background: darken($theme-light-bg, 10%);
-    border-left: none;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    // @include disabled-states($theme-light-bg, 'dark');
-    // border: 1px solid rgba($theme-light-bg, 0);
-    border-left: none;
-
-    &:hover,
-    &:focus {
-      // @include disabled-states($theme-light-bg, 'dark');
-      // border: 1px solid rgba($theme-light-bg, 0);
-      background: $theme-light-bg-hover;
-      border-left: none;
-      box-shadow: none;
-    }
-  }
-}
-
 .go-button--secondary {
   &:hover,
   &:focus,
@@ -215,12 +183,21 @@
 }
 
 .dropdown__button--secondary {
+  background: $theme-light-bg-hover;
+  border: 1px solid lighten($base-light-secondary, 10%);
+  color: $theme-light-color;
+
   &:hover,
-  &:focus,
-  &:active {
-    border: 1px solid lighten($base-light-secondary, 10%);
-    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+  &:focus {
+    background: $theme-light-bg-active;
     border-left: none;
+    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+  }
+
+  &:active {
+    background: darken($theme-light-bg, 10%);
+    border-left: none;
+    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
   }
 
   &:disabled:not(.go-button--loading) {
@@ -229,8 +206,10 @@
 
     &:hover,
     &:focus {
+      background: $theme-light-bg-hover;
       border: 1px solid $theme-light-bg-active;
       border-left: none;
+      box-shadow: none;
     }
   }
 }
@@ -394,6 +373,15 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
+
+  &:disabled:not(.go-button--loading) {
+    border-right: none;
+
+    &:hover,
+    &:focus {
+      border-right: none;
+    }
+  }
 
   &.go-button--primary:hover,
   &.go-button--secondary:hover,
