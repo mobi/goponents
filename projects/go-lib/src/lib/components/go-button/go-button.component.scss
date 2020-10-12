@@ -307,11 +307,21 @@
 .go-button--split {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-right: none;
+
+  &.go-button--primary:hover,
+  &.go-button--secondary:hover,
+  &.go-button--tertiary:hover,
+  &.go-button--negative:hover,
+  &.go-button--neutral:hover {
+    border-right: none;
+  }
 }
 
 .dropdown__button {
   border-bottom-right-radius: $global-radius;
   border-top-right-radius: $global-radius;
+  border-left: none;
   box-sizing: content-box;
   cursor: pointer;
   align-items: center;
@@ -326,6 +336,14 @@
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
+  }
+
+  &.go-button--primary:hover,
+  &.go-button--secondary:hover,
+  &.go-button--tertiary:hover,
+  &.go-button--negative:hover,
+  &.go-button--neutral:hover {
+    border-left: none;
   }
 
   // TODO: Check with UX if this is really what's intended
