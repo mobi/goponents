@@ -94,7 +94,7 @@
   }
 }
 
-.dropdown__button--primary {
+.split-button--primary {
   background: $ui-color-primary-hover;
   border: 1px solid $ui-color-primary-hover;
   border-left: none;
@@ -182,7 +182,7 @@
   }
 }
 
-.dropdown__button--secondary {
+.split-button--secondary {
   background: $theme-light-bg-hover;
   border: 1px solid lighten($base-light-secondary, 10%);
   color: $theme-light-color;
@@ -397,7 +397,7 @@
   }
 }
 
-.dropdown__button {
+.split-button {
   border-bottom-right-radius: $global-radius;
   border-top-right-radius: $global-radius;
   border-left: none;

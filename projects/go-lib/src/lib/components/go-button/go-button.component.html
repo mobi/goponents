@@ -27,10 +27,9 @@
   </button>
 
   <div
-    class="dropdown"
     *ngIf="splitButtonOptions.length">
     <button
-      class="dropdown__button"
+      class="split-button"
       (click)="openDropdown()"
       [ngClass]="dropdownClassObject"
       [disabled]="buttonDisabled || isProcessing">
