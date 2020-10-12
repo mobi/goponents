@@ -373,6 +373,11 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
+  z-index: 2;
+
+  &:hover {
+    z-index: 1;
+  }
 
   &:disabled:not(.go-button--loading) {
     border-right: none;
@@ -407,6 +412,11 @@
   position: relative;
   right: 0;
   width: 2rem;
+  z-index: 2;
+
+  &:hover {
+    z-index: 1;
+  }
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
