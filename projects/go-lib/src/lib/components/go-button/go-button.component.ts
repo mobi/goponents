@@ -26,6 +26,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
+  @Input() splitButtonOptions: [] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -53,7 +54,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
       // TODO: set this based on Input
-      'go-button--split': true
+      'go-button--split': this.splitButtonOptions.length
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;
