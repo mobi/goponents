@@ -94,6 +94,39 @@
   }
 }
 
+.dropdown__button--primary {
+  background: $ui-color-primary-hover;
+  border: 1px solid $ui-color-primary-hover;
+  border-left: none;
+
+  &:hover,
+  &:focus {
+    background: $ui-color-primary-active;
+    border: 1px solid $ui-color-primary-active;
+    border-left: none;
+    box-shadow: $form-shadow-active;
+  }
+
+  &:active {
+    background: darken($ui-color-primary, 10%);
+    border: 1px solid darken($ui-color-primary, 10%);
+    border-left: none;
+    box-shadow: $form-shadow-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($ui-color-primary, 'light');
+    border: 1px solid rgba($ui-color-primary, 0);
+
+    &:hover,
+    &:focus {
+      @include disabled-states($ui-color-primary, 'light');
+      border: 1px solid rgba($ui-color-primary, 0);
+      box-shadow: none;
+    }
+  }
+}
+
 .go-button--secondary {
   border: 1px solid lighten($base-light-secondary, 10%);
 }
@@ -347,17 +380,17 @@
   }
 
   // TODO: Check with UX if this is really what's intended
-  &:before {
-    background: rgba(0,0,0,.1);
-    bottom: 0;
-    content: " ";
-    display: block;
-    height: 2rem;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 2rem;
-    z-index: 10;
-  }
+  // &:before {
+  //   background: rgba(0,0,0,.1);
+  //   bottom: 0;
+  //   content: " ";
+  //   display: block;
+  //   height: 2rem;
+  //   left: 0;
+  //   position: absolute;
+  //   right: 0;
+  //   top: 0;
+  //   width: 2rem;
+  //   z-index: 10;
+  // }
 }

@@ -55,7 +55,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;
-    this.dropdownClassObject['go-button--' + this.buttonVariant] = true;
+    this.dropdownClassObject['dropdown__button--' + this.buttonVariant] = true;
   }
 
   private buttonLoader(): void {
