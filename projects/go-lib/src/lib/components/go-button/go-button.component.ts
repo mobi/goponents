@@ -19,6 +19,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   dropdownClassObject: object = {};
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
+  splitButtonIconModifier: 'light' | 'dark' = 'light';
 
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
@@ -46,6 +47,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   private setupButton(): void {
     this.buttonVariant = this.buttonVariant === 'positive' ? 'primary' : this.buttonVariant;
+    this.splitButtonIconModifier = this.buttonVariant === 'secondary' || this.buttonVariant === 'tertiary' ? 'dark' : 'light';
 
     this.classObject = {
       'go-button--dark': this.useDarkTheme,

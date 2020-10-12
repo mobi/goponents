@@ -34,7 +34,8 @@
       [disabled]="buttonDisabled || isProcessing">
       <go-icon
         icon="arrow_drop_down"
-        iconModifier="light">
+        [iconModifier]="splitButtonIconModifier"
+        [disabled]="buttonDisabled || isProcessing">
       </go-icon>
     </button>
     <!-- <div
