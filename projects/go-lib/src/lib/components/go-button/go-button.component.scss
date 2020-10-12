@@ -309,7 +309,7 @@
   border-bottom-right-radius: 0;
 }
 
-.dropdown {
+.dropdown__button {
   border-bottom-right-radius: $global-radius;
   border-top-right-radius: $global-radius;
   box-sizing: content-box;
@@ -318,9 +318,15 @@
   display: flex;
   justify-content: center;
   height: 2rem;
+  outline: none;
+  padding: 0;
   position: relative;
   right: 0;
   width: 2rem;
+
+  &:disabled:not(.go-button--loading) {
+    cursor: not-allowed;
+  }
 
   // TODO: Check with UX if this is really what's intended
   &:before {

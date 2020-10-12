@@ -26,13 +26,17 @@
     </span>
   </button>
 
-  <div class="dropdown" [ngClass]="dropdownClassObject">
-    <div class="dropdown__button" (click)="openDropdown()">
+  <div class="dropdown">
+    <button
+      class="dropdown__button"
+      (click)="openDropdown()"
+      [ngClass]="dropdownClassObject"
+      [disabled]="buttonDisabled || isProcessing">
       <go-icon
         icon="arrow_drop_down"
         iconModifier="light">
       </go-icon>
-    </div>
+    </button>
     <!-- <div
       class="dropdown__content-container"
       aria-expanded="true">
