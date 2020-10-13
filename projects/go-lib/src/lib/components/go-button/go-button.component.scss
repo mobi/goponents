@@ -15,6 +15,10 @@
   background: rgba($bg, .4);
 }
 
+.go-button-container {
+  position: relative;
+}
+
 .go-button {
   @include transition(all);
 
@@ -444,4 +448,33 @@
   //   width: 2rem;
   //   z-index: 10;
   // }
+}
+
+.split-button__content-container {
+  @include transition;
+
+  background: $theme-light-bg;
+  border: 1px solid $base-light-tertiary;
+  border-radius: $global-radius;
+  box-shadow: $global-box-shadow--small;
+  position: absolute;
+  right: 0;
+}
+
+.split-button__option {
+  color: $theme-light-color;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: normal;
+  max-width: 20rem;
+  padding: 0.75rem;
+  white-space: nowrap;
+
+  &:hover {
+    background: $theme-light-bg-active;
+  }
+
+  &:active {
+    background: $theme-light-bg-hover;
+  }
 }

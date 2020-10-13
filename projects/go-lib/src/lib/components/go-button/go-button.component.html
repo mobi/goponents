@@ -39,14 +39,18 @@
         [disabled]="buttonDisabled || isProcessing">
       </go-icon>
     </button>
-    <!-- <div
-      class="dropdown__content-container"
+    <div
+      class="split-button__content-container"
       aria-expanded="true">
-      <div class="dropdown__content">
-        <div class="dropdown__scroll-container">
-          <ng-content select="[dropdown-content]"></ng-content>
+      <div class="split-button__content">
+        <div class="split-button__scroll-container">
+          <div
+            class="split-button__option"
+            *ngFor="let option of splitButtonOptions">
+            {{ option.label }}
+          </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>
