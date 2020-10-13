@@ -16,7 +16,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 })
 export class GoButtonComponent implements OnChanges, OnInit {
   classObject: object = {};
-  dropdownClassObject: object = {};
+  splitButtonClassObject: object = {};
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
   showSplitButtonMenu: boolean = false;
@@ -58,12 +58,11 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.classObject = {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
-      // TODO: set this based on Input
       'go-button--split': this.splitButtonOptions.length
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;
-    this.dropdownClassObject['split-button--' + this.buttonVariant] = true;
+    this.splitButtonClassObject['split-button--' + this.buttonVariant] = true;
   }
 
   private buttonLoader(): void {
