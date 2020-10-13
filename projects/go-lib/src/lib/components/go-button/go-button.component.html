@@ -26,11 +26,10 @@
     </span>
   </button>
 
-  <div
-    *ngIf="splitButtonOptions.length">
+  <div *ngIf="splitButtonOptions.length">
     <button
       class="split-button"
-      (click)="openDropdown()"
+      (click)="toggleSplitButtonMenu()"
       [ngClass]="dropdownClassObject"
       [disabled]="buttonDisabled || isProcessing">
       <go-icon
@@ -39,17 +38,15 @@
         [disabled]="buttonDisabled || isProcessing">
       </go-icon>
     </button>
+
     <div
-      class="split-button__content-container"
+      class="split-button__menu"
+      [ngClass]="{'split-button__menu--active': showSplitButtonMenu}"
       aria-expanded="true">
-      <div class="split-button__content">
-        <div class="split-button__scroll-container">
-          <div
-            class="split-button__option"
-            *ngFor="let option of splitButtonOptions">
-            {{ option.label }}
-          </div>
-        </div>
+      <div
+        class="split-button__option"
+        *ngFor="let option of splitButtonOptions">
+        {{ option.label }}
       </div>
     </div>
   </div>

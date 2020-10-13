@@ -44,7 +44,7 @@
           <div class="go-column go-column--100">
             <h4 class="go-heading-4">buttonIcon</h4>
             <p class="go-body-copy">
-              Add an icon to the left of the text in the button. See the 
+              Add an icon to the left of the text in the button. See the
               <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
               page for available icons.
             </p>
@@ -63,7 +63,7 @@
           <div class="go-column go-column--100">
             <h4 class="go-heading-4">handleClick</h4>
             <p class="go-body-copy">
-              This event fires when the button is clicked. Use this event 
+              This event fires when the button is clicked. Use this event
               to handle the click event.
             </p>
           </div>
@@ -138,16 +138,16 @@
       <code [highlight]="primaryExample"></code>
       <div class="go-container">
         <div class="go-column go-column--25">
-          <go-button (handleClick)="testClick()">Primary</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()">Primary</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -166,16 +166,16 @@
       <code [highlight]="secondaryExample"></code>
       <div class="go-container">
         <div class="go-column go-column--25">
-          <go-button buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>

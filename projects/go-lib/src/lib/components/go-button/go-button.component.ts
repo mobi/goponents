@@ -19,6 +19,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   dropdownClassObject: object = {};
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
+  showSplitButtonMenu: boolean = false;
   splitButtonIconModifier: 'light' | 'dark' = 'light';
 
   @Input() buttonDisabled: boolean;
@@ -44,6 +45,10 @@ export class GoButtonComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     this.setupButton();
     this.buttonLoader();
+  }
+
+  toggleSplitButtonMenu(): void {
+    this.showSplitButtonMenu = !this.showSplitButtonMenu;
   }
 
   private setupButton(): void {

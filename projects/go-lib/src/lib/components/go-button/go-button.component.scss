@@ -433,24 +433,9 @@
   &.go-button--neutral:hover {
     border-left: none;
   }
-
-  // TODO: Check with UX if this is really what's intended
-  // &:before {
-  //   background: rgba(0,0,0,.1);
-  //   bottom: 0;
-  //   content: " ";
-  //   display: block;
-  //   height: 2rem;
-  //   left: 0;
-  //   position: absolute;
-  //   right: 0;
-  //   top: 0;
-  //   width: 2rem;
-  //   z-index: 10;
-  // }
 }
 
-.split-button__content-container {
+.split-button__menu {
   @include transition;
 
   background: $theme-light-bg;
@@ -459,9 +444,18 @@
   box-shadow: $global-box-shadow--small;
   position: absolute;
   right: 0;
+  visibility: hidden;
+  opacity: 0;
+
+  &.split-button__menu--active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .split-button__option {
+  @include transition;
+
   color: $theme-light-color;
   cursor: pointer;
   font-size: 0.875rem;
