@@ -1,6 +1,8 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
@@ -31,6 +33,15 @@ export class GoButtonComponent implements OnChanges, OnInit {
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(target: HTMLElement): void {
+    this.closeSplitButtonMenuEvent(target);
+  }
+
+  constructor(
+    private elementRef: ElementRef,
+  ) { }
 
   clicked(): void {
     this.handleClick.emit(this.isProcessing);
@@ -84,5 +95,11 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   private isAlternativeLight(): boolean {
     return (this.buttonVariant === 'secondary' || this.buttonVariant === 'tertiary') && !this.useDarkTheme;
+  }
+
+  private closeSplitButtonMenuEvent(target: HTMLElement): void {
+    if (!this.elementRef.nativeElement.contains(target)) {
+      this.showSplitButtonMenu = false;
+    }
   }
 }
