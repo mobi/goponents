@@ -138,16 +138,16 @@
       <code [highlight]="primaryExample"></code>
       <div class="go-container">
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()">Primary</go-button>
+          <go-button (handleClick)="testClick()">Primary</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -166,16 +166,16 @@
       <code [highlight]="secondaryExample"></code>
       <div class="go-container">
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
+          <go-button buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>
@@ -443,7 +443,7 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100 go-column--no-padding" id="button-group">
+  <go-card class="go-column go-column--100" id="button-group">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Button Groups</h2>
       <go-copy cardId="button-group" goCopyCardLink></go-copy>
@@ -466,6 +466,45 @@
               <go-button>Button 2</go-button>
             </li>
           </ul>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="primary-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Split Buttons</h2>
+      <go-copy cardId="primary-buttons" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Lorem ipsum.
+      </p>
+      <code [highlight]="splitExample"></code>
+      <div class="go-container">
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()">Primary</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
         </div>
       </div>
     </ng-container>

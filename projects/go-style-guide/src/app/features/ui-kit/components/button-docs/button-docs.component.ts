@@ -90,6 +90,43 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
+  splitExample: string = `
+  <div class="go-column go-column--25">
+    <go-button
+      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
+      buttonVariant="secondary"
+      (handleClick)="testClick()">
+      Secondary
+    </go-button>
+  </div>
+  <div class="go-column go-column--25">
+    <go-button
+      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
+      buttonVariant="secondary"
+      (handleClick)="testClick()"
+      buttonDisabled="true">
+      Disabled
+    </go-button>
+  </div>
+  <div class="go-column go-column--25">
+    <go-button
+      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
+      buttonVariant="secondary"
+      (handleClick)="testClick()"
+      buttonIcon="work">
+      With Icon
+    </go-button>
+  </div>
+  <div class="go-column go-column--25">
+    <go-button
+      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
+      buttonVariant="secondary"
+      (handleClick)="testClick()"
+      buttonIcon="work">
+    </go-button> Icon Only
+  </div>
+  `;
+
   linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button';
 
   constructor(private titleCasePipe: TitleCasePipe) { }

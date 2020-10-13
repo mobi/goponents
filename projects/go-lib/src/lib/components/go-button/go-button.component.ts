@@ -29,7 +29,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
-  @Input() splitButtonOptions: [] = [];
+  @Input() splitButtonOptions: string[] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
