@@ -65,6 +65,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   splitButtonOptionSelected(value: string): void {
     this.splitButtonMenuEvent.emit(value);
+    this.showSplitButtonMenu = false;
   }
 
   private setupButton(): void {
