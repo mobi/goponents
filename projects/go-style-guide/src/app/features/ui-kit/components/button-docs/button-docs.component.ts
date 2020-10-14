@@ -38,9 +38,10 @@ export class ButtonDocsComponent {
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
   @Input() buttonType: string = 'button';
-  @Input() buttonVariant: string;
-  @Input() isProcessing: boolean;
-  @Input() useDarkTheme: boolean;
+  @Input() buttonVariant: string = 'primary';
+  @Input() isProcessing: boolean = false;
+  @Input() splitButtonOptions: { value: string, label: string }[] = [];
+  @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick = new EventEmitter<boolean>();
   `;
