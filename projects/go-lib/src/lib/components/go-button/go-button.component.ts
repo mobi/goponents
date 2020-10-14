@@ -59,6 +59,10 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.buttonLoader();
   }
 
+  isSplitButton(): boolean {
+    return this.splitButtonOptions.length && (this.buttonVariant === 'primary' || this.buttonVariant === 'secondary');
+  }
+
   toggleSplitButtonMenu(): void {
     this.showSplitButtonMenu = !this.showSplitButtonMenu;
   }
@@ -75,7 +79,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.classObject = {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
-      'go-button--split': this.splitButtonOptions.length
+      'go-button--split': this.isSplitButton()
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;

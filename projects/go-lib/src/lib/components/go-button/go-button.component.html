@@ -26,7 +26,7 @@
     </span>
   </button>
 
-  <div *ngIf="splitButtonOptions.length">
+  <div *ngIf="isSplitButton()">
     <button
       class="split-button"
       (click)="toggleSplitButtonMenu()"
