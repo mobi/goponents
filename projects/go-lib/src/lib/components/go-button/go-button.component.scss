@@ -379,7 +379,9 @@
   border-right: none;
   z-index: 2;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     z-index: 1;
   }
 
@@ -418,7 +420,9 @@
   width: 2rem;
   z-index: 2;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     z-index: 1;
   }
 
