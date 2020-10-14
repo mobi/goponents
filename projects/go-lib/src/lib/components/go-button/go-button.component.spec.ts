@@ -6,7 +6,7 @@ import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('GoButtonComponent', () => {
+fdescribe('GoButtonComponent', () => {
   let component: GoButtonComponent;
   let fixture: ComponentFixture<GoButtonComponent>;
 
@@ -202,4 +202,40 @@ describe('GoButtonComponent', () => {
       expect(result).toBe(true);
     });
   });
+
+  describe('isSplitButton', () => {
+    it('returns true if splitButtonOptions are present and buttonVariant is primary or secondary', () => {
+      component.splitButtonOptions = [{ value: '1', label: 'Option 1' }];
+      component.buttonVariant = 'secondary';
+
+      expect(component.isSplitButton()).toBe(true);
+    });
+
+    it('returns false if splitButtonOptions are not present', () => {
+      component.splitButtonOptions = [];
+      component.buttonVariant = 'secondary';
+
+      expect(component.isSplitButton()).toBe(false);
+    });
+
+    it('returns false if buttonVariant is not primary or secondary', () => {
+      component.splitButtonOptions = [];
+      component.buttonVariant = 'tertiary';
+
+      expect(component.isSplitButton()).toBe(false);
+    });
+  });
+
+  describe('toggleSplitButtonMenu', () => {
+    it('', () => {
+
+    });
+  });
+
+  describe('splitButtonOptionSelected', () => {
+    it('', () => {
+
+    });
+  });
+
 });

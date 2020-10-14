@@ -60,7 +60,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   }
 
   isSplitButton(): boolean {
-    return this.splitButtonOptions.length && (this.buttonVariant === 'primary' || this.buttonVariant === 'secondary');
+    return this.splitButtonOptions.length > 0 && (this.buttonVariant === 'primary' || this.buttonVariant === 'secondary');
   }
 
   toggleSplitButtonMenu(): void {
