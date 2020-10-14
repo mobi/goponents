@@ -5,7 +5,7 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoButtonComponent } from './go-button.component';
 
-fdescribe('GoButtonComponent', () => {
+describe('GoButtonComponent', () => {
   let component: GoButtonComponent;
   let fixture: ComponentFixture<GoButtonComponent>;
 
@@ -245,5 +245,4 @@ fdescribe('GoButtonComponent', () => {
       expect(component.showSplitButtonMenu).toBe(false);
     });
   });
-
 });
