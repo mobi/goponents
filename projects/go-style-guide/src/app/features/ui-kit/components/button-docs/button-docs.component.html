@@ -480,31 +480,82 @@
       <p class="go-body-copy">
         Lorem ipsum.
       </p>
-      <code [highlight]="splitExample"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="splitExampleTS"></code>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="splitExampleHTML"></code>
       <div class="go-container">
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()">Primary</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)">
+            Primary
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonDisabled="true">
+            Disabled
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonIcon="work">
+            With Icon
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonIcon="work">
+          </go-button> Icon Only
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonVariant="secondary">
+            Secondary
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonDisabled="true">Disabled</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonVariant="secondary"
+            buttonDisabled="true">
+            Disabled
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work">With Icon</go-button>
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonVariant="secondary"
+            buttonIcon="work">
+            With Icon
+          </go-button>
         </div>
         <div class="go-column go-column--25">
-          <go-button [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]" buttonVariant="secondary" (handleClick)="testClick()" buttonIcon="work"></go-button> Icon Only
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            (splitButtonMenuEvent)="testSplitButtonClick($event)"
+            buttonVariant="secondary"
+            buttonIcon="work">
+          </go-button> Icon Only
         </div>
       </div>
     </ng-container>

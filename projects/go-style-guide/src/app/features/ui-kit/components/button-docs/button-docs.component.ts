@@ -29,8 +29,11 @@ export class ButtonDocsComponent {
   negativeDarkButtonLoading: boolean = false;
 
   pageTitle: string = 'Button';
-
-
+  splitButtonOptions: { value: string; label: string }[] = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ];
   componentBindings: string = `
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
@@ -90,41 +93,25 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
-  splitExample: string = `
-  <div class="go-column go-column--25">
-    <go-button
-      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
-      buttonVariant="secondary"
-      (handleClick)="testClick()">
-      Secondary
-    </go-button>
-  </div>
-  <div class="go-column go-column--25">
-    <go-button
-      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
-      buttonVariant="secondary"
-      (handleClick)="testClick()"
-      buttonDisabled="true">
-      Disabled
-    </go-button>
-  </div>
-  <div class="go-column go-column--25">
-    <go-button
-      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
-      buttonVariant="secondary"
-      (handleClick)="testClick()"
-      buttonIcon="work">
-      With Icon
-    </go-button>
-  </div>
-  <div class="go-column go-column--25">
-    <go-button
-      [splitButtonOptions]="[{action: '', label: 'Option 1'},{action: '', label: 'Option 2'}]"
-      buttonVariant="secondary"
-      (handleClick)="testClick()"
-      buttonIcon="work">
-    </go-button> Icon Only
-  </div>
+  splitExampleTS: string = `
+  splitButtonOptions: { value: string; label: string }[] = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ];
+
+  testSplitButtonClick(value: string): void {
+    alert(\`Split Button option \${value}\ clicked!\`);
+  }
+  `;
+
+  splitExampleHTML: string = `
+  <go-button
+    (handleClick)="testClick()"
+    [splitButtonOptions]="splitButtonOptions"
+    (splitButtonMenuEvent)="testSplitClick($event)">
+    Primary
+  </go-button>
   `;
 
   linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-button';
@@ -140,6 +127,10 @@ export class ButtonDocsComponent {
     setTimeout(() => {
       this[button + 'Loading'] = false;
     }, 3800);
+  }
+
+  testSplitButtonClick(value: string): void {
+    alert(`Split Button option ${value} clicked!`);
   }
 
   private buttonTemplate(variant: string, icon: string): string {
