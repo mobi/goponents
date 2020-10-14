@@ -16,6 +16,7 @@
 }
 
 .go-button-container {
+  display: inline-flex;
   position: relative;
 }
 
@@ -369,10 +370,6 @@
 
 // Split Button
 //=========================
-.go-button-container {
-  display: inline-flex;
-}
-
 .go-button--split {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -404,12 +401,11 @@
   cursor: pointer;
   align-items: center;
   display: flex;
+  font-size: 0.875rem;
   justify-content: center;
   height: 2rem;
   outline: none;
   padding: 0;
-  position: relative;
-  right: 0;
   width: 2rem;
   z-index: 2;
 
@@ -421,14 +417,6 @@
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
-  }
-
-  &.go-button--primary:hover,
-  &.go-button--secondary:hover,
-  &.go-button--tertiary:hover,
-  &.go-button--negative:hover,
-  &.go-button--neutral:hover {
-    border-left: none;
   }
 }
 
@@ -451,7 +439,7 @@
   }
 }
 
-.split-button__option {
+.split-button__menu-option {
   @include transition;
 
   color: $theme-light-color;

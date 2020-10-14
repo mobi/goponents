@@ -44,7 +44,7 @@
       [ngClass]="{'split-button__menu--active': showSplitButtonMenu}"
       aria-expanded="true">
       <div
-        class="split-button__option"
+        class="split-button__menu-option"
         *ngFor="let option of splitButtonOptions"
         (click)="splitButtonOptionSelected(option.value)">
         {{ option.label }}
