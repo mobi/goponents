@@ -478,8 +478,18 @@
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        Lorem ipsum.
+        The <code class="code-block--inline">splitButtonOptions</code> input allows
+        you to turn the <code class="code-block--inline">go-button</code> into a split-button.
+        The options should consist of an array of objects each with a
+        <code class="code-block--inline">label</code> and a
+        <code class="code-block--inline">value</code> property. The
+        <code class="code-block--inline">label</code> will determine the text displayed
+        for that option in the split-button's dropdown menu. Clicking an option will emit
+        an event with the option’s <code class="code-block--inline">value</code>.
       </p>
+      <caption>
+        NOTE: Currently, only the Primary and Secondary button types support split-button functionality.
+      </caption>
       <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="splitExampleTS"></code>
       <h4 class="go-heading-4">example.html</h4>
