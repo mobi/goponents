@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GoButtonComponent } from './go-button.component';
-import { GoIconModule } from '../go-icon/go-icon.module';
-import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoButtonComponent } from './go-button.component';
 
 fdescribe('GoButtonComponent', () => {
   let component: GoButtonComponent;
@@ -227,14 +226,23 @@ fdescribe('GoButtonComponent', () => {
   });
 
   describe('toggleSplitButtonMenu', () => {
-    it('', () => {
+    it('toggles showSplitButtonMenu', () => {
+      expect(component.showSplitButtonMenu).toBe(false);
 
+      component.toggleSplitButtonMenu();
+
+      expect(component.showSplitButtonMenu).toBe(true);
     });
   });
 
   describe('splitButtonOptionSelected', () => {
-    it('', () => {
+    it('emits an event from splitButtonMenuEvent and sets splitButtonMenuEvent to false', () => {
+      component.showSplitButtonMenu = true;
+      component.splitButtonMenuEvent.subscribe((val: string) => expect(val).toBe('123'));
 
+      component.splitButtonOptionSelected('123');
+
+      expect(component.showSplitButtonMenu).toBe(false);
     });
   });
 
