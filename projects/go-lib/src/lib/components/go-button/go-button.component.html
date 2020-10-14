@@ -45,7 +45,8 @@
       aria-expanded="true">
       <div
         class="split-button__option"
-        *ngFor="let option of splitButtonOptions">
+        *ngFor="let option of splitButtonOptions"
+        (click)="splitButtonOptionSelected(option.value)">
         {{ option.label }}
       </div>
     </div>

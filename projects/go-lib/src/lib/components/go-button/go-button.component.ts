@@ -29,10 +29,11 @@ export class GoButtonComponent implements OnChanges, OnInit {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
-  @Input() splitButtonOptions: string[] = [];
+  @Input() splitButtonOptions: {value: string, label: string}[] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() splitButtonMenuEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @HostListener('document:click', ['$event.target'])
   onDocumentClick(target: HTMLElement): void {
@@ -60,6 +61,10 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   toggleSplitButtonMenu(): void {
     this.showSplitButtonMenu = !this.showSplitButtonMenu;
+  }
+
+  splitButtonOptionSelected(value: string): void {
+    this.splitButtonMenuEvent.emit(value);
   }
 
   private setupButton(): void {
