@@ -6,13 +6,15 @@
     [ngClass]="classObject"
     [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
     [type]="buttonType">
-    <span class="go-button__loader"
-          *ngIf="isProcessing"
-          [ngClass]="loaderClassObject"
-          @fadeTemplate>
-      <go-loader [loaderType]="loaderType"
-                loaderSize="xsmall"
-                class="go-button__loader-container">
+    <span
+      class="go-button__loader"
+      *ngIf="isProcessing"
+      [ngClass]="loaderClassObject"
+      @fadeTemplate>
+      <go-loader
+        [loaderType]="loaderType"
+        loaderSize="xsmall"
+        class="go-button__loader-container">
       </go-loader>
     </span>
     <go-icon
@@ -21,7 +23,9 @@
       [disabled]="buttonDisabled || isProcessing"
       *ngIf="buttonIcon">
     </go-icon>
-    <span #buttonContent class="go-button__text">
+    <span
+      class="go-button__text"
+      #buttonContent>
       <ng-content></ng-content>
     </span>
   </button>
