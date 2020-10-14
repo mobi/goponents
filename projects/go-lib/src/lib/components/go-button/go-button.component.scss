@@ -382,6 +382,7 @@
   &:hover,
   &:focus,
   &:active {
+    border-right: none;
     z-index: 1;
   }
 
@@ -392,14 +393,6 @@
     &:focus {
       border-right: none;
     }
-  }
-
-  &.go-button--primary:hover,
-  &.go-button--secondary:hover,
-  &.go-button--tertiary:hover,
-  &.go-button--negative:hover,
-  &.go-button--neutral:hover {
-    border-right: none;
   }
 }
 
