@@ -204,7 +204,7 @@ describe('GoButtonComponent', () => {
 
   describe('isSplitButton', () => {
     it('returns true if splitButtonOptions are present and buttonVariant is primary or secondary', () => {
-      component.splitButtonOptions = [{ value: '1', label: 'Option 1' }];
+      component.splitButtonOptions = [{ action: (): void => {}, label: 'Option 1' }];
       component.buttonVariant = 'secondary';
 
       expect(component.isSplitButton()).toBe(true);
@@ -236,12 +236,45 @@ describe('GoButtonComponent', () => {
   });
 
   describe('splitButtonOptionSelected', () => {
-    it('emits an event from splitButtonMenuEvent and sets splitButtonMenuEvent to false', () => {
+    it('calls the option\'s action and closes the menu', () => {
+      let testValue: string;
+      const testFunction: Function = function (): void {
+        testValue = 'Success!';
+      };
       component.showSplitButtonMenu = true;
-      component.splitButtonMenuEvent.subscribe((val: string) => expect(val).toBe('123'));
+      component.splitButtonOptions = [
+        { action: testFunction, label: 'Option 1' },
+      ];
 
-      component.splitButtonOptionSelected('123');
+      component.splitButtonOptionSelected(
+        component.splitButtonOptions[0].action
+      );
 
+      expect(testValue).toBe('Success!');
+      expect(component.showSplitButtonMenu).toBe(false);
+    });
+
+    it('successfully passes arguments to the option\'s action', () => {
+      let testValue: string;
+      const testFunction: Function = function (
+        arg1: string,
+        arg2: string
+      ): void {
+        testValue = arg1 + arg2;
+      };
+      component.showSplitButtonMenu = true;
+      component.splitButtonOptions = [
+        {
+          action: testFunction.bind(this, 'It is ', 'working!'),
+          label: 'Option 1',
+        },
+      ];
+
+      component.splitButtonOptionSelected(
+        component.splitButtonOptions[0].action
+      );
+
+      expect(testValue).toBe('It is working!');
       expect(component.showSplitButtonMenu).toBe(false);
     });
   });
