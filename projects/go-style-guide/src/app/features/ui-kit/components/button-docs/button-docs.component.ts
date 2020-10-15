@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { GoButtonComponent } from '../../../../../../../go-lib/src/public_api';
+import { GoButtonComponent, SplitButtonOption } from '../../../../../../../go-lib/src/public_api';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -30,6 +30,16 @@ export class ButtonDocsComponent {
 
   pageTitle: string = 'Button';
 
+  splitButtonOptions: SplitButtonOption[] = [
+    {
+      label: 'Option 1',
+      action: this.testSplitButtonOption
+    },
+    {
+      label: 'Option 2',
+      action: this.testSplitButtonOption
+    }
+  ];
 
   componentBindings: string = `
   @Input() buttonDisabled: boolean;
@@ -133,6 +143,10 @@ export class ButtonDocsComponent {
 
   testClick(): void {
     alert('Button clicked!');
+  }
+
+  testSplitButtonOption(label: string): void {
+    alert(`${label} clicked!`);
   }
 
   testSubmit(button: string): void {
