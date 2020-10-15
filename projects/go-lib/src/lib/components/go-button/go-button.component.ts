@@ -64,9 +64,8 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.showSplitButtonMenu = !this.showSplitButtonMenu;
   }
 
-  splitButtonOptionSelected(index: number): void {
-    const option: SplitButtonOption = this.splitButtonOptions[index];
-    option.action(option.label);
+  splitButtonOptionSelected(option: SplitButtonOption): void {
+    option.action.apply(this, arguments);
   }
 
   private setupButton(): void {

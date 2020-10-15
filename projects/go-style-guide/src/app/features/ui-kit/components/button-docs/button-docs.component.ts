@@ -33,11 +33,11 @@ export class ButtonDocsComponent {
   splitButtonOptions: SplitButtonOption[] = [
     {
       label: 'Option 1',
-      action: this.testSplitButtonOption
+      action: this.testSplitButtonOption.bind(this, this.pageTitle)
     },
     {
       label: 'Option 2',
-      action: this.testSplitButtonOption
+      action: (): void => this.testSplitButtonOption('stuff')
     }
   ];
 
@@ -141,12 +141,13 @@ export class ButtonDocsComponent {
 
   constructor(private titleCasePipe: TitleCasePipe) { }
 
-  testClick(): void {
-    alert('Button clicked!');
+  testClick(text?: string): void {
+    alert('Button clicked!' + (text ? ` ${text}` : ''));
   }
 
-  testSplitButtonOption(label: string): void {
-    alert(`${label} clicked!`);
+  testSplitButtonOption(foo?: any): void {
+    this.testClick(foo);
+    // alert(`${label} clicked!`);
   }
 
   testSubmit(button: string): void {
