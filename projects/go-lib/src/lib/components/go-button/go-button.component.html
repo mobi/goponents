@@ -50,7 +50,7 @@
       <div
         class="split-button__menu-option"
         *ngFor="let option of splitButtonOptions"
-        (click)="splitButtonOptionSelected(option.value)">
+        (click)="splitButtonOptionSelected(option.action)">
         {{ option.label }}
       </div>
     </div>

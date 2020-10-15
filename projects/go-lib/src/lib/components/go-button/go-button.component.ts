@@ -9,6 +9,7 @@ import {
   Output,
 } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
+import { SplitButtonOption } from './go-split-button-option.model';
 
 @Component({
   animations: [fadeTemplateAnimation],
@@ -29,11 +30,10 @@ export class GoButtonComponent implements OnChanges, OnInit {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
-  @Input() splitButtonOptions: { value: string, label: string }[] = [];
+  @Input() splitButtonOptions: SplitButtonOption[] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() splitButtonMenuEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @HostListener('document:click', ['$event.target'])
   onDocumentClick(target: HTMLElement): void {
@@ -67,8 +67,8 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.showSplitButtonMenu = !this.showSplitButtonMenu;
   }
 
-  splitButtonOptionSelected(value: string): void {
-    this.splitButtonMenuEvent.emit(value);
+  splitButtonOptionSelected(action: SplitButtonOption['action']): void {
+    action.apply(this, arguments);
     this.showSplitButtonMenu = false;
   }
 

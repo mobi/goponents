@@ -487,29 +487,44 @@
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        The <code class="code-block--inline">splitButtonOptions</code> input allows
-        you to turn the <code class="code-block--inline">go-button</code> into a split-button.
-        The options should consist of an array of objects each with a
-        <code class="code-block--inline">label</code> and a
-        <code class="code-block--inline">value</code> property. The
-        <code class="code-block--inline">label</code> will determine the text displayed
-        for that option in the split-button's dropdown menu. Clicking an option will emit
-        an event with the option’s <code class="code-block--inline">value</code> from
-        <code class="code-block--inline">splitButtonMenuEvent</code>.
+        The <code class="code-block--inline">@Input() splitButtonOptions: SplitButtonOption[]</code>
+        input allows you to turn the button into a split-button.
       </p>
-      <caption>
-        NOTE: Currently, only the Primary and Secondary button types support split-button functionality.
-      </caption>
+
+      <p class="go-body-copy">
+        The interface for the options looks like this:
+      </p>
+      <code [highlight]="splitButtonOptionInterface"></code>
+
+      <p class="go-body-copy">
+        The <code class="code-block--inline">label</code> of an option will determine the
+        text displayed for that option in the split-button's dropdown menu.
+      </p>
+
+      <p class="go-body-copy">
+        The <code class="code-block--inline">action</code> of an option is the function
+        that will be called when the action is clicked.
+        In order for the function to be able to reference properties on the component
+        class on which it is defined and to be able to receive arguments, you must bind
+        <code class="code-block--inline">this</code> to the context of the function (see below).
+      </p>
+
       <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="splitExampleTS"></code>
+
       <h4 class="go-heading-4">example.html</h4>
       <code [highlight]="splitExampleHTML"></code>
+
+      <caption>
+        <strong>NOTE:</strong> Currently, only the Primary and Secondary button types
+        support split-button functionality.
+      </caption>
+
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button
             (handleClick)="testClick()"
-            [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)">
+            [splitButtonOptions]="splitButtonOptions">
             Primary
           </go-button>
         </div>
@@ -517,7 +532,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonDisabled="true">
             Disabled
           </go-button>
@@ -526,7 +540,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonIcon="work">
             With Icon
           </go-button>
@@ -535,7 +548,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonIcon="work">
           </go-button> Icon Only
         </div>
@@ -543,7 +555,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonVariant="secondary">
             Secondary
           </go-button>
@@ -552,7 +563,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonVariant="secondary"
             buttonDisabled="true">
             Disabled
@@ -562,7 +572,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonVariant="secondary"
             buttonIcon="work">
             With Icon
@@ -572,7 +581,6 @@
           <go-button
             (handleClick)="testClick()"
             [splitButtonOptions]="splitButtonOptions"
-            (splitButtonMenuEvent)="testSplitButtonClick($event)"
             buttonVariant="secondary"
             buttonIcon="work">
           </go-button> Icon Only

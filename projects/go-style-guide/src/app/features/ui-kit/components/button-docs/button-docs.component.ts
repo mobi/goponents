@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { GoButtonComponent } from '../../../../../../../go-lib/src/public_api';
 import { TitleCasePipe } from '@angular/common';
+import { SplitButtonOption } from 'projects/go-lib/src/lib/components/go-button/go-split-button-option.model';
 
 @Component({
   selector: 'app-button-docs',
@@ -30,11 +31,25 @@ export class ButtonDocsComponent {
 
   pageTitle: string = 'Button';
 
-  splitButtonOptions: { value: string; label: string }[] = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
+  splitButtonOptions: SplitButtonOption[] = [
+    {
+      action: this.testSplitButtonOption.bind(this),
+      label: 'Option 1'
+    },
+    {
+      action: this.testSplitButtonOptionWithArgs.bind(this, '2'),
+      label: 'Option 2'
+    },
+    {
+      action: this.testSplitButtonOptionWithArgs.bind(this, '3'),
+      label: 'Option 3'
+    },
+    {
+      action: this.testSplitButtonOptionWithComponentProp.bind(this),
+      label: 'Option 4'
+    },
   ];
+  testMessage: string = 'This message is from a component property';
 
   componentBindings: string = `
   @Input() buttonDisabled: boolean;
@@ -42,7 +57,7 @@ export class ButtonDocsComponent {
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
-  @Input() splitButtonOptions: { value: string, label: string }[] = [];
+  @Input() splitButtonOptions: SplitButtonOption[] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick = new EventEmitter<boolean>();
@@ -96,23 +111,53 @@ export class ButtonDocsComponent {
   </ul>
   `;
 
+  splitButtonOptionInterface: string = `
+  export interface SplitButtonOption {
+    label: string;
+    action: Function;
+  }
+  `;
+
   splitExampleTS: string = `
-  splitButtonOptions: { value: string; label: string }[] = [
-    { value: '1', label: 'Option 1' },
-    { value: '2', label: 'Option 2' },
-    { value: '3', label: 'Option 3' },
+  splitButtonOptions: SplitButtonOption[] = [
+    // Basic function
+    {
+      action: this.testSplitButtonOption,
+      label: 'Option 1'
+    },
+    // Function with arguments
+    {
+      action: this.testSplitButtonOptionWithArgs.bind(this, '2'),
+      label: 'Option 2'
+    },
+    {
+      action: this.testSplitButtonOptionWithArgs.bind(this, '3'),
+      label: 'Option 3'
+    },
+    // Function that references a component property
+    {
+      action: this.testSplitButtonOptionWithComponentProp.bind(this),
+      label: 'Option 4'
+    },
   ];
 
-  testSplitButtonClick(value: string): void {
-    alert(\`Split Button option \${value}\ clicked!\`);
+  testSplitButtonOption(): void {
+    alert('Split button Option 1 clicked!');
+  }
+
+  testSplitButtonOptionWithArgs(arg: string): void {
+    alert(\`Split button Option \${arg} clicked!\`);
+  }
+
+  testSplitButtonOptionWithComponentProp(): void {
+    alert(this.testClick);
   }
   `;
 
   splitExampleHTML: string = `
   <go-button
     (handleClick)="testClick()"
-    [splitButtonOptions]="splitButtonOptions"
-    (splitButtonMenuEvent)="testSplitClick($event)">
+    [splitButtonOptions]="splitButtonOptions">
     Primary
   </go-button>
   `;
@@ -132,8 +177,16 @@ export class ButtonDocsComponent {
     }, 3800);
   }
 
-  testSplitButtonClick(value: string): void {
-    alert(`Split Button option ${value} clicked!`);
+  testSplitButtonOption(): void {
+    alert('Split button Option 1 clicked!');
+  }
+
+  testSplitButtonOptionWithArgs(arg: string): void {
+    alert(`Split button Option ${arg} clicked!`);
+  }
+
+  testSplitButtonOptionWithComponentProp(): void {
+    alert(this.testMessage);
   }
 
   private buttonTemplate(variant: string, icon: string): string {
