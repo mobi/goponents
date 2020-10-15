@@ -150,7 +150,7 @@ export class ButtonDocsComponent {
   }
 
   testSplitButtonOptionWithComponentProp(): void {
-    alert(this.testClick);
+    alert(this.testMessage);
   }
   `;
 
