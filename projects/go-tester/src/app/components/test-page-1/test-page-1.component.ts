@@ -11,11 +11,12 @@ import {
 import { AppService } from '../../app.service';
 
 @Component({
-  selector: "app-test-page-1",
-  templateUrl: "./test-page-1.component.html",
-  styleUrls: ["./test-page-1.scss"],
+  selector: 'app-test-page-1',
+  templateUrl: './test-page-1.component.html',
+  styleUrls: ['./test-page-1.scss']
 })
-export class TestPage1Component implements OnInit {
+export class TestPage1Component implements OnInit, OnDestroy {
+
   tableConfig: GoTableConfig;
   tableLoading: boolean = true;
 
@@ -23,12 +24,13 @@ export class TestPage1Component implements OnInit {
 
   tableDetailsConfig: GoTableConfig;
   tableDetailsLoading: boolean = true;
+
   @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
 
   constructor(
     private appService: AppService,
     private toasterService: GoToasterService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.appService.getMockData(new GoTableConfig())
@@ -62,7 +64,7 @@ export class TestPage1Component implements OnInit {
   handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.tableLoading = true;
-      this.appService.getMockData(currentTableConfig).subscribe((data) => {
+      this.appService.getMockData(currentTableConfig).subscribe((data: any) => {
         setTimeout(() => {
           currentTableConfig.tableData = data.results;
           currentTableConfig.totalCount = data.totalCount;
@@ -75,9 +77,7 @@ export class TestPage1Component implements OnInit {
   }
 
   outputSelectionCount(): void {
-    this.toasterService.toastSuccess({
-      message: "Rows Selected: " + this.peopleTable.getSelectionCount(),
-    });
+    this.toasterService.toastSuccess({ message: 'Rows Selected: ' + this.peopleTable.getSelectionCount() });
   }
 
   showCurrentSelection(): void {
@@ -85,23 +85,19 @@ export class TestPage1Component implements OnInit {
   }
 
   handleSelection(selectionEvent: RowSelectionEvent): void {
-    const action: string = selectionEvent.currentRow.selected
-      ? "Selected: "
-      : "Deselected: ";
-    this.toasterService.toastInfo({
-      message: action + selectionEvent.currentRow.data["email"],
-    });
+    const action: string = selectionEvent.currentRow.selected ? 'Selected: ' : 'Deselected: ';
+    this.toasterService.toastInfo({ message: action + selectionEvent.currentRow.data['email'] });
   }
 
   goBack(): void {
-    this.toasterService.toastInfo({ message: "Back button clicked" });
+    this.toasterService.toastInfo({ message: 'Back button clicked' });
   }
 
   saveClick(): void {
-    this.toasterService.toastSuccess({ message: "Save clicked!" });
+    this.toasterService.toastSuccess({ message: 'Save clicked!' });
   }
 
   cancelClick(): void {
-    this.toasterService.toastError({ message: "Cancel clicked!" });
+    this.toasterService.toastError({ message: 'Cancel clicked!' });
   }
 }
