@@ -45,7 +45,7 @@
   background: $base-dark-tertiary;
   color: $theme-dark-color;
   height: 2.75rem;
-  padding: .5rem .625rem;
+  padding: .5rem .625rem .5rem 0.440rem;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 .go-side-nav__app-icon {
   display: flex;
   font-size: 1.5rem;
-  padding: 0 1rem 0 .5rem;
+  padding: .2rem 1rem 0 .3rem;
 }
 
 .go-side-nav__app-drawer {
@@ -68,7 +68,7 @@
   }
 
   .go-icon-button:hover {
-    background: $theme-dark-bg-hover;
+    background: darken($base-dark-tertiary, 10%);;
   }
 
   .go-icon-button:active {
@@ -82,9 +82,9 @@
 
   .go-side-nav__app-drawer--icon-collapsed {
     display: flex;
-    font-size: 2rem;
     padding-right: 3.5px;
     padding-top: 3px;
+    margin-left: -1px;
   }
 
   .go-side-nav__app-drawer--switch-to {
