@@ -1,9 +1,4 @@
-<ng-template
-  goHeaderBar
-  heading="Test 1"
-  [showBackArrow]="true"
-  (handleBackButton)="goBack()"
->
+<ng-template goHeaderBar heading="Test 1" [showBackArrow]="true" (handleBackButton)="goBack()">
   <div class="go-button-group">
     <div class="go-button-group__item">
       <go-button (handleClick)="saveClick()">save</go-button>
@@ -15,13 +10,7 @@
 </ng-template>
 
 <div class="go-container">
-  <go-accordion
-    [multiExpand]="true"
-    [showIcons]="true"
-    theme="dark"
-    [slim]="true"
-    class="go-column go-column--100"
-  >
+  <go-accordion [multiExpand]="true" [showIcons]="true" theme="dark" [slim]="true" class="go-column go-column--100">
     <go-accordion-panel title="Test 1" icon="home" [expanded]="true">
       <p class="go-body-copy">This is some content for Test 1.</p>
     </go-accordion-panel>
@@ -57,97 +46,47 @@
     </go-accordion-panel>
   </go-accordion>
 
-  <go-table
-    [loadingData]="tableLoading"
-    [tableConfig]="tableConfig"
-    (rowSelectionEvent)="handleSelection($event)"
-    [showTableActions]="true"
-    (tableChange)="handleTableChange($event)"
-    class="go-column go-column--100"
-    tableTitle="People Data"
-    #peopleTable
-    *ngIf="tableConfig"
-  >
+  <go-table [loadingData]="tableLoading"
+            [tableConfig]="tableConfig"
+            (rowSelectionEvent)="handleSelection($event)"
+            [showTableActions]="true"
+            (tableChange)="handleTableChange($event)"
+            class="go-column go-column--100"
+            tableTitle="People Data"
+            #peopleTable
+            *ngIf="tableConfig">
     <ng-container go-table-actions>
-      <go-icon-button
-        buttonIcon="save_alt"
-        (handleClick)="outputSelectionCount()"
-        >Selection Count</go-icon-button
-      >
-      <go-button (handleClick)="showCurrentSelection()"
-        >Selection State</go-button
-      >
+      <go-icon-button  buttonIcon="save_alt" (handleClick)="outputSelectionCount()">Selection Count</go-icon-button>
+      <go-button (handleClick)="showCurrentSelection()">Selection State</go-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
-    <go-table-column
-      field="name.first"
-      [sortable]="true"
-      title="First Name"
-    ></go-table-column>
-    <go-table-column
-      field="name.last"
-      [sortable]="true"
-      title="Last Name"
-    ></go-table-column>
-    <go-table-column
-      field="email"
-      [sortable]="true"
-      title="Email"
-    ></go-table-column>
+    <go-table-column field="name.first" [sortable]="true" title="First Name"></go-table-column>
+    <go-table-column field="name.last" [sortable]="true" title="Last Name"></go-table-column>
+    <go-table-column field="email" [sortable]="true" title="Email"></go-table-column>
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
 
   <!-- Hierarchical Table -->
-  <go-table
-    [loadingData]="tableDetailsLoading"
-    [tableConfig]="tableDetailsConfig"
-    (rowSelectionEvent)="handleSelection($event)"
-    [showTableActions]="true"
-    (tableChange)="handleTableChange($event)"
-    class="go-column go-column--100"
-    tableTitle="Hierarchical Table Example"
-    #peopleTable
-    *ngIf="tableDetailsConfig"
-  >
-    <!-- <ng-container go-table-actions>
-      <go-icon-button
-        buttonIcon="save_alt"
-        (handleClick)="outputSelectionCount()"
-        >Selection Count</go-icon-button
-      >
-      <go-button (handleClick)="showCurrentSelection()"
-        >Selection State</go-button
-      >
-    </ng-container> -->
+  <go-table [loadingData]="tableDetailsLoading"
+            [tableConfig]="tableDetailsConfig"
+            (rowSelectionEvent)="handleSelection($event)"
+            [showTableActions]="true"
+            (tableChange)="handleTableChange($event)"
+            class="go-column go-column--100"
+            tableTitle="Hierarchical Table Example"
+            #peopleTable
+            *ngIf="tableDetailsConfig" >
     <go-table-column field="id" title="ID"></go-table-column>
-    <go-table-column
-      field="name.first"
-      [sortable]="true"
-      title="First Name"
-    ></go-table-column>
-    <go-table-column
-      field="name.last"
-      [sortable]="true"
-      title="Last Name"
-    ></go-table-column>
-    <go-table-column
-      field="email"
-      [sortable]="true"
-      title="Email"
-    ></go-table-column>
+    <go-table-column field="name.first" [sortable]="true" title="First Name"></go-table-column>
+    <go-table-column field="name.last" [sortable]="true" title="Last Name"></go-table-column>
+    <go-table-column field="email" [sortable]="true" title="Email"></go-table-column>
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
     <ng-template #goTableRowDetails let-item>
-      <tr
-        class="child-row"
-        *ngFor="let childItem of item.children; let last = last"
-      >
+      <tr class="child-row" *ngFor="let childItem of item.children; let last = last">
         <td>
-          <span
-            class="active-child-row"
-            [ngClass]="{ 'last-active-child': last }"
-          ></span>
+          <span class="active-child-row" [ngClass]="{ 'last-active-child': last }"></span>
         </td>
         <td>{{ childItem.id }}</td>
         <td>{{ childItem.name.first }}</td>
