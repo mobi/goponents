@@ -152,12 +152,14 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 // When the checkbox is disabled, change the background color of the custom checkbox
 .go-form__checkbox:disabled ~ .go-form__custom-checkbox {
   background-color: $theme-light-app-bg;
+  cursor: not-allowed;
 }
 
 // When the checkbox is disabled and checked, change the background and border color of the custom checkbox
 .go-form__checkbox:disabled:checked ~ .go-form__custom-checkbox {
   background-color: lighten($base-light-secondary, 13.5%);
   border: 1px solid lighten($base-light-secondary, 13.5%);
+  cursor: not-allowed;
 }
 
 // Create and style a custom checkmark (hidden when not checked)
