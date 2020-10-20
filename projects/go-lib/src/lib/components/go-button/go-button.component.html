@@ -37,7 +37,7 @@
       [ngClass]="splitButtonClassObject"
       [disabled]="buttonDisabled || isProcessing">
       <go-icon
-        icon="arrow_drop_down"
+        [icon]="showSplitButtonMenu ? 'arrow_drop_up' : 'arrow_drop_down'"
         [iconModifier]="splitButtonIconModifier"
         [disabled]="buttonDisabled || isProcessing">
       </go-icon>
