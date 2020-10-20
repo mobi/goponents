@@ -101,39 +101,6 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
   }
 }
 
-.split-button--primary {
-  background: $ui-color-primary-hover;
-  border: 1px solid $ui-color-primary-hover;
-  border-left: none;
-
-  &:hover,
-  &:focus {
-    background: $ui-color-primary-active;
-    border: 1px solid $ui-color-primary-active;
-    border-left: none;
-    box-shadow: $form-shadow-active;
-  }
-
-  &:active {
-    background: darken($ui-color-primary, 10%);
-    border: 1px solid darken($ui-color-primary, 10%);
-    border-left: none;
-    box-shadow: $form-shadow-active;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-primary, 'light');
-    border: 1px solid rgba($ui-color-primary, 0);
-
-    &:hover,
-    &:focus {
-      @include disabled-states($ui-color-primary, 'light');
-      border: 1px solid rgba($ui-color-primary, 0);
-      box-shadow: none;
-    }
-  }
-}
-
 .go-button--secondary {
   border: 1px solid lighten($base-light-secondary, 10%);
 }
@@ -185,38 +152,6 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
     &:hover,
     &:focus {
       border: 1px solid $theme-light-bg-active;
-    }
-  }
-}
-
-.split-button--secondary {
-  background: $theme-light-bg-hover;
-  border: 1px solid lighten($base-light-secondary, 10%);
-  color: $theme-light-color;
-
-  &:hover,
-  &:focus {
-    background: $theme-light-bg-active;
-    border-left: none;
-    box-shadow: $button-shadow-secondary;
-  }
-
-  &:active {
-    background: darken($theme-light-bg, 10%);
-    border-left: none;
-    box-shadow: $button-shadow-secondary;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    border: 1px solid $theme-light-bg-active;
-    border-left: none;
-
-    &:hover,
-    &:focus {
-      background: $theme-light-bg-hover;
-      border: 1px solid $theme-light-bg-active;
-      border-left: none;
-      box-shadow: none;
     }
   }
 }
@@ -419,6 +354,72 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
+  }
+}
+
+.split-button--primary {
+  background: $ui-color-primary-hover;
+  border: 1px solid $ui-color-primary-hover;
+  border-left: none;
+
+  &:hover,
+  &:focus {
+    background: $ui-color-primary-active;
+    border: 1px solid $ui-color-primary-active;
+    border-left: none;
+    box-shadow: $form-shadow-active;
+  }
+
+  &:active {
+    background: darken($ui-color-primary, 10%);
+    border: 1px solid darken($ui-color-primary, 10%);
+    border-left: none;
+    box-shadow: $form-shadow-active;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    @include disabled-states($ui-color-primary, 'light');
+    border: 1px solid rgba($ui-color-primary, 0);
+
+    &:hover,
+    &:focus {
+      @include disabled-states($ui-color-primary, 'light');
+      border: 1px solid rgba($ui-color-primary, 0);
+      box-shadow: none;
+    }
+  }
+}
+
+.split-button--secondary {
+  background: $theme-light-bg-hover;
+  border: 1px solid lighten($base-light-secondary, 10%);
+  border-left: none;
+  color: $theme-light-color;
+
+  &:hover,
+  &:focus {
+    background: $theme-light-bg-active;
+    border-left: none;
+    box-shadow: $button-shadow-secondary;
+  }
+
+  &:active {
+    background: darken($theme-light-bg, 10%);
+    border-left: none;
+    box-shadow: $button-shadow-secondary;
+  }
+
+  &:disabled:not(.go-button--loading) {
+    border: 1px solid $theme-light-bg-active;
+    border-left: none;
+
+    &:hover,
+    &:focus {
+      background: $theme-light-bg-hover;
+      border: 1px solid $theme-light-bg-active;
+      border-left: none;
+      box-shadow: none;
+    }
   }
 }
 
