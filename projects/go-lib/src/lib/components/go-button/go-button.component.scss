@@ -1,6 +1,8 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
+
 @mixin disabled-states($bg, $color, $color-opacity: .7) {
   @if ($color == 'light') {
     @if ($color-opacity == .7) {
@@ -174,7 +176,7 @@
   &:focus,
   &:active {
     border: 1px solid lighten($base-light-secondary, 10%);
-    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+    box-shadow: $button-shadow-secondary;
   }
 
   &:disabled:not(.go-button--loading) {
@@ -196,13 +198,13 @@
   &:focus {
     background: $theme-light-bg-active;
     border-left: none;
-    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+    box-shadow: $button-shadow-secondary;
   }
 
   &:active {
     background: darken($theme-light-bg, 10%);
     border-left: none;
-    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, .75);
+    box-shadow: $button-shadow-secondary;
   }
 
   &:disabled:not(.go-button--loading) {
