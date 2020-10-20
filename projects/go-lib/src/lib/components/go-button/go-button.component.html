@@ -30,7 +30,7 @@
     </span>
   </button>
 
-  <div *ngIf="isSplitButton()">
+  <ng-container *ngIf="isSplitButton()">
     <button
       class="split-button"
       (click)="toggleSplitButtonMenu()"
@@ -54,5 +54,5 @@
         {{ option.label }}
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
