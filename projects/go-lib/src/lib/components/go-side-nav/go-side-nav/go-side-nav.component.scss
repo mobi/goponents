@@ -54,11 +54,10 @@
 .go-side-nav__app-icon {
   display: flex;
   font-size: 1.5rem;
-  padding: .2rem 1rem 0 .3rem;
+  padding: 0 1rem 0 .3rem;
 }
 
 .go-side-nav__app-drawer {
-  border-radius: 50%;
   cursor: pointer;
   margin-left: auto;
 
@@ -83,7 +82,6 @@
   .go-side-nav__app-drawer--icon-collapsed {
     display: flex;
     padding-right: 3.5px;
-    padding-top: 3px;
     margin-left: -1px;
   }
 
