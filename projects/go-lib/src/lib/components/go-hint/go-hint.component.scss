@@ -9,7 +9,7 @@
   position: relative;
 
   &::before {
-    background: $theme-light-border;
+    background: $base-light-tertiary;
     border-radius: $global-radius;
     bottom: 0;
     content: '';
