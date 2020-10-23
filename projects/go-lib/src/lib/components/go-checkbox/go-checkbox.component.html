@@ -9,12 +9,12 @@
            [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
            type="checkbox"
            [formControl]="control"
-    >
+           #hiddenInputRef>
     <span class="go-form__custom-checkbox"></span>
   </label>
-  
+
   <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-  
+
   <div *ngIf="control?.errors?.length">
     <go-hint
       *ngFor="let error of control.errors"
