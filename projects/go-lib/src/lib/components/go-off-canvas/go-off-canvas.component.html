@@ -25,4 +25,14 @@
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>
   </div>
+
+  <button
+    *ngIf="showSubmitButton"
+    class="go-off-canvas__submit-button"
+    type="submit"
+    (click)="submitButtonClicked()"
+    [disabled]="submitButtonDisabled"
+    [ngClass]="{ 'go-off-canvas__submit-button--disabled': buttonDisabled }">
+    {{ submitButtonText }}
+  </button>
 </div>

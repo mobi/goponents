@@ -3,16 +3,18 @@ import {
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
+  EventEmitter,
+  Input,
   OnInit,
+  Output,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { GoOffCanvasDirective } from './go-off-canvas.directive';
-import { GoOffCanvasService } from './go-off-canvas.service';
-import { GoOffCanvasItem } from './go-off-canvas.interface';
-
 import { fadeAnimation } from '../../animations/fade.animation';
 import { offCanvasAnimation } from '../../animations/off-canvas.animation';
+import { GoOffCanvasDirective } from './go-off-canvas.directive';
+import { GoOffCanvasItem } from './go-off-canvas.interface';
+import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
   selector: 'go-off-canvas',
@@ -29,6 +31,12 @@ export class GoOffCanvasComponent implements OnInit {
   currentOffCanvasItem: GoOffCanvasItem;
   opened: boolean = false;
   header: string;
+
+  @Input() showSubmitButton: boolean = true;
+  @Input() submitButtonDisabled: boolean = false;
+  @Input() submitButtonText: string = 'Submit';
+
+  @Output() submitButtonClickEvent: EventEmitter<void> = new EventEmitter<void>();
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
   size: 'large' | 'small' = 'small';
@@ -54,6 +62,10 @@ export class GoOffCanvasComponent implements OnInit {
 
   closeOffCanvas(): void {
     this.goOffCanvasService.closeOffCanvas();
+  }
+
+  submitButtonCLicked(): void {
+    this.submitButtonClickEvent.emit();
   }
 
   private loadComponent(): void {
