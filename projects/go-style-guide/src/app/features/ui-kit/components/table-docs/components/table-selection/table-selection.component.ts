@@ -188,14 +188,17 @@ export class TableSelectionComponent {
 
   tableRowEvent(rowEvent: RowSelectionEvent): void {
     this.toasterService.toastInfo({ header: 'Row Event', message: 'Selection Mode: ' + rowEvent.selectionMode + '. ' }, 6000);
-    this.toasterService.toastInfo(
-      {
-        header: 'Row Event',
-        // tslint:disable-next-line: max-line-length
-        message: 'Current Row Id: ' + rowEvent.currentRow.data['id'] + ', ' + (rowEvent.currentRow.selected ? 'selected' : 'deselected') + '. '
-      }, 6000);
     this.toasterService.toastInfo({ header: 'Row Event', message: 'Selected Row Count: ' + rowEvent.selectedRows.length + '. ' }, 6000);
     this.toasterService.toastInfo({ header: 'Row Event', message: 'Deselected Row Count: ' + rowEvent.deselectedRows.length + '. ' }, 6000);
+    if (rowEvent.currentRow) {
+      this.toasterService.toastInfo(
+        {
+          header: 'Row Event',
+          message: `Current Row Id: ${rowEvent.currentRow.data['id']}, ${rowEvent.currentRow.selected ? 'selected' : 'deselected'}.`
+        },
+        6000
+      );
+    }
   }
 
   interactiveTableState(): void {

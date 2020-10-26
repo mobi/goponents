@@ -520,6 +520,12 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         if (!this.selectAllControl.value) {
           this.selectAllIndeterminate = false;
         }
+
+        this.rowSelectionEvent.emit({
+          deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
+          selectionMode: this.determineSelectionMode(),
+          selectedRows: !this.selectAllControl.value ? this.targetedRows : []
+        });
       }
     );
     this.subsCollection.add(selectAllSub);
