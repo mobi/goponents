@@ -27,10 +27,10 @@
   </div>
 
   <button
-    *ngIf="showSubmitButton"
+    *ngIf="submitButtonAction"
     class="go-off-canvas__submit-button"
     type="submit"
-    (click)="submitButtonClicked()"
+    (click)="submitButtonAction()"
     [disabled]="submitButtonDisabled"
     [ngClass]="{ 'go-off-canvas__submit-button--disabled': buttonDisabled }">
     {{ submitButtonText }}

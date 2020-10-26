@@ -5,4 +5,6 @@ export interface GoOffCanvasItem {
   bindings: {};
   header?: string;
   size?: 'large' | 'small';
+  submitButtonAction?: Function;
+  submitButtonText?: string;
 }

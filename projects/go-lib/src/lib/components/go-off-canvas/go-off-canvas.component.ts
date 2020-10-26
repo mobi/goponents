@@ -3,10 +3,7 @@ import {
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
-  EventEmitter,
-  Input,
   OnInit,
-  Output,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -32,11 +29,10 @@ export class GoOffCanvasComponent implements OnInit {
   opened: boolean = false;
   header: string;
 
-  @Input() showSubmitButton: boolean = true;
-  @Input() submitButtonDisabled: boolean = false;
-  @Input() submitButtonText: string = 'Submit';
-
-  @Output() submitButtonClickEvent: EventEmitter<void> = new EventEmitter<void>();
+  submitButtonAction: Function;
+  // TODO: figure out how this should work
+  submitButtonDisabled: boolean = false;
+  submitButtonText: string = 'Submit';
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
   size: 'large' | 'small' = 'small';
@@ -64,10 +60,6 @@ export class GoOffCanvasComponent implements OnInit {
     this.goOffCanvasService.closeOffCanvas();
   }
 
-  submitButtonCLicked(): void {
-    this.submitButtonClickEvent.emit();
-  }
-
   private loadComponent(): void {
     const componentFactory: ComponentFactory<any> = this.componentFactoryResolver.resolveComponentFactory(
       this.currentOffCanvasItem.component
@@ -81,6 +73,9 @@ export class GoOffCanvasComponent implements OnInit {
 
     this.size = this.currentOffCanvasItem.size || 'small';
     this.header = this.currentOffCanvasItem.header;
+
+    this.submitButtonText = this.currentOffCanvasItem.submitButtonText || 'submit';
+    this.submitButtonAction = this.currentOffCanvasItem.submitButtonAction;
   }
 
   private destroyComponent(): void {
