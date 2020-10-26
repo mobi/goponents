@@ -41,21 +41,6 @@
   color: $theme-dark-color;
 }
 
-.go-off-canvas__button {
-  background: $theme-dark-bg;
-  border: 0;
-  color: $base-light;
-  cursor: pointer;
-  display: block;
-  font-family: $primary-font-stack;
-  font-size: .8rem;
-  line-height: 1rem;
-  outline-offset: -2px;
-  padding: $column-gutter--half $column-gutter;
-  text-transform: uppercase;
-  width: 100%;
-}
-
 .go-off-canvas__content {
   flex: 1;
   overflow-y: auto;
