@@ -123,6 +123,7 @@
 
     </div>
   </go-card>
+
   <go-card class="go-column go-column--100" id="large">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Large Off Canvas</h2>
@@ -158,6 +159,43 @@
       <div class="go-column go-column--50">
         <code [highlight]="headerExample"></code>
       </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="submit-button">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Off Canvas With Submit Button</h2>
+      <go-copy cardId="submit-button" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          To render a submit button at the bottom of the off-canvas, add a <code class="code-block--inline">submitButtonAction</code>
+          option to the <code class="code-block--inline">openOffCanvas</code> method. The action should be a function which will be
+          called when the submit button is clicked.
+        </p>
+        <p class="go-body-copy">
+          You can also optionally add a <code class="code-block--inline">submitButtonText</code>
+          option, which will modify the button's text. Otherwise, the text defaults to "Submit".
+        </p>
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4">component.ts</h4>
+            <code [highlight]="submitButtonExample"></code>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4">View</h4>
+            <go-button
+              (handleClick)="openSubmitButtonOffCanvas()"
+              buttonIcon="subdirectory_arrow_right"
+              buttonVariant="neutral">
+              Open Off Canvas
+            </go-button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </go-card>
 </div>

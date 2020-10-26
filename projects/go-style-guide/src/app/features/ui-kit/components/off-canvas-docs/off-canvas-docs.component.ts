@@ -54,7 +54,7 @@ export class OffCanvasDocsComponent {
   `;
 
   functionExample: string = `
-  openOffCanvas() : void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
@@ -75,7 +75,7 @@ export class OffCanvasDocsComponent {
   `;
 
   largeOffCanvasExample: string = `
-  openOffCanvas() : void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
@@ -94,6 +94,25 @@ export class OffCanvasDocsComponent {
     <go-button (handleClick)="closeOffCanvas()">Close</go-button>
   </go-off-canvas-header>
   <div>This will render in the off canvas as usual</div>
+  `;
+
+  submitButtonExample: string = `
+  openSubmitButtonOffCanvas(): void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestComponent,
+      bindings: {
+        someBinding: 'Basic Off Canvas Component'
+      },
+      header: 'Test Header',
+      submitButtonAction: this.submit,
+      submitButtonText: 'Custom Submit Text',
+    });
+  }
+
+  private submit(): void {
+    alert('Submit action called!');
+    this.goOffCanvasService.closeOffCanvas();
+  }
   `;
 
   linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-off-canvas';
@@ -121,6 +140,23 @@ export class OffCanvasDocsComponent {
       header: 'Test Header',
       size: 'large'
     });
+  }
+
+  public openSubmitButtonOffCanvas(): void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestComponent,
+      bindings: {
+        someBinding: 'Basic Off Canvas Component'
+      },
+      header: 'Test Header',
+      submitButtonAction: this.submit,
+      submitButtonText: 'Custom Submit Text',
+    });
+  }
+
+  private submit(): void {
+    alert('Submit action called!');
+    this.goOffCanvasService.closeOffCanvas();
   }
 
 }
