@@ -12,6 +12,8 @@ export class GoInputComponent implements OnInit {
 
   @Input() control: FormControl;
   @Input() key: string;
+  @Input() maxlength: number = 524288;
+  @Input() minlength: number = 0;
   @Input() hints: string[];
   @Input() inputType: string = 'text';
   @Input() label: string;
@@ -22,5 +24,14 @@ export class GoInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'input');
+
+    if (this.minlength > this.maxlength){
+      this.minlength = 0;
+    }
+
+    if (this.maxlength > 524288)
+    {
+      this.maxlength = 524288
+    }
   }
 }
