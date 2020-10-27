@@ -15,8 +15,8 @@ import {
   TemplateRef
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
 import { GoTableColumnComponent } from './go-table-column.component';
@@ -80,14 +80,15 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
   pageSizeControl: FormControl = new FormControl();
-  rowControlSubsCollection: Subscription = new Subscription();
   rowSelectForm: FormGroup;
   searchTerm: FormControl = new FormControl();
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
-  subsCollection: Subscription = new Subscription();
   targetedRows: any[] = [];
+
+  private destroy$: Subject<void> = new Subject();
+  private pageChange$: Subject<void> = new Subject();
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -127,8 +128,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   ngOnDestroy(): void {
-    this.subsCollection.unsubscribe();
-    this.rowControlSubsCollection.unsubscribe();
+    this.pageChange$.next();
+    this.pageChange$.complete();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   renderTable(): void {
@@ -244,12 +247,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   setupPageSizes(): void {
     this.pageSizeControl.setValue(this.localTableConfig.pageConfig.perPage);
 
-    const pageSizesSub: Subscription = this.pageSizeControl.valueChanges.subscribe((value: number) => {
-      this.localTableConfig.pageConfig.perPage = value;
-      this.setPage();
-      this.tableChangeOutcome();
-    });
-    this.subsCollection.add(pageSizesSub);
+    this.pageSizeControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: number) => {
+        this.localTableConfig.pageConfig.perPage = value;
+        this.setPage();
+        this.tableChangeOutcome();
+      });
   }
 
   outputResultsPerPage(): string {
@@ -451,18 +455,20 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   private setupSearch(): void {
-    const searchTermSub: Subscription = this.searchTerm.valueChanges.pipe(
-      debounceTime(this.localTableConfig.searchConfig.debounce),
-      distinctUntilChanged()
-    ).subscribe((searchTerm: string) => {
-      this.localTableConfig.searchConfig.searchTerm = searchTerm;
-      if (!this.isServerMode()) {
-        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
-      } else {
-        this.setFirstPage();
-      }
-    });
-    this.subsCollection.add(searchTermSub);
+    this.searchTerm.valueChanges
+      .pipe(
+        debounceTime(this.localTableConfig.searchConfig.debounce),
+        distinctUntilChanged(),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((searchTerm: string) => {
+        this.localTableConfig.searchConfig.searchTerm = searchTerm;
+        if (!this.isServerMode()) {
+          this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
+        } else {
+          this.setFirstPage();
+        }
+      });
     this.setSearchTerm();
   }
 
@@ -490,8 +496,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   }
 
   private setupRowSelectFormForCurrentPage(): void {
-    this.rowControlSubsCollection.unsubscribe();
-    this.rowControlSubsCollection = new Subscription();
+    this.pageChange$.next();
 
     this.buildRowSelectForm();
     this.setupRowSelectFormControlsSubs();
@@ -511,18 +516,18 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   private setupRowSelectFormControlsSubs(): void {
     this.getDisplayData().forEach((row: any) => {
-      const rowControlSub: Subscription = this.rowSelectForm
-        .get(`selection_${row[this.localTableConfig.selectBy]}`)
-        .valueChanges.subscribe((value: boolean) => {
+      this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
+        .valueChanges.pipe(takeUntil(this.pageChange$))
+        .subscribe((value: boolean) => {
           this.selectionChange(value, row);
         });
-      this.rowControlSubsCollection.add(rowControlSub);
     });
   }
 
   private setupSelectAllControlSub(): void {
-    const selectAllSub: Subscription = this.selectAllControl.valueChanges.subscribe(
-      () => {
+    this.selectAllControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
         this.targetedRows = [];
         this.updateRowSelectForm();
 
@@ -537,7 +542,6 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
         });
       }
     );
-    this.subsCollection.add(selectAllSub);
   }
 
   private updateRowSelectForm(): void {

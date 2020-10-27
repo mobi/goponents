@@ -5,15 +5,16 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   TemplateRef
 } from '@angular/core';
-
+import { Subject } from 'rxjs';
+import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { accordionAnimation } from '../../animations/accordion.animation';
-import { GoConfigService } from '../../go-config.service';
-import { distinctUntilKeyChanged } from 'rxjs/operators';
 import { GoConfigInterface } from '../../go-config.model';
+import { GoConfigService } from '../../go-config.service';
 
 @Component({
   selector: 'go-accordion-panel',
@@ -23,12 +24,14 @@ import { GoConfigInterface } from '../../go-config.model';
     accordionAnimation
   ]
 })
-export class GoAccordionPanelComponent implements OnInit, OnChanges {
+export class GoAccordionPanelComponent implements OnInit, OnChanges, OnDestroy {
   _expanded: boolean = false; // Note: Use _expanded in the template
   containerClasses: object = {};
   headerClasses: object = {};
   brandColor: string;
   loaded: boolean = false;
+
+  private destroy$: Subject<void> = new Subject();
 
   @Input() borderless: boolean;
   @Input() boxShadow: boolean;
@@ -73,10 +76,18 @@ export class GoAccordionPanelComponent implements OnInit, OnChanges {
     this.heading = this.heading || this.title;
 
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
+      .pipe(
+        distinctUntilKeyChanged('brandColor'),
+        takeUntil(this.destroy$)
+      )
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   ngOnChanges(): void {

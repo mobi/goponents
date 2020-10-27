@@ -1,15 +1,16 @@
+import { AnimationEvent } from '@angular/animations';
 import {
   Component,
   ElementRef,
   HostBinding,
   HostListener,
+  OnDestroy,
   OnInit,
   ViewChild
 } from '@angular/core';
-import { AnimationEvent } from '@angular/animations';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { searchLoaderAnim, searchResultsAnim } from '../../animations/search.animation';
 import { GoSearchService } from './go-search.service';
 
@@ -19,11 +20,13 @@ import { GoSearchService } from './go-search.service';
   styleUrls: ['./go-search.component.scss'],
   animations: [searchLoaderAnim, searchResultsAnim]
 })
-export class GoSearchComponent implements OnInit {
+export class GoSearchComponent implements OnInit, OnDestroy {
 
   goSearchForm: FormGroup;
   searchActive: boolean = false;
   resultsOverflow: string = 'hidden';
+
+  private destroy$: Subject<void> = new Subject();
 
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
 
@@ -46,7 +49,8 @@ export class GoSearchComponent implements OnInit {
   ngOnInit(): void {
     this.goSearchForm.valueChanges.pipe(
       debounceTime(500),
-      distinctUntilChanged()
+      distinctUntilChanged(),
+      takeUntil(this.destroy$)
     ).subscribe((changes: string) => {
       if (changes['term'].length >= this.goSearchService.termLength) {
         this.goSearchService.showNoResultsMessage = false;
@@ -60,6 +64,11 @@ export class GoSearchComponent implements OnInit {
     });
 
     this.focusOnSearch();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   resultsStarted(event: AnimationEvent): void {
