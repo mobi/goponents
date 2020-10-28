@@ -14,6 +14,7 @@ export class ActionSheetPanelDocsComponent {
   @Input() icon: string;
   @Input() externalLink: string;
   @Input() panelContent: string;
+  @Input() target: string = '_blank';
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
   `;
