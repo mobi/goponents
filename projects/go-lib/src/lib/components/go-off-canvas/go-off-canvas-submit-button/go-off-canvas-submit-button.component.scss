@@ -1,0 +1,30 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.go-off-canvas__submit-button {
+  @include transition(background-color);
+
+  background-color: $ui-color-primary;
+  border: 0;
+  bottom: 0;
+  color: $base-light;
+  cursor: pointer;
+  font-family: $primary-font-stack;
+  font-size: 1rem;
+  font-weight: $weight-regular;
+  height: 2rem;
+  left: 0;
+  letter-spacing: .015rem;
+  outline: none;
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover {
+    background-color: $ui-color-primary-hover;
+  }
+}
+
+.go-off-canvas__submit-button--disabled {
+  background: $ui-color-primary-hover;
+  cursor: not-allowed;
+}

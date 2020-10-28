@@ -1,0 +1,10 @@
+<ng-template goPortalAttachTo="offCanvasSubmitButton">
+  <button
+    class="go-off-canvas__submit-button"
+    type="submit"
+    (click)="action()"
+    [disabled]="disabled"
+    [ngClass]="{ 'go-off-canvas__submit-button--disabled': disabled }">
+    {{ text }}
+  </button>
+</ng-template>
