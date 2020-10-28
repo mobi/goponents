@@ -220,6 +220,54 @@
     </div>
   </go-card>
 
+  <go-card id="form-select-disabled" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Disable Component</h2>
+      <go-copy cardId="form-select-disabled" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          FormControls can be either created as disable or later disabled
+          and re-enabled directly after they are created.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-select
+                  [control]="select19"
+                  label="Favorite Candy">
+                </go-select>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicDisabledExample"
+              class="code-block--no-bottom-margin">
+            </code>
+            <code
+              [highlight]="basicDisabledExample2"
+              class="code-block--no-bottom-margin">
+            </code>
+            <code
+              [highlight]="basicDisabledExample3"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
   <go-card id="form-select-items" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Component Items</h2>

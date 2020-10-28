@@ -64,6 +64,7 @@ export class SelectDocsComponent implements OnInit {
   select16: FormControl = new FormControl();
   select17: FormControl = new FormControl();
   select18: FormControl = new FormControl();
+  select19: FormControl = new FormControl({ value:'', disabled: true });
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -365,6 +366,30 @@ export class SelectDocsComponent implements OnInit {
       ]
     }
   ]
+  `;
+
+  basicDisabledExample: string = `
+  <go-select
+    [control]="select19"
+    [items]="items"
+    label="Favorite Candy">
+  </go-select>
+  `;
+  basicDisabledExample2: string = `
+  ngOnInit(): void {
+    items = [
+      { value: 1, name: 'Reeses' },
+      { value: 2, name: 'Mints' }
+    ];
+    this.select19.disable();
+    // Use this.select19.enable(); to re-enable the select component.
+  }
+  `;
+  basicDisabledExample3: string = `
+  select19: new FormControl({
+    value: '',
+    disabled: true
+  });
   `;
 
   constructor(
