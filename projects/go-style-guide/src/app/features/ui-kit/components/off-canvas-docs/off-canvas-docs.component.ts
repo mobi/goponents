@@ -3,6 +3,7 @@ import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 
 import { BasicTestComponent } from '../basic-test/basic-test.component';
 import {BasicTestLargeComponent} from '../basic-test-large/basic-test-large.component';
+import { BasicTestSubmitButtonComponent } from '../basic-test-submit-button/basic-test-submit-button.component';
 
 @Component({
   selector: 'app-off-canvas-docs',
@@ -96,21 +97,26 @@ export class OffCanvasDocsComponent {
   <div>This will render in the off canvas as usual</div>
   `;
 
-  submitButtonExample: string = `
-  openSubmitButtonOffCanvas(): void {
-    this.goOffCanvasService.openOffCanvas({
-      component: BasicTestComponent,
-      bindings: {
-        someBinding: 'Basic Off Canvas Component'
-      },
-      header: 'Test Header',
-      submitButtonAction: this.submit,
-      submitButtonText: 'Custom Submit Text',
-    });
-  }
+  submitButtonInputs: string = `
+  @Input() action: Function; // A function to be executed upon clicking the submit button
+  @Input() disabled: boolean = false; // A boolean which, when true, disables the button
+  @Input() text: string = 'Submit'; // The text to be displayed on the button (defaults to 'Submit')
+  `;
 
-  private submit(): void {
-    alert('Submit action called!');
+  submitButtonExampleHTML: string = `
+  <!-- template of the component rendered in the off canvas -->
+  <go-off-canvas-submit-button
+    text="Apply Changes"
+    [action]="submit.bind(this)"
+    [disabled]="submitDisabled">
+  </go-off-canvas-submit-button>
+  `;
+
+  submitButtonExampleTS: string = `
+  submitDisabled: boolean = false;
+
+  submit(): void {
+    alert('Submitted!');
     this.goOffCanvasService.closeOffCanvas();
   }
   `;
@@ -144,13 +150,11 @@ export class OffCanvasDocsComponent {
 
   public openSubmitButtonOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: BasicTestComponent,
+      component: BasicTestSubmitButtonComponent,
       bindings: {
         someBinding: 'Basic Off Canvas Component'
       },
       header: 'Test Header',
-      submitButtonAction: this.submit,
-      submitButtonText: 'Custom Submit Text',
     });
   }
 

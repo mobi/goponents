@@ -171,18 +171,20 @@
 
       <div class="go-column go-column--100 go-column--no-padding">
         <p class="go-body-copy">
-          To render a submit button at the bottom of the off-canvas, add a <code class="code-block--inline">submitButtonAction</code>
-          option to the <code class="code-block--inline">openOffCanvas</code> method. The action should be a function which will be
-          called when the submit button is clicked.
+          To render a full-width submit button at the bottom of the off-canvas, add a <code class="code-block--inline">go-off-submit-button</code> element anywhere within the template of the component being rendered in the off-canvas.
         </p>
         <p class="go-body-copy">
-          You can also optionally add a <code class="code-block--inline">submitButtonText</code>
-          option, which will modify the button's text. Otherwise, the text defaults to "Submit".
+          The <code class="code-block--inline">go-off-submit-button</code> component accept the following inputs:
         </p>
+        <code [highlight]="submitButtonInputs"></code>
         <div class="go-container">
           <div class="go-column go-column--50">
+            <h4 class="go-heading-4">component.html</h4>
+            <code [highlight]="submitButtonExampleHTML"></code>
+          </div>
+          <div class="go-column go-column--50">
             <h4 class="go-heading-4">component.ts</h4>
-            <code [highlight]="submitButtonExample"></code>
+            <code [highlight]="submitButtonExampleTS"></code>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4">View</h4>

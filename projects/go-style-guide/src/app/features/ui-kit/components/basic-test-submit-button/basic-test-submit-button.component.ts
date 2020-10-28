@@ -17,21 +17,11 @@ export class BasicTestSubmitButtonComponent {
   firstName: FormControl = new FormControl('');
   lastName: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
-
   submitDisabled: boolean = false;
 
   constructor(
     private goOffCanvasService: GoOffCanvasService
   ) { }
-
-  public fakeSubmit(): void {
-    // setTimeout(() => {
-    //   this.submitButton.reset();
-    //   this.goOffCanvasService.closeOffCanvas();
-    // }, 2000);
-
-    this.submitDisabled = !this.submitDisabled;
-  }
 
   public submitButtonTest(): void {
     alert('Submitted!');
