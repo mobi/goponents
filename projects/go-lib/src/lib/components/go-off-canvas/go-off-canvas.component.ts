@@ -29,11 +29,6 @@ export class GoOffCanvasComponent implements OnInit {
   opened: boolean = false;
   header: string;
 
-  submitButtonAction: Function;
-  // TODO: figure out how this should work
-  submitButtonDisabled: boolean = false;
-  submitButtonText: string = 'Submit';
-
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
   size: 'large' | 'small' = 'small';
 
@@ -73,9 +68,6 @@ export class GoOffCanvasComponent implements OnInit {
 
     this.size = this.currentOffCanvasItem.size || 'small';
     this.header = this.currentOffCanvasItem.header;
-
-    this.submitButtonText = this.currentOffCanvasItem.submitButtonText || 'submit';
-    this.submitButtonAction = this.currentOffCanvasItem.submitButtonAction;
   }
 
   private destroyComponent(): void {

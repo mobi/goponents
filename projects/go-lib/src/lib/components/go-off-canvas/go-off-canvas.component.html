@@ -2,15 +2,15 @@
   (click)="closeOffCanvas()"
   [@fade]="opened ? 'in' : 'out'"
   class="go-off-canvas-backdrop"
-  tabindex="-1"
->
+  tabindex="-1">
 </div>
+
 <div
   [@offCanvas]="{value: opened ? 'slideIn' : 'slideOut', params: {width: size === 'large' ? '75vw' : '350px'}}"
   class="go-off-canvas"
   [ngClass]="{'go-off-canvas--large': size === 'large'}"
-  role="dialog"
->
+  role="dialog">
+
   <div class="go-off-canvas__header">
     <h3 *ngIf="header" class="go-heading-3 go-heading--no-margin go-off-canvas__title">
       {{ header }}
@@ -22,17 +22,10 @@
       <ng-container *ngSwitchCase="'large'" goPortalTarget="offCanvasHeader"></ng-container>
     </ng-container>
   </div>
+
   <div class="go-off-canvas__content">
     <ng-template go-off-canvas-host></ng-template>
   </div>
 
-  <button
-    *ngIf="submitButtonAction"
-    class="go-off-canvas__submit-button"
-    type="submit"
-    (click)="submitButtonAction()"
-    [disabled]="submitButtonDisabled"
-    [ngClass]="{ 'go-off-canvas__submit-button--disabled': buttonDisabled }">
-    {{ submitButtonText }}
-  </button>
+  <div goPortalTarget="offCanvasSubmitButton"></div>
 </div>
