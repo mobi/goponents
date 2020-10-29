@@ -7,7 +7,7 @@
   background-color: $ui-color-primary;
   border: 0;
   bottom: 0;
-  color: $base-light;
+  color: $theme-dark-color;
   cursor: pointer;
   font-family: $primary-font-stack;
   font-size: 1rem;
@@ -22,9 +22,10 @@
   &:hover {
     background-color: $ui-color-primary-hover;
   }
-}
 
-.go-off-canvas__submit-button--disabled {
-  background: $ui-color-primary-hover;
-  cursor: not-allowed;
+  &:disabled {
+    background: rgba($ui-color-primary, .4);
+    color: rgba($theme-dark-color, .7);
+    cursor: not-allowed;
+  }
 }

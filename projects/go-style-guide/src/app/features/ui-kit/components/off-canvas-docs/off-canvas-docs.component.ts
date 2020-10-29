@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
-
-import { BasicTestComponent } from '../basic-test/basic-test.component';
-import {BasicTestLargeComponent} from '../basic-test-large/basic-test-large.component';
+import { BasicTestLargeComponent } from '../basic-test-large/basic-test-large.component';
 import { BasicTestSubmitButtonComponent } from '../basic-test-submit-button/basic-test-submit-button.component';
+import { BasicTestComponent } from '../basic-test/basic-test.component';
 
 @Component({
   selector: 'app-off-canvas-docs',
@@ -106,13 +105,14 @@ export class OffCanvasDocsComponent {
   submitButtonExampleHTML: string = `
   <!-- template of the component rendered in the off canvas -->
   <go-off-canvas-submit-button
-    text="Apply Changes"
+    [text]="submitButtonText"
     [action]="submit.bind(this)"
     [disabled]="submitDisabled">
   </go-off-canvas-submit-button>
   `;
 
   submitButtonExampleTS: string = `
+  submitButtonText: string = 'Apply Changes';
   submitDisabled: boolean = false;
 
   submit(): void {

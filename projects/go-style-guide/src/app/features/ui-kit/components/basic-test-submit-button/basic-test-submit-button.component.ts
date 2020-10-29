@@ -17,6 +17,7 @@ export class BasicTestSubmitButtonComponent {
   firstName: FormControl = new FormControl('');
   lastName: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
+  submitButtonText: string = 'Apply Changes';
   submitDisabled: boolean = false;
 
   constructor(

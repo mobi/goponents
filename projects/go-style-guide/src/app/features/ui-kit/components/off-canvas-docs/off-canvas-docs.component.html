@@ -170,12 +170,19 @@
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100 go-column--no-padding">
         <p class="go-body-copy">
-          To render a full-width submit button at the bottom of the off-canvas, add a <code class="code-block--inline">go-off-submit-button</code> element anywhere within the template of the component being rendered in the off-canvas.
+          To render a full-width submit button at the bottom of the off-canvas, add a
+          <code class="code-block--inline">go-off-submit-button</code> element anywhere within the template
+          of the component being rendered in the off-canvas.
         </p>
         <p class="go-body-copy">
-          The <code class="code-block--inline">go-off-submit-button</code> component accept the following inputs:
+          The <code class="code-block--inline">go-off-submit-button</code> component accepts the following inputs:
         </p>
         <code [highlight]="submitButtonInputs"></code>
+        <p class="go-body-copy">
+          <strong>Note:</strong> If the function you pass to <code class="code-block--inline">action</code> references
+          properties on the parent component, you must bind <code class="code-block--inline">this</code> to the context
+          of the function, as seen below.
+        </p>
         <div class="go-container">
           <div class="go-column go-column--50">
             <h4 class="go-heading-4">component.html</h4>
