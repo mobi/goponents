@@ -14,6 +14,7 @@ export class GoPanelComponent {
   @Input() externalLink: string;
   @Input() panelContent: string;
   @Input() target: string;
+  @Input() closeOnClick: boolean = true;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
@@ -28,10 +29,12 @@ export class GoPanelComponent {
 
   handleAction(): void {
     this.action.emit();
-    this.closeActionSheet();
+    this.panelClicked();
   }
 
-  closeActionSheet(): void {
-    this.parent.showContent = false;
+  panelClicked(): void {
+    if (this.closeOnClick) {
+      this.parent.showContent = false;
+    }
   }
 }
