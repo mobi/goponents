@@ -44,22 +44,31 @@ describe('GoPanelComponent', () => {
       expect(component.action.emit).toHaveBeenCalled();
     });
 
-    it('should close the action sheet', () => {
-      parentComponent.showContent = true;
+    it('should call panelClicked', () => {
+      spyOn(component, 'panelClicked');
 
       component.handleAction();
 
-      expect(parentComponent.showContent).toBeFalsy();
+      expect(component.panelClicked).toHaveBeenCalled();
     });
   });
 
-  describe('closeActionSheet', () => {
-    it('should set parent action sheet\'s showContent to false', () => {
+  describe('panelClicked', () => {
+    it('should set parent action sheet\'s showContent to false if closeOnClick is true', () => {
       parentComponent.showContent = true;
 
-      component.closeActionSheet();
+      component.panelClicked();
 
       expect(parentComponent.showContent).toBeFalsy();
+    });
+
+    it('should not set parent action sheet\'s showContent to false if closeOnClick is false', () => {
+      parentComponent.showContent = true;
+      component.closeOnClick = false;
+
+      component.panelClicked();
+
+      expect(parentComponent.showContent).toBe(true);
     });
   });
 });
