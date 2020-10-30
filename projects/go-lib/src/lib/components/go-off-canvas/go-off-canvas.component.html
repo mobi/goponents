@@ -6,7 +6,7 @@
 </div>
 
 <div
-  [@offCanvas]="{value: opened ? 'slideIn' : 'slideOut', params: {width: size === 'large' ? '75vw' : '350px'}}"
+  [@offCanvas]="{value: opened ? 'slideIn' : 'slideOut', params: {width: getOffCanvasWidth()}}"
   class="go-off-canvas"
   [ngClass]="{'go-off-canvas--large': size === 'large'}"
   role="dialog">

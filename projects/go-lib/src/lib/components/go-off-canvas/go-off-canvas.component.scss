@@ -23,6 +23,10 @@
   top: 0;
   width: 350px;
   z-index: z-index(off-canvas);
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100vw;
+  }
 }
 
 .go-off-canvas__header {
