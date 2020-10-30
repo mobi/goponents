@@ -54,18 +54,38 @@
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        There are two ways to interact with the selected items of the table.
-        By using an element reference on the table and/or using the <code class="code-block--inline">(rowSelectionEvent)</code> event.
+        There are two ways to interact with the selected items of the table:
       </p>
+      <ol class="go-ordered-list">
+        <li class="go-ordered-list__item">
+          By binding to the table's selection event outputs (the subject of this card).
+        </li>
+        <li class="go-ordered-list__item">
+          By using an element reference to the table (see the "Element Reference Interection" card below).
+        </li>
+      </ol>
+      <h4 class="go-heading-4">Binding to the table's selection events</h4>
+
+      <p class="go-body-copy">There are two outputs that emit selection events from the table</p>
+      <code [highlight]="tableSelectionEventOutputs"></code>
+
       <p class="go-body-copy">
-        First, you must understand how the table handles selection. See the <code class="code-block--inline">SelectionState</code> interface for an explanation:
+        The interfaces for the <code class="code-block--inline">RowSelectionEvent</code> and the
+        <code class="code-block--inline">SelectionState</code> provide more information about the
+        structure of these events:
       </p>
-      <code [highlight]="tableSelectModels"></code>
+      <code [highlight]="tableSelectionModels"></code>
       <p class="go-body-copy">
-        In selection mode, the user is selecting individual rows. This means that these selected rows are being added to the selectedRows array.
+        To summarize: in selection mode, the user is selecting individual rows. This means that these selected rows are being added to the selectedRows array.
         In deselection mode, the user has checked the 'check all' check box and is now removing items from the selection; we call this deselection.
         In this case, items are added to the deselectedRows array as the user unchecks them.
       </p>
+
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="tableSelectionExample_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="tableSelectionExample_ts"></code>
+
       <p class="go-body-copy">
         Interact with the table below to see how the selection works.
       </p>
@@ -78,6 +98,7 @@
     tableTitle="Interactive Example of Selection States"
     [showTableActions]="true"
     (rowSelectionEvent)="tableRowEvent($event)"
+    (selectAllEvent)="selectAllEvent($event)"
     #interactiveTable>
     <ng-container go-table-actions>
       <go-button (handleClick)="interactiveTableState()">State</go-button>
