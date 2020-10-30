@@ -47,6 +47,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   @Input() loadingData: boolean = false;
   @Input() maxHeight: string;
+  @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
