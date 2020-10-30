@@ -2,7 +2,7 @@ export interface RowSelectionEvent extends SelectionState {
   /**
    * The current row that was targeted for selection
    */
-  currentRow?: {
+  currentRow: {
     /**
      * The entire data in the row
      */

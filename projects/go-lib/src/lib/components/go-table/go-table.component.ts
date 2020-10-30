@@ -54,13 +54,21 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   /**
    * This event is emitted when a row's selection changes
-   * @returns a `GoTableRowSelectionEvent` object.
+   * @returns a `RowSelectionEvent` object.
    * - `currentRow` is the targeted row
    * - `selectedRows` are the currently selected rows if the `selectionMode` is `selection`
    * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
    * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
    */
   @Output() rowSelectionEvent: EventEmitter<RowSelectionEvent> = new EventEmitter<RowSelectionEvent>();
+  /**
+   * This event is emitted when the value of the selectAllControl changes
+   * @returns a `SelectionState` object.
+   * - `selectedRows` are the currently selected rows if the `selectionMode` is `selection`
+   * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
+   * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
+   */
+  @Output() selectAllEvent: EventEmitter<SelectionState> = new EventEmitter<SelectionState>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
@@ -521,7 +529,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
           this.selectAllIndeterminate = false;
         }
 
-        this.rowSelectionEvent.emit({
+        this.selectAllEvent.emit({
           deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
           selectionMode: this.determineSelectionMode(),
           selectedRows: !this.selectAllControl.value ? this.targetedRows : []

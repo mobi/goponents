@@ -421,17 +421,17 @@ describe('GoTableComponent', () => {
       expect(component.targetedRows).toEqual([]);
     });
 
-    it('should emit a rowSelectionEvent when selectAll is toggled', () => {
-      const selectionEventData: RowSelectionEvent = {
+    it('should emit a SelectionState event when selectAll is toggled', () => {
+      const selectionEventData: SelectionState = {
         deselectedRows: [],
         selectionMode: SelectionMode.selection,
         selectedRows: []
       };
-      spyOn(component.rowSelectionEvent, 'emit');
+      spyOn(component.selectAllEvent, 'emit');
 
       component.selectAllControl.setValue(false);
 
-      expect(component.rowSelectionEvent.emit).toHaveBeenCalledWith(selectionEventData);
+      expect(component.selectAllEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
   });
 
