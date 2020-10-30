@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class GoOffCanvasSubmitButtonComponent {
   @Input() disabled: boolean = false;
   @Input() text: string = 'Submit';
+  @Input() type: string = 'submit';
 
   @Output() handleClick: EventEmitter<void> = new EventEmitter<void>();
 }

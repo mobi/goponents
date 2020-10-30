@@ -8,8 +8,6 @@ import { FormControl } from '@angular/forms';
   templateUrl: './basic-test-submit-button.component.html'
 })
 export class BasicTestSubmitButtonComponent {
-  @ViewChild('submitButton', { static: true }) submitButton: GoButtonComponent;
-
   email: FormControl = new FormControl('');
   fakeTitle: string = faker.company.companyName();
   fakeCompanyBs: string = faker.company.bs();

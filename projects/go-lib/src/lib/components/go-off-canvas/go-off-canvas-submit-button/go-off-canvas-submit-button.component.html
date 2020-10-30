@@ -1,7 +1,7 @@
 <ng-template goPortalAttachTo="offCanvasSubmitButton">
   <button
     class="go-off-canvas__submit-button"
-    type="submit"
+    [type]="type"
     (click)="handleClick.emit()"
     [disabled]="disabled">
     {{ text }}

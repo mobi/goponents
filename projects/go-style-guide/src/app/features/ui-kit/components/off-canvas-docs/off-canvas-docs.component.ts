@@ -98,7 +98,8 @@ export class OffCanvasDocsComponent {
 
   submitButtonInputs: string = `
   @Input() disabled: boolean = false; // A boolean which, when true, disables the button.
-  @Input() text: string = 'Submit'; // The text to be displayed on the button (defaults to 'Submit').
+  @Input() text: string = 'Submit'; // The text to be displayed on the button.
+  @Input() type: string = 'submit'; // Sets the button's type attribute.
   @Output() handleClick: EventEmitter<void> = new EventEmitter<void>(); // Emits an event when the button is clicked.
   `;
 
