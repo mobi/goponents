@@ -15,6 +15,7 @@ export class TextAreaDocsComponent implements OnInit {
   message7: FormControl = new FormControl('');
   message8: FormControl = new FormControl('');
   message9: FormControl = new FormControl('');
+  message10: FormControl = new FormControl('');
 
   hints: Array<string> = [
     'Please type your message here',
@@ -102,6 +103,14 @@ export class TextAreaDocsComponent implements OnInit {
     [control]="message"
     label="Your Message"
     rows="5">
+  </go-text-area>
+  `;
+
+  basicMaxLengthExample: string = `
+  <go-text-area
+    [control]="message"
+    label="Your Message"
+    maxlength="10">
   </go-text-area>
   `;
 

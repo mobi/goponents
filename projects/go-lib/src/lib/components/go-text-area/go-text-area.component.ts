@@ -13,6 +13,7 @@ export class GoTextAreaComponent implements OnInit {
   @Input() key: string;
   @Input() hints: Array<string>;
   @Input() label: string;
+  @Input() maxlength: number;
   @Input() placeholder: string = '';
   @Input() theme: 'light' | 'dark' = 'light';
   @Input() rows: number;

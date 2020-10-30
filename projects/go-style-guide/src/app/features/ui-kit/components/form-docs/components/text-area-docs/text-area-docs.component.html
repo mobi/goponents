@@ -345,4 +345,42 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-textarea-max-length" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Max Length</h2>
+      <go-copy cardId="form-textarea-max-length" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The text area component's max legnth can be set via
+          <code class="code-block--inline">@Input() maxlength: number;</code> and the
+          <code class="code-block--inline">maxlength</code> attribute.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-text-area
+              [control]="message10"
+              label="Your Message"
+              maxlength="10">
+            </go-text-area>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicMaxLengthExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>
