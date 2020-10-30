@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'go-off-canvas-submit-button',
@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./go-off-canvas-submit-button.component.scss']
 })
 export class GoOffCanvasSubmitButtonComponent {
-  @Input() action: Function;
   @Input() disabled: boolean = false;
   @Input() text: string = 'Submit';
+
+  @Output() handleClick: EventEmitter<void> = new EventEmitter<void>();
 }

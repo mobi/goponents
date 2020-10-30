@@ -97,17 +97,17 @@ export class OffCanvasDocsComponent {
   `;
 
   submitButtonInputs: string = `
-  @Input() action: Function; // A function to be executed upon clicking the submit button
-  @Input() disabled: boolean = false; // A boolean which, when true, disables the button
-  @Input() text: string = 'Submit'; // The text to be displayed on the button (defaults to 'Submit')
+  @Input() disabled: boolean = false; // A boolean which, when true, disables the button.
+  @Input() text: string = 'Submit'; // The text to be displayed on the button (defaults to 'Submit').
+  @Output() handleClick: EventEmitter<void> = new EventEmitter<void>(); // Emits an event when the button is clicked.
   `;
 
   submitButtonExampleHTML: string = `
   <!-- template of the component rendered in the off canvas -->
   <go-off-canvas-submit-button
     [text]="submitButtonText"
-    [action]="submit.bind(this)"
-    [disabled]="submitDisabled">
+    [disabled]="submitDisabled"
+    (handleClick)="submit()">
   </go-off-canvas-submit-button>
   `;
 
@@ -158,7 +158,7 @@ export class OffCanvasDocsComponent {
     });
   }
 
-  private submit(): void {
+  public submit(): void {
     alert('Submit action called!');
     this.goOffCanvasService.closeOffCanvas();
   }

@@ -2,7 +2,7 @@
   <button
     class="go-off-canvas__submit-button"
     type="submit"
-    (click)="action()"
+    (click)="handleClick.emit()"
     [disabled]="disabled">
     {{ text }}
   </button>

@@ -38,7 +38,7 @@
 
   <go-off-canvas-submit-button
     [text]="submitButtonText"
-    [action]="submitButtonTest.bind(this)"
-    [disabled]="submitDisabled">
+    [disabled]="submitDisabled"
+    (handleClick)="submitButtonTest()">
   </go-off-canvas-submit-button>
 </form>
