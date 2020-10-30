@@ -34,7 +34,7 @@ export class GoOffCanvasComponent implements OnInit {
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
   size: 'large' | 'small' = 'small';
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize(): void {
     this.screenWidth = window.innerWidth;
   }
