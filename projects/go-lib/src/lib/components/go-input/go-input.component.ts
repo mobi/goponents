@@ -25,12 +25,11 @@ export class GoInputComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'input');
 
-    if (this.minlength > this.maxlength){
+    if (this.minlength > this.maxlength) {
       this.minlength = 0;
     }
 
-    if (this.maxlength > 524288)
-    {
+    if (this.maxlength > 524288) {
       this.maxlength = 524288
     }
   }
