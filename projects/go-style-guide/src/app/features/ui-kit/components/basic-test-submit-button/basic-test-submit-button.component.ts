@@ -4,13 +4,10 @@ import { GoButtonComponent, GoOffCanvasService } from '../../../../../../../go-l
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-basic-test-large',
-  templateUrl: './basic-test-large.component.html',
-  styleUrls: ['./basic-test-large.component.scss']
+  selector: 'app-basic-test-submit-button',
+  templateUrl: './basic-test-submit-button.component.html'
 })
-export class BasicTestLargeComponent {
-  @ViewChild('submitButton', { static: true }) submitButton: GoButtonComponent;
-
+export class BasicTestSubmitButtonComponent {
   email: FormControl = new FormControl('');
   fakeTitle: string = faker.company.companyName();
   fakeCompanyBs: string = faker.company.bs();
@@ -18,19 +15,15 @@ export class BasicTestLargeComponent {
   firstName: FormControl = new FormControl('');
   lastName: FormControl = new FormControl('');
   password: FormControl = new FormControl('');
+  submitButtonText: string = 'Apply Changes';
+  submitDisabled: boolean = false;
 
   constructor(
     private goOffCanvasService: GoOffCanvasService
   ) { }
 
-  public fakeSubmit(): void {
-    this.submitButton.isProcessing = true;
-    setTimeout(() => {
-      this.submitButton.reset();
-      this.goOffCanvasService.closeOffCanvas();
-    }, 2000);
-  }
-  public cancel(): void {
+  public submitButtonTest(): void {
+    alert('Submitted!');
     this.goOffCanvasService.closeOffCanvas();
   }
 }
