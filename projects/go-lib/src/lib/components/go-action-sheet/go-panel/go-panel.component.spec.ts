@@ -56,6 +56,7 @@ describe('GoPanelComponent', () => {
   describe('panelClicked', () => {
     it('should set parent action sheet\'s showContent to false if closeOnClick is true', () => {
       parentComponent.showContent = true;
+      component.closeOnClick = true;
 
       component.panelClicked();
 
