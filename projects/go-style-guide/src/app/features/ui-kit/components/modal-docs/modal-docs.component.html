@@ -128,6 +128,63 @@
     </div>
   </go-card>
 
+  <go-card class="go-column go-column--100" id="modal-backdrop">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Modal Backdrop</h2>
+      <go-copy cardId="modal-backdrop" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default clicking on the backdrop behind the modal will not close the modal. If you wish to enable closing
+          the modal by clicking on the backdrop the <code class="code-block--inline">closeWithBackdrop</code> binding can
+          be used to enable it.
+        </p>
+      </div>
+
+      <div class="go-column go-column--75">
+        <h4 class="go-heading-4">Code</h4>
+        <code [highlight]="ex_ModalDocsCloseWithBackdrop"></code>
+      </div>
+
+      <div class="go-column go-column--25">
+        <h4 class="go-heading-4">View</h4>
+        <go-button (handleClick)="openCloseWithBackdropModal()">Click Me</go-button>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="modal-close-icon">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Modal Close Icon</h2>
+      <go-copy cardId="modal-close-icon" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default there is a close icon in the upper right corner of a modal. In certain cases where
+          a response is required by a user we might want to remove this icon to force a user to make a decision between
+          a set of choices. This icon can be disabled through the <code class="code-block--inline">showCloseIcon</code>
+          binding.
+        </p>
+      </div>
+
+      <div class="go-column go-column--75">
+        <h4 class="go-heading-4">Code</h4>
+        <code [highlight]="ex_ModalDocsNoCloseIcon"></code>
+      </div>
+
+      <div class="go-column go-column--25">
+        <h4 class="go-heading-4">View</h4>
+        <go-button (handleClick)="openNoCloseIconModal()">Click Me</go-button>
+      </div>
+
+    </div>
+  </go-card>
+
   <go-card class="go-column go-column--100" id="sizes">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Modal Sizes</h2>
