@@ -1,6 +1,8 @@
 <span class="go-badge-outer-container">
   <ng-content></ng-content>
-  <span class="go-badge-container">
+  <span
+    class="go-badge-container"
+    [ngClass]="{ 'go-badge-container--icon-button': iconButtonChild }">
     <span class="go-badge" [ngClass]="badgeStyles">{{ displayData ? badgeData : ''}}</span>
   </span>
 </span>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 export class LayoutFooterComponent {
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Footer';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-footer';
   }
 
   basicExample_module: string = `

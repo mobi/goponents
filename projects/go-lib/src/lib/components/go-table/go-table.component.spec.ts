@@ -14,6 +14,7 @@ import { GoTableComponent } from './go-table.component';
 import { Component, SimpleChange } from '@angular/core';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoCheckboxModule } from '../go-checkbox/go-checkbox.module';
 import { GoSelectModule } from '../go-select/go-select.module';
 
 @Component({
@@ -55,6 +56,7 @@ describe('GoTableComponent', () => {
       declarations: [ GoTableComponent, GoTableColumnComponent, GoTestTableComponent ],
       imports: [
         FormsModule,
+        GoCheckboxModule,
         GoIconButtonModule,
         GoIconModule,
         GoLoaderModule,
@@ -145,13 +147,13 @@ describe('GoTableComponent', () => {
 
   describe('afterViewInit', () => {
     afterEach(() => {
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
     });
 
     it('should select all rows if preselected', () => {
       component.tableConfig.preselected = true;
       component.ngAfterViewInit();
-      expect(component.selectAllChecked).toBe(true);
+      expect(component.selectAllControl.value).toBe(true);
     });
   });
 
@@ -217,7 +219,7 @@ describe('GoTableComponent', () => {
     });
   });
 
-  describe('setDisplayData', () => {
+  describe('getDisplayData', () => {
     beforeEach(() => {
       component.localTableConfig.tableData = fakeTableData;
 
@@ -233,17 +235,17 @@ describe('GoTableComponent', () => {
     it('returns all data when server mode is enabled', () => {
       component.localTableConfig.dataMode = GoTableDataSource.server;
 
-      expect(component.setDisplayData()).toEqual(fakeTableData);
+      expect(component.getDisplayData()).toEqual(fakeTableData);
     });
 
     it('returns all data when paging mode is disabled', () => {
       component.localTableConfig.pageable = false;
 
-      expect(component.setDisplayData()).toEqual(fakeTableData);
+      expect(component.getDisplayData()).toEqual(fakeTableData);
     });
 
     it('returns paginated data when paging mode is enabled and in client mode', () => {
-      expect(component.setDisplayData()).toEqual([ fakeTableData[0] ]);
+      expect(component.getDisplayData()).toEqual([ fakeTableData[0] ]);
     });
   });
 
@@ -251,7 +253,7 @@ describe('GoTableComponent', () => {
     let isRowSelected: boolean;
 
     beforeEach(() => {
-      component.selectAllChecked = true;
+      component.selectAllControl.setValue(true);
       component.localTableConfig.tableData = fakeTableData;
       component.localTableConfig.selectBy = 'id';
       component.localTableConfig.selectable = true;
@@ -274,7 +276,7 @@ describe('GoTableComponent', () => {
     });
 
     it('should return true if selectAll is not checked, but row is checked', () => {
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
       component.targetedRows = [fakeTableData[0]];
 
       isRowSelected = component.isRowSelected(fakeTableData[0]);
@@ -284,71 +286,63 @@ describe('GoTableComponent', () => {
   });
 
   describe('selectionChange', () => {
-    const event: any = {
-      target: {
-        checked: true
-      }
-    };
+    let value: boolean = true;
 
     beforeEach(() => {
       component.localTableConfig.tableData = fakeTableData;
       component.localTableConfig.selectBy = 'id';
       component.localTableConfig.selectable = true;
-      component.selectAllCheckbox = {
-        nativeElement: {
-          indeterminate: true
-        }
-      };
-      component.selectAllChecked = true;
+      component.selectAllIndeterminate = true;
+      component.selectAllControl.setValue(true);
       component.targetedRows = [fakeTableData[0]];
     });
 
     afterEach(() => {
-      event.target.checked = true;
+      value = true;
     });
 
-    it('should set selectAllCheckbox to false if SelectAll is active and checking only inactive checkbox', () => {
-      component.selectionChange(event, fakeTableData[0]);
+    it('should set selectAllIndeterminate to false if SelectAll is active and checking only inactive checkbox', () => {
+      component.selectionChange(value, fakeTableData[0]);
 
-      expect(component.selectAllCheckbox.nativeElement.indeterminate).toEqual(false);
+      expect(component.selectAllIndeterminate).toEqual(false);
     });
 
-    it('should set selectAllCheckbox to true if SelectAll is active and unchecking a checkbox', () => {
-      component.selectAllCheckbox.nativeElement.indeterminate = false;
-      event.target.checked = false;
+    it('should set selectAllIndeterminate to true if SelectAll is active and unchecking a checkbox', () => {
+      component.selectAllIndeterminate = false;
+      value = false;
 
-      component.selectionChange(event, fakeTableData[1]);
+      component.selectionChange(value, fakeTableData[1]);
 
-      expect(component.selectAllCheckbox.nativeElement.indeterminate).toEqual(true);
+      expect(component.selectAllIndeterminate).toEqual(true);
     });
 
     it('should remove row from targeted rows if selectAll is checked and row was previously unchecked', () => {
-      component.selectionChange(event, fakeTableData[0]);
+      component.selectionChange(value, fakeTableData[0]);
 
       expect(component.targetedRows).toEqual([]);
     });
 
     it('should add row to targeted rows if selectAll is checked and row was previously checked', () => {
-      event.target.checked = false;
+      value = false;
 
-      component.selectionChange(event, fakeTableData[1]);
+      component.selectionChange(value, fakeTableData[1]);
 
       expect(component.targetedRows[1]).toEqual(fakeTableData[1]);
     });
 
     it('should remove row from targeted rows if selectAll is unchecked and row was previously checked', () => {
-      component.selectAllChecked = false;
-      event.target.checked = false;
+      component.selectAllControl.setValue(false);
+      value = false;
 
-      component.selectionChange(event, fakeTableData[0]);
+      component.selectionChange(value, fakeTableData[0]);
 
       expect(component.targetedRows).toEqual([]);
     });
 
     it('should add row to targeted rows if selectAll is unchecked and row was previously unchecked', () => {
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
 
-      component.selectionChange(event, fakeTableData[1]);
+      component.selectionChange(value, fakeTableData[1]);
 
       expect(component.targetedRows[1]).toEqual(fakeTableData[1]);
     });
@@ -365,9 +359,9 @@ describe('GoTableComponent', () => {
       };
 
       spyOn(component.rowSelectionEvent, 'emit');
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
 
-      component.selectionChange(event, fakeTableData[1]);
+      component.selectionChange(value, fakeTableData[1]);
 
       expect(component.rowSelectionEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
@@ -384,52 +378,60 @@ describe('GoTableComponent', () => {
       };
       spyOn(component.rowSelectionEvent, 'emit');
 
-      component.selectionChange(event, fakeTableData[1]);
+      component.selectionChange(value, fakeTableData[1]);
 
       expect(component.rowSelectionEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
   });
 
-  describe('toggleSelectAll', () => {
+  describe('setupSelectAllControlSub', () => {
     beforeEach(() => {
-      component.selectAllCheckbox = {
-        nativeElement: {
-          indeterminate: true
-        }
-      };
-      component.selectAllChecked = true;
+      component.selectAllIndeterminate = true;
+      component.selectAllControl.setValue(true);
       component.targetedRows = fakeTableData;
+      component.tableConfig.selectable = true;
+      component.tableConfig.selectBy = 'id';
+      component.renderTable();
     });
 
-    it('should set checked checkbox inderterminate to false if checkbox toggled off', () => {
-      component.toggleSelectAll();
+    it('should set selectAllIndeterminate to false if selectAll toggled off', () => {
+      component.selectAllControl.setValue(false);
 
-      expect(component.selectAllChecked).toBe(false);
-      expect(component.selectAllCheckbox.nativeElement.indeterminate).toBe(false);
+      expect(component.selectAllIndeterminate).toBe(false);
     });
 
-    it('shouldn\'t turn on checkbox inderterminate if checkbox toggled on', () => {
-      component.selectAllCheckbox.nativeElement.indeterminate = false;
-      component.selectAllChecked = false;
+    it('shouldn\'t set selectAllIndeterminate to true if selectAll toggled on', () => {
+      component.selectAllIndeterminate = false;
+      component.selectAllControl.setValue(false);
 
-      component.toggleSelectAll();
+      component.selectAllControl.setValue(true);
 
-      expect(component.selectAllChecked).toBe(true);
-      expect(component.selectAllCheckbox.nativeElement.indeterminate).toBe(false);
+      expect(component.selectAllIndeterminate).toBe(false);
     });
 
-    it('should reset targetedRows if toggling on', () => {
-      component.selectAllChecked = false;
-
-      component.toggleSelectAll();
+    it('should reset targetedRows if toggling selectAll on', () => {
+      component.selectAllControl.setValue(true);
 
       expect(component.targetedRows).toEqual([]);
     });
 
-    it('should reset targetedRows if toggling off', () => {
-      component.toggleSelectAll();
+    it('should reset targetedRows if toggling selectAll off', () => {
+      component.selectAllControl.setValue(false);
 
       expect(component.targetedRows).toEqual([]);
+    });
+
+    it('should emit a SelectionState event when selectAll is toggled', () => {
+      const selectionEventData: SelectionState = {
+        deselectedRows: [],
+        selectionMode: SelectionMode.selection,
+        selectedRows: []
+      };
+      spyOn(component.selectAllEvent, 'emit');
+
+      component.selectAllControl.setValue(false);
+
+      expect(component.selectAllEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
   });
 
@@ -437,12 +439,12 @@ describe('GoTableComponent', () => {
     let selectionCount: number;
 
     beforeEach(() => {
-      component.targetedRows = fakeTableData;
       component.localTableConfig.totalCount = 5;
     });
 
     it('should return selected rows if selecting', () => {
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
+      component.targetedRows = fakeTableData;
 
       selectionCount = component.getSelectionCount();
 
@@ -450,7 +452,8 @@ describe('GoTableComponent', () => {
     });
 
     it('should return total row count minus deselected rows if deselecting', () => {
-      component.selectAllChecked = true;
+      component.selectAllControl.setValue(true);
+      component.targetedRows = fakeTableData;
 
       selectionCount = component.getSelectionCount();
 
@@ -461,12 +464,9 @@ describe('GoTableComponent', () => {
   describe('getSelectionState', () => {
     let selectionState: SelectionState;
 
-    beforeEach(() => {
-      component.targetedRows = fakeTableData;
-    });
-
     it('should return deselected rows if select all is checked', () => {
-      component.selectAllChecked = true;
+      component.selectAllControl.setValue(true);
+      component.targetedRows = fakeTableData;
 
       selectionState = component.getSelectionState();
 
@@ -476,7 +476,8 @@ describe('GoTableComponent', () => {
     });
 
     it('should return selected rows if select all is not checked', () => {
-      component.selectAllChecked = false;
+      component.selectAllControl.setValue(false);
+      component.targetedRows = fakeTableData;
 
       selectionState = component.getSelectionState();
 
@@ -912,6 +913,41 @@ describe('GoTableComponent', () => {
       component.renderTable();
 
       expect(component.searchTerm.value).toEqual(component.tableConfig.searchConfig.searchTerm);
+    });
+
+    it('should build the rowSelectForm if table rows are selectable', () => {
+      expect(component.rowSelectForm).toBeFalsy();
+
+      component.tableConfig.selectable = true;
+
+      component.renderTable();
+
+      expect(component.rowSelectForm).toBeTruthy();
+    });
+
+    it('should set up a subscription to each control on the rowSelectForm if rows are selectable', () => {
+      spyOn(component, 'selectionChange');
+      component.tableConfig.selectable = true;
+      component.tableConfig.selectBy = 'id';
+
+      component.renderTable();
+      expect(component.selectionChange).not.toHaveBeenCalled();
+
+      component.rowSelectForm.get('selection_1').setValue(true);
+      expect(component.selectionChange).toHaveBeenCalledWith(true, fakeTableData[0]);
+    });
+
+    it('should set up a subscription to selectAllControl if rows are selectable', () => {
+      component.tableConfig.selectable = true;
+      component.tableConfig.selectBy = 'id';
+
+      component.renderTable();
+
+      expect(component.rowSelectForm.value['selection_1']).toBe(false);
+
+      component.selectAllControl.setValue(true);
+
+      expect(component.rowSelectForm.value['selection_1']).toBe(true);
     });
   });
 

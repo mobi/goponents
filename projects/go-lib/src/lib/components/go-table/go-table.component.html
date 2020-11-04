@@ -27,8 +27,8 @@
       *ngIf="searchTerm.value">
     </go-icon-button>
   </div>
-  <div 
-    [ngStyle]="{ 'max-height': maxHeight }"
+  <div
+    [ngStyle]="{ 'max-height': maxHeight, 'min-height': minHeight }"
     class="go-table">
     <table
       class="go-table__table"
@@ -41,9 +41,12 @@
           </td>
           <th class="go-table__head-column go-table__head--sortable"
               width="60"
-              *ngIf="localTableConfig.selectable"
-              (click)="toggleSelectAll()">
-            <input type="checkbox" [checked]="selectAllChecked" name="select_all" #selectAllCheckbox/>
+              *ngIf="localTableConfig.selectable">
+            <go-checkbox
+              class="go-table__select-all-checkbox"
+              [control]="selectAllControl"
+              [indeterminate]="selectAllIndeterminate">
+            </go-checkbox>
           </th>
           <th *ngFor="let col of columns"
               class="go-table__head-column"
@@ -62,7 +65,7 @@
         </tr>
       </thead>
       <tbody class="go-table__body">
-        <ng-container *ngFor="let item of setDisplayData()">
+        <ng-container *ngFor="let item of getDisplayData()">
           <tr class="go-table__body-row"
               [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }">
             <td class="go-table__body-column go-table__icon-button-column"
@@ -77,15 +80,14 @@
                 (handleClick)="toggleDetails(item)"
               ></go-icon-button>
             </td>
-            <td class="go-table__body-column"
+            <td class="go-table__body-column go-table__body-column--selectable"
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
-                *ngIf="localTableConfig.selectable">
-              <input type="checkbox"
-                    [checked]="isRowSelected(item)"
-                    (change)="selectionChange($event, item)"
-                    [name]="'selection_' + item[localTableConfig.selectBy]"/>
+                *ngIf="localTableConfig.selectBy && rowSelectForm">
+              <go-checkbox
+                [control]="rowSelectForm.get('selection_' + item[localTableConfig.selectBy])">
+              </go-checkbox>
             </td>
             <td *ngFor="let col of columns"
                 class="go-table__body-column"

@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
+
 @Component({
   selector: 'app-layout-example',
   templateUrl: './layout-example.component.html'
 })
 export class LayoutExampleComponent {
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Layout Example';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/ui-kit/components/layout-docs/components/layout-example';
+  }
 
   example_app_module: string = `
   import {

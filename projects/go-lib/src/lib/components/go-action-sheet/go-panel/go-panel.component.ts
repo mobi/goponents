@@ -13,6 +13,7 @@ export class GoPanelComponent {
   @Input() icon: string;
   @Input() externalLink: string;
   @Input() panelContent: string;
+  @Input() target: string;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 

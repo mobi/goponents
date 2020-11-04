@@ -1,12 +1,15 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   OnChanges,
   OnInit,
   Output,
 } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
+import { SplitButtonOption } from './go-split-button-option.model';
 
 @Component({
   animations: [fadeTemplateAnimation],
@@ -16,17 +19,30 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 })
 export class GoButtonComponent implements OnChanges, OnInit {
   classObject: object = {};
+  splitButtonClassObject: object = {};
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
+  showSplitButtonMenu: boolean = false;
+  splitButtonIconModifier: 'light' | 'dark' = 'light';
 
   @Input() buttonDisabled: boolean;
   @Input() buttonIcon: string;
   @Input() buttonType: string = 'button';
   @Input() buttonVariant: string = 'primary';
   @Input() isProcessing: boolean = false;
+  @Input() splitButtonOptions: SplitButtonOption[] = [];
   @Input() useDarkTheme: boolean = false;
 
   @Output() handleClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(target: HTMLElement): void {
+    this.closeSplitButtonMenuEvent(target);
+  }
+
+  constructor(
+    private elementRef: ElementRef,
+  ) { }
 
   clicked(): void {
     this.handleClick.emit(this.isProcessing);
@@ -43,15 +59,31 @@ export class GoButtonComponent implements OnChanges, OnInit {
     this.buttonLoader();
   }
 
+  isSplitButton(): boolean {
+    return this.splitButtonOptions.length > 0 && (this.buttonVariant === 'primary' || this.buttonVariant === 'secondary');
+  }
+
+  toggleSplitButtonMenu(): void {
+    this.showSplitButtonMenu = !this.showSplitButtonMenu;
+  }
+
+  splitButtonOptionSelected(action: SplitButtonOption['action']): void {
+    action.apply(this, arguments);
+    this.showSplitButtonMenu = false;
+  }
+
   private setupButton(): void {
     this.buttonVariant = this.buttonVariant === 'positive' ? 'primary' : this.buttonVariant;
+    this.splitButtonIconModifier = this.buttonVariant === 'secondary' || this.buttonVariant === 'tertiary' ? 'dark' : 'light';
 
     this.classObject = {
       'go-button--dark': this.useDarkTheme,
       'go-button--loading': this.isProcessing,
+      'go-button--split': this.isSplitButton()
     };
 
     this.classObject['go-button--' + this.buttonVariant] = true;
+    this.splitButtonClassObject['split-button--' + this.buttonVariant] = true;
   }
 
   private buttonLoader(): void {
@@ -73,5 +105,11 @@ export class GoButtonComponent implements OnChanges, OnInit {
 
   private isAlternativeLight(): boolean {
     return (this.buttonVariant === 'secondary' || this.buttonVariant === 'tertiary') && !this.useDarkTheme;
+  }
+
+  private closeSplitButtonMenuEvent(target: HTMLElement): void {
+    if (!this.elementRef.nativeElement.contains(target)) {
+      this.showSplitButtonMenu = false;
+    }
   }
 }

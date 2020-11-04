@@ -19,6 +19,7 @@ export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
 // Button
+export * from './lib/components/go-button/go-split-button-option.model';
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
 

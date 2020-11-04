@@ -24,6 +24,8 @@ export class GoSwitchToggleComponent implements OnInit {
   }
 
   toggle(): void {
-    this.control.setValue(!this.control.value);
+    if (!this.control.disabled) {
+      this.control.setValue(!this.control.value);
+    }
   }
 }

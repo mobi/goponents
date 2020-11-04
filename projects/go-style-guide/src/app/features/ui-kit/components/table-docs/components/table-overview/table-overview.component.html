@@ -36,6 +36,14 @@
       </div>
 
       <div class="go-column go-column--100">
+        <h4 class="go-heading-4">minHeight</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding can be used to specify a minimum height of the table content. Any value supported by the
+          <code class="code-block--inline">min-height</code> CSS property may be used. By default there is no minimum height.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">renderBoxShadows</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           This binding toggles box-shadows for the table. By default, it is set to <code class="code-block--inline">true</code>.
@@ -135,6 +143,32 @@
     [tableConfig]="tableConfig"
     tableTitle="Max Height Example"
     maxHeight="300px">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="min-height">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Min Height</h2>
+      <go-copy cardId="min-height" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="minHeightExample_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="basicExample_ts"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+      class="go-column go-column--100"
+      [tableConfig]="tableConfig"
+      tableTitle="Min Height Example"
+      minHeight="700px">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

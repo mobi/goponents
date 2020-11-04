@@ -8,6 +8,7 @@ interface NavAppDrawerItem {
   displayName: string;
   icon: string;
   url: string;
+  target?: string;
 }
 
 export { NavAppDrawer, NavAppDrawerItem };

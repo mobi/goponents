@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 
 import { NavGroup } from 'projects/go-lib/src/public_api';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
   templateUrl: './table-docs.component.html'
 })
 export class TableDocsComponent {
+
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Table Overview';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
+  }
 
   menuItems: Array<NavGroup> = [
     { routeTitle: 'Features', subRoutes: [

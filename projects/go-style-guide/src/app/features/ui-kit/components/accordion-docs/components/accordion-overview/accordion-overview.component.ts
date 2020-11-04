@@ -137,5 +137,6 @@ export class AccordionOverviewComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Accordion Overview';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-accordion';
   }
 }

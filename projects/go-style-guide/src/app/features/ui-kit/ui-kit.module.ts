@@ -104,6 +104,7 @@ import { TreeDocsComponent } from './components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from './components/table-docs/components/table-title-template/table-title-template.component';
 import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scroll.component';
 import { BasicTestLargeComponent } from './components/basic-test-large/basic-test-large.component';
+import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-button/basic-test-submit-button.component';
 
 @NgModule({
   imports: [
@@ -143,6 +144,7 @@ import { BasicTestLargeComponent } from './components/basic-test-large/basic-tes
     AccordionPanelDocsComponent,
     BasicTestComponent,
     BasicTestLargeComponent,
+    BasicTestSubmitButtonComponent,
     BadgeDocsComponent,
     ButtonDocsComponent,
     CardDocsComponent,
@@ -204,6 +206,7 @@ import { BasicTestLargeComponent } from './components/basic-test-large/basic-tes
   entryComponents: [
     BasicTestComponent,
     BasicTestLargeComponent,
+    BasicTestSubmitButtonComponent,
     GoSelectComponent,
     ModalTestComponent
   ],

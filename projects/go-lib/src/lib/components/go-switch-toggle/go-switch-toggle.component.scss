@@ -43,6 +43,12 @@
   }
 }
 
+.go-form__switch-toggle__toggle--disabled {
+  background-color: $base-light-tertiary;
+  border: 1px solid $base-light-tertiary;
+  cursor: default;
+}
+
 .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
   background-color: $ui-color-primary;
   border-color: $ui-color-primary;
@@ -76,4 +82,8 @@
 .go-form__switch-toggle__label--before {
   padding-left: 0;
   padding-right: 0.75rem;
+}
+
+.go-form__switch-toggle__label--disabled {
+  color: $base-light-secondary;
 }

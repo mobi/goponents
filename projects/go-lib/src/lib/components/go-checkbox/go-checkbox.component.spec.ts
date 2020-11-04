@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { GoCheckboxComponent } from './go-checkbox.component';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoCheckboxComponent } from './go-checkbox.component';
 
 describe('GoCheckboxComponent', () => {
   let component: GoCheckboxComponent;
@@ -67,6 +66,18 @@ describe('GoCheckboxComponent', () => {
 
       expect(component.id).toBeDefined();
       expect(component.id).toContain('checkbox-');
+    });
+  });
+
+  describe('ngAfterViewInit', () => {
+    it('sets the hidden input to indeterminate if indeterminate input is true', () => {
+      expect(component.hiddenInputRef.nativeElement.indeterminate).toBe(false);
+
+      component.indeterminate = true;
+
+      component.ngAfterViewInit();
+
+      expect(component.hiddenInputRef.nativeElement.indeterminate).toBe(true);
     });
   });
 });

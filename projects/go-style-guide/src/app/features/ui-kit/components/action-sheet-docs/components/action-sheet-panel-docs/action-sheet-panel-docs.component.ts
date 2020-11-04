@@ -14,6 +14,7 @@ export class ActionSheetPanelDocsComponent {
   @Input() icon: string;
   @Input() externalLink: string;
   @Input() panelContent: string;
+  @Input() target: string = '_blank';
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
   `;
@@ -157,6 +158,8 @@ export class ActionSheetPanelDocsComponent {
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Action Sheet Panel';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-action-sheet/go-panel';
+
   }
 
   toast(): void {

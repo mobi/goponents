@@ -36,4 +36,5 @@ export class BadgeDocsComponent {
   `;
 
   pageTitle: string = 'Badge';
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge';
 }

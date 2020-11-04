@@ -1,11 +1,11 @@
 <fieldset
-  class="go-form__fieldset go-form__fieldset--no-margin"
   [disabled]="control.disabled"
-  [ngClass]="{ 'go-form__fieldset--error': control?.errors?.length, 'go-form__fieldset--dark': theme === 'dark' }"
+  [ngClass]="{ 'go-form__fieldset--error': control?.errors?.length, 'go-form__fieldset--dark': theme === 'dark', 'go-form__fieldset--disable': enableFieldset, 'go-form__fieldset go-form__fieldset--no-margin': enableFieldset }"
 >
   <legend
     class="go-form__legend"
     [ngClass]="{ 'go-form__legend--dark': theme === 'dark' }"
+    *ngIf="enableLegend"
   >{{ legend }}</legend>
 
   <ng-content></ng-content>

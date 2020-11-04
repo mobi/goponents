@@ -42,8 +42,9 @@
         <h4 class="go-heading-4">externalLink</h4>
         <p class="go-body-copy">
           This binding allows the implementer to target a route outside of Angular.
-          This should not be used in conjuction with a <code class="code-block--inline">routerLink</code>.
-          The link will open in a new tab.
+          This should not be used in conjunction with a <code class="code-block--inline">routerLink</code>.
+          The link will open in a new tab by default. The <code class="code-block--inline">target</code> may be changed
+          using the <code class="code-block--inline">target</code> binding.
         </p>
       </div>
 
@@ -58,6 +59,14 @@
         <h4 class="go-heading-4">action</h4>
         <p class="go-body-copy">
           This is an event that is emitted from the panel when a user clicks on the panel.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">target (optional)</h4>
+        <p class="go-body-copy">
+          This optional binding sets the target for an external link. By default, the value is
+          <code class="code-block--inline">_blank</code> which will open the link in a new tab.
         </p>
       </div>
 

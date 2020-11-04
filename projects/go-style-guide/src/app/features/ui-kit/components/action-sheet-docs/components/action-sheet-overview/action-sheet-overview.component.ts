@@ -78,5 +78,6 @@ export class ActionSheetOverviewComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Action Sheet Overview';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-action-sheet';
   }
 }

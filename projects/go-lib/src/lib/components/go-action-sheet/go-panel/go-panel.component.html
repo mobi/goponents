@@ -1,8 +1,8 @@
 <!-- External Link -->
 <a
   class="go-panel"
-  target="_blank"
-  rel="noreferrer"
+  [target]="target ? target : '_blank'"
+  [rel]="target ? target : 'noreferrer'"
   [ngClass]="panelClasses()"
   [attr.href]="externalLink"
   *ngIf="externalLink; else noLink"

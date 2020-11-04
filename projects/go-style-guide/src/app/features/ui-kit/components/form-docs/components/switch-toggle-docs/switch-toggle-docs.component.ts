@@ -90,6 +90,7 @@ export class SwitchToggleDocsComponent implements OnInit {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Switch Toggle';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-switch-toggle';
   }
 
   ngOnInit(): void {

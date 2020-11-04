@@ -1,5 +1,10 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">{{ pageTitle }}</h1>
+  <a
+  [href]="linkToSource"
+  target="_blank">
+    <go-button buttonVariant="neutral"> View on GitHub </go-button>
+  </a>
 </header>
 
 <div class="go-container">
@@ -39,7 +44,7 @@
           <div class="go-column go-column--100">
             <h4 class="go-heading-4">buttonIcon</h4>
             <p class="go-body-copy">
-              Add an icon to the left of the text in the button. See the 
+              Add an icon to the left of the text in the button. See the
               <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
               page for available icons.
             </p>
@@ -54,20 +59,6 @@
               or resetting (<code class="code-block--inline">reset</code>) forms.
             </p>
           </div>
-
-          <div class="go-column go-column--100">
-            <h4 class="go-heading-4">handleClick</h4>
-            <p class="go-body-copy">
-              This event fires when the button is clicked. Use this event 
-              to handle the click event.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="go-column go-column--50 go-column--no-padding">
-        <div class="go-container">
 
           <div class="go-column go-column--100">
             <h4 class="go-heading-4">buttonVariant</h4>
@@ -86,6 +77,12 @@
             </ol>
           </div>
 
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+
           <div class="go-column go-column--100">
             <h4 class="go-heading-4">isProcessing</h4>
             <p class="go-body-copy">
@@ -97,12 +94,29 @@
           </div>
 
           <div class="go-column go-column--100">
+            <h4 class="go-heading-4">splitButtonOptions</h4>
+            <p class="go-body-copy">
+              Turns the button into a split-button, where the left side
+              functions as a normal button and right side opens a dropdown
+              menu with options for alternative actions.
+            </p>
+          </div>
+
+          <div class="go-column go-column--100">
             <h4 class="go-heading-4">useDarkTheme</h4>
             <p class="go-body-copy">
               Applies a dark theme to the button component.
               The dark button styles can be applied by setting the
               <code class="code-block--inline">useDarkTheme</code>
               binding to <code class="code-block--inline">true</code>.
+            </p>
+          </div>
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">handleClick</h4>
+            <p class="go-body-copy">
+              This event fires when the button is clicked. Use this event
+              to handle the click event.
             </p>
           </div>
 
@@ -438,7 +452,7 @@
     </ng-container>
   </go-card>
 
-  <go-card class="go-column go-column--100 go-column--no-padding" id="button-group">
+  <go-card class="go-column go-column--100" id="button-group">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Button Groups</h2>
       <go-copy cardId="button-group" goCopyCardLink></go-copy>
@@ -461,6 +475,115 @@
               <go-button>Button 2</go-button>
             </li>
           </ul>
+        </div>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="split-buttons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Split Buttons</h2>
+      <go-copy cardId="split-buttons" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        The <code class="code-block--inline">@Input() splitButtonOptions: SplitButtonOption[]</code>
+        input allows you to turn the button into a split-button.
+      </p>
+
+      <p class="go-body-copy">
+        The interface for the options looks like this:
+      </p>
+      <code [highlight]="splitButtonOptionInterface"></code>
+
+      <p class="go-body-copy">
+        The <code class="code-block--inline">label</code> of an option will determine the
+        text displayed for that option in the split-button's dropdown menu.
+      </p>
+
+      <p class="go-body-copy">
+        The <code class="code-block--inline">action</code> of an option is the function
+        that will be called when the action is clicked.
+        In order for the function to be able to reference properties on the component
+        class on which it is defined and to be able to receive arguments, you must bind
+        <code class="code-block--inline">this</code> to the context of the function (see below).
+      </p>
+
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="splitExampleTS"></code>
+
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="splitExampleHTML"></code>
+
+      <caption>
+        <strong>NOTE:</strong> Currently, only the Primary and Secondary button types
+        support split-button functionality.
+      </caption>
+
+      <div class="go-container">
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions">
+            Primary
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonDisabled="true">
+            Disabled
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonIcon="work">
+            With Icon
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonIcon="work">
+          </go-button> Icon Only
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonVariant="secondary">
+            Secondary
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonVariant="secondary"
+            buttonDisabled="true">
+            Disabled
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonVariant="secondary"
+            buttonIcon="work">
+            With Icon
+          </go-button>
+        </div>
+        <div class="go-column go-column--25">
+          <go-button
+            (handleClick)="testClick()"
+            [splitButtonOptions]="splitButtonOptions"
+            buttonVariant="secondary"
+            buttonIcon="work">
+          </go-button> Icon Only
         </div>
       </div>
     </ng-container>
