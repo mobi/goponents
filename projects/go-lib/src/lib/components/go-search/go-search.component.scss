@@ -14,7 +14,7 @@
   @include transition(all);
 
   background: $theme-light-bg;
-  border: 1px solid $theme-light-border;
+  border: 1px solid $base-light-tertiary;
   border-radius: 1rem;
   box-shadow: none;
   color: $theme-light-border;
@@ -91,11 +91,11 @@
   padding: .5rem .5rem .5rem 0;
 
   &:-ms-input-placeholder {
-    color: $theme-light-color;
+    color: $base-light-secondary;
   }
 
   &::placeholder {
-    color: $theme-light-color;
+    color: $base-light-secondary;
   }
 
   &:active, &:focus {

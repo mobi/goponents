@@ -82,6 +82,7 @@ $z-index: (
     size: auto $column-gutter--three-quarters;
   }
   cursor: not-allowed;
+  color: $base-light-secondary;
 
   &:hover {
     box-shadow: none;
