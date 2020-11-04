@@ -12,8 +12,7 @@ import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-test-page-1',
-  templateUrl: './test-page-1.component.html',
-  styleUrls: ['./test-page-1.scss']
+  templateUrl: './test-page-1.component.html'
 })
 export class TestPage1Component implements OnInit, OnDestroy {
 
@@ -99,5 +98,15 @@ export class TestPage1Component implements OnInit, OnDestroy {
 
   cancelClick(): void {
     this.toasterService.toastError({ message: 'Cancel clicked!' });
+  }
+
+  logRow(parentItem: any, childItem: any): void {
+    this.toasterService.toastInfo({
+      header: 'Child Row Clicked!',
+      message: `
+        Child Name: ${childItem.name.first}<br/>
+        Parent Name: ${parentItem.name.first}
+      `
+    });
   }
 }

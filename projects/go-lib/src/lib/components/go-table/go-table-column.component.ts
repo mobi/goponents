@@ -1,23 +1,17 @@
 import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
-import { extractFieldData } from './go-table-utils';
+import { GoTableChildColumnComponent } from './go-table-child-column.component';
 
 @Component({
   selector: 'go-table-column',
   template: ''
 })
-export class GoTableColumnComponent {
+export class GoTableColumnComponent extends GoTableChildColumnComponent {
 
-  @Input() alignment: 'top' | 'middle' | 'bottom' = 'middle';
-  @Input() field: string;
   @Input() searchable: boolean = true;
   @Input() sortable?: boolean;
   @Input() title: string;
   @Input() width: number;
 
-  @ContentChild('goTableCell', { static: false }) goTableCell: TemplateRef<any>;
   @ContentChild('goTableHead', { static: false }) goTableHead: TemplateRef<any>;
 
-  getFieldData(item: any): any {
-    return extractFieldData(this.field, item);
-  }
 }

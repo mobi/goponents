@@ -37,7 +37,7 @@
         <tr>
           <td
             class="go-table__body-column"
-            *ngIf="details || rowDetails"
+            *ngIf="details || childRows"
             width="40">
           </td>
           <th
@@ -70,21 +70,28 @@
         <ng-container *ngFor="let item of getDisplayData()">
           <tr
             class="go-table__body-row"
-            [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item) }">
+            [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item), 'go-table__body-row--active-parent': item.showDetails }">
+
+            <!-- Table Details / Child Rows Column -->
             <td
               class="go-table__body-column go-table__icon-button-column"
               [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
               [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
               width="40"
-              *ngIf="details || rowDetails">
-              <span [ngClass]="{ 'active-row': item.showDetails }"></span>
+              *ngIf="details || childRows">
+              <span
+                [ngStyle]="{ 'border-left-color': brandColor }"
+                [ngClass]="{ 'go-table__body-row--active': item.showDetails }">
+              </span>
               <go-icon-button
                 class="go-table__details-button"
-                buttonIcon="chevron_right"
-                (handleClick)="toggleDetails(item)">
+                [buttonIcon]="item.showDetails ? 'expand_more' : 'chevron_right'"
+                (handleClick)="toggleDetails(item)"
+                *ngIf="item[childRowsKey]">
               </go-icon-button>
             </td>
-            <td class="go-table__body-column go-table__body-column--selectable"
+
+            <td class="go-table__body-column"
                 [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
                 width="60"
@@ -107,18 +114,43 @@
               </ng-template>
             </td>
           </tr>
+
+          <!-- Child Rows Template -->
+          <ng-container *ngIf="childRows && item.showDetails">
+            <tr *ngFor="let childItem of item[childRowsKey]">
+              <td class="go-table__body-column">
+                <span
+                  class="go-table__child-row-indicator"
+                  [ngStyle]="{ 'border-left-color': brandColor }">
+                </span>
+              </td>
+              <td
+                *ngIf="localTableConfig.selectable"
+                class="go-table__body-column"
+                width="60">
+              </td>
+              <td
+                *ngFor="let col of childRowColumns"
+                class="go-table__body-column"
+                [ngStyle]="{ 'vertical-align': col.alignment }">
+                <ng-container *ngIf="!col.goTableCell; else childColumnCellOutlet">
+                  {{ col.getFieldData(childItem) }}
+                </ng-container>
+                <ng-template #childColumnCellOutlet>
+                  <ng-container *ngTemplateOutlet="col.goTableCell context: { $implicit: childItem, parentItem: item }">
+                  </ng-container>
+                </ng-template>
+              </td>
+            </tr>
+          </ng-container>
+
+          <!-- Detail Row Template -->
           <tr class="go-table__body-row" *ngIf="details && item.showDetails">
             <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
             </td>
           </tr>
-           <!-- Multiple row and column -->
-           <ng-container *ngIf="rowDetails && item.showDetails">
-            <ng-container
-              *ngTemplateOutlet="rowDetails; context: { $implicit: item }"
-            ></ng-container>
-          </ng-container>
-          <!-- End Multiple row and column -->
+
         </ng-container>
       </tbody>
     </table>

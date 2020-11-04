@@ -70,6 +70,7 @@
   <!-- Hierarchical Table -->
   <go-table [loadingData]="tableDetailsLoading"
             [tableConfig]="tableDetailsConfig"
+            childRowsKey="children"
             (rowSelectionEvent)="handleSelection($event)"
             [showTableActions]="true"
             (tableChange)="handleTableChange($event)"
@@ -83,19 +84,24 @@
     <go-table-column field="email" [sortable]="true" title="Email"></go-table-column>
     <go-table-column field="gender" title="Gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
-    <ng-template #goTableRowDetails let-item>
-      <tr class="child-row" *ngFor="let childItem of item.children; let last = last">
-        <td>
-          <span class="active-child-row" [ngClass]="{ 'last-active-child': last }"></span>
-        </td>
-        <td>{{ childItem.id }}</td>
-        <td>{{ childItem.name.first }}</td>
-        <td>{{ childItem.name.last }}</td>
-        <td>{{ childItem.email }}</td>
-        <td>{{ childItem.gender }}</td>
-        <td>{{ childItem.ip_address }}</td>
-      </tr>
-    </ng-template>
+
+    <ng-container #goTableChildRows>
+      <go-table-child-column field="id"></go-table-child-column>
+      <go-table-child-column field="name.first"></go-table-child-column>
+      <go-table-child-column field="name.last"></go-table-child-column>
+      <go-table-child-column field="email"></go-table-child-column>
+      <go-table-child-column field="gender"></go-table-child-column>
+      <go-table-child-column>
+        <ng-template #goTableCell let-childItem let-parentItem="parentItem">
+          {{ childItem.ip_address }}
+          <go-icon-button
+            buttonIcon="explore"
+            (handleClick)="logRow(parentItem, childItem)">
+          </go-icon-button>
+        </ng-template>
+      </go-table-child-column>
+    </ng-container>
+
   </go-table>
   <!-- End Hierarchical Table -->
 </div>
