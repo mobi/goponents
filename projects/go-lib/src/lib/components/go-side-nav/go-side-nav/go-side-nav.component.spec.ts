@@ -4,6 +4,7 @@ import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.modul
 import { GoSideNavComponent } from './go-side-nav.component';
 import { GoNavGroupComponent } from '../go-nav-group/go-nav-group.component';
 import { GoIconModule } from '../../go-icon/go-icon.module';
+import { GoIconButtonModule } from "../../go-icon-button/go-icon-button.module";
 import { GoNavItemComponent } from '../go-nav-item/go-nav-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoConfigService } from '../../../go-config.service';
@@ -31,6 +32,7 @@ describe('GoSideNavComponent', () => {
       imports: [
         GoActionSheetModule,
         GoIconModule,
+        GoIconButtonModule,
         RouterTestingModule
       ],
       providers: [
