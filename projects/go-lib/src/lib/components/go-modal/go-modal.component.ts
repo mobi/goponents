@@ -20,11 +20,13 @@ import { GoModalService } from './go-modal.service';
 export class GoModalComponent implements OnInit {
   readonly defaultModalSize: 'lg' | 'xl' = 'lg';
 
+  closeWithBackdrop: boolean = false;
   currentComponent: any;
   modalTitle: string;
   modalSize: 'lg' | 'xl' = this.defaultModalSize;
   noContentPadding: boolean = false;
   opened: boolean = false;
+  showCloseIcon: boolean = true;
 
   @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;
   @ViewChild('goModal', { static: true }) goModal: ElementRef<HTMLElement>;
@@ -73,8 +75,14 @@ export class GoModalComponent implements OnInit {
       this.modalSize = this.defaultModalSize;
     }
 
+    // Set close with backdrop if provided
+    this.closeWithBackdrop = componentRef.instance['closeWithBackdrop'] === true ? true : false;
+
     // set content padding if provided
     this.noContentPadding = componentRef.instance['noContentPadding'];
+
+    // set close icon if provided
+    this.showCloseIcon = componentRef.instance['showCloseIcon'] === false ? false : true;
   }
 
   /**
@@ -83,7 +91,7 @@ export class GoModalComponent implements OnInit {
    * @param $event - Click event
    */
   backdropClick($event: MouseEvent): void {
-    if ($event && this.goModal.nativeElement === $event.target) {
+    if ($event && this.closeWithBackdrop && this.goModal.nativeElement === $event.target) {
       this.closeModal();
     }
   }

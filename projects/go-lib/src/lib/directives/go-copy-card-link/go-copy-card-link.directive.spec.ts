@@ -48,7 +48,9 @@ describe('GoCopyCardLinkDirective', () => {
     it('sets the text of the element with the current url and an id selector', () => {
       directive.cardId = 'testId';
       directive.ngOnInit();
-      expect(goCopyComponent.text).toBe('http://localhost:9876/context.html/#testId');
+
+      const endsWithIdSelector: boolean = goCopyComponent.text.endsWith('/#testId');
+      expect(endsWithIdSelector).toBe(true);
     });
   });
 });

@@ -21,6 +21,7 @@ export class TableOverviewComponent {
   componentBindings: string = `
   @Input() loadingData: boolean = false;
   @Input() maxHeight: string;
+  @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
@@ -77,6 +78,20 @@ export class TableOverviewComponent {
     [tableConfig]="tableConfig"
     tableTitle="Max Height Example"
     maxHeight="300px">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+  `;
+
+  minHeightExample_html: string = `
+  <go-table
+    [tableConfig]="tableConfig"
+    tableTitle="Min Height Example"
+    minHeight="700px">
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

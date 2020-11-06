@@ -1,26 +1,58 @@
-<button
-  class="go-button"
-  (click)="clicked()"
-  [disabled]="buttonDisabled || isProcessing"
-  [ngClass]="classObject"
-  [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
-  [type]="buttonType">
-  <span class="go-button__loader"
-        *ngIf="isProcessing"
-        [ngClass]="loaderClassObject"
-        @fadeTemplate>
-    <go-loader [loaderType]="loaderType"
-               loaderSize="xsmall"
-               class="go-button__loader-container">
-    </go-loader>
-  </span>
-  <go-icon
-    [icon]="buttonIcon"
-    class="go-button__icon"
+<div class="go-button-container">
+  <button
+    class="go-button"
+    (click)="clicked()"
     [disabled]="buttonDisabled || isProcessing"
-    *ngIf="buttonIcon">
-  </go-icon>
-  <span #buttonContent class="go-button__text">
-    <ng-content></ng-content>
-  </span>
-</button>
+    [ngClass]="classObject"
+    [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
+    [type]="buttonType">
+    <span
+      class="go-button__loader"
+      *ngIf="isProcessing"
+      [ngClass]="loaderClassObject"
+      @fadeTemplate>
+      <go-loader
+        [loaderType]="loaderType"
+        loaderSize="xsmall"
+        class="go-button__loader-container">
+      </go-loader>
+    </span>
+    <go-icon
+      [icon]="buttonIcon"
+      class="go-button__icon"
+      [disabled]="buttonDisabled || isProcessing"
+      *ngIf="buttonIcon">
+    </go-icon>
+    <span
+      class="go-button__text"
+      #buttonContent>
+      <ng-content></ng-content>
+    </span>
+  </button>
+
+  <ng-container *ngIf="isSplitButton()">
+    <button
+      class="split-button"
+      (click)="toggleSplitButtonMenu()"
+      [ngClass]="splitButtonClassObject"
+      [disabled]="buttonDisabled || isProcessing">
+      <go-icon
+        [icon]="showSplitButtonMenu ? 'arrow_drop_up' : 'arrow_drop_down'"
+        [iconModifier]="splitButtonIconModifier"
+        [disabled]="buttonDisabled || isProcessing">
+      </go-icon>
+    </button>
+
+    <div
+      class="split-button__menu"
+      [ngClass]="{'split-button__menu--active': showSplitButtonMenu}"
+      [attr.aria-expanded]="showSplitButtonMenu">
+      <div
+        class="split-button__menu-option"
+        *ngFor="let option of splitButtonOptions"
+        (click)="splitButtonOptionSelected(option.action)">
+        {{ option.label }}
+      </div>
+    </div>
+  </ng-container>
+</div>

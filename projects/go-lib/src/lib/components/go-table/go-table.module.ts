@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { GoCheckboxModule } from '../go-checkbox/go-checkbox.module';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
@@ -18,6 +19,7 @@ import { GoTableComponent } from './go-table.component';
   imports: [
     CommonModule,
     FormsModule,
+    GoCheckboxModule,
     GoIconModule,
     GoIconButtonModule,
     GoLoaderModule,

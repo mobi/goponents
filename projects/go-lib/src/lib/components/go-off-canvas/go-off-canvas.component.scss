@@ -21,8 +21,12 @@
   left: 100%;
   position: fixed;
   top: 0;
-  width: 300px;
+  width: 350px;
   z-index: z-index(off-canvas);
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100vw;
+  }
 }
 
 .go-off-canvas__header {
@@ -39,21 +43,6 @@
   flex-grow: 1;
   padding-right: .5rem;
   color: $theme-dark-color;
-}
-
-.go-off-canvas__button {
-  background: $theme-dark-bg;
-  border: 0;
-  color: $base-light;
-  cursor: pointer;
-  display: block;
-  font-family: $primary-font-stack;
-  font-size: .8rem;
-  line-height: 1rem;
-  outline-offset: -2px;
-  padding: $column-gutter--half $column-gutter;
-  text-transform: uppercase;
-  width: 100%;
 }
 
 .go-off-canvas__content {
