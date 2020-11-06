@@ -23,6 +23,14 @@
   min-height: auto;
 }
 
+// overrides ng-select styles when theme is dark
+.ng-select.go-select--dark .ng-select-container
+ {
+  background-color: $base-dark;
+  color: $theme-dark-color;
+  border: 1px solid $base-dark-secondary;
+}
+
 .ng-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container,
 .ng-select.ng-select-single .ng-select-container .ng-value-container {
   align-items: flex-start;
@@ -138,6 +146,13 @@
   background: $theme-light-bg-hover;
 }
 
+// Dropdown panel unselected options - styles for dark theme
+.ng-select.go-select--dark .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  background-color: $base-dark;
+  color: $theme-dark-color;
+  border: 1px solid $base-dark-secondary;
+}
+
 // overrides incorrect alignment when appendTo body is applied to an ng-select
 body > .ng-dropdown-panel {
   margin-left: 4px;
@@ -153,6 +168,25 @@ body > .ng-dropdown-panel {
   &.ng-option-selected,
   &.ng-option-selected.ng-option-marked {
     background-color: $theme-light-bg-hover;
+
+    .ng-option-label {
+      font-weight: $weight-light;
+    }
+  }
+}
+
+//Selected options - styles for dark theme 
+
+.ng-select.go-select--dark .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  font-size: .875rem;
+
+  &.ng-option-marked {
+    background: #222425;
+  }
+
+  &.ng-option-selected,
+  &.ng-option-selected.ng-option-marked {
+    background-color: #222425;
 
     .ng-option-label {
       font-weight: $weight-light;
@@ -181,5 +215,27 @@ body > .ng-dropdown-panel {
 
   &:hover {
     background: $theme-light-bg-hover;
+  }
+}
+
+//Select All button - styles for dark theme
+.go-select--dark__select-all-button {
+  @include transition(all);
+
+  background: $base-dark;
+  color: $theme-dark-color;
+  border: 0;
+  cursor: pointer;
+  font-family: $primary-font-stack;
+  font-size: .875rem;
+  font-weight: $weight-light;
+  line-height: 1;
+  outline: none;
+  padding: .5rem;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    background: #222425;
   }
 }

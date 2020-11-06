@@ -20,13 +20,16 @@
   [multiple]="multiple"
   [placeholder]="placeholder"
   [typeahead]="typeahead"
+  [ngClass]="{'go-select--dark': theme === 'dark'}"
   [searchable]="searchable"
   [typeToSearchText]="typeToSearchText">
   <ng-container *ngIf="multiple && showSelectAll">
     <ng-template ng-header-tmp>
       <button
         (click)="onSelectAll()"
-        class="go-select__select-all-button">
+        class="go-select__select-all-button"
+        [ngClass]="{ 'go-select--dark__select-all-button' : theme === 'dark' }">
+
         Select All
       </button>
     </ng-template>
