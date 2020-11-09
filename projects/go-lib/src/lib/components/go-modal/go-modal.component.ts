@@ -4,11 +4,13 @@ import {
   ComponentFactoryResolver,
   ComponentRef,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GoModalDirective } from './go-modal.directive';
 import { GoModalService } from './go-modal.service';
 
@@ -17,7 +19,7 @@ import { GoModalService } from './go-modal.service';
   templateUrl: './go-modal.component.html',
   styleUrls: ['./go-modal.component.scss']
 })
-export class GoModalComponent implements OnInit {
+export class GoModalComponent implements OnInit, OnDestroy {
   readonly defaultModalSize: 'lg' | 'xl' = 'lg';
 
   closeWithBackdrop: boolean = false;
@@ -27,6 +29,8 @@ export class GoModalComponent implements OnInit {
   noContentPadding: boolean = false;
   opened: boolean = false;
   showCloseIcon: boolean = true;
+
+  private destroy$: Subject<void> = new Subject();
 
   @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;
   @ViewChild('goModal', { static: true }) goModal: ElementRef<HTMLElement>;
@@ -38,17 +42,26 @@ export class GoModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.goModalService.activeModalComponent.subscribe((value: any) => {
-      this.currentComponent = value;
-      this.loadComponent();
-    });
+    this.goModalService.activeModalComponent
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: any) => {
+        this.currentComponent = value;
+        this.loadComponent();
+      });
 
-    this.goModalService.modalOpen.subscribe((value: boolean) => {
-      this.opened = value;
-      if (this.opened === false) {
-        this.destroyComponent();
-      }
-    });
+    this.goModalService.modalOpen
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: boolean) => {
+        this.opened = value;
+        if (this.opened === false) {
+          this.destroyComponent();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   loadComponent(): void {

@@ -3,16 +3,19 @@ import {
   Component,
   ContentChildren,
   Input,
+  OnDestroy,
   OnInit,
-  QueryList,
+  QueryList
 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 @Component({
   selector: 'go-accordion',
   template: '<ng-content></ng-content>'
 })
-export class GoAccordionComponent implements OnInit, AfterContentInit {
+export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy {
   @Input() borderless: boolean = false;
   @Input() boxShadow: boolean = false;
   @Input() expandAll: boolean = false;
@@ -23,6 +26,8 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
   @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoAccordionPanelComponent) panels: QueryList<GoAccordionPanelComponent>;
+
+  private destroy$: Subject<void> = new Subject();
 
   constructor() { }
 
@@ -42,13 +47,18 @@ export class GoAccordionComponent implements OnInit, AfterContentInit {
       panel.detectChanges();
     });
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
   //#endregion
 
   //#region Private Methods
   /////////////////////////
 
   private subscribePanel(panel: GoAccordionPanelComponent): void {
-    panel.toggle.subscribe(() => {
+    panel.toggle.pipe(takeUntil(this.destroy$)).subscribe(() => {
       if (!panel.expanded && this.multiExpand) {
         panel.expanded = true;
       } else if (!panel.expanded && !this.multiExpand) {

@@ -3,13 +3,15 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnDestroy,
   OnInit,
   Output,
   Renderer2,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { distinctUntilKeyChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
 import { GoConfigService } from '../../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
@@ -23,7 +25,7 @@ import { NavItem } from '../nav-item.model';
   // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None
 })
-export class GoNavGroupComponent implements OnInit {
+export class GoNavGroupComponent implements OnInit, OnDestroy {
   @Input() navItem: NavGroup | NavItem;
   @Input() class: string;
   @Input() index: number;
@@ -32,6 +34,8 @@ export class GoNavGroupComponent implements OnInit {
 
   brandColor: string;
   group: NavGroup;
+
+  private destroy$: Subject<void> = new Subject();
 
   // We are using a setter on this ViewChild because of the *ngIf on the element.
   // This enables us to check whether the element exists before attempting to set its attributes.
@@ -51,10 +55,18 @@ export class GoNavGroupComponent implements OnInit {
     // Using this to do type checking between NavGroup and NavItem in the html
     this.group = this.navItem as NavGroup;
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
+      .pipe(
+        distinctUntilKeyChanged('brandColor'),
+        takeUntil(this.destroy$)
+      )
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   expand(navGroup: NavGroup): void {
