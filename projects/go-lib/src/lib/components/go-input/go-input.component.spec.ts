@@ -35,16 +35,21 @@ describe('GoInputComponent', () => {
   });
 
   describe('ngOnInit()', () => {
-    it('sets default minlength if no minlength is specified', () => {
-      fixture.detectChanges();
+    it('sets minlength to 0 if minlength is greater than maxlength', () => {
+      component.minlength = 10;
+      component.maxlength = 8;
+
+      component.ngOnInit();
 
       expect(component.minlength).toBe(0);
-    });
+    })
+      
+    it('sets maxlength to 524288 if maxlength is greater than 524288', () => {
+      component.maxlength = 524290;
 
-    it('sets default maxlength if no maxlength is specified', () => {
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.maxlength).toBe(524288);
-    });
+    })
   });
 });

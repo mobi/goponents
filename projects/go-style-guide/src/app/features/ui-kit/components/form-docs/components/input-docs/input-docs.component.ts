@@ -84,8 +84,8 @@ export class InputDocsComponent implements OnInit {
   <go-input
     [control]="name"
     label="Your Name"
-    maxlength="10"
-    minlength="5">
+    [maxlength]="10"
+    [minlength]="5">
   </go-input>
   `;
 
