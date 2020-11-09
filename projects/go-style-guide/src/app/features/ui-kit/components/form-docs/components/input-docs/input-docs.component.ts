@@ -79,6 +79,16 @@ export class InputDocsComponent implements OnInit {
     // Use this.lastName.enable(); to re-enable the input.
   }
   `;
+
+  basicLengthExample: string = `
+  <go-input
+    [control]="name"
+    label="Your Name"
+    [maxlength]="10"
+    [minlength]="5">
+  </go-input>
+  `;
+
   basicPlaceholderExample: string = `
   <go-input
     [control]="name"

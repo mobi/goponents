@@ -11,7 +11,9 @@
          [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
          [type]="inputType"
          [placeholder]="placeholder"
-         [formControl]="control">
+         [formControl]="control"
+         [maxlength]="maxlength"
+         [minlength]="minlength">
 
   <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
 
