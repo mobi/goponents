@@ -146,11 +146,8 @@
   background: $theme-light-bg-hover;
 }
 
-// Dropdown panel unselected options - styles for dark theme
-.ng-select.go-select--dark .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-  background-color: $base-dark;
-  color: $theme-dark-color;
-  border: 1px solid $base-dark-secondary;
+.ng-dropdown-panel .ng-dropdown-header {
+  padding: 0;
 }
 
 // overrides incorrect alignment when appendTo body is applied to an ng-select
@@ -175,29 +172,40 @@ body > .ng-dropdown-panel {
   }
 }
 
-//Selected options - styles for dark theme 
-
-.ng-select.go-select--dark .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-  font-size: .875rem;
-
-  &.ng-option-marked {
-    background: #222425;
+// overrides for dark theme 
+.ng-select.go-select--dark {
+  .ng-dropdown-panel.ng-select-bottom {
+    border: 0;
   }
 
-  &.ng-option-selected,
-  &.ng-option-selected.ng-option-marked {
-    background-color: #222425;
+  .ng-dropdown-panel {
+    .ng-dropdown-header {
+      border-bottom-color: $base-dark-secondary;
+    }
 
-    .ng-option-label {
-      font-weight: $weight-light;
+    .ng-dropdown-panel-items .ng-option {
+      background-color: $base-dark;
+      border-top: 1px solid $base-dark-secondary;
+      color: $theme-dark-color;
+
+      &.ng-option-marked,
+      &.ng-option-selected,
+      &.ng-option-selected.ng-option-marked {
+        background-color: $base-dark-secondary;
+
+        .ng-option-label {
+          font-weight: $weight-light;
+        }
+      }
     }
   }
+
+  .ng-select-container .ng-value-container .ng-input>input {
+    color: $theme-dark-color;
+  }
 }
 
-.ng-dropdown-panel .ng-dropdown-header {
-  padding: 0;
-}
-
+// Select all button styles
 .go-select__select-all-button {
   @include transition(all);
 
@@ -216,26 +224,13 @@ body > .ng-dropdown-panel {
   &:hover {
     background: $theme-light-bg-hover;
   }
-}
 
-//Select All button - styles for dark theme
-.go-select--dark__select-all-button {
-  @include transition(all);
+  &.go-select__select-all-button--dark {
+    background: $base-dark;
+    color: $theme-dark-color;
 
-  background: $base-dark;
-  color: $theme-dark-color;
-  border: 0;
-  cursor: pointer;
-  font-family: $primary-font-stack;
-  font-size: .875rem;
-  font-weight: $weight-light;
-  line-height: 1;
-  outline: none;
-  padding: .5rem;
-  text-align: left;
-  width: 100%;
-
-  &:hover {
-    background: #222425;
+    &:hover {
+      background: $base-dark-secondary;
+    }
   }
 }
