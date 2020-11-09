@@ -16,6 +16,7 @@
     [rows]="rows"
     [formControl]="control"
     [attr.maxlength]="maxlength || null"
+    [attr.minlength]="minlength || null"
   ></textarea>
 
   <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>

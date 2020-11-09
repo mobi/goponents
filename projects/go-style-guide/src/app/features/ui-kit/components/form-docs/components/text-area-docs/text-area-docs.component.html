@@ -355,7 +355,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The text area component's max legnth can be set via
+          The text area component's max length can be set via
           <code class="code-block--inline">@Input() maxlength: number;</code> and the
           <code class="code-block--inline">maxlength</code> attribute.
         </p>
@@ -375,6 +375,44 @@
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
               [highlight]="basicMaxLengthExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-textarea-min-length" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Min Length</h2>
+      <go-copy cardId="form-textarea-min-length" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The text area component's min length can be set via
+          <code class="code-block--inline">@Input() minlength: number;</code> and the
+          <code class="code-block--inline">minlength</code> attribute.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-text-area
+              [control]="message11"
+              label="Your Message"
+              minlength="2">
+            </go-text-area>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicMinLengthExample"
               class="code-block--no-bottom-margin">
             </code>
           </div>
