@@ -59,7 +59,8 @@
           <th *ngFor="let col of columns"
               class="go-table__head-column"
               (click)="toggleSort(col.sortable, col.field)"
-              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }">
+              [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }"
+              [ngStyle]="{ 'min-width': col.width + 'px' }">
             <div class="go-table__head-content">
               <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
                 {{ col.title || col.field }}
@@ -114,9 +115,8 @@
             <td *ngFor="let col of columns"
                 class="go-table__body-column"
                 [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
-                [ngStyle]="{ 'vertical-align': col.alignment }"
-                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
-                [attr.width]="col.width">
+                [ngStyle]="{ 'vertical-align': col.alignment, 'min-width': col.width + 'px' }"
+                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'">
               <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
                 {{ col.getFieldData(item) }}
               </ng-container>
