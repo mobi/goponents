@@ -20,7 +20,7 @@ import {
   FormControl,
   FormGroup
 } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { GoConfigService } from '../../go-config.service';
@@ -104,7 +104,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
-  subscriptions: Subscription = new Subscription();
   targetedRows: any[] = [];
 
   private destroy$: Subject<void> = new Subject();
@@ -154,7 +153,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     this.pageChange$.complete();
     this.destroy$.next();
     this.destroy$.complete();
-    this.subscriptions.unsubscribe();
   }
 
   renderTable(): void {
@@ -176,9 +174,11 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   }
 
   setupConfigService(): void {
-    this.subscriptions.add(this.goConfigService.config.subscribe((config: GoConfigInterface) => {
-      this.brandColor = config.brandColor;
-    }));
+    this.goConfigService.config
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((config: GoConfigInterface) => {
+          this.brandColor = config.brandColor;
+    });
   }
 
   hasData(): boolean {
