@@ -23,6 +23,14 @@
   min-height: auto;
 }
 
+// overrides ng-select styles when theme is dark
+.ng-select.go-select--dark .ng-select-container
+ {
+  background-color: $base-dark;
+  color: $theme-dark-color;
+  border: 1px solid $base-dark-secondary;
+}
+
 .ng-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container,
 .ng-select.ng-select-single .ng-select-container .ng-value-container {
   align-items: flex-start;
@@ -138,6 +146,10 @@
   background: $theme-light-bg-hover;
 }
 
+.ng-dropdown-panel .ng-dropdown-header {
+  padding: 0;
+}
+
 // overrides incorrect alignment when appendTo body is applied to an ng-select
 body > .ng-dropdown-panel {
   margin-left: 4px;
@@ -160,10 +172,40 @@ body > .ng-dropdown-panel {
   }
 }
 
-.ng-dropdown-panel .ng-dropdown-header {
-  padding: 0;
+// overrides for dark theme 
+.ng-select.go-select--dark {
+  .ng-dropdown-panel.ng-select-bottom {
+    border: 0;
+  }
+
+  .ng-dropdown-panel {
+    .ng-dropdown-header {
+      border-bottom-color: $base-dark-secondary;
+    }
+
+    .ng-dropdown-panel-items .ng-option {
+      background-color: $base-dark;
+      border-top: 1px solid $base-dark-secondary;
+      color: $theme-dark-color;
+
+      &.ng-option-marked,
+      &.ng-option-selected,
+      &.ng-option-selected.ng-option-marked {
+        background-color: $base-dark-secondary;
+
+        .ng-option-label {
+          font-weight: $weight-light;
+        }
+      }
+    }
+  }
+
+  .ng-select-container .ng-value-container .ng-input>input {
+    color: $theme-dark-color;
+  }
 }
 
+// Select all button styles
 .go-select__select-all-button {
   @include transition(all);
 
@@ -181,5 +223,14 @@ body > .ng-dropdown-panel {
 
   &:hover {
     background: $theme-light-bg-hover;
+  }
+
+  &.go-select__select-all-button--dark {
+    background: $base-dark;
+    color: $theme-dark-color;
+
+    &:hover {
+      background: $base-dark-secondary;
+    }
   }
 }

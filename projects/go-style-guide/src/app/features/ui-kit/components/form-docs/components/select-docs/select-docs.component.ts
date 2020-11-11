@@ -65,6 +65,7 @@ export class SelectDocsComponent implements OnInit {
   select17: FormControl = new FormControl();
   select18: FormControl = new FormControl();
   select19: FormControl = new FormControl({ value: '', disabled: true });
+  select20: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -345,6 +346,14 @@ export class SelectDocsComponent implements OnInit {
     <ng-template #goSelectOptionGroup let-item>
       {{ item.manufacturer | uppercase }}
     </ng-template>
+  </go-select>
+  `;
+  
+  select20Code: string = `
+  <go-select
+    [control]="select"
+    theme="dark"
+    label="Favorite Candy">
   </go-select>
   `;
 
