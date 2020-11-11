@@ -1,0 +1,95 @@
+<section class="go-container">
+
+  <go-card class="go-column go-column--100" id="implementing-child-rows">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Implementing Child Rows</h2>
+      <go-copy cardId="implementing-child-rows" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Sometimes within a table row we might need to show child rows related to the row. This is where the table child rows comes
+        into play. This provides a dropdown for each table row that when opened will render child rows as defined by the implementor.
+        With the table child rows template we allow the implementor to provide a template for each column to use for the row and then we inject
+        that template into the correct place in the interface, this works exactly like the normal table columns.
+      </p>
+
+      <h3 class="go-heading-3 go-heading--no-margin">Important Notes</h3>
+      <ol class="go-ordered-list">
+        <li class="go-ordered-list__item">
+          You must define <code class="code-block--inline">childRowsKey</code> on the <code class="code-block--inline">go-table</code> component for this to work.
+          <code class="code-block--inline">childRowsKey</code> refers to the key on the parent row object where the child array resides.
+        </li>
+        <li class="go-ordered-list__item">
+          For best results, there should be the same number of child columns as there are in the parent row.
+        </li>
+      </ol>
+
+      <code [highlight]="tableChildRowsExample"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    childRowsKey="children"
+    tableTitle="Table Child Rows">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+
+    <ng-container #goTableChildRows>
+      <go-table-child-column field="id"></go-table-child-column>
+      <go-table-child-column field="name.first"></go-table-child-column>
+      <go-table-child-column field="name.last"></go-table-child-column>
+      <go-table-child-column field="ip_address"></go-table-child-column>
+    </ng-container>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="child-rows-template">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Child Row Templates</h2>
+      <go-copy cardId="child-rows-template" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy go-body-copy--no-margin">
+        There could be instances when implementing child rows where more formatting is required on a child row column,
+        or access to the parent row is necessary. Implementation here is very similar to the
+        <a class="go-link" [routerLink]="['../templating']">column templates</a> for the parent rows.
+
+        To access the parent row, you must add <code class="code-block--inline">let-parentItem="parentItem"</code> to the template.
+      </p>
+
+      <code [highlight]="tableChildRowsTemplateExample"></code>
+      <code [highlight]="tableChildRowsTemplateExample_ts"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    childRowsKey="children"
+    tableTitle="Table Child Rows">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+    <go-table-column width="60"></go-table-column>
+
+    <ng-container #goTableChildRows>
+      <go-table-child-column field="id"></go-table-child-column>
+      <go-table-child-column field="name.first"></go-table-child-column>
+      <go-table-child-column field="name.last"></go-table-child-column>
+      <go-table-child-column field="ip_address"></go-table-child-column>
+      <go-table-child-column width="60">
+        <ng-template #goTableCell let-childItem let-parentItem="parentItem">
+          <go-icon-button
+            buttonIcon="explore"
+            (handleClick)="logRow(parentItem, childItem)">
+          </go-icon-button>
+        </ng-template>
+      </go-table-child-column>
+    </ng-container>
+  </go-table>
+
+</section>

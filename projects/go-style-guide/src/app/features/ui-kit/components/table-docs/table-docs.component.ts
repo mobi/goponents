@@ -16,6 +16,7 @@ export class TableDocsComponent {
   menuItems: Array<NavGroup> = [
     { routeTitle: 'Features', subRoutes: [
       { route: './', routeTitle: 'Overview' },
+      { route: './child-rows', routeTitle: 'Child Rows' },
       { route: './columns', routeTitle: 'Columns' },
       { route: './templating', routeTitle: 'Column Templates' },
       { route: './filters', routeTitle: 'Filters' },
