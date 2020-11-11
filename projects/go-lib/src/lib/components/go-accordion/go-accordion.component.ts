@@ -28,6 +28,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
   @ContentChildren(GoAccordionPanelComponent) panels: QueryList<GoAccordionPanelComponent>;
 
   private destroy$: Subject<void> = new Subject();
+  private panelsDestroy$: Subject<void> = new Subject();
 
   constructor() { }
 
@@ -41,16 +42,19 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
   }
 
   ngAfterContentInit(): void {
-    this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
-      this.updatePanelState(panel, index);
-      this.subscribePanel(panel);
-      panel.detectChanges();
+    this.updateChildPanels();
+
+    this.panels.changes.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.cleanupSubscriptions();
+      this.updateChildPanels();
     });
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.panelsDestroy$.next();
+    this.panelsDestroy$.complete();
   }
   //#endregion
 
@@ -58,7 +62,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
   /////////////////////////
 
   private subscribePanel(panel: GoAccordionPanelComponent): void {
-    panel.toggle.pipe(takeUntil(this.destroy$)).subscribe(() => {
+    panel.toggle.pipe(takeUntil(this.panelsDestroy$)).subscribe(() => {
       if (!panel.expanded && this.multiExpand) {
         panel.expanded = true;
       } else if (!panel.expanded && !this.multiExpand) {
@@ -86,6 +90,18 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
     // We lose track of the icon explicitly set by the child component.
     panel.icon = this.showIcons ? panel.icon : null;
     panel.updateClasses();
+  }
+
+  private updateChildPanels(): void {
+    this.panels.toArray().forEach((panel: GoAccordionPanelComponent, index: number) => {
+      this.updatePanelState(panel, index);
+      this.subscribePanel(panel);
+      panel.detectChanges();
+    });
+  }
+
+  private cleanupSubscriptions(): void {
+    this.panelsDestroy$.next();
   }
   //#endregion
 }
