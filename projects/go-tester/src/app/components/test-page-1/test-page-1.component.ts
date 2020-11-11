@@ -45,6 +45,8 @@ export class TestPage1Component implements OnInit, OnDestroy {
         });
         this.tableDetailsConfig = new GoTableConfig({
           dataMode: GoTableDataSource.server,
+          selectable: true,
+          selectBy: 'id',
           tableData: data.results,
           totalCount: data.totalCount,
           sortable: false,
