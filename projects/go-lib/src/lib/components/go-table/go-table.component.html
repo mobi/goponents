@@ -35,13 +35,17 @@
       *ngIf="hasData(); else noDataTable">
       <thead class="go-table__head">
         <tr>
-          <td
+
+          <!-- Header - Detail Row / Child Row Arrow Column -->
+          <th
             class="go-table__body-column"
             *ngIf="details || childRows"
             width="40">
-          </td>
+          </th>
+
+          <!-- Header - Select All Checkbox Column -->
           <th
-            class="go-table__head-column go-table__head--sortable"
+            class="go-table__head-column go-table__head-checkbox go-table__head--sortable"
             *ngIf="localTableConfig.selectable"
             width="60">
             <go-checkbox
@@ -50,6 +54,8 @@
               [indeterminate]="selectAllIndeterminate">
             </go-checkbox>
           </th>
+
+          <!-- Header - Columns -->
           <th *ngFor="let col of columns"
               class="go-table__head-column"
               (click)="toggleSort(col.sortable, col.field)"
@@ -64,6 +70,7 @@
               <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
             </div>
           </th>
+
         </tr>
       </thead>
       <tbody class="go-table__body">
@@ -72,7 +79,7 @@
             class="go-table__body-row"
             [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item), 'go-table__body-row--active-parent': item.showDetails }">
 
-            <!-- Table Details / Child Rows Column -->
+            <!-- Body - Detail Row / Child Rows Column -->
             <td
               class="go-table__body-column go-table__icon-button-column"
               [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
@@ -91,15 +98,19 @@
               </go-icon-button>
             </td>
 
-            <td class="go-table__body-column"
-                [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
-                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
-                width="60"
-                *ngIf="localTableConfig.selectBy && rowSelectForm">
+            <!-- Body - Checkbox Column -->
+            <td
+              class="go-table__body-column go-table__body-column--selectable"
+              [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+              [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
+              *ngIf="localTableConfig.selectBy && rowSelectForm"
+              width="60">
               <go-checkbox
                 [control]="rowSelectForm.get('selection_' + item[localTableConfig.selectBy])">
               </go-checkbox>
             </td>
+
+            <!-- Body - Columns -->
             <td *ngFor="let col of columns"
                 class="go-table__body-column"
                 [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
@@ -115,7 +126,7 @@
             </td>
           </tr>
 
-          <!-- Child Rows Template -->
+          <!-- Body - Child Rows Template -->
           <ng-container *ngIf="childRows && item.showDetails">
             <tr *ngFor="let childItem of item[childRowsKey]">
               <td class="go-table__body-column">
@@ -144,7 +155,7 @@
             </tr>
           </ng-container>
 
-          <!-- Detail Row Template -->
+          <!-- Body - Detail Row Template -->
           <tr class="go-table__body-row" *ngIf="details && item.showDetails">
             <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>

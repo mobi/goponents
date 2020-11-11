@@ -65,15 +65,17 @@ export class TestPage1Component implements OnInit, OnDestroy {
   handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
       this.tableLoading = true;
-      this.appService.getMockData(currentTableConfig).subscribe((data: any) => {
-        setTimeout(() => {
-          currentTableConfig.tableData = data.results;
-          currentTableConfig.totalCount = data.totalCount;
+      this.appService.getMockData(currentTableConfig)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((data: any) => {
+          setTimeout(() => {
+            currentTableConfig.tableData = data.results;
+            currentTableConfig.totalCount = data.totalCount;
 
-            this.tableConfig = currentTableConfig;
-            this.tableLoading = false;
-          }, 1000);
-        });
+              this.tableConfig = currentTableConfig;
+              this.tableLoading = false;
+            }, 1000);
+          });
     }
   }
 

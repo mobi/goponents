@@ -76,8 +76,10 @@ $go-table__cell-horizontal-padding: 1.25rem;
 }
 
 .go-table__select-all-checkbox {
-  top: -0.4rem;
+  display: inline-block;
   position: relative;
+  top: -0.4rem;
+  width: $go-table__cell-vertical-padding;
 }
 
 .go-table__head--sortable {
@@ -86,6 +88,10 @@ $go-table__cell-horizontal-padding: 1.25rem;
   &:hover {
     background: $theme-light-app-bg;
   }
+}
+
+.go-table__head-checkbox {
+  text-align: center;
 }
 
 .go-table__head-content {
@@ -116,7 +122,15 @@ $go-table__cell-horizontal-padding: 1.25rem;
 }
 
 .go-table__body-column--selectable {
-  padding-top: 0.4rem;
+  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-horizontal-padding;
+  text-align: center;
+  vertical-align: middle;
+
+  go-checkbox {
+    display: inline-block;
+    margin-bottom: 1rem;
+    width: $go-table__cell-vertical-padding;
+  }
 }
 
 .go-table__body-row:nth-child(even) {
@@ -208,9 +222,9 @@ $go-table__cell-horizontal-padding: 1.25rem;
 }
 
 .go-table__icon-button-column {
-  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-horizontal-padding;
+  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-vertical-padding;
   position: relative;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .go-table-toolbar__page-numbers {
