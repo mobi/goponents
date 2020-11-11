@@ -94,7 +94,7 @@
                 class="go-table__details-button"
                 [buttonIcon]="item.showDetails ? 'expand_more' : 'chevron_right'"
                 (handleClick)="toggleDetails(item)"
-                *ngIf="item[childRowsKey]">
+                *ngIf="!childRowsKey || item[childRowsKey]">
               </go-icon-button>
             </td>
 
