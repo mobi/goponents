@@ -16,6 +16,7 @@ import { GoTableColumnComponent } from './go-table-column.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoCheckboxModule } from '../go-checkbox/go-checkbox.module';
 import { GoSelectModule } from '../go-select/go-select.module';
+import { GoConfigService } from '../../go-config.service';
 
 @Component({
   selector: 'go-table-test',
@@ -63,6 +64,9 @@ describe('GoTableComponent', () => {
         GoSelectModule,
         ReactiveFormsModule,
         BrowserAnimationsModule
+      ],
+      providers: [
+        GoConfigService
       ]
     })
     .compileComponents();

@@ -12,16 +12,28 @@ import {
   Output,
   QueryList,
   SimpleChanges,
-  TemplateRef
+  TemplateRef,
+  ViewChild
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+
+import { GoConfigService } from '../../go-config.service';
+import { GoConfigInterface } from '../../go-config.model';
+
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
-import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
+import { tableRowBorderAnim } from '../../animations/table-details.animation';
+
+import { GoTableChildColumnComponent } from './go-table-child-column.component';
 import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTablePage } from './go-table-page.model';
 import { sortBy } from './go-table-utils';
+
 import {
   GoTableConfig,
   GoTableDataSource,
@@ -35,7 +47,6 @@ import {
 
 @Component({
   animations: [
-    detailButtonAnim,
     tableRowBorderAnim,
     fadeTemplateAnimation
   ],
@@ -43,8 +54,13 @@ import {
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
 })
-export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
+  /**
+   * Used to dynamically access the child rows on each row
+   * item when implementing the goTableChildRows template
+   */
+  @Input() childRowsKey: string = null;
   @Input() loadingData: boolean = false;
   @Input() maxHeight: string;
   @Input() minHeight: string;
@@ -72,11 +88,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
   @Output() selectAllEvent: EventEmitter<SelectionState> = new EventEmitter<SelectionState>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
+  @ContentChildren(GoTableChildColumnComponent) childRowColumns: QueryList<GoTableChildColumnComponent>;
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
+  @ContentChild('goTableChildRows', { static: false }) childRows: TemplateRef<any>;
   @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
   @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
 
   allData: any[] = [];
+  brandColor: string;
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
   pageSizeControl: FormControl = new FormControl();
@@ -92,6 +111,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
 
   constructor(
     private changeDetector: ChangeDetectorRef,
+    private goConfigService: GoConfigService,
     private fb: FormBuilder
   ) { }
 
@@ -104,6 +124,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
       // everytime ngOnChanges is triggered, which is not good
       this.setupSearch();
       this.setupPageSizes();
+      this.setupConfigService();
     }
   }
 
@@ -150,6 +171,14 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit, OnDes
     }
 
     this.showTable = Boolean(this.tableConfig);
+  }
+
+  setupConfigService(): void {
+    this.goConfigService.config
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((config: GoConfigInterface) => {
+          this.brandColor = config.brandColor;
+    });
   }
 
   hasData(): boolean {

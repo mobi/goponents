@@ -21,6 +21,9 @@ export class TestPage1Component implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject();
 
+  tableDetailsConfig: GoTableConfig;
+  tableDetailsLoading: boolean = true;
+
   @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
 
   constructor(
@@ -40,7 +43,17 @@ export class TestPage1Component implements OnInit, OnDestroy {
           totalCount: data.totalCount,
           sortable: false
         });
+        this.tableDetailsConfig = new GoTableConfig({
+          dataMode: GoTableDataSource.server,
+          selectable: true,
+          selectBy: 'id',
+          tableData: data.results,
+          totalCount: data.totalCount,
+          sortable: false,
+        });
+
         this.tableLoading = false;
+        this.tableDetailsLoading = false;
       });
   }
 
@@ -54,15 +67,15 @@ export class TestPage1Component implements OnInit, OnDestroy {
       this.tableLoading = true;
       this.appService.getMockData(currentTableConfig)
         .pipe(takeUntil(this.destroy$))
-        .subscribe(data => {
+        .subscribe((data: any) => {
           setTimeout(() => {
             currentTableConfig.tableData = data.results;
             currentTableConfig.totalCount = data.totalCount;
 
-            this.tableConfig = currentTableConfig;
-            this.tableLoading = false;
-          }, 1000);
-        });
+              this.tableConfig = currentTableConfig;
+              this.tableLoading = false;
+            }, 1000);
+          });
     }
   }
 
@@ -89,5 +102,15 @@ export class TestPage1Component implements OnInit, OnDestroy {
 
   cancelClick(): void {
     this.toasterService.toastError({ message: 'Cancel clicked!' });
+  }
+
+  logRow(parentItem: any, childItem: any): void {
+    this.toasterService.toastInfo({
+      header: 'Child Row Clicked!',
+      message: `
+        Child Name: ${childItem.name.first}<br/>
+        Parent Name: ${parentItem.name.first}
+      `
+    });
   }
 }

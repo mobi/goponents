@@ -58,6 +58,7 @@ import { TableFiltersComponent } from '../components/table-docs/components/table
 import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from '../components/table-docs/components/table-title-template/table-title-template.component';
 import { VirtualScrollComponent } from '../components/virtual-scroll/virtual-scroll.component';
+import { TableChildRowsComponent } from '../components/table-docs/components/table-child-rows/table-child-rows.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -108,6 +109,7 @@ const routes: Routes = [
     { path: '', component: TableOverviewComponent },
     { path: 'actions', component: TableActionsDocsComponent },
     { path: 'columns', component: TableColumnDocsComponent },
+    { path: 'child-rows', component: TableChildRowsComponent },
     { path: 'details', component: TableDetailsComponent },
     { path: 'filters', component: TableFiltersComponent },
     { path: 'title-template', component: TableTitleTemplateComponent },
