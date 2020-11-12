@@ -8,7 +8,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 .go-form__fieldset {
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
-  margin-bottom: $column-gutter--double;
+  margin-bottom: 0;
   padding: $column-gutter;
 
   &:disabled {
@@ -20,10 +20,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       cursor: not-allowed;
     }
   }
-}
-
-.go-form__fieldset--disable {
-  margin-bottom: $column-gutter--double;
 }
 
 .go-form--dark .go-form__fieldset,
