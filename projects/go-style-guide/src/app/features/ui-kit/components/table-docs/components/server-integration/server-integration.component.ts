@@ -7,6 +7,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 export class ServerIntegrationComponent {
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Table Server Integration';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   ////////////////////////////

@@ -38,5 +38,6 @@ export class TableActionsDocsComponent {
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Table Actions';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 }

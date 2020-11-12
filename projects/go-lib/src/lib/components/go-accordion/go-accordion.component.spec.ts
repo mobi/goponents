@@ -1,4 +1,4 @@
-import { Component, QueryList } from '@angular/core';
+import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,10 +11,10 @@ import { GoConfigService } from '../../go-config.service';
   selector: 'go-test',
   template: `
     <go-accordion [showIcons]="true">
-      <go-accordion-panel title="Test 1" icon="home">
+      <go-accordion-panel heading="Test 1" icon="home">
         This is some content for Test 1.
       </go-accordion-panel>
-      <go-accordion-panel title="Test 2" icon="settings">
+      <go-accordion-panel heading="Test 2" icon="settings">
         This is a second thing.
       </go-accordion-panel>
     </go-accordion>
@@ -303,6 +303,28 @@ describe('AccordionComponent', () => {
         expect(panelOne.expanded).toBe(true);
         expect(panelTwo.expanded).toBe(true);
       });
+    });
+  });
+
+  describe('dynamically created accordions', () => {
+    let panels: GoAccordionPanelComponent[];
+
+    beforeEach(() => {
+      panels = component.panels.toArray();
+    });
+
+    afterEach(() => {
+      component.panels.reset(panels);
+    });
+
+    it('open when clicked', () => {
+      const newPanel: GoAccordionPanelComponent = TestBed.createComponent(GoAccordionPanelComponent).componentInstance;
+      newPanel.expanded = false;
+      component.panels.reset([panels, newPanel]);
+      component.panels.notifyOnChanges();
+
+      newPanel.toggle.emit();
+      expect(component.panels.toArray()[2].expanded).toBe(true);
     });
   });
 });

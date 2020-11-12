@@ -1,3 +1,4 @@
+import { compileComponentFromMetadata } from '@angular/compiler';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
@@ -6,7 +7,6 @@ import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoOffCanvasComponent } from './go-off-canvas.component';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasService } from './go-off-canvas.service';
-
 
 describe('GoOffCanvasComponent', () => {
   let component: GoOffCanvasComponent;
@@ -67,7 +67,7 @@ describe('GoOffCanvasComponent', () => {
         bindings: {},
         header: 'Test Header',
       });
-      
+
       expect(component.goOffCanvasHost.viewContainerRef.createComponent).toHaveBeenCalled();
       expect(component.header).toEqual('Test Header');
     });
@@ -103,6 +103,29 @@ describe('GoOffCanvasComponent', () => {
       expect(component.opened).toBe(false);
     });
   });
+
+  describe('getOffCanvasWidth', () => {
+    it('returns 100vw if window width is less than 768px', () => {
+      component.screenWidth = 360;
+
+      expect(component.getOffCanvasWidth()).toBe('100vw');
+    });
+
+    it('returns 75vw if window width is greater than 768px and size is large', () => {
+      component.screenWidth = 1200;
+      component.size = 'large';
+
+      expect(component.getOffCanvasWidth()).toBe('75vw');
+    });
+
+    it('returns 350px if window width is greater than 768px and size is small', () => {
+      component.screenWidth = 1200;
+      component.size = 'small';
+
+      expect(component.getOffCanvasWidth()).toBe('350px');
+    });
+  });
+
 });
 
 @Component({

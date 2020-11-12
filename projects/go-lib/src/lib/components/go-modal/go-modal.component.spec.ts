@@ -109,12 +109,49 @@ describe('GoModalComponent', () => {
 
       expect(component.modalSize).toEqual(component.defaultModalSize);
     });
+
+    it('sets closeWithBackdrop to false if not passed in', () => {
+      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {  });
+      component.closeWithBackdrop = true;
+
+      component.loadComponent();
+
+      expect(component.closeWithBackdrop).toEqual(false);
+    });
+
+    it('sets closeWithBackdrop to true if passed in', () => {
+      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { closeWithBackdrop: true });
+      component.closeWithBackdrop = false;
+
+      component.loadComponent();
+
+      expect(component.closeWithBackdrop).toEqual(true);
+    });
+
+    it('sets showCloseIcon to true if not passed in', () => {
+      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {  });
+      component.showCloseIcon = false;
+
+      component.loadComponent();
+
+      expect(component.showCloseIcon).toEqual(true);
+    });
+
+    it('sets closeWithBackdrop to false if passed in', () => {
+      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { showCloseIcon: false });
+      component.showCloseIcon = true;
+
+      component.loadComponent();
+
+      expect(component.showCloseIcon).toEqual(false);
+    });
   });
 
   describe('backdropClick', () => {
     beforeEach(() => {
       spyOn(component, 'closeModal');
 
+      component.closeWithBackdrop = true;
       component.goModal = <any> {
         nativeElement: '<test-element></test-element>'
       };
@@ -136,6 +173,13 @@ describe('GoModalComponent', () => {
       component.backdropClick(<any> { target: component.goModal.nativeElement });
 
       expect(component.closeModal).toHaveBeenCalled();
+    });
+
+    it('does not close the modal if closeWithBackdrop is false', () => {
+      component.closeWithBackdrop = false;
+      component.backdropClick(<any> { target: component.goModal.nativeElement });
+
+      expect(component.closeModal).not.toHaveBeenCalled();
     });
   });
 });

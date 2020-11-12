@@ -8,7 +8,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 .go-form__fieldset {
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
-  margin-bottom: $column-gutter--double;
+  margin-bottom: 0;
   padding: $column-gutter;
 
   &:disabled {
@@ -59,6 +59,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
 .go-form__label--checkbox-container {
   cursor: pointer;
+  line-height: 1.5;
   padding-left: 1.25rem;
   position: relative;
   user-select: none;
@@ -140,12 +141,18 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
 // When the checkbox is checked, change the background and border color of the custom checkbox
 .go-form__checkbox:checked ~ .go-form__custom-checkbox {
-  background-color: $ui-color-positive;
-  border-color: $ui-color-positive;
+  background-color: $ui-color-primary;
+  border-color: $ui-color-primary;
 }
 
 // When the checkbox is disabled, change the background color of the custom checkbox
 .go-form__checkbox:disabled ~ .go-form__custom-checkbox {
+  background-color: $theme-light-app-bg;
+  cursor: not-allowed;
+}
+
+// When the checkbox is indeterminate, change the background color of the custom checkbox
+.go-form__checkbox:indeterminate ~ .go-form__custom-checkbox {
   background-color: $theme-light-app-bg;
 }
 
@@ -153,6 +160,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 .go-form__checkbox:disabled:checked ~ .go-form__custom-checkbox {
   background-color: lighten($base-light-secondary, 13.5%);
   border: 1px solid lighten($base-light-secondary, 13.5%);
+  cursor: not-allowed;
 }
 
 // Create and style a custom checkmark (hidden when not checked)
@@ -169,6 +177,18 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   width: 3px;
 }
 
+// Modify the custom checkmark to a dash for indeterminate state
+.go-form__checkbox:indeterminate ~ .go-form__custom-checkbox::after {
+  border: 1px solid $theme-light-border;
+  content: '';
+  display: block;
+  height: 0px;
+  left: 3px;
+  transform: none;
+  top: 5px;
+  width: 4px;
+}
+
 // Show the custom checkmark when checked
 .go-form__checkbox:checked ~ .go-form__custom-checkbox::after {
   display: block;
@@ -180,7 +200,8 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 .go-form--dark .go-form__select,
 .go-form__input--dark,
 .go-form__select--dark {
-  background-color: transparent;
+  background-color: $base-dark;
+  border-color: $base-dark-secondary;
   color: $theme-dark-color;
 
   option {

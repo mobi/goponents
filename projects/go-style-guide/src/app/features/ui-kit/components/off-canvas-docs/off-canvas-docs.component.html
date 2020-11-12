@@ -1,5 +1,10 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">Off Canvas</h1>
+  <a
+  [href]="linkToSource"
+  target="_blank">
+    <go-button buttonVariant="neutral"> View on GitHub </go-button>
+  </a>
 </header>
 
 <div class="go-container">
@@ -118,6 +123,7 @@
 
     </div>
   </go-card>
+
   <go-card class="go-column go-column--100" id="large">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Large Off Canvas</h2>
@@ -152,6 +158,50 @@
       </div>
       <div class="go-column go-column--50">
         <code [highlight]="headerExample"></code>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="submit-button">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Off Canvas With Submit Button</h2>
+      <go-copy cardId="submit-button" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy">
+          To render a full-width submit button at the bottom of the off-canvas, add a
+          <code class="code-block--inline">go-off-canvas-submit-button</code> element anywhere within the template
+          of the component being rendered in the off-canvas.
+        </p>
+        <p class="go-body-copy">
+          The <code class="code-block--inline">go-off-canvas-submit-button</code> component has the following bindings:
+        </p>
+        <code [highlight]="submitButtonInputs"></code>
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <div class="go-container">
+              <div class="go-column go-column--50 go-column--no-padding">
+                <h4 class="go-heading-4">component.html</h4>
+                <code [highlight]="submitButtonExampleHTML"></code>
+              </div>
+              <div class="go-column go-column--50 go-column--no-padding">
+                <h4 class="go-heading-4">component.ts</h4>
+                <code [highlight]="submitButtonExampleTS"></code>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-button
+              (handleClick)="openSubmitButtonOffCanvas()"
+              buttonIcon="subdirectory_arrow_right"
+              buttonVariant="neutral">
+              Open Off Canvas
+            </go-button>
+          </div>
+        </div>
       </div>
     </div>
   </go-card>

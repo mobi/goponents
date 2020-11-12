@@ -4,10 +4,10 @@ import {
   Component,
   ContentChild,
   ContentChildren,
-  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   QueryList,
@@ -15,10 +15,25 @@ import {
   TemplateRef,
   ViewChild
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup
+} from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
+import { GoConfigService } from '../../go-config.service';
+import { GoConfigInterface } from '../../go-config.model';
+
+import { fadeTemplateAnimation } from '../../animations/fade.animation';
+import { tableRowBorderAnim } from '../../animations/table-details.animation';
+
+import { GoTableChildColumnComponent } from './go-table-child-column.component';
 import { GoTableColumnComponent } from './go-table-column.component';
+import { GoTablePage } from './go-table-page.model';
+import { sortBy } from './go-table-utils';
+
 import {
   GoTableConfig,
   GoTableDataSource,
@@ -29,14 +44,9 @@ import {
   SelectionState,
   SortDirection
 } from './index';
-import { sortBy } from './go-table-utils';
-import { fadeTemplateAnimation } from '../../animations/fade.animation';
-import { detailButtonAnim, tableRowBorderAnim } from '../../animations/table-details.animation';
-import { GoTablePage } from './go-table-page.model';
 
 @Component({
   animations: [
-    detailButtonAnim,
     tableRowBorderAnim,
     fadeTemplateAnimation
   ],
@@ -44,10 +54,16 @@ import { GoTablePage } from './go-table-page.model';
   templateUrl: './go-table.component.html',
   styleUrls: ['./go-table.component.scss']
 })
-export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
+export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 
+  /**
+   * Used to dynamically access the child rows on each row
+   * item when implementing the goTableChildRows template
+   */
+  @Input() childRowsKey: string = null;
   @Input() loadingData: boolean = false;
   @Input() maxHeight: string;
+  @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
@@ -55,31 +71,49 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   /**
    * This event is emitted when a row's selection changes
-   * @returns a `GoTableRowSelectionEvent` object.
+   * @returns a `RowSelectionEvent` object.
    * - `currentRow` is the targeted row
    * - `selectedRows` are the currently selected rows if the `selectionMode` is `selection`
    * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
    * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
    */
   @Output() rowSelectionEvent: EventEmitter<RowSelectionEvent> = new EventEmitter<RowSelectionEvent>();
+  /**
+   * This event is emitted when the value of the selectAllControl changes
+   * @returns a `SelectionState` object.
+   * - `selectedRows` are the currently selected rows if the `selectionMode` is `selection`
+   * - `selectionMode` is a `GoTableSelectionMode` enum of either `selection` or `deselection`
+   * - `deselectedRows` are the currently deselected rows if the `selectionMode` is `deselection`
+   */
+  @Output() selectAllEvent: EventEmitter<SelectionState> = new EventEmitter<SelectionState>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
+  @ContentChildren(GoTableChildColumnComponent) childRowColumns: QueryList<GoTableChildColumnComponent>;
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
+  @ContentChild('goTableChildRows', { static: false }) childRows: TemplateRef<any>;
   @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
   @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
 
-  @ViewChild('selectAllCheckbox', { static: false }) selectAllCheckbox: ElementRef;
-
   allData: any[] = [];
+  brandColor: string;
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
   pageSizeControl: FormControl = new FormControl();
+  rowSelectForm: FormGroup;
   searchTerm: FormControl = new FormControl();
-  selectAllChecked: boolean = false;
+  selectAllControl: FormControl = new FormControl(false);
+  selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
   targetedRows: any[] = [];
 
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  private destroy$: Subject<void> = new Subject();
+  private pageChange$: Subject<void> = new Subject();
+
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private goConfigService: GoConfigService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     if (!this.tableConfig) {
@@ -90,6 +124,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       // everytime ngOnChanges is triggered, which is not good
       this.setupSearch();
       this.setupPageSizes();
+      this.setupConfigService();
     }
   }
 
@@ -101,7 +136,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.tableConfig.preselected) {
-      this.toggleSelectAll();
+      this.selectAllControl.setValue(true);
       this.changeDetector.detectChanges();
     }
 
@@ -113,6 +148,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.pageChange$.next();
+    this.pageChange$.complete();
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   renderTable(): void {
     if (this.tableConfig) {
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
@@ -122,9 +164,21 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
       this.handleSort();
       this.setPage(this.localTableConfig.pageConfig.offset);
       this.setSearchTerm();
+
+      if (this.localTableConfig.selectable) {
+        this.setupSelectAllControlSub();
+      }
     }
 
     this.showTable = Boolean(this.tableConfig);
+  }
+
+  setupConfigService(): void {
+    this.goConfigService.config
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((config: GoConfigInterface) => {
+          this.brandColor = config.brandColor;
+    });
   }
 
   hasData(): boolean {
@@ -222,11 +276,13 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   setupPageSizes(): void {
     this.pageSizeControl.setValue(this.localTableConfig.pageConfig.perPage);
 
-    this.pageSizeControl.valueChanges.subscribe((value: number) => {
-      this.localTableConfig.pageConfig.perPage = value;
-      this.setPage();
-      this.tableChangeOutcome();
-    });
+    this.pageSizeControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: number) => {
+        this.localTableConfig.pageConfig.perPage = value;
+        this.setPage();
+        this.tableChangeOutcome();
+      });
   }
 
   outputResultsPerPage(): string {
@@ -243,7 +299,7 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     return beginning + ' - ' + ending;
   }
 
-  setDisplayData(): any[] {
+  getDisplayData(): any[] {
     const { pageConfig, tableData }:
     {
       pageConfig: GoTablePageConfig,
@@ -268,36 +324,27 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
 
   getSelectionState(): SelectionState {
     return {
-      deselectedRows: this.selectAllChecked ? this.targetedRows : [],
+      deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.targetedRows : []
+      selectedRows: !this.selectAllControl.value ? this.targetedRows : []
     };
   }
 
-  toggleSelectAll(): void {
-    this.targetedRows = [];
-    this.selectAllChecked = !this.selectAllChecked;
-
-    if (!this.selectAllChecked) {
-      this.selectAllCheckbox.nativeElement.indeterminate = false;
-    }
-  }
-
-  selectionChange(event: any, row: any): void {
+  selectionChange(value: boolean, row: any): void {
     const index: number = this.targetedRows.indexOf(row);
 
-    if (this.selectAllChecked) {
-      if (event.target.checked && index >= 0) {
+    if (this.selectAllControl.value) {
+      if (value && index >= 0) {
         this.targetedRows.splice(index, 1);
         if (this.targetedRows.length === 0) {
-          this.selectAllCheckbox.nativeElement.indeterminate = false;
+          this.selectAllIndeterminate = false;
         }
       } else {
         this.targetedRows.push(row);
-        this.selectAllCheckbox.nativeElement.indeterminate = true;
+        this.selectAllIndeterminate = true;
       }
     } else {
-      if (event.target.checked && index < 0) {
+      if (value && index < 0) {
         this.targetedRows.push(row);
       } else {
         this.targetedRows.splice(index, 1);
@@ -307,18 +354,18 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.rowSelectionEvent.emit({
       currentRow: {
         data: row,
-        selected: event.target.checked
+        selected: value
       },
-      deselectedRows: this.selectAllChecked ? this.targetedRows : [],
+      deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
       selectionMode: this.determineSelectionMode(),
-      selectedRows: !this.selectAllChecked ? this.targetedRows : []
+      selectedRows: !this.selectAllControl.value ? this.targetedRows : []
     });
   }
 
   isRowSelected(row: any): boolean {
-    if (this.selectAllChecked && !this.isRowInTargeted(row)) {
+    if (this.selectAllControl.value && !this.isRowInTargeted(row)) {
       return true;
-    } else if (!this.selectAllChecked && this.isRowInTargeted(row)) {
+    } else if (!this.selectAllControl.value && this.isRowInTargeted(row)) {
       return true;
     } else {
       return false;
@@ -382,11 +429,11 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private determineSelectionMode(): SelectionMode {
-    return this.selectAllChecked ? SelectionMode.deselection : SelectionMode.selection;
+    return this.selectAllControl.value ? SelectionMode.deselection : SelectionMode.selection;
   }
 
   private isRowInTargeted(row: any): boolean {
-    return this.targetedRows.find((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
+    return this.targetedRows.some((i: any) => i[this.localTableConfig.selectBy] === row[this.localTableConfig.selectBy]);
   }
 
   private setPage(offset: number = 0): void {
@@ -412,6 +459,10 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     this.localTableConfig.pageConfig.offset = offset;
+
+    if (this.localTableConfig.selectable) {
+      this.setupRowSelectFormForCurrentPage();
+    }
   }
 
   private calculateStartPage(lastPage: number, currentPage: number): number {
@@ -433,17 +484,20 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private setupSearch(): void {
-    this.searchTerm.valueChanges.pipe(
-      debounceTime(this.localTableConfig.searchConfig.debounce),
-      distinctUntilChanged()
-    ).subscribe((searchTerm: string) => {
-      this.localTableConfig.searchConfig.searchTerm = searchTerm;
-      if (!this.isServerMode()) {
-        this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
-      } else {
-        this.setFirstPage();
-      }
-    });
+    this.searchTerm.valueChanges
+      .pipe(
+        debounceTime(this.localTableConfig.searchConfig.debounce),
+        distinctUntilChanged(),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((searchTerm: string) => {
+        this.localTableConfig.searchConfig.searchTerm = searchTerm;
+        if (!this.isServerMode()) {
+          this.performSearch(searchTerm ? searchTerm.toLowerCase() : '');
+        } else {
+          this.setFirstPage();
+        }
+      });
     this.setSearchTerm();
   }
 
@@ -468,6 +522,63 @@ export class GoTableComponent implements OnInit, OnChanges, AfterViewInit {
     this.localTableConfig.totalCount = this.localTableConfig.tableData.length;
     this.setFirstPage();
     this.loadingData = false;
+  }
+
+  private setupRowSelectFormForCurrentPage(): void {
+    this.pageChange$.next();
+
+    this.buildRowSelectForm();
+    this.setupRowSelectFormControlsSubs();
+    this.updateRowSelectForm();
+  }
+
+  private buildRowSelectForm(): void {
+    this.rowSelectForm = this.fb.group({});
+
+    this.getDisplayData().forEach((row: any) => {
+      this.rowSelectForm.addControl(
+        `selection_${row[this.localTableConfig.selectBy]}`,
+        this.fb.control(false)
+      );
+    });
+  }
+
+  private setupRowSelectFormControlsSubs(): void {
+    this.getDisplayData().forEach((row: any) => {
+      this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
+        .valueChanges.pipe(takeUntil(this.pageChange$))
+        .subscribe((value: boolean) => {
+          this.selectionChange(value, row);
+        });
+    });
+  }
+
+  private setupSelectAllControlSub(): void {
+    this.selectAllControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.targetedRows = [];
+        this.updateRowSelectForm();
+
+        if (!this.selectAllControl.value) {
+          this.selectAllIndeterminate = false;
+        }
+
+        this.selectAllEvent.emit({
+          deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
+          selectionMode: this.determineSelectionMode(),
+          selectedRows: !this.selectAllControl.value ? this.targetedRows : []
+        });
+      }
+    );
+  }
+
+  private updateRowSelectForm(): void {
+    this.getDisplayData().forEach((row: any) => {
+      this.rowSelectForm
+        .get(`selection_${row[this.localTableConfig.selectBy]}`)
+        .setValue(this.isRowSelected(row), { emitEvent: false });
+    });
   }
   //#endregion
 }

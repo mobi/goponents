@@ -3,16 +3,19 @@ import {
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
+  HostListener,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { GoOffCanvasDirective } from './go-off-canvas.directive';
-import { GoOffCanvasService } from './go-off-canvas.service';
-import { GoOffCanvasItem } from './go-off-canvas.interface';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { offCanvasAnimation } from '../../animations/off-canvas.animation';
+import { GoOffCanvasDirective } from './go-off-canvas.directive';
+import { GoOffCanvasItem } from './go-off-canvas.interface';
+import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
   selector: 'go-off-canvas',
@@ -25,13 +28,21 @@ import { offCanvasAnimation } from '../../animations/off-canvas.animation';
     offCanvasAnimation
   ]
 })
-export class GoOffCanvasComponent implements OnInit {
+export class GoOffCanvasComponent implements OnInit, OnDestroy {
   currentOffCanvasItem: GoOffCanvasItem;
   opened: boolean = false;
   header: string;
+  screenWidth: number;
+
+  private destroy$: Subject<void> = new Subject();
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
   size: 'large' | 'small' = 'small';
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.screenWidth = window.innerWidth;
+  }
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -39,21 +50,40 @@ export class GoOffCanvasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.goOffCanvasService.activeOffCanvasComponent.subscribe((goOffCanvasItem: GoOffCanvasItem) => {
-      this.currentOffCanvasItem = goOffCanvasItem;
-      this.loadComponent();
-    });
+    this.screenWidth = window.innerWidth;
 
-    this.goOffCanvasService.offCanvasOpen.subscribe((value: boolean) => {
-      this.opened = value;
-      if (this.opened === false) {
-        this.destroyComponent();
-      }
-    });
+    this.goOffCanvasService.activeOffCanvasComponent
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((goOffCanvasItem: GoOffCanvasItem) => {
+        this.currentOffCanvasItem = goOffCanvasItem;
+        this.loadComponent();
+      });
+
+    this.goOffCanvasService.offCanvasOpen
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: boolean) => {
+        this.opened = value;
+        if (this.opened === false) {
+          this.destroyComponent();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   closeOffCanvas(): void {
     this.goOffCanvasService.closeOffCanvas();
+  }
+
+  getOffCanvasWidth(): string {
+    if (this.screenWidth > 768) {
+      return this.size === 'large' ? '75vw' : '350px';
+    } else {
+      return '100vw';
+    }
   }
 
   private loadComponent(): void {

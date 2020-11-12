@@ -12,6 +12,7 @@ export class RadioButtonDocsComponent {
   radio2: FormControl = new FormControl('');
   radio3: FormControl = new FormControl('');
   radio4: FormControl = new FormControl('');
+  radio5: FormControl = new FormControl('');
 
   hints: Array<string> = ['this is a hint for the radio group'];
 
@@ -100,7 +101,22 @@ export class RadioButtonDocsComponent {
   </go-radio-group>
   `;
 
+  radio5Ex: string = `
+  <go-radio-group
+    [enableFieldset]="false"
+    [enableLegend]="false"
+    [control]="radio5">
+    <div>
+      <go-radio-button label="Option 1" formValue="option1">
+      </go-radio-button>
+      <go-radio-button label="Option 2" formValue="option2">
+      </go-radio-button>
+    </div>
+  </go-radio-group>
+  `;
+
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Radio Button';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-radio';
   }
 }

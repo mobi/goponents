@@ -58,6 +58,8 @@
               <div class="go-column go-column--50">
                 <go-radio-group
                   legend="Options"
+                  [enableFieldset]="true"
+                  [enableLegend]="true"
                   [hints]="['please select one']"
                   [control]="form.controls.radio"
                 >
@@ -91,19 +93,17 @@
                       </div>
                       <div>
                         <go-checkbox [control]="form.controls.food.controls.bananas"
-                                      label="Bananas"
-                                      disabled="true">
+                                      label="Bananas">
                         </go-checkbox>
                       </div>
                       <div>
-                        <go-checkbox [control]="form.controls.food.controls.mangos"
-                                      label="Mangos">
+                        <go-checkbox [control]="form.controls.food.controls.mangoes"
+                                      label="Mangoes">
                         </go-checkbox>
                       </div>
                       <div>
                         <go-checkbox [control]="form.controls.food.controls.oranges"
-                                      label="Oranges"
-                                      disabled="true">
+                                      label="Oranges">
                         </go-checkbox>
                       </div>
                     </div>

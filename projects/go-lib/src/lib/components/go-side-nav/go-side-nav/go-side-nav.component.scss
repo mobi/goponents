@@ -42,19 +42,19 @@
 }
 
 .go-side-nav__app {
+  align-items: center;
   background: $base-dark-tertiary;
   color: $theme-dark-color;
-  height: 2.75rem;
-  padding: .5rem .625rem;
-  font-size: 1.25rem;
   display: flex;
-  align-items: center;
+  font-size: 1.25rem;
+  height: 2.75rem;
+  padding: .5rem .625rem .5rem .44rem;
 }
 
 .go-side-nav__app-icon {
   display: flex;
   font-size: 1.5rem;
-  padding: 0 1rem 0 .5rem;
+  padding: 0 1rem 0 .3rem;
 }
 
 .go-side-nav__app-drawer {
@@ -62,13 +62,38 @@
   margin-left: auto;
 
   ::ng-deep .go-side-nav__app-drawer--icon {
-    padding-top: .5rem;
     display: flex;
+    padding-top: .5rem;
   }
+
+  .go-icon-button:hover {
+    background: darken($base-dark-tertiary, 10%);
+  }
+
+  .go-icon-button:active {
+    background: $theme-dark-bg-active;
+  }
+
+  .go-icon-button:focus {
+    background: $theme-dark-bg-active;
+  }
+
 
   .go-side-nav__app-drawer--icon-collapsed {
     display: flex;
+    margin-left: -1px;
     padding-right: 3.5px;
-    padding-top: 3px;
+  }
+
+  .go-side-nav__app-drawer--launch {
+    color: $base-light-secondary;
+    cursor: default;
+    font-size: .6875rem;
+    padding: .75rem;
+    width: 100%;
+
+    &:hover {
+      background: $theme-light-bg;
+    }
   }
 }

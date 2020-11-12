@@ -88,6 +88,25 @@ export class ModalDocsComponent {
   });
   `;
 
+  ex_ModalDocsCloseWithBackdrop: string = `
+  this.goModalService.openModal(ModalTestComponent, {
+    modalTitle: 'Close With Backdrop Example',
+    content: 'You can close this modal by clicking on the page outside of the modal',
+    closeWithBackdrop: true
+  });
+  `;
+
+  ex_ModalDocsNoCloseIcon: string = `
+  this.goModalService.openModal(ModalTestComponent, {
+    modalTitle: 'Close With Backdrop Example',
+    content: 'The only way to close this modal is by clicking outside of the modal on the backdrop',
+    closeWithBackdrop: true,
+    showCloseIcon: false
+  });
+  `;
+
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-modal';
+
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
@@ -107,6 +126,23 @@ export class ModalDocsComponent {
       modalTitle: 'No Padding Example',
       content: 'This area has no padding',
       noContentPadding: true
+    });
+  }
+
+  openCloseWithBackdropModal(): void {
+    this.goModalService.openModal(ModalTestComponent, {
+      modalTitle: 'Close With Backdrop Example',
+      content: 'You can close this modal by clicking on the page outside of the modal',
+      closeWithBackdrop: true
+    });
+  }
+
+  openNoCloseIconModal(): void {
+    this.goModalService.openModal(ModalTestComponent, {
+      modalTitle: 'Close With Backdrop Example',
+      content: 'The only way to close this modal is by clicking outside of the modal on the backdrop',
+      closeWithBackdrop: true,
+      showCloseIcon: false
     });
   }
 

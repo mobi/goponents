@@ -43,8 +43,8 @@ export class AppComponent {
       { route: 'ui-kit/loader', routeTitle: 'Loader' },
       { route: 'ui-kit/modal', routeTitle: 'Modal' },
       { route: 'ui-kit/off-canvas', routeTitle: 'Off Canvas' },
-      { route: 'ui-kit/portal', routeTitle: 'Portal' },
       { route: 'ui-kit/pills', routeTitle: 'Pills' },
+      { route: 'ui-kit/portal', routeTitle: 'Portal' },
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' },
@@ -60,7 +60,8 @@ export class AppComponent {
       {
         displayName: 'GitHub',
         icon: 'code',
-        url: 'https://github.com/'
+        url: 'https://github.com/',
+        target: 'github'
       },
       {
         displayName: 'Go Design',

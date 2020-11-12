@@ -23,14 +23,14 @@
       <go-copy cardId="form-checkbox" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
-      
+
       <div class="go-column go-column--100">
         <p class="go-body-copy">
-          This simpliest way to implement a checkbox requires a <code class="code-block--inline">&lt;go-checkbox&gt;</code> with the
+          This simplest way to implement a checkbox requires a <code class="code-block--inline">&lt;go-checkbox&gt;</code> with the
           <code class="code-block--inline">label</code> and <code class="code-block--inline">[control]</code> bindings
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
-          On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the 
+          On the <code class="code-block--inline">&lt;go-checkbox&gt;</code>, the
           <code class="code-block--inline">label</code> is the name that identifies this checkbox
           and the <code class="code-block--inline">[control]</code> is the corresponding <code class="code-block--inline">FormControl</code>.
         </p>
@@ -69,7 +69,7 @@
           <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>.
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
-          On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on 
+          On the <code class="code-block--inline">&lt;go-checkbox-group&gt;</code>, the only required bindings on
           this component are the <code class="code-block--inline">legend</code> (identifies this set of options)
           and the <code class="code-block--inline">[control]</code> (corresponds to a <code class="code-block--inline">FormControl</code>).
         </p>
@@ -278,17 +278,20 @@
     </div>
   </go-card>
 
-  <go-card id="form-checkbox" class="go-column go-column--100">
+  <go-card id="form-checkbox-indeterminate" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2 go-heading--no-wrap">Checkbox Disabled</h2>
-      <go-copy cardId="form-checkbox" goCopyCardLink></go-copy>
+      <h2 class="go-heading-2 go-heading--no-wrap">Checkbox Indeterminate</h2>
+      <go-copy cardId="form-checkbox-indeterminate" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
 
       <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          The <code class="code-block--inline">@Input() indeterminate: boolean = false;</code> can be used to set the display state of the
+          checkbox to <code class="code-block--inline">indeterminate</code>.
+        </p>
         <p class="go-body-copy go-body-copy--no-margin">
-          This <code class="code-block--inline">@Input() disabled: boolean = false;</code> can be used to disable the checkbox.
-          This should be handled by the parent component.
+          Note that this will only alter the way that the checkbox is displayed and has no effect on the value of the checkbox form control.
         </p>
       </div>
 
@@ -296,27 +299,16 @@
         <div class="go-container">
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
-            <go-checkbox-group legend="Options" [control]="checkboxGroup4">
-              <go-checkbox
-                label="Option 1"
-                [control]="checkboxGroup4.controls.option1"
-                disabled="option1Disabled">
-              </go-checkbox>
-              <go-checkbox
-                label="Option 2"
-                [control]="checkboxGroup4.controls.option2"
-                disabled="option2Disabled">
-              </go-checkbox>
-            </go-checkbox-group>
+            <go-checkbox
+              label="Checkbox 5"
+              [control]="checkbox5"
+              [indeterminate]="true">
+            </go-checkbox>
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
             <code
-              [highlight]="checkboxDisabledEx_ts"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="checkboxDisabledEx"
+              [highlight]="checkboxIndeterminateEx"
               class="code-block--no-bottom-margin">
             </code>
           </div>

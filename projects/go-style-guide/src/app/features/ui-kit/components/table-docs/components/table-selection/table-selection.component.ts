@@ -25,31 +25,68 @@ export class TableSelectionComponent {
   }
   `;
 
-  tableSelectModels: string = `
+  tableSelectionEventOutputs: string = `
+  // Emits a \`RowSelectionEvent\` event when an individual row is selected or deselected.
+  @Output() rowSelectionEvent: EventEmitter<RowSelectionEvent> = new EventEmitter<RowSelectionEvent>();
+  // Emits a \`SelectionState\` event when all rows are selected or deselected via the select-all checkbox.
+  @Output() selectAllEvent: EventEmitter<SelectionState> = new EventEmitter<SelectionState>();
+  `;
+
+  tableSelectionModels: string = `
+  export interface RowSelectionEvent extends SelectionState {
+    /**
+     * The current row that was targeted for selection
+     */
+    currentRow: {
+      /**
+       * The entire data in the row
+       */
+      data: object;
+      /**
+       * Whether or not this row was selected (\`true\`) or deselected (\`false\`)
+       */
+      selected: boolean;
+    };
+  }
+
   export interface SelectionState {
     /**
-     * Defines the current mode of selection. 'selection' will add items to 'selectedRows'
-     * and 'deselection' will add items to 'deselectedRows'.
+     * The current deselected rows; if \`selectionMode\` is \`selection\` then this will always be an empty array
+     */
+    deselectedRows?: any[];
+
+    /**
+     * Defines the current mode of selection. \`selection\` will add items to \`selectedRows\`
+     * and \`deselection\` will add items to \`deselectedRows\`.
      *
-     * If in 'deselection' mode, the UI toggles all checkboxes to true. Items instead will be added to 'deselectedRows'
+     * If in \`deselection\` mode, the UI toggle all checkboxes to true. Items instead will be added to \`deselectedRows\`
      * because they're being removed from the selection.
      */
     selectionMode: SelectionMode;
 
     /**
-     * The current deselected rows; if 'selectionMode' is 'selection' then this will always be an empty array
-     */
-    deselectedRows?: any[];
-
-    /**
-     * The current selected rows; if 'selectionMode' is 'deselection' then this will always be an empty array
+     * The current selected rows; if \`selectionMode\` is \`deselection\` then this will always be an empty array
      */
     selectedRows?: any[];
   }
+  `;
 
-  export enum SelectionMode {
-    selection = 'selection',
-    deselection = 'deselection'
+  tableSelectionExample_html: string = `
+  <go-table
+    [tableConfig]="tableConfig"
+    (rowSelectionEvent)="tableRowEvent($event)"
+    (selectAllEvent)="selectAllEvent($event)">
+    <!-- Table rows markup --!>
+  </go-table>
+  `;
+
+  tableSelectionExample_ts: string = `
+  tableRowEvent(rowEvent: RowSelectionEvent): void {
+    // Do something with the rowEvent
+  }
+
+  selectAllEvent(selectionState: SelectionState): void {
+    // Do something with the selectionState
   }
   `;
 
@@ -183,18 +220,35 @@ export class TableSelectionComponent {
     private toasterService: GoToasterService
   ) {
     this.subNavService.pageTitle = 'Table Selection';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
   }
 
   tableRowEvent(rowEvent: RowSelectionEvent): void {
     this.toasterService.toastInfo({ header: 'Row Event', message: 'Selection Mode: ' + rowEvent.selectionMode + '. ' }, 6000);
+    this.toasterService.toastInfo({ header: 'Row Event', message: 'Selected Row Count: ' + rowEvent.selectedRows.length + '. ' }, 6000);
+    this.toasterService.toastInfo({ header: 'Row Event', message: 'Deselected Row Count: ' + rowEvent.deselectedRows.length + '. ' }, 6000);
     this.toasterService.toastInfo(
       {
         header: 'Row Event',
-        // tslint:disable-next-line: max-line-length
-        message: 'Current Row Id: ' + rowEvent.currentRow.data['id'] + ', ' + (rowEvent.currentRow.selected ? 'selected' : 'deselected') + '. '
-      }, 6000);
-    this.toasterService.toastInfo({ header: 'Row Event', message: 'Selected Row Count: ' + rowEvent.selectedRows.length + '. ' }, 6000);
-    this.toasterService.toastInfo({ header: 'Row Event', message: 'Deselected Row Count: ' + rowEvent.deselectedRows.length + '. ' }, 6000);
+        message: `Current Row Id: ${rowEvent.currentRow.data['id']}, ${rowEvent.currentRow.selected ? 'selected' : 'deselected'}.`
+      },
+      6000
+    );
+  }
+
+  selectAllEvent(selectionState: SelectionState): void {
+    this.toasterService.toastInfo(
+      { header: 'Select All Event', message: 'Selection Mode: ' + selectionState.selectionMode + '. ' },
+      6000
+    );
+    this.toasterService.toastInfo(
+      { header: 'Select All Event', message: 'Selected Row Count: ' + selectionState.selectedRows.length + '. ' },
+      6000
+    );
+    this.toasterService.toastInfo(
+      { header: 'Select All Event', message: 'Deselected Row Count: ' + selectionState.deselectedRows.length + '. ' },
+      6000
+    );
   }
 
   interactiveTableState(): void {

@@ -1,4 +1,5 @@
-import { Component, HostBinding, Input, OnChanges } from '@angular/core';
+import { Component, ContentChild, HostBinding, Input, OnChanges } from '@angular/core';
+import { GoIconButtonComponent } from '../go-icon-button/go-icon-button.component';
 
 @Component({
   selector: 'go-badge',
@@ -13,6 +14,8 @@ export class GoBadgeComponent implements OnChanges {
   @Input() displayData: boolean = true;
 
   @HostBinding('class.go-badge__parent')
+
+  @ContentChild(GoIconButtonComponent, { static: false }) iconButtonChild: GoIconButtonComponent;
 
   ngOnChanges(): void {
     this.badgeStyles = this.badgeClasses();

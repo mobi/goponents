@@ -18,6 +18,7 @@ export class LayoutAppDrawerComponent {
     displayName: string;
     icon: string;
     url: string;
+    target?: string;
   }
 
   export { NavAppDrawer, NavAppDrawerItem };
@@ -33,7 +34,8 @@ export class LayoutAppDrawerComponent {
       {
         displayName: 'GitHub',
         icon: 'code',
-        url: 'https://github.com/'
+        url: 'https://github.com/',
+        target: 'github'
       },
       {
         displayName: 'Go Design',
@@ -61,5 +63,6 @@ export class LayoutAppDrawerComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'App Drawer';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-side-nav';
   }
 }

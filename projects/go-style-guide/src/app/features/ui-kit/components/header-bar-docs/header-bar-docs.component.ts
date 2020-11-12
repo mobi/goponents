@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GoToasterService } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
@@ -7,7 +9,7 @@ import { GoToasterService } from '../../../../../../../go-lib/src/public_api';
   templateUrl: './header-bar-docs.component.html',
   styleUrls: ['./header-bar-docs.component.scss']
 })
-export class HeaderBarDocsComponent implements OnInit {
+export class HeaderBarDocsComponent implements OnInit, OnDestroy {
 
   pageTitle: string = 'Header Bar';
 
@@ -33,15 +35,26 @@ export class HeaderBarDocsComponent implements OnInit {
     </div>
   </ng-template> `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-header-bar';
+
+  private destroy$: Subject<void> = new Subject();
+
   constructor(private toaster: GoToasterService) {
     this.backArrowSwitchControl.setValue(true);
   }
 
   ngOnInit(): void {
-    this.backArrowSwitchControl.valueChanges.subscribe((value: boolean) => {
-      this.showBackArrow = value;
-      console.log(this.showBackArrow);
-    });
+    this.backArrowSwitchControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: boolean) => {
+        this.showBackArrow = value;
+        console.log(this.showBackArrow);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   cancelClick(): void {
@@ -56,4 +69,5 @@ export class HeaderBarDocsComponent implements OnInit {
     console.log(this);
     this.toaster.toastInfo({ message: 'Go Back Clicked' });
   }
+
 }

@@ -112,5 +112,6 @@ export class LayoutSearchComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Search';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-search';
   }
 }

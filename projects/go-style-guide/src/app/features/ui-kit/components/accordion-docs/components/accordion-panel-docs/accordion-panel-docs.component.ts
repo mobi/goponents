@@ -103,5 +103,6 @@ export class AccordionPanelDocsComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Accordion Panel';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-accordion';
   }
 }

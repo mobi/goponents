@@ -11,6 +11,7 @@ export class LayoutNavComponent {
   componentBindings: string = `
   @Input() menuItems: Array<NavGroup | NavItem>;
   @Input() navAppDrawer: NavAppDrawer;
+  @Input() appDrawerHeader: string = 'Launch';
   `;
 
   bindings_menuItems: string = `
@@ -108,5 +109,6 @@ export class LayoutNavComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Side Navigation';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-side-nav';
   }
 }

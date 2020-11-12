@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import {
   BrandingMode,
   GoConfigInterface,
@@ -12,7 +13,7 @@ import {
   selector: 'app-configuration-docs',
   templateUrl: './configuration-docs.component.html'
 })
-export class ConfigurationDocsComponent implements OnInit {
+export class ConfigurationDocsComponent implements OnInit, OnDestroy {
   pageTitle: string = 'Configuration Service';
   inputControl: FormControl = new FormControl(false);
   configModeControl: FormControl = new FormControl(false);
@@ -131,19 +132,28 @@ export class ConfigurationDocsComponent implements OnInit {
     }
   };
 
+  private destroy$: Subject<void> = new Subject();
+
   constructor(private goConfigService: GoConfigService) { }
 
   ngOnInit(): void {
     this.inputControl = new FormControl(this.goConfigService.getConfig().brandColor);
-    this.configModeControl.valueChanges.subscribe((value: boolean) => {
-      if (value) {
-        this.goConfigService.setConfig(this.clientConfig);
-        this.configHints = [`Showing ${BrandingMode.client} mode`];
-      } else {
-        this.goConfigService.setConfig(this.defaultConfig);
-        this.configHints = [`Showing ${BrandingMode.company} mode`];
-      }
-    });
+    this.configModeControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: boolean) => {
+        if (value) {
+          this.goConfigService.setConfig(this.clientConfig);
+          this.configHints = [`Showing ${BrandingMode.client} mode`];
+        } else {
+          this.goConfigService.setConfig(this.defaultConfig);
+          this.configHints = [`Showing ${BrandingMode.company} mode`];
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   updateColor(): void {

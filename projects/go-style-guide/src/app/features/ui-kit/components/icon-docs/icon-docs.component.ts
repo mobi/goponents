@@ -60,5 +60,8 @@ export class IconDocsComponent {
   If possible, apply a class directly to the <go-icon> element before performing this override.
   `;
 
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-icon';
+  
   constructor() { }
+
 }

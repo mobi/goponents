@@ -1,5 +1,15 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { distinctUntilKeyChanged } from 'rxjs/operators';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
+import { Subject } from 'rxjs';
+import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
 import { GoConfigService } from '../../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
@@ -10,8 +20,10 @@ import { NavItem } from '../nav-item.model';
   templateUrl: './go-nav-item.component.html',
   styleUrls: ['./go-nav-item.component.scss']
 })
-export class GoNavItemComponent implements AfterViewInit, OnInit {
+export class GoNavItemComponent implements AfterViewInit, OnInit, OnDestroy {
   brandColor: string;
+
+  private destroy$: Subject<void> = new Subject();
 
   @Input() navItem: NavItem;
   @Input() level: number;
@@ -26,10 +38,18 @@ export class GoNavItemComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.configService.config
-      .pipe(distinctUntilKeyChanged('brandColor'))
+      .pipe(
+        distinctUntilKeyChanged('brandColor'),
+        takeUntil(this.destroy$)
+      )
       .subscribe((value: GoConfigInterface) => {
         this.brandColor = value.brandColor;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   ngAfterViewInit(): void {

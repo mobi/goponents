@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { NavAppDrawer } from '../nav-app-drawer.model';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
@@ -13,10 +14,12 @@ import { GoSideNavService } from './go-side-nav.service';
   // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None
 })
-export class GoSideNavComponent implements OnInit {
+export class GoSideNavComponent implements OnInit, OnDestroy {
   @Input() menuItems: Array<NavGroup | NavItem>;
   @Input() navAppDrawer: NavAppDrawer;
+  @Input() appDrawerHeader: string = 'Launch';
 
+  private destroy$: Subject<void> = new Subject();
 
   constructor (
     private router: Router,
@@ -32,10 +35,17 @@ export class GoSideNavComponent implements OnInit {
 
     this.router.events
       .pipe(
-        filter((event: any) => event instanceof NavigationEnd)
-      ).subscribe((event: NavigationEnd) => {
+        filter((event: any) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((event: NavigationEnd) => {
         this.configureExpanded(event.url);
-    });
+     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   closeNavs(navGroup: NavGroup): void {

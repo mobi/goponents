@@ -64,6 +64,8 @@ export class SelectDocsComponent implements OnInit {
   select16: FormControl = new FormControl();
   select17: FormControl = new FormControl();
   select18: FormControl = new FormControl();
+  select19: FormControl = new FormControl({ value: '', disabled: true });
+  select20: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -346,6 +348,14 @@ export class SelectDocsComponent implements OnInit {
     </ng-template>
   </go-select>
   `;
+  
+  select20Code: string = `
+  <go-select
+    [control]="select"
+    theme="dark"
+    label="Favorite Candy">
+  </go-select>
+  `;
 
   select18ComponentCode: string = `
   groupedItemsArray: any = [
@@ -367,11 +377,36 @@ export class SelectDocsComponent implements OnInit {
   ]
   `;
 
+  basicDisabledExample: string = `
+  <go-select
+    [control]="select"
+    [items]="items"
+    label="Favorite Candy">
+  </go-select>
+  `;
+  basicDisabledExample2: string = `
+  ngOnInit(): void {
+    items = [
+      { value: 1, name: 'Reeses' },
+      { value: 2, name: 'Mints' }
+    ];
+    this.select.disable();
+    // Use this.select.enable(); to re-enable the select component.
+  }
+  `;
+  basicDisabledExample3: string = `
+  select: new FormControl({
+    value: '',
+    disabled: true
+  });
+  `;
+
   constructor(
     private goModalService: GoModalService,
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Select';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-select';
   }
 
   ngOnInit(): void {
