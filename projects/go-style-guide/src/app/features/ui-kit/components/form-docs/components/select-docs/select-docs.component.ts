@@ -45,6 +45,7 @@ export class SelectDocsComponent implements OnInit {
         {value: 5, name: 'Silverado'}]
     }
   ];
+
   selectData: any = [
     {
       value: 1,
@@ -103,6 +104,7 @@ export class SelectDocsComponent implements OnInit {
       name: "Hermione7",
     },
   ];
+  
   newSelectData: any = [
     {
       value: 15,
@@ -466,9 +468,10 @@ export class SelectDocsComponent implements OnInit {
   ]"
   label="Select an Option"
   (scrollToEnd)="scrollToEnd()"
-  (onVirtualScroll)="onVirtualScroll($event)"
-  [virtualScroll]="virtualScroll"
+  (scroll)="scroll($event)"
+  virtualScroll=true
   >
+
   </go-select>`;
 
   select19ComponentCode: string = `
@@ -476,8 +479,7 @@ export class SelectDocsComponent implements OnInit {
     // Code here
   }
 
-  virtualScroll: boolean = true;
-  onVirtualScroll($event): void {
+  scroll($event: { start: number; end: number }): void {
   // Code here
   }
 `;
@@ -528,9 +530,7 @@ export class SelectDocsComponent implements OnInit {
     this.selectData = [...this.selectData, ...this.newSelectData];
   }
 
-  virtualScroll: boolean = true;
-
-  onVirtualScroll($event): void {
+  scroll($event: { start: number; end: number }): void {
     console.log($event);
   }
 }

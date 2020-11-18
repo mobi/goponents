@@ -33,25 +33,30 @@ export class GoSelectComponent implements OnInit {
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';
   @Input() theme: 'light' | 'dark' = 'light';
-  @Input() virtualScroll: boolean = false;
+  @Input() virtualScroll: any = false;
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() onVirtualScroll: EventEmitter<any> = new EventEmitter<any>();
-  
+  @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number; end: number }>();
+
   @ContentChild('goSelectOption', { static: false }) goSelectOption: TemplateRef<any>;
   @ContentChild('goSelectOptionGroup', { static: false }) goSelectOptionGroup: TemplateRef<any>;
   @ContentChild('goSelectSelectedOption', { static: false }) goSelectSelectedOption: TemplateRef<any>;
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
+    this.virtualScroll = Boolean(JSON.parse(this.virtualScroll));
   }
 
   onSelectAll(): void {
     this.control.patchValue(this.items.map((item: any) => this.bindValue ? item[this.bindValue] : item));
   }
+
   onScrollToEnd(): void {
-    this.scrollToEnd.emit();
+    if (this.virtualScroll) {
+      this.scrollToEnd.emit();
+    }
   }
-  onScroll($event): void {
-    this.onVirtualScroll.emit($event);
+
+  onScroll($event: { start: number; end: number }): void {
+    this.scroll.emit($event);
   }
 }
