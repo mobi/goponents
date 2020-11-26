@@ -42,7 +42,6 @@ export class GoTimepickerComponent implements OnInit {
     const ampm = H < 12 || H === 24 ? 'AM' : 'PM';
     timeString = hour + timeString.substr(2, 3) + ' ' + ampm;
     return timeString;
-    // this.selectedTime = timeString;
   }
 
   public validateTime(): void {}
