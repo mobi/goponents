@@ -1,0 +1,92 @@
+<div class="go-time--wrapper">
+  <div
+    class="go-time"
+    [ngClass]="{
+      'go-time--above': displayAbove,
+      'go-time--right': displayFromRight,
+      'go-time--append-to-content': appendToContent
+    }"
+    *ngIf="opened"
+  >
+    <!-- Up arrow -->
+    <section class="go-container">
+      <div
+        class="go-column go-column--25 go-column--no-padding padding-left-23"
+      >
+        <go-icon-button
+          buttonIcon="keyboard_arrow_up"
+          (click)="increaseHour()"
+        ></go-icon-button>
+      </div>
+      <div
+        class="go-column go-column--25 go-column--no-padding padding-left-31"
+      >
+        <go-icon-button
+          buttonIcon="keyboard_arrow_up"
+          (click)="increaseMinute()"
+        ></go-icon-button>
+      </div>
+    </section>
+    <!-- Time input -->
+    <section class="go-container">
+      <div class="go-column go-column--25 go-column--no-padding hour-content">
+        <input
+          type="number"
+          class="hour-minute-input"
+          placeholder="HH"
+          [(ngModel)]="hour"
+          (keypress)="twoDigitNumber($event)"
+          [ngClass]="{ 'go-form__input--error': inputHourError }"
+        />
+      </div>
+      <div class="go-column go-column--25 go-column--no-padding colon-content">
+        <span>:</span>
+      </div>
+      <div class="go-column go-column--25 go-column--no-padding minute-content">
+        <input
+          class="hour-minute-input"
+          placeholder="MM"
+          [(ngModel)]="minute"
+          (keypress)="twoDigitNumber($event)"
+          [ngClass]="{ 'go-form__input--error': inputMinuteError }"
+        />
+      </div>
+      <div class="go-column go-column--25 go-column--no-padding">
+        <go-button buttonVariant="secondary" (click)="changeFormat()">
+          <span class="time-format">{{ format ? 'AM' : 'PM' }}</span>
+        </go-button>
+      </div>
+    </section>
+    <section class="go-container">
+      <div
+        class="go-column go-column--25 go-column--no-padding padding-left-23"
+      >
+        <go-icon-button
+          buttonIcon="keyboard_arrow_down"
+          (click)="decreaseHour()"
+        ></go-icon-button>
+      </div>
+      <div
+        class="go-column go-column--25 go-column--no-padding padding-left-31"
+      >
+        <go-icon-button
+          buttonIcon="keyboard_arrow_down"
+          (click)="decreaseMinute()"
+        ></go-icon-button>
+      </div>
+    </section>
+    <!-- Action Button Group -->
+    <ul class="go-button-group go-time-action">
+      <li class="go-button-group__item">
+        <button class="action-button clear-btn" (click)="clear()">
+          Clear
+        </button>
+      </li>
+      <li class="go-button-group__item apply-button-margin">
+        <button class="action-button apply-btn" (click)="apply()">
+          Apply
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

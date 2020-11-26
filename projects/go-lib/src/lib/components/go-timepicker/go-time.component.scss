@@ -1,0 +1,154 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.go-time {
+  background: $theme-light-bg;
+  border: 1px solid $theme-light-border;
+  border-radius: $global-radius;
+  position: absolute;
+  z-index: z-index(toaster);
+  padding: 0px 5px 0px 5px;
+  width: 179px;
+}
+
+.go-time--above {
+  bottom: 2.5rem;
+}
+
+.go-time--right {
+  right: 0;
+}
+
+.go-time--append-to-content {
+  position: static;
+}
+
+.go-time--wrapper {
+  display: flex;
+}
+.hour-minute-input {
+  width: 36px;
+  height: 35px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  outline: none;
+  background: transparent;
+  padding: 0.5rem;
+  font-family: 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.875rem;
+  text-align: center;
+}
+//   .go-calendar__close-calendar-content {
+//     flex-grow: 1;
+//   }
+
+.go-up-arrow {
+  float: left;
+  width: 50%;
+}
+.go-time-column {
+  float: left;
+}
+.hour-content {
+  max-width: 16%;
+  padding: 0px 32px 0px 20px;
+}
+.colon-content {
+  max-width: 9%;
+  padding: 9px 13px;
+}
+.minute-content {
+  padding: 0px 0px;
+  max-width: 15%;
+}
+.padding-left-23 {
+  padding-left: 23px;
+}
+.padding-left-31 {
+  padding-left: 31px;
+}
+input::placeholder {
+  // color: red;
+  font-size: 10.8px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.action-button {
+  padding: 3px 3px;
+  font-size: 12px;
+  border-radius: 4px;
+  transition-duration: 0.25s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.015rem;
+  line-height: 1.2;
+  outline: 0;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.clear-btn {
+  background: #fff;
+  color: #313536;
+  border: 1px solid #cbcbcb;
+  &:hover,
+  &:focus {
+    background: $theme-light-bg-hover;
+    border: 1px solid $theme-light-bg-hover;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    border: 1px solid lighten($base-light-secondary, 10%);
+    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, 0.75);
+  }
+
+  &:active {
+    background: $theme-light-bg-active;
+    border: 1px solid $theme-light-bg-active;
+  }
+}
+.apply-btn {
+  color: #fff;
+  background: #00838f;
+  border: 1px solid #00838f;
+  &:hover,
+  &:focus {
+    background: $ui-color-primary-hover;
+    border: 1px solid $ui-color-primary-hover;
+    box-shadow: $form-shadow-active;
+  }
+
+  &:active {
+    background: $ui-color-primary-active;
+    border: 1px solid $ui-color-primary-active;
+    box-shadow: $form-shadow-active;
+  }
+}
+.go-time-action {
+  float: right;
+  padding-bottom: 4px;
+}
+.go-form__input--error {
+  border-color: $ui-color-negative;
+}
+.apply-button-margin {
+  margin-right: 3px;
+}
+.time-format {
+  font-weight: 500;
+}

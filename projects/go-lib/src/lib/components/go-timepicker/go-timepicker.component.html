@@ -1,0 +1,50 @@
+<label
+  [attr.for]="id"
+  class="go-form__label"
+  [ngClass]="{ 'go-form__label--dark': theme == 'dark' }"
+>
+  {{ label }}
+  <go-required-text [control]="control"></go-required-text>
+</label>
+<div class="go-timepicker">
+  <input
+    #datepickerInput
+    class="go-form__input"
+    [id]="id"
+    [placeholder]="placeholder"
+    [ngClass]="{
+      'go-form__input--error': control?.errors?.length,
+      'go-form__input--dark': theme == 'dark'
+    }"
+    [(ngModel)]="selectedTime"
+    (blur)="validateTime()"
+    [disabled]="control.disabled"
+    readonly
+  />
+  <go-icon-button
+    class="go-timepicker__toggle"
+    [buttonDisabled]="control.disabled"
+    buttonIcon="schedule"
+    (click)="toggleTimepicker($event)"
+  ></go-icon-button>
+  <go-time
+    [appendToContent]="appendToContent"
+    [displayFromRight]="displayFromRight"
+    [displayAbove]="displayAbove"
+    [goTime]="goTime"
+    (timePicked)="timePicked($event)"
+  >
+  </go-time>
+</div>
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+
+<div *ngIf="control?.errors?.length">
+  <go-hint
+    *ngFor="let error of control.errors"
+    [message]="error.message"
+    [label]="error.type"
+    [theme]="theme"
+    type="negative"
+  ></go-hint>
+</div>
+

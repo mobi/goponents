@@ -59,6 +59,7 @@ import { TreeDocsComponent } from '../components/tree-docs/tree-docs.component';
 import { TableTitleTemplateComponent } from '../components/table-docs/components/table-title-template/table-title-template.component';
 import { VirtualScrollComponent } from '../components/virtual-scroll/virtual-scroll.component';
 import { TableChildRowsComponent } from '../components/table-docs/components/table-child-rows/table-child-rows.component';
+import { TimepickerDocsComponent } from '../components/form-docs/components/timepicker-docs/timepicker-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -86,7 +87,8 @@ const routes: Routes = [
     { path: 'radio', component: RadioButtonDocsComponent },
     { path: 'select', component: SelectDocsComponent },
     { path: 'switch-toggle', component: SwitchToggleDocsComponent },
-    { path: 'textarea', component: TextAreaDocsComponent }
+    { path: 'textarea', component: TextAreaDocsComponent },
+    { path: 'timepicker', component: TimepickerDocsComponent }
   ]},
   { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
