@@ -140,7 +140,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
           visibility: 'visible',
         });
         document.body.appendChild(calenderBody);
-      }, 100);
+      });
     }
   }
 }
