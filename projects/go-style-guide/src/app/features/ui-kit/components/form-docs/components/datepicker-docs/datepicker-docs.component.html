@@ -476,4 +476,37 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-datepicker-append-to-body" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component appendTo</h2>
+      <go-copy cardId="form-datepicker-append-to-content" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a
+          <code class="code-block--inline">go-datepicker</code> within a <code class="code-block--inline">go-modal</code>.
+          Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
+          the modal from closing automatically upon selecting an item from the select dropdown.
+        </p>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-button (handleClick)="openModal()">Click Me</go-button>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="appendToBodyExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </go-card>
 </section>

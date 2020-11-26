@@ -29,6 +29,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   @Input() minDate: Date | string;
   @Input() placeholder: string = '';
   @Input() theme: string = 'light';
+  @Input() appendTo: string = 'default';
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 

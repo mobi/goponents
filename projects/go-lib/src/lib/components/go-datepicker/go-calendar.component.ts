@@ -29,6 +29,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   @Input() locale: string;
   @Input() maxDate: Date;
   @Input() minDate: Date;
+  @Input() appendTo: string;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -121,5 +122,25 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     }
     this.currentMonth = this.selectedDate.getMonth();
     this.updateYear(this.selectedDate.getFullYear());
+    if (this.appendTo === 'body') {
+      setTimeout(() => {
+        const calenderBody: any = document.getElementsByClassName(
+          'append-body'
+        )[0];
+        const calenderBodyPosition: any = document
+          .querySelector('.append-body')
+          .getBoundingClientRect();
+        Object.assign(calenderBody.style, {
+          height: `${calenderBodyPosition.height}px`,
+          bottom: `${calenderBodyPosition.bottom}px`,
+          top: `${calenderBodyPosition.top}px`,
+          right: `${calenderBodyPosition.right}px`,
+          width: `${calenderBodyPosition.width}px`,
+          left: `${calenderBodyPosition.left}px`,
+          visibility: 'visible',
+        });
+        document.body.appendChild(calenderBody);
+      }, 100);
+    }
   }
 }
