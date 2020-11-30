@@ -111,7 +111,7 @@ export class TextAreaDocsComponent implements OnInit {
   <go-text-area
     [control]="message"
     label="Your Message"
-    maxlength="10">
+    [maxlength]="10">
   </go-text-area>
   `;
 
@@ -119,7 +119,7 @@ export class TextAreaDocsComponent implements OnInit {
   <go-text-area
     [control]="message"
     label="Your Message"
-    minlength="2">
+    [minlength]="2">
   </go-text-area>
   `;
 

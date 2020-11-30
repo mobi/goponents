@@ -23,5 +23,13 @@ export class GoTextAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'text-area');
+
+    this.validateMinMax();
+  }
+
+  private validateMinMax(): void {
+    if (this.maxlength && this.minlength && this.minlength > this.maxlength) {
+      this.minlength = 0;
+    }
   }
 }
