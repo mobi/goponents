@@ -13,6 +13,8 @@ export class GoTextAreaComponent implements OnInit {
   @Input() key: string;
   @Input() hints: Array<string>;
   @Input() label: string;
+  @Input() maxlength: number;
+  @Input() minlength: number;
   @Input() placeholder: string = '';
   @Input() theme: 'light' | 'dark' = 'light';
   @Input() rows: number;
@@ -21,5 +23,13 @@ export class GoTextAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'text-area');
+
+    this.validateMinMax();
+  }
+
+  private validateMinMax(): void {
+    if (this.maxlength && this.minlength && this.minlength > this.maxlength) {
+      this.minlength = 0;
+    }
   }
 }
