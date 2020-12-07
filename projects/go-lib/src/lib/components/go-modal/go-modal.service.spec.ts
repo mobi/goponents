@@ -26,16 +26,16 @@ describe('GoModalService', () => {
       spyOn(service, 'setComponent');
       spyOn(service, 'toggleModal');
 
-      service.openModal(GoTestModalComponent, { testingBinding: 'test'});
+      service.openModal(GoTestModalComponent, { testingBinding: 'test'}, { modalTitle: 'Test' });
 
-      expect(service.setComponent).toHaveBeenCalledWith(GoTestModalComponent, { testingBinding: 'test'});
+      expect(service.setComponent).toHaveBeenCalledWith(GoTestModalComponent, { testingBinding: 'test'}, { modalTitle: 'Test' });
       expect(service.toggleModal).toHaveBeenCalledWith(true);
     });
   });
 
   describe('setComponent', () => {
     it('emits the new component and its bindings from activeModalComponent', () => {
-      service.activeModalComponent.subscribe((item: GoModalItem) => {
+      service.activeModalComponent.subscribe((item: GoModalItem<GoTestModalComponent>) => {
         expect({...item}).toEqual({ component: GoTestModalComponent, bindings: { testingBinding: 'test'} });
       });
 

@@ -69,7 +69,7 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when no title and no modal size is set', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {});
+      component.currentComponent = { component: GoTestModalHostComponent, bindings: { } };
 
       expect(component.modalTitle).toBeUndefined();
       expect(component.modalSize).toEqual(component.defaultModalSize);
@@ -81,7 +81,11 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when a title is set', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalTitle: 'Test Title' });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { modalTitle: 'Test Title' }
+      };
 
       expect(component.modalTitle).toBeUndefined();
 
@@ -91,7 +95,11 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when a modal size is set to supported size', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalSize: 'xl' });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { modalSize: 'xl' }
+      };
 
       expect(component.modalSize).toEqual(component.defaultModalSize);
 
@@ -100,18 +108,12 @@ describe('GoModalComponent', () => {
       expect(component.modalSize).toEqual('xl');
     });
 
-    it('handles when a modal size is set to unsupported size', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalSize: 'abc' });
-
-      expect(component.modalSize).toEqual(component.defaultModalSize);
-
-      component.loadComponent();
-
-      expect(component.modalSize).toEqual(component.defaultModalSize);
-    });
-
     it('sets closeWithBackdrop to false if not passed in', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {  });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { }
+      };
+
       component.closeWithBackdrop = true;
 
       component.loadComponent();
@@ -120,7 +122,11 @@ describe('GoModalComponent', () => {
     });
 
     it('sets closeWithBackdrop to true if passed in', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { closeWithBackdrop: true });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { closeWithBackdrop: true }
+      };
       component.closeWithBackdrop = false;
 
       component.loadComponent();
@@ -129,7 +135,11 @@ describe('GoModalComponent', () => {
     });
 
     it('sets showCloseIcon to true if not passed in', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {  });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { }
+      };
+
       component.showCloseIcon = false;
 
       component.loadComponent();
@@ -138,7 +148,11 @@ describe('GoModalComponent', () => {
     });
 
     it('sets closeWithBackdrop to false if passed in', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { showCloseIcon: false });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { showCloseIcon: false }
+      };
       component.showCloseIcon = true;
 
       component.loadComponent();

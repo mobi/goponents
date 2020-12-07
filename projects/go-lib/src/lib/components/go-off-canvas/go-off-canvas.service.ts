@@ -6,14 +6,18 @@ import { GoOffCanvasItem } from './go-off-canvas.interface';
   providedIn: 'root'
 })
 export class GoOffCanvasService {
-  activeOffCanvasComponent: Subject<GoOffCanvasItem> = new Subject<GoOffCanvasItem>();
+  activeOffCanvasComponent: Subject<GoOffCanvasItem<any>> = new Subject<GoOffCanvasItem<any>>();
   offCanvasOpen: Subject<boolean> = new Subject<boolean>();
 
   constructor() {
     this.setOffCanvasStatus(false);
   }
 
-  public openOffCanvas(offCanvasItem: GoOffCanvasItem): void {
+  /**
+   * Opens an instance of the GoOffCanvas
+   * @param offCanvasItem Configuration for the Off Canvas.
+   */
+  public openOffCanvas<T>(offCanvasItem: GoOffCanvasItem<T>): void {
     this.activeOffCanvasComponent.next(offCanvasItem);
     this.setOffCanvasStatus(true);
   }
