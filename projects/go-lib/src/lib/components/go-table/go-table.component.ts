@@ -555,7 +555,10 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
 
   private setupSelectAllControlSub(): void {
     this.selectAllControl.valueChanges
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        distinctUntilChanged(),
+        takeUntil(this.destroy$)
+      )
       .subscribe(() => {
         this.targetedRows = [];
         this.updateRowSelectForm();
