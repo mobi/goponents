@@ -31,6 +31,19 @@ describe('GoModalService', () => {
       expect(service.setComponent).toHaveBeenCalledWith(GoTestModalComponent, { testingBinding: 'test'}, { modalTitle: 'Test' });
       expect(service.toggleModal).toHaveBeenCalledWith(true);
     });
+
+    /**
+     * @deprecated test
+     */
+    it('calls setComponent and toggleModal (deprecated)', () => {
+      spyOn(service, 'setComponent');
+      spyOn(service, 'toggleModal');
+
+      service.openModal(GoTestModalComponent, { testingBinding: 'test', modalTitle: 'Test' });
+
+      expect(service.setComponent).toHaveBeenCalledWith(GoTestModalComponent, { testingBinding: 'test', modalTitle: 'Test' }, undefined);
+      expect(service.toggleModal).toHaveBeenCalledWith(true);
+    });
   });
 
   describe('setComponent', () => {
