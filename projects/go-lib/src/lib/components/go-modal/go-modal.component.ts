@@ -11,7 +11,9 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { GoModalOptions } from './go-modal-options';
 import { GoModalDirective } from './go-modal.directive';
+import { GoModalItem } from './go-modal.item';
 import { GoModalService } from './go-modal.service';
 
 @Component({
@@ -19,16 +21,10 @@ import { GoModalService } from './go-modal.service';
   templateUrl: './go-modal.component.html',
   styleUrls: ['./go-modal.component.scss']
 })
-export class GoModalComponent implements OnInit, OnDestroy {
-  readonly defaultModalSize: 'lg' | 'xl' = 'lg';
+export class GoModalComponent extends GoModalOptions implements OnInit, OnDestroy {
 
-  closeWithBackdrop: boolean = false;
-  currentComponent: any;
-  modalTitle: string;
-  modalSize: 'lg' | 'xl' = this.defaultModalSize;
-  noContentPadding: boolean = false;
+  currentComponent: GoModalItem<any>;
   opened: boolean = false;
-  showCloseIcon: boolean = true;
 
   private destroy$: Subject<void> = new Subject();
 
@@ -39,6 +35,7 @@ export class GoModalComponent implements OnInit, OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver,
     private goModalService: GoModalService
   ) {
+    super();
   }
 
   ngOnInit(): void {
@@ -74,28 +71,7 @@ export class GoModalComponent implements OnInit, OnDestroy {
       componentRef.instance[key] = this.currentComponent.bindings[key];
     });
 
-    // Set title for modal if provided
-    if (componentRef.instance['modalTitle']) {
-      this.modalTitle = componentRef.instance['modalTitle'];
-    } else {
-      this.modalTitle = '';
-    }
-
-    // Set modal size if provided (by default set to 'lg')`
-    if (componentRef.instance['modalSize'] === 'lg' || componentRef.instance['modalSize'] === 'xl') {
-      this.modalSize = componentRef.instance['modalSize'];
-    } else {
-      this.modalSize = this.defaultModalSize;
-    }
-
-    // Set close with backdrop if provided
-    this.closeWithBackdrop = componentRef.instance['closeWithBackdrop'] === true ? true : false;
-
-    // set content padding if provided
-    this.noContentPadding = componentRef.instance['noContentPadding'];
-
-    // set close icon if provided
-    this.showCloseIcon = componentRef.instance['showCloseIcon'] === false ? false : true;
+    this.setModalProperties(componentRef);
   }
 
   /**
@@ -115,6 +91,37 @@ export class GoModalComponent implements OnInit, OnDestroy {
 
   goModalClasses(): object {
     return { 'go-modal--visible': this.opened };
+  }
+
+  private setModalProperties(componentRef: ComponentRef<{}>): void {
+    if (this.currentComponent.modalOptions) {
+      Object.keys(this.currentComponent.modalOptions).forEach((key: string) => {
+        this[key] = this.currentComponent.modalOptions[key];
+      });
+    } else {
+      // Set title for modal if provided
+      if (componentRef.instance['modalTitle']) {
+        this.modalTitle = componentRef.instance['modalTitle'];
+      } else {
+        this.modalTitle = '';
+      }
+
+      // Set modal size if provided (by default set to 'lg')`
+      if (componentRef.instance['modalSize'] === 'lg' || componentRef.instance['modalSize'] === 'xl') {
+        this.modalSize = componentRef.instance['modalSize'];
+      } else {
+        this.modalSize = this.defaultModalSize;
+      }
+
+      // Set close with backdrop if provided
+      this.closeWithBackdrop = componentRef.instance['closeWithBackdrop'] === true ? true : false;
+
+      // set content padding if provided
+      this.noContentPadding = componentRef.instance['noContentPadding'];
+
+      // set close icon if provided
+      this.showCloseIcon = componentRef.instance['showCloseIcon'] === false ? false : true;
+    }
   }
 
   private destroyComponent(): void {

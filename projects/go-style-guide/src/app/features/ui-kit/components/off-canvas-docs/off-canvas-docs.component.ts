@@ -58,9 +58,11 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
-        someBinding: 'monkey'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header'
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
     });
   }
   `;
@@ -77,12 +79,14 @@ export class OffCanvasDocsComponent {
   largeOffCanvasExample: string = `
   openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: BasicTestComponent,
+      component: BasicTestLargeComponent,
       bindings: {
-        someBinding: 'monkey'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header',
-      size: 'large'
+      offCanvasOptions: {
+        header: 'Test Header',
+        size: 'large'
+      }
     });
   }
   `;
@@ -132,9 +136,11 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
-        someBinding: 'Basic Off Canvas Component'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header'
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
     });
   }
 
@@ -142,10 +148,12 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestLargeComponent,
       bindings: {
-        someBinding: 'Basic Off Canvas Component'
+        fakeTitle: 'Basic Off Canvas Component',
       },
-      header: 'Test Header',
-      size: 'large'
+      offCanvasOptions: {
+        header: 'Test Header',
+        size: 'large'
+      }
     });
   }
 
@@ -153,9 +161,11 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestSubmitButtonComponent,
       bindings: {
-        someBinding: 'Basic Off Canvas Component'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header',
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
     });
   }
 
