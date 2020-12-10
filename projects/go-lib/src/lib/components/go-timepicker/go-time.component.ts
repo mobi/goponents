@@ -158,16 +158,7 @@ export class GoTimeComponent implements OnInit {
       this.minute = Number(this.minute) - 1;
     }
   }
-  // twoDigitOnly(event): void {
-  //   const value: any = event.target.value;
-  //   if (value.length <= 2) {
-  //     const hour: any = value.replace(/[^0-9]+/g, '');
-  //     (document.getElementById('hour') as HTMLInputElement).value = '';
-  //     (document.getElementById('hour') as HTMLInputElement).value = hour;
-  //   } else if (value.length === 3) {
-  //     this.hour = value.substring(0, value.length - 1);
-  //   }
-  // }
+
   twoDigitNumber(e) {
     e = e || window.event;
     const charCode = typeof e.which === 'number' ? e.which : e.keyCode;
