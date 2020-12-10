@@ -19,6 +19,7 @@
     [(ngModel)]="selectedTime"
     (blur)="validateTime()"
     [disabled]="control.disabled"
+    (click)="toggleTimepicker($event)"
     readonly
   />
   <go-icon-button

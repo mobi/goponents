@@ -61,8 +61,8 @@
 .padding-left-23 {
   padding-left: 23px;
 }
-.padding-left-31 {
-  padding-left: 31px;
+.padding-left-42 {
+  padding-left: 42px;
 }
 input::placeholder {
   font-size: 10.8px;
@@ -147,4 +147,9 @@ input[type='number'] {
 }
 .time-format {
   font-weight: 500;
+}
+.go-time-column{
+    flex-basis: 25%;
+    width: 25%;
+    max-width: 13%;
 }

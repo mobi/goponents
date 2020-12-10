@@ -11,7 +11,7 @@
     <!-- Up arrow -->
     <section class="go-container">
       <div
-        class="go-column go-column--25 go-column--no-padding padding-left-23"
+        class="go-column go-time-column go-column--no-padding padding-left-23"
       >
         <go-icon-button
           buttonIcon="keyboard_arrow_up"
@@ -19,7 +19,7 @@
         ></go-icon-button>
       </div>
       <div
-        class="go-column go-column--25 go-column--no-padding padding-left-31"
+        class="go-column go-time-column go-column--no-padding padding-left-42"
       >
         <go-icon-button
           buttonIcon="keyboard_arrow_up"
@@ -29,20 +29,22 @@
     </section>
     <!-- Time input -->
     <section class="go-container">
-      <div class="go-column go-column--25 go-column--no-padding hour-content">
+      <div class="go-column go-time-column go-column--no-padding hour-content">
         <input
           type="number"
+          id = "hour-input"
           class="hour-minute-input"
           placeholder="HH"
           [(ngModel)]="hour"
           (keypress)="twoDigitNumber($event)"
           [ngClass]="{ 'go-form__input--error': inputHourError }"
+          autofocus="autofocus"
         />
       </div>
-      <div class="go-column go-column--25 go-column--no-padding colon-content">
+      <div class="go-column go-time-column go-column--no-padding colon-content">
         <span>:</span>
       </div>
-      <div class="go-column go-column--25 go-column--no-padding minute-content">
+      <div class="go-column go-time-column go-column--no-padding minute-content">
         <input
           class="hour-minute-input"
           placeholder="MM"
@@ -51,15 +53,16 @@
           [ngClass]="{ 'go-form__input--error': inputMinuteError }"
         />
       </div>
-      <div class="go-column go-column--25 go-column--no-padding">
+      <div class="go-column go-time-column go-column--no-padding">
         <go-button buttonVariant="secondary" (click)="changeFormat()">
           <span class="time-format">{{ format ? 'AM' : 'PM' }}</span>
         </go-button>
       </div>
     </section>
+    <!-- Down arrow -->
     <section class="go-container">
       <div
-        class="go-column go-column--25 go-column--no-padding padding-left-23"
+        class="go-column go-time-column go-column--no-padding padding-left-23"
       >
         <go-icon-button
           buttonIcon="keyboard_arrow_down"
@@ -67,7 +70,7 @@
         ></go-icon-button>
       </div>
       <div
-        class="go-column go-column--25 go-column--no-padding padding-left-31"
+        class="go-column go-time-column go-column--no-padding padding-left-42"
       >
         <go-icon-button
           buttonIcon="keyboard_arrow_down"

@@ -78,11 +78,19 @@ export class GoTimeComponent implements OnInit {
             this.minute = this.timeFormat.minutes;
             this.format = this.timeFormat.ampm === 'am' ? true : false;
           }
+          this.autoFocousInput();
         }
         this.opened = value;
       }
     );
   }
+
+  autoFocousInput(): void {
+    setTimeout(() => {
+      document.getElementById('hour-input').focus();
+    });
+  }
+
   formatAMPM(date: any): void {
     let hours: any = date.getHours();
     let minutes: any = date.getMinutes();
@@ -150,21 +158,22 @@ export class GoTimeComponent implements OnInit {
       this.minute = Number(this.minute) - 1;
     }
   }
-  twoDigitOnly(event): void {
-    const value: any = event.target.value;
-    if (value.length <= 2) {
-      const hour: any = value.replace(/[^0-9]+/g, '');
-      (document.getElementById('hour') as HTMLInputElement).value = '';
-      (document.getElementById('hour') as HTMLInputElement).value = hour;
-    } else if (value.length === 3) {
-      this.hour = value.substring(0, value.length - 1);
-    }
-  }
+  // twoDigitOnly(event): void {
+  //   const value: any = event.target.value;
+  //   if (value.length <= 2) {
+  //     const hour: any = value.replace(/[^0-9]+/g, '');
+  //     (document.getElementById('hour') as HTMLInputElement).value = '';
+  //     (document.getElementById('hour') as HTMLInputElement).value = hour;
+  //   } else if (value.length === 3) {
+  //     this.hour = value.substring(0, value.length - 1);
+  //   }
+  // }
   twoDigitNumber(e) {
     e = e || window.event;
     const charCode = typeof e.which === 'number' ? e.which : e.keyCode;
     if (e.target.value.length >= 2) {
-      return false;
+      e.target.value = '';
+      // return false;
     }
     // Allow non-printable keys
     if (!charCode || charCode === 8 /* Backspace */) {
