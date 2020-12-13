@@ -59,7 +59,7 @@ export class TimepickerDocsComponent implements OnInit {
     basicErrorsTemplate: string = `
     this.time.setErrors([
       {
-        message: 'This date is invalid'
+        message: 'This time is invalid'
       },
       {
         type: 'Required',
@@ -94,7 +94,7 @@ export class TimepickerDocsComponent implements OnInit {
 
     constructor(private subNavService: SubNavService) {
         this.subNavService.pageTitle = 'Timepicker';
-        this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-timepicker';
+        this.subNavService.linkToSource = '';
     }
     ngOnInit(): void {
       setTimeout((): void => {

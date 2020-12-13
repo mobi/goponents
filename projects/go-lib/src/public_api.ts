@@ -165,9 +165,6 @@ export * from './lib/components/go-tree/go-tree.module';
 export * from './lib/components/go-tree/go-tree-node-config.model';
 
 // Timepicker
-// export * from './lib/components/go-datepicker/calendar-cell.model';
-// export * from './lib/components/go-datepicker/go-datepicker.component';
-// export * from './lib/components/go-datepicker/go-datepicker.module';
 export * from './lib/components/go-timepicker/go-time.component';
 export * from './lib/components/go-timepicker/go-timepicker.module';
 /***** Utils *****/

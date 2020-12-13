@@ -1,10 +1,13 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   HostListener,
   Input,
   OnInit,
   Output,
+  ViewChild
 } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 
@@ -15,13 +18,14 @@ import { GoTime } from './go-time';
   templateUrl: './go-time.component.html',
   animations: [fadeAnimation],
 })
-export class GoTimeComponent implements OnInit {
+export class GoTimeComponent implements OnInit, AfterViewInit {
+
   @Input() appendToContent: boolean;
   @Input() goTime: GoTime;
   @Input() displayAbove: boolean;
   @Input() displayFromRight: boolean;
-
   @Output() timePicked: any = new EventEmitter<any>();
+
   inputHourError: boolean = false;
   inputMinuteError: boolean = false;
   format: boolean = true;
@@ -30,8 +34,10 @@ export class GoTimeComponent implements OnInit {
   clickActionButton: boolean = false;
   timeFormat: any = { hours: '', minutes: '', ampm: '' };
   subscription: any;
-  hour: any;
-  minute: any;
+  hour: string;
+  minute: string;
+
+  @ViewChild('hourInput', { static: false }) hourInput: ElementRef;
 
   constructor() {}
 
@@ -59,36 +65,32 @@ export class GoTimeComponent implements OnInit {
         this.closeTimePicker();
         this.resetTimeInput();
         break;
+        case 'Enter':
+          this.apply();
+          break;
       default:
         return;
     }
   }
+
   public closeTimePicker(): void {
     this.goTime.closeTime();
   }
+
   ngOnInit(): void {
-    this.subscription = this.goTime.timeWindowOpen.subscribe(
-      (value: boolean) => {
-        if (value) {
-          if (this.goTime.selectedTime) {
-            this.changeTimeFormat(this.goTime.selectedTime);
-          } else {
-            this.timeFormat = this.formatAMPM(new Date());
-            this.hour = this.timeFormat.hours;
-            this.minute = this.timeFormat.minutes;
-            this.format = this.timeFormat.ampm === 'am' ? true : false;
-          }
-          this.autoFocousInput();
-        }
-        this.opened = value;
-      }
-    );
+    if (this.goTime.selectedTime) {
+      this.changeTimeFormat(this.goTime.selectedTime);
+    } else {
+      this.timeFormat = this.formatAMPM(new Date());
+      this.hour = this.timeFormat.hours;
+      this.minute = this.timeFormat.minutes;
+      this.format = this.timeFormat.ampm === 'am' ? true : false;
+    }
+    this.opened = true;
   }
 
-  autoFocousInput(): void {
-    setTimeout(() => {
-      document.getElementById('hour-input').focus();
-    });
+  ngAfterViewInit(): void {
+      this.hourInput.nativeElement.focus();
   }
 
   formatAMPM(date: any): void {
@@ -97,103 +99,89 @@ export class GoTimeComponent implements OnInit {
     const ampm: any = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
-    hours = hours > 9 ? hours : '0' + hours;
-    minutes = minutes > 9 ? minutes : '0' + minutes;
+    hours = this.addZeroIfNeeded(hours);
+    minutes =  this.addZeroIfNeeded(minutes);
     const formatTime: any = { hours, minutes, ampm };
     return formatTime;
   }
-  changeTimeFormat(timeString: any): void {
-    const H: any = +timeString.substr(0, 2);
+
+  changeTimeFormat(timeString: string): void {
+    const H: number = +timeString.substr(0, 2);
     const h: any = H % 12 || 12;
-    const ampm: any = H < 12 || H === 24 ? 'AM' : 'PM';
+    const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     const minute: any = timeString.substr(3, 2);
     this.hour = h > 9 ? h : '0' + h;
-    this.minute = (minute > 9 || minute === '00' || minute.length === 2) ? minute : '0' + minute;
+    this.minute = this.addZeroIfNeeded(minute);
     this.format = ampm === 'AM' ? true : false;
   }
+
   changeFormat(): void {
     this.format = !this.format;
   }
+
   increaseHour(): void {
-    if (this.hour >= 12) {
-      this.hour = '00';
+    if (Number(this.hour) >= 12) {
+      this.hour = '01';
       return;
     }
-    if (Number(this.hour) < 9) {
-      this.hour = '0' + (Number(this.hour) + 1);
-    } else {
-      this.hour = Number(this.hour) + 1;
-    }
+    this.hour = (Number(this.hour) + 1).toString();
+    this.hour =  this.addZeroIfNeeded(this.hour);
   }
+
   increaseMinute(): void {
-    if (this.minute >= 59) {
+    if (Number(this.minute) >= 59) {
       this.minute = '00';
       return;
     }
-    if (Number(this.minute) < 9) {
-      this.minute = '0' + (Number(this.minute) + 1);
-    } else {
-      this.minute = Number(this.minute) + 1;
-    }
+    this.minute = (Number(this.minute) + 1).toString();
+    this.minute =  this.addZeroIfNeeded(this.minute);
   }
+
   decreaseHour(): void {
-    if (this.hour === '00') {
-      this.hour = '00';
+    if (this.hour === '01') {
+      this.hour = '01';
       return;
     }
-    if (Number(this.hour) <= 10) {
-      this.hour = '0' + (Number(this.hour) - 1);
-    } else {
-      this.hour = Number(this.hour) - 1;
-    }
+    this.hour = (Number(this.hour) - 1).toString();
+    this.hour =  this.addZeroIfNeeded(this.hour);
   }
+
   decreaseMinute(): void {
     if (this.minute === '00') {
       this.minute = '00';
       return;
     }
-    if (Number(this.minute) <= 10) {
-      this.minute = '0' + (Number(this.minute) - 1);
-    } else {
-      this.minute = Number(this.minute) - 1;
-    }
+    this.minute = (Number(this.minute) - 1).toString();
+    this.minute =  this.addZeroIfNeeded(this.minute);
   }
 
-  twoDigitNumber(e) {
-    e = e || window.event;
-    const charCode = typeof e.which === 'number' ? e.which : e.keyCode;
-    if (e.target.value.length >= 2) {
-      e.target.value = '';
-      // return false;
+  addZeroIfNeeded(value: string): string {
+    if (Number(value) < 10) {
+      value = '0' + Number(value);
     }
-    // Allow non-printable keys
-    if (!charCode || charCode === 8 /* Backspace */) {
-      return;
+    return value;
+  }
+
+  validateInput(event: KeyboardEvent, regex: string): boolean {
+    const input: HTMLInputElement = (event.target as HTMLInputElement);
+
+    if (/\d/.test(event.key)) {
+      const newString: string = input.value.slice(0, input.selectionStart) + input.value.slice(input.selectionEnd);
+      if (new RegExp(regex).test(newString + event.key)) {
+        return;
+      }
     }
-
-    const typedChar = String.fromCharCode(charCode);
-
-    // Allow numeric characters
-    if (/\d/.test(typedChar)) {
-      return;
-    }
-
-    // Allow the minus sign (-) if the user enters it first
-    if (typedChar === '-' && this.hour === '') {
-      return;
-    }
-
     // In all other cases, suppress the event
     return false;
   }
+
   clear(): void {
-    this.clickActionButton = true;
-    this.resetTimeInput();
     this.closeTimePicker();
     this.timePicked.emit();
   }
+
   apply(): void {
-    if (this.hour > 12 || this.minute > 59) {
+    if (Number(this.hour) > 12 || Number(this.minute) > 59) {
       this.inputTimeError();
       return;
     } else {
@@ -206,8 +194,8 @@ export class GoTimeComponent implements OnInit {
     if (!this.minute) {
       this.minute = '00';
     }
-    this.hour = (this.minute.toString()).length > 1 ? this.hour : '0' + this.hour;
-    this.minute = (this.minute.toString()).length > 1 ? this.minute : '0' + this.minute;
+    this.hour = this.addZeroIfNeeded(this.hour);
+    this.minute = this.addZeroIfNeeded(this.minute);
     this.timeFormat = {
       hours: this.hour,
       minutes: this.minute,
@@ -216,15 +204,18 @@ export class GoTimeComponent implements OnInit {
     this.timePicked.emit(this.timeFormat);
     this.closeTimePicker();
   }
+
   inputTimeError(): void {
-    if (this.hour > 12) {
+    if (Number(this.hour) > 12) {
       this.inputHourError = true;
-    } else if (this.minute > 59) {
+    } else if (Number(this.minute) > 59) {
       this.inputMinuteError = true;
     }
   }
+
   resetTimeInput(): void {
     this.inputHourError = false;
     this.inputMinuteError = false;
   }
+
 }

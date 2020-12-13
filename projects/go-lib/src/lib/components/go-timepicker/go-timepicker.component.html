@@ -17,7 +17,6 @@
       'go-form__input--dark': theme == 'dark'
     }"
     [(ngModel)]="selectedTime"
-    (blur)="validateTime()"
     [disabled]="control.disabled"
     (click)="toggleTimepicker($event)"
     readonly
@@ -29,6 +28,7 @@
     (click)="toggleTimepicker($event)"
   ></go-icon-button>
   <go-time
+    *ngIf=goTime.isOpen
     [appendToContent]="appendToContent"
     [displayFromRight]="displayFromRight"
     [displayAbove]="displayAbove"

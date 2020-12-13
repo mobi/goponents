@@ -11,7 +11,10 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 
 @NgModule({
-  declarations: [GoTimepickerComponent, GoTimeComponent],
+  declarations: [
+    GoTimepickerComponent,
+    GoTimeComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

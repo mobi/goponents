@@ -8,7 +8,6 @@
   position: absolute;
   z-index: z-index(toaster);
   padding: 0px 5px 0px 5px;
-  width: 179px;
 }
 
 .go-time--above {
@@ -26,23 +25,7 @@
 .go-time--wrapper {
   display: flex;
 }
-.hour-minute-input {
-  width: 36px;
-  height: 35px;
-  border: 1px solid lightgray;
-  border-radius: 4px;
-  outline: none;
-  background: transparent;
-  padding: 0.5rem;
-  font-family: 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
-  font-size: 0.875rem;
-  text-align: center;
-}
 
-.go-up-arrow {
-  float: left;
-  width: 50%;
-}
 .go-time-column {
   float: left;
 }
@@ -50,53 +33,28 @@
   max-width: 16%;
   padding: 0px 32px 0px 20px;
 }
+
 .colon-content {
-  max-width: 9%;
-  padding: 9px 13px;
+  margin: 37px 8px 1px 8px;
 }
+
 .minute-content {
   padding: 0px 0px;
   max-width: 15%;
 }
+
 .padding-left-23 {
   padding-left: 23px;
 }
+
 .padding-left-42 {
   padding-left: 42px;
 }
+
 input::placeholder {
-  font-size: 10.8px;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
-  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  font-size: .625rem;
 }
 
-input[type='number'] {
-  -moz-appearance: textfield; /* Firefox */
-}
-.action-button {
-  padding: 3px 3px;
-  font-size: 12px;
-  border-radius: 4px;
-  transition-duration: 0.25s;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  align-items: center;
-  border: 0;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: Roboto, Lato, Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.015rem;
-  line-height: 1.2;
-  outline: 0;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-}
 .clear-btn {
   background: #fff;
   color: #313536;
@@ -118,6 +76,7 @@ input[type='number'] {
     border: 1px solid $theme-light-bg-active;
   }
 }
+
 .apply-btn {
   color: #fff;
   background: #00838f;
@@ -135,21 +94,43 @@ input[type='number'] {
     box-shadow: $form-shadow-active;
   }
 }
+
 .go-time-action {
   float: right;
   padding-bottom: 4px;
+  clear: both;
 }
+
 .go-form__input--error {
   border-color: $ui-color-negative;
 }
+
 .apply-button-margin {
   margin-right: 3px;
 }
+
 .time-format {
   font-weight: 500;
 }
-.go-time-column{
-    flex-basis: 25%;
-    width: 25%;
-    max-width: 13%;
+
+.go-time-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hour-minute-input {
+  width: 2.25rem;
+  text-align: center;
+}
+
+.go-time-format{
+  margin: 27px 0px 0px 18px;
+}
+
+:host ::ng-deep .go-time-button {
+  .go-button {
+    padding: .25rem;
+  }
 }

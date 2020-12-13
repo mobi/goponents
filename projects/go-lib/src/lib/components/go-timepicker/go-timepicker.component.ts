@@ -25,26 +25,28 @@ export class GoTimepickerComponent implements OnInit {
   selectedTime: string;
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
+
   constructor() {
     this.goTime = new GoTime();
   }
+
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'timepicker');
     this.selectedTime = this.changeTimeFormat(this.control.value);
   }
-  public changeTimeFormat(timeString) {
+
+  public changeTimeFormat(timeString: string): string {
     if (!timeString) {
       return;
     }
-    const H = +timeString.substr(0, 2);
-    const h = H % 12 || 12;
-    const hour = h > 9 ? h : '0' + h;
-    const ampm = H < 12 || H === 24 ? 'AM' : 'PM';
+    const H: number = +timeString.substr(0, 2);
+    const h: any = H % 12 || 12;
+    const hour: any = h > 9 ? h : '0' + h;
+    const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     timeString = hour + timeString.substr(2, 3) + ' ' + ampm;
     return timeString;
   }
 
-  public validateTime(): void {}
   public toggleTimepicker(event: Event): void {
     event.stopPropagation();
     // Have to disable this here because of the event that we need to stop propagation on.
@@ -64,20 +66,22 @@ export class GoTimepickerComponent implements OnInit {
       this.goTime.openTime(openTimeValue);
     }
   }
-  public timePicked(event) {
+
+  public timePicked(event: any): void {
     if (event) {
       const selctedTime: string = event.hours + ':' + event.minutes + ' ' + event.ampm;
-      this.control.setValue(selctedTime);
+      this.control.setValue(this.convertTo24Hour(selctedTime));
       this.selectedTime = selctedTime;
     } else {
       this.selectedTime = '';
     }
   }
-  convertTo24Hour(time12h) {
-    if (time12h){
-      const [time, modifier] = time12h.split(' ');
 
-    let [hours, minutes] = time.split(':');
+  convertTo24Hour(time12h: string): string {
+    if (time12h) {
+      const [time, modifier]: string[] = time12h.split(' ');
+
+    let [hours, minutes]: any[] = time.split(':');
     if (hours === '12') {
       hours = '00';
     }

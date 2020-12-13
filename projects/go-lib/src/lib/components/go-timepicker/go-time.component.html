@@ -9,7 +9,7 @@
     *ngIf="opened"
   >
     <!-- Up arrow -->
-    <section class="go-container">
+    <!-- <section class="go-container">
       <div
         class="go-column go-time-column go-column--no-padding padding-left-23"
       >
@@ -26,9 +26,9 @@
           (click)="increaseMinute()"
         ></go-icon-button>
       </div>
-    </section>
+    </section> -->
     <!-- Time input -->
-    <section class="go-container">
+    <!-- <section class="go-container">
       <div class="go-column go-time-column go-column--no-padding hour-content">
         <input
           type="number"
@@ -36,7 +36,7 @@
           class="hour-minute-input"
           placeholder="HH"
           [(ngModel)]="hour"
-          (keypress)="twoDigitNumber($event)"
+          (keypress)="validateInput($event, '^([0-6]|[0-6][0-9])$')"
           [ngClass]="{ 'go-form__input--error': inputHourError }"
           autofocus="autofocus"
         />
@@ -58,9 +58,9 @@
           <span class="time-format">{{ format ? 'AM' : 'PM' }}</span>
         </go-button>
       </div>
-    </section>
+    </section> -->
     <!-- Down arrow -->
-    <section class="go-container">
+    <!-- <section class="go-container">
       <div
         class="go-column go-time-column go-column--no-padding padding-left-23"
       >
@@ -77,18 +77,72 @@
           (click)="decreaseMinute()"
         ></go-icon-button>
       </div>
-    </section>
+    </section> -->
+    <!-- Update Code -->
+    <!-- Hour -->
+    <div class="go-time-column">
+      <go-icon-button
+        buttonIcon="keyboard_arrow_up"
+        (click)="increaseHour()"
+      ></go-icon-button>
+      <input
+        #hourInput
+        class="go-form__input hour-minute-input"
+        placeholder="HH"
+        [(ngModel)]="hour"
+        (keypress)="validateInput($event, '^([0-1]|[0][0-9]|[1][0-2])$')"
+      />
+      <go-icon-button
+        buttonIcon="keyboard_arrow_down"
+        (click)="decreaseHour()"
+      ></go-icon-button>
+    </div>
+    <!-- Colon -->
+    <div class="go-time-column colon-content">
+      <span>:</span>
+    </div>
+    <!-- Minute -->
+    <div class="go-time-column">
+      <go-icon-button
+        buttonIcon="keyboard_arrow_up"
+        (click)="increaseMinute()"
+      ></go-icon-button>
+      <input
+      class="go-form__input hour-minute-input"
+      placeholder="MM"
+      [(ngModel)]="minute"
+      (keypress)="validateInput($event, '^([0-5]?[0-9])$')"
+      [ngClass]="{ 'go-form__input--error': inputMinuteError }"
+    />
+      <go-icon-button
+        buttonIcon="keyboard_arrow_down"
+        (click)="decreaseMinute()"
+      ></go-icon-button>
+    </div>
+    <!-- AM / PM Button -->
+    <div class="go-time-column go-time-format">
+      <go-button buttonVariant="secondary" (click)="changeFormat()">
+        <span class="time-format">{{ format ? 'AM' : 'PM' }}</span>
+      </go-button>
+    </div>
+    <!-- End -->
     <!-- Action Button Group -->
     <ul class="go-button-group go-time-action">
       <li class="go-button-group__item">
-        <button class="action-button clear-btn" (click)="clear()">
+        <!-- <button class="action-button clear-btn" (click)="clear()">
           Clear
-        </button>
+        </button> -->
+        <go-button class="go-time-button" buttonVariant="secondary" (handleClick)="clear()">
+          Clear
+        </go-button>
       </li>
       <li class="go-button-group__item apply-button-margin">
-        <button class="action-button apply-btn" (click)="apply()">
+        <!-- <button class="action-button apply-btn" (click)="apply()">
           Apply
-        </button>
+        </button> -->
+        <go-button class="go-time-button" buttonVariant="primary" (handleClick)="apply()">
+          Apply
+        </go-button>
       </li>
     </ul>
   </div>
