@@ -168,7 +168,8 @@ export class DatepickerDocsComponent implements OnInit {
 
   constructor(
     private subNavService: SubNavService,
-    private goModalService: GoModalService) {
+    private goModalService: GoModalService
+    ) {
     this.subNavService.pageTitle = 'Datepicker';
     this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-datepicker';
   }

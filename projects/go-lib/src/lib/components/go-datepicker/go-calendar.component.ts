@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -32,6 +32,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   @Input() appendTo: string;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
+  @ViewChild('calenderView', { static: false }) calenderView: ElementRef;
 
   constructor() {
     this.dateAdapter = new DateAdapter();
@@ -47,7 +48,12 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     if (this.canClose) {
       this.closeCalendar();
     }
-    this.canClose = true;
+    this.canClose = false;
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  onClick(event: MouseEvent): void {
+    this.removeCalenderfromBody();
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -64,15 +70,11 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.calendar.calendarOpen.subscribe((value: boolean) => {
-      if (value) {
         this.selectedDate = this.calendar.selectedDate;
         this.initializeDate();
-      }
-      this.opened = value;
-    });
-
-    this.dateAdapter.setLocale(this.locale);
+        this.appendToCalender();
+        this.opened = true;
+        this.dateAdapter.setLocale(this.locale);
   }
 
   ngOnDestroy(): void {
@@ -122,25 +124,28 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     }
     this.currentMonth = this.selectedDate.getMonth();
     this.updateYear(this.selectedDate.getFullYear());
+  }
+
+  appendToCalender(): void {
     if (this.appendTo === 'body') {
       setTimeout(() => {
-        const calenderBody: any = document.getElementsByClassName(
-          'append-body'
-        )[0];
-        const calenderBodyPosition: any = document
-          .querySelector('.append-body')
-          .getBoundingClientRect();
-        Object.assign(calenderBody.style, {
+        const calenderBodyPosition: any = this.calenderView.nativeElement.getBoundingClientRect();
+        Object.assign(this.calenderView.nativeElement.style, {
           height: `${calenderBodyPosition.height}px`,
           bottom: `${calenderBodyPosition.bottom}px`,
           top: `${calenderBodyPosition.top}px`,
           right: `${calenderBodyPosition.right}px`,
           width: `${calenderBodyPosition.width}px`,
           left: `${calenderBodyPosition.left}px`,
-          visibility: 'visible',
         });
-        document.body.appendChild(calenderBody);
+        document.body.appendChild(this.calenderView.nativeElement);
       });
+    }
+  }
+
+  removeCalenderfromBody(): void {
+    if (this.appendTo && this.calenderView) {
+      document.body.removeChild(this.calenderView.nativeElement);
     }
   }
 }
