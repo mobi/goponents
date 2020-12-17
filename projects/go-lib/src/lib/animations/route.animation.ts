@@ -9,7 +9,9 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const routerAnimation: AnimationTriggerMetadata  =
+const enterDelay: string = '.1s ';
+
+export const routerAnimation: AnimationTriggerMetadata =
   trigger('routerAnimation', [
     transition('* <=> *', [
       query(':enter',
@@ -18,19 +20,19 @@ export const routerAnimation: AnimationTriggerMetadata  =
         ],
         { optional: true }
       ),
-
       query(':leave',
         [
-          style({ opacity: 1 }),
-          animate(timing + easing, style({ opacity: 0 }))
+          style({
+            display: 'none',
+            opacity: 0
+          }),
         ],
         { optional: true }
       ),
-
       query(':enter',
         [
           style({ opacity: 0 }),
-          animate(timing + easing, style({ opacity: 1 }))
+          animate(timing + enterDelay + easing, style({ opacity: 1 }))
         ],
         { optional: true }
       )
