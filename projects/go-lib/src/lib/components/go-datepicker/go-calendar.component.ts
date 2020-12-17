@@ -1,4 +1,15 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -12,7 +23,7 @@ import { CalendarCell } from './calendar-cell.model';
     fadeAnimation
   ]
 })
-export class GoCalendarComponent implements OnDestroy, OnInit {
+export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked {
   canClose: boolean = true;
   currentMonth: number = 0;
   currentYear: CalendarCell;
@@ -32,7 +43,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   @Input() appendTo: string;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
-  @ViewChild('calenderView', { static: false }) calenderView: ElementRef;
+  @ViewChild('calendarView', { static: true }) calendarView: ElementRef;
 
   constructor() {
     this.dateAdapter = new DateAdapter();
@@ -51,11 +62,6 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     this.canClose = false;
   }
 
-  @HostListener('document:mousedown', ['$event'])
-  onClick(event: MouseEvent): void {
-    this.removeCalenderfromBody();
-  }
-
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent): void {
     switch (event.key) {
@@ -72,15 +78,16 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
         this.selectedDate = this.calendar.selectedDate;
         this.initializeDate();
-        this.appendToCalender();
-        this.opened = true;
         this.dateAdapter.setLocale(this.locale);
   }
 
+  ngAfterViewChecked(): void {
+    this.appendToCalendar();
+  }
+
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.removeCalendarFromBody();
+    this.closeCalendar();
   }
 
   public closeCalendar(): void {
@@ -126,26 +133,24 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     this.updateYear(this.selectedDate.getFullYear());
   }
 
-  appendToCalender(): void {
+  appendToCalendar(): void {
     if (this.appendTo === 'body') {
-      setTimeout(() => {
-        const calenderBodyPosition: any = this.calenderView.nativeElement.getBoundingClientRect();
-        Object.assign(this.calenderView.nativeElement.style, {
-          height: `${calenderBodyPosition.height}px`,
-          bottom: `${calenderBodyPosition.bottom}px`,
-          top: `${calenderBodyPosition.top}px`,
-          right: `${calenderBodyPosition.right}px`,
-          width: `${calenderBodyPosition.width}px`,
-          left: `${calenderBodyPosition.left}px`,
-        });
-        document.body.appendChild(this.calenderView.nativeElement);
+      const calenderBodyPosition: any = this.calendarView.nativeElement.getBoundingClientRect();
+      Object.assign(this.calendarView.nativeElement.style, {
+        height: `${calenderBodyPosition.height}px`,
+        bottom: `${calenderBodyPosition.bottom}px`,
+        top: `${calenderBodyPosition.top}px`,
+        right: `${calenderBodyPosition.right}px`,
+        width: `${calenderBodyPosition.width}px`,
+        left: `${calenderBodyPosition.left}px`,
       });
+      document.body.appendChild(this.calendarView.nativeElement);
     }
   }
 
-  removeCalenderfromBody(): void {
-    if (this.appendTo && this.calenderView) {
-      document.body.removeChild(this.calenderView.nativeElement);
+  removeCalendarFromBody(): void {
+    if (this.appendTo && this.calendarView) {
+      document.body.removeChild(this.calendarView.nativeElement);
     }
   }
 }

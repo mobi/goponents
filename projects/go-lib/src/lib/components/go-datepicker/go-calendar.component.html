@@ -2,8 +2,7 @@
   <div
     class="go-calendar"
     [ngClass]="{'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight, 'go-calendar--append-to-content': appendToContent}"
-    *ngIf="opened"
-    #calenderView
+    #calendarView
     >
     <div *ngIf="view === 'day'">
       <go-calendar-day-view

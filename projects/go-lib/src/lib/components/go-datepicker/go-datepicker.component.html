@@ -25,7 +25,7 @@
     (click)="toggleDatepicker($event)"
   ></go-icon-button>
   <go-calendar
-    *ngIf=goCalendar.isOpen
+    *ngIf="goCalendar.isOpen"
     [appendToContent]="appendToContent"
     [appendTo]="appendTo"
     (datePicked)="datePicked($event)"
