@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .go-time {
   background: $theme-light-bg;
@@ -7,7 +7,7 @@
   border-radius: $global-radius;
   position: absolute;
   z-index: z-index(toaster);
-  padding: 0px 5px 0px 5px;
+  padding: 0 $column-gutter--half $column-gutter--half $column-gutter--half;
 }
 
 .go-time--above {
@@ -26,91 +26,17 @@
   display: flex;
 }
 
-.go-time-column {
-  float: left;
-}
-.hour-content {
-  max-width: 16%;
-  padding: 0px 32px 0px 20px;
-}
-
 .colon-content {
-  margin: 37px 8px 1px 8px;
+  margin-top: 1.8rem;
+  padding: $column-gutter--half;
 }
 
-.minute-content {
-  padding: 0px 0px;
-  max-width: 15%;
-}
-
-.padding-left-23 {
-  padding-left: 23px;
-}
-
-.padding-left-42 {
-  padding-left: 42px;
-}
-
-input::placeholder {
-  font-size: .625rem;
-}
-
-.clear-btn {
-  background: #fff;
-  color: #313536;
-  border: 1px solid #cbcbcb;
-  &:hover,
-  &:focus {
-    background: $theme-light-bg-hover;
-    border: 1px solid $theme-light-bg-hover;
-  }
-  &:hover,
-  &:focus,
-  &:active {
-    border: 1px solid lighten($base-light-secondary, 10%);
-    box-shadow: 0 0 0 3px transparentize($base-light-tertiary, 0.75);
-  }
-
-  &:active {
-    background: $theme-light-bg-active;
-    border: 1px solid $theme-light-bg-active;
-  }
-}
-
-.apply-btn {
-  color: #fff;
-  background: #00838f;
-  border: 1px solid #00838f;
-  &:hover,
-  &:focus {
-    background: $ui-color-primary-hover;
-    border: 1px solid $ui-color-primary-hover;
-    box-shadow: $form-shadow-active;
-  }
-
-  &:active {
-    background: $ui-color-primary-active;
-    border: 1px solid $ui-color-primary-active;
-    box-shadow: $form-shadow-active;
-  }
+.hour-minute-input::placeholder {
+  font-size: 0.625rem;
 }
 
 .go-time-action {
   float: right;
-  padding-bottom: 4px;
-  clear: both;
-}
-
-.go-form__input--error {
-  border-color: $ui-color-negative;
-}
-
-.apply-button-margin {
-  margin-right: 3px;
-}
-
-.time-format {
-  font-weight: 500;
 }
 
 .go-time-column {
@@ -118,6 +44,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  float: left;
 }
 
 .hour-minute-input {
@@ -125,12 +52,13 @@ input::placeholder {
   text-align: center;
 }
 
-.go-time-format{
-  margin: 27px 0px 0px 18px;
+.go-time-format {
+  margin-top: 1.8rem;
+  padding-left: $column-gutter--half;
 }
 
 :host ::ng-deep .go-time-button {
   .go-button {
-    padding: .25rem;
+    padding: 0.25rem;
   }
 }

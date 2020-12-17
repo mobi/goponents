@@ -9,7 +9,7 @@
 <div class="go-timepicker">
   <input
     #datepickerInput
-    class="go-form__input"
+    class="go-form__input go-input-time"
     [id]="id"
     [placeholder]="placeholder"
     [ngClass]="{
@@ -28,12 +28,13 @@
     (click)="toggleTimepicker($event)"
   ></go-icon-button>
   <go-time
-    *ngIf=goTime.isOpen
+    *ngIf=timeOpen
     [appendToContent]="appendToContent"
     [displayFromRight]="displayFromRight"
     [displayAbove]="displayAbove"
-    [goTime]="goTime"
+    [selectedTime] = "openTimeValue"
     (timePicked)="timePicked($event)"
+    (closeTime) = "closeTime()"
   >
   </go-time>
 </div>

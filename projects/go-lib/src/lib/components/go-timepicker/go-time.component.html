@@ -6,7 +6,6 @@
       'go-time--right': displayFromRight,
       'go-time--append-to-content': appendToContent
     }"
-    *ngIf="opened"
   >
   <div class="go-time-column">
       <go-icon-button
@@ -49,21 +48,23 @@
     <!-- AM / PM Button -->
     <div class="go-time-column go-time-format">
       <go-button buttonVariant="secondary" (click)="changeFormat()">
-        <span class="time-format">{{ format ? 'AM' : 'PM' }}</span>
+       {{ format ? 'AM' : 'PM' }}
       </go-button>
     </div>
     <!-- Action Button Group -->
-    <ul class="go-button-group go-time-action">
-      <li class="go-button-group__item">
-        <go-button class="go-time-button" buttonVariant="secondary" (handleClick)="clear()">
-          Clear
-        </go-button>
-      </li>
-      <li class="go-button-group__item apply-button-margin">
-        <go-button class="go-time-button" buttonVariant="primary" (handleClick)="apply()">
-          Apply
-        </go-button>
-      </li>
-    </ul>
+    <div>
+      <ul class="go-button-group go-time-action">
+        <li class="go-button-group__item">
+          <go-button class="go-time-button" buttonVariant="secondary" (handleClick)="clear()">
+            Clear
+          </go-button>
+        </li>
+        <li class="go-button-group__item">
+          <go-button class="go-time-button" buttonVariant="primary" (handleClick)="apply()">
+            Apply
+          </go-button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -1,16 +1,19 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
-import { GoTime } from './go-time';
+
 @Component({
   selector: 'go-timepicker',
   styleUrls: ['./go-timepicker.component.scss'],
   templateUrl: './go-timepicker.component.html',
 })
+
 export class GoTimepickerComponent implements OnInit {
   displayAbove: boolean = false;
   displayFromRight: boolean = true;
+  timeOpen: boolean = false;
   id: string;
+  openTimeValue: string;
 
   @Input() key: string;
   @Input() label: string;
@@ -20,15 +23,9 @@ export class GoTimepickerComponent implements OnInit {
   @Input() theme: string = 'light';
   @Input() appendToContent: boolean = false;
 
-  goTime: GoTime;
-
   selectedTime: string;
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
-
-  constructor() {
-    this.goTime = new GoTime();
-  }
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'timepicker');
@@ -41,7 +38,7 @@ export class GoTimepickerComponent implements OnInit {
     }
     const H: number = +timeString.substr(0, 2);
     const h: any = H % 12 || 12;
-    const hour: any = h > 9 ? h : '0' + h;
+    const hour: string = h > 9 ? h : '0' + h;
     const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     timeString = hour + timeString.substr(2, 3) + ' ' + ampm;
     return timeString;
@@ -54,22 +51,21 @@ export class GoTimepickerComponent implements OnInit {
       return;
     }
 
-    if (this.goTime.isOpen) {
-      this.goTime.closeTime();
-    } else {
-      const position: string = 'top';
-      const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
-      this.displayAbove =
+    this.timeOpen = !this.timeOpen;
+    const position: string = 'top';
+    const distance: object = this.datepickerInput.nativeElement.getBoundingClientRect();
+    this.displayAbove =
       window.innerHeight - distance[position] < 350 && !this.appendToContent;
-      const convert24Hr: string =  (/^\s*$/).test(this.selectedTime) ?  undefined : this.convertTo24Hour(this.selectedTime);
-      const openTimeValue: string = convert24Hr ? convert24Hr : undefined;
-      this.goTime.openTime(openTimeValue);
-    }
+    const convert24Hr: string = /^\s*$/.test(this.selectedTime)
+      ? undefined
+      : this.convertTo24Hour(this.selectedTime);
+    this.openTimeValue = convert24Hr ? convert24Hr : undefined;
   }
 
   public timePicked(event: any): void {
     if (event) {
-      const selctedTime: string = event.hours + ':' + event.minutes + ' ' + event.ampm;
+      const selctedTime: string =
+        event.hours + ':' + event.minutes + ' ' + event.ampm;
       this.control.setValue(this.convertTo24Hour(selctedTime));
       this.selectedTime = selctedTime;
     } else {
@@ -77,18 +73,22 @@ export class GoTimepickerComponent implements OnInit {
     }
   }
 
+  closeTime(): void {
+    this.timeOpen = false;
+  }
+
   convertTo24Hour(time12h: string): string {
     if (time12h) {
       const [time, modifier]: string[] = time12h.split(' ');
 
-    let [hours, minutes]: any[] = time.split(':');
-    if (hours === '12') {
-      hours = '00';
-    }
-    if (modifier === 'PM') {
-      hours = parseInt(hours, 10) + 12;
-    }
-    return `${hours}:${minutes}`;
+      let [hours, minutes]: any[] = time.split(':');
+      if (hours === '12') {
+        hours = '00';
+      }
+      if (modifier === 'PM') {
+        hours = parseInt(hours, 10) + 12;
+      }
+      return `${hours}:${minutes}`;
     }
   }
 }
