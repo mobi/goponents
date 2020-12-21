@@ -33,7 +33,7 @@ export class GoSelectComponent implements OnInit {
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';
   @Input() theme: 'light' | 'dark' = 'light';
-  @Input() virtualScroll: any = false;
+  @Input() virtualScroll: boolean = false;
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number; end: number }>();
 
@@ -43,7 +43,6 @@ export class GoSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
-    this.virtualScroll = Boolean(JSON.parse(this.virtualScroll));
   }
 
   onSelectAll(): void {

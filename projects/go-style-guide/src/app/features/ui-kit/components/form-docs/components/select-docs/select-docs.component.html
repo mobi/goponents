@@ -792,12 +792,6 @@
     </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
-        <!-- <p class="go-body-copy go-body-copy--no-margin">
-          At times there might be loading many items but only limited of them are rendered in the DOM. <code
-            class="code-block--inline">scrollToEnd</code> allows users to load a set of data when user scrolls till the
-          end in the DOM. <br />
-          Scroll event will work only after enabling <code class="code-block--inline">virtualScroll</code> to true.
-        </p> -->
         <p class="go-body-copy">
           Sometimes the data that needs to be rendered for the options of the select would cause performance and user 
           experience issues. In this case, virtual scroll should be implemented.
@@ -834,7 +828,7 @@
               label="Select an Option" 
               (scrollToEnd)="scrollToEnd()" 
               (scroll)="scroll($event)"
-              virtualScroll=true>
+              [virtualScroll]="true">
             </go-select>
           </div>
           <div class="go-column go-column--50">

@@ -457,22 +457,20 @@ export class SelectDocsComponent implements OnInit {
     }
   ]
   `;
- select19Code: string = `
-  <go-select
-  [items]="selectData"
-  [control]="select"
-  bindValue="value"
-  bindLabel="name"
-  [hints]="[
-    'Scroll to end for loading more data'
-  ]"
-  label="Select an Option"
-  (scrollToEnd)="scrollToEnd()"
-  (scroll)="scroll($event)"
-  virtualScroll=true
-  >
 
-  </go-select>`;
+ select19Code: string = `
+ <go-select
+   [items]="selectData"
+   [control]="select"
+   bindValue="value"
+   bindLabel="name"
+   [hints]="['Scroll to end for loading more data']"
+   label="Select an Option"
+   (scrollToEnd)="scrollToEnd()"
+   (scroll)="scroll($event)"
+   [virtualScroll]="true">
+  </go-select>
+  `;
 
   select19ComponentCode: string = `
   scrollToEnd(): void {
@@ -482,7 +480,7 @@ export class SelectDocsComponent implements OnInit {
   scroll($event: { start: number; end: number }): void {
   // Code here
   }
-`;
+  `;
   constructor(
     private goModalService: GoModalService,
     private subNavService: SubNavService
