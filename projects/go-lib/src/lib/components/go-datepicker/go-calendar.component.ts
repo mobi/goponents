@@ -76,9 +76,9 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked 
   }
 
   ngOnInit(): void {
-        this.selectedDate = this.calendar.selectedDate;
-        this.initializeDate();
-        this.dateAdapter.setLocale(this.locale);
+    this.selectedDate = this.calendar.selectedDate;
+    this.initializeDate();
+    this.dateAdapter.setLocale(this.locale);
   }
 
   ngAfterViewChecked(): void {

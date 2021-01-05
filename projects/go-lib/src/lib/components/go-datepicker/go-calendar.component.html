@@ -1,9 +1,8 @@
 <div class="go-calendar--wrapper">
   <div
     class="go-calendar"
-    [ngClass]="{'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight, 'go-calendar--append-to-content': appendToContent}"
-    #calendarView
-    >
+    [ngClass]="{ 'go-calendar--above': displayAbove, 'go-calendar--right': displayFromRight, 'go-calendar--append-to-content': appendToContent }"
+    #calendarView>
     <div *ngIf="view === 'day'">
       <go-calendar-day-view
         [day]="selectedDate"
