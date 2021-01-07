@@ -52,8 +52,8 @@ describe('GoCalendarComponent', () => {
     it('should not update selected date if valid when opened', () => {
       const date: Date = new Date(2015, 4, 15);
 
-      fixture.detectChanges();
       component.calendar.openCalendar(date);
+      fixture.detectChanges();
 
       expect(component.selectedDate).toEqual(date);
     });
@@ -90,8 +90,8 @@ describe('GoCalendarComponent', () => {
     it('should set month from selected date', () => {
       const date: Date = new Date(2015, 4, 15);
 
-      fixture.detectChanges();
       component.calendar.openCalendar(date);
+      fixture.detectChanges();
 
       expect(component.currentMonth).toEqual(4);
     });
@@ -99,8 +99,8 @@ describe('GoCalendarComponent', () => {
     it('should set year from selected date', () => {
       const date: Date = new Date(2015, 4, 15);
 
-      fixture.detectChanges();
       component.calendar.openCalendar(date);
+      fixture.detectChanges();
 
       expect(component.currentYear.value).toEqual(2015);
     });
