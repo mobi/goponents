@@ -37,8 +37,8 @@ export class GoTimepickerComponent implements OnInit {
       return;
     }
     const H: number = +timeString.substr(0, 2);
-    const h: any = H % 12 || 12;
-    const hour: string = h > 9 ? h : '0' + h;
+    const h: number | string = H % 12 || 12;
+    const hour: number | string = h > 9 ? h : '0' + h;
     const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     timeString = hour + timeString.substr(2, 3) + ' ' + ampm;
     return timeString;

@@ -88,13 +88,13 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
   }
 
   formatAMPM(date: Date) {
-    let hours: any = date.getHours();
-    let minutes: any = date.getMinutes();
+    let hours: number | string = date.getHours();
+    let minutes: number | string = date.getMinutes();
     const ampm: string = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
-    hours = this.addZeroIfNeeded(hours);
-    minutes =  this.addZeroIfNeeded(minutes);
+    hours = this.addZeroIfNeeded(hours.toString());
+    minutes =  this.addZeroIfNeeded(minutes.toString());
     this.goTimeFormat = {
       hours,
       minutes,
