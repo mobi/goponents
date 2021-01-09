@@ -67,7 +67,37 @@ describe('GoTextAreaComponent', () => {
       component.ngOnInit();
 
       expect(component.id).toBeDefined();
-      expect(component.id).toContain('text-area-')
+      expect(component.id).toContain('text-area-');
+    });
+
+    it('doesn\'n error if no minlength passed in', () => {
+      component.minlength = undefined;
+      component.maxlength = 20;
+
+      component.ngOnInit();
+
+      expect(component.minlength).toBe(undefined);
+      expect(component.maxlength).toBe(20);
+    });
+
+    it('doesn\'n error if no maxlength passed in', () => {
+      component.minlength = 20;
+      component.maxlength = undefined;
+
+      component.ngOnInit();
+
+      expect(component.minlength).toBe(20);
+      expect(component.maxlength).toBe(undefined);
+    });
+
+    it('sets minlength to 0 if minlength is greater than maxlength', () => {
+      component.minlength = 150;
+      component.maxlength = 100;
+
+      component.ngOnInit();
+
+      expect(component.minlength).toBe(0);
+      expect(component.maxlength).toBe(100);
     });
   });
 });

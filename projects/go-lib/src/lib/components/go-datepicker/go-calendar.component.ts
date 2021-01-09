@@ -1,4 +1,15 @@
-import { Component, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
@@ -12,7 +23,7 @@ import { CalendarCell } from './calendar-cell.model';
     fadeAnimation
   ]
 })
-export class GoCalendarComponent implements OnDestroy, OnInit {
+export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked {
   canClose: boolean = true;
   currentMonth: number = 0;
   currentYear: CalendarCell;
@@ -29,8 +40,10 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   @Input() locale: string;
   @Input() maxDate: Date;
   @Input() minDate: Date;
+  @Input() appendTo: string;
 
   @Output() datePicked: EventEmitter<Date> = new EventEmitter<Date>();
+  @ViewChild('calendarView', { static: true }) calendarView: ElementRef;
 
   constructor() {
     this.dateAdapter = new DateAdapter();
@@ -46,7 +59,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     if (this.canClose) {
       this.closeCalendar();
     }
-    this.canClose = true;
+    this.canClose = false;
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -63,21 +76,18 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.calendar.calendarOpen.subscribe((value: boolean) => {
-      if (value) {
-        this.selectedDate = this.calendar.selectedDate;
-        this.initializeDate();
-      }
-      this.opened = value;
-    });
-
+    this.selectedDate = this.calendar.selectedDate;
+    this.initializeDate();
     this.dateAdapter.setLocale(this.locale);
   }
 
+  ngAfterViewChecked(): void {
+    this.appendToCalendar();
+  }
+
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.removeCalendarFromBody();
+    this.closeCalendar();
   }
 
   public closeCalendar(): void {
@@ -121,5 +131,26 @@ export class GoCalendarComponent implements OnDestroy, OnInit {
     }
     this.currentMonth = this.selectedDate.getMonth();
     this.updateYear(this.selectedDate.getFullYear());
+  }
+
+  appendToCalendar(): void {
+    if (this.appendTo === 'body') {
+      const calenderBodyPosition: any = this.calendarView.nativeElement.getBoundingClientRect();
+      Object.assign(this.calendarView.nativeElement.style, {
+        height: `${calenderBodyPosition.height}px`,
+        bottom: `${calenderBodyPosition.bottom}px`,
+        top: `${calenderBodyPosition.top}px`,
+        right: `${calenderBodyPosition.right}px`,
+        width: `${calenderBodyPosition.width}px`,
+        left: `${calenderBodyPosition.left}px`,
+      });
+      document.body.appendChild(this.calendarView.nativeElement);
+    }
+  }
+
+  removeCalendarFromBody(): void {
+    if (this.appendTo && this.calendarView) {
+      document.body.removeChild(this.calendarView.nativeElement);
+    }
   }
 }

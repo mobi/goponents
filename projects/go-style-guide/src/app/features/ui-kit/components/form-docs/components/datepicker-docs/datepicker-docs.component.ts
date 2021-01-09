@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
+import { GoDatepickerComponent, GoModalService } from '../../../../../../../../../go-lib/src/public_api';
 
 @Component({
   templateUrl: './datepicker-docs.component.html'
@@ -151,7 +152,24 @@ export class DatepickerDocsComponent implements OnInit {
   </go-datepicker>
   `;
 
-  constructor(private subNavService: SubNavService) {
+  appendToBodyExample: string = `
+  openModal(): void {
+    this.goModalService.openModal(
+      GoDatepickerComponent,
+      {
+        appendTo: 'body',
+        control: this.dob,
+        placeholder: '10/28/1999',
+        label: 'Date Of Birth',
+      }
+    );
+  }
+  `;
+
+  constructor(
+    private subNavService: SubNavService,
+    private goModalService: GoModalService
+    ) {
     this.subNavService.pageTitle = 'Datepicker';
     this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-datepicker';
   }
@@ -170,5 +188,17 @@ export class DatepickerDocsComponent implements OnInit {
 
       this.dob7.disable();
     }, 500);
+  }
+
+  openModal(): void {
+    this.goModalService.openModal(
+      GoDatepickerComponent,
+      {
+        appendTo: 'body',
+        control: this.dob,
+        placeholder: '10/28/1999',
+        label: 'Date Of Birth',
+      }
+    );
   }
 }

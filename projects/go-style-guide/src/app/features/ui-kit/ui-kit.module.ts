@@ -14,6 +14,7 @@ import {
   GoCheckboxModule,
   GoConfigService,
   GoCopyModule,
+  GoDatepickerComponent,
   GoDatepickerModule,
   GoFileUploadModule,
   GoIconButtonModule,
@@ -210,7 +211,8 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
     BasicTestLargeComponent,
     BasicTestSubmitButtonComponent,
     GoSelectComponent,
-    ModalTestComponent
+    ModalTestComponent,
+    GoDatepickerComponent
   ],
   providers: [
     GoConfigService,

@@ -89,7 +89,9 @@
               To open the off canvas, use the service to call
               <code class="code-block--inline">openOffCanvas</code>.
               This method takes the component type (BasicTestComponent in our case),
-              the bindings for that component as an object, and an optional header binding as a string.
+              the bindings for that component as an object,
+              and an optional <code class="code-block--inline">offCanvasOptions</code> object with
+              the header property as a string.
             </p>
             <code [highlight]="functionExample"></code>
           </li>
@@ -132,8 +134,9 @@
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100 go-column--no-padding">
         <p class="go-body-copy">
-          To render a large off canvas, add the <code class="code-block--inline">size</code> option to the <code
-          class="code-block--inline">openOffCanvas</code> method.
+          To render a large off canvas, add the <code class="code-block--inline">size</code> option to the 
+          <code class="code-block--inline">offCanvasOptions</code> property when calling the
+          <code class="code-block--inline">openOffCanvas</code> method.
         </p>
       </div>
       <div class="go-column go-column--50">

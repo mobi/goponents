@@ -11,7 +11,7 @@ class GoTestOffCanvasComponent {}
 
 describe('GoOffCanvasService', () => {
   let service: GoOffCanvasService;
-  const offCanvasItemMock: GoOffCanvasItem = {
+  const offCanvasItemMock: GoOffCanvasItem<GoTestOffCanvasComponent> = {
     component: GoTestOffCanvasComponent,
     bindings: { testingBinding: 'test'}
   };
@@ -31,7 +31,7 @@ describe('GoOffCanvasService', () => {
 
   describe('openOffCanvas', () => {
     it('emits the new component and its bindings from activeOffCanvasComponent', () => {
-      service.activeOffCanvasComponent.subscribe((item: GoOffCanvasItem) => {
+      service.activeOffCanvasComponent.subscribe((item: GoOffCanvasItem<GoTestOffCanvasComponent>) => {
         expect({...item}).toEqual(offCanvasItemMock);
       });
 

@@ -10,40 +10,40 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
   overflow: hidden;
-}
+  width: 100vw;
 
-.go-layout__content {
-  display: flex;
-  flex-grow: 1;
-  height: calc(100vh - #{$header-height});
-  width: 100%;
-}
+  &__content {
+    display: flex;
+    flex-grow: 1;
+    height: calc(100vh - #{$header-height});
+    width: 100%;
+  }
 
-.go-layout__view-container {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  height: calc(100vh - #{$header-height});
-  width: 0;
-}
+  &__view-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: calc(100vh - #{$header-height});
+    width: 0;
+  }
 
-.go-layout__route-container {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: calc(100vh - 4rem);
-}
+  &__route-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: calc(100vh - 4rem);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+  }
 
-.go-layout__route-container-outlet ~ :not(go-footer) {
-  flex-grow: 1;
-  flex-shrink: 0;
-  padding: 2rem;
-  width: 100%;
+  &__route-container-outlet ~ :not(go-footer) {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 2rem;
+    width: 100%;
+  }
 }
 
 .go-route-loader {
