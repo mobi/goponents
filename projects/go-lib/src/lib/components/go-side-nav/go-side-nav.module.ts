@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { GoActionSheetModule } from '../go-action-sheet/go-action-sheet.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 import { GoSideNavComponent } from './go-side-nav/go-side-nav.component';
 import { GoNavGroupComponent } from './go-nav-group/go-nav-group.component';
@@ -19,6 +20,7 @@ import { GoConfigService } from '../../go-config.service';
   imports: [
     CommonModule,
     GoIconModule,
+    GoIconButtonModule,
     RouterModule,
     GoActionSheetModule
   ],

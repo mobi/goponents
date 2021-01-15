@@ -46,6 +46,7 @@
 
 .go-nav-group__icon {
   align-self: flex-start;
+  color: $theme-dark-color;
   font-size: 1rem;
   height: $side-nav-root-item-height;
   padding: 1rem;
@@ -58,7 +59,7 @@
 
 .go-nav-group__expand-icon {
   border-radius: 50%;
-  color: $side-nav-base-color;
+  color: $theme-dark-color;
   cursor: pointer;
   font-size: 1.5rem;
   height: 2rem;

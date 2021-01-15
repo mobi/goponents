@@ -1,4 +1,5 @@
 body {
+  color: $theme-light-color;
   font-family: $primary-font-stack;
   font-weight: $weight-light;
 }
@@ -22,7 +23,7 @@ strong {
 
 .go-body-copy {
   font-size: 1rem;
-  letter-spacing: .5pt;
+  letter-spacing: $base-letter-spacing;
   line-height: 1.5;
   margin-bottom:  $column-gutter--three-quarters;
 }

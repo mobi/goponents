@@ -15,21 +15,21 @@
 
         <ng-content select="[go-layout-main]"></ng-content>
 
-        <router-outlet class="go-layout__route-container-outlet" #mainRouter="outlet">
+        <router-outlet
+          class="go-layout__route-container-outlet"
+          #mainRouter="outlet">
         </router-outlet>
 
-        <ng-content
-          select="[go-layout-footer]"
-          [@routerAnimation]="routeAnimation(mainRouter)">
-        </ng-content>
+        <ng-content select="[go-layout-footer]"></ng-content>
 
       </main>
 
     </div>
   </div>
-  <div class="go-route-loader"
-      *ngIf="routeLoader"
-      @fadeTemplate>
+  <div
+    class="go-route-loader"
+    *ngIf="routeLoader"
+    @fadeTemplate>
     <go-loader></go-loader>
   </div>
 </div>

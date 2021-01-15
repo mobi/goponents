@@ -8,131 +8,142 @@
   color: $theme-light-color;
   overflow: visible;
   position: relative;
-}
 
-.go-accordion-panel--first {
-  border-top-left-radius: $global-radius;
-  border-top-right-radius: $global-radius;
-}
-
-.go-accordion-panel--last {
-  border-bottom-left-radius: $global-radius;
-  border-bottom-right-radius: $global-radius;
-  border-bottom-width: 1px;
-}
-
-.go-accordion-panel--active {
-  .go-accordion-panel--selected {
-    content: ' ';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    transition: all 0.25s ease-in;
-    width: 4px;
-    z-index: 1;
-  }
-}
-
-.go-accordion-panel--action-sheet {
-  .go-accordion-panel__header, .go-accordion-panel__content {
-    padding: 0.75rem;
-    font-size: 0.875rem;
+  &--first {
+    border-top-left-radius: $global-radius;
+    border-top-right-radius: $global-radius;
   }
 
-  .go-accordion-panel__title-icon {
-    font-size: 1rem;
-  }
-}
-
-.go-accordion-panel--borderless {
-  border: 0;
-  border-radius: 0;
-}
-
-.go-accordion-panel--box-shadow {
-  box-shadow: $global-box-shadow--regular;
-}
-
-.go-accordion-panel--dark {
-  background: $theme-dark-bg;
-  border-color: $theme-dark-border;
-  color: $theme-dark-color;
-}
-
-.go-accordion-panel__header {
-  @include transition(background-color);
-
-  cursor: pointer;
-  display: flex;
-  font-size: 1.2rem;
-  padding: 1.2rem 1rem;
-  position: relative;
-
-  &:hover {
-    background-color: darken($base-light, 7%);
+  &--last {
+    border-bottom-left-radius: $global-radius;
+    border-bottom-right-radius: $global-radius;
+    border-bottom-width: 1px;
   }
 
-  &.go-accordion-panel__header--dark:hover {
-    background-color: darken($base-dark-secondary, 3.5%);
+  &--active {
+    .go-accordion-panel--selected {
+      content: ' ';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      transition: all .25s ease-in;
+      width: 4px;
+      z-index: 1;
+    }
   }
-}
 
-.go-accordion-panel__header--active {
-  background-color:  darken($base-light, 3.5%);
+  &--action-sheet {
+    .go-accordion-panel {
+      // scss-lint:disable NestingDepth
+      &__header,
+      &__content {
+        font-size: .875rem;
+        padding: .75rem;
+      }
 
-  &.go-accordion-panel__header--dark {
-    background-color: darken($base-dark-secondary, 7%);
+      &__title-icon {
+        font-size: 1rem;
+      }
+    }
   }
-}
 
-.go-accordion-panel__header--slim {
-  font-size: 1rem;
-  padding: 1rem;
-}
+  &--borderless {
+    border: 0;
+    border-radius: 0;
+  }
 
-.go-accordion-panel__title {
-  align-items: center;
-  display: flex;
-  font-weight: 300;
-  padding-right: 1rem;
-}
+  &--box-shadow {
+    box-shadow: $global-box-shadow--regular;
+  }
 
-.go-accordion-panel__projection {
-  flex: 1;
-}
+  &--dark {
+    background: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    color: $theme-dark-color;
+  }
 
-.go-accordion-panel__title-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 1rem;
-  text-align: center;
-}
+  &__header {
+    @include transition(background-color);
 
-.go-accordion-panel__control {
-  @include transition(transform);
+    cursor: pointer;
+    display: flex;
+    font-size: 1.2rem;
+    padding: 1.2rem 1rem;
+    position: relative;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 1rem;
-  text-align: center;
-}
+    &:hover {
+      background-color: darken($base-light, 7%);
+    }
 
-.go-accordion-panel__control--active {
-  transform: rotate(180deg);
-}
+    &--dark {
+      background-color: darken($base-dark-secondary, 7%);
 
-.go-accordion-panel__content {
-  padding: 1.5rem 1rem;
-}
+      // scss-lint:disable NestingDepth
+      &:hover {
+        background-color: darken($base-dark-secondary, 3.5%);
+      }
+    }
 
-.go-accordion-panel__content--slim {
-  padding: 1rem;
-}
+    &--active {
+      // scss-lint:disable NestingDepth
+      background-color: darken($base-light, 3.5%);
 
-.go-accordion-panel__content--no-padding {
-  padding: 0 0 0 4px; // 4px accounts for the selected bar to the left
+      // scss-lint:disable SelectorFormat
+      &.go-accordion-panel__header--dark {
+        background-color: darken($base-dark-secondary, 7%);
+      }
+    }
+
+    &--slim {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+    font-weight: $weight-regular;
+    padding-right: 1rem;
+  }
+
+  &__projection {
+    flex: 1;
+  }
+
+  &__title-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 1rem;
+    text-align: center;
+  }
+
+  &__control {
+    @include transition(transform);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
+    text-align: center;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    padding: 1.5rem 1rem;
+
+    &--slim {
+      padding: 1rem;
+    }
+
+    &--no-padding {
+      padding: 0 0 0 4px; // 4px accounts for the selected bar to the left
+    }
+  }
 }
 
 // ----- Dark Theme Classes
@@ -140,26 +151,29 @@
   background: $theme-dark-bg;
   border: 1px solid $theme-dark-border;
   color: $theme-dark-color;
-  font-weight: 300;
+  font-weight: $weight-light;
 
-  .go-accordion-panel--border-top .go-accordion-panel__header {
-    border-top: 1px solid $theme-dark-border;
-  }
+  .go-accordion-panel {
+    // scss-lint:disable SelectorDepth
+    &--border-top &__header {
+      border-top: 1px solid $theme-dark-border;
+    }
 
-  .go-accordion-panel--active .go-accordion-panel__header {
-    background: $theme-dark-bg-active;
-  }
+    &--active &__header {
+      background: $theme-dark-bg-active;
+    }
 
-  .go-accordion-panel--inactive .go-accordion-panel__header {
-    background: $theme-dark-bg;
-  }
+    &--inactive &__header {
+      background: $theme-dark-bg;
+    }
 
-  .go-accordion-panel__header:hover {
-    background: $theme-dark-bg-hover;
-  }
+    &__header:hover {
+      background: $theme-dark-bg-hover;
+    }
 
-  .go-accordion-panel__content {
-    color: $theme-dark-color;
-    font-weight: 300;
+    &__content {
+      color: $theme-dark-color;
+      font-weight: $weight-light;
+    }
   }
 }

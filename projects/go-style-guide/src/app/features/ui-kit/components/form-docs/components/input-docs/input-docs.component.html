@@ -351,4 +351,48 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-input-max-min-length" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Maxlength And Minlength</h2>
+      <go-copy cardId="form-input-max-min-length" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          The maxlength and minlength properties of the input can be set via
+          <code class="code-block--inline">@Input() maxlength: number;</code>
+          and the <code class="code-block--inline">@Input() minlength: number;</code> bindings.
+          By default the <code class="code-block--inline">maxlength</code> is set to 
+          <code class="code-block--inline">524288</code> and the 
+          <code class="code-block--inline">minlength</code> is set to <code class="code-block--inline">0</code>.
+          Please note that the <code class="code-block--inline">minlength</code> property would come into
+          effect when the corresponding form containing the input component would be submitted.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-input
+              [control]="name"
+              label="Name"
+              maxlength="10"
+              minlength="5">
+            </go-input>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicLengthExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>

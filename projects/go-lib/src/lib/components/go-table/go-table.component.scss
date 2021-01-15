@@ -1,6 +1,9 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$go-table__cell-vertical-padding: .875rem;
+$go-table__cell-horizontal-padding: 1.25rem;
+
 .go-table-container {
   background: $theme-light-bg;
   border-radius: $global-radius;
@@ -17,7 +20,7 @@
   display: flex;
 
   .go-table-header__title {
-    padding: .875rem 0 .875rem 1.25rem;
+    padding: $go-table__cell-vertical-padding 0 $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
   }
 
   @media (max-width: $breakpoint-mobile) {
@@ -36,7 +39,7 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  padding: .875rem 1.25rem;
+  padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
 }
 
 .go-table {
@@ -57,7 +60,7 @@
   font-size: .75rem;
   font-weight: $weight-medium;
   letter-spacing: 0.08px;
-  padding: 1rem 1.25rem;
+  padding: 1rem $go-table__cell-horizontal-padding;
   position: relative;
   text-align: left;
   text-transform: uppercase;
@@ -72,12 +75,23 @@
   }
 }
 
+.go-table__select-all-checkbox {
+  display: inline-block;
+  position: relative;
+  top: -0.4rem;
+  width: $go-table__cell-vertical-padding;
+}
+
 .go-table__head--sortable {
   cursor: pointer;
 
   &:hover {
     background: $theme-light-app-bg;
   }
+}
+
+.go-table__head-checkbox {
+  text-align: center;
 }
 
 .go-table__head-content {
@@ -95,7 +109,8 @@
 .go-table__body-column {
   border-bottom: 1px solid $theme-light-app-bg;
   font-size: .875rem;
-  padding: .875rem 1.25rem;
+  padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
+  position: relative;
 
   .go-table__body-row:first-child & {
     border-top: 1px solid $theme-light-app-bg;
@@ -103,6 +118,18 @@
 
   .go-table__body-row:last-child & {
     border-bottom: 0;
+  }
+}
+
+.go-table__body-column--selectable {
+  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-horizontal-padding;
+  text-align: center;
+  vertical-align: middle;
+
+  go-checkbox {
+    display: inline-block;
+    margin-bottom: 1rem;
+    width: $go-table__cell-vertical-padding;
   }
 }
 
@@ -119,7 +146,7 @@
   display: flex;
   font-size: 0.875rem;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
+  padding: 1rem $go-table__cell-horizontal-padding;
 
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
@@ -180,7 +207,7 @@
     border-top: 1px solid $theme-light-app-bg;
     color: $theme-light-color;
     font-size: .875rem;
-    padding: .875rem 1.25rem;
+    padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
     text-align: center;
   }
 }
@@ -190,11 +217,14 @@
 }
 
 .go-table__details-button {
-  display: block;
+  display: inline-block;
+  transition-property: all;
 }
 
 .go-table__icon-button-column {
-  padding: .375rem 1.25rem;
+  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-vertical-padding;
+  position: relative;
+  vertical-align: middle;
 }
 
 .go-table-toolbar__page-numbers {
@@ -240,7 +270,7 @@
   border-radius: 1rem;
   color: $theme-light-border;
   display: flex;
-  margin: 0.25rem 1.25rem 1rem 1.25rem;
+  margin: 0.25rem $go-table__cell-horizontal-padding 1rem;
   position: relative;
 
   &:hover {
@@ -286,5 +316,27 @@
 .go-table__filter-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 1.25rem;
+  padding: 0 $go-table__cell-horizontal-padding;
+}
+
+// Hierarchical Table
+.go-table__child-row-indicator {
+  border-left: $global-radius solid;
+  height: calc(100% + 1px);
+  left: 0;
+  position: absolute;
+  top: -1px;
+}
+
+.go-table__body-row--active {
+  border-left: $global-radius solid;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.go-table__body-row--active-parent {
+  background-color: $theme-light-bg-hover;
+  border-top: 1px solid $theme-light-app-bg;
 }

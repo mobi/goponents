@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
+
+.go-off-canvas__submit-button {
+  @include transition(all);
+
+  align-items: center;
+  background-color: $ui-color-primary;
+  border: 0;
+  bottom: 0;
+  color: $theme-dark-color;
+  cursor: pointer;
+  font-family: $primary-font-stack;
+  font-size: .875rem;
+  font-weight: $weight-regular;
+  letter-spacing: .015rem;
+  line-height: 1.2;
+  outline: none;
+  padding: .5rem $column-gutter;
+  text-transform: uppercase;
+  width: 100%;
+
+  &:hover {
+    background-color: $ui-color-primary-hover;
+  }
+
+  &:disabled {
+    background: rgba($ui-color-primary, .4);
+    color: rgba($theme-dark-color, .7);
+    cursor: not-allowed;
+  }
+}

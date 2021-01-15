@@ -5,7 +5,6 @@ import { Component, ViewChild } from '@angular/core';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoModalComponent } from './go-modal.component';
 import { GoModalDirective } from './go-modal.directive';
-import { GoModalItem } from './go-modal.item';
 import { GoModalService } from './go-modal.service';
 
 describe('GoModalComponent', () => {
@@ -69,7 +68,7 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when no title and no modal size is set', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, {});
+      component.currentComponent = { component: GoTestModalHostComponent, bindings: { } };
 
       expect(component.modalTitle).toBeUndefined();
       expect(component.modalSize).toEqual(component.defaultModalSize);
@@ -81,7 +80,29 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when a title is set', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalTitle: 'Test Title' });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { modalTitle: 'Test Title' }
+      };
+
+      expect(component.modalTitle).toBeUndefined();
+
+      component.loadComponent();
+
+      expect(component.modalTitle).toEqual('Test Title');
+    });
+
+    /**
+     * @deprecated test
+     */
+    it('handles when a title is set (deprecated)', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: {
+          modalTitle: 'Test Title'
+        }
+      };
 
       expect(component.modalTitle).toBeUndefined();
 
@@ -91,7 +112,11 @@ describe('GoModalComponent', () => {
     });
 
     it('handles when a modal size is set to supported size', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalSize: 'xl' });
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { modalSize: 'xl' }
+      };
 
       expect(component.modalSize).toEqual(component.defaultModalSize);
 
@@ -100,14 +125,108 @@ describe('GoModalComponent', () => {
       expect(component.modalSize).toEqual('xl');
     });
 
-    it('handles when a modal size is set to unsupported size', () => {
-      component.currentComponent = new GoModalItem(GoTestModalHostComponent, { modalSize: 'abc' });
+    /**
+     * @deprecated test
+     */
+    it('handles when a modal size is set to supported size (deprecated)', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: {
+          modalSize: 'xl'
+        }
+      };
 
       expect(component.modalSize).toEqual(component.defaultModalSize);
 
       component.loadComponent();
 
-      expect(component.modalSize).toEqual(component.defaultModalSize);
+      expect(component.modalSize).toEqual('xl');
+    });
+
+    it('sets closeWithBackdrop to false if not passed in', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { }
+      };
+
+      component.closeWithBackdrop = true;
+
+      component.loadComponent();
+
+      expect(component.closeWithBackdrop).toEqual(false);
+    });
+
+    it('sets closeWithBackdrop to true if passed in', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { closeWithBackdrop: true }
+      };
+      component.closeWithBackdrop = false;
+
+      component.loadComponent();
+
+      expect(component.closeWithBackdrop).toEqual(true);
+    });
+
+    /**
+     * @deprecated test
+     */
+    it('sets closeWithBackdrop to true if passed in (deprecated)', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: {
+          closeWithBackdrop: true
+        }
+      };
+      component.closeWithBackdrop = false;
+
+      component.loadComponent();
+
+      expect(component.closeWithBackdrop).toEqual(true);
+    });
+
+    it('sets showCloseIcon to true if not passed in', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { }
+      };
+
+      component.showCloseIcon = false;
+
+      component.loadComponent();
+
+      expect(component.showCloseIcon).toEqual(true);
+    });
+
+    it('sets closeWithBackdrop to false if passed in', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: { },
+        modalOptions: { showCloseIcon: false }
+      };
+      component.showCloseIcon = true;
+
+      component.loadComponent();
+
+      expect(component.showCloseIcon).toEqual(false);
+    });
+
+    /**
+     * @deprecated test
+     */
+    it('sets closeWithBackdrop to false if passed in (deprecated)', () => {
+      component.currentComponent = {
+        component: GoTestModalHostComponent,
+        bindings: {
+          showCloseIcon: false
+        }
+      };
+      component.showCloseIcon = true;
+
+      component.loadComponent();
+
+      expect(component.showCloseIcon).toEqual(false);
     });
   });
 
@@ -115,6 +234,7 @@ describe('GoModalComponent', () => {
     beforeEach(() => {
       spyOn(component, 'closeModal');
 
+      component.closeWithBackdrop = true;
       component.goModal = <any> {
         nativeElement: '<test-element></test-element>'
       };
@@ -136,6 +256,13 @@ describe('GoModalComponent', () => {
       component.backdropClick(<any> { target: component.goModal.nativeElement });
 
       expect(component.closeModal).toHaveBeenCalled();
+    });
+
+    it('does not close the modal if closeWithBackdrop is false', () => {
+      component.closeWithBackdrop = false;
+      component.backdropClick(<any> { target: component.goModal.nativeElement });
+
+      expect(component.closeModal).not.toHaveBeenCalled();
     });
   });
 });

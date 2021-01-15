@@ -24,7 +24,7 @@ export class BasicTestLargeComponent {
   ) { }
 
   public fakeSubmit(): void {
-    this.submitButton.isProcessing = true
+    this.submitButton.isProcessing = true;
     setTimeout(() => {
       this.submitButton.reset();
       this.goOffCanvasService.closeOffCanvas();

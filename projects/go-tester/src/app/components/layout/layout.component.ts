@@ -74,13 +74,13 @@ export class LayoutComponent implements OnInit {
     this.goConfigService.setBrandColor('#8A4EDE');
   }
 
-  openOffCanvas(size: GoOffCanvasItem['size'] = 'small'): void {
+  openOffCanvas(size: GoOffCanvasItem<any>['size'] = 'small'): void {
     this.goOffCanvasService.openOffCanvas({
       component: OffCanvasTestComponent,
       bindings: {
       },
       header: 'Test Header',
-      size
+      size: size
     });
   }
 

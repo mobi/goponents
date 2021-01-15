@@ -49,90 +49,90 @@ export class SelectDocsComponent implements OnInit {
   selectData: any = [
     {
       value: 1,
-      name: "Harry",
+      name: 'Harry',
     },
     {
       value: 2,
-      name: "Hermione",
+      name: 'Hermione',
     },
     {
       value: 3,
-      name: "Ron",
+      name: 'Ron',
     },
     {
       value: 4,
-      name: "Voldermort",
+      name: 'Voldermort',
     },
     {
       value: 5,
-      name: "Snake",
+      name: 'Snake',
     },
     {
       value: 6,
-      name: "Hermione1",
+      name: 'Hermione1',
     },
     {
       value: 7,
-      name: "Hermione2",
+      name: 'Hermione2',
     },
     {
       value: 8,
-      name: "Hermione3",
+      name: 'Hermione3',
     },
     {
       value: 9,
-      name: "Hermione4",
+      name: 'Hermione4',
     },
     {
       value: 10,
-      name: "Hermione5",
+      name: 'Hermione5',
     },
     {
       value: 11,
-      name: "Hermione6",
+      name: 'Hermione6',
     },
     {
       value: 12,
-      name: "Hermione7",
+      name: 'Hermione7',
     },
     {
       value: 13,
-      name: "Hermione7",
+      name: 'Hermione7',
     },
     {
       value: 14,
-      name: "Hermione7",
+      name: 'Hermione7',
     },
   ];
-  
+
   newSelectData: any = [
     {
       value: 15,
-      name: "Alberta",
+      name: 'Alberta',
     },
     {
       value: 15,
-      name: "British Columbia",
+      name: 'British Columbia',
     },
     {
       value: 16,
-      name: "Manitoba",
+      name: 'Manitoba',
     },
     {
       value: 17,
-      name: "Northwest Territories",
+      name: 'Northwest Territories',
     },
     {
       value: 18,
-      name: "Nunavut",
+      name: 'Nunavut',
     },
     {
       value: 19,
-      name: "Ontario",
+      name: 'Ontario',
     },
     {
       value: 20,
-      name: "Prince Edward Island",
+      name: 'Prince Edward Island',
     },
   ];
 
@@ -154,7 +154,9 @@ export class SelectDocsComponent implements OnInit {
   select16: FormControl = new FormControl();
   select17: FormControl = new FormControl();
   select18: FormControl = new FormControl();
-  select19: FormControl = new FormControl();
+  select19: FormControl = new FormControl({ value: '', disabled: true });
+  select20: FormControl = new FormControl();
+  select21: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -438,6 +440,14 @@ export class SelectDocsComponent implements OnInit {
   </go-select>
   `;
 
+  select20Code: string = `
+  <go-select
+    [control]="select"
+    theme="dark"
+    label="Favorite Candy">
+  </go-select>
+  `;
+
   select18ComponentCode: string = `
   groupedItemsArray: any = [
     {
@@ -458,7 +468,7 @@ export class SelectDocsComponent implements OnInit {
   ]
   `;
 
- select19Code: string = `
+  select21Code: string = `
  <go-select
    [items]="selectData"
    [control]="select"
@@ -472,7 +482,7 @@ export class SelectDocsComponent implements OnInit {
   </go-select>
   `;
 
-  select19ComponentCode: string = `
+  select21ComponentCode: string = `
   scrollToEnd(): void {
     // Code here
   }
@@ -481,6 +491,31 @@ export class SelectDocsComponent implements OnInit {
   // Code here
   }
   `;
+
+  basicDisabledExample: string = `
+  <go-select
+    [control]="select"
+    [items]="items"
+    label="Favorite Candy">
+  </go-select>
+  `;
+  basicDisabledExample2: string = `
+  ngOnInit(): void {
+    items = [
+      { value: 1, name: 'Reeses' },
+      { value: 2, name: 'Mints' }
+    ];
+    this.select.disable();
+    // Use this.select.enable(); to re-enable the select component.
+  }
+  `;
+  basicDisabledExample3: string = `
+  select: new FormControl({
+    value: '',
+    disabled: true
+  });
+  `;
+
   constructor(
     private goModalService: GoModalService,
     private subNavService: SubNavService

@@ -13,8 +13,11 @@ export class ModalDocsComponent {
   pageTitle: string = 'Modal';
 
   componentBindings: string = `
-  @Input() modalTitle: string = '';
-  @Input() modalSize: 'lg' | 'xl' = 'lg';
+  closeWithBackdrop?: boolean = false;
+  modalTitle: string = '';
+  modalSize: 'lg' | 'xl' = 'lg';
+  noContentPadding?: boolean = false;
+  showCloseIcon?: boolean = true;
   `;
 
   appModuleImport: string = `
@@ -66,25 +69,58 @@ export class ModalDocsComponent {
 
   ex_ModalDocsOpenModal: string = `
   openModal() {
-    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'Example Title', modalSize: 'xl', content: 'This is a modal!' });
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'This is a modal!'
+    }, {
+      modalTitle: 'Example Title'
+    };
   }
   `;
 
   ex_ModalDocsHtml: string = `<go-button (handleClick)="openModal()">Click Me</go-button>`;
 
   ex_ModalDocsOpenLgModal: string = `
-  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
+  this.goModalService.openModal(ModalTestComponent, {
+    content: 'This is a lg modal'
+  }, {
+    modalTitle: 'LG Modal (Default)'
+  });
   `;
 
   ex_ModalDocsOpenXlModal: string = `
-  this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
+  this.goModalService.openModal(ModalTestComponent, {
+    content: 'This is a xl modal'
+  }, {
+    modalTitle: 'XL Modal',
+    modalSize: 'xl'
+  });
   `;
 
   ex_ModalDocsNoPadding: string = `
   this.goModalService.openModal(ModalTestComponent, {
+    content: 'This area has no padding'
+  }, {
     modalTitle: 'No Padding Example',
-    content: 'This area has no padding',
     noContentPadding: true
+  });
+  `;
+
+  ex_ModalDocsCloseWithBackdrop: string = `
+  this.goModalService.openModal(ModalTestComponent, {
+    content: 'You can close this modal by clicking on the page outside of the modal'
+  }, {
+    modalTitle: 'Close With Backdrop Example',
+    closeWithBackdrop: true
+  });
+  `;
+
+  ex_ModalDocsNoCloseIcon: string = `
+  this.goModalService.openModal(ModalTestComponent, {
+    content: 'The only way to close this modal is by clicking outside of the modal on the backdrop'
+  }, {
+    modalTitle: 'Close With Backdrop Example',
+    closeWithBackdrop: true,
+    showCloseIcon: false
   });
   `;
 
@@ -93,22 +129,55 @@ export class ModalDocsComponent {
   constructor(private goModalService: GoModalService) { }
 
   openModal(): void {
-    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'Example Title', modalSize: 'xl', content: 'This is a modal!' });
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'This is a modal!'
+    }, {
+      modalTitle: 'Example Title'
+    });
   }
 
   openLgModal(): void {
-    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'LG Modal (Default)', content: 'This is a lg modal' });
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'This is a lg modal'
+    }, {
+      modalTitle: 'LG Modal (Default)'
+    });
   }
 
   openXlModal(): void {
-    this.goModalService.openModal(ModalTestComponent, { modalTitle: 'XL Modal', modalSize: 'xl', content: 'This is a xl modal' });
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'This is a xl modal'
+    }, {
+      modalTitle: 'XL Modal',
+      modalSize: 'xl'
+    });
   }
 
   openNoPaddingModal(): void {
     this.goModalService.openModal(ModalTestComponent, {
+      content: 'This area has no padding'
+    }, {
       modalTitle: 'No Padding Example',
-      content: 'This area has no padding',
       noContentPadding: true
+    });
+  }
+
+  openCloseWithBackdropModal(): void {
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'You can close this modal by clicking on the page outside of the modal'
+    }, {
+      modalTitle: 'Close With Backdrop Example',
+      closeWithBackdrop: true
+    });
+  }
+
+  openNoCloseIconModal(): void {
+    this.goModalService.openModal(ModalTestComponent, {
+      content: 'The only way to close this modal is by clicking outside of the modal on the backdrop'
+    }, {
+      modalTitle: 'Close With Backdrop Example',
+      closeWithBackdrop: true,
+      showCloseIcon: false
     });
   }
 

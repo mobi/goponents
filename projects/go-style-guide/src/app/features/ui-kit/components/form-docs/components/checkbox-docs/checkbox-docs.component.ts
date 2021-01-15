@@ -7,13 +7,11 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './checkbox-docs.component.html'
 })
 export class CheckboxDocsComponent {
-  option1Disabled: boolean = true;
-  option2Disabled: boolean = true;
-
   checkbox1: FormControl = new FormControl('');
   checkbox2: FormControl = new FormControl('');
   checkbox3: FormControl = new FormControl('');
   checkbox4: FormControl = new FormControl('');
+  checkbox5: FormControl = new FormControl('');
 
   checkboxGroup1: FormGroup = new FormGroup({
     option1: new FormControl(''),
@@ -136,33 +134,12 @@ export class CheckboxDocsComponent {
   </go-checkbox>
   `;
 
-  checkboxDisabledEx_ts: string = `
-  // component.ts
-
-  option1Disabled: boolean = true;
-  option2Disabled: boolean = true;
-
-  checkboxGroup4: FormGroup = new FormGroup({
-    option1: new FormControl(''),
-    option2: new FormControl(true)
-  });
-  `;
-
-  checkboxDisabledEx: string = `
-  <!-- component.html -->
-
-  <go-checkbox-group legend="Options" [control]="checkboxGroup4">
-    <go-checkbox
-      label="Option 1"
-      [control]="checkboxGroup4.controls.option1"
-      disabled="option1Disabled">
-    </go-checkbox>
-    <go-checkbox
-      label="Option 2"
-      [control]="checkboxGroup4.controls.option2"
-      disabled="option2Disabled">
-    </go-checkbox>
-  </go-checkbox-group>
+  checkboxIndeterminateEx: string = `
+  <go-checkbox
+    label="Checkbox 5"
+    [control]="checkbox5"
+    [indeterminate]="true">
+  </go-checkbox>
   `;
 
   constructor(private subNavService: SubNavService) {

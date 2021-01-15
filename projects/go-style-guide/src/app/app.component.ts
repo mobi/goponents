@@ -60,7 +60,8 @@ export class AppComponent {
       {
         displayName: 'GitHub',
         icon: 'code',
-        url: 'https://github.com/'
+        url: 'https://github.com/',
+        target: 'github'
       },
       {
         displayName: 'Go Design',

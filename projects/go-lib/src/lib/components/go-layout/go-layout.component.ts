@@ -1,11 +1,11 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-
 import {
   ActivatedRoute,
   NavigationCancel,
@@ -16,9 +16,10 @@ import {
   RouterEvent,
   RouterOutlet
 } from '@angular/router';
-
-import { routerAnimation } from '../../animations/route.animation';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { fadeAnimation, fadeTemplateAnimation } from '../../animations/fade.animation';
+import { routerAnimation } from '../../animations/route.animation';
 import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
 
 @Component({
@@ -32,9 +33,10 @@ import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class GoLayoutComponent implements OnInit {
+export class GoLayoutComponent implements OnInit, OnDestroy {
   private routeScrollPositions: { [url: string]: number }[] = [];
   private goingBack: boolean = false;
+  private destroy$: Subject<void> = new Subject();
 
   routeLoader: boolean = false;
 
@@ -44,7 +46,7 @@ export class GoLayoutComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe((event: RouterEvent) => {
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: RouterEvent) => {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
 
@@ -64,6 +66,11 @@ export class GoLayoutComponent implements OnInit {
         this.goingBack = false;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   routeAnimation(outlet: RouterOutlet): ActivatedRoute | string {

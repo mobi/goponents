@@ -19,6 +19,7 @@ export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
 // Button
+export * from './lib/components/go-button/go-split-button-option.model';
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
 
@@ -91,12 +92,14 @@ export * from './lib/components/go-loader/go-loader.module';
 export * from './lib/components/go-modal/go-modal.component';
 export * from './lib/components/go-modal/go-modal.module';
 export * from './lib/components/go-modal/go-modal.service';
+export * from './lib/components/go-modal/go-modal-options';
 
 // Off Canvas
 export * from './lib/components/go-off-canvas/go-off-canvas.component';
 export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 export * from './lib/components/go-off-canvas/go-off-canvas.interface';
+export * from './lib/components/go-off-canvas/go-off-canvas-options';
 
 // Pill
 export * from './lib/components/go-pill/go-pill.component';

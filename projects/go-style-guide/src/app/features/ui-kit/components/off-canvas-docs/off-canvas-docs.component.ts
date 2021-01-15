@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
-
+import { BasicTestLargeComponent } from '../basic-test-large/basic-test-large.component';
+import { BasicTestSubmitButtonComponent } from '../basic-test-submit-button/basic-test-submit-button.component';
 import { BasicTestComponent } from '../basic-test/basic-test.component';
-import {BasicTestLargeComponent} from '../basic-test-large/basic-test-large.component';
 
 @Component({
   selector: 'app-off-canvas-docs',
@@ -54,13 +54,15 @@ export class OffCanvasDocsComponent {
   `;
 
   functionExample: string = `
-  openOffCanvas() : void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
-        someBinding: 'monkey'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header'
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
     });
   }
   `;
@@ -75,14 +77,16 @@ export class OffCanvasDocsComponent {
   `;
 
   largeOffCanvasExample: string = `
-  openOffCanvas() : void {
+  openOffCanvas(): void {
     this.goOffCanvasService.openOffCanvas({
-      component: BasicTestComponent,
+      component: BasicTestLargeComponent,
       bindings: {
-        someBinding: 'monkey'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header',
-      size: 'large'
+      offCanvasOptions: {
+        header: 'Test Header',
+        size: 'large'
+      }
     });
   }
   `;
@@ -96,6 +100,32 @@ export class OffCanvasDocsComponent {
   <div>This will render in the off canvas as usual</div>
   `;
 
+  submitButtonInputs: string = `
+  @Input() disabled: boolean = false; // A boolean which, when true, disables the button.
+  @Input() text: string = 'Submit'; // The text to be displayed on the button.
+  @Input() type: string = 'submit'; // Sets the button's type attribute.
+  @Output() handleClick: EventEmitter<void> = new EventEmitter<void>(); // Emits an event when the button is clicked.
+  `;
+
+  submitButtonExampleHTML: string = `
+  <!-- template of the component rendered in the off canvas -->
+  <go-off-canvas-submit-button
+    [text]="submitButtonText"
+    [disabled]="submitDisabled"
+    (handleClick)="submit()">
+  </go-off-canvas-submit-button>
+  `;
+
+  submitButtonExampleTS: string = `
+  submitButtonText: string = 'Apply Changes';
+  submitDisabled: boolean = false;
+
+  submit(): void {
+    alert('Submitted!');
+    this.goOffCanvasService.closeOffCanvas();
+  }
+  `;
+
   linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-off-canvas';
 
   constructor(
@@ -106,9 +136,11 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestComponent,
       bindings: {
-        someBinding: 'Basic Off Canvas Component'
+        fakeTitle: 'Basic Off Canvas Component'
       },
-      header: 'Test Header'
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
     });
   }
 
@@ -116,11 +148,30 @@ export class OffCanvasDocsComponent {
     this.goOffCanvasService.openOffCanvas({
       component: BasicTestLargeComponent,
       bindings: {
-        someBinding: 'Basic Off Canvas Component'
+        fakeTitle: 'Basic Off Canvas Component',
       },
-      header: 'Test Header',
-      size: 'large'
+      offCanvasOptions: {
+        header: 'Test Header',
+        size: 'large'
+      }
     });
+  }
+
+  public openSubmitButtonOffCanvas(): void {
+    this.goOffCanvasService.openOffCanvas({
+      component: BasicTestSubmitButtonComponent,
+      bindings: {
+        fakeTitle: 'Basic Off Canvas Component'
+      },
+      offCanvasOptions: {
+        header: 'Test Header'
+      }
+    });
+  }
+
+  public submit(): void {
+    alert('Submit action called!');
+    this.goOffCanvasService.closeOffCanvas();
   }
 
 }

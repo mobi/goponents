@@ -174,6 +174,44 @@
     </div>
   </go-card>
 
+  <go-card id="form-select-theme" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Theme</h2>
+      <go-copy cardId="form-select-theme" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default the theme for the select component is 'light', but there could be
+          an instance where we need a 'dark' theme. There is a binding
+          available for that.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50 go-column--dark">
+            <h4 class="go-heading-4 go-heading--underlined" style="color: #fff;">View</h4>
+            <go-select
+              [control]="select20"
+              label="Favorite Candy"
+              theme="dark">
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select20Code"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
   <go-card id="form-select-errors" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Component Errors</h2>
@@ -211,6 +249,54 @@
             </code>
             <code
               [highlight]="select5ErrorsCode"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-select-disabled" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Disable Component</h2>
+      <go-copy cardId="form-select-disabled" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          FormControls can be either created as disabled or later disabled
+          and re-enabled directly after they are created.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <div class="go-container">
+              <div class="go-column go-column--100">
+                <go-select
+                  [control]="select19"
+                  label="Favorite Candy">
+                </go-select>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="basicDisabledExample"
+              class="code-block--no-bottom-margin">
+            </code>
+            <code
+              [highlight]="basicDisabledExample2"
+              class="code-block--no-bottom-margin">
+            </code>
+            <code
+              [highlight]="basicDisabledExample3"
               class="code-block--no-bottom-margin">
             </code>
           </div>
@@ -785,6 +871,7 @@
 
     </div>
   </go-card>
+
   <go-card id="form-select-template" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Component Virtual scroll</h2>
@@ -819,7 +906,7 @@
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
             <go-select 
               [items]="selectData" 
-              [control]="select19" 
+              [control]="select21" 
               bindValue="value" 
               bindLabel="name" 
               [hints]="[
@@ -833,9 +920,9 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="select19Code" class="code-block--no-bottom-margin">
+            <code [highlight]="select21Code" class="code-block--no-bottom-margin">
             </code>
-            <code [highlight]="select19ComponentCode" class="code-block--no-bottom-margin">
+            <code [highlight]="select21ComponentCode" class="code-block--no-bottom-margin">
             </code>
           </div>
         </div>

@@ -14,6 +14,8 @@ export class ActionSheetPanelDocsComponent {
   @Input() icon: string;
   @Input() externalLink: string;
   @Input() panelContent: string;
+  @Input() target: string = '_blank';
+  @Input() closeOnClick: boolean = true;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
   `;
@@ -126,6 +128,31 @@ export class ActionSheetPanelDocsComponent {
   </go-action-sheet>
   `;
 
+  closeOnClickHtml: string = `
+  <go-action-sheet>
+    <ng-container go-action-sheet__button>
+      <go-button>
+        Actions Sheet
+      </go-button>
+    </ng-container>
+    <ng-container go-action-sheet-content>
+      <go-panel
+        panelContent="Home"
+        [closeOnClick]="false">
+      </go-panel>
+      <go-panel
+        (action)="toast()"
+        panelContent="Toast Me"
+        [closeOnClick]="false">
+      </go-panel>
+      <go-panel
+        panelContent="Settings"
+        [closeOnClick]="false">
+      </go-panel>
+    </ng-container>
+  </go-action-sheet>
+  `;
+
   contentProjectionHtml: string = `
     <go-action-sheet>
       <ng-container go-action-sheet__button>
@@ -158,7 +185,6 @@ export class ActionSheetPanelDocsComponent {
   ) {
     this.subNavService.pageTitle = 'Action Sheet Panel';
     this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-action-sheet/go-panel';
-
   }
 
   toast(): void {

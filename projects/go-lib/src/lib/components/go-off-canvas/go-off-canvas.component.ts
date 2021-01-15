@@ -3,16 +3,20 @@ import {
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
+  HostListener,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { GoOffCanvasDirective } from './go-off-canvas.directive';
-import { GoOffCanvasService } from './go-off-canvas.service';
-import { GoOffCanvasItem } from './go-off-canvas.interface';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { offCanvasAnimation } from '../../animations/off-canvas.animation';
+import { GoOffCanvasOptions } from './go-off-canvas-options';
+import { GoOffCanvasDirective } from './go-off-canvas.directive';
+import { GoOffCanvasItem } from './go-off-canvas.interface';
+import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
   selector: 'go-off-canvas',
@@ -25,35 +29,62 @@ import { offCanvasAnimation } from '../../animations/off-canvas.animation';
     offCanvasAnimation
   ]
 })
-export class GoOffCanvasComponent implements OnInit {
-  currentOffCanvasItem: GoOffCanvasItem;
+export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, OnDestroy {
+  currentOffCanvasItem: GoOffCanvasItem<any>;
   opened: boolean = false;
-  header: string;
+  screenWidth: number;
+
+  private destroy$: Subject<void> = new Subject();
 
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;
-  size: 'large' | 'small' = 'small';
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.screenWidth = window.innerWidth;
+  }
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private goOffCanvasService: GoOffCanvasService
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.goOffCanvasService.activeOffCanvasComponent.subscribe((goOffCanvasItem: GoOffCanvasItem) => {
-      this.currentOffCanvasItem = goOffCanvasItem;
-      this.loadComponent();
-    });
+    this.screenWidth = window.innerWidth;
 
-    this.goOffCanvasService.offCanvasOpen.subscribe((value: boolean) => {
-      this.opened = value;
-      if (this.opened === false) {
-        this.destroyComponent();
-      }
-    });
+    this.goOffCanvasService.activeOffCanvasComponent
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((goOffCanvasItem: GoOffCanvasItem<any>) => {
+        this.currentOffCanvasItem = goOffCanvasItem;
+        this.loadComponent();
+      });
+
+    this.goOffCanvasService.offCanvasOpen
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value: boolean) => {
+        this.opened = value;
+        if (this.opened === false) {
+          this.destroyComponent();
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   closeOffCanvas(): void {
     this.goOffCanvasService.closeOffCanvas();
+  }
+
+  getOffCanvasWidth(): string {
+    if (this.screenWidth > 768) {
+      return this.size === 'large' ? '75vw' : '350px';
+    } else {
+      return '100vw';
+    }
   }
 
   private loadComponent(): void {
@@ -67,8 +98,20 @@ export class GoOffCanvasComponent implements OnInit {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
     });
 
-    this.size = this.currentOffCanvasItem.size || 'small';
-    this.header = this.currentOffCanvasItem.header;
+    this.setOffCanvasProperties();
+  }
+
+  private setOffCanvasProperties(): void {
+    if (this.currentOffCanvasItem.offCanvasOptions) {
+      Object.keys(this.currentOffCanvasItem.offCanvasOptions).forEach((key: string) => {
+        this[key] = this.currentOffCanvasItem.offCanvasOptions[key];
+      });
+    } else {
+      // tslint:disable-next-line: deprecation
+      this.size = this.currentOffCanvasItem.size || 'small';
+      // tslint:disable-next-line: deprecation
+      this.header = this.currentOffCanvasItem.header;
+    }
   }
 
   private destroyComponent(): void {

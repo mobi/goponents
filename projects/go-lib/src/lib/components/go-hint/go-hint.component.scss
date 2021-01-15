@@ -3,13 +3,14 @@
 .go-hint {
   font-size: .875rem;
   font-style: italic;
+  letter-spacing: $base-letter-spacing;
   line-height: 1rem;
   margin: $column-gutter--quarter 0;
   padding-left: $column-gutter--three-quarters;
   position: relative;
 
   &::before {
-    background: $theme-light-border;
+    background: $base-light-tertiary;
     border-radius: $global-radius;
     bottom: 0;
     content: '';

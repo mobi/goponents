@@ -5,7 +5,7 @@
       <go-copy cardId="usage" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
-      
+
       <div class="go-column go-column--100">
         <p class="go-body-copy">The <code class="code-block--inline">go-panel</code> should be used in conjuction with the Action Sheet.</p>
       </div>
@@ -30,34 +30,51 @@
           Ideally, this should only be used for the first panel in an action sheet.
         </p>
       </div>
-      
+
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">icon</h4>
         <p class="go-body-copy">
           The Material Icons string for an icon. If not passed, the space for the icon goes away.
         </p>
       </div>
-      
+
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">externalLink</h4>
         <p class="go-body-copy">
           This binding allows the implementer to target a route outside of Angular.
-          This should not be used in conjuction with a <code class="code-block--inline">routerLink</code>.
-          The link will open in a new tab.
+          This should not be used in conjunction with a <code class="code-block--inline">routerLink</code>.
+          The link will open in a new tab by default. The <code class="code-block--inline">target</code> may be changed
+          using the <code class="code-block--inline">target</code> binding.
         </p>
       </div>
 
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">panelContent</h4>
         <p class="go-body-copy">
-          This binding is the content of the panel. HTML can be passed into this. 
+          This binding is the content of the panel. HTML can be passed into this.
         </p>
       </div>
-      
+
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">action</h4>
         <p class="go-body-copy">
           This is an event that is emitted from the panel when a user clicks on the panel.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">target (optional)</h4>
+        <p class="go-body-copy">
+          This optional binding sets the target for an external link. By default, the value is
+          <code class="code-block--inline">_blank</code> which will open the link in a new tab.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">closeOnClick</h4>
+        <p class="go-body-copy">
+          This determines whether the action sheet will close when the panel is clicked.
+          Defaults to <code class="code-block--inline">true</code>.
         </p>
       </div>
 
@@ -291,53 +308,98 @@
       </div>
     </div>
   </go-card>
-</section>
 
-<go-card class="go-column go-column--100" id="content-projection">
-  <ng-container go-card-header>
-    <h2 class="go-heading-2 go-heading--no-wrap">Content Projection</h2>
-    <go-copy cardId="content-projection" goCopyCardLink></go-copy>
-  </ng-container>
-  <div go-card-content>
-    <div class="go-container">
-      <div class="go-column--100 go-column go-column--no-padding">
-        <p class="go-body-copy">
-          Content can be projected into a <code class="code-block--inline">go-panel</code>
-          to enable more complex structure and stylings. Content projection only works, however,
-          when nothing is passed to the <code class="code-block--inline">panelContent</code>
-          or <code class="code-block--inline">externalLink</code> inputs.
-        </p>
-      </div>
-      <div class="go-column go-column--50 go-column--no-padding">
-        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code [highlight]="contentProjectionHtml"></code>
-      </div>
-      <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
-        <h4 class="go-heading-4 go-heading--underlined">View</h4>
-        <go-action-sheet>
-          <ng-container go-action-sheet__button>
-            <go-button>
-              Sheet With Content Projection
-            </go-button>
-          </ng-container>
-          <ng-container go-action-sheet-content>
-            <go-panel>
-              <ol class="go-ordered-list">
-                <li class="go-ordered-list__item">One</li>
-                <li class="go-ordered-list__item">Two</li>
-                <li class="go-ordered-list__item">Three</li>
-              </ol>
-            </go-panel>
-            <go-panel>
-              <ol class="go-ordered-list">
-                <li class="go-ordered-list__item">Four</li>
-                <li class="go-ordered-list__item">Five</li>
-                <li class="go-ordered-list__item">Six</li>
-              </ol>
-            </go-panel>
-          </ng-container>
-        </go-action-sheet>
+  <go-card class="go-column go-column--100" id="close-on-click" #router>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Close On Click</h2>
+      <go-copy cardId="close-on-click" goCopyCardLink></go-copy>
+    </ng-container>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            This example shows an instance where the panels do not close the action sheet when clicked.
+          </p>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="closeOnClickHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Actions Sheet
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel
+                panelContent="Home"
+                [closeOnClick]="false">
+              </go-panel>
+              <go-panel
+                (action)="toast()"
+                panelContent="Toast Me"
+                [closeOnClick]="false">
+              </go-panel>
+              <go-panel
+                panelContent="Settings"
+                [closeOnClick]="false">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
       </div>
     </div>
-  </div>
-</go-card>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="content-projection">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Content Projection</h2>
+      <go-copy cardId="content-projection" goCopyCardLink></go-copy>
+    </ng-container>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            Content can be projected into a <code class="code-block--inline">go-panel</code>
+            to enable more complex structure and stylings. Content projection only works, however,
+            when nothing is passed to the <code class="code-block--inline">panelContent</code>
+            or <code class="code-block--inline">externalLink</code> inputs.
+          </p>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="contentProjectionHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Sheet With Content Projection
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel>
+                <ol class="go-ordered-list">
+                  <li class="go-ordered-list__item">One</li>
+                  <li class="go-ordered-list__item">Two</li>
+                  <li class="go-ordered-list__item">Three</li>
+                </ol>
+              </go-panel>
+              <go-panel>
+                <ol class="go-ordered-list">
+                  <li class="go-ordered-list__item">Four</li>
+                  <li class="go-ordered-list__item">Five</li>
+                  <li class="go-ordered-list__item">Six</li>
+                </ol>
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+      </div>
+    </div>
+  </go-card>
+</section>
