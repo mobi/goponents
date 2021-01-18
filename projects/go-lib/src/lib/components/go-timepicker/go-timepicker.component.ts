@@ -24,7 +24,7 @@ export class GoTimepickerComponent implements OnInit {
   @Input() theme: string = 'light';
   @Input() appendToContent: boolean = false;
 
-  selectedTime: string = null;
+  selectedTime: string = '';
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 
@@ -73,7 +73,8 @@ export class GoTimepickerComponent implements OnInit {
       this.control.setValue(this.convertTo24Hour(selctedTime));
       this.selectedTime = selctedTime;
     } else {
-      this.selectedTime = null;
+      this.selectedTime = '';
+      this.control.setValue(null);
     }
   }
 

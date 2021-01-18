@@ -91,7 +91,7 @@ describe('GoTimepickerComponent', () => {
     });
 
     it('clear selected time', () => {
-      const time: string = null;
+      const time: string = '';
       component.timePicked(null);
 
       expect(component.selectedTime).toEqual(time);
