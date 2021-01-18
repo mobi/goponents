@@ -24,7 +24,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
   @Input() selectedTime: string;
   @Input() displayAbove: boolean;
   @Input() displayFromRight: boolean;
-  @Output() timePicked = new EventEmitter();
+  @Output() timePicked: EventEmitter<object> = new EventEmitter();
   @Output() closeTime = new EventEmitter();
 
   inputHourError: boolean = false;
@@ -60,9 +60,9 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
         this.closeTimePicker();
         this.resetTimeInput();
         break;
-        case 'Enter':
-          this.apply();
-          break;
+      case 'Enter':
+        this.apply();
+        break;
       default:
         return;
     }
@@ -108,7 +108,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
     const h: any = H % 12 || 12;
     const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     const minute: string = timeString.substr(3, 2);
-    this.hour = this.addZeroIfNeeded(h); // h > 9 ? h : '0' + h;
+    this.hour = this.addZeroIfNeeded(h);
     this.minute = this.addZeroIfNeeded(minute);
     this.format = ampm === 'AM' ? true : false;
   }

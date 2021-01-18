@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
+import { GoTimeFormat } from './go-time-format.model';
 
 @Component({
   selector: 'go-timepicker',
@@ -23,7 +24,7 @@ export class GoTimepickerComponent implements OnInit {
   @Input() theme: string = 'light';
   @Input() appendToContent: boolean = false;
 
-  selectedTime: string;
+  selectedTime: string = null;
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 
@@ -32,13 +33,16 @@ export class GoTimepickerComponent implements OnInit {
     this.selectedTime = this.changeTimeFormat(this.control.value);
   }
 
-  public changeTimeFormat(timeString: string): string {
-    if (!timeString) {
+  public changeTimeFormat(timeString: string | Date): string {
+    if (!timeString || timeString == 'Invalid Date') {
       return;
+    }
+    if (typeof(timeString) === 'object') {
+      timeString = `${this.addZeroIfNeeded(timeString.getHours())}:${this.addZeroIfNeeded(timeString.getMinutes())}:00`;
     }
     const H: number = +timeString.substr(0, 2);
     const h: number | string = H % 12 || 12;
-    const hour: number | string = h > 9 ? h : '0' + h;
+    const hour: number | string = this.addZeroIfNeeded(h);
     const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
     timeString = hour + timeString.substr(2, 3) + ' ' + ampm;
     return timeString;
@@ -62,22 +66,22 @@ export class GoTimepickerComponent implements OnInit {
     this.openTimeValue = convert24Hr ? convert24Hr : undefined;
   }
 
-  public timePicked(event: any): void {
+  public timePicked(event: GoTimeFormat): void {
     if (event) {
       const selctedTime: string =
         event.hours + ':' + event.minutes + ' ' + event.ampm;
       this.control.setValue(this.convertTo24Hour(selctedTime));
       this.selectedTime = selctedTime;
     } else {
-      this.selectedTime = '';
+      this.selectedTime = null;
     }
   }
 
-  closeTime(): void {
+ public closeTime(): void {
     this.timeOpen = false;
   }
 
-  convertTo24Hour(time12h: string): string {
+  private convertTo24Hour(time12h: string): string {
     if (time12h) {
       const [time, modifier]: string[] = time12h.split(' ');
 
@@ -90,5 +94,12 @@ export class GoTimepickerComponent implements OnInit {
       }
       return `${hours}:${minutes}`;
     }
+  }
+
+  addZeroIfNeeded(value: string | number): string | number {
+    if (Number(value) < 10) {
+      value = '0' + +value;
+    }
+    return value;
   }
 }

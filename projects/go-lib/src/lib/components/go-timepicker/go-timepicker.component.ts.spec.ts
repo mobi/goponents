@@ -35,42 +35,88 @@ describe('GoTimepickerComponent', () => {
   });
 
   it('should create', () => {
-    fixture.detectChanges();
+    component.ngOnInit();
     expect(component).toBeTruthy();
   });
 
-  describe('onInit', () => {
+  describe('ngOnInit', () => {
     afterEach(() => {
       component.selectedTime = null;
     });
 
-    it('set the time', () => {
+    it('check with date object', () => {
+      const time: string = '05:15 AM';
+      component.control.setValue(new Date('2017-04-30 05:15:00'));
+      component.ngOnInit();
+
+      expect(component.changeTimeFormat(component.selectedTime)).toBe(time);
+    });
+
+    it('change the time format 24hr to 12hr', () => {
+      component.control.setValue('18:15:00');
+      const time: string = '06:15 PM';
+      component.ngOnInit();
+
+      expect(component.selectedTime).toEqual(time);
+    });
+  });
+
+  describe('timePicked', () => {
+    afterEach(() => {
+      component.selectedTime = null;
+    });
+
+    it('set the time with AM', () => {
       const time: string = '10:20 AM';
       const goTimeFormat: GoTimeFormat = {
         hours: '10',
         minutes: '20',
         ampm: 'AM',
       };
-      fixture.detectChanges();
+      component.timePicked(goTimeFormat);
+
+      expect(component.selectedTime).toEqual(time);
+    });
+
+    it('set the time with PM', () => {
+      const time: string = '10:20 PM';
+      const goTimeFormat: GoTimeFormat = {
+        hours: '10',
+        minutes: '20',
+        ampm: 'PM',
+      };
       component.timePicked(goTimeFormat);
 
       expect(component.selectedTime).toEqual(time);
     });
 
     it('clear selected time', () => {
-      const time: string = '';
-      fixture.detectChanges();
+      const time: string = null;
       component.timePicked(null);
 
       expect(component.selectedTime).toEqual(time);
     });
+  });
 
-    it('change the time format 24hr to 12hr', () => {
-      const time: string = '06:15 PM';
-      const timeString: string = '18:15:00';
-      fixture.detectChanges();
+  describe('toggleTimepicker', () => {
+    afterEach(() => {
+      component.selectedTime = null;
+    });
 
-      expect(component.changeTimeFormat(timeString)).toBe(time);
+    it('should not open timepicker if control is disabled', () => {
+      component.control.disable();
+
+      component.toggleTimepicker(new Event('click'));
+
+      expect(component.timeOpen).toBe(false);
+    });
+
+    it('change selected time format to 24H', () => {
+      component.selectedTime = '05:42 PM';
+      const convertTime: string = '17:42';
+
+      component.toggleTimepicker(new Event('click'));
+      expect(component.openTimeValue).toBe(convertTime);
     });
   });
 });
