@@ -15,13 +15,15 @@ describe('GoTimepickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GoTimeComponent, GoTimepickerComponent],
+      declarations: [
+        GoTimeComponent,
+        GoTimepickerComponent
+      ],
       imports: [
         GoIconButtonModule,
         GoButtonModule,
         GoHintModule,
         FormsModule,
-        GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule,
       ],

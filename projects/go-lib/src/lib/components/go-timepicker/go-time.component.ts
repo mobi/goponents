@@ -25,7 +25,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
   @Input() displayAbove: boolean;
   @Input() displayFromRight: boolean;
   @Output() timePicked: EventEmitter<object> = new EventEmitter();
-  @Output() closeTime = new EventEmitter();
+  @Output() closeTime: EventEmitter<void> = new EventEmitter();
 
   inputHourError: boolean = false;
   inputMinuteError: boolean = false;
@@ -87,7 +87,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
       this.hourInput.nativeElement.focus();
   }
 
-  formatAMPM(date: Date) {
+  formatAMPM(date: Date): GoTimeFormat  {
     let hours: number | string = date.getHours();
     let minutes: number | string = date.getMinutes();
     const ampm: string = hours >= 12 ? 'pm' : 'am';
