@@ -1,0 +1,309 @@
+<section class="go-container">
+    <app-form-control-docs class="go-column go-column--100"></app-form-control-docs>
+  
+    <go-card id="form-input-control" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Control</h2>
+        <go-copy cardId="form-input-control" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            As with most of the form components, the only <code class="code-block--inline">@Input</code>
+            required of the timepicker component is a <code class="code-block--inline">FormControl</code>.
+            The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
+            attribute on the &lt;go-timepicker&gt; component. A time can be initialized into the timepicker
+            by setting a time on the control. It can be initialized by either a string or a date object.
+            If using a string it can be entered as format (hh:mm:ss)
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker [control]="time"></go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicInputExampleComponent"
+                class="code-block--no-bottom-margin">
+              </code>
+              <code
+                [highlight]="basicInputExample"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-label" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Label</h2>
+        <go-copy cardId="form-input-label" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            All form components include an <code class="code-block--inline">@Input() label: string;</code>
+            that can be used to add a label to the input components.
+            In addition to displaying an HTML label, the text passed
+            in via the <code class="code-block--inline">[label]</code>
+            attribute is used to generate a unique ID to associate the
+            label with the timepicker. If no label is passed in, a generic,
+            but still unique ID will be generated.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker
+                [control]="time2"
+                label="Select Time">
+              </go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicInputLabelExample"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-key" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Key</h2>
+        <go-copy cardId="form-input-key" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            As stated above the label attribute is used to generate a
+            unique ID to associate the label with the timepicker. As this might
+            not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+            can be used to configure the ID attribute of the timepicker directly.
+            Anything passed into the component via the <code class="code-block--inline">[key]</code>
+            attribute will be used to both assign the ID to the timepicker and
+            associate the label with the timepicker.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker
+                [control]="time2"
+                label="Select Time"
+                key="your-name-input">
+              </go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicInputKeyExample"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+            <div class="go-column go-column--100">
+              <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
+              <p class="go-body-copy">
+                Notice in the below example output that the <code class="code-block--inline">key</code> has been assigned
+                to both the <code class="code-block--inline">id</code> attribute on
+                the input and the <code class="code-block--inline">for</code> attribute
+                on the label.
+              </p>
+              <code
+                [highlight]="basicInputKeyExampleOutput"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-hints" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Hints</h2>
+        <go-copy cardId="form-input-hints" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            Form hints exist to help give more information about the
+            inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+            can be used to pass in an array of hints to the timepicker component.
+          </p>
+        </div>
+        
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker
+                [control]="time3"
+                label="Select Time"
+                [hints]="hints">
+              </go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicHintsTemplate"
+                class="code-block--no-bottom-margin">
+              </code>
+              <code
+                [highlight]="basicInputHintsExample"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-errors" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Errors</h2>
+        <go-copy cardId="form-input-errors" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy">
+            FormControls all have a <a class="go-link" href="https://angular.io/api/forms/AbstractControl#setErrors">consistent way of setting errors</a>
+            via the <code class="code-block--inline">setErrors()</code> function.
+            All goponents use this API to display errors on our components, but the
+            data needs to be displayed in a specific structure.
+          </p>
+          <p class="go-body-copy go-body-copy--no-margin">
+            By default the input type is set to "Error", however this can be
+            overrides as shown below.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker
+                [control]="time4"
+                label="Select Time">
+              </go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicInputLabelExample"
+                class="code-block--no-bottom-margin">
+              </code>
+              <code
+                [highlight]="basicErrorsTemplate"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-disabled" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Disable Component</h2>
+        <go-copy cardId="form-input-disabled" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy go-body-copy--no-margin">
+            FormControls can be either created as disable or later disabled
+            and re-enabled directly after they are created.
+          </p>
+        </div>
+   
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <div class="go-container">
+                <div class="go-column go-column--100">
+                  <go-timepicker
+                    [control]="time5"
+                    label="Start Time">
+                  </go-timepicker>
+                </div>
+                <div class="go-column go-column--100">
+                  <go-timepicker
+                    [control]="time6"
+                    label="End Time">
+                  </go-timepicker>
+                </div>
+              </div>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicDisabledExample"
+                class="code-block--no-bottom-margin">
+              </code>
+              <code
+                [highlight]="basicDisabledExample2"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </go-card>
+
+    <go-card id="form-input-placeholder" class="go-column go-column--100">
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Component Placeholder</h2>
+        <go-copy cardId="form-input-placeholder" goCopyCardLink></go-copy>
+      </ng-container>
+      <div class="go-container" go-card-content>
+  
+        <div class="go-column go-column--100">
+          <p class="go-body-copy">
+            The timepicker components placeholder attribute can be set via
+            <code class="code-block--inline">@Input() placeholder: string;</code>
+            and the <code class="code-block--inline">[placeholder]</code> attribute.
+          </p>
+        </div>
+  
+        <div class="go-column go-column--100 go-column--no-padding">
+          <div class="go-container">
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">View</h4>
+              <go-timepicker
+                [control]="time7"
+                label="Select Time"
+                placeholder="10:00 AM">
+              </go-timepicker>
+            </div>
+            <div class="go-column go-column--50">
+              <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+              <code
+                [highlight]="basicPlaceholderExample"
+                class="code-block--no-bottom-margin">
+              </code>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </go-card>

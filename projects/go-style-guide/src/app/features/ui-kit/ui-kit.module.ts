@@ -33,6 +33,7 @@ import {
   GoTableModule,
   GoTabModule,
   GoTextAreaModule,
+  GoTimepickerModule,
   GoToasterService,
   GoToastModule,
   GoTreeModule
@@ -107,6 +108,7 @@ import { VirtualScrollComponent } from './components/virtual-scroll/virtual-scro
 import { BasicTestLargeComponent } from './components/basic-test-large/basic-test-large.component';
 import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-button/basic-test-submit-button.component';
 import { TableChildRowsComponent } from './components/table-docs/components/table-child-rows/table-child-rows.component';
+import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 
 @NgModule({
   imports: [
@@ -139,7 +141,8 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
     UiKitRoutesModule,
     GoSharedModule,
     FormsModule,
-    GoTreeModule
+    GoTreeModule,
+    GoTimepickerModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -204,7 +207,8 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
     TableFiltersComponent,
     TableTitleTemplateComponent,
     VirtualScrollComponent,
-    TableChildRowsComponent
+    TableChildRowsComponent,
+    TimepickerDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

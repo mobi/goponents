@@ -1,0 +1,70 @@
+<div class="go-time--wrapper">
+  <div
+    class="go-time"
+    [ngClass]="{
+      'go-time--above': displayAbove,
+      'go-time--right': displayFromRight,
+      'go-time--append-to-content': appendToContent
+    }"
+  >
+  <div class="go-time-column">
+      <go-icon-button
+        buttonIcon="keyboard_arrow_up"
+        (click)="increaseHour()"
+      ></go-icon-button>
+      <input
+        #hourInput
+        class="go-form__input hour-minute-input"
+        placeholder="HH"
+        [(ngModel)]="hour"
+        (keypress)="validateInput($event, '^([0-1]|[0][0-9]|[1][0-2])$')"
+      />
+      <go-icon-button
+        buttonIcon="keyboard_arrow_down"
+        (click)="decreaseHour()"
+      ></go-icon-button>
+    </div>
+    <!-- Colon -->
+    <div class="go-time-column colon-content">
+      <span>:</span>
+    </div>
+    <div class="go-time-column">
+      <go-icon-button
+        buttonIcon="keyboard_arrow_up"
+        (click)="increaseMinute()"
+      ></go-icon-button>
+      <input
+      class="go-form__input hour-minute-input"
+      placeholder="MM"
+      [(ngModel)]="minute"
+      (keypress)="validateInput($event, '^([0-5]?[0-9])$')"
+      [ngClass]="{ 'go-form__input--error': inputMinuteError }"
+    />
+      <go-icon-button
+        buttonIcon="keyboard_arrow_down"
+        (click)="decreaseMinute()"
+      ></go-icon-button>
+    </div>
+    <!-- AM / PM Button -->
+    <div class="go-time-column go-time-format">
+      <go-button buttonVariant="secondary" (click)="changeFormat()">
+       {{ format ? 'AM' : 'PM' }}
+      </go-button>
+    </div>
+    <!-- Action Button Group -->
+    <div>
+      <ul class="go-button-group go-time-action">
+        <li class="go-button-group__item">
+          <go-button class="go-time-button" buttonVariant="secondary" (handleClick)="clear()">
+            Clear
+          </go-button>
+        </li>
+        <li class="go-button-group__item">
+          <go-button class="go-time-button" buttonVariant="primary" (handleClick)="apply()">
+            Apply
+          </go-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

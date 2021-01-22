@@ -1,0 +1,64 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.go-time {
+  background: $theme-light-bg;
+  border: 1px solid $theme-light-border;
+  border-radius: $global-radius;
+  position: absolute;
+  z-index: z-index(toaster);
+  padding: 0 $column-gutter--half $column-gutter--half $column-gutter--half;
+}
+
+.go-time--above {
+  bottom: 2.5rem;
+}
+
+.go-time--right {
+  right: 0;
+}
+
+.go-time--append-to-content {
+  position: static;
+}
+
+.go-time--wrapper {
+  display: flex;
+}
+
+.colon-content {
+  margin-top: 1.8rem;
+  padding: $column-gutter--half;
+}
+
+.hour-minute-input::placeholder {
+  font-size: 0.625rem;
+}
+
+.go-time-action {
+  float: right;
+}
+
+.go-time-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  float: left;
+}
+
+.hour-minute-input {
+  width: 2.25rem;
+  text-align: center;
+}
+
+.go-time-format {
+  margin-top: 1.8rem;
+  padding-left: $column-gutter--half;
+}
+
+:host ::ng-deep .go-time-button {
+  .go-button {
+    padding: 0.25rem;
+  }
+}
