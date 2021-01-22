@@ -87,7 +87,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
       this.hourInput.nativeElement.focus();
   }
 
-  formatAMPM(date: Date): GoTimeFormat  {
+  private formatAMPM(date: Date): GoTimeFormat  {
     let hours: number | string = date.getHours();
     let minutes: number | string = date.getMinutes();
     const ampm: string = hours >= 12 ? 'pm' : 'am';
@@ -103,7 +103,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
     return this.goTimeFormat;
   }
 
-  changeTimeFormat(timeString: string): void {
+  private changeTimeFormat(timeString: string): void {
     const H: number = +timeString.substr(0, 2);
     const h: any = H % 12 || 12;
     const ampm: string = H < 12 || H === 24 ? 'AM' : 'PM';
@@ -153,7 +153,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
     this.minute =  this.addZeroIfNeeded(this.minute);
   }
 
-  addZeroIfNeeded(value: string): string {
+  private addZeroIfNeeded(value: string): string {
     if (Number(value) < 10) {
       value = '0' + +value;
     }
@@ -201,7 +201,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
     this.closeTimePicker();
   }
 
-  inputTimeError(): void {
+  private inputTimeError(): void {
     if (Number(this.hour) > 12) {
       this.inputHourError = true;
     } else if (Number(this.minute) > 59) {

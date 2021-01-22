@@ -12,7 +12,11 @@ describe('GoTimeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GoTimeComponent],
-      imports: [GoIconButtonModule, GoButtonModule, FormsModule],
+      imports: [
+        GoIconButtonModule,
+        GoButtonModule,
+        FormsModule
+      ],
     }).compileComponents();
   }));
 
@@ -26,49 +30,105 @@ describe('GoTimeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
-    afterEach(() => {
-      component.selectedTime = null;
+
+  describe('increaseHour', () => {
+
+    it('Hour will increase by one', () => {
+
+      component.hour = '10';
+      component.increaseHour();
+      expect(component.hour).toEqual('11');
     });
 
-    it('check hour with time format', () => {
-      component.selectedTime = '18:15';
-      const hour: string = '06';
-      component.ngOnInit();
+    it('Hour will reset to 01 if hour will more than 12', () => {
 
-      component.changeTimeFormat(component.selectedTime);
-      expect(component.hour).toBe(hour);
+      component.hour = '13';
+      component.increaseHour();
+      expect(component.hour).toEqual('01');
+    });
+  });
+
+  describe('increaseMinute', () => {
+    it('Minute will increase by one', () => {
+
+      component.minute = '10';
+      component.increaseMinute();
+      expect(component.minute).toEqual('11');
     });
 
-    it('check minute with time format', () => {
-      component.selectedTime = '18:15';
-      const minute: string = '15';
-      component.ngOnInit();
+    it('Minute will reset to 00 if minute will more than 59', () => {
 
-      component.changeTimeFormat(component.selectedTime);
-      expect(component.minute).toBe(minute);
+      component.minute = '60';
+      component.increaseMinute();
+      expect(component.minute).toEqual('00');
+    });
+  });
+
+  describe('decreaseHour', () => {
+    it('Hour will decrease by one', () => {
+
+      component.hour = '10';
+      component.decreaseHour();
+      expect(component.hour).toEqual('09');
     });
 
-    it('check time with format for AM and PM button display', () => {
-      component.selectedTime = '18:15';
-      const format: boolean = false;
-      component.ngOnInit();
+    it('Hour will reset to 12 if hour will decrease to 01', () => {
 
-      component.changeTimeFormat(component.selectedTime);
-      expect(component.format).toBe(format);
+      component.hour = '01';
+      component.decreaseHour();
+      expect(component.hour).toEqual('12');
+    });
+  });
+
+  describe('decreaseMinute', () => {
+    it('Minute will decrease by one', () => {
+
+      component.minute = '10';
+      component.decreaseMinute();
+      expect(component.minute).toEqual('09');
     });
 
-    it('check time format with no selected time', () => {
-      component.selectedTime = null;
-      const goTimeFormat: GoTimeFormat = {
-        hours: '05',
-        minutes: '15',
-        ampm: 'am',
+    it('Minute will reset to 59 if it will decrease to 00', () => {
+
+      component.minute = '00';
+      component.decreaseMinute();
+      expect(component.minute).toEqual('59');
+    });
+  });
+
+  describe('apply time', () => {
+    it('check with time format after apply', () => {
+      component.hour = '06';
+      component.minute = '09';
+      component.format = false;
+      const timeFormat: GoTimeFormat = {
+        hours: '06',
+        minutes: '09',
+        ampm: 'PM',
       };
-      component.ngOnInit();
 
-      component.formatAMPM(new Date('2017-04-30 05:15:00'));
-      expect(component.goTimeFormat).toEqual(goTimeFormat);
+      component.apply();
+      expect(component.goTimeFormat).toEqual(timeFormat);
+    });
+
+    it('check with time format if hour and minute is not exist ', () => {
+      const timeFormat: GoTimeFormat = {
+        hours: '12',
+        minutes: '00',
+        ampm: 'AM',
+      };
+
+      component.apply();
+      expect(component.goTimeFormat).toEqual(timeFormat);
+    });
+  });
+
+  describe('validateInput', () => {
+   it('hour and minute will not support more than two digit', () => {
+        const event: KeyboardEvent = new KeyboardEvent('keypress', {key: '', });
+        const regex: string =  '^([0-1]|[0][0-9]|[1][0-2])$';
+
+        expect(component.validateInput(event, regex)).toBe(false);
     });
   });
 });
