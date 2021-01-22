@@ -46,6 +46,96 @@ export class SelectDocsComponent implements OnInit {
     }
   ];
 
+  selectData: any = [
+    {
+      value: 1,
+      name: 'Harry',
+    },
+    {
+      value: 2,
+      name: 'Hermione',
+    },
+    {
+      value: 3,
+      name: 'Ron',
+    },
+    {
+      value: 4,
+      name: 'Voldermort',
+    },
+    {
+      value: 5,
+      name: 'Snake',
+    },
+    {
+      value: 6,
+      name: 'Hermione1',
+    },
+    {
+      value: 7,
+      name: 'Hermione2',
+    },
+    {
+      value: 8,
+      name: 'Hermione3',
+    },
+    {
+      value: 9,
+      name: 'Hermione4',
+    },
+    {
+      value: 10,
+      name: 'Hermione5',
+    },
+    {
+      value: 11,
+      name: 'Hermione6',
+    },
+    {
+      value: 12,
+      name: 'Hermione7',
+    },
+    {
+      value: 13,
+      name: 'Hermione7',
+    },
+    {
+      value: 14,
+      name: 'Hermione7',
+    },
+  ];
+
+  newSelectData: any = [
+    {
+      value: 15,
+      name: 'Alberta',
+    },
+    {
+      value: 15,
+      name: 'British Columbia',
+    },
+    {
+      value: 16,
+      name: 'Manitoba',
+    },
+    {
+      value: 17,
+      name: 'Northwest Territories',
+    },
+    {
+      value: 18,
+      name: 'Nunavut',
+    },
+    {
+      value: 19,
+      name: 'Ontario',
+    },
+    {
+      value: 20,
+      name: 'Prince Edward Island',
+    },
+  ];
+
   select1: FormControl = new FormControl();
   select2: FormControl = new FormControl();
   select3: FormControl = new FormControl();
@@ -66,6 +156,7 @@ export class SelectDocsComponent implements OnInit {
   select18: FormControl = new FormControl();
   select19: FormControl = new FormControl({ value: '', disabled: true });
   select20: FormControl = new FormControl();
+  select21: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
@@ -348,7 +439,7 @@ export class SelectDocsComponent implements OnInit {
     </ng-template>
   </go-select>
   `;
-  
+
   select20Code: string = `
   <go-select
     [control]="select"
@@ -375,6 +466,30 @@ export class SelectDocsComponent implements OnInit {
       ]
     }
   ]
+  `;
+
+  select21Code: string = `
+ <go-select
+   [items]="selectData"
+   [control]="select"
+   bindValue="value"
+   bindLabel="name"
+   [hints]="['Scroll to end for loading more data']"
+   label="Select an Option"
+   (scrollToEnd)="scrollToEnd()"
+   (scroll)="scroll($event)"
+   [virtualScroll]="true">
+  </go-select>
+  `;
+
+  select21ComponentCode: string = `
+  scrollToEnd(): void {
+    // Code here
+  }
+
+  scroll($event: { start: number; end: number }): void {
+  // Code here
+  }
   `;
 
   basicDisabledExample: string = `
@@ -443,5 +558,12 @@ export class SelectDocsComponent implements OnInit {
         label: 'Favorite Candy',
       }
     );
+  }
+  scrollToEnd(): void {
+    this.selectData = [...this.selectData, ...this.newSelectData];
+  }
+
+  scroll($event: { start: number; end: number }): void {
+    console.log($event);
   }
 }

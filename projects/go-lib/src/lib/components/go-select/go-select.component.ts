@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { generateId } from '../../utilities/form.utils';
@@ -33,6 +33,9 @@ export class GoSelectComponent implements OnInit {
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';
   @Input() theme: 'light' | 'dark' = 'light';
+  @Input() virtualScroll: boolean = false;
+  @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
+  @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number; end: number }>();
 
   @ContentChild('goSelectOption', { static: false }) goSelectOption: TemplateRef<any>;
   @ContentChild('goSelectOptionGroup', { static: false }) goSelectOptionGroup: TemplateRef<any>;
@@ -44,5 +47,15 @@ export class GoSelectComponent implements OnInit {
 
   onSelectAll(): void {
     this.control.patchValue(this.items.map((item: any) => this.bindValue ? item[this.bindValue] : item));
+  }
+
+  onScrollToEnd(): void {
+    if (this.virtualScroll) {
+      this.scrollToEnd.emit();
+    }
+  }
+
+  onScroll($event: { start: number; end: number }): void {
+    this.scroll.emit($event);
   }
 }
