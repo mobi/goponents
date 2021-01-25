@@ -391,7 +391,7 @@ describe('GoTableComponent', () => {
 
       component.selectAllControl.setValue(false);
 
-      component['selectionSubscriptions'].unsubscribe();
+      component.ngOnDestroy();
 
       expect(component.selectAllIndeterminate).toBe(false);
     });
@@ -410,7 +410,7 @@ describe('GoTableComponent', () => {
 
       component.selectAllControl.setValue(true);
 
-      component['selectionSubscriptions'].unsubscribe();
+      component.ngOnDestroy();
 
       expect(component.targetedRows).toEqual([]);
     });
@@ -420,7 +420,7 @@ describe('GoTableComponent', () => {
 
       component.selectAllControl.setValue(false);
 
-      component['selectionSubscriptions'].unsubscribe();
+      component.ngOnDestroy();
 
       expect(component.targetedRows).toEqual([]);
     });
@@ -437,7 +437,7 @@ describe('GoTableComponent', () => {
 
       component.selectAllControl.setValue(false);
 
-      component['selectionSubscriptions'].unsubscribe();
+      component.ngOnDestroy();
 
       expect(component.selectAllEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
@@ -956,7 +956,7 @@ describe('GoTableComponent', () => {
 
       component.selectAllControl.setValue(true);
 
-      component['selectionSubscriptions'].unsubscribe();
+      component.ngOnDestroy();
 
       expect(component.rowSelectForm.value['selection_1']).toBe(true);
     });

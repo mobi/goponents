@@ -12,8 +12,7 @@ import {
   Output,
   QueryList,
   SimpleChanges,
-  TemplateRef,
-  ViewChild
+  TemplateRef
 } from '@angular/core';
 import {
   FormBuilder,
@@ -103,7 +102,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   searchTerm: FormControl = new FormControl();
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
-  selectionSubscriptions: Subscription = new Subscription();
   showTable: boolean = false;
   targetedRows: any[] = [];
 
@@ -155,7 +153,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     this.pageChange$.complete();
     this.destroy$.next();
     this.destroy$.complete();
-    this.selectionSubscriptions.unsubscribe();
   }
 
   renderTable(): void {
@@ -544,40 +541,39 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
 
   private setupRowSelectFormControlsSubs(): void {
     this.getDisplayData().forEach((row: any) => {
-      this.selectionSubscriptions.add(
-        this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
-          .valueChanges.pipe(takeUntil(this.pageChange$))
-          .subscribe((value: boolean) => {
-            this.selectionChange(value, row);
-          })
-      );
+      this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
+        .valueChanges.pipe(
+          takeUntil(this.pageChange$),
+          takeUntil(this.destroy$)
+        )
+        .subscribe((value: boolean) => {
+          this.selectionChange(value, row);
+        });
     });
   }
 
   private setupSelectAllControlSub(): void {
     if (this.tableConfig.selectable) {
-      this.selectionSubscriptions.add(
-        this.selectAllControl.valueChanges
-          .pipe(
-            distinctUntilChanged(),
-            takeUntil(this.destroy$)
-          )
-          .subscribe(() => {
-            this.targetedRows = [];
-            this.updateRowSelectForm();
-
-            if (!this.selectAllControl.value) {
-              this.selectAllIndeterminate = false;
-            }
-
-            this.selectAllEvent.emit({
-              deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
-              selectionMode: this.determineSelectionMode(),
-              selectedRows: !this.selectAllControl.value ? this.targetedRows : []
-            });
-          }
+      this.selectAllControl.valueChanges
+        .pipe(
+          distinctUntilChanged(),
+          takeUntil(this.destroy$)
         )
-      );
+        .subscribe(() => {
+          this.targetedRows = [];
+          this.updateRowSelectForm();
+
+          if (!this.selectAllControl.value) {
+            this.selectAllIndeterminate = false;
+          }
+
+          this.selectAllEvent.emit({
+            deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
+            selectionMode: this.determineSelectionMode(),
+            selectedRows: !this.selectAllControl.value ? this.targetedRows : []
+          });
+        }
+      )
     }
   }
 
