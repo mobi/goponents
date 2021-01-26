@@ -12,15 +12,14 @@ import {
   Output,
   QueryList,
   SimpleChanges,
-  TemplateRef,
-  ViewChild
+  TemplateRef
 } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup
 } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { GoConfigService } from '../../go-config.service';
@@ -125,6 +124,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.setupSearch();
       this.setupPageSizes();
       this.setupConfigService();
+      this.setupSelectAllControlSub();
     }
   }
 
@@ -164,10 +164,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.handleSort();
       this.setPage(this.localTableConfig.pageConfig.offset);
       this.setSearchTerm();
-
-      if (this.localTableConfig.selectable) {
-        this.setupSelectAllControlSub();
-      }
     }
 
     this.showTable = Boolean(this.tableConfig);
@@ -546,7 +542,10 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   private setupRowSelectFormControlsSubs(): void {
     this.getDisplayData().forEach((row: any) => {
       this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
-        .valueChanges.pipe(takeUntil(this.pageChange$))
+        .valueChanges.pipe(
+          takeUntil(this.pageChange$),
+          takeUntil(this.destroy$)
+        )
         .subscribe((value: boolean) => {
           this.selectionChange(value, row);
         });
@@ -554,26 +553,28 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   }
 
   private setupSelectAllControlSub(): void {
-    this.selectAllControl.valueChanges
-      .pipe(
-        distinctUntilChanged(),
-        takeUntil(this.destroy$)
-      )
-      .subscribe(() => {
-        this.targetedRows = [];
-        this.updateRowSelectForm();
+    if (this.tableConfig.selectable) {
+      this.selectAllControl.valueChanges
+        .pipe(
+          distinctUntilChanged(),
+          takeUntil(this.destroy$)
+        )
+        .subscribe(() => {
+          this.targetedRows = [];
+          this.updateRowSelectForm();
 
-        if (!this.selectAllControl.value) {
-          this.selectAllIndeterminate = false;
+          if (!this.selectAllControl.value) {
+            this.selectAllIndeterminate = false;
+          }
+
+          this.selectAllEvent.emit({
+            deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
+            selectionMode: this.determineSelectionMode(),
+            selectedRows: !this.selectAllControl.value ? this.targetedRows : []
+          });
         }
-
-        this.selectAllEvent.emit({
-          deselectedRows: this.selectAllControl.value ? this.targetedRows : [],
-          selectionMode: this.determineSelectionMode(),
-          selectedRows: !this.selectAllControl.value ? this.targetedRows : []
-        });
-      }
-    );
+      )
+    }
   }
 
   private updateRowSelectForm(): void {
