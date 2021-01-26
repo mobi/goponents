@@ -149,18 +149,6 @@ describe('GoTableComponent', () => {
     });
   });
 
-  describe('afterViewInit', () => {
-    afterEach(() => {
-      component.selectAllControl.setValue(false);
-    });
-
-    it('should select all rows if preselected', () => {
-      component.tableConfig.preselected = true;
-      component.ngAfterViewInit();
-      expect(component.selectAllControl.value).toBe(true);
-    });
-  });
-
   describe('setPageByPageNumber', () => {
     beforeEach(() => {
       component.localTableConfig.totalCount = 135;
@@ -399,7 +387,11 @@ describe('GoTableComponent', () => {
     });
 
     it('should set selectAllIndeterminate to false if selectAll toggled off', () => {
+      component.ngOnInit();
+
       component.selectAllControl.setValue(false);
+
+      component.ngOnDestroy();
 
       expect(component.selectAllIndeterminate).toBe(false);
     });
@@ -414,13 +406,21 @@ describe('GoTableComponent', () => {
     });
 
     it('should reset targetedRows if toggling selectAll on', () => {
+      component.ngOnInit();
+
       component.selectAllControl.setValue(true);
+
+      component.ngOnDestroy();
 
       expect(component.targetedRows).toEqual([]);
     });
 
     it('should reset targetedRows if toggling selectAll off', () => {
+      component.ngOnInit();
+
       component.selectAllControl.setValue(false);
+
+      component.ngOnDestroy();
 
       expect(component.targetedRows).toEqual([]);
     });
@@ -433,7 +433,11 @@ describe('GoTableComponent', () => {
       };
       spyOn(component.selectAllEvent, 'emit');
 
+      component.ngOnInit();
+
       component.selectAllControl.setValue(false);
+
+      component.ngOnDestroy();
 
       expect(component.selectAllEvent.emit).toHaveBeenCalledWith(selectionEventData);
     });
@@ -946,10 +950,13 @@ describe('GoTableComponent', () => {
       component.tableConfig.selectBy = 'id';
 
       component.renderTable();
+      component.ngOnInit();
 
       expect(component.rowSelectForm.value['selection_1']).toBe(false);
 
       component.selectAllControl.setValue(true);
+
+      component.ngOnDestroy();
 
       expect(component.rowSelectForm.value['selection_1']).toBe(true);
     });
@@ -1098,6 +1105,16 @@ describe('GoTableComponent', () => {
       component.tableConfig = tableConfig;
       component.tableConfig.dataMode = GoTableDataSource.client;
       component.tableConfig.tableData = fakeTableData;
+    });
+
+    afterEach(() => {
+      component.selectAllControl.setValue(false);
+    });
+
+    it('should select all rows if preselected', () => {
+      component.tableConfig.preselected = true;
+      component.ngAfterViewInit();
+      expect(component.selectAllControl.value).toBe(true);
     });
 
     it('performs a search if datamode is client and table is searchable', () => {

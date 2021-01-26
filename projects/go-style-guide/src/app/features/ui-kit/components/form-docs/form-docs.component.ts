@@ -18,7 +18,8 @@ export class FormDocsComponent {
         { route: './radio', routeTitle: 'Radio' },
         { route: './select', routeTitle: 'Select' },
         { route: './switch-toggle', routeTitle: 'Switch Toggle' },
-        { route: './textarea', routeTitle: 'Text Area' }
+        { route: './textarea', routeTitle: 'Text Area' },
+        { route: './timepicker', routeTitle: 'Timepicker' },
       ]
     }
   ];

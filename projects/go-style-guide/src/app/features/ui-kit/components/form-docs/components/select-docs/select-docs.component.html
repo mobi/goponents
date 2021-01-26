@@ -871,4 +871,63 @@
 
     </div>
   </go-card>
+
+  <go-card id="form-select-template" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Virtual scroll</h2>
+      <go-copy cardId="form-select-virtual-scroll" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Sometimes the data that needs to be rendered for the options of the select would cause performance and user 
+          experience issues. In this case, virtual scroll should be implemented.
+        </p>
+        
+        <p class="go-body-copy">
+          To do so, implement the <code class="code-block--inline">scrollToEnd</code> method on the select. When 
+          the user scrolls to the end of the current available options, the event will fire which will allow the implementor to 
+          fetch more options and add them to the array of items. This event will only fire after setting <code class="code-block--inline">virtualScroll</code> to true on the select component.
+        </p>
+        
+        <p class="go-body-copy go-body-copy--no-margin">
+          For more information on this, check the
+          <a
+            href="https://ng-select.github.io/ng-select#/virtual-scroll"
+            class="go-link">
+              ng-select documentation
+          </a>
+          for implementing virtual scroll.
+        </p>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select 
+              [items]="selectData" 
+              [control]="select21" 
+              bindValue="value" 
+              bindLabel="name" 
+              [hints]="[
+              'Scroll to end for loading more data.'
+              ]" 
+              label="Select an Option" 
+              (scrollToEnd)="scrollToEnd()" 
+              (scroll)="scroll($event)"
+              [virtualScroll]="true">
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code [highlight]="select21Code" class="code-block--no-bottom-margin">
+            </code>
+            <code [highlight]="select21ComponentCode" class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </go-card>
 </section>

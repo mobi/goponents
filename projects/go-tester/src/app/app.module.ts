@@ -34,6 +34,7 @@ import {
   GoSwitchToggleModule,
   GoTableModule,
   GoTextAreaModule,
+  GoTimepickerModule,
   GoToasterModule,
   GoToastModule
 } from '../../../go-lib/src/public_api';
@@ -99,7 +100,8 @@ import { AppGuard } from './app.guard';
     HttpClientModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    GoPortalModule
+    GoPortalModule,
+    GoTimepickerModule
   ],
   providers: [
     AppService,

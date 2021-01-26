@@ -25,6 +25,7 @@ import { GoSideNavModule } from './components/go-side-nav/go-side-nav.module';
 import { GoSwitchToggleModule } from './components/go-switch-toggle/go-switch-toggle.module';
 import { GoTableModule } from './components/go-table/go-table.module';
 import { GoTextAreaModule } from './components/go-text-area/go-text-area.module';
+import { GoTimepickerModule } from './components/go-timepicker/go-timepicker.module';
 import { GoToastModule } from './components/go-toast/go-toast.module';
 import { GoToasterModule } from './components/go-toaster/go-toaster.module';
 import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-card-link.module';
@@ -59,7 +60,8 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoTableModule,
     GoTextAreaModule,
     GoToastModule,
-    GoToasterModule
+    GoToasterModule,
+    GoTimepickerModule
   ],
   exports: [
     GoAccordionModule,

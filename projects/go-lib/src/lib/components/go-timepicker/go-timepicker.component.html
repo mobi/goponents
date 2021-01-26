@@ -1,0 +1,52 @@
+<label
+  [attr.for]="id"
+  class="go-form__label"
+  [ngClass]="{ 'go-form__label--dark': theme == 'dark' }"
+>
+  {{ label }}
+  <go-required-text [control]="control"></go-required-text>
+</label>
+<div class="go-timepicker">
+  <input
+    #datepickerInput
+    class="go-form__input go-input-time"
+    [id]="id"
+    [placeholder]="placeholder"
+    [ngClass]="{
+      'go-form__input--error': control?.errors?.length,
+      'go-form__input--dark': theme == 'dark'
+    }"
+    [(ngModel)]="selectedTime"
+    [disabled]="control.disabled"
+    (click)="toggleTimepicker($event)"
+    readonly
+  />
+  <go-icon-button
+    class="go-timepicker__toggle"
+    [buttonDisabled]="control.disabled"
+    buttonIcon="schedule"
+    (click)="toggleTimepicker($event)"
+  ></go-icon-button>
+  <go-time
+    *ngIf=timeOpen
+    [appendToContent]="appendToContent"
+    [displayFromRight]="displayFromRight"
+    [displayAbove]="displayAbove"
+    [selectedTime] = "openTimeValue"
+    (timePicked)="timePicked($event)"
+    (closeTime) = "closeTime()"
+  >
+  </go-time>
+</div>
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+
+<div *ngIf="control?.errors?.length">
+  <go-hint
+    *ngFor="let error of control.errors"
+    [message]="error.message"
+    [label]="error.type"
+    [theme]="theme"
+    type="negative"
+  ></go-hint>
+</div>
+
