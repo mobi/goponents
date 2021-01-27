@@ -132,4 +132,14 @@ describe('GoSideNavComponent', () => {
       expect(component.menuItems[0]['expanded']).toBe(true);
     });
   });
+
+  describe('ngAfterViewInit', () => {
+    it('should set any attributes passed into the component', () => {
+      component.attributes = [{ name: 'walkme-id', value: 'go-side-nav' }];
+
+      component.ngAfterViewInit();
+
+      expect(component.sideNavRef.nativeElement.getAttribute('walkme-id')).toEqual('go-side-nav');
+    });
+  });
 });
