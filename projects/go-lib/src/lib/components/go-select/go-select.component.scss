@@ -75,6 +75,11 @@
   padding: .5rem;
   position: absolute;
   top: 0;
+  width: 100%;
+}
+
+.ng-value-container {
+  position: relative;
 }
 
 // overrides for multiselect selected options
@@ -147,6 +152,10 @@
       font-weight: $weight-light;
     }
   }
+}
+
+.ng-select-top {
+  margin-left: 0px !important;
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked,
