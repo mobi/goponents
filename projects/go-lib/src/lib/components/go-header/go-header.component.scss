@@ -75,7 +75,7 @@ $breakpoint-header-mobile-small: 500px;
     @include transition(width);
 
     display: flex;
-    width: 15.5rem;
+    width: $side-nav-width;
 
     @media (max-width: $breakpoint-mobile) {
       height: $header-height;
