@@ -50,10 +50,10 @@ export class ToastDocsComponent {
   </go-toast>
   `;
   action_btn_html: string = `
-  <go-toast 
-    type="neutral" 
-    header="Hey!" 
-    message="Did you know that this is pretty cool?" 
+  <go-toast
+    type="neutral"
+    header="Hey!"
+    message="Did you know that this is pretty cool?"
     [showToastActions]="true">
     <ng-container go-toast-action>
       <div class="go-button-group">

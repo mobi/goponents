@@ -10,6 +10,7 @@ export class FormsOverviewComponent {
     private subNavService: SubNavService
   ) {
     this.subNavService.pageTitle = 'Forms Overview';
-    this.subNavService.linkToSource = "https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/standards/components/forms"
+    this.subNavService.linkToSource =
+      'https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/standards/components/forms';
   }
 }

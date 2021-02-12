@@ -8,7 +8,7 @@ export class GoTablePageConfig {
     pageSizes: number[],
     perPage?: number
   }) {
-    if (fields) Object.assign(this, fields);
+    if (fields) { Object.assign(this, fields); }
   }
 }
 

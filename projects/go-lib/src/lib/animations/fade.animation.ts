@@ -1,5 +1,6 @@
 import {
   animate,
+  AnimationTriggerMetadata,
   state,
   style,
   transition,
@@ -8,7 +9,7 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const fadeAnimation = trigger('fade', [
+export const fadeAnimation: AnimationTriggerMetadata = trigger('fade', [
   state('in', style({
     opacity: 1,
     visibility: 'visible'
@@ -22,7 +23,7 @@ export const fadeAnimation = trigger('fade', [
   ])
 ]);
 
-export const fadeTemplateAnimation = trigger('fadeTemplate', [
+export const fadeTemplateAnimation: AnimationTriggerMetadata = trigger('fadeTemplate', [
   transition(':enter', [
     style({
       opacity: 0

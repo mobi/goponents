@@ -50,7 +50,7 @@ export class TabDocsComponent {
     </go-tab>
     <go-tab heading="Tab 3">
       <ng-template #tabContent>
-        This is a third thing. 
+        This is a third thing.
       </ng-template>
     </go-tab>
   </go-tab-group>

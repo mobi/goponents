@@ -1,5 +1,6 @@
 import {
   animate,
+  AnimationTriggerMetadata,
   style,
   transition,
   trigger
@@ -7,7 +8,7 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const searchLoaderAnim = trigger('searchLoaderAnim', [
+export const searchLoaderAnim: AnimationTriggerMetadata = trigger('searchLoaderAnim', [
   transition(':enter', [
     style({
       height: 0,
@@ -32,7 +33,7 @@ export const searchLoaderAnim = trigger('searchLoaderAnim', [
   ])
 ]);
 
-export const searchResultsAnim = trigger('searchResultsAnim', [
+export const searchResultsAnim: AnimationTriggerMetadata = trigger('searchResultsAnim', [
   transition(':enter', [
     style({
       height: 0,
