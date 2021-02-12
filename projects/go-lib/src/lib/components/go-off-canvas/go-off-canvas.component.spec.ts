@@ -40,12 +40,12 @@ describe('GoOffCanvasComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoOffCanvasComponent);
     goOffCanvasHostFixture = TestBed.createComponent(GoTestOffCanvasHostComponent);
+    offCanvasService = TestBed.get(GoOffCanvasService);
 
     component = fixture.componentInstance;
     component.goOffCanvasHost = goOffCanvasHostFixture.componentInstance.goOffCanvasHost;
 
     fixture.detectChanges();
-    offCanvasService = TestBed.get(GoOffCanvasService);
   });
 
   it('should create', () => {
@@ -89,6 +89,27 @@ describe('GoOffCanvasComponent', () => {
 
       offCanvasService.closeOffCanvas();
       expect(component.goOffCanvasHost.viewContainerRef.clear).toHaveBeenCalled();
+    });
+
+    it('resets default options when off canvas is closed', () => {
+      spyOn(offCanvasService, 'closeOffCanvas').and.callThrough();
+
+      offCanvasService.openOffCanvas({
+        component: GoTestOffCanvasHostComponent,
+        bindings: {},
+        offCanvasOptions: {
+          header: 'Old Header',
+          size: 'large'
+        }
+      });
+
+      expect(component.header).toEqual('Old Header');
+      expect(component.size).toEqual('large');
+
+      offCanvasService.closeOffCanvas();
+
+      expect(component.header).toBe('');
+      expect(component.size).toBe('small');
     });
   });
 
