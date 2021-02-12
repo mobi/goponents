@@ -34,10 +34,8 @@ export class GoTimepickerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.control.valueChanges.subscribe((value: any) => {
-      if (value) {
+    this.control.valueChanges.subscribe((value: string | Date) => {
         this.selectedTime = this.changeTimeFormat(this.control.value);
-      }
     });
   }
 
