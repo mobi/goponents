@@ -1,5 +1,7 @@
 @import '../../../styles/variables';
 
-.go-form__required-text {
-  color: $ui-color-negative;
+.go-form {
+  &__required-text {
+    color: $ui-color-negative;
+  }
 }

@@ -22,19 +22,19 @@
 
   &--active {
     .go-accordion-panel--selected {
+      @include z-index(1);
+
       content: ' ';
       height: 100%;
       left: 0;
       position: absolute;
       transition: all .25s ease-in;
       width: 4px;
-      z-index: 1;
     }
   }
 
   &--action-sheet {
     .go-accordion-panel {
-      // scss-lint:disable NestingDepth
       &__header,
       &__content {
         font-size: .875rem;
@@ -78,14 +78,12 @@
     &--dark {
       background-color: darken($base-dark-secondary, 7%);
 
-      // scss-lint:disable NestingDepth
       &:hover {
         background-color: darken($base-dark-secondary, 3.5%);
       }
     }
 
     &--active {
-      // scss-lint:disable NestingDepth
       background-color: darken($base-light, 3.5%);
 
       // scss-lint:disable SelectorFormat
@@ -115,7 +113,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 1rem;
+    margin-right: .75rem;
     text-align: center;
   }
 
@@ -154,7 +152,6 @@
   font-weight: $weight-light;
 
   .go-accordion-panel {
-    // scss-lint:disable SelectorDepth
     &--border-top &__header {
       border-top: 1px solid $theme-dark-border;
     }

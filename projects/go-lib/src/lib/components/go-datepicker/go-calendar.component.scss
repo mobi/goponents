@@ -2,29 +2,30 @@
 @import '../../../styles/mixins';
 
 .go-calendar {
+  @include z-index(toaster);
+
   background: $theme-light-bg;
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
   position: absolute;
-  z-index: z-index(toaster);
-}
 
-.go-calendar--above {
-  bottom: 2.5rem;
-}
+  &--above {
+    bottom: 2.5rem;
+  }
 
-.go-calendar--right {
-  right: 0;
-}
+  &--right {
+    right: 0;
+  }
 
-.go-calendar--append-to-content {
-  position: static;
-}
+  &--append-to-content {
+    position: static;
+  }
 
-.go-calendar--wrapper {
-  display: flex;
-}
+  &--wrapper {
+    display: flex;
+  }
 
-.go-calendar__close-calendar-content {
-  flex-grow: 1;
+  &__close-calendar-content {
+    flex-grow: 1;
+  }
 }

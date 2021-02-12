@@ -1,9 +1,9 @@
 .go-datepicker {
   position: relative;
-}
 
-.go-datepicker__toggle {
-  position: absolute;
-  right: .25rem;
-  top: .25rem;
+  &__toggle {
+    position: absolute;
+    right: .25rem;
+    top: .25rem;
+  }
 }

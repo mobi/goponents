@@ -10,7 +10,7 @@ $base-medium: #767676 !default;
   color: $theme-light-color;
   cursor: pointer;
   display: flex;
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: normal;
   max-width: 20rem;
   position: relative;
@@ -29,64 +29,77 @@ $base-medium: #767676 !default;
     font-size: 1rem;
   }
 
-  .go-panel__title {
+  & &__title {
     align-items: center;
     display: flex;
     flex-grow: 1;
     white-space: nowrap;
 
-    .go-panel__icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 0.75rem;
-      text-align: center;
-    }
+    .go-panel {
+      &__icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: .75rem;
+        text-align: center;
+      }
 
-    .go-panel__title-text {
-      font-family: $primary-font-stack;
-      font-weight: 300;
-      padding: 0.75rem;
-      width: 100%;
+      &__title-text {
+        font-family: $primary-font-stack;
+        font-weight: $weight-regular;
+        padding: .75rem;
+        width: 100%;
+      }
     }
   }
-}
 
-.go-panel--danger {
-  border-top: 1px solid rgba($theme-light-border, 0.1);
+  &--danger {
+    border-top: 1px solid rgba($theme-light-border, .1);
 
-  .material-icons {
-    color: $ui-color-negative;
-  }
-
-  .go-panel__title {
-    .go-panel__title-text {
+    .material-icons {
       color: $ui-color-negative;
     }
+
+    .go-panel {
+      &__title {
+        & &-text {
+          color: $ui-color-negative;
+        }
+      }
+    }
+  }
+
+  &--header {
+    color: $base-medium;
   }
 }
 
-.go-panel--header {
-  color: $base-medium;
-}
-
-.go-action-sheet__title-panel {
-  .go-panel__title-text {
-    color: $base-light-secondary;
-    font-size: 10pt;
-    letter-spacing: 0.02rem;
-    text-align: center;
-    text-transform: uppercase;
+.go-action-sheet {
+  &__title-panel {
+    .go-panel {
+      &__title-text {
+        color: $base-light-secondary;
+        font-size: 10pt;
+        letter-spacing: .02rem;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
+// scss-lint:disable QualifyingElement
 go-panel.disabled {
-  .go-panel__title {
-    opacity: 0.5;
+  .go-panel {
+    &__title {
+      opacity: .5;
+    }
   }
 
-  .table-action-sheet__row-hint {
-    display: block;
+  .table-action-sheet {
+    &__row-hint {
+      display: block;
+    }
   }
 }
 

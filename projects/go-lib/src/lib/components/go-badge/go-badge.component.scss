@@ -1,6 +1,9 @@
 @import '../../../styles/variables';
+@import '../../../styles//mixins';
 
 .go-badge {
+  @include z-index(1);
+
   border: 1px solid $theme-light-bg;
   border-radius: 1.5rem;
   color: $base-light;
@@ -8,41 +11,42 @@
   height: 22px;
   left: -.625rem;
   padding: .25rem;
-  position:absolute;
+  position: absolute;
   top: -.75rem;
-  z-index: 1;
+
+  &--dot {
+    height: auto;
+    top: 0;
+  }
+
+  &--positive {
+    background: $ui-color-positive;
+  }
+
+  &--neutral {
+    background: $ui-color-neutral;
+  }
+
+  &--negative {
+    background: $ui-color-negative;
+  }
 }
 
-:host.go-badge__parent {
-  display: inline-block;
-}
-
-.go-badge--dot {
-  height: auto;
-  top: 0;
+:host.go-badge {
+  &__parent {
+    display: inline-block;
+  }
 }
 
 .go-badge-container {
   position: relative;
-}
 
-.go-badge-container--icon-button {
-  top: 5px;
-  right: 5px;
+  &--icon-button {
+    right: 5px;
+    top: 5px;
+  }
 }
 
 .go-badge-outer-container {
   display: inline-flex;
-}
-
-.go-badge--positive {
-  background: $ui-color-positive;
-}
-
-.go-badge--neutral {
-  background: $ui-color-neutral;
-}
-
-.go-badge--negative {
-  background: $ui-color-negative;
 }
