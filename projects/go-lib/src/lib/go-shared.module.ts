@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { GoAccordionModule } from './components/go-accordion/go-accordion.module';
 import { GoActionSheetModule } from './components/go-action-sheet/go-action-sheet.module';
 import { GoBadgeModule } from './components/go-badge/go-badge.module';
@@ -18,6 +19,7 @@ import { GoInputModule } from './components/go-input/go-input.module';
 import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
+import { GoOffCanvasModule } from './components/go-off-canvas/go-off-canvas.module';
 import { GoRadioModule } from './components/go-radio/go-radio.module';
 import { GoSearchModule } from './components/go-search/go-search.module';
 import { GoSelectModule } from './components/go-select/go-select.module';
@@ -38,8 +40,8 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
-    GoCopyModule,
     GoCopyCardLinkModule,
+    GoCopyModule,
     GoDatepickerModule,
     GoFileUploadModule,
     GoFooterModule,
@@ -52,6 +54,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
+    GoOffCanvasModule,
     GoRadioModule,
     GoSearchModule,
     GoSelectModule,
@@ -59,12 +62,13 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoSwitchToggleModule,
     GoTableModule,
     GoTextAreaModule,
-    GoToastModule,
+    GoTimepickerModule,
     GoToasterModule,
-    GoTimepickerModule
+    GoToastModule
   ],
   exports: [
     GoAccordionModule,
+    GoActionSheetModule,
     GoBadgeModule,
     GoButtonModule,
     GoCardModule,
@@ -83,6 +87,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoLayoutModule,
     GoLoaderModule,
     GoModalModule,
+    GoOffCanvasModule,
     GoRadioModule,
     GoSearchModule,
     GoSelectModule,
@@ -90,8 +95,8 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoSwitchToggleModule,
     GoTableModule,
     GoTextAreaModule,
-    GoToastModule,
-    GoToasterModule
+    GoToasterModule,
+    GoToastModule
   ]
 })
 
