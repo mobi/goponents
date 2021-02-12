@@ -5,7 +5,7 @@ export function extractFieldData(key: string, obj: object): any {
   return '';
 }
 
-export function sortBy(key: string, reverse: boolean): Function {
+export function sortBy(key: string, reverse: boolean): (a: object, b: object) => number {
   return (a: object, b: object) => {
     let aFieldData: any = extractFieldData(key, a);
     let bFieldData: any = extractFieldData(key, b);
