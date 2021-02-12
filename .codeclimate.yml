@@ -32,6 +32,10 @@ checks:
 plugins:
   scss-lint:
     enabled: true
+    exclude_patterns:
+      - "projects/go-style-guide"
+      - "projects/go-tester"
+      - "projects/go-tester-e2e"
   eslint:
     enabled: true
     channel: eslint-5
