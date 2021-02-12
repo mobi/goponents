@@ -86,6 +86,13 @@
       background-color: $ui-color-primary;
       color: $theme-dark-color;
       font-weight: $weight-regular;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background: $ui-color-primary-hover;
+        cursor: pointer;
+      }
     }
 
     &--date {

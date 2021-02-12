@@ -2,7 +2,7 @@
 @import '../../../styles//mixins';
 
 .go-badge {
-  @include z-index(next);
+  @include z-index(1);
 
   border: 1px solid $theme-light-bg;
   border-radius: 1.5rem;

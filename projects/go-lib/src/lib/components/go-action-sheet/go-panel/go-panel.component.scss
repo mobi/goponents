@@ -35,19 +35,21 @@ $base-medium: #767676 !default;
     flex-grow: 1;
     white-space: nowrap;
 
-    &__icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: .75rem;
-      text-align: center;
-    }
+    .go-panel {
+      &__icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: .75rem;
+        text-align: center;
+      }
 
-    &__title-text {
-      font-family: $primary-font-stack;
-      font-weight: 300;
-      padding: .75rem;
-      width: 100%;
+      &__title-text {
+        font-family: $primary-font-stack;
+        font-weight: $weight-regular;
+        padding: .75rem;
+        width: 100%;
+      }
     }
   }
 
