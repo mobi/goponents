@@ -8,83 +8,83 @@ $as-before-box-diag-width: 21.21px;
 .go-action-sheet {
   display: inline-block;
   position: relative;
+
+  &__scroll-container {
+    max-height: 375px;
+    overflow: auto;
+  }
+
+  &__content {
+    border-radius: $global-radius;
+    overflow: hidden;
+  }
+
+  &__content-container {
+    @include transition;
+    @include z-index(off-canvas);
+
+    background: $theme-light-bg;
+    border: 1px solid $base-light-tertiary;
+    border-radius: $global-radius;
+    box-shadow: $global-box-shadow--small;
+    opacity: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    visibility: hidden;
+
+    &::before {
+      @include transition;
+
+      background: $theme-light-bg;
+      border: 1px solid $base-light-tertiary;
+      box-shadow: $global-box-shadow--small;
+      content: '';
+      height: 15px;
+      pointer-events: none;
+      position: absolute;
+      transform: rotate(45deg);
+      width: 15px;
+    }
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &--placement-bottom {
+      left: 50%;
+      top: calc(100% + 1.1rem);
+
+      &::before {
+        right: calc(50% - 7.5px);
+        top: -7.5px;
+      }
+    }
+
+    &--placement-right {
+      bottom: calc(100% - 2.25rem);
+      left: 100%;
+      margin-left: 1rem;
+      transform: translate(0, 0);
+
+      &::before {
+        bottom: .75rem;
+        left: -.5rem;
+      }
+    }
+
+    &--shift-left {
+      margin-left: (($as-before-box-diag-width + $as-before-box-half-width) / 2) + $as-before-borders;
+      transform: translateX(-100%);
+
+      &::before {
+        right: $as-before-box-half-width + $as-before-box-diag-width + $as-before-borders;
+        transform: rotate(45deg) translate(100%, -100%);
+      }
+    }
+  }
 }
 
 go-action-sheet-button {
   display: flex;
-}
-
-.go-action-sheet__scroll-container {
-  max-height: 375px;
-  overflow: auto;
-}
-
-.go-action-sheet__content {
-  border-radius: $global-radius;
-  overflow: hidden;
-}
-
-.go-action-sheet__content-container {
-  @include transition;
-
-  background: $theme-light-bg;
-  border: 1px solid $base-light-tertiary;
-  border-radius: $global-radius;
-  box-shadow: $global-box-shadow--small;
-  opacity: 0;
-  position: absolute;
-  transform: translateX(-50%);
-  visibility: hidden;
-  z-index: 300;
-
-  &::before {
-    @include transition;
-
-    background: $theme-light-bg;
-    border: 1px solid $base-light-tertiary;
-    box-shadow: $global-box-shadow--small;
-    content: "";
-    height: 15px;
-    pointer-events: none;
-    position: absolute;
-    transform: rotate(45deg);
-    width: 15px;
-  }
-
-  &.go-action-sheet__content-container--active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.go-action-sheet__content-container--placement-bottom {
-  left: 50%;
-  top: calc(100% + 1.1rem);
-
-  &::before {
-    right: calc(50% - 7.5px);
-    top: -7.5px;
-  }
-}
-
-.go-action-sheet__content-container--placement-right {
-  bottom: calc(100% - 2.25rem);
-  left: 100%;
-  margin-left: 1rem;
-  transform: translate(0, 0);
-
-  &::before {
-    bottom: .75rem;
-    left: -.5rem;
-  }
-}
-
-.go-action-sheet__content-container--shift-left {
-  margin-left: (($as-before-box-diag-width + $as-before-box-half-width) / 2) + $as-before-borders;
-  transform: translateX(-100%);
-
-  &::before {
-    right: $as-before-box-half-width + $as-before-box-diag-width + $as-before-borders;
-    transform: rotate(45deg) translate(100%, -100%);
-  }
 }

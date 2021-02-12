@@ -22,21 +22,21 @@
   &:last-child {
     margin-bottom: 0;
   }
-}
 
-.go-hint--error {
-  letter-spacing: $base-letter-spacing;
-  padding-top: 0;
+  &--error {
+    letter-spacing: $base-letter-spacing;
+    padding-top: 0;
 
-  &::before {
-    background-image: $ui-color-negative-gradient;
+    &::before {
+      background-image: $ui-color-negative-gradient;
+    }
   }
-}
 
-.go-hint__status {
-  display: block;
-  font-size: .5rem;
-  font-style: normal;
-  font-weight: $weight-medium;
-  text-transform: uppercase;
+  &__status {
+    display: block;
+    font-size: .5rem;
+    font-style: normal;
+    font-weight: $weight-medium;
+    text-transform: uppercase;
+  }
 }

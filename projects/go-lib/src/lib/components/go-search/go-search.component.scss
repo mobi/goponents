@@ -1,136 +1,140 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.go-search {
-  position: relative;
-  width: 100%;
-}
-
-:host.go-search__parent {
-  width: 100%;
-}
-
-.go-search__container {
-  @include transition(all);
-
-  background: $theme-light-bg;
-  border: 1px solid $base-light-tertiary;
-  border-radius: 1rem;
-  box-shadow: none;
-  color: $theme-light-border;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: calc(50% - ((1.875rem + 2px) / 2));
-  // height of input + border, halfed
-  max-width: 75%;
-  min-width: 500px;
-  z-index: z-index(search);
-
-  &:hover {
-    background: lighten($theme-light-app-bg, 3%);
-  }
-
-  @media (max-width: $breakpoint-tablet) {
-    max-width: 100%;
-    min-width: auto;
+:host.go-search {
+  &__parent {
     width: 100%;
   }
 }
 
-.go-search__container--active {
-  box-shadow: $global-box-shadow--search;
-
-  &:hover {
-    background: $theme-light-bg;
-  }
-}
-
-.go-search__field {
-  @include transition(all);
-
-  align-items: center;
-  display: flex;
-
-  ::-ms-clear {
-    display: none;
-  }
-}
-
-.go-search__submit {
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: $theme-light-border;
-  display: flex;
-  font-size: 1rem;
-  padding: 0 0.5rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active, &:focus {
-    outline: none;
-  }
-}
-
-.go-search__icon {
-  height: 1rem;
-}
-
-.go-search__input {
-  background: transparent;
-  border: 0;
-  flex: 1;
-  font-family: $primary-font-stack;
-  font-size: 0.875rem;
-  font-weight: 300;
-  letter-spacing: 0.02rem;
-  min-width: 250px;
-  padding: .5rem .5rem .5rem 0;
-
-  &:-ms-input-placeholder {
-    color: $base-light-secondary;
-  }
-
-  &::placeholder {
-    color: $base-light-secondary;
-  }
-
-  &:active, &:focus {
-    outline: none;
-  }
-}
-
-.go-search__loader-container {
-  display: flex;
-  height: calc(4rem + 50px);
-  justify-content: center;
-  overflow: hidden;
-  padding: 2rem;
+.go-search {
   position: relative;
-}
+  width: 100%;
 
-.go-search__loader {
-  position: absolute;
-}
+  &__container {
+    @include transition(all);
+    @include z-index(search);
 
-.go-search__results {
-  color: $theme-light-color;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  max-height: 400px;
-  margin: 1rem 0 0.75rem;
-  overflow-x: hidden;
-  overflow-y: auto;
+    background: $theme-light-bg;
+    border: 1px solid $base-light-tertiary;
+    border-radius: 1rem;
+    box-shadow: none;
+    color: $theme-light-border;
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    min-width: 500px;
+    position: absolute;
+    top: calc(50% - ((1.875rem + 2px) / 2));
+    // height of input + border, halfed
 
-  & > * {
-    display: block;
-    min-height: 1rem;
+    &:hover {
+      background: lighten($theme-light-app-bg, 3%);
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 100%;
+      min-width: auto;
+      width: 100%;
+    }
+
+    &--active {
+      box-shadow: $global-box-shadow--search;
+
+      &:hover {
+        background: $theme-light-bg;
+      }
+    }
   }
-}
 
-.go-search__results--none {
-  padding: .5rem .5rem 0;
+  &__field {
+    @include transition(all);
+
+    align-items: center;
+    display: flex;
+
+    ::-ms-clear {
+      display: none;
+    }
+  }
+
+  &__submit {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: $theme-light-border;
+    display: flex;
+    font-size: 1rem;
+    padding: 0 .5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    height: 1rem;
+  }
+
+  &__input {
+    background: transparent;
+    border: 0;
+    flex: 1;
+    font-family: $primary-font-stack;
+    font-size: .875rem;
+    font-weight: 300;
+    letter-spacing: .02rem;
+    min-width: 250px;
+    padding: .5rem .5rem .5rem 0;
+
+    &:-ms-input-placeholder {
+      color: $base-light-secondary;
+    }
+
+    &::placeholder {
+      color: $base-light-secondary;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__loader-container {
+    display: flex;
+    height: calc(4rem + 50px);
+    justify-content: center;
+    overflow: hidden;
+    padding: 2rem;
+    position: relative;
+  }
+
+  &__loader {
+    position: absolute;
+  }
+
+  &__results {
+    color: $theme-light-color;
+    font-size: .875rem;
+    line-height: 1.5;
+    margin: 1rem 0 .75rem;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    > * {
+      display: block;
+      min-height: 1rem;
+    }
+
+    &--none {
+      padding: .5rem .5rem 0;
+    }
+  }
 }

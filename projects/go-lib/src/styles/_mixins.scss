@@ -1,14 +1,17 @@
 @import './variables';
 
-@mixin transition($prop){
-	-webkit-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
-	-moz-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
-	-ms-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
-	-o-transition: $prop .25s cubic-bezier(.25,.8,.25,1);
-	transition: $prop .25s cubic-bezier(.25,.8,.25,1);
+@mixin transition($prop) {
+  // scss-lint:disable VendorPrefix
+  -webkit-transition: $prop $global-transition-duration $global-transition-timing;
+  -moz-transition: $prop $global-transition-duration $global-transition-timing;
+  -ms-transition: $prop $global-transition-duration $global-transition-timing;
+  -o-transition: $prop $global-transition-duration $global-transition-timing;
+  transition: $prop $global-transition-duration $global-transition-timing;
 }
 
 $z-index: (
+  1: 1,
+  2: 2,
   header-bar: 50,
   navigation: 100,
   search: 200,
@@ -18,24 +21,30 @@ $z-index: (
   loading-screen: 600,
 );
 
+@mixin z-index($key) {
+  // scss-lint:disable VariableForProperty
+  z-index: z-index($key);
+}
+
 @function z-index($key) {
   @return map-get($z-index, $key);
 }
 
 @mixin fill-text-background($fill: null, $color: $base-dark) {
-  // sass-lint:disable-block no-vendor-prefixes property-sort-order
   color: $color;
 
   @supports (background-clip: text) or (-webkit-background-clip: text) {
     @if ($fill) {
+      // scss-lint:disable VendorPrefix
       background: $fill;
-      background-clip: text;
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     } @else {
+      // scss-lint:disable VendorPrefix
       background: transparent;
-      background-clip: border-box;
       -webkit-background-clip: border-box;
+      background-clip: border-box;
       -webkit-text-fill-color: currentcolor;
     }
   }
@@ -81,8 +90,9 @@ $z-index: (
     repeat: no-repeat;
     size: auto $column-gutter--three-quarters;
   }
-  cursor: not-allowed;
+
   color: $base-light-secondary;
+  cursor: not-allowed;
 
   &:hover {
     box-shadow: none;

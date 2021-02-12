@@ -50,13 +50,13 @@ $loader-colors: (
 
 @each $name, $speed in $loader-speeds {
   .go-loader__#{$name} {
-    @extend %go-loader__piece;
+    @extend %go-loader-piece;
 
     animation: rotate $speed linear infinite;
   }
 }
 
-%go-loader__piece {
+%go-loader-piece {
   bottom: 0;
   left: 0;
   position: absolute;

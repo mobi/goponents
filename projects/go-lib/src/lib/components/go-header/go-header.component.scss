@@ -4,122 +4,123 @@
 $breakpoint-header-mobile-small: 500px;
 
 .go-header {
+  @include z-index(navigation);
+
   background: $theme-light-bg;
   box-shadow: $global-box-shadow--large;
   display: flex;
   height: $header-height;
   justify-content: space-between;
   position: relative;
-  z-index: z-index(navigation);
 
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     height: auto;
   }
-}
 
-.go-header__menu-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  width: $side-nav-width--collapsed;
-}
-
-.go-header__menu {
-  @include transition(all);
-
-  align-items: center;
-  align-self: center;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  flex-shrink: 0;
-  font-size: 1.5rem;
-  height: calc(#{$side-nav-width--collapsed} - 1rem);
-  justify-content: center;
-  user-select: none;
-  width: calc(#{$side-nav-width--collapsed} - 1rem);
-}
-
-.go-header__logo-container {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  padding: 1rem;
-
-  @media (max-width: $breakpoint-header-mobile-small) {
-    padding: 0.5rem;
+  &__menu-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: $side-nav-width--collapsed;
   }
-}
 
-.go-header__logo-container--collapsed {
-  flex-shrink: 1;
-}
+  &__menu {
+    @include transition(all);
 
-.go-header__logo {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  height: 100%;
-  width: 100%;
-
-  img {
+    align-items: center;
+    align-self: center;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
     flex-shrink: 0;
-    max-height: 100%;
-    max-width: 100%;
+    font-size: 1.5rem;
+    height: calc(#{$side-nav-width--collapsed} - 1rem);
+    justify-content: center;
+    user-select: none;
+    width: calc(#{$side-nav-width--collapsed} - 1rem);
   }
-}
 
-.go-header__left {
-  @include transition(width);
-
-  display: flex;
-  width: 15.5rem;
-
-  @media (max-width: $breakpoint-mobile) {
-    height: $header-height;
-  }
-}
-
-.go-header__left--dark {
-  color: $theme-dark-color
-}
-
-.go-header__middle {
-  @include transition(padding);
-
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: flex-start;
-  padding: 0 1rem 0 2rem;
-
-  @media (max-width: $breakpoint-mobile) {
-    flex: auto;
-    height: $header-height;
-    order: 2;
-    width: 100vw;
-  }
-}
-
-.go-header__middle--hide {
-  display: none;
-}
-
-.go-header__right {
-  align-items: center;
-  display: flex;
-  padding: 0 2rem 0 1rem;
-
-  @media (max-width: $breakpoint-mobile) {
+  &__logo-container {
+    align-items: center;
+    display: flex;
     flex: 1;
-    height: $header-height;
-    justify-content: flex-end;
-    padding: 0 1rem;
+    justify-content: flex-start;
+    padding: 1rem;
+
+    @media (max-width: $breakpoint-header-mobile-small) {
+      padding: .5rem;
+    }
+
+    &--collapsed {
+      flex-shrink: 1;
+    }
   }
 
-  @media (max-width: $breakpoint-header-mobile-small) {
-    justify-content: space-between;
+  &__logo {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+
+    img {
+      flex-shrink: 0;
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__left {
+    @include transition(width);
+
+    display: flex;
+    width: 15.5rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      height: $header-height;
+    }
+
+    &--dark {
+      color: $theme-dark-color;
+    }
+  }
+
+  &__middle {
+    @include transition(padding);
+
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    padding: 0 1rem 0 2rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex: auto;
+      height: $header-height;
+      order: 2;
+      width: 100vw;
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  &__right {
+    align-items: center;
+    display: flex;
+    padding: 0 2rem 0 1rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex: 1;
+      height: $header-height;
+      justify-content: flex-end;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: $breakpoint-header-mobile-small) {
+      justify-content: space-between;
+    }
   }
 }

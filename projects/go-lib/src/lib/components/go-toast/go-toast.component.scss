@@ -7,6 +7,14 @@
   box-shadow: $global-box-shadow--regular;
   display: flex;
   position: relative;
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    padding: .875rem 1.25rem;
+  }
 }
 
 .go-toast-strip {
@@ -19,31 +27,31 @@
 .go-toast-status {
   align-self: flex-start;
   padding: 1.5rem 1.2rem;
-}
 
-.go-toast-status__icon {
-  align-items: center;
-  background-color: $base-light-secondary;
-  border-radius: 50%;
-  color: $base-light;
-  display: flex;
-  font-size: 1.25rem;
-  height: 2rem;
-  justify-content: center;
-  user-select: none;
-  width: 2rem;
-}
+  &__icon {
+    align-items: center;
+    background-color: $base-light-secondary;
+    border-radius: 50%;
+    color: $base-light;
+    display: flex;
+    font-size: 1.25rem;
+    height: 2rem;
+    justify-content: center;
+    user-select: none;
+    width: 2rem;
+  }
 
-.go-toast-status--positive {
-  background-color: $ui-color-positive;
-}
+  &--positive {
+    background-color: $ui-color-positive;
+  }
 
-.go-toast-status--neutral {
-  background-color: $ui-color-neutral;
-}
+  &--neutral {
+    background-color: $ui-color-neutral;
+  }
 
-.go-toast-status--negative {
-  background-color: $ui-color-negative;
+  &--negative {
+    background-color: $ui-color-negative;
+  }
 }
 
 .go-toast-content {
@@ -53,15 +61,15 @@
   flex-direction: column;
   justify-content: center;
   padding: 1rem 1.25rem 1rem 0;
-}
 
-.go-toast-content__title {
-  margin-bottom: .25rem;
-}
+  &__title {
+    margin-bottom: .25rem;
+  }
 
-.go-toast-content__message {
-  font-size: .875rem;
-  margin: 0;
+  &__message {
+    font-size: .875rem;
+    margin: 0;
+  }
 }
 
 .go-toast-dismiss {
@@ -69,11 +77,4 @@
   position: absolute;
   right: 0;
   top: 0;
-}
-.go-toast__actions {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  padding: 0.875rem 1.25rem;
 }

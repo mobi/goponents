@@ -1,78 +1,80 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.go-tab__header {
-  @include transition(all);
+.go-tab {
+  &__header {
+    @include transition(all);
 
-  border-radius: $global-radius $global-radius 0 0;
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 1.125rem;
-  font-weight: $weight-regular;
-  padding: $column-gutter--three-quarters $column-gutter;
-
-  &:hover {
-    background-color: $theme-light-bg-hover;
-  }
-
-  &.go-tab__header--active {
-    background: $theme-light-bg;
+    border-radius: $global-radius $global-radius 0 0;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1.125rem;
+    font-weight: $weight-regular;
+    padding: $column-gutter--three-quarters $column-gutter;
 
     &:hover {
+      background-color: $theme-light-bg-hover;
+    }
+
+    &--active {
+      @include z-index(1);
+
       background: $theme-light-bg;
+      box-shadow: $global-box-shadow--regular;
+      position: relative;
+
+      &:hover {
+        background: $theme-light-bg;
+        cursor: auto;
+      }
+    }
+
+    &--dark {
+      background: $theme-dark-bg-active;
+      color: $theme-dark-text-color;
+
+      &:hover {
+        background-color: $theme-dark-bg-hover;
+      }
+
+      &.go-tab {
+        &__header {
+          &--active {
+            background: $theme-dark-bg;
+
+            &:hover {
+              background: $theme-dark-bg;
+            }
+          }
+        }
+      }
     }
   }
-}
 
-.go-tab__header--dark {
-  background: $theme-dark-bg-active;
-  color: $theme-dark-text-color;
+  &__card {
+    @include z-index(2);
 
-  &:hover {
-    background-color: $theme-dark-bg-hover;
-  }
+    background: $theme-light-bg;
+    border-radius: $global-radius;
+    display: flex;
+    flex-direction: column;
+    padding: $column-gutter;
+    position: relative;
 
-  &.go-tab__header--active {
-    background: $theme-dark-bg;
-
-    &:hover {
+    &--dark {
       background: $theme-dark-bg;
+      color: $theme-dark-text-color;
+    }
+
+    &--first-tab-active {
+      border-radius: 0 $global-radius $global-radius;
     }
   }
-}
 
-.go-tab__header--active {
-  box-shadow: $global-box-shadow--regular;
-  position: relative;
-  z-index: 1;
-
-  &:hover {
-    cursor: auto;
+  &__card-wrapper {
+    background: $theme-light-bg;
+    border-radius: $global-radius;
+    box-shadow: $global-box-shadow--regular;
+    position: relative;
   }
-}
-
-.go-tab__card {
-  background: $theme-light-bg;
-  border-radius: $global-radius;
-  display: flex;
-  flex-direction: column;
-  padding: $column-gutter;
-  position: relative;
-  z-index: 2;
-}
-
-.go-tab__card--dark {
-  background: $theme-dark-bg;
-  color: $theme-dark-text-color;
-}
-
-.go-tab__card-wrapper {
-  background: $theme-light-bg;
-  border-radius: $global-radius;
-  box-shadow: $global-box-shadow--regular;
-  position: relative;
-}
-
-.go-tab__card--first-tab-active {
-  border-radius: 0 $global-radius $global-radius $global-radius;
 }
