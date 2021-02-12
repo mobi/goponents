@@ -541,7 +541,7 @@ export class SelectDocsComponent implements OnInit {
       of([]),
       this.itemInput.pipe(
         debounceTime(600), // Delay user input
-        map((input) => [input])
+        map((input: string) => [input])
       )
     );
   }

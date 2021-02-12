@@ -1,5 +1,6 @@
 import {
   animate,
+  AnimationTriggerMetadata,
   state,
   style,
   transition,
@@ -8,7 +9,7 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const offCanvasAnimation = trigger('offCanvas', [
+export const offCanvasAnimation: AnimationTriggerMetadata = trigger('offCanvas', [
   state('slideIn', style({
     transform: 'translateX(-{{width}})'
   }), {params: {width: '300px'}}),

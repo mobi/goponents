@@ -34,7 +34,7 @@ export class GoTimepickerComponent implements OnInit {
   }
 
   public changeTimeFormat(timeString: string | Date): string {
-    if (!timeString || timeString == 'Invalid Date') {
+    if (!timeString || timeString === 'Invalid Date') {
       return;
     }
     if (typeof(timeString) === 'object') {
@@ -86,6 +86,7 @@ export class GoTimepickerComponent implements OnInit {
     if (time12h) {
       const [time, modifier]: string[] = time12h.split(' ');
 
+      // tslint:disable-next-line: prefer-const
       let [hours, minutes]: any[] = time.split(':');
       if (hours === '12') {
         hours = '00';

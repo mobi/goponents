@@ -26,7 +26,8 @@ export class FormDocsComponent {
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Forms';
-    this.subNavService.linkToSource = "https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/standards/components/forms"
+    this.subNavService.linkToSource =
+      'https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/standards/components/forms';
   }
 
 }
