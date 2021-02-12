@@ -1,89 +1,94 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-.go-form__switch-toggle__container {
-  display: flex;
-}
+$go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
 
-.go-form__switch-toggle {
-  display: inline-block;
-  height: 1.125rem;
-  position: relative;
-  width: 2.25rem;
-}
+.go-form {
+  &__switch-toggle {
+    display: inline-block;
+    height: 1.125rem;
+    position: relative;
+    width: 2.25rem;
 
-.go-form__switch-toggle__input {
-  height: 0;
-  opacity: 0;
-  width: 0;
-}
+    &__input {
+      height: 0;
+      opacity: 0;
+      width: 0;
+    }
 
-.go-form__switch-toggle__toggle {
-  @include transition(all);
+    &__container {
+      display: flex;
+    }
 
-  background-color: $base-light-secondary;
-  border: 1px solid $base-light-secondary;
-  border-radius: 1.125rem;
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+    &__toggle {
+      @include transition(all);
 
-  &::before {
-    @include transition(all);
+      background-color: $base-light-secondary;
+      border: 1px solid $base-light-secondary;
+      border-radius: 1.125rem;
+      bottom: 0;
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
 
-    background-color: $base-light;
-    border-radius: 50%;
-    content: '';
-    height: calc(1.125rem - 2px);
-    position: absolute;
-    width: calc(1.125rem - 2px);
+      &::before {
+        @include transition(all);
+
+        background-color: $base-light;
+        border-radius: 50%;
+        content: '';
+        height: calc(1.125rem - 2px);
+        position: absolute;
+        width: calc(1.125rem - 2px);
+      }
+
+      &--disabled {
+        background-color: $base-light-tertiary;
+        border: 1px solid $base-light-tertiary;
+        cursor: default;
+      }
+    }
+
+    &__input:checked + &__toggle {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+    }
+
+    &__input:focus + &__toggle::before {
+      box-shadow: $go-switch-toggle-focus-shadow;
+    }
+
+    &__input:focus + &__toggle {
+      box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-primary);
+    }
+
+    &__input:checked + &__toggle::before {
+      box-shadow: $go-switch-toggle-focus-shadow;
+      // scss-lint:disable VendorPrefix
+      -moz-transform: translateX(1.125rem);
+      -ms-transform: translateX(1.125rem);
+      -o-transform: translateX(1.125rem);
+      -webkit-transform: translateX(1.125rem);
+      transform: translateX(1.125rem);
+    }
   }
-}
 
-.go-form__switch-toggle__toggle--disabled {
-  background-color: $base-light-tertiary;
-  border: 1px solid $base-light-tertiary;
-  cursor: default;
-}
+  &__label {
+    flex: 1;
+    line-height: 1.125rem;
+    padding-bottom: 0;
+    padding-left: .75rem;
+    user-select: none;
 
-.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
-  background-color: $ui-color-primary;
-  border-color: $ui-color-primary;
-}
+    &--before {
+      padding-left: 0;
+      padding-right: .75rem;
+    }
 
-.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle::before {
-  box-shadow: 3px 0 5px -1px rgba(0, 0, 0, 0.3);
-}
-
-.go-form__switch-toggle__input:focus + .go-form__switch-toggle__toggle {
-  box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-primary);
-}
-
-.go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle::before {
-  box-shadow: -3px 0px 5px -1px rgba(0, 0, 0, 0.3);
-  -webkit-transform: translateX(1.125rem);
-  -moz-transform: translateX(1.125rem);
-  -ms-transform: translateX(1.125rem);
-  -o-transform: translateX(1.125rem);
-  transform: translateX(1.125rem);
-}
-
-.go-form__switch-toggle__label {
-  flex: 1;
-  line-height: 1.125rem;
-  padding-bottom: 0;
-  padding-left: 0.75rem;
-  user-select: none;
-}
-
-.go-form__switch-toggle__label--before {
-  padding-left: 0;
-  padding-right: 0.75rem;
-}
-
-.go-form__switch-toggle__label--disabled {
-  color: $base-light-secondary;
+    &--disabled {
+      color: $base-light-secondary;
+    }
+  }
 }

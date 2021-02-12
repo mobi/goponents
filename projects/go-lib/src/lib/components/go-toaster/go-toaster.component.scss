@@ -2,20 +2,21 @@
 @import '../../../styles/mixins';
 
 .go-toaster {
+  @include z-index(toaster);
+
   bottom: 0;
   overflow: hidden;
   position: fixed;
   right: 0;
   width: 400px;
-  z-index: z-index(toaster);
 
   @media(max-width: $breakpoint-mobile) {
     left: 0;
     max-width: 100vw;
     width: auto;
   }
-}
 
-.go-toaster__item {
-  margin: 0 1rem 1rem 0;
+  &__item {
+    margin: 0 1rem 1rem 0;
+  }
 }

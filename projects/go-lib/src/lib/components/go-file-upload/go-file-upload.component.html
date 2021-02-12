@@ -65,8 +65,8 @@
 </div>
 
 <div *ngIf="filePreview.length" class="go-file-upload__file-name">
-  <label class="go-form__label file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="multiple">Files</label>
-  <label class="go-form__label file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="!multiple">File Name</label>
+  <label class="go-form__label go-file-upload__file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="multiple">Files</label>
+  <label class="go-form__label go-file-upload__file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="!multiple">File Name</label>
   <p *ngFor="let file of filePreview; let i = index" class="go-file-upload__file-list">
     <span class="go-file-upload__file-name" [ngClass]="{'go-file-upload__file-name--dark': theme === 'dark'}">{{ file }}</span>
     <go-icon-button buttonIcon="close" (handleClick)="removeFile(i)"></go-icon-button>

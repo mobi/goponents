@@ -3,6 +3,8 @@
 @import '../variables';
 
 .go-side-nav {
+  @include z-index(navigation);
+
   background: $theme-dark-bg;
   color: $theme-dark-color;
   display: flex;
@@ -11,7 +13,6 @@
   font-family: $secondary-font-stack;
   height: 100%;
   width: $side-nav-width;
-  z-index: z-index(navigation);
 
   @media(max-width: $breakpoint-mobile) {
     display: none;
@@ -25,75 +26,81 @@
   &.go-side-nav--collapsed {
     width: $side-nav-width--collapsed;
   }
-}
 
-.go-side-nav__nav-items {
-  flex: 1;
-  overflow-y: auto;
+  &__nav-items {
+    flex: 1;
+    overflow-y: auto;
 
-  .go-nav-item--first .go-nav-item__link,
-  .go-nav-group__dropdown--first {
-    padding-top: .625rem;
+    // scss-lint:disable SelectorFormat (no way around this I think)
+    .go-nav-item--first .go-nav-item__link,
+    .go-nav-group__dropdown--first {
+      padding-top: .625rem;
 
-    &.go-nav-item__link--active .go-nav-item--selected {
-      top: calc(50% + (.625rem / 2));
+      &.go-nav-item {
+        // scss-lint:disable SelectorDepth
+        &__link--active &--selected {
+          top: calc(50% + (.625rem / 2));
+        }
+      }
     }
   }
-}
 
-.go-side-nav__app {
-  align-items: center;
-  background: $base-dark-tertiary;
-  color: $theme-dark-color;
-  display: flex;
-  font-size: 1.25rem;
-  height: 2.75rem;
-  padding: .5rem .625rem .5rem .44rem;
-}
-
-.go-side-nav__app-icon {
-  display: flex;
-  font-size: 1.5rem;
-  padding: 0 1rem 0 .3rem;
-}
-
-.go-side-nav__app-drawer {
-  cursor: pointer;
-  margin-left: auto;
-
-  ::ng-deep .go-side-nav__app-drawer--icon {
+  &__app {
+    align-items: center;
+    background: $base-dark-tertiary;
+    color: $theme-dark-color;
     display: flex;
-    padding-top: .5rem;
+    font-size: 1.25rem;
+    height: 2.75rem;
+    padding: .5rem .625rem .5rem .44rem;
   }
 
-  .go-icon-button:hover {
-    background: darken($base-dark-tertiary, 10%);
-  }
-
-  .go-icon-button:active {
-    background: $theme-dark-bg-active;
-  }
-
-  .go-icon-button:focus {
-    background: $theme-dark-bg-active;
-  }
-
-
-  .go-side-nav__app-drawer--icon-collapsed {
+  &__app-icon {
     display: flex;
-    margin-left: -1px;
-    padding-right: 3.5px;
+    font-size: 1.5rem;
+    padding: 0 1rem 0 .3rem;
   }
 
-  .go-side-nav__app-drawer--launch {
-    color: $base-light-secondary;
-    cursor: default;
-    font-size: .6875rem;
-    padding: .75rem;
-    width: 100%;
+  &__app-drawer {
+    cursor: pointer;
+    margin-left: auto;
 
-    &:hover {
-      background: $theme-light-bg;
+    ::ng-deep .go-side-nav {
+      &__app-drawer {
+        &--icon {
+          display: flex;
+          padding-top: .5rem;
+        }
+      }
+    }
+
+    .go-icon-button {
+      &:hover {
+        background: darken($base-dark-tertiary, 10%);
+      }
+
+      &:active,
+      &:focus {
+        background: $theme-dark-bg-active;
+      }
+    }
+
+    &--icon-collapsed {
+      display: flex;
+      margin-left: -1px;
+      padding-right: 3.5px;
+    }
+
+    &--launch {
+      color: $base-light-secondary;
+      cursor: default;
+      font-size: .6875rem;
+      padding: .75rem;
+      width: 100%;
+
+      &:hover {
+        background: $theme-light-bg;
+      }
     }
   }
 }

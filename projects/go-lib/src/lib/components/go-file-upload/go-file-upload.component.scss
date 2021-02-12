@@ -3,88 +3,91 @@
 @mixin upload-active {
   cursor: pointer;
   background-color: $theme-light-bg-hover;
-  opacity: 0.8;
-}
-
-.go-file-upload__input {
-  height: 0;
-  visibility: hidden;
+  opacity: .8;
 }
 
 .go-file-upload {
-  height: 10rem;
   border: 1px dashed $theme-light-border;
-  border-radius: $global-radius; 
-}
-
-.go-file-upload--disabled {
-  color: lighten($theme-light-color, 40);
-  cursor: not-allowed;
-  border-style: solid;
-}
-
-.go-file-upload--dark {
-  border: 1px dashed $theme-dark-border;
-  background-color: $theme-dark-bg;
   border-radius: $global-radius;
-  color: $theme-dark-color;
+  height: 10rem;
 
-  .go-file-upload:hover {
-    background-color: $theme-dark-bg-hover;
-    color: $theme-dark-color-hover
+  &__input {
+    height: 0;
+    visibility: hidden;
   }
 
-  .go-file-upload--active {
-    color: $theme-dark-color-hover;
-    background-color: $theme-dark-bg-hover;
+  &--disabled {
+    border-style: solid;
+    // scss-lint:disable VariableForProperty
+    color: lighten($theme-light-color, 40);
+    cursor: not-allowed;
   }
-}
 
-.go-file-upload:hover {
-  @include upload-active;
-}
+  &--dark {
+    background-color: $theme-dark-bg;
+    border: 1px dashed $theme-dark-border;
+    border-radius: $global-radius;
+    color: $theme-dark-color;
 
-.go-file-upload--active {
-  @include upload-active;
-  border-style: solid;
-}
+    .go-file-upload {
+      &:hover {
+        background-color: $theme-dark-bg-hover;
+        color: $theme-dark-color-hover;
+      }
 
-.go-file-upload__container {
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
+      &--active {
+        background-color: $theme-dark-bg-hover;
+        color: $theme-dark-color-hover;
+      }
+    }
+  }
 
-.go-file-upload__file-list {
-  display: flex;
-  justify-content: space-between;
-}
+  &:hover {
+    @include upload-active;
+  }
 
-.go-file-upload__file-name {
-  margin-top: .5rem;
-  padding-right: .5rem;
-}
+  &--active {
+    @include upload-active;
+    border-style: solid;
+  }
 
-.go-file-upload__container--loading-text {
-  padding-top: .5rem;
-}
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-.go-file-upload__container--loading {
-  align-items: center;
-  cursor: not-allowed;
-  display: flex;
-  pointer-events: none;
-}
+    &--loading-text {
+      padding-top: .5rem;
+    }
 
-.file-name__label {
-  padding-bottom: .25rem;
-}
+    &--loading {
+      align-items: center;
+      cursor: not-allowed;
+      display: flex;
+      pointer-events: none;
+    }
+  }
 
-.go-file-upload__file-name--dark {
-  color: $theme-dark-color;
-}
+  &__file-list {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.go-file-upload__selected-checkmark {
-  color: $ui-color-positive;
+  &__file-name {
+    margin-top: .5rem;
+    padding-right: .5rem;
+
+    &__label {
+      padding-bottom: .25rem;
+    }
+
+    &--dark {
+      color: $theme-dark-color;
+    }
+  }
+
+  &__selected-checkmark {
+    color: $ui-color-positive;
+  }
 }

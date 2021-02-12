@@ -1,38 +1,50 @@
 @import '../../../styles/variables';
 
-.go-radio__input {
-  display: none;
-}
+.go-radio {
+  &__input {
+    display: none;
 
-.go-radio__custom-radio {
-  background-color: $base-light;
-  border: 1px solid lighten($base-light-secondary, 13.5%);
-  border-radius: 100%;
-  cursor: pointer;
-  display: inline-block;
-  height: .75rem;
-  margin: 3px 3px 0px 5px;
-  width: .75rem;
-}
+    &:enabled:hover + .go-radio {
+      &__custom-radio {
+        box-shadow: 0 0 2px 1.5px lighten($base-light-secondary, 13.5%);
+      }
+    }
 
-.go-radio__input:enabled:hover + .go-radio__custom-radio {
-  box-shadow: 0 0 2px 1.5px lighten($base-light-secondary, 13.5%);
-}
+    &:enabled:checked + .go-radio {
+      &__custom-radio {
+        background-color: $base-light;
+        border: 4px solid $ui-color-primary;
+      }
+    }
 
-.go-radio__input:enabled:checked + .go-radio__custom-radio {
-  background-color: $base-light;
-  border: 4px solid $ui-color-primary;
-}
+    &:enabled:checked:hover + .go-radio {
+      &__custom-radio {
+        box-shadow: 0 0 2px 1.5px $ui-color-primary-hover;
+      }
+    }
 
-.go-radio__input:enabled:checked:hover + .go-radio__custom-radio {
-  box-shadow: 0 0 2px 1.5px $ui-color-primary-hover;
-}
+    &:disabled + .go-radio {
+      &__custom-radio {
+        background-color: $theme-light-app-bg;
+        cursor: not-allowed;
+      }
+    }
 
-.go-radio__input:disabled + .go-radio__custom-radio {
-  background-color: $theme-light-app-bg;
-  cursor: not-allowed;
-}
+    &:disabled:checked + .go-radio {
+      &__custom-radio {
+        border: 4px solid lighten($base-light-secondary, 13.5%);
+      }
+    }
+  }
 
-.go-radio__input:disabled:checked + .go-radio__custom-radio {
-  border: 4px solid lighten($base-light-secondary, 13.5%);
+  &__custom-radio {
+    background-color: $base-light;
+    border: 1px solid lighten($base-light-secondary, 13.5%);
+    border-radius: 100%;
+    cursor: pointer;
+    display: inline-block;
+    height: .75rem;
+    margin: 3px 3px 0 5px;
+    width: .75rem;
+  }
 }

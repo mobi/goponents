@@ -13,7 +13,7 @@ $icon-colors: (
 // This .go-icon selector styles are borrowed verbatim from the material
 // icons documentation and applied to our own bem style block class.
 .go-icon {
-  // sass-lint:disable-block no-vendor-prefixes property-sort-order
+  // scss-lint:disable PropertySortOrder
   display: inline-block;
   font-family: 'Material Icons';
   font-style: normal;
@@ -48,8 +48,12 @@ $icon-colors: (
 @each $name, $color in $icon-colors {
   .go-icon--#{$name} {
     color: $color;
-      &.go-icon--disabled {
+
+    &.go-icon {
+      &--disabled {
+        // scss-lint:disable VariableForProperty
         color: rgba($color, .7);
       }
+    }
   }
 }

@@ -24,34 +24,34 @@
   &:last-child {
     margin-bottom: 0;
   }
-}
 
-.go-hint--dark {
-  color: $theme-dark-color;
-}
+  &--dark {
+    color: $theme-dark-color;
+  }
 
-.go-hint--negative::before {
-  background-color: $ui-color-negative;
-  opacity: 1;
-}
+  &--negative::before {
+    background-color: $ui-color-negative;
+    opacity: 1;
+  }
 
-.go-hint--positive::before {
-  background-color: $ui-color-positive;
-}
+  &--positive::before {
+    background-color: $ui-color-positive;
+  }
 
-.go-hint--neutral::before {
-  background-color: $ui-color-neutral;
-}
+  &--neutral::before {
+    background-color: $ui-color-neutral;
+  }
 
-.go-hint__label {
-  display: block;
-  font-size: .75rem;
-  font-style: normal;
-  font-weight: $weight-regular;
-  margin-bottom: $column-gutter--quarter;
-  text-transform: uppercase;
-}
+  &__label {
+    display: block;
+    font-size: .75rem;
+    font-style: normal;
+    font-weight: $weight-regular;
+    margin-bottom: $column-gutter--quarter;
+    text-transform: uppercase;
 
-.go-hint__label--negative {
-  color: $ui-color-negative;
+    &--negative {
+      color: $ui-color-negative;
+    }
+  }
 }

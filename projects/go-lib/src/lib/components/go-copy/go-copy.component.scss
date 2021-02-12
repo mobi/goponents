@@ -2,29 +2,35 @@
 
 :host.go-copy {
   position: relative;
-}
 
-:host.go-copy--card-header {
-  margin-left: 0.75rem;
-  margin-right: 100%;
-  position: relative;
+  &--card-header {
+    margin-left: .75rem;
+    margin-right: 100%;
+    position: relative;
 
-  .go-copy__content {
-    padding-top: 0.25rem;
+    .go-copy {
+      &__content {
+        padding-top: .25rem;
+      }
+    }
   }
 }
 
-.go-copy__textarea {
-  left: 99999px;
-  position: absolute;
-}
+.go-copy {
+  &__textarea {
+    left: 99999px;
+    position: absolute;
+  }
 
-.go-copy__content {
-  cursor: pointer;
-  overflow: hidden;
-  position: absolute;
-}
+  &__content {
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+  }
 
-.go-copy__icon--clicked {
-  color: $ui-color-positive;
+  &__icon {
+    &--clicked {
+      color: $ui-color-positive;
+    }
+  }
 }

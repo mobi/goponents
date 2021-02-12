@@ -2,8 +2,11 @@
 @import '../../../styles/mixins';
 
 .go-modal {
+  @include transition(all);
+  @include z-index(modal);
+
   align-items: center;
-  background: transparentize($color: $base-dark, $amount: 0.1);
+  background: transparentize($base-dark, .1);
   display: flex;
   height: 100%;
   justify-content: center;
@@ -14,75 +17,77 @@
   top: 0;
   visibility: hidden;
   width: 100%;
-  z-index: z-index(modal);
-  @include transition(all);
 
   @media (max-width: $breakpoint-mobile) {
     padding: 1rem;
   }
-}
 
-.go-modal__container {
-  @include transition(all);
+  &__container {
+    @include transition(all);
 
-  background: $theme-light-bg;
-  border-radius: $global-radius;
-  box-shadow: $global-box-shadow--regular;
-  color: $theme-light-color;
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
-  transform: scale(1.1);
-}
+    background: $theme-light-bg;
+    border-radius: $global-radius;
+    box-shadow: $global-box-shadow--regular;
+    color: $theme-light-color;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(1.1);
 
-.go-modal__container--lg {
-  max-width: map-get($modal-container-sizes, 'lg');
-  min-width: map-get($modal-container-sizes, 'lg');
+    &--lg {
+      max-width: map-get($modal-container-sizes, 'lg');
+      min-width: map-get($modal-container-sizes, 'lg');
 
-  @media (max-width: $breakpoint-mobile) {
-    max-width: 100%;
-    min-width: 50%;
+      @media (max-width: $breakpoint-mobile) {
+        max-width: 100%;
+        min-width: 50%;
+      }
+    }
+
+    &--xl {
+      max-width: map-get($modal-container-sizes, 'xl');
+      min-width: map-get($modal-container-sizes, 'xl');
+
+      @media (max-width: $breakpoint-mobile) {
+        max-width: 100%;
+        min-width: 50%;
+      }
+    }
   }
-}
 
-.go-modal__container--xl {
-  min-width: map-get($modal-container-sizes, 'xl');
-  max-width: map-get($modal-container-sizes, 'xl');
+  &.go-modal {
+    &--visible {
+      opacity: 1;
+      visibility: visible;
 
-  @media (max-width: $breakpoint-mobile) {
-    max-width: 100%;
-    min-width: 50%;
+      .go-modal {
+        &__container {
+          transform: scale(1);
+        }
+      }
+    }
   }
-}
 
-.go-modal.go-modal--visible {
-  opacity: 1;
-  visibility: visible;
-
-  .go-modal__container {
-    transform: scale(1);
+  &__header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0;
   }
-}
 
-.go-modal__header {
-  align-items: flex-start;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 1rem 0;
-}
+  &__close {
+    color: $base-light-secondary;
+    cursor: pointer;
+    font-size: 1.25rem;
+    margin-left: .5rem;
+  }
 
-.go-modal__close {
-  color: $base-light-secondary;
-  cursor: pointer;
-  font-size: 1.25rem;
-  margin-left: .5rem;
-}
+  &__content {
+    padding: 0 1rem 1rem;
 
-.go-modal__content {
-  padding: 0 1rem 1rem;
-}
-
-.go-modal__content--no-padding {
-  padding: 0;
+    &--no-padding {
+      padding: 0;
+    }
+  }
 }

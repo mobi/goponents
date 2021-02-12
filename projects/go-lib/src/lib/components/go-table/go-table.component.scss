@@ -1,26 +1,35 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
-$go-table__cell-vertical-padding: .875rem;
-$go-table__cell-horizontal-padding: 1.25rem;
+$go-table-cell-vertical-padding: .875rem;
+$go-table-cell-horizontal-padding: 1.25rem;
+$go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 
 .go-table-container {
   background: $theme-light-bg;
   border-radius: $global-radius;
   box-shadow: $global-box-shadow--regular;
   position: relative;
-}
 
-.go-table-container__disable-box-shadow {
-  box-shadow: none;
+  &__disable-box-shadow {
+    box-shadow: none;
+  }
 }
 
 .go-table-header {
   align-items: center;
   display: flex;
 
-  .go-table-header__title {
-    padding: $go-table__cell-vertical-padding 0 $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
+  &__title {
+    padding: $go-table-cell-vertical-padding 0 $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
   }
 
   @media (max-width: $breakpoint-mobile) {
@@ -28,156 +37,286 @@ $go-table__cell-horizontal-padding: 1.25rem;
     flex-direction: column;
     justify-content: center;
 
-    .go-table-header__actions {
+    &__actions {
       justify-content: initial;
     }
   }
 }
 
-.go-table-header__actions {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
-}
-
 .go-table {
   max-width: 100%;
   overflow-x: auto;
-}
 
-.go-table__table {
-  border-spacing: 0;
-  color: $theme-light-color;
-  width: 100%;
-}
-
-.go-table__head-column {
-  @include transition(background);
-
-  color: $theme-light-color;
-  font-size: .75rem;
-  font-weight: $weight-medium;
-  letter-spacing: 0.08px;
-  padding: 1rem $go-table__cell-horizontal-padding;
-  position: relative;
-  text-align: left;
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  &:first-of-type {
-    border-top-left-radius: $global-radius;
+  &__table {
+    border-spacing: 0;
+    color: $theme-light-color;
+    width: 100%;
   }
 
-  &:last-of-type {
-    border-top-right-radius: $global-radius;
-  }
-}
+  &__head-column {
+    @include transition(background);
 
-.go-table__select-all-checkbox {
-  display: inline-block;
-  position: relative;
-  top: -0.4rem;
-  width: $go-table__cell-vertical-padding;
-}
+    color: $theme-light-color;
+    font-size: .75rem;
+    font-weight: $weight-medium;
+    letter-spacing: .08px;
+    padding: 1rem $go-table-cell-horizontal-padding;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
 
-.go-table__head--sortable {
-  cursor: pointer;
+    &:first-of-type {
+      border-top-left-radius: $global-radius;
+    }
 
-  &:hover {
-    background: $theme-light-app-bg;
-  }
-}
-
-.go-table__head-checkbox {
-  text-align: center;
-}
-
-.go-table__head-content {
-  display: flex;
-  line-height: 1;
-}
-
-.go-table__sort-icon {
-  display: inline-block;
-  height: .75rem;
-  margin-top: -1px;
-  padding-left: .25rem;
-}
-
-.go-table__body-column {
-  border-bottom: 1px solid $theme-light-app-bg;
-  font-size: .875rem;
-  padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
-  position: relative;
-
-  .go-table__body-row:first-child & {
-    border-top: 1px solid $theme-light-app-bg;
+    &:last-of-type {
+      border-top-right-radius: $global-radius;
+    }
   }
 
-  .go-table__body-row:last-child & {
-    border-bottom: 0;
-  }
-}
-
-.go-table__body-column--selectable {
-  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-horizontal-padding;
-  text-align: center;
-  vertical-align: middle;
-
-  go-checkbox {
+  &__select-all-checkbox {
     display: inline-block;
-    margin-bottom: 1rem;
-    width: $go-table__cell-vertical-padding;
+    position: relative;
+    top: -.4rem;
+    width: $go-table-cell-vertical-padding;
   }
-}
 
-.go-table__body-row:nth-child(even) {
-  background: rgba($theme-light-app-bg, .5);
-}
+  &__head {
+    &--sortable {
+      cursor: pointer;
 
-.go-table__body-row.go-table__body-row--selected {
-  background: $theme-light-app-bg;
+      &:hover {
+        background: $theme-light-app-bg;
+      }
+    }
+  }
+
+  &__head-checkbox {
+    text-align: center;
+  }
+
+  &__head-content {
+    display: flex;
+    line-height: 1;
+  }
+
+  &__sort-icon {
+    display: inline-block;
+    height: .75rem;
+    margin-top: -1px;
+    padding-left: .25rem;
+  }
+
+  &__body-column {
+    border-bottom: 1px solid $theme-light-app-bg;
+    font-size: .875rem;
+    padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
+    position: relative;
+
+    .go-table {
+      &__body-row {
+        // scss-lint:disable SelectorDepth
+        &:first-child & {
+          border-top: 1px solid $theme-light-app-bg;
+        }
+
+        &:last-child & {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &--selectable {
+      padding: calc(#{$go-table-cell-vertical-padding} / 2) $go-table-cell-horizontal-padding;
+      text-align: center;
+      vertical-align: middle;
+
+      go-checkbox {
+        display: inline-block;
+        margin-bottom: 1rem;
+        width: $go-table-cell-vertical-padding;
+      }
+    }
+  }
+
+  &__body-row {
+    &:nth-child(even) {
+      background: rgba($theme-light-app-bg, .5);
+    }
+
+    &.go-table {
+      &__body-row {
+        &--selected {
+          background: $theme-light-app-bg;
+        }
+      }
+    }
+
+    &--expanded {
+      border-bottom-color: $go-table-body-row-expanded-border;
+    }
+
+    &--active {
+      border-left: $global-radius solid;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &--active-parent {
+      background-color: $theme-light-bg-hover;
+      border-top: 1px solid $theme-light-app-bg;
+    }
+  }
+
+  &__details-button {
+    display: inline-block;
+    transition-property: all;
+  }
+
+  &__icon-button-column {
+    padding: calc(#{$go-table-cell-vertical-padding} / 2) $go-table-cell-vertical-padding;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  &__search-container {
+    @include transition(all);
+
+    align-items: center;
+    background: $theme-light-bg;
+    border: 1px solid $base-light-tertiary;
+    border-radius: 1rem;
+    color: $theme-light-border;
+    display: flex;
+    margin: .25rem $go-table-cell-horizontal-padding 1rem;
+    position: relative;
+
+    &:hover {
+      background: lighten($theme-light-app-bg, 3%);
+      box-shadow: $global-box-shadow--search;
+    }
+  }
+
+  &__search-icon {
+    height: 1rem;
+    padding: 0 .5rem;
+  }
+
+  &__search-input {
+    background: transparent;
+    border: 0;
+    flex: 1;
+    font-family: $primary-font-stack;
+    font-size: .875rem;
+    font-weight: $weight-light;
+    letter-spacing: .02rem;
+    line-height: 1.3;
+    min-width: 250px;
+    padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__search-close-icon {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+  }
+
+  &__filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 $go-table-cell-horizontal-padding;
+  }
+
+  &__child-row-indicator {
+    border-left: $global-radius solid;
+    height: calc(100% + 1px);
+    left: 0;
+    position: absolute;
+    top: -1px;
+  }
 }
 
 .go-table-toolbar {
   align-items: center;
   display: flex;
-  font-size: 0.875rem;
+  font-size: .875rem;
   justify-content: space-between;
-  padding: 1rem $go-table__cell-horizontal-padding;
+  padding: 1rem $go-table-cell-horizontal-padding;
 
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
   }
-}
 
-.go-table-toolbar__page-controls {
-  align-items: center;
-  display: flex;
+  &__page-controls {
+    align-items: center;
+    display: flex;
 
-  @media (max-width: $breakpoint-mobile) {
-    justify-content: space-between;
-    margin-top: 1rem;
-    width: 100%;
+    @media (max-width: $breakpoint-mobile) {
+      justify-content: space-between;
+      margin-top: 1rem;
+      width: 100%;
+    }
   }
-}
 
-.go-table-toolbar__page-size {
-  align-items: center;
-  display: flex;
-  white-space: nowrap;
-}
+  &__page-size {
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+  }
 
-.go-table-toolbar__select {
-  min-width: 4.25rem;
-}
+  &__select {
+    min-width: 4.25rem;
+  }
 
-.go-table-toolbar__label {
-  display: inline-block;
-  font-weight: normal;
-  padding: 0 0.75rem;
+  &__label {
+    display: inline-block;
+    font-weight: normal;
+    padding: 0 .75rem;
+  }
+
+  &__page-numbers {
+    @include transition(background);
+
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    font-size: .875rem;
+    line-height: 1rem;
+    margin: 0 .125rem;
+    outline: none;
+    padding: .25rem .5rem;
+    user-select: none;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background: $theme-light-bg-hover;
+    }
+
+    &--active {
+      background-color: $ui-color-primary;
+      color: $theme-dark-color;
+
+      &:hover {
+        background-color: $ui-color-primary-hover;
+      }
+    }
+  }
 }
 
 // Loader
@@ -207,136 +346,7 @@ $go-table__cell-horizontal-padding: 1.25rem;
     border-top: 1px solid $theme-light-app-bg;
     color: $theme-light-color;
     font-size: .875rem;
-    padding: $go-table__cell-vertical-padding $go-table__cell-horizontal-padding;
+    padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
     text-align: center;
   }
-}
-
-.go-table__body-row--expanded {
-  border-bottom-color: rgba(240, 240, 240, 0)
-}
-
-.go-table__details-button {
-  display: inline-block;
-  transition-property: all;
-}
-
-.go-table__icon-button-column {
-  padding: calc(#{$go-table__cell-vertical-padding} / 2) $go-table__cell-vertical-padding;
-  position: relative;
-  vertical-align: middle;
-}
-
-.go-table-toolbar__page-numbers {
-  @include transition(background);
-
-  align-items: center;
-  background: transparent;
-  border: 0;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  font-size: .875rem;
-  margin: 0 .125rem 0 .125rem;
-  padding: .25rem .5rem;
-  outline: none;
-  user-select: none;
-  line-height: 1rem;
-
-  &:active,
-  &:focus,
-  &:hover {
-    background: $theme-light-bg-hover;
-  }
-}
-
-.go-table-toolbar__page-numbers--active {
-  background-color: $ui-color-primary;
-  color: $theme-dark-color;
-
-  &:hover {
-    background-color: $ui-color-primary-hover;
-  }
-}
-
-// Search
-//=====================
-.go-table__search-container {
-  @include transition(all);
-
-  align-items: center;
-  background: $theme-light-bg;
-  border: 1px solid $base-light-tertiary;
-  border-radius: 1rem;
-  color: $theme-light-border;
-  display: flex;
-  margin: 0.25rem $go-table__cell-horizontal-padding 1rem;
-  position: relative;
-
-  &:hover {
-    background: lighten($theme-light-app-bg, 3%);
-    box-shadow: $global-box-shadow--search;
-  }
-}
-
-.go-table__search-icon {
-  height: 1rem;
-  padding: 0 .5rem;
-}
-
-.go-table__search-input {
-  background: transparent;
-  border: 0;
-  flex: 1;
-  line-height: 1.3;
-  font-family: $primary-font-stack;
-  font-size: 0.875rem;
-  font-weight: $weight-light;
-  letter-spacing: 0.02rem;
-  min-width: 250px;
-  padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
-
-  &::-ms-clear {
-    display: none;
-  }
-
-  &:active, &:focus {
-    outline: none;
-  }
-}
-
-.go-table__search-close-icon {
-  position: absolute;
-  right: 2px;
-  top: 2px;
-}
-
-// Filter Table
-//=====================
-.go-table__filter-container {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 $go-table__cell-horizontal-padding;
-}
-
-// Hierarchical Table
-.go-table__child-row-indicator {
-  border-left: $global-radius solid;
-  height: calc(100% + 1px);
-  left: 0;
-  position: absolute;
-  top: -1px;
-}
-
-.go-table__body-row--active {
-  border-left: $global-radius solid;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-}
-
-.go-table__body-row--active-parent {
-  background-color: $theme-light-bg-hover;
-  border-top: 1px solid $theme-light-app-bg;
 }

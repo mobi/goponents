@@ -6,23 +6,24 @@
   color: $base-light;
   cursor: default;
   display: inline-flex;
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: $weight-regular;
   margin-bottom: $column-gutter--half;
   margin-right: $column-gutter--half;
-  padding: 0.375rem 0.5rem;
+  padding: .375rem .5rem;
   transition: background-color $global-transition-duration;
 
   &:hover {
     background-color: $ui-color-primary-hover;
   }
-}
 
-.go-pill__remove-icon {
-  cursor: pointer;
-  height: 0.75rem;
-  margin-left: 0.5rem;
-  &:hover {
-    color: $base-dark;
+  &__remove-icon {
+    cursor: pointer;
+    height: .75rem;
+    margin-left: .5rem;
+
+    &:hover {
+      color: $base-dark;
+    }
   }
 }
