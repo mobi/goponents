@@ -154,10 +154,6 @@
   }
 }
 
-.ng-select-top {
-  margin-left: 0px !important;
-}
-
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked,
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
@@ -171,6 +167,10 @@
 // overrides incorrect alignment when appendTo body is applied to an ng-select
 body > .ng-dropdown-panel {
   margin-left: 4px;
+
+  &.ng-select-top {
+    margin-left: 0;
+  }
 }
 
 // overrides ng-select styles when theme is dark
