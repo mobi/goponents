@@ -63,6 +63,21 @@ describe('GoTimepickerComponent', () => {
     });
   });
 
+  describe('ngAfterViewInit', () => {
+    afterEach(() => {
+      component.selectedTime = null;
+    });
+
+    it('after change the value of time', () => {
+      const time: string = '06:15 PM';
+
+      component.ngAfterViewInit();
+      component.control.setValue('18:15:00');
+
+      expect(component.selectedTime).toEqual(time);
+    });
+  });
+
   describe('timePicked', () => {
     afterEach(() => {
       component.selectedTime = null;

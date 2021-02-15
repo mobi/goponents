@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 import { GoTimeFormat } from './go-time-format.model';
@@ -9,7 +9,7 @@ import { GoTimeFormat } from './go-time-format.model';
   templateUrl: './go-timepicker.component.html',
 })
 
-export class GoTimepickerComponent implements OnInit {
+export class GoTimepickerComponent implements OnInit, AfterViewInit {
   displayAbove: boolean = false;
   displayFromRight: boolean = true;
   timeOpen: boolean = false;
@@ -31,6 +31,12 @@ export class GoTimepickerComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'timepicker');
     this.selectedTime = this.changeTimeFormat(this.control.value);
+  }
+
+  ngAfterViewInit(): void {
+    this.control.valueChanges.subscribe((value: string | Date) => {
+        this.selectedTime = this.changeTimeFormat(this.control.value);
+    });
   }
 
   public changeTimeFormat(timeString: string | Date): string {
