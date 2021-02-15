@@ -18,21 +18,24 @@
   [labelForId]="id"
   [loading]="loading"
   [multiple]="multiple"
+  [ngClass]="{
+    'go-select--dark': theme === 'dark',
+    'go-select--hide-arrow': hideDropDownArrow || (typeahead && items?.length === 0),
+    'go-select--hide-dropdown': searchable && items?.length === 0
+  }"
   [placeholder]="placeholder"
-  [typeahead]="typeahead"
-  [ngClass]="{'go-select--dark': theme === 'dark'}"
   [searchable]="searchable"
+  [typeahead]="typeahead"
   [typeToSearchText]="typeToSearchText"
   [virtualScroll]="virtualScroll"
   (scrollToEnd)="onScrollToEnd()"
   (scroll)="onScroll($event)">
-  <ng-container *ngIf="multiple && showSelectAll">
+  <ng-container *ngIf="multiple && showSelectAll && items.length > 0">
     <ng-template ng-header-tmp>
       <button
         (click)="onSelectAll()"
         class="go-select__select-all-button"
         [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }">
-
         Select All
       </button>
     </ng-template>
@@ -57,7 +60,11 @@
   </ng-container>
 </ng-select>
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+<go-hint
+  *ngFor="let hint of hints"
+  [message]="hint"
+  [theme]="theme">
+</go-hint>
 
 <div *ngIf="control?.errors?.length">
   <go-hint
@@ -65,6 +72,6 @@
     [message]="error.message"
     [label]="error.type"
     [theme]="theme"
-    type="negative"
-  ></go-hint>
+    type="negative">
+  </go-hint>
 </div>
