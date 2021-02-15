@@ -25,7 +25,8 @@ export class TableDocsService {
       },
       email: faker.internet.email(),
       gender: index % 3 ? 'Male' : 'Female',
-      ip_address: faker.internet.ip()
+      ip_address: faker.internet.ip(),
+      active: faker.random.boolean()
     };
   }
 }

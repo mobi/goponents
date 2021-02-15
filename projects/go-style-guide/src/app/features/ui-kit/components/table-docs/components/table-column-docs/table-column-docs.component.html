@@ -92,11 +92,12 @@
   </go-card>
 
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Example Usage">
-    <go-table-column field="id" title="ID" [sortable]="false" width="5"></go-table-column>
+    <go-table-column field="id" [sortable]="false" width="5"></go-table-column>
+    <go-table-column field="active"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>
-    <go-table-column field="email" title="Email" width="50"></go-table-column>
-    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="email" width="50"></go-table-column>
+    <go-table-column field="gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
 </section>
