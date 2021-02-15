@@ -109,6 +109,7 @@ import { BasicTestLargeComponent } from './components/basic-test-large/basic-tes
 import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-button/basic-test-submit-button.component';
 import { TableChildRowsComponent } from './components/table-docs/components/table-child-rows/table-child-rows.component';
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
+import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.component';
 
 @NgModule({
   imports: [
@@ -208,7 +209,8 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     TableTitleTemplateComponent,
     VirtualScrollComponent,
     TableChildRowsComponent,
-    TimepickerDocsComponent
+    TimepickerDocsComponent,
+    WysiwygDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
