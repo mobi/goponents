@@ -8,7 +8,7 @@ export class GoModalOptions {
   /**
    * The title for the modal.
    */
-  modalTitle?: string;
+  modalTitle?: string = '';
   /**
    * The general size for the modal.
    */

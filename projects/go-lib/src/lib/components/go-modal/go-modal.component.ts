@@ -41,7 +41,7 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
   ngOnInit(): void {
     this.goModalService.activeModalComponent
       .pipe(takeUntil(this.destroy$))
-      .subscribe((value: any) => {
+      .subscribe((value: GoModalItem<any>) => {
         this.currentComponent = value;
         this.loadComponent();
       });
@@ -52,6 +52,7 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
         this.opened = value;
         if (this.opened === false) {
           this.destroyComponent();
+          this.resetDefaults();
         }
       });
   }
@@ -91,6 +92,13 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
 
   goModalClasses(): object {
     return { 'go-modal--visible': this.opened };
+  }
+
+  private resetDefaults(): void {
+    const options: GoModalOptions = new GoModalOptions();
+    Object.keys(options).forEach((key: string) => {
+      this[key] = options[key];
+    });
   }
 
   private setModalProperties(componentRef: ComponentRef<{}>): void {

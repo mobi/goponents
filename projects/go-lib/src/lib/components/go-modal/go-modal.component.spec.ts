@@ -58,6 +58,36 @@ describe('GoModalComponent', () => {
 
       expect(component.goModalHost.viewContainerRef.clear).toHaveBeenCalled();
     });
+
+    it('resets default options when off canvas is closed', () => {
+      spyOn(goModalService, 'toggleModal').and.callThrough();
+
+      goModalService.openModal(
+        GoTestModalHostComponent,
+        {},
+        {
+          closeWithBackdrop: true,
+          modalTitle: 'Hogwarts',
+          modalSize: 'xl',
+          noContentPadding: true,
+          showCloseIcon: false
+        }
+      );
+
+      expect(component.closeWithBackdrop).toEqual(true);
+      expect(component.modalTitle).toEqual('Hogwarts');
+      expect(component.modalSize).toEqual('xl');
+      expect(component.noContentPadding).toEqual(true);
+      expect(component.showCloseIcon).toEqual(false);
+
+      goModalService.toggleModal(false);
+
+      expect(component.closeWithBackdrop).toBe(false);
+      expect(component.modalTitle).toEqual('');
+      expect(component.modalSize).toEqual('lg');
+      expect(component.noContentPadding).toEqual(false);
+      expect(component.showCloseIcon).toEqual(true);
+    });
   });
 
   describe('loadComponent', () => {
