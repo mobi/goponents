@@ -10,7 +10,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   &__fieldset {
     border: 1px solid $theme-light-border;
     border-radius: $global-radius;
-    margin-bottom: 0;
+    margin-bottom: $column-gutter;
     padding: $column-gutter;
 
     &:disabled {

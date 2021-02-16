@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { GoOffCanvasService } from 'projects/go-lib/src/public_api';
 import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
@@ -8,6 +9,12 @@ import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-
 })
 export class GridComponent {
   pageTitle: string = 'Grid System';
+
+  form: FormGroup = new FormGroup({
+    firstName: new FormControl(),
+    lastName: new FormControl,
+    email: new FormControl()
+  });
 
   basicExample20: string = `
   <section class="go-container">
@@ -95,9 +102,38 @@ export class GridComponent {
   </section>
   `;
 
+  formExample: string = `
+  <form
+    [formGroup]="form"
+    class="go-container go-container--form">
+    <div class="go-column column--100 go-column--no-padding">
+      <div class="go-container go-container--form">
+        <go-input
+          class="go-column go-column--50"
+          label="First Name"
+          [control]="form.get('firstName')">
+        </go-input>
+        <go-input
+          class="go-column go-column--50"
+          label="Last Name"
+          [control]="form.get('lastName')">
+        </go-input>
+      </div>
+    </div>
+    <go-input
+      class="go-column go-column--100"
+      label="Email"
+      [control]="form.get('email')">
+    </go-input>
+    <div class="go-column go-column--100 go-column--no-padding">
+      <go-button>Submit</go-button>
+    </div>
+  </form>
+  `;
+
   containerReset: string = `
   <form class="go-form go-form--dark">
-    <div class="go-container go-container--reset">
+    <div class="go-container go-container--form go-container--reset">
       <div class="go-column go-column--50">
         <label for="first-name-input" class="go-form__label">First Name</label>
         <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">

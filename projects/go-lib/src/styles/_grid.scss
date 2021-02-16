@@ -1,3 +1,23 @@
+@mixin grid-column-modifiers {
+  &--no-padding {
+    padding-bottom: 0;
+  }
+
+  &--no-grow {
+    flex-grow: 0;
+  }
+
+  &--expandable {
+    max-width: 100%;
+  }
+
+  &--collapse {
+    flex-basis: auto;
+    flex-grow: 0;
+    width: auto;
+  }
+}
+
 @each $name, $size in $column-sizes {
   .go-column--#{$name} {
     flex-basis: percentage($size);
@@ -43,6 +63,16 @@
   flex-wrap: wrap;
   margin: 0 (-$column-gutter);
 
+  &--form {
+    margin: 0 calc(-#{$column-gutter} / 2);
+
+    .go-column {
+      padding: 0 calc(#{$column-gutter} / 2) $column-gutter;
+
+      @include grid-column-modifiers;
+    }
+  }
+
   &--reset {
     padding: 0 $column-gutter;
   }
@@ -72,21 +102,5 @@
   flex: 1 1 auto;
   padding: 0 $column-gutter $column-gutter--double;
 
-  &--no-padding {
-    padding-bottom: 0;
-  }
-
-  &--no-grow {
-    flex-grow: 0;
-  }
-
-  &--expandable {
-    max-width: 100%;
-  }
-
-  &--collapse {
-    flex-basis: auto;
-    flex-grow: 0;
-    width: auto;
-  }
+  @include grid-column-modifiers;
 }

@@ -12,7 +12,7 @@ export class FormsComponent {
 
   formHints: string = `
   <form class="go-form">
-    <div class="go-container">
+    <div class="go-container go-container--form">
       <div class="go-column go-column--100">
         <label for="phone-input-hint" class="go-form__label">Phone Number</label>
         <input class="go-form__input" id="phone-input-hint" placeholder="+0(000)000-0000">
@@ -42,7 +42,7 @@ export class FormsComponent {
 
   inputModifiers: string = `
   <form class="go-form">
-    <div class="go-container">
+    <div class="go-container go-container--form">
       <div class="go-column go-column--100">
         <label for="email-input" class="go-form__label">Normal Input</label>
         <input class="go-form__input" id="normal-input" placeholder="Normal Input" type="text">
@@ -69,7 +69,7 @@ export class FormsComponent {
 
   selectModifiers: string = `
   <form class="go-form">
-    <div class="go-container">
+    <div class="go-container go-container--form">
       <div class="go-column go-column--100">
         <label for="normal-select" class="go-form__label">Normal Select</label>
         <select class="go-form__select" id="normal-select">
@@ -186,7 +186,7 @@ export class FormsComponent {
   <form class="go-form">
     <div class="go-container">
       <div class="go-column go-column--50 go-column--no-padding">
-        <div class="go-container">
+        <div class="go-container go-container--form">
           <div class="go-column go-column--50">
             <label for="advanced-first-name" class="go-form__label">First Name</label>
             <input class="go-form__input" id="advanced-first-name" placeholder="Jonny" type="text">
@@ -226,7 +226,7 @@ export class FormsComponent {
       <div class="go-column go-column--50 go-column--no-padding">
         <fieldset class="go-form__fieldset">
           <legend class="go-form__legend">Employee Information</legend>
-          <div class="go-container">
+          <div class="go-container go-container--form">
             <div class="go-column go-column--100">
               <label for="advanced-employee-id" class="go-form__label">Employee ID</label>
               <input
@@ -290,7 +290,7 @@ export class FormsComponent {
             <div class="go-column go-column--100 go-column--no-padding">
               <fieldset class="go-form__fieldset go-form__fieldset--no-margin">
                 <legend>Best Golden Girl?</legend>
-                <div class="go-container">
+                <div class="go-container go-container--form">
                   <div class="go-column go-column--50 go-column--no-padding">
                     <div>
                       <input
@@ -370,7 +370,7 @@ export class FormsComponent {
 
     return `
   ${formElement}
-    <div class="go-container">
+    <div class="go-container go-container--form">
       <div class="go-column go-column--50">
         <label for="first-name-input" class="go-form__label">First Name</label>
         <input class="go-form__input" id="first-name-input" placeholder="Jonny" type="text">
