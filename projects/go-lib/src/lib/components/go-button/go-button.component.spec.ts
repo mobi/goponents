@@ -104,6 +104,17 @@ describe('GoButtonComponent', () => {
       expect(component.classObject['go-button--dark']).toBe(true);
       expect(component.classObject['go-button--loading']).toBe(true);
     });
+
+    it('returns an object that sets button-group modifiers to true if button has a group position', () => {
+      component.groupPosition = 'middle';
+      expect(component.classObject['go-button-group__btn']).toBeFalsy();
+      expect(component.classObject['go-button-group__btn--middle']).toBeFalsy();
+
+      component.ngOnChanges();
+
+      expect(component.classObject['go-button-group__btn']).toBeTruthy();
+      expect(component.classObject['go-button-group__btn--middle']).toBeTruthy();
+    });
   });
 
   describe('the template', () => {

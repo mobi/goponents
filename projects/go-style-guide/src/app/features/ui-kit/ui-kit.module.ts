@@ -110,6 +110,7 @@ import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-b
 import { TableChildRowsComponent } from './components/table-docs/components/table-child-rows/table-child-rows.component';
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.component';
+import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
 
 @NgModule({
   imports: [
@@ -152,6 +153,7 @@ import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.com
     BasicTestLargeComponent,
     BasicTestSubmitButtonComponent,
     BadgeDocsComponent,
+    ButtonGroupDocsComponent,
     ButtonDocsComponent,
     CardDocsComponent,
     ConfigurationDocsComponent,

@@ -1,6 +1,7 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$transparent-color: rgba(0, 0, 0, 0);
 $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
 
 @mixin disabled-states($bg, $color, $color-opacity: .7) {
@@ -69,6 +70,24 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
     color: $theme-dark-color;
   }
 
+  &.go-button-group {
+    &__btn {
+      &--first {
+        border-radius: $global-radius 0 0 $global-radius;
+      }
+
+      &--middle {
+        border-left: 1px solid $transparent-color;
+        border-radius: 0;
+      }
+
+      &--last {
+        border-left: 1px solid $transparent-color;
+        border-radius: 0 $global-radius $global-radius 0;
+      }
+    }
+  }
+
   &--primary {
     background: $ui-color-primary;
     border: 1px solid $ui-color-primary;
@@ -107,6 +126,16 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
     &:active {
       border: 1px solid lighten($base-light-secondary, 10%);
       box-shadow: $button-shadow-secondary;
+    }
+
+    &.go-button-group {
+      &__btn {
+        &:hover,
+        &:focus,
+        &:active {
+          border-left: 1px solid $transparent-color;
+        }
+      }
     }
 
     &:disabled:not(.go-button--loading) {

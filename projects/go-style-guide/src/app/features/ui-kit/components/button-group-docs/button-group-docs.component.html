@@ -1,0 +1,96 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">Button Group</h1>
+  <a
+    [href]="linkToSource"
+    target="_blank">
+    <go-button buttonVariant="neutral">
+      View on GitHub
+    </go-button>
+  </a>
+</header>
+
+<div class="go-container">
+
+  <go-card
+    class="go-column go-column--100"
+    id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy
+        cardId="usage"
+        goCopyCardLink>
+      </go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">go-button-group</code> component can be used to group a set of buttons together.
+          Both the button variant and disabled states can be set on a group level. See the examples below to implement these features.
+        </p>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+
+          <div class="go-column go-column--no-padding">
+            <label class="go-form__label">
+              Button group with text
+            </label>
+          </div>
+          <go-button-group
+            class="go-column go-column--100"
+            [buttonDisabled]="buttonDisabled"
+            [buttonVariant]="buttonVariant">
+            <go-button>Item 1</go-button>
+            <go-button>Item 2</go-button>
+            <go-button>Item 3</go-button>
+          </go-button-group>
+
+          <div class="go-column go-column--no-padding">
+            <label class="go-form__label">
+              Button group with icons
+            </label>
+          </div>
+          <go-button-group
+            class="go-column go-column--100"
+            [buttonDisabled]="buttonDisabled"
+            [buttonVariant]="buttonVariant">
+            <go-button buttonIcon="home"></go-button>
+            <go-button buttonIcon="landscape"></go-button>
+            <go-button buttonIcon="settings"></go-button>
+          </go-button-group>
+          
+          <go-select
+            class="go-column go-column--100"
+            label="Button Variant"
+            [control]="variantSelect"
+            [items]="variants">
+          </go-select>
+    
+          <go-switch-toggle
+            class="go-column go-column--100 go-column--no-padding"
+            label="Button Disabled"
+            [control]="disableToggle">
+          </go-switch-toggle>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="buttonGroupEx"></code>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </go-card>
+
+</div>

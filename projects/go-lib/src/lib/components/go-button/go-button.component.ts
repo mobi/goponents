@@ -18,11 +18,13 @@ import { SplitButtonOption } from './go-split-button-option.model';
   styleUrls: ['./go-button.component.scss']
 })
 export class GoButtonComponent implements OnChanges, OnInit {
+
   classObject: object = {};
-  splitButtonClassObject: object = {};
+  groupPosition: 'first' | 'middle' | 'last' = null;
   loaderClassObject: object = {};
   loaderType: 'light' | 'dark' = 'light';
   showSplitButtonMenu: boolean = false;
+  splitButtonClassObject: object = {};
   splitButtonIconModifier: 'light' | 'dark' = 'light';
 
   @Input() buttonDisabled: boolean;
@@ -41,7 +43,7 @@ export class GoButtonComponent implements OnChanges, OnInit {
   }
 
   constructor(
-    private elementRef: ElementRef,
+    private elementRef: ElementRef
   ) { }
 
   clicked(): void {
@@ -81,6 +83,11 @@ export class GoButtonComponent implements OnChanges, OnInit {
       'go-button--loading': this.isProcessing,
       'go-button--split': this.isSplitButton()
     };
+
+    if (this.groupPosition) {
+      this.classObject['go-button-group__btn'] = true;
+      this.classObject[`go-button-group__btn--${this.groupPosition}`] = true;
+    }
 
     this.classObject['go-button--' + this.buttonVariant] = true;
     this.splitButtonClassObject['split-button--' + this.buttonVariant] = true;
