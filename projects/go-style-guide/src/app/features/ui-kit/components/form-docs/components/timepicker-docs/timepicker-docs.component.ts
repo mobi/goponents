@@ -53,7 +53,7 @@ export class TimepickerDocsComponent implements OnInit {
       label="Select Time"
       [control]="time"
       [hints]="hints">
-    </go-datepicker>
+    </go-timepicker>
     `;
 
     basicErrorsTemplate: string = `
