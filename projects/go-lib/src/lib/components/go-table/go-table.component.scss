@@ -56,6 +56,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
   &__head-column {
     @include transition(background);
 
+    border-bottom: 2px solid $theme-light-app-bg;
     color: $theme-light-color;
     font-size: .75rem;
     font-weight: $weight-medium;
@@ -149,6 +150,14 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
       &__body-row {
         &--selected {
           background: $theme-light-app-bg;
+        }
+      }
+    }
+
+    &:last-of-type {
+      .go-table {
+        &__body-column {
+          border-bottom: 0;
         }
       }
     }
@@ -250,6 +259,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 
 .go-table-toolbar {
   align-items: center;
+  border-top: 2px solid $theme-light-app-bg;
   display: flex;
   font-size: .875rem;
   justify-content: space-between;
