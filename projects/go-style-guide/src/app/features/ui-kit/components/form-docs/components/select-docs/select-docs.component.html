@@ -569,12 +569,12 @@
             <go-select
               bindLabel="name"
               bindValue="value"
+              label="Candy"
+              placeholder="Search for a candy"
               [control]="select11"
               [items]="options$ | async"
-              [multiple]="true"
-              label="Your Input"
-              [typeahead]="itemInput"
-              typeToSearchText="Search The Thing">
+              [loading]="loadingTypeahead"
+              [typeahead]="itemInput">
             </go-select>
           </div>
           <div class="go-column go-column--50">
@@ -714,6 +714,46 @@
             </code>
             <code
               [highlight]="select16ComponentCode"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <go-card id="form-select-hideDropDownArrow" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component hideDropDownArrow</h2>
+      <go-copy cardId="form-select-hideDropDownArrow" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">@Input() hideDropDownArrow: boolean = false;</code> binding can be used
+          to forcefully hide the drown down arrow in the select.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-select
+              bindLabel="name"
+              bindValue="value"
+              [hideDropDownArrow]="true"
+              [control]="select22"
+              [items]="items"
+              label="Select an option">
+            </go-select>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="select22Code"
               class="code-block--no-bottom-margin">
             </code>
           </div>

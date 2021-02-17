@@ -242,4 +242,16 @@ body > .ng-dropdown-panel {
       }
     }
   }
+
+  &--hide-arrow {
+    .ng-arrow-wrapper {
+      display: none;
+    }
+  }
+
+  &--hide-dropdown {
+    .ng-dropdown-panel {
+      display: none;
+    }
+  }
 }
