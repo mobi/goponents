@@ -75,6 +75,11 @@
   padding: .5rem;
   position: absolute;
   top: 0;
+  width: 100%;
+}
+
+.ng-value-container {
+  position: relative;
 }
 
 // overrides for multiselect selected options
@@ -162,6 +167,10 @@
 // overrides incorrect alignment when appendTo body is applied to an ng-select
 body > .ng-dropdown-panel {
   margin-left: 4px;
+
+  &.ng-select-top {
+    margin-left: 0;
+  }
 }
 
 // overrides ng-select styles when theme is dark
