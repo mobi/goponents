@@ -25,6 +25,12 @@
   &--wrapper {
     display: flex;
   }
+
+  &--dark {
+    background: $theme-dark-bg;
+    border-color: $base-dark-secondary;
+    box-shadow: $global-box-shadow--dark-popup;
+  }
 }
 
 .colon-content {

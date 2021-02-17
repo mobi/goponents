@@ -137,6 +137,7 @@
 }
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  color: $theme-light-color;
   font-size: .875rem;
   padding: .5rem;
 
@@ -147,6 +148,7 @@
   &.ng-option-selected,
   &.ng-option-selected.ng-option-marked {
     background-color: $theme-light-bg-hover;
+    color: $theme-light-color;
 
     .ng-option-label {
       font-weight: $weight-light;
@@ -176,6 +178,8 @@ body > .ng-dropdown-panel {
 // overrides ng-select styles when theme is dark
 .ng-select.go-select--dark {
   .ng-dropdown-panel {
+    box-shadow: $global-box-shadow--dark-popup;
+
     &.ng-select-bottom {
       border: 0;
     }
@@ -193,6 +197,7 @@ body > .ng-dropdown-panel {
       &.ng-option-selected,
       &.ng-option-selected.ng-option-marked {
         background-color: $base-dark-secondary;
+        color: $theme-dark-color;
 
         .ng-option-label {
           font-weight: $weight-light;

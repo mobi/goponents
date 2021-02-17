@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -142,6 +142,7 @@ import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.com
     UiKitRoutesModule,
     GoSharedModule,
     FormsModule,
+    ReactiveFormsModule,
     GoTreeModule,
     GoTimepickerModule
   ],

@@ -69,6 +69,7 @@ $z-index: (
   border: 1px solid lighten($theme-light-border, 13.5%);
   border-radius: $global-radius;
   box-shadow: none;
+  color: $theme-light-color;
   font-family: $primary-font-stack;
   font-size: .875rem;
   font-weight: $weight-light;

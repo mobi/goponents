@@ -24,6 +24,8 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
   @Input() selectedTime: string;
   @Input() displayAbove: boolean;
   @Input() displayFromRight: boolean;
+  @Input() theme: 'light' | 'dark' = 'light';
+
   @Output() timePicked: EventEmitter<object> = new EventEmitter();
   @Output() closeTime: EventEmitter<void> = new EventEmitter();
 
