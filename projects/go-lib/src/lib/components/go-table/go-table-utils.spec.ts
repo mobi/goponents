@@ -1,4 +1,10 @@
-import { extractFieldData, sortBy } from './go-table-utils';
+import { extractFieldData, formatSortValue, nullCheck, sortBy } from './go-table-utils';
+
+const data: any = {
+  headmaster: undefined,
+  house: null,
+  school: 'Hogwarts'
+};
 
 describe('go-table-utils', () => {
 
@@ -24,34 +30,51 @@ describe('go-table-utils', () => {
   });
 
   describe('extractFieldData', () => {
-    it('should treat undefined as empty string', () => {
-      const row: any = {
-        first: 'Voldemort'
-      };
+    it('should return value from key specified on object param', () => {
+      const result: any = extractFieldData('school', data);
 
-      const result: string = extractFieldData('last', row);
-
-      expect(result).toBe('');
+      expect(result).toBe('Hogwarts');
     });
 
-    it('should treat null as empty string', () => {
-      const row: any = {
-        last: null
-      };
-      const result: string = extractFieldData('last', row);
+    it('should return null or undefined if key specified on object param is null or undefined respectively', () => {
+      const nullResult: any = extractFieldData('house', data);
+      const undefinedResult: any = extractFieldData('headmaster', data);
 
-      expect(result).toBe('');
-    });
-
-    it('should convert boolean values to string values', () => {
-      const falseRow: any = { active: false };
-      const trueRow: any = { active: true };
-
-      const falseResult: string = extractFieldData('active', falseRow);
-      const trueResult: string = extractFieldData('active', trueRow);
-
-      expect(falseResult).toBe('false');
-      expect(trueResult).toBe('true');
+      expect(nullResult).toBeNull();
+      expect(undefinedResult).toBeUndefined();
     });
   });
+
+  describe('formatSortValue', () => {
+    it('formats keys that are of type strings to lowercase', () => {
+      const result: any = formatSortValue('school', data);
+
+      expect(result).toBe('hogwarts');
+    });
+
+    it('forms keys that are null or undefined to an empty string', () => {
+      const nullResult: any = formatSortValue('house', data);
+      const undefinedResult: any = formatSortValue('headmaster', data);
+
+      expect(nullResult).toBe('');
+      expect(undefinedResult).toBe('');
+    });
+  });
+
+  describe('nullCheck', () => {
+    it('returns value if not null or undefined', () => {
+      const result: any = nullCheck('Hogwarts');
+
+      expect(result).toBe('Hogwarts');
+    });
+
+    it('returns specified fallback if value passed is null or undefined', () => {
+      const nullResult: any = nullCheck(null);
+      const undefinedResult: any = nullCheck(undefined);
+
+      expect(nullResult).toBe('');
+      expect(undefinedResult).toBe('');
+    });
+  });
+
 });

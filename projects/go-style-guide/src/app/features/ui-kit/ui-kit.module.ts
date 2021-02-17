@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, TitleCasePipe } from '@angular/common';
+import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
@@ -219,6 +219,7 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     GoDatepickerComponent
   ],
   providers: [
+    DatePipe,
     GoConfigService,
     GoModalService,
     GoOffCanvasService,
