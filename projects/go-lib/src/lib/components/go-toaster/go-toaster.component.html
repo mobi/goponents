@@ -1,12 +1,17 @@
 <!-- Here is where we make toast -->
-<div *ngIf="goToasterService.toasts" class="go-toaster">
-  <div @toastAnimation
-       *ngFor="let toast of goToasterService.toasts"
-       class="go-toaster__item">
-    <go-toast [header]='toast.header'
-              [message]="toast.message"
-              (mouseover)="pauseTimers()"
-              (mouseout)="restartTimers()"
-              [type]="toast.type"></go-toast>
+<div
+  *ngIf="goToasterService.toasts"
+  class="go-toaster">
+  <div
+    @toastAnimation
+    *ngFor="let toast of goToasterService.toasts"
+    class="go-toaster__item">
+    <go-toast
+      [header]="toast.header"
+      [message]="toast.message"
+      (mouseover)="pauseTimers()"
+      (mouseout)="restartTimers()"
+      [type]="toast.type">
+    </go-toast>
   </div>
 </div>
