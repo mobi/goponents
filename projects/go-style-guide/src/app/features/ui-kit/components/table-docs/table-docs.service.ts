@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import * as faker from 'faker';
 
@@ -5,6 +6,9 @@ import * as faker from 'faker';
   providedIn: 'root'
 })
 export class TableDocsService {
+
+  constructor (private datePipe: DatePipe) { }
+
   public generateData(length: number): Array<{}> {
     return Array.from({ length: length }, (_: any, key: number) => key).map((index: any) => {
       const baseObj: object = this.createObject(index);
@@ -25,7 +29,11 @@ export class TableDocsService {
       },
       email: faker.internet.email(),
       gender: index % 3 ? 'Male' : 'Female',
-      ip_address: faker.internet.ip()
+      ip_address: faker.internet.ip(),
+      active: faker.random.boolean(),
+      alive: faker.random.number({ min: 0, max: 1}),
+      last_login: faker.random.boolean() ? this.datePipe.transform(faker.date.past(1), 'short') : null,
+      login_attempts: faker.random.boolean() ? faker.random.number({ min: 1, max: 5 }) : undefined
     };
   }
 }
