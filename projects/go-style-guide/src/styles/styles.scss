@@ -1,5 +1,5 @@
 @import 'reset';
-@import '../../../go-lib/src/styles/styles.scss';
+@import '../../../go-lib/src/styles/styles';
 
 @import 'settings';
 @import 'typography';
@@ -18,7 +18,9 @@ code {
     border: 1px solid $theme-light-app-bg;
   }
 
-  .hljs-section, .hljs-name, .hljs-strong {
+  .hljs-section,
+  .hljs-name,
+  .hljs-strong {
     font-weight: normal;
   }
 }
@@ -27,14 +29,18 @@ code {
   background-color: $theme-light-app-bg;
   border: 1px solid $theme-light-border;
   display: inline-block;
-  margin: 0;
+  margin: 0 0 -1px;
   padding: 0 .25rem;
   vertical-align: text-bottom;
 }
 
-.go-column--dark {
-  background-color: $theme-dark-bg;
-  padding-top: $column-gutter;
+.go-column {
+  &.go-column {
+    &--dark {
+      background-color: $theme-dark-bg;
+      padding-top: $column-gutter;
+    }
+  }
 }
 
 .go-list {

@@ -260,6 +260,61 @@
   </go-card>
 </section>
 
+<section id="form-container" class="go-container">
+  <go-card class="go-column">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Forms Container</h2>
+      <go-copy cardId="form-container" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          For all forms we use a slightly condensed grid system. For this you'll need to add the
+          <code class="code-block--inline">go-container--form</code> modifier class to any <code class="code-block--inline">go-container</code>
+          element that contains form elements with <code class="code-block--inline">go-column</code>s.
+        </p>
+        <p class="go-body-copy">
+          If there are nested <code class="code-block--inline">go-container</code> elements, you'll need to add
+          <code class="code-block--inline">go-container--form</code> to those as well.
+        </p>
+      </div>
+      <div class="go-column go-column--100">
+        <form
+          [formGroup]="form"
+          class="go-container go-container--form">
+          <div class="go-column column--100 go-column--no-padding">
+            <div class="go-container go-container--form">
+              <go-input
+                class="go-column go-column--50"
+                label="First Name"
+                [control]="form.get('firstName')">
+              </go-input>
+              <go-input
+                class="go-column go-column--50"
+                label="Last Name"
+                [control]="form.get('lastName')">
+              </go-input>
+            </div>
+          </div>
+          <go-input
+            class="go-column go-column--100"
+            label="Email"
+            [control]="form.get('email')">
+          </go-input>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-button>Submit</go-button>
+          </div>
+        </form>
+      </div>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <code [highlight]="formExample"></code>
+      </div>
+    </div>
+  </go-card>
+</section>
+
 <section id="container-reset" class="go-container">
   <go-card class="go-column">
     <ng-container go-card-header>
