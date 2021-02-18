@@ -21,7 +21,7 @@ export class GoTimepickerComponent implements OnInit, AfterViewInit {
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() placeholder: string = '';
-  @Input() theme: string = 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
   @Input() appendToContent: boolean = false;
 
   selectedTime: string = '';

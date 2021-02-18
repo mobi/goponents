@@ -55,6 +55,41 @@ strong {
     color: $ui-color-neutral;
     outline: none;
   }
+
+  &--unstyled {
+    color: inherit;
+    text-decoration: none;
+
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  &--dark {
+    color: $theme-dark-color;
+
+    &:active,
+    &:visited {
+      color: $theme-dark-color;
+    }
+
+    &.go-link {
+      &--unstyled {
+        color: inherit;
+        text-decoration: none;
+
+        &:active,
+        &:focus,
+        &:hover,
+        &:visited {
+          color: inherit;
+        }
+      }
+    }
+  }
 }
 
 .go-ordered-list {

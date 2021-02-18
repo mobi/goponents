@@ -189,6 +189,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   // Dark Overrides
   // ---------------------------------------------
+  &--dark,
   &--dark &__input,
   &--dark &__select,
   &__input--dark,
