@@ -1,5 +1,6 @@
 import {
   animate,
+  AnimationTriggerMetadata,
   style,
   transition,
   trigger
@@ -7,7 +8,7 @@ import {
 
 import { easing, timing } from './_configs';
 
-export const toastAnimation = trigger('toastAnimation', [
+export const toastAnimation: AnimationTriggerMetadata = trigger('toastAnimation', [
   transition(':enter', [
     style({
       height: 0,

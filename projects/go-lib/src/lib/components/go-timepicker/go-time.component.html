@@ -4,7 +4,8 @@
     [ngClass]="{
       'go-time--above': displayAbove,
       'go-time--right': displayFromRight,
-      'go-time--append-to-content': appendToContent
+      'go-time--append-to-content': appendToContent,
+      'go-time--dark': theme === 'dark'
     }"
   >
   <div class="go-time-column">
@@ -47,7 +48,10 @@
     </div>
     <!-- AM / PM Button -->
     <div class="go-time-column go-time-format">
-      <go-button buttonVariant="secondary" (click)="changeFormat()">
+      <go-button
+        buttonVariant="secondary"
+        [useDarkTheme]="theme === 'dark'"
+        (handleClick)="changeFormat()">
        {{ format ? 'AM' : 'PM' }}
       </go-button>
     </div>
@@ -55,7 +59,11 @@
     <div>
       <ul class="go-button-group go-time-action">
         <li class="go-button-group__item">
-          <go-button class="go-time-button" buttonVariant="secondary" (handleClick)="clear()">
+          <go-button
+            class="go-time-button"
+            buttonVariant="secondary"
+            [useDarkTheme]="theme === 'dark'"
+            (handleClick)="clear()">
             Clear
           </go-button>
         </li>

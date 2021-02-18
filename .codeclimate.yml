@@ -1,0 +1,53 @@
+version: "2"         # required to adjust maintainability checks
+checks:
+  argument-count:
+    config:
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 500
+  method-complexity:
+    config:
+      threshold: 5
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 25
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 4
+  similar-code:
+    enabled: false
+  identical-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
+plugins:
+  scss-lint:
+    enabled: true
+    exclude_patterns:
+      - "projects/go-style-guide"
+      - "projects/go-tester"
+      - "projects/go-tester-e2e"
+  eslint:
+    enabled: true
+    channel: eslint-5
+  tslint:
+    enabled: true
+    exclude_patterns:
+      - "projects/go-tester"
+      - "projects/go-tester-e2e"
+    config: tslint.json
+
+exclude_patterns:
+  - "**/*.spec.js"
+  - "**/*.spec.ts"
+  - "node_modules"
+  

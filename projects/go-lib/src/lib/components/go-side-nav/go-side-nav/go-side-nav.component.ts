@@ -1,7 +1,8 @@
-import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { CustomNavAttribute } from '../custom-nav-attribute.model';
 import { NavAppDrawer } from '../nav-app-drawer.model';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
@@ -14,16 +15,20 @@ import { GoSideNavService } from './go-side-nav.service';
   // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None
 })
-export class GoSideNavComponent implements OnInit, OnDestroy {
+export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() menuItems: Array<NavGroup | NavItem>;
   @Input() navAppDrawer: NavAppDrawer;
   @Input() appDrawerHeader: string = 'Launch';
+  @Input() attributes: CustomNavAttribute[];
+
+  @ViewChild('sideNavRef', { static: false }) sideNavRef: ElementRef;
 
   private destroy$: Subject<void> = new Subject();
 
   constructor (
-    private router: Router,
-    public navService: GoSideNavService
+    public navService: GoSideNavService,
+    private renderer: Renderer2,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +51,12 @@ export class GoSideNavComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.attributes) {
+      this.navService.setAttributes(this.attributes, this.sideNavRef, this.renderer);
+    }
   }
 
   closeNavs(navGroup: NavGroup): void {

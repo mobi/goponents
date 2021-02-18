@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, TitleCasePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -74,7 +74,7 @@ import { ToastDocsComponent } from './components/toast-docs/toast-docs.component
 import { UiKitComponent } from './components/ui-kit/ui-kit.component';
 import { BasicTestComponent } from './components/basic-test/basic-test.component';
 import { OffCanvasDocsComponent } from './components/off-canvas-docs/off-canvas-docs.component';
-import { PortalDocsComponent } from './components/portal-docs/portal-docs.component'
+import { PortalDocsComponent } from './components/portal-docs/portal-docs.component';
 import { LoaderDocsComponent } from './components/loader-docs/loader-docs.component';
 import { LayoutAppDrawerComponent } from './components/layout-docs/components/layout-app-drawer/layout-app-drawer.component';
 import { LayoutDocsComponent } from './components/layout-docs/layout-docs.component';
@@ -109,6 +109,8 @@ import { BasicTestLargeComponent } from './components/basic-test-large/basic-tes
 import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-button/basic-test-submit-button.component';
 import { TableChildRowsComponent } from './components/table-docs/components/table-child-rows/table-child-rows.component';
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
+import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.component';
+import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
 
 @NgModule({
   imports: [
@@ -141,6 +143,7 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     UiKitRoutesModule,
     GoSharedModule,
     FormsModule,
+    ReactiveFormsModule,
     GoTreeModule,
     GoTimepickerModule
   ],
@@ -151,6 +154,7 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     BasicTestLargeComponent,
     BasicTestSubmitButtonComponent,
     BadgeDocsComponent,
+    ButtonGroupDocsComponent,
     ButtonDocsComponent,
     CardDocsComponent,
     ConfigurationDocsComponent,
@@ -208,7 +212,8 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     TableTitleTemplateComponent,
     VirtualScrollComponent,
     TableChildRowsComponent,
-    TimepickerDocsComponent
+    TimepickerDocsComponent,
+    WysiwygDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,
@@ -219,6 +224,7 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
     GoDatepickerComponent
   ],
   providers: [
+    DatePipe,
     GoConfigService,
     GoModalService,
     GoOffCanvasService,

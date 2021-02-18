@@ -15,7 +15,7 @@
         form inputs and values are provided as streams of input
         values, which can be accessed synchronously.
       </p>
-      <p class="go-body-copy">
+      <p class="go-body-copy go-body-copy--no-margin">
         Reactive forms differ from template-driven forms in distinct
         ways. Reactive forms provide more predictability with
         synchronous access to the data model, immutability with
@@ -25,6 +25,117 @@
         rely on directives embedded in the template, along with mutable
         data to track changes asynchronously.
       </p>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h3 class="go-heading-3">
+        Form Elements Example
+      </h3>
+      <ul class="card__action-list">
+        <li>
+          <a
+            target="_blank"
+            class="go-link go-link--unstyled"
+            href="https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/forms-overview">
+            <go-icon-button buttonIcon="code">
+            </go-icon-button>
+          </a>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-container">
+        <go-select
+          class="go-column go-column--100 go-column--no-padding"
+          label="Form Theme"
+          [clearable]="false"
+          [control]="themeSelect"
+          [items]="['light', 'dark']">
+        </go-select>
+      </div>
+      <hr class="go-hr">
+      <form
+        class="go-container go-form go-container--form"
+        [ngClass]="{ 'go-form--dark card-form-dark': themeSelect.value === 'dark' }"
+        [formGroup]="form">
+        <div class="go-column go-column--100 go-column--no-padding">
+          <h4 class="go-heading go-heading-4">Create Profile</h4>
+        </div>
+        <go-input
+          label="Name"
+          class="go-column go-column--100"
+          [control]="form.get('name')">
+        </go-input>
+        <go-text-area
+          label="Bio"
+          class="go-column go-column--100"
+          [control]="form.get('bio')">
+        </go-text-area>
+        <go-datepicker
+          label="Date of Birth"
+          class="go-column go-column--100"
+          [theme]="themeSelect.value"
+          [maxDate]="maxBirthDate"
+          [control]="form.get('birthday')">
+        </go-datepicker>
+        <go-timepicker
+          label="Time of Birth"
+          class="go-column go-column--100"
+          [theme]="themeSelect.value"
+          [control]="form.get('birthtime')">
+        </go-timepicker>
+        <go-file-upload
+          label="Profile Photo"
+          class="go-column go-column--100"
+          [control]="form.get('picture')"
+          [theme]="themeSelect.value">
+        </go-file-upload>
+        <go-select
+          label="Favorite Character"
+          class="go-column go-column--100"
+          [control]="form.get('favoriteCharacter')"
+          [theme]="themeSelect.value"
+          [items]="hpCharacters">
+        </go-select>
+        <go-switch-toggle
+          label="Enable Notifications"
+          class="go-column go-column--100"
+          [control]="form.get('enableNotifications')">
+        </go-switch-toggle>
+        <go-radio-group
+          legend="Notification Method"
+          class="go-column go-column--100"
+          [control]="form.get('notificationMethod')">
+          <div>
+            <go-radio-button
+              label="Push" formValue="push">
+            </go-radio-button>
+          </div>
+          <div>
+            <go-radio-button
+              label="Email" formValue="email">
+            </go-radio-button>
+          </div>
+        </go-radio-group>
+        <go-checkbox-group
+          legend="Notifications Received"
+          class="go-column go-column--100"
+          [control]="form.get('notificationsReceived')">
+          <go-checkbox
+            label="Comments"
+            [control]="form.get('notificationsReceived').get('comments')">
+          </go-checkbox>
+          <go-checkbox
+            label="Mentions"
+            [control]="form.get('notificationsReceived').get('mentions')">
+          </go-checkbox>
+        </go-checkbox-group>
+        <div class="go-column go-column--100 go-column--no-padding">
+          <go-button>Submit</go-button>
+        </div>
+      </form>
     </ng-container>
   </go-card>
 </section>

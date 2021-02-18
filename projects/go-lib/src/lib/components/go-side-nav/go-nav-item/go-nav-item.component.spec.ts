@@ -57,4 +57,14 @@ describe('GoNavItemComponent', () => {
       expect(component.brandColor).toEqual(newBrandColor);
     });
   });
+
+  describe('ngAfterViewInit', () => {
+    it('should set any attributes on the navItem', () => {
+      component.navItem.attributes = [{ name: 'walkme-id', value: 'go-side-nav' }];
+
+      component.ngAfterViewInit();
+
+      expect(component.navItemRef.nativeElement.getAttribute('walkme-id')).toEqual('go-side-nav');
+    });
+  });
 });

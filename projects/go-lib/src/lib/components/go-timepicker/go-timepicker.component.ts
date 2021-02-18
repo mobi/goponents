@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 import { GoTimeFormat } from './go-time-format.model';
@@ -9,7 +9,7 @@ import { GoTimeFormat } from './go-time-format.model';
   templateUrl: './go-timepicker.component.html',
 })
 
-export class GoTimepickerComponent implements OnInit {
+export class GoTimepickerComponent implements OnInit, AfterViewInit {
   displayAbove: boolean = false;
   displayFromRight: boolean = true;
   timeOpen: boolean = false;
@@ -21,7 +21,7 @@ export class GoTimepickerComponent implements OnInit {
   @Input() control: FormControl;
   @Input() hints: string[];
   @Input() placeholder: string = '';
-  @Input() theme: string = 'light';
+  @Input() theme: 'light' | 'dark' = 'light';
   @Input() appendToContent: boolean = false;
 
   selectedTime: string = '';
@@ -33,8 +33,14 @@ export class GoTimepickerComponent implements OnInit {
     this.selectedTime = this.changeTimeFormat(this.control.value);
   }
 
+  ngAfterViewInit(): void {
+    this.control.valueChanges.subscribe((value: string | Date) => {
+        this.selectedTime = this.changeTimeFormat(this.control.value);
+    });
+  }
+
   public changeTimeFormat(timeString: string | Date): string {
-    if (!timeString || timeString == 'Invalid Date') {
+    if (!timeString || timeString === 'Invalid Date') {
       return;
     }
     if (typeof(timeString) === 'object') {
@@ -86,6 +92,7 @@ export class GoTimepickerComponent implements OnInit {
     if (time12h) {
       const [time, modifier]: string[] = time12h.split(' ');
 
+      // tslint:disable-next-line: prefer-const
       let [hours, minutes]: any[] = time.split(':');
       if (hours === '12') {
         hours = '00';

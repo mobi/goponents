@@ -1,5 +1,5 @@
 @import '../../../styles/variables';
-@import "../../../styles/mixins";
+@import '../../../styles/mixins';
 
 .card {
   background: $theme-light-bg;
@@ -8,29 +8,26 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-}
 
-.card__header {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
 
-.card__action-list {
-  display: flex;
+  &__action-list {
+    display: flex;
 
-  li {
-    cursor: pointer;
-    padding: 0 0.4rem;
-    user-select: none;
-    @include transition(all);
+    li {
+      @include transition(all);
 
-    &:last-child {
-      padding-right: 0;
-    }
+      cursor: pointer;
+      padding: 0 .4rem;
+      user-select: none;
 
-    &:hover {
-      color: $base-primary;
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
 }

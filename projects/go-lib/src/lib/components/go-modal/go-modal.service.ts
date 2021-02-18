@@ -16,7 +16,8 @@ export class GoModalService {
   /**
    * Opens an instance of the GoModal
    * @param component Component to be rendered inside of Modal
-   * @param bindings Bindings for the Component being passed to the Modal. **Note: passing bindings for the Modal in this object is deprecated, use modalOptions instead.**
+   * @param bindings Bindings for the Component being passed to the Modal.
+   * **Note: passing bindings for the Modal in this object is deprecated, use modalOptions instead.**
    * @param modalOptions Various configurations for the Modal.
    */
   openModal<T>(component: Type<T>, bindings: Partial<T> | GoModalBindings, modalOptions?: GoModalOptions): void {

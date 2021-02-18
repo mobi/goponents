@@ -1,6 +1,8 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$go-icon-button-hover-bg: #dcdcdc;
+
 .go-icon-button {
   @include transition(background-color);
 
@@ -13,27 +15,29 @@
   outline: none;
   padding: .375rem;
 
-  .go-icon-button__icon {
+  & &__icon {
     display: flex;
   }
 
-  &:hover, &:focus {
-    background: transparentize($color: #DCDCDC, $amount: 0.7);
+  &:hover,
+  &:focus {
+    background: transparentize($go-icon-button-hover-bg, .7);
   }
 
   &:active {
     background: transparent;
   }
-}
 
-.go-icon-button--disabled {
-  color: lighten($theme-light-color, 40);
-  cursor: not-allowed;
-  pointer-events: none;
+  &--disabled {
+    // scss-lint:disable VariableForProperty
+    color: lighten($theme-light-color, 40);
+    cursor: not-allowed;
+    pointer-events: none;
 
-  &:active,
-  &:focus,
-  &:hover {
-    background: none;
+    &:active,
+    &:focus,
+    &:hover {
+      background: none;
+    }
   }
 }

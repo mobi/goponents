@@ -30,7 +30,7 @@ export class GoInputComponent implements OnInit {
     }
 
     if (this.maxlength > 524288) {
-      this.maxlength = 524288
+      this.maxlength = 524288;
     }
   }
 }

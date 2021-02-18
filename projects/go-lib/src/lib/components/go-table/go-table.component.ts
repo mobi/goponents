@@ -573,7 +573,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
             selectedRows: !this.selectAllControl.value ? this.targetedRows : []
           });
         }
-      )
+      );
     }
   }
 

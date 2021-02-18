@@ -33,7 +33,7 @@ export class GoActionSheetComponent {
       'go-action-sheet__content-container--shift-left': this.shiftLeft,
       'go-action-sheet__content-container--placement-bottom': this.placement === 'bottom',
       'go-action-sheet__content-container--placement-right': this.placement === 'right'
-    }
+    };
   }
 
   private closeActionSheetEvent(target: HTMLElement): void {

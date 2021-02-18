@@ -8,10 +8,13 @@ $global-transition-timing: cubic-bezier(.25, .8, .25, 1);
 $global-transition-duration: .25s;
 
 // Box Shadows
-$global-box-shadow--regular: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 3px 6px 0 rgba(0, 0, 0, 0.20);
-$global-box-shadow--search: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-$global-box-shadow--large: 0 7px 14px 0 rgba(65, 54, 94, 0.10), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-$global-box-shadow--small: 0 1px 2px 0 rgba(0, 0, 0, 0.20);
+// scss-lint:disable ColorVariable
+$global-box-shadow--regular: 0 0 2px 0 rgba(0, 0, 0, .12), 0 3px 6px 0 rgba(0, 0, 0, .20);
+$global-box-shadow--search: 0 1px 6px 0 rgba(32, 33, 36, .28);
+$global-box-shadow--large: 0 7px 14px 0 rgba(65, 54, 94, .10), 0 3px 6px 0 rgba(0, 0, 0, .07);
+$global-box-shadow--small: 0 1px 2px 0 rgba(0, 0, 0, .20);
+$global-box-shadow--dark-popup: 0 2px 7px 2px rgb(0 0 0 / 22%), 0 2px 4px 0 rgb(0 0 0 / 20%);
+// scss-lint:enable ColorVariable
 
 // Structural
 $column-gutter: 1rem;
@@ -29,7 +32,7 @@ $column-sizes: (
   100: 1
   );
 
-$side-nav-width: 15.5rem;
+$side-nav-width: 15.625rem;
 $side-nav-width--collapsed: 3.2rem;
 
 $modal-container-sizes: (
@@ -48,7 +51,7 @@ $weight-light: 300;
 $weight-regular: 400;
 $weight-medium: 500;
 
-$base-letter-spacing: 0.08pt;
+$base-letter-spacing: .08pt;
 
 $secondary-weight-light: 300;
 $secondary-weight-medium: 600;
@@ -73,16 +76,16 @@ $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
 $base-dark: #313536;
 $base-dark-secondary: #202626;
 $base-dark-tertiary: #474747;
-$base-light: #FFF;
-$base-light-secondary: #B1B1B1;
-$base-light-tertiary: #D3D3D3;
-$base-primary: #65B360;
+$base-light: #fff;
+$base-light-secondary: #b1b1b1;
+$base-light-tertiary: #d3d3d3;
+$base-primary: #65b360;
 
 $base-primary-hover: darken($base-primary, 10%);
 $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-hover);
 
 // Light Theme
-$theme-light-app-bg: #F0F0F0;
+$theme-light-app-bg: #f0f0f0;
 $theme-light-bg: $base-light;
 $theme-light-bg-hover: darken($base-light, 3.5%);
 $theme-light-bg-active: darken($base-light, 7%);
@@ -102,7 +105,7 @@ $theme-dark-border: darken($base-dark-secondary, 7%);
 // UI Colors
 // Negative Colors -
 // These are used to portray dangerous actions, error states, or other negative states in the interface
-$ui-color-negative: #DB3939;
+$ui-color-negative: #db3939;
 $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
 $ui-color-negative-active: darken($ui-color-negative, 7%);
 $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
@@ -112,7 +115,7 @@ $ui-background-negative: rgba($ui-color-negative, .1);
 
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
-$ui-color-neutral: #7F47CC;
+$ui-color-neutral: #7f47cc;
 $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
 $ui-color-neutral-active: darken($ui-color-neutral, 7%);
 $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
@@ -120,7 +123,7 @@ $ui-background-neutral: rgba($ui-color-neutral, .1);
 
 // Positive Colors -
 // These are used to portray good actions, states, or other generally positive states in the interface
-$ui-color-positive: #1D8915;
+$ui-color-positive: #1d8915;
 $ui-color-positive-hover: darken($ui-color-positive, 3.5%);
 $ui-color-positive-active: darken($ui-color-positive, 7%);
 $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);

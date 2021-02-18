@@ -21,6 +21,10 @@ export class GoSelectComponent implements OnInit {
    * A property on each item to group by
    */
   @Input() groupBy: string = null;
+  /**
+   * If true, hides drop down arrow on select
+   */
+  @Input() hideDropDownArrow: boolean = false;
   @Input() hints: string[];
   @Input() items: any[];
   @Input() key: string;
@@ -30,10 +34,11 @@ export class GoSelectComponent implements OnInit {
   @Input() placeholder: string;
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
+  @Input() theme: 'light' | 'dark' = 'light';
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';
-  @Input() theme: 'light' | 'dark' = 'light';
   @Input() virtualScroll: boolean = false;
+
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number; end: number }>();
 

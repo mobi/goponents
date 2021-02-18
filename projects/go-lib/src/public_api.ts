@@ -23,6 +23,10 @@ export * from './lib/components/go-button/go-split-button-option.model';
 export * from './lib/components/go-button/go-button.component';
 export * from './lib/components/go-button/go-button.module';
 
+// Button Group
+export * from './lib/components/go-button-group/go-button-group.component';
+export * from './lib/components/go-button-group/go-button-group.module';
+
 // Card
 export * from './lib/components/go-card/go-card.component';
 export * from './lib/components/go-card/go-card.module';

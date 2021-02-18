@@ -66,6 +66,7 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
         this.opened = value;
         if (this.opened === false) {
           this.destroyComponent();
+          this.resetDefaults();
         }
       });
   }
@@ -99,6 +100,13 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
     });
 
     this.setOffCanvasProperties();
+  }
+
+  private resetDefaults(): void {
+    const options: GoOffCanvasOptions = new GoOffCanvasOptions();
+    Object.keys(options).forEach((key: string) => {
+      this[key] = options[key];
+    });
   }
 
   private setOffCanvasProperties(): void {

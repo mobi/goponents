@@ -24,7 +24,7 @@ export class LayoutNavComponent {
     routeActive?: boolean;
 
     /**
-     * When isExternalLink is true, the value passed to route will be used for redirection. By default, all external 
+     * When isExternalLink is true, the value passed to route will be used for redirection. By default, all external
      * links will open in a new tab unless a different target is specified within externalLinkTarget.
      */
     isExternalLink?: boolean;

@@ -6,7 +6,7 @@ export class GoTableSortConfig {
     column: string,
     direction?: SortDirection
   }) {
-    if (fields) Object.assign(this, fields);
+    if (fields) { Object.assign(this, fields); }
   }
 }
 

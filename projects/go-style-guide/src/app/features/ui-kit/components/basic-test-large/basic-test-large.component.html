@@ -1,21 +1,23 @@
-<go-card>
-  <form class="go-form" go-card-content>
-    <div class="go-container go-container--reset">
+<go-card [showHeader]="false">
+  <form
+    class="go-form"
+    go-card-content>
+    <div class="go-container go-container--form">
       <div class="go-column go-column--50">
         <go-input
           [control]="firstName"
           key="first-name-input"
           label="First Name"
-          placeholder="Jonny"
-        ></go-input>
+          placeholder="Jonny">
+        </go-input>
       </div>
       <div class="go-column go-column--50">
         <go-input
           [control]="lastName"
           key="last-name-input"
           label="Last Name"
-          placeholder="Appleseed"
-        ></go-input>
+          placeholder="Appleseed">
+        </go-input>
       </div>
       <div class="go-column go-column--100">
         <go-input
@@ -23,33 +25,31 @@
           inputType="email"
           key="email-input"
           label="Email"
-          placeholder="your@email.com"
-        ></go-input>
+          placeholder="your@email.com">
+        </go-input>
       </div>
-      <div class="go-column go-column--100">
+      <div class="go-column go-column--100 go-column--no-padding">
         <go-input
           [control]="password"
           inputType="password"
           key="password-input"
           label="Password"
-          placeholder="**************"
-        ></go-input>
+          placeholder="**************">
+        </go-input>
       </div>
     </div>
 
     <go-off-canvas-header>
       <go-button
         buttonVariant="positive"
-        (handleClick)="cancel()"
-      >
+        (handleClick)="cancel()">
         Cancel
       </go-button>
       <go-button
         style="margin-left: 0.5rem;"
         buttonVariant="positive"
         (handleClick)="fakeSubmit()"
-        #submitButton
-      >
+        #submitButton>
         Submit
       </go-button>
     </go-off-canvas-header>

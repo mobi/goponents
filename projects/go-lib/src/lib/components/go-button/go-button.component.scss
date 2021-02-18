@@ -1,9 +1,11 @@
 @import '../../../styles/variables';
 @import '../../../styles/mixins';
 
+$transparent-color: rgba(0, 0, 0, 0);
 $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
 
 @mixin disabled-states($bg, $color, $color-opacity: .7) {
+  // scss-lint:disable VariableForProperty
   @if ($color == 'light') {
     @if ($color-opacity == .7) {
       color: rgba($theme-dark-color, .7);
@@ -45,247 +47,299 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
   }
-}
 
-.go-button__icon {
-  display: inline-flex;
-}
-
-.go-button--icon-only {
-  padding: calc(.625rem - 2px) .625rem;
-}
-
-.go-button__icon ~ .go-button__text:not(:empty) {
-  padding-left: .5rem;
-}
-
-.go-button--loading {
-  cursor: wait;
-}
-
-// Variations
-//=========================
-.go-button--primary,
-.go-button--negative,
-.go-button--neutral {
-  color: $theme-dark-color;
-}
-
-.go-button--primary {
-  background: $ui-color-primary;
-  border: 1px solid $ui-color-primary;
-
-  &:hover,
-  &:focus {
-    background: $ui-color-primary-hover;
-    border: 1px solid $ui-color-primary-hover;
-    box-shadow: $form-shadow-active;
+  &__icon {
+    display: inline-flex;
   }
 
-  &:active {
-    background: $ui-color-primary-active;
-    border: 1px solid $ui-color-primary-active;
-    box-shadow: $form-shadow-active;
+  &--icon-only {
+    padding: calc(.625rem - 2px) .625rem;
   }
 
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-primary, 'light');
-    border: 1px solid rgba($ui-color-primary, 0);
-
-    &:hover,
-    &:focus {
-      @include disabled-states($ui-color-primary, 'light');
-      border: 1px solid rgba($ui-color-primary, 0);
-      box-shadow: none;
-    }
-  }
-}
-
-.go-button--secondary {
-  border: 1px solid lighten($base-light-secondary, 10%);
-}
-
-.go-button--tertiary {
-  border: 1px solid $theme-light-bg;
-}
-
-.go-button--secondary,
-.go-button--tertiary {
-  background: $theme-light-bg;
-  color: $theme-light-color;
-
-  &:hover,
-  &:focus {
-    background: $theme-light-bg-hover;
-    border: 1px solid $theme-light-bg-hover;
+  &__icon ~ &__text:not(:empty) {
+    padding-left: .5rem;
   }
 
-  &:active {
-    background: $theme-light-bg-active;
-    border: 1px solid $theme-light-bg-active;
+  &--loading {
+    cursor: wait;
   }
 
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($theme-light-bg, 'dark');
-    border: 1px solid rgba($theme-light-bg, 0);
-
-    &:hover,
-    &:focus {
-      @include disabled-states($theme-light-bg, 'dark');
-      border: 1px solid rgba($theme-light-bg, 0);
-      box-shadow: none;
-    }
-  }
-}
-
-.go-button--secondary {
-  &:hover,
-  &:focus,
-  &:active {
-    border: 1px solid lighten($base-light-secondary, 10%);
-    box-shadow: $button-shadow-secondary;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    border: 1px solid $theme-light-bg-active;
-
-    &:hover,
-    &:focus {
-      border: 1px solid $theme-light-bg-active;
-    }
-  }
-}
-
-.go-button--negative {
-  background: $ui-color-negative;
-  border: 1px solid $ui-color-negative;
-
-  &:hover,
-  &:focus {
-    background: $ui-color-negative-hover;
-    border: 1px solid $ui-color-negative-hover;
-    box-shadow: $form-shadow-error;
-  }
-
-  &:active {
-    background: $ui-color-negative-active;
-    border: 1px solid $ui-color-negative-active;
-    box-shadow: $form-shadow-error;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-negative, 'light');
-    border: 1px solid rgba($ui-color-negative, 0);
-
-    &:hover,
-    &:focus {
-      @include disabled-states($ui-color-negative, 'light');
-      border: 1px solid rgba($ui-color-negative, 0);
-      box-shadow: none;
-    }
-  }
-}
-
-.go-button--neutral {
-  background: $ui-color-neutral;
-  border: 1px solid $ui-color-neutral;
-
-  &:hover,
-  &:focus {
-    background: $ui-color-neutral-hover;
-    border: 1px solid $ui-color-neutral-hover;
-    box-shadow: $form-shadow-neutral;
-  }
-
-  &:active {
-    background: $ui-color-neutral-active;
-    border: 1px solid $ui-color-neutral-active;
-    box-shadow: $form-shadow-neutral;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-neutral, 'light');
-    border: 1px solid rgba($ui-color-neutral, 0);
-
-    &:hover,
-    &:focus {
-      @include disabled-states($ui-color-neutral, 'light');
-      border: 1px solid rgba($ui-color-neutral, 0);
-      box-shadow: none;
-    }
-  }
-}
-
-// Dark Buttons (only applies to secondary/tertiary)
-//==================================
-.go-button--dark {
-  &.go-button--secondary,
-  &.go-button--tertiary {
-    background: $theme-dark-bg;
-    border: 1px solid $theme-dark-bg;
+  &--primary,
+  &--negative,
+  &--neutral {
     color: $theme-dark-color;
+  }
+
+  &.go-button-group {
+    &__btn {
+      &--first {
+        border-radius: $global-radius 0 0 $global-radius;
+      }
+
+      &--middle {
+        border-left: 1px solid $transparent-color;
+        border-radius: 0;
+      }
+
+      &--last {
+        border-left: 1px solid $transparent-color;
+        border-radius: 0 $global-radius $global-radius 0;
+      }
+    }
+  }
+
+  &--primary {
+    background: $ui-color-primary;
+    border: 1px solid $ui-color-primary;
 
     &:hover,
     &:focus {
-      background: $theme-dark-bg-hover;
-      border: 1px solid $theme-dark-bg-hover;
+      background: $ui-color-primary-hover;
+      border: 1px solid $ui-color-primary-hover;
+      box-shadow: $form-shadow-active;
     }
 
     &:active {
-      background: $theme-dark-bg-active;
-      border: 1px solid $theme-dark-bg-active;
+      background: $ui-color-primary-active;
+      border: 1px solid $ui-color-primary-active;
+      box-shadow: $form-shadow-active;
     }
 
     &:disabled:not(.go-button--loading) {
-      @include disabled-states($theme-dark-bg, 'light', .4);
-      border: 1px solid rgba($theme-dark-bg, 0);
+      @include disabled-states($ui-color-primary, 'light');
+      border: 1px solid rgba($ui-color-primary, 0);
 
       &:hover,
       &:focus {
-        @include disabled-states($theme-dark-bg, 'light', .4);
-        border: 1px solid rgba($theme-dark-bg, 0);
+        @include disabled-states($ui-color-primary, 'light');
+        border: 1px solid rgba($ui-color-primary, 0);
         box-shadow: none;
       }
     }
   }
-}
 
-// Loader
-//==================================
-.go-button__loader {
-  align-items: center;
-  border-radius: $global-radius;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
+  &--secondary {
+    border: 1px solid lighten($base-light-secondary, 10%);
 
-  &.go-button__loader--primary {
-    background: $ui-color-primary;
+    &:hover,
+    &:focus,
+    &:active {
+      border: 1px solid lighten($base-light-secondary, 10%);
+      box-shadow: $button-shadow-secondary;
+    }
+
+    &.go-button-group {
+      &__btn {
+        &:hover,
+        &:focus,
+        &:active {
+          border-left: 1px solid $transparent-color;
+        }
+      }
+    }
+
+    &:disabled:not(.go-button--loading) {
+      border: 1px solid $theme-light-bg-active;
+
+      &:hover,
+      &:focus {
+        border: 1px solid $theme-light-bg-active;
+      }
+    }
   }
 
-  &.go-button__loader--light {
+  &--tertiary {
+    border: 1px solid $theme-light-bg;
+  }
+
+  &--secondary,
+  &--tertiary {
     background: $theme-light-bg;
+    color: $theme-light-color;
+
+    &:hover,
+    &:focus {
+      background: $theme-light-bg-hover;
+      border: 1px solid $theme-light-bg-hover;
+    }
+
+    &:active {
+      background: $theme-light-bg-active;
+      border: 1px solid $theme-light-bg-active;
+    }
+
+    &:disabled:not(.go-button--loading) {
+      @include disabled-states($theme-light-bg, 'dark');
+      border: 1px solid rgba($theme-light-bg, 0);
+
+      &:hover,
+      &:focus {
+        @include disabled-states($theme-light-bg, 'dark');
+        border: 1px solid rgba($theme-light-bg, 0);
+        box-shadow: none;
+      }
+    }
   }
 
-  &.go-button__loader--dark {
-    background: $theme-dark-bg;
-  }
-
-  &.go-button__loader--negative {
+  &--negative {
     background: $ui-color-negative;
+    border: 1px solid $ui-color-negative;
+
+    &:hover,
+    &:focus {
+      background: $ui-color-negative-hover;
+      border: 1px solid $ui-color-negative-hover;
+      box-shadow: $form-shadow-error;
+    }
+
+    &:active {
+      background: $ui-color-negative-active;
+      border: 1px solid $ui-color-negative-active;
+      box-shadow: $form-shadow-error;
+    }
+
+    &:disabled:not(.go-button--loading) {
+      @include disabled-states($ui-color-negative, 'light');
+      border: 1px solid rgba($ui-color-negative, 0);
+
+      &:hover,
+      &:focus {
+        @include disabled-states($ui-color-negative, 'light');
+        border: 1px solid rgba($ui-color-negative, 0);
+        box-shadow: none;
+      }
+    }
   }
 
-  &.go-button__loader--neutral {
+  &--neutral {
     background: $ui-color-neutral;
-  }
-}
+    border: 1px solid $ui-color-neutral;
 
-.go-button__loader-container {
-  height: calc(#{ $column-gutter } * 1.5);
+    &:hover,
+    &:focus {
+      background: $ui-color-neutral-hover;
+      border: 1px solid $ui-color-neutral-hover;
+      box-shadow: $form-shadow-neutral;
+    }
+
+    &:active {
+      background: $ui-color-neutral-active;
+      border: 1px solid $ui-color-neutral-active;
+      box-shadow: $form-shadow-neutral;
+    }
+
+    &:disabled:not(.go-button--loading) {
+      @include disabled-states($ui-color-neutral, 'light');
+      border: 1px solid rgba($ui-color-neutral, 0);
+
+      &:hover,
+      &:focus {
+        @include disabled-states($ui-color-neutral, 'light');
+        border: 1px solid rgba($ui-color-neutral, 0);
+        box-shadow: none;
+      }
+    }
+  }
+
+  // Dark Buttons (only applies to secondary/tertiary)
+  //===========================================================
+  &--dark {
+    &.go-button--secondary,
+    &.go-button--tertiary {
+      background: $theme-dark-bg;
+      border: 1px solid $theme-dark-bg;
+      color: $theme-dark-color;
+
+      &:hover,
+      &:focus {
+        background: $theme-dark-bg-hover;
+        border: 1px solid $theme-dark-bg-hover;
+      }
+
+      &:active {
+        background: $theme-dark-bg-active;
+        border: 1px solid $theme-dark-bg-active;
+      }
+
+      &:disabled:not(.go-button--loading) {
+        @include disabled-states($theme-dark-bg, 'light', .4);
+        border: 1px solid rgba($theme-dark-bg, 0);
+
+        &:hover,
+        &:focus {
+          @include disabled-states($theme-dark-bg, 'light', .4);
+          border: 1px solid rgba($theme-dark-bg, 0);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+
+  // Loader
+  //==================================
+  &__loader {
+    align-items: center;
+    border-radius: $global-radius;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    &--primary {
+      background: $ui-color-primary;
+    }
+
+    &--light {
+      background: $theme-light-bg;
+    }
+
+    &--dark {
+      background: $theme-dark-bg;
+    }
+
+    &--negative {
+      background: $ui-color-negative;
+    }
+
+    &--neutral {
+      background: $ui-color-neutral;
+    }
+  }
+
+  &__loader-container {
+    height: calc(#{ $column-gutter } * 1.5);
+  }
+
+  // Split Button
+//=========================
+  &--split {
+    @include z-index(1);
+
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    border-top-right-radius: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @include z-index(1);
+
+      border-right: 0;
+    }
+
+    &:disabled:not(.go-button--loading) {
+      border-right: 0;
+
+      &:hover,
+      &:focus {
+        border-right: 0;
+      }
+    }
+  }
 }
 
 // Button Group
@@ -295,42 +349,19 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
   justify-content: flex-start;
   list-style: none;
   margin: 0;
-}
 
-::ng-deep .go-button-group__item {
-  margin-right: .5rem;
+  &__item {
+    margin-right: .5rem;
 
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-// Split Button
-//=========================
-.go-button--split {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  z-index: 2;
-
-  &:hover,
-  &:focus,
-  &:active {
-    border-right: none;
-    z-index: 1;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    border-right: none;
-
-    &:hover,
-    &:focus {
-      border-right: none;
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
 
 .split-button {
+  @include z-index(2);
+
   align-items: center;
   border-bottom-right-radius: $global-radius;
   border-left: 0;
@@ -344,120 +375,119 @@ $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);
   outline: none;
   padding: 0;
   width: 2rem;
-  z-index: 2;
 
   &:hover,
   &:focus,
   &:active {
-    z-index: 1;
+    @include z-index(1);
   }
 
   &:disabled:not(.go-button--loading) {
     cursor: not-allowed;
   }
-}
 
-.split-button--primary {
-  background: $ui-color-primary-hover;
-  border: 1px solid $ui-color-primary-hover;
-  border-left: none;
-
-  &:hover,
-  &:focus {
-    background: $ui-color-primary-active;
-    border: 1px solid $ui-color-primary-active;
-    border-left: none;
-    box-shadow: $form-shadow-active;
-  }
-
-  &:active {
-    background: darken($ui-color-primary, 10%);
-    border: 1px solid darken($ui-color-primary, 10%);
-    border-left: none;
-    box-shadow: $form-shadow-active;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    @include disabled-states($ui-color-primary, 'light');
-    border: 1px solid rgba($ui-color-primary, 0);
+  &--primary {
+    background: $ui-color-primary-hover;
+    border: 1px solid $ui-color-primary-hover;
+    border-left: 0;
 
     &:hover,
     &:focus {
+      background: $ui-color-primary-active;
+      border: 1px solid $ui-color-primary-active;
+      border-left: 0;
+      box-shadow: $form-shadow-active;
+    }
+
+    &:active {
+      background: darken($ui-color-primary, 10%);
+      border: 1px solid darken($ui-color-primary, 10%);
+      border-left: 0;
+      box-shadow: $form-shadow-active;
+    }
+
+    &:disabled:not(.go-button--loading) {
       @include disabled-states($ui-color-primary, 'light');
       border: 1px solid rgba($ui-color-primary, 0);
-      box-shadow: none;
+
+      &:hover,
+      &:focus {
+        @include disabled-states($ui-color-primary, 'light');
+        border: 1px solid rgba($ui-color-primary, 0);
+        box-shadow: none;
+      }
     }
   }
-}
 
-.split-button--secondary {
-  background: $theme-light-bg-hover;
-  border: 1px solid lighten($base-light-secondary, 10%);
-  border-left: none;
-  color: $theme-light-color;
-
-  &:hover,
-  &:focus {
-    background: $theme-light-bg-active;
-    border-left: none;
-    box-shadow: $button-shadow-secondary;
-  }
-
-  &:active {
-    background: darken($theme-light-bg, 10%);
-    border-left: none;
-    box-shadow: $button-shadow-secondary;
-  }
-
-  &:disabled:not(.go-button--loading) {
-    border: 1px solid $theme-light-bg-active;
-    border-left: none;
+  &--secondary {
+    background: $theme-light-bg-hover;
+    border: 1px solid lighten($base-light-secondary, 10%);
+    border-left: 0;
+    color: $theme-light-color;
 
     &:hover,
     &:focus {
-      background: $theme-light-bg-hover;
+      background: $theme-light-bg-active;
+      border-left: 0;
+      box-shadow: $button-shadow-secondary;
+    }
+
+    &:active {
+      background: darken($theme-light-bg, 10%);
+      border-left: 0;
+      box-shadow: $button-shadow-secondary;
+    }
+
+    &:disabled:not(.go-button--loading) {
       border: 1px solid $theme-light-bg-active;
-      border-left: none;
-      box-shadow: none;
+      border-left: 0;
+
+      &:hover,
+      &:focus {
+        background: $theme-light-bg-hover;
+        border: 1px solid $theme-light-bg-active;
+        border-left: 0;
+        box-shadow: none;
+      }
     }
   }
-}
 
-.split-button__menu {
-  @include transition;
+  &__menu {
+    @include transition;
+    @include z-index(off-canvas);
 
-  background: $theme-light-bg;
-  border: 1px solid $base-light-tertiary;
-  border-radius: $global-radius;
-  box-shadow: $global-box-shadow--small;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  top: calc(2rem + 2px);
-  visibility: hidden;
-  z-index: 300;
+    background: $theme-light-bg;
+    border: 1px solid $base-light-tertiary;
+    border-radius: $global-radius;
+    box-shadow: $global-box-shadow--small;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: calc(2rem + 2px);
+    visibility: hidden;
 
-  &.split-button__menu--active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.split-button__menu-option {
-  @include transition;
-
-  color: $theme-light-color;
-  cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: normal;
-  max-width: 10rem;
-  padding: 0.75rem;
-
-  &:hover {
-    background: $theme-light-bg-active;
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
-  &:active {
-    background: $theme-light-bg-hover;
+  &__menu-option {
+    @include transition;
+
+    color: $theme-light-color;
+    cursor: pointer;
+    font-size: .875rem;
+    font-weight: normal;
+    max-width: 10rem;
+    padding: .75rem;
+
+    &:hover {
+      background: $theme-light-bg-active;
+    }
+
+    &:active {
+      background: $theme-light-bg-hover;
+    }
   }
 }

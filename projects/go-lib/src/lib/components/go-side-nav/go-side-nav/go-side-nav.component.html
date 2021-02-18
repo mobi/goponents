@@ -1,4 +1,5 @@
-<div class="go-side-nav"
+<div #sideNavRef
+     class="go-side-nav"
      [ngClass]="{ 'go-side-nav--show-mobile' : navService.navOpen, 'go-side-nav--collapsed' : !navService.navOpen }">
   <div class="go-side-nav__nav-items">
     <go-nav-group *ngFor="let item of menuItems; let i = index"

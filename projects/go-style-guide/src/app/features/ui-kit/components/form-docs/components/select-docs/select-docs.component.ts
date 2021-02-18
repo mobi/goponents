@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoModalService, GoSelectComponent } from '../../../../../../../../../go-lib/src/public_api';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
-import { debounceTime, map } from 'rxjs/operators';
-import { concat, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { concat, Observable, of, Subject } from 'rxjs';
 
 @Component({
   templateUrl: './select-docs.component.html'
 })
 export class SelectDocsComponent implements OnInit {
   itemInput: Subject<string> = new Subject<string>();
-  options$: any;
+  options$: Observable<any>;
 
   items: any = [
     { value: 1, name: 'Reeses' },
@@ -157,10 +157,12 @@ export class SelectDocsComponent implements OnInit {
   select19: FormControl = new FormControl({ value: '', disabled: true });
   select20: FormControl = new FormControl();
   select21: FormControl = new FormControl();
+  select22: FormControl = new FormControl();
 
   hints: Array<string> = ['please select you favorite candy'];
 
   loadingSelectOptions: boolean = true;
+  loadingTypeahead: boolean = false;
 
   select1Code: string = `
   <go-select
@@ -296,24 +298,31 @@ export class SelectDocsComponent implements OnInit {
   <go-select
     bindLabel="name"
     bindValue="value"
-    [control]="select"
+    label="Candy"
+    placeholder="Search for a candy"
+    [control]="select11"
     [items]="options$ | async"
-    [multiple]="true"
-    label="Your Input"
-    [typeahead]="itemInput"
-    typeToSearchText="Search The Thing">
+    [loading]="loadingTypeahead"
+    [typeahead]="itemInput">
   </go-select>
   `;
 
   select11ComponentCode: string = `
   itemInput: Subject<string> = new Subject<string>();
-  options$: any;
+  options$:  Observable<any[]>; // replace 'any' with correct type
 
   this.options$ = concat(
     of([]),
     this.itemInput.pipe(
-      debounceTime(600), // Delay user input
-      map((input) => [input])
+      distinctUntilChanged(), // only proceed if value is distinctly different than previous
+      debounceTime(500), // only proceed after waiting .5s for further user input
+      tap(() =>  this.loadingTypeahead = true), // initiate loading state
+      switchMap((input: string) => {
+        return this.yourService.getItems(input).pipe(
+          catchError(() => of([])), // catch error and set items to empty array
+          tap(() => this.loadingTypeahead = false) // turn loading off
+        )
+      })
     )
   );
   `;
@@ -469,16 +478,16 @@ export class SelectDocsComponent implements OnInit {
   `;
 
   select21Code: string = `
- <go-select
-   [items]="selectData"
-   [control]="select"
-   bindValue="value"
-   bindLabel="name"
-   [hints]="['Scroll to end for loading more data']"
-   label="Select an Option"
-   (scrollToEnd)="scrollToEnd()"
-   (scroll)="scroll($event)"
-   [virtualScroll]="true">
+  <go-select
+    [items]="selectData"
+    [control]="select"
+    bindValue="value"
+    bindLabel="name"
+    [hints]="['Scroll to end for loading more data']"
+    label="Select an Option"
+    (scrollToEnd)="scrollToEnd()"
+    (scroll)="scroll($event)"
+    [virtualScroll]="true">
   </go-select>
   `;
 
@@ -488,8 +497,19 @@ export class SelectDocsComponent implements OnInit {
   }
 
   scroll($event: { start: number; end: number }): void {
-  // Code here
+    // Code here
   }
+  `;
+
+  select22Code: string = `
+  <go-select
+    bindLabel="name"
+    bindValue="value"
+    [hideDropDownArrow]="true"
+    [control]="select22"
+    [items]="items"
+    label="Select an option">
+  </go-select>
   `;
 
   basicDisabledExample: string = `
@@ -540,8 +560,21 @@ export class SelectDocsComponent implements OnInit {
     this.options$ = concat(
       of([]),
       this.itemInput.pipe(
-        debounceTime(600), // Delay user input
-        map((input) => [input])
+        distinctUntilChanged(),
+        debounceTime(500),
+        tap(() =>  this.loadingTypeahead = true),
+        switchMap((input: string) => {
+          let result: Observable<any> = of([]);
+
+          if (input) {
+            result = of(this.items.filter((val: any) => {
+              return val.name.toLowerCase().includes(input.toLowerCase());
+            }));
+          }
+
+          this.loadingTypeahead = false;
+          return result;
+        })
       )
     );
   }

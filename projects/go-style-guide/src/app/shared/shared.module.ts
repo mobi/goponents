@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {
-  GoIconModule, GoButtonModule
+  GoButtonModule,
+  GoIconModule
 } from 'projects/go-lib/src/public_api';
 
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';

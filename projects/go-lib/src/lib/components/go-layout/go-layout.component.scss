@@ -47,6 +47,8 @@ body {
 }
 
 .go-route-loader {
+  @include z-index(loading-screen);
+
   align-items: center;
   background: transparentize($theme-light-app-bg, .25%);
   display: flex;
@@ -55,5 +57,4 @@ body {
   overflow: hidden;
   position: absolute;
   width: 100%;
-  z-index: z-index(loading-screen);
 }

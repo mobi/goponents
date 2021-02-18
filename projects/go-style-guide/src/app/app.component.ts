@@ -32,6 +32,7 @@ export class AppComponent {
       { route: 'ui-kit/action-sheet', routeTitle: 'Action Sheet' },
       { route: 'ui-kit/badge', routeTitle: 'Badge' },
       { route: 'ui-kit/button', routeTitle: 'Button' },
+      { route: 'ui-kit/button-group', routeTitle: 'Button Group' },
       { route: 'ui-kit/card', routeTitle: 'Card' },
       { route: 'ui-kit/configuration', routeTitle: 'Configuration' },
       { route: 'ui-kit/copy', routeTitle: 'Copy' },
@@ -49,7 +50,8 @@ export class AppComponent {
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' },
       { route: 'ui-kit/tree', routeTitle: 'Tree' },
-      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' }
+      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' },
+      { route: 'ui-kit/wysiwyg', routeTitle: 'WYSIWYG' }
     ]}
   ];
 

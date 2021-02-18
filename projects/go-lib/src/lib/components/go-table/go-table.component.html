@@ -130,10 +130,7 @@
           <ng-container *ngIf="childRows && item.showDetails">
             <tr *ngFor="let childItem of item[childRowsKey]">
               <td class="go-table__body-column">
-                <span
-                  class="go-table__child-row-indicator"
-                  [ngStyle]="{ 'border-left-color': brandColor }">
-                </span>
+                <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
               </td>
               <td
                 *ngIf="localTableConfig.selectable"
@@ -158,6 +155,7 @@
           <!-- Body - Detail Row Template -->
           <tr class="go-table__body-row" *ngIf="details && item.showDetails">
             <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
+              <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
               <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
             </td>
           </tr>
@@ -226,3 +224,10 @@
     </table>
   </ng-template>
 </div>
+
+<ng-template #activeRowIndicator>
+  <span
+    class="go-table__child-row-indicator"
+    [ngStyle]="{ 'border-left-color': brandColor }">
+  </span>
+</ng-template>
