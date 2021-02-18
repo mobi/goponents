@@ -18,5 +18,9 @@
 
   &__item {
     margin: 0 1rem 1rem 0;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
   }
 }
