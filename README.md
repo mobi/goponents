@@ -1,6 +1,6 @@
 # Goponents
 
-###### Currently `v1.8.0`
+###### Currently `v1.9.0`
 
 This project houses a set of UI components for Angular 7+ and designed around the 'Go' design system.
 
@@ -113,6 +113,7 @@ To do this properly, you must export each individual file within the `public_api
 | app drawer     | Available                              |
 | badge          | Available                              |
 | button         | Available                              |
+| button group   | Available                              |
 | card           | Available                              |
 | checkbox       | Available                              |
 | checkbox group | Available                              |
@@ -141,13 +142,13 @@ To do this properly, you must export each individual file within the `public_api
 | switch toggle  | Available                              |
 | table          | Available                              |
 | tabs           | Available                              |
+| timepicker     | Available                              |
 | textarea       | Available                              |
 | toaster        | Available                              |
 | toasts         | Available                              |
 | tree           | Available                              |
+| virtual scroll | Available via Material CDK             |
+| wysiwyg        | Available via TinyMCE                  |
 |----------------|----------------------------------------|
-| masked input   | Idea                                   |
 | tooltip        | Idea                                   |
-| timepicker     | Idea                                   |
-| wysiwyg        | Idea                                   |
 
