@@ -1,5 +1,5 @@
 import {
-  AfterViewChecked,
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -23,7 +23,7 @@ import { CalendarCell } from './calendar-cell.model';
     fadeAnimation
   ]
 })
-export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked {
+export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewInit {
   canClose: boolean = true;
   currentMonth: number = 0;
   currentYear: CalendarCell;
@@ -32,6 +32,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked 
   selectedDate: Date;
   subscription: any;
   view: string = 'day';
+  clickInner: boolean = false;
 
   @Input() appendToContent: boolean;
   @Input() calendar: GoCalendar;
@@ -54,12 +55,17 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked 
     this.canClose = false;
   }
 
-  @HostListener('document: click')
-  onDocumentClick(): void {
-    if (this.canClose) {
-      this.closeCalendar();
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+      if (this.calendarView.nativeElement.contains(event.target) || this.clickInner) {
+      this.canClose = true;
+      this.clickInner = false;
+    } else {
+      if (this.canClose) {
+        this.closeCalendar();
+      }
+      this.canClose = false;
     }
-    this.canClose = false;
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -81,13 +87,15 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked 
     this.dateAdapter.setLocale(this.locale);
   }
 
-  ngAfterViewChecked(): void {
+  ngAfterViewInit(): void {
     this.appendToCalendar();
-  }
+    this.calendarView.nativeElement.addEventListener('click', (): void => {
+      this.clickInner = true;
+    });
+}
 
   ngOnDestroy(): void {
     this.removeCalendarFromBody();
-    this.closeCalendar();
   }
 
   public closeCalendar(): void {
@@ -137,9 +145,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked 
     if (this.appendTo === 'body') {
       const calenderBodyPosition: any = this.calendarView.nativeElement.getBoundingClientRect();
       Object.assign(this.calendarView.nativeElement.style, {
-        height: `${calenderBodyPosition.height}px`,
-        bottom: `${calenderBodyPosition.bottom}px`,
-        top: `${calenderBodyPosition.top}px`,
+        bottom: `${calenderBodyPosition.bottom - 5}px`,
         right: `${calenderBodyPosition.right}px`,
         width: `${calenderBodyPosition.width}px`,
         left: `${calenderBodyPosition.left}px`,
