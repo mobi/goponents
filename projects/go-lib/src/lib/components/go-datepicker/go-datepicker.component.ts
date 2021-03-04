@@ -55,7 +55,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     }
 
     this.subscription = this.control.valueChanges.subscribe((value: Date) => {
-      if (value != null && value.toString() == "Reset") {
+      if (value != null && value.toString() === 'Reset') {
         this.selectedDate = LocaleFormat.formatDate(null, this.locale);
         return;
       }
