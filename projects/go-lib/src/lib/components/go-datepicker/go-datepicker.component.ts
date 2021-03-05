@@ -55,10 +55,6 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     }
 
     this.subscription = this.control.valueChanges.subscribe((value: Date) => {
-      if (value != null && value.toString() === 'Reset') {
-        this.selectedDate = LocaleFormat.formatDate(null, this.locale);
-        return;
-      }
       if (!value && this.selectedDate) {
         this.control.setErrors([{ message: 'format is invalid' }]);
       } else if (value) {
@@ -120,5 +116,10 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
 
   private initializePlaceholder(): void {
     this.placeholder = this.placeholder || LocaleFormat.format(this.locale);
+  }
+  
+  public reset() {
+    this.control.setValue(null);
+    this.selectedDate = this.control.value;
   }
 }
