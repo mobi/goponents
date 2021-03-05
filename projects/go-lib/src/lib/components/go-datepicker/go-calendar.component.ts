@@ -57,14 +57,14 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewInit {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-      if (this.calendarView.nativeElement.contains(event.target) || this.clickInner) {
-      this.canClose = true;
-      this.clickInner = false;
-    } else {
-      if (this.canClose) {
-        this.closeCalendar();
-      }
-      this.canClose = false;
+    if (this.calendarView.nativeElement.contains(event.target) || this.clickInner) {
+    this.canClose = true;
+    this.clickInner = false;
+  } else {
+    if (this.canClose) {
+      this.closeCalendar();
+    }
+    this.canClose = false;
     }
   }
 
