@@ -15,6 +15,11 @@
     justify-content: flex-end;
     padding: .875rem 1.25rem;
   }
+
+  &--dark {
+    background-color: $theme-dark-bg;
+    color: $theme-dark-color;
+  }
 }
 
 .go-toast-strip {
@@ -69,6 +74,10 @@
   &__message {
     font-size: .875rem;
     margin: 0;
+  }
+
+  &--dark {
+    color: $theme-dark-color;
   }
 }
 
