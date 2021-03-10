@@ -117,7 +117,6 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   private initializePlaceholder(): void {
     this.placeholder = this.placeholder || LocaleFormat.format(this.locale);
   }
-  
   public reset(): void {
     this.control.setValue(null);
     this.selectedDate = this.control.value;
