@@ -19,10 +19,10 @@
   &--dark {
     background-color: $theme-dark-bg;
     color: $theme-dark-color;
-  }
-
-  .go-toast-content--dark {
-    color: $theme-dark-color;
+  
+    .go-toast-content--dark {
+      color: $theme-dark-color;
+    }
   }
 }
 
