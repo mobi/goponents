@@ -30,7 +30,7 @@
   [virtualScroll]="virtualScroll"
   (scrollToEnd)="onScrollToEnd()"
   (scroll)="onScroll($event)">
-  <ng-container *ngIf="multiple && showSelectAll && items?.length > 0">
+  <ng-container *ngIf="multiple && showSelectAll && items?.length">
     <ng-template ng-header-tmp>
       <button
         (click)="onSelectAll()"
