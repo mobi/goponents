@@ -12,7 +12,6 @@
     [ngClass]="{ 'go-toast-content--no-title': !header }">
     <h4
       class="go-heading-4 go-toast-content__title"
-      [ngClass]="{'go-toast-content--dark': theme === 'dark'}"
       *ngIf="header || headerContent">
       <ng-container *ngIf="headerContent; else headerContentElse">
         <ng-container *ngTemplateOutlet="headerContent"></ng-container>
@@ -23,14 +22,13 @@
     </h4>
 
     <ng-container *ngIf="messageContent; else messageContentElse">
-      <p class="go-toast-content__message" [ngClass]="{'go-toast-content--dark': theme === 'dark'}">
+      <p class="go-toast-content__message">
        <ng-container *ngTemplateOutlet="messageContent"></ng-container>
       </p>
     </ng-container>
     <ng-template #messageContentElse>
       <p
         class="go-toast-content__message"
-        [ngClass]="{'go-toast-content--dark': theme === 'dark'}"
         [innerHTML]="message">
       </p>
     </ng-template>
