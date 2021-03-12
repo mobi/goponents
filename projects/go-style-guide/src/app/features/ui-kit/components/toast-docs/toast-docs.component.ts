@@ -125,6 +125,15 @@ export class ToastDocsComponent {
   </go-toast>
   `;
 
+  toast_theme_template_html: string = `
+  <go-toast
+    theme="dark"
+    header="Success!"
+    message="The thing you did saved successfully."
+    type="positive">
+  </go-toast>
+  `;
+
   linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-toast';
 
   constructor(private toasterService: GoToasterService) { }

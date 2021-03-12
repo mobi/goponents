@@ -15,6 +15,15 @@
     justify-content: flex-end;
     padding: .875rem 1.25rem;
   }
+
+  &--dark {
+    background-color: $theme-dark-bg;
+    color: $theme-dark-color;
+
+    .go-toast-content {
+      color: $theme-dark-color;
+    }
+  }
 }
 
 .go-toast-strip {

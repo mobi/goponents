@@ -23,6 +23,7 @@ export class GoToastComponent implements OnInit {
   @Input() message: string;
   @Input() type: string;
   @Input() showToastActions: boolean = false;
+  @Input() theme: 'light' | 'dark' = 'light';
 
   @Output() handleDismiss: EventEmitter<void> = new EventEmitter();
 
