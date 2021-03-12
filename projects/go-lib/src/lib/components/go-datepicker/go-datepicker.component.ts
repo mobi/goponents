@@ -55,10 +55,15 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
     }
 
     this.subscription = this.control.valueChanges.subscribe((value: Date) => {
-      if (!value && this.selectedDate) {
-        this.control.setErrors([{ message: 'format is invalid' }]);
-      } else if (value) {
-        this.selectedDate = LocaleFormat.formatDate(value, this.locale);
+      if (!value) {
+        this.selectedDate = null;
+      } else {
+        const dateValid: boolean = (value instanceof Date) && LocaleFormat.validDate(value.getMonth(), value.getDay(), value.getFullYear());
+        if (!dateValid) {
+          this.control.setErrors([{ message: 'format is invalid' }]);
+        } else {
+          this.selectedDate = LocaleFormat.formatDate(value, this.locale);
+        }
       }
     });
   }
@@ -116,9 +121,5 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
 
   private initializePlaceholder(): void {
     this.placeholder = this.placeholder || LocaleFormat.format(this.locale);
-  }
-  public reset(): void {
-    this.control.setValue(null);
-    this.selectedDate = this.control.value;
   }
 }
