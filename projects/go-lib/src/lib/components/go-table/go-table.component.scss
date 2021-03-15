@@ -363,8 +363,8 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 // Column Freezing Table
 //=====================
 thead tr:nth-child(1) th {
+  @include z-index(10);
   background: $base-light;
   position: sticky;
   top: 0;
-  z-index: 10;
 }
