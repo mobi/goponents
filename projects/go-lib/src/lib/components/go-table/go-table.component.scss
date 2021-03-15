@@ -362,9 +362,9 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 }
 // Column Freezing Table
 //=====================
-thead tr:nth-child(1) th{
-    background: $base-light;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
+thead tr:nth-child(1) th {
+  background: $base-light;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
