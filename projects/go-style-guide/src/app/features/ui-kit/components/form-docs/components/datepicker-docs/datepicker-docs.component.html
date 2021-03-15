@@ -509,4 +509,44 @@
     </div>
     
   </go-card>
+
+  <go-card id="form-datepicker-min-date" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Reset Date</h2>
+      <go-copy cardId="form-datepicker-min-date" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The datepicker components placeholder attribute can be set via
+          <code class="code-block--inline">this.form.reset()</code>
+          and the value becomes null.
+          <code class="code-block--inline">mm/dd/yyyy</code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+           <go-datepicker
+            [control]="dobReset"
+            label="Date of Birth">
+          </go-datepicker>
+            <br/>
+              <go-button (handleClick)="resetDate()" buttonVariant="secondary" >Clear Me</go-button>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <code
+              [highlight]="resetDateExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
 </section>
