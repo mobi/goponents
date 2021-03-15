@@ -19,7 +19,7 @@ import {
   FormControl,
   FormGroup
 } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { GoConfigService } from '../../go-config.service';
@@ -107,6 +107,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
 
   private destroy$: Subject<void> = new Subject();
   private pageChange$: Subject<void> = new Subject();
+  private selections$: Subject<void> = new Subject();
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -151,15 +152,20 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   ngOnDestroy(): void {
     this.pageChange$.next();
     this.pageChange$.complete();
+    this.selections$.next();
+    this.selections$.complete();
     this.destroy$.next();
     this.destroy$.complete();
   }
 
   renderTable(): void {
     if (this.tableConfig) {
-      this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
+      const previousConfig: GoTableConfig = this.localTableConfig ? JSON.parse(JSON.stringify(this.localTableConfig)) : null;
 
+      this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
       this.allData = this.localTableConfig.tableData;
+
+      this.tableChangeHandleSelection(previousConfig);
       this.setTotalCount();
       this.handleSort();
       this.setPage(this.localTableConfig.pageConfig.offset);
@@ -544,6 +550,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.rowSelectForm.get(`selection_${row[this.localTableConfig.selectBy]}`)
         .valueChanges.pipe(
           takeUntil(this.pageChange$),
+          takeUntil(this.selections$),
           takeUntil(this.destroy$)
         )
         .subscribe((value: boolean) => {
@@ -557,6 +564,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.selectAllControl.valueChanges
         .pipe(
           distinctUntilChanged(),
+          takeUntil(this.selections$),
           takeUntil(this.destroy$)
         )
         .subscribe(() => {
@@ -572,8 +580,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
             selectionMode: this.determineSelectionMode(),
             selectedRows: !this.selectAllControl.value ? this.targetedRows : []
           });
-        }
-      );
+        });
     }
   }
 
@@ -583,6 +590,18 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
         .get(`selection_${row[this.localTableConfig.selectBy]}`)
         .setValue(this.isRowSelected(row), { emitEvent: false });
     });
+  }
+
+  private tableChangeHandleSelection(previousConfig: GoTableConfig): void {
+    if (previousConfig && this.tableConfig.selectable !== previousConfig.selectable) {
+      if (this.tableConfig.selectable === true) {
+        this.selections$ = new Subject();
+        this.setupSelectAllControlSub();
+      } else {
+        this.selectAllControl.setValue(false);
+        this.selections$.complete();
+      }
+    }
   }
   //#endregion
 }
