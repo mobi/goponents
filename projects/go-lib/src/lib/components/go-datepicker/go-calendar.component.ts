@@ -145,7 +145,7 @@ export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewInit {
     if (this.appendTo === 'body') {
       const calenderBodyPosition: any = this.calendarView.nativeElement.getBoundingClientRect();
       Object.assign(this.calendarView.nativeElement.style, {
-        bottom: `${calenderBodyPosition.bottom - 5 }px`,
+        bottom: `${calenderBodyPosition.bottom - 5}px`,
         right: `${calenderBodyPosition.right}px`,
         width: `${calenderBodyPosition.width}px`,
         left: `${calenderBodyPosition.left}px`,
