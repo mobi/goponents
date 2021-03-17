@@ -45,8 +45,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 
 .go-table {
   max-width: 100%;
-  overflow-x: auto;
-
+  overflow:auto;
   &__table {
     border-spacing: 0;
     color: $theme-light-color;
@@ -360,26 +359,42 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     text-align: center;
   }
 }
-// Column Freezing Table
+
+// support Sticky Headers in go-table
 //=====================
 td:first-child, th:first-child {
-  position:sticky;
-  left:0;
-  z-index:1;
-  background-color:$base-light;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: $base-light;
 }
+
+td:first-child, th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: $base-light;
+}
+
 td:nth-child(2),th:nth-child(2)  { 
-  position:sticky;
-  left:40px;
-  z-index:1;
-  background-color:$base-light;
+  position: sticky;
+  left: 40px;
+  z-index: 1;
+  background-color: $base-light;
 }
-.tableFixHead th {
+
+th {
   position: sticky;
   top: 0;
   background: $base-light;
-  z-index:2;
+  z-index: 2;
 }
+
 th:first-child , th:nth-child(2) {
-  z-index:3;
+  z-index: 3;
+}
+
+thead tr th {
+  position: sticky;
+  top: 0;
 }
