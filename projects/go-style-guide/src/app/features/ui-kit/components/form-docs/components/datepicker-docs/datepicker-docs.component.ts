@@ -173,8 +173,8 @@ export class DatepickerDocsComponent implements OnInit {
     label="Date of Birth">
   </go-datepicker>
 
-   <go-button (handleClick)="resetDate()" 
-   buttonVariant="secondary"> 
+   <go-button (handleClick)="resetDate()"
+   buttonVariant="secondary">
    Clear Me </go-button>
   `;
   resetDateExample_ts: string = `
