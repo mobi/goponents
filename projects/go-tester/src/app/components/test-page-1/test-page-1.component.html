@@ -46,6 +46,12 @@
     </go-accordion-panel>
   </go-accordion>
 
+  <div class="go-column">
+    <go-button (handleClick)="toggleSelection()">
+      Toggle Selection
+    </go-button>
+  </div>
+
   <go-table [loadingData]="tableLoading"
             [tableConfig]="tableConfig"
             (rowSelectionEvent)="handleSelection($event)"
