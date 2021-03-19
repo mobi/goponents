@@ -167,11 +167,20 @@ export class DatepickerDocsComponent implements OnInit {
   }
   `;
 
-  resetDateExample: string = `
+  resetDateExample_html: string = `
   <go-datepicker
     [control]="dobReset"
     label="Date of Birth">
   </go-datepicker>
+
+   <go-button (handleClick)="resetDate()" 
+   buttonVariant="secondary"> 
+   Clear Me </go-button>
+  `;
+  resetDateExample_ts: string = `
+  resetDate(): void {
+    this.dobReset.reset();
+  }
   `;
 
   constructor(
