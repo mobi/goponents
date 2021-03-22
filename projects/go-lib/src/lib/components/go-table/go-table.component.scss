@@ -49,9 +49,23 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
   &__table {
     border-spacing: 0;
     color: $theme-light-color;
-    width: 100%;
+    width: 100%;    
   }
-
+  
+  &__head-column-sticky{
+     
+        position: sticky;
+        top: 0;
+        background: $base-light;
+        z-index: 2;
+    
+    }
+&__head-column-nonsticky{
+     
+        position: relative;
+    
+    }
+    
   &__head-column {
     @include transition(background);
 
@@ -61,7 +75,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     font-weight: $weight-medium;
     letter-spacing: .08px;
     padding: 1rem $go-table-cell-horizontal-padding;
-    position: relative;
+    
     text-align: left;
     text-transform: uppercase;
     white-space: nowrap;
@@ -358,43 +372,4 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
     text-align: center;
   }
-}
-
-// support Sticky Headers in go-table
-//=====================
-td:first-child, th:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  background-color: $base-light;
-}
-
-td:first-child, th:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 1;
-  background-color: $base-light;
-}
-
-td:nth-child(2),th:nth-child(2)  { 
-  position: sticky;
-  left: 40px;
-  z-index: 1;
-  background-color: $base-light;
-}
-
-th {
-  position: sticky;
-  top: 0;
-  background: $base-light;
-  z-index: 2;
-}
-
-th:first-child , th:nth-child(2) {
-  z-index: 3;
-}
-
-thead tr th {
-  position: sticky;
-  top: 0;
 }

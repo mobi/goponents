@@ -1088,6 +1088,15 @@ describe('GoTableComponent', () => {
       tick(501);
       expect(component.tableChange.emit).toHaveBeenCalled();
     }));
+
+    
+    it('set sticky header on table', fakeAsync(() => {
+      component.tableConfig.dataMode = GoTableDataSource.server;
+      component.tableConfig.stickyHeader = true;
+      component.ngOnInit();
+      expect(component.tableConfig.stickyHeader).toEqual(component.stickyHeader);
+    }));
+
   });
 
   describe('ngOnChanges', () => {
@@ -1098,6 +1107,14 @@ describe('GoTableComponent', () => {
 
       expect(component.renderTable).toHaveBeenCalled();
     });
+
+    it('set sticky header on table', fakeAsync(() => {
+      component.tableConfig.dataMode = GoTableDataSource.server;
+      component.tableConfig.stickyHeader = false;
+      component.ngOnChanges({ tableConfig: {} as SimpleChange });
+      expect(component.tableConfig.stickyHeader).toEqual(component.stickyHeader);
+    }));
+
   });
 
   describe('ngAfterViewInit', () => {
@@ -1159,4 +1176,6 @@ describe('GoTableComponent', () => {
       expect(component['changeDetector'].detectChanges).toHaveBeenCalled();
     });
   });
+
+  
 });

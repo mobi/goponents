@@ -103,6 +103,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
+  stickyHeader: boolean = false;
   targetedRows: any[] = [];
 
   private destroy$: Subject<void> = new Subject();
@@ -125,10 +126,12 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.setupPageSizes();
       this.setupConfigService();
       this.setupSelectAllControlSub();
+     this.setupSticky();
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.setupSticky();
     if (changes.tableConfig) {
       this.renderTable();
     }
@@ -156,9 +159,9 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   }
 
   renderTable(): void {
-    if (this.tableConfig) {
-      this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
-
+       if (this.tableConfig) {
+            this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
+            
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
@@ -167,7 +170,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     }
 
     this.showTable = Boolean(this.tableConfig);
-  }
+    }
 
   setupConfigService(): void {
     this.goConfigService.config
@@ -584,5 +587,9 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
         .setValue(this.isRowSelected(row), { emitEvent: false });
     });
   }
+
+  private setupSticky(): void {
+      this.stickyHeader = Boolean(this.tableConfig.stickyHeader);
+    }
   //#endregion
 }
