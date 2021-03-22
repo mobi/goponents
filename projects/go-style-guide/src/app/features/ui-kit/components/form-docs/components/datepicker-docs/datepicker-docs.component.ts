@@ -19,6 +19,7 @@ export class DatepickerDocsComponent implements OnInit {
   locale: FormControl = new FormControl('');
   max: FormControl = new FormControl('');
   min: FormControl = new FormControl('');
+  dobReset: FormControl = new FormControl('2015-08-15');
 
   hints: Array<string> = [
     'Please enter your date of birth',
@@ -166,6 +167,22 @@ export class DatepickerDocsComponent implements OnInit {
   }
   `;
 
+  resetDateExample_html: string = `
+  <go-datepicker
+    [control]="dobReset"
+    label="Date of Birth">
+  </go-datepicker>
+
+   <go-button (handleClick)="resetDate()"
+   buttonVariant="secondary">
+   Clear Me </go-button>
+  `;
+  resetDateExample_ts: string = `
+  resetDate(): void {
+    this.dobReset.reset();
+  }
+  `;
+
   constructor(
     private subNavService: SubNavService,
     private goModalService: GoModalService
@@ -200,5 +217,9 @@ export class DatepickerDocsComponent implements OnInit {
         label: 'Date Of Birth',
       }
     );
+  }
+
+  resetDate(): void {
+    this.dobReset.reset();
   }
 }

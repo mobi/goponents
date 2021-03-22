@@ -477,36 +477,47 @@
     </div>
   </go-card>
 
-  <go-card id="form-datepicker-append-to-body" class="go-column go-column--100">
+    
+  <!-- Datepicker reset -->
+  <go-card id="form-datepicker-reset-date" class="go-column go-column--100">
     <ng-container go-card-header>
-      <h2 class="go-heading-2 go-heading--no-wrap">Component appendTo</h2>
-      <go-copy cardId="form-datepicker-append-to-content" goCopyCardLink></go-copy>
+      <h2 class="go-heading-2 go-heading--no-wrap">Component Reset Date</h2>
+      <go-copy cardId="form-datepicker-reset-date" goCopyCardLink></go-copy>
     </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a
-          <code class="code-block--inline">go-datepicker</code> within a <code class="code-block--inline">go-modal</code>.
-          Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
-          the modal from closing automatically upon selecting an item from the select dropdown.
+          The datepicker components value attribute can be reset via
+          <code class="code-block--inline">this.form.reset()</code>
         </p>
       </div>
+
       <div class="go-column go-column--100 go-column--no-padding">
         <div class="go-container">
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
-            <go-button (handleClick)="openModal()">Click Me</go-button>
+            <go-datepicker [control]="dobReset" label="Date of Birth">
+            </go-datepicker>
+            <br />
+            <go-button (handleClick)="resetDate()" buttonVariant="secondary"
+              >Clear Me</go-button
+            >
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <h6>datepickerReset.html</h6>
             <code
-              [highlight]="appendToBodyExample"
-              class="code-block--no-bottom-margin">
+              [highlight]="resetDateExample_html"
+              class="code-block--no-bottom-margin"
+            >
             </code>
+            <br />
+            <h6>datepickerReset.ts</h6>
+            <code [highlight]="resetDateExample_ts"> </code>
           </div>
         </div>
       </div>
     </div>
-    
-  </go-card>
+  </go-card>  
+
 </section>

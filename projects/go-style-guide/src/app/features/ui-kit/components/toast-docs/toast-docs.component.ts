@@ -88,6 +88,9 @@ export class ToastDocsComponent {
 
   // you can adjust the duration of the toast by passing in the duration param:
   this.toasterService.toastSuccess({ message: 'You clicked the button!' }, 7000);
+
+  // you can also make the toast dismissable by setting the "dismissable" property on the ToastInterface param:
+  this.toasterService.toastSuccess({ message: 'You clicked the button!', dimissable: true });
   `;
 
   toaster_app_ts: string = `
@@ -119,6 +122,15 @@ export class ToastDocsComponent {
     <ng-template #messageContent>
       This toast is an example that uses a message template <go-icon icon="home"></go-icon>
     </ng-template>
+  </go-toast>
+  `;
+
+  toast_theme_template_html: string = `
+  <go-toast
+    theme="dark"
+    header="Success!"
+    message="The thing you did saved successfully."
+    type="positive">
   </go-toast>
   `;
 

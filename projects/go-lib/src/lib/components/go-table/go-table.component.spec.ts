@@ -842,6 +842,37 @@ describe('GoTableComponent', () => {
       component.tableConfig = tableConfig;
     });
 
+    it('sets up selectAll subscription if new config is selectable and selectable changed', () => {
+      spyOn(component.selectAllEvent, 'emit').and.callThrough();
+      component.selectAllControl.setValue(false);
+      component.localTableConfig = new GoTableConfig({
+        selectable: false,
+        tableData: fakeTableData
+      });
+      component.tableConfig.selectable = true;
+
+      component.renderTable();
+
+      component.selectAllControl.setValue(true);
+      expect(component.selectAllEvent.emit).toHaveBeenCalled();
+    });
+
+    it('sets selectAllControl to false if new config is not selectable and selectable changed', () => {
+      spyOn(component['selections$'], 'complete').and.callThrough();
+      component.selectAllControl.setValue(true);
+      component.localTableConfig = new GoTableConfig({
+        selectBy: 'id',
+        selectable: true,
+        tableData: fakeTableData
+      });
+      component.tableConfig.selectable = false;
+
+      component.renderTable();
+
+      expect(component.selectAllControl.value).toBeFalsy();
+      expect(component['selections$'].complete).toHaveBeenCalled();
+    });
+
     it('should set showTable to false if no tableConfig', () => {
       component.showTable = true;
       component.tableConfig = undefined;

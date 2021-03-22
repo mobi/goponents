@@ -246,4 +246,30 @@
     </ng-template>
   </go-toast>
 
+  <go-card class="go-column go-column--100" id="toast-theme">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Theme</h2>
+      <go-copy cardId="theme-template" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          A dark or light theme can be triggered through the <code class="code-block--inline">@Input theme: 'dark' | 'light' = 'light';</code>
+          binding. The theme signifies which color of background the element is being placed upon. A light theme will be good for a light background,
+          while a dark theme would be better for something like being placed in the off canvas which has a dark background.
+        </p>
+      </div>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="toast_theme_template_html"></code>
+    </ng-container>
+  </go-card>
+
+  <go-toast
+    theme="dark"
+    class="go-column go-column--100"
+    header="Success!"
+    message="The thing you did saved successfully." 
+    type="positive">
+</go-toast>
+
 </section>

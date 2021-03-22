@@ -1,4 +1,4 @@
-<div class="go-toast">
+<div class="go-toast" [ngClass]="{'go-toast--dark': theme === 'dark'}">
   <div class="go-toast-strip" [ngClass]="statusClass"></div>
   <div class="go-toast-status">
     <go-icon
