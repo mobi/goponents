@@ -159,9 +159,8 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   }
 
   renderTable(): void {
-       if (this.tableConfig) {
-            this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
-            
+    if (this.tableConfig) {
+      this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
       this.allData = this.localTableConfig.tableData;
       this.setTotalCount();
       this.handleSort();
