@@ -54,10 +54,11 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
   }
 
   &__head-column-sticky {
+    @include z-index(2);
+    
+    background: $base-light;
     position: sticky;
     top: 0;
-    background: $base-light;
-    z-index: 2;
   }
 
   &__head-column-nonsticky {
