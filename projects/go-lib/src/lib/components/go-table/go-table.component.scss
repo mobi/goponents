@@ -46,6 +46,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 .go-table {
   max-width: 100%;
   overflow: auto;
+
   &__table {
     border-spacing: 0;
     color: $theme-light-color;
@@ -53,17 +54,16 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
   }
 
   &__head-column-sticky {
-        position: sticky;
-        top: 0;
-        background: $base-light;
-        z-index: 2;
-        }
+    position: sticky;
+    top: 0;
+    background: $base-light;
+    z-index: 2;
+  }
 
   &__head-column-nonsticky {
-        position: relative;
+    position: relative;
+  }
 
-    }
-    
   &__head-column {
     @include transition(background);
 
