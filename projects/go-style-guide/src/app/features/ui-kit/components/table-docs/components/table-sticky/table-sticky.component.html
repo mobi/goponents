@@ -1,0 +1,56 @@
+<section class="go-container">
+ <go-card class="go-column go-column--100" id="implementing-sticky">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Implementing Sticky Header</h2>
+      <go-copy cardId="implementing-sticky" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          By default, sticky header is disable mode in table. 
+          To set the sticky header value into GoTableConfig, you may pass an 
+          <code class="code-block--inline">GoTableConfig</code> .
+          Please follow the below code for set sticky header value in table configuration.
+        </p>
+  
+        <code [highlight]="tableStickyConfig"></code>
+      </div>
+    </div>
+  </go-card>
+  
+  <go-card class="go-column go-column--100" id="setting-the-sticky">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Setting the Sticky Header in Table</h2>
+      <go-copy cardId="setting-the-sticky" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="tableStickyConfig_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="tableStickyConfig_ts" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <!-- Sticky Table -->
+  <go-table
+    [tableConfig]="tableConfig"
+    class="go-column go-column--100"
+    tableTitle="Sticky Table Data"
+    [showTableActions]="true"
+    maxHeight="200px">       
+    <ng-container go-table-actions>
+      <go-button (handleClick)="changeStickyHeader()">
+        {{ this.stickybutton }}
+      </go-button>
+    </ng-container>
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+  <!-- End Sticky Table -->
+
+</section>

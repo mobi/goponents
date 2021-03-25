@@ -111,6 +111,7 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
+import { TableStickyComponent } from './components/table-docs/components/table-sticky/table-sticky.component';
 
 @NgModule({
   imports: [
@@ -213,7 +214,8 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    WysiwygDocsComponent
+    WysiwygDocsComponent,
+    TableStickyComponent
   ],
   entryComponents: [
     BasicTestComponent,

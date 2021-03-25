@@ -62,6 +62,7 @@ import { TableChildRowsComponent } from '../components/table-docs/components/tab
 import { TimepickerDocsComponent } from '../components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { WysiwygDocsComponent } from '../components/wysiwyg-docs/wysiwyg-docs.component';
 import { ButtonGroupDocsComponent } from '../components/button-group-docs/button-group-docs.component';
+import { TableStickyComponent } from '../components/table-docs/components/table-sticky/table-sticky.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -123,6 +124,7 @@ const routes: Routes = [
     { path: 'selection', component: TableSelectionComponent },
     { path: 'server-integration', component: ServerIntegrationComponent },
     { path: 'sorting', component: TableSortingComponent },
+    { path: 'sticky', component: TableStickyComponent },
     { path: 'templating', component: TableTemplatesComponent }
   ]},
   { path: 'ui-kit/toast', component: ToastDocsComponent },
