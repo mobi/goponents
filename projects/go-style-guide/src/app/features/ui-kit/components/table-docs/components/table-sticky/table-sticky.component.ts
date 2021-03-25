@@ -14,22 +14,13 @@ export class TableStickyComponent implements OnInit {
   private destroy$: Subject<void> = new Subject();
   tableConfig: GoTableConfig;
 
-  stickybutton: string = 'Sticky Header'
+  stickybutton: string = 'Sticky Header';
   stickyHeader: boolean = false;
-
-  constructor(
-    private tableDocsService: TableDocsService,
-    private subNavService: SubNavService
-  ) {
-    this.subNavService.pageTitle = 'Table Sticky';
-    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
-  }
 
  tableStickyConfig: string = `
   this.tableConfig = new GoTableConfig({
   stickyHeader: this.stickyHeader
-  });   
-  `;
+  });`;
 
   tableStickyConfig_ts: string = `
   // import these at the top of the file
@@ -62,7 +53,7 @@ export class TableStickyComponent implements OnInit {
     this.tableConfig = new GoTableConfig({
         tableData: this.tableDocsService.generateData(20),
         stickyHeader: this.stickyHeader
-      });   
+      });
   }
   `;
 
@@ -73,12 +64,12 @@ export class TableStickyComponent implements OnInit {
       tableTitle="Sticky Table Data"
       *ngIf="tableConfig"
       [showTableActions]="true"
-      maxHeight="200px">       
+      maxHeight="200px">
       <ng-container go-table-actions>
         <go-button (handleClick)="changeStickyHeader()">
           {{ this.stickybutton }}
         </go-button>
-      </ng-container> 
+      </ng-container>
       <go-table-column field="id" title="ID"></go-table-column>
       <go-table-column field="name.first" title="First Name"></go-table-column>
       <go-table-column field="name.last" title="Last Name"></go-table-column>
@@ -88,11 +79,19 @@ export class TableStickyComponent implements OnInit {
   </go-table>
   `;
 
-  ngOnInit() {
+  constructor(
+    private tableDocsService: TableDocsService,
+    private subNavService: SubNavService
+  ) {
+    this.subNavService.pageTitle = 'Table Sticky';
+    this.subNavService.linkToSource = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-table';
+  }
+
+  ngOnInit(): void {
     this.tableConfig = new GoTableConfig({
           tableData: this.tableDocsService.generateData(20)
-        }); 
-  }  
+        });
+  }
 
    ngOnDestroy(): void {
     this.destroy$.next();
@@ -106,13 +105,13 @@ export class TableStickyComponent implements OnInit {
         });
   }
 
-  changeStickyHeader(): void{
-      if(!this.stickyHeader){
-      this.stickyHeader=true;
-      this.stickybutton = 'Non-Sticky Header'
-    }else{
-      this.stickyHeader=false;
-      this.stickybutton = 'Sticky Header'
+  changeStickyHeader(): void {
+      if (!this.stickyHeader) {
+      this.stickyHeader = true;
+      this.stickybutton = 'Non-Sticky Header';
+    } else {
+      this.stickyHeader = false;
+      this.stickybutton = 'Sticky Header';
     }
     this.handleTableChange();
   }
