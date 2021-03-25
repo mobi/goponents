@@ -23,8 +23,7 @@ export class TestPage1Component implements OnInit, OnDestroy {
 
   tableDetailsConfig: GoTableConfig;
   tableDetailsLoading: boolean = true;
-  
-  stickybutton: string = 'Sticky Header'
+  stickybutton: string = 'Sticky Header';
   stickyHeader: boolean = false;
 
   @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
@@ -54,7 +53,7 @@ export class TestPage1Component implements OnInit, OnDestroy {
           totalCount: data.totalCount,
           sortable: false,
         });
-       
+
         this.tableLoading = false;
         this.tableDetailsLoading = false;
       });
@@ -67,7 +66,7 @@ export class TestPage1Component implements OnInit, OnDestroy {
 
   handleTableChange(currentTableConfig: GoTableConfig): void {
     if (this.tableConfig.dataMode === GoTableDataSource.server) {
-      this.tableLoading = true;     
+      this.tableLoading = true;
       this.appService.getMockData(currentTableConfig)
         .pipe(takeUntil(this.destroy$))
         .subscribe((data: any) => {
@@ -91,13 +90,13 @@ export class TestPage1Component implements OnInit, OnDestroy {
     console.log(this.peopleTable.getSelectionState());
   }
 
-  changeStickyHeader(): void{
-        if(!this.stickyHeader){
-      this.stickyHeader=true;
-      this.stickybutton = 'Non-Sticky Header'
-    }else{
-      this.stickyHeader=false;
-      this.stickybutton = 'Sticky Header'
+  changeStickyHeader(): void {
+    if (!this.stickyHeader) {
+      this.stickyHeader = true;
+      this.stickybutton = 'Non-Sticky Header';
+    } else {
+      this.stickyHeader = false;
+      this.stickybutton = 'Sticky Header';
     }
     this.handleTableChange(this.tableConfig);
   }
