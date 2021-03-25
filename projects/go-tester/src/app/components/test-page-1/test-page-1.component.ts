@@ -82,6 +82,16 @@ export class TestPage1Component implements OnInit, OnDestroy {
     }
   }
 
+  toggleSelection(): void {
+    const newConfig: GoTableConfig = {
+      ...this.tableConfig,
+      selectBy: 'id',
+      selectable: !this.tableConfig.selectable
+    };
+
+    this.tableConfig = newConfig;
+  }
+
   outputSelectionCount(): void {
     this.toasterService.toastSuccess({ message: 'Rows Selected: ' + this.peopleTable.getSelectionCount() });
   }
