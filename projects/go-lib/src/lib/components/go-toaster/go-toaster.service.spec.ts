@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { GoToasterService } from './go-toaster.service';
 
-
 describe('GoToasterService', () => {
   let service: GoToasterService;
 
@@ -16,6 +15,15 @@ describe('GoToasterService', () => {
 
   it('should create', () => {
     expect(service).toBeTruthy();
+  });
+
+  describe('removeToast', () => {
+    it('should remove the toast from toasts', () => {
+      service.toastSuccess();
+      expect(service.toasts.length).toBe(1);
+      service.removeToast(0);
+      expect(service.toasts.length).toBe(0);
+    });
   });
 
   describe('toastSuccess', () => {
