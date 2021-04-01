@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { GoToasterService } from './go-toaster.service';
 import { toastAnimation } from '../../animations/toasts';
 
@@ -18,5 +17,9 @@ export class GoToasterComponent {
 
   restartTimers(): void {
     this.goToasterService.startTimers();
+  }
+
+  dismissToast(index: number): void {
+    this.goToasterService.removeToast(index);
   }
 }

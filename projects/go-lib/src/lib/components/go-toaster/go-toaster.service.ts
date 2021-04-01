@@ -15,6 +15,14 @@ export class GoToasterService {
   constructor() { }
 
   /**
+   * Use this method to remove toasts
+   * @param index
+  */
+  removeToast(index: number): void {
+    this.toasts.splice(index, 1);
+  }
+
+  /**
    * Use this method to display success toasts
    * @param toast
    * @param duration

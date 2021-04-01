@@ -148,7 +148,7 @@ export class ToastDocsComponent {
   }
 
   sendToast(): void {
-    this.toasterService.toastSuccess({ message: 'You clicked the button!' });
+    this.toasterService.toastSuccess({ message: 'You clicked the button!', dismissable: true });
   }
 
 }
