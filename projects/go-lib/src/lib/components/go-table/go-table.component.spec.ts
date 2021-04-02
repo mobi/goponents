@@ -1120,7 +1120,6 @@ describe('GoTableComponent', () => {
       expect(component.tableChange.emit).toHaveBeenCalled();
     }));
 
-    
     it('set sticky header on table', fakeAsync(() => {
       component.tableConfig.dataMode = GoTableDataSource.server;
       component.tableConfig.stickyHeader = true;
@@ -1208,5 +1207,4 @@ describe('GoTableComponent', () => {
     });
   });
 
-  
 });

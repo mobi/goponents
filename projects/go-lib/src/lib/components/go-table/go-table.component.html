@@ -45,8 +45,7 @@
 
           <!-- Header - Select All Checkbox Column -->
           <th
-          [ngClass]="stickyHeader ? 'go-table__head-column-sticky' :'go-table__head-column-nonsticky'"
-            class="go-table__head-column go-table__head-checkbox go-table__head--sortable"
+            class="go-table__head-column go-table__head-checkbox go-table__head--sortable {{classStickyHeader}}"
             *ngIf="localTableConfig.selectable && localTableConfig.selectBy && rowSelectForm"
             width="60">
             <go-checkbox
@@ -58,8 +57,7 @@
 
           <!-- Header - Columns -->
           <th *ngFor="let col of columns"
-           [ngClass]="stickyHeader ? 'go-table__head-column-sticky' :'go-table__head-column-nonsticky'"
-              class="go-table__head-column"
+              class="go-table__head-column {{classStickyHeader}}"
               (click)="toggleSort(col.sortable, col.field)"
               [ngClass]="{ 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable }"
               [ngStyle]="{ 'min-width': col.width + 'px' }">

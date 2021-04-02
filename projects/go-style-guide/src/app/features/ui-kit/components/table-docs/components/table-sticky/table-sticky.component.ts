@@ -89,7 +89,8 @@ export class TableStickyComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableConfig = new GoTableConfig({
-          tableData: this.tableDocsService.generateData(20)
+          tableData: this.tableDocsService.generateData(20),
+          stickyHeader: this.stickyHeader
         });
   }
 

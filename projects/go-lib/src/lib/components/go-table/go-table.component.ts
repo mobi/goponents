@@ -103,8 +103,11 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
-  stickyHeader: boolean = false;
   targetedRows: any[] = [];
+  stickyHeader: boolean = false;
+  classStickyHeader: string[];
+  stickyClass: string = 'go-table__head-column-sticky';
+  nonStickyClass: string = 'go-table__head-column-nonsticky';
 
   private destroy$: Subject<void> = new Subject();
   private pageChange$: Subject<void> = new Subject();
@@ -596,6 +599,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
 
   private setupSticky(): void {
       this.stickyHeader = Boolean(this.tableConfig.stickyHeader);
+      this.classStickyHeader = this.stickyHeader ? [this.stickyClass] : [this.nonStickyClass];
     }
 
   private tableChangeHandleSelection(previousConfig: GoTableConfig): void {
