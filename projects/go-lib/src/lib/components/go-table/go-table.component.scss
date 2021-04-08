@@ -53,8 +53,6 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     width: 100%;
   }
 
-  
-
   &__head-column {
     @include transition(background);
 
@@ -77,11 +75,11 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     }
 
     &--sticky {
-    @include z-index(2);  
-    background: $theme-light-bg;
-    position: sticky;
-    top: 0;
-  }
+      @include z-index(2);
+      background: $theme-light-bg;
+      position: sticky;
+      top: 0;
+    }
   }
 
   &__select-all-checkbox {
