@@ -15,7 +15,6 @@ export class GoTableConfig {
   sortable: boolean = true;
   tableData: any[];
   totalCount: number = null;
-  stickyHeader: boolean = false;
 
   constructor(fields?: {
     dataMode?: GoTableDataSource,
@@ -29,8 +28,7 @@ export class GoTableConfig {
     sortConfig?: GoTableSortConfig,
     sortable?: boolean,
     tableData: any[],
-    totalCount?: number,
-    stickyHeader?: boolean
+    totalCount?: number
   }) {
     if (fields) { Object.assign(this, fields); }
     if (this.selectable && !this.selectBy) { throw new Error('GoTableConfig: selectBy cannot be null if selectable is true'); }

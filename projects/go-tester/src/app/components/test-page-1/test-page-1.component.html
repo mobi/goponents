@@ -110,31 +110,4 @@
 
   </go-table>
   <!-- End Hierarchical Table -->
-  
-   <!-- Sticky Table -->
-   <go-table [loadingData]="tableLoading"
-            [tableConfig]="tableConfig"
-            (rowSelectionEvent)="handleSelection($event)"
-            [showTableActions]="true"
-            (tableChange)="handleTableChange($event)"
-            class="go-column go-column--100"
-            tableTitle="Sticky Table Data"
-            #peopleTable
-            *ngIf="tableConfig"
-            maxHeight="200px">
-              <ng-container go-table-actions>
-              <go-button (handleClick)="changeStickyHeader()">
-                 {{ this.stickybutton }}
-                </go-button>
-    </ng-container>
-    
-    <go-table-column field="id" title="ID"></go-table-column>
-    <go-table-column field="name.first" [sortable]="true" title="First Name"></go-table-column>
-    <go-table-column field="name.last" [sortable]="true" title="Last Name"></go-table-column>
-    <go-table-column field="email" [sortable]="true" title="Email"></go-table-column>
-    <go-table-column field="gender" title="Gender"></go-table-column>
-    <go-table-column field="ip_address" title="IP Address"></go-table-column>
-  </go-table>
-  <!-- End Sticky Table -->
-
 </div>

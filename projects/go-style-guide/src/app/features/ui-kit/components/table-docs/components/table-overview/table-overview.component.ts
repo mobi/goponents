@@ -8,6 +8,9 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
   templateUrl: './table-overview.component.html'
 })
 export class TableOverviewComponent {
+  stickybutton: string = 'Sticky Header';
+  stickyHeader: boolean = false;
+
   constructor(
     private subNavService: SubNavService,
     private tableDocsService: TableDocsService
@@ -26,6 +29,7 @@ export class TableOverviewComponent {
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
+  @Input() stickyHeader: boolean;
   `;
 
   tableConfigClass: string = `
@@ -101,7 +105,59 @@ export class TableOverviewComponent {
   </go-table>
   `;
 
+    tableStickyConfig_html: string = `
+    <go-table
+      [tableConfig]="tableConfig"
+      tableTitle="Sticky Table Data"
+      [showTableActions]="true"
+      [stickyHeader]="stickyHeader" >
+      <ng-container go-table-actions>
+        <go-button (handleClick)="changeStickyHeader()">
+          {{ this.stickybutton }}
+        </go-button>
+      </ng-container>
+      <go-table-column field="id" title="ID"></go-table-column>
+      <go-table-column field="name.first" title="First Name"></go-table-column>
+      <go-table-column field="name.last" title="Last Name"></go-table-column>
+      <go-table-column field="email" title="Email"></go-table-column>
+      <go-table-column field="gender" title="Gender"></go-table-column>
+      <go-table-column field="ip_address" title="IP Address"></go-table-column>
+    </go-table>
+  `;
+
+ tableStickyConfig: string = `
+  this.tableConfig = new GoTableConfig({
+  stickyHeader: this.stickyHeader
+  });`;
+
+  tableStickyConfig_ts: string = `
+  // Set default configuration for sticky header table
+  stickybutton: string = 'Sticky Header'
+  stickyHeader: boolean = false;
+
+  // Change the stickyHeader variable value on click event
+  changeStickyHeader(): void{
+    if(!this.stickyHeader) {
+      this.stickyHeader = true;
+      this.stickybutton = 'Non-Sticky Header'
+    } else {
+      this.stickyHeader = false;
+      this.stickybutton = 'Sticky Header'
+    }
+  }
+  `;
+
   tableConfig: object = new GoTableConfig({
     tableData: this.tableDocsService.generateData(20)
   });
+
+  changeStickyHeader(): void {
+    if (!this.stickyHeader) {
+      this.stickyHeader = true;
+      this.stickybutton = 'Non-Sticky Header';
+    } else {
+      this.stickyHeader = false;
+      this.stickybutton = 'Sticky Header';
+    }
+  }
 }

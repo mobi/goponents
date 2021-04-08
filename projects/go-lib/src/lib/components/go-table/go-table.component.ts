@@ -67,6 +67,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
+  @Input() stickyHeader: boolean;
 
   /**
    * This event is emitted when a row's selection changes
@@ -104,10 +105,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
   targetedRows: any[] = [];
-  stickyHeader: boolean = false;
-  classStickyHeader: string[];
-  stickyClass: string = 'go-table__head-column-sticky';
-  nonStickyClass: string = 'go-table__head-column-nonsticky';
 
   private destroy$: Subject<void> = new Subject();
   private pageChange$: Subject<void> = new Subject();
@@ -130,12 +127,10 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
       this.setupPageSizes();
       this.setupConfigService();
       this.setupSelectAllControlSub();
-     this.setupSticky();
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.setupSticky();
     if (changes.tableConfig) {
       this.renderTable();
     }
@@ -178,7 +173,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     }
 
     this.showTable = Boolean(this.tableConfig);
-    }
+  }
 
   setupConfigService(): void {
     this.goConfigService.config
@@ -596,11 +591,6 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
         .setValue(this.isRowSelected(row), { emitEvent: false });
     });
   }
-
-  private setupSticky(): void {
-      this.stickyHeader = Boolean(this.tableConfig.stickyHeader);
-      this.classStickyHeader = this.stickyHeader ? [this.stickyClass] : [this.nonStickyClass];
-    }
 
   private tableChangeHandleSelection(previousConfig: GoTableConfig): void {
     if (previousConfig && this.tableConfig.selectable !== previousConfig.selectable) {

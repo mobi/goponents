@@ -28,7 +28,6 @@ export class TableDocsComponent {
       { route: './server-integration', routeTitle: 'Server-Side Integration' },
       { route: './sorting', routeTitle: 'Sorting' },
       { route: './title-template', routeTitle: 'Title Template' },
-      { route: './sticky', routeTitle: 'Sticky Table' }
     ]}
   ];
 }

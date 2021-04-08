@@ -45,7 +45,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 
 .go-table {
   max-width: 100%;
-  overflow: auto;
+  overflow-x: auto;
 
   &__table {
     border-spacing: 0;
@@ -53,16 +53,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     width: 100%;
   }
 
-  &__head-column-sticky {
-    @include z-index(2);
-    background: $base-light;
-    position: sticky;
-    top: 0;
-  }
-
-  &__head-column-nonsticky {
-    position: relative;
-  }
+  
 
   &__head-column {
     @include transition(background);
@@ -84,6 +75,13 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     &:last-of-type {
       border-top-right-radius: $global-radius;
     }
+
+    &--sticky {
+    @include z-index(2);  
+    background: $theme-light-bg;
+    position: sticky;
+    top: 0;
+  }
   }
 
   &__select-all-checkbox {
