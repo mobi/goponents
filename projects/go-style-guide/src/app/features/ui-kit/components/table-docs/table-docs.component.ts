@@ -27,7 +27,7 @@ export class TableDocsComponent {
       { route: './searching', routeTitle: 'Searching' },
       { route: './server-integration', routeTitle: 'Server-Side Integration' },
       { route: './sorting', routeTitle: 'Sorting' },
-      { route: './title-template', routeTitle: 'Title Template' },
+      { route: './title-template', routeTitle: 'Title Template' }
     ]}
   ];
 }

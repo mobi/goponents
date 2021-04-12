@@ -1119,7 +1119,6 @@ describe('GoTableComponent', () => {
       tick(501);
       expect(component.tableChange.emit).toHaveBeenCalled();
     }));
-
   });
 
   describe('ngOnChanges', () => {
@@ -1130,7 +1129,6 @@ describe('GoTableComponent', () => {
 
       expect(component.renderTable).toHaveBeenCalled();
     });
-
   });
 
   describe('ngAfterViewInit', () => {

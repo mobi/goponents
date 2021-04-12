@@ -8,7 +8,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
   templateUrl: './table-overview.component.html'
 })
 export class TableOverviewComponent {
-  stickybutton: string = 'Sticky Header';
+  stickyButton: string = 'Sticky Header';
   stickyHeader: boolean = false;
 
   constructor(
@@ -29,7 +29,7 @@ export class TableOverviewComponent {
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
-  @Input() stickyHeader: boolean;
+  @Input() stickyHeader: boolean = false;
   `;
 
   tableConfigClass: string = `
@@ -108,7 +108,7 @@ export class TableOverviewComponent {
     tableStickyConfig_html: string = `
     <go-table
       [tableConfig]="tableConfig"
-      tableTitle="Sticky Table Data"
+      tableTitle="Sticky Table Header"
       [showTableActions]="true"
       [stickyHeader]="stickyHeader" >
       <ng-container go-table-actions>
@@ -125,11 +125,6 @@ export class TableOverviewComponent {
     </go-table>
   `;
 
- tableStickyConfig: string = `
-  this.tableConfig = new GoTableConfig({
-  stickyHeader: this.stickyHeader
-  });`;
-
   tableStickyConfig_ts: string = `
   // Set default configuration for sticky header table
   stickybutton: string = 'Sticky Header'
@@ -137,13 +132,8 @@ export class TableOverviewComponent {
 
   // Change the stickyHeader variable value on click event
   changeStickyHeader(): void{
-    if(!this.stickyHeader) {
-      this.stickyHeader = true;
-      this.stickybutton = 'Non-Sticky Header'
-    } else {
-      this.stickyHeader = false;
-      this.stickybutton = 'Sticky Header'
-    }
+    this.stickyHeader = !this.stickyHeader;
+    this.stickyButton = !this.stickyHeader ? 'Sticky Header' : 'Non-Sticky Header';
   }
   `;
 
@@ -152,12 +142,7 @@ export class TableOverviewComponent {
   });
 
   changeStickyHeader(): void {
-    if (!this.stickyHeader) {
-      this.stickyHeader = true;
-      this.stickybutton = 'Non-Sticky Header';
-    } else {
-      this.stickyHeader = false;
-      this.stickybutton = 'Sticky Header';
-    }
+    this.stickyHeader = !this.stickyHeader;
+    this.stickyButton = !this.stickyHeader ? 'Sticky Header' : 'Non-Sticky Header';
   }
 }

@@ -67,7 +67,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Input() showTableActions: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
-  @Input() stickyHeader: boolean;
+  @Input() stickyHeader: boolean = false;
 
   /**
    * This event is emitted when a row's selection changes

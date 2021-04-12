@@ -213,7 +213,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    WysiwygDocsComponent,
+    WysiwygDocsComponent
   ],
   entryComponents: [
     BasicTestComponent,

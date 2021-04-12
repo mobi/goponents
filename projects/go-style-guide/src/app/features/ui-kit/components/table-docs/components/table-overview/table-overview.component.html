@@ -81,7 +81,7 @@
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">stickyHeader</h4>
         <p class="go-body-copy go-body-copy--no-margin">
-          This property set table header to sticky, this is optional.
+          This property enables sticky column headers on the table, this is optional and defaults to false.
         </p>
       </div>
 
@@ -184,10 +184,10 @@
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
   </go-table>
 
-  <go-card class="go-column go-column--100" id="setting-the-sticky">
+  <go-card class="go-column go-column--100" id="sticky-headers">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Setting the Sticky Header in Table</h2>
-      <go-copy cardId="setting-the-sticky" goCopyCardLink></go-copy>
+      <go-copy cardId="sticky-headers" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
@@ -200,13 +200,13 @@
   <go-table
     class="go-column go-column--100"
     [tableConfig]="tableConfig"
-    tableTitle="Sticky Table Data"
+    tableTitle="Sticky Table Header Example"
     [showTableActions]="true"
     [stickyHeader]="stickyHeader"
     maxHeight="200px">       
     <ng-container go-table-actions>
       <go-button (handleClick)="changeStickyHeader()">
-        {{ this.stickybutton }}
+        {{ this.stickyButton }}
       </go-button>
     </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
