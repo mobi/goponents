@@ -65,9 +65,9 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
+  @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
-  @Input() stickyHeader: boolean = false;
 
   /**
    * This event is emitted when a row's selection changes
@@ -162,6 +162,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   renderTable(): void {
     if (this.tableConfig) {
       const previousConfig: GoTableConfig = this.localTableConfig ? JSON.parse(JSON.stringify(this.localTableConfig)) : null;
+
       this.localTableConfig = JSON.parse(JSON.stringify(this.tableConfig));
       this.allData = this.localTableConfig.tableData;
 

@@ -27,9 +27,9 @@ export class TableOverviewComponent {
   @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
+  @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
-  @Input() stickyHeader: boolean = false;
   `;
 
   tableConfigClass: string = `
