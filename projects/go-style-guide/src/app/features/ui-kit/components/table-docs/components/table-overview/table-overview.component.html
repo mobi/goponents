@@ -78,6 +78,13 @@
         </p>
       </div>
 
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">stickyHeader</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This property enables sticky column headers on the table, this is optional and defaults to false.
+        </p>
+      </div>
+
     </div>
   </go-card>
 
@@ -169,6 +176,39 @@
       [tableConfig]="tableConfig"
       tableTitle="Min Height Example"
       minHeight="700px">
+    <go-table-column field="id" title="ID"></go-table-column>
+    <go-table-column field="name.first" title="First Name"></go-table-column>
+    <go-table-column field="name.last" title="Last Name"></go-table-column>
+    <go-table-column field="email" title="Email"></go-table-column>
+    <go-table-column field="gender" title="Gender"></go-table-column>
+    <go-table-column field="ip_address" title="IP Address"></go-table-column>
+  </go-table>
+
+  <go-card class="go-column go-column--100" id="sticky-headers">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Setting the Sticky Header in Table</h2>
+      <go-copy cardId="sticky-headers" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">example.html</h4>
+      <code [highlight]="tableStickyConfig_html"></code>
+      <h4 class="go-heading-4">example.ts</h4>
+      <code [highlight]="tableStickyConfig_ts" class="code-block--no-bottom-margin"></code>
+    </ng-container>
+  </go-card>
+
+  <go-table
+    class="go-column go-column--100"
+    [tableConfig]="tableConfig"
+    tableTitle="Sticky Table Header Example"
+    [showTableActions]="true"
+    [stickyHeader]="stickyHeader"
+    maxHeight="200px">       
+    <ng-container go-table-actions>
+      <go-button (handleClick)="changeStickyHeader()">
+        {{ this.stickyButton }}
+      </go-button>
+    </ng-container>
     <go-table-column field="id" title="ID"></go-table-column>
     <go-table-column field="name.first" title="First Name"></go-table-column>
     <go-table-column field="name.last" title="Last Name"></go-table-column>

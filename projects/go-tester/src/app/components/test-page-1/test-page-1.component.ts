@@ -24,6 +24,9 @@ export class TestPage1Component implements OnInit, OnDestroy {
   tableDetailsConfig: GoTableConfig;
   tableDetailsLoading: boolean = true;
 
+  stickyButton: string = 'Sticky Header';
+  stickyHeader: boolean = false;
+
   @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
 
   constructor(
@@ -122,5 +125,9 @@ export class TestPage1Component implements OnInit, OnDestroy {
         Parent Name: ${parentItem.name.first}
       `
     });
+  }
+  changeStickyHeader(): void {
+    this.stickyHeader = !this.stickyHeader;
+    this.stickyButton = !this.stickyHeader ? 'Sticky Header' : 'Non-Sticky Header';
   }
 }
