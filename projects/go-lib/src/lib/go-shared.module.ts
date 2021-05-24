@@ -9,6 +9,7 @@ import { GoCardModule } from './components/go-card/go-card.module';
 import { GoCheckboxModule } from './components/go-checkbox/go-checkbox.module';
 import { GoCopyModule } from './components/go-copy/go-copy.module';
 import { GoDatepickerModule } from './components/go-datepicker/go-datepicker.module';
+import { GoEditorModule } from './components/go-editor/go-editor.module';
 import { GoFileUploadModule } from './components/go-file-upload/go-file-upload.module';
 import { GoFooterModule } from './components/go-footer/go-footer.module';
 import { GoHeaderBarModule } from './components/go-header-bar/go-header-bar.module';
@@ -45,6 +46,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoCopyCardLinkModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoEditorModule,
     GoFileUploadModule,
     GoFooterModule,
     GoHeaderBarModule,
@@ -79,6 +81,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoCopyCardLinkModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoEditorModule,
     GoFileUploadModule,
     GoFooterModule,
     GoHeaderBarModule,

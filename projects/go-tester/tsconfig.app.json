@@ -4,6 +4,7 @@
     "outDir": "../../out-tsc/app",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "types": []
   },
   "files": [

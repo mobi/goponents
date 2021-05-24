@@ -14,6 +14,7 @@ import {
   GoCheckboxModule,
   GoCopyModule,
   GoDatepickerModule,
+  GoEditorModule,
   GoFileUploadModule,
   GoFooterModule,
   GoHeaderBarModule,
@@ -36,7 +37,8 @@ import {
   GoTextAreaModule,
   GoTimepickerModule,
   GoToasterModule,
-  GoToastModule
+  GoToastModule,
+  TINYMCE_SCRIPT_SRC
 } from '../../../go-lib/src/public_api';
 
 import { AppRoutesModule } from './app-routing.module';
@@ -77,6 +79,7 @@ import { AppGuard } from './app.guard';
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoEditorModule,
     GoFileUploadModule,
     GoFooterModule,
     GoHeaderBarModule,
@@ -105,7 +108,8 @@ import { AppGuard } from './app.guard';
   ],
   providers: [
     AppService,
-    AppGuard
+    AppGuard,
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce.min.js' }
   ],
   bootstrap: [AppComponent]
 })

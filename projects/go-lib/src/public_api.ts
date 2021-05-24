@@ -50,6 +50,10 @@ export * from './lib/components/go-datepicker/calendar-cell.model';
 export * from './lib/components/go-datepicker/go-datepicker.component';
 export * from './lib/components/go-datepicker/go-datepicker.module';
 
+// Editor
+export * from './lib/components/go-editor/go-editor.component';
+export * from './lib/components/go-editor/go-editor.module';
+
 // File Upload
 export * from './lib/components/go-file-upload/go-file-upload.component';
 export * from './lib/components/go-file-upload/go-file-upload.module';
