@@ -109,7 +109,7 @@ import { AppGuard } from './app.guard';
   providers: [
     AppService,
     AppGuard,
-    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce.min.js' }
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce/tinymce.min.js' }
   ],
   bootstrap: [AppComponent]
 })

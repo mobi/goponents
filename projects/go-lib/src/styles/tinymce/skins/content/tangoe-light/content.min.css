@@ -1,7 +1,8 @@
 /**
-* Copyright (c) Tiny Technologies, Inc. All rights reserved.
-* Licensed under the LGPL or a commercial license.
-* For LGPL see License.txt in the project root for license information.
-* For commercial licenses see https://www.tiny.cloud/
-*/
-body{font-family:Roboto,Lato,Helvetica,Arial,sans-serif;font-size:.875rem;line-height:1.5;margin:1rem}table{border-collapse:collapse;border-style:hidden;box-shadow:0 0 0 1px #d3d3d3;border-radius:4px}table td,table th{border:1px solid #d3d3d3;padding:.5rem .75rem}figure{display:table;margin:1rem auto}figure figcaption{color:#999;display:block;margin-top:.25rem;text-align:center}hr{background:#f0f0f0;border:0;height:1px;margin:1rem 0}code{background-color:#f0f0f0;border-radius:4px;padding:.1rem .2rem}.mce-content-body:not([dir=rtl]) blockquote{border-left:2px solid #ccc;margin-left:1.5rem;padding-left:1rem}.mce-content-body[dir=rtl] blockquote{border-right:2px solid #ccc;margin-right:1.5rem;padding-right:1rem}a{color:#313536;cursor:pointer;display:inline-block;text-decoration:underline}a:active,a:visited{color:#313536}a:focus,a:hover{color:#7f47cc;outline:0}
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
+ */
+body{font-family:Roboto,Lato,Helvetica,Arial,sans-serif;font-size:.875rem;line-height:1.5;margin:1rem}table{border-collapse:collapse;border-radius:4px;border-style:hidden;box-shadow:0 0 0 1px #d3d3d3}table td,table th{border:1px solid #d3d3d3;padding:.5rem .75rem}figure{display:table;margin:1rem auto}figure figcaption{color:#999;display:block;margin-top:.25rem;text-align:center}hr{background:#f0f0f0;border:0;height:1px;margin:1rem 0}code{background-color:#f0f0f0;border-radius:4px;padding:.1rem .2rem}
+/*# sourceMappingURL=content.min.css.map */

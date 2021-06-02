@@ -60,7 +60,7 @@ import { TableTitleTemplateComponent } from '../components/table-docs/components
 import { VirtualScrollComponent } from '../components/virtual-scroll/virtual-scroll.component';
 import { TableChildRowsComponent } from '../components/table-docs/components/table-child-rows/table-child-rows.component';
 import { TimepickerDocsComponent } from '../components/form-docs/components/timepicker-docs/timepicker-docs.component';
-import { WysiwygDocsComponent } from '../components/wysiwyg-docs/wysiwyg-docs.component';
+import { EditorDocsComponent } from '../components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from '../components/button-group-docs/button-group-docs.component';
 
 const routes: Routes = [
@@ -85,6 +85,7 @@ const routes: Routes = [
     { path: '', component: FormsOverviewComponent },
     { path: 'checkbox', component: CheckboxDocsComponent },
     { path: 'datepicker', component: DatepickerDocsComponent },
+    { path: 'editor', component: EditorDocsComponent },
     { path: 'file-upload', component: FileUploadDocsComponent },
     { path: 'input', component: InputDocsComponent },
     { path: 'radio', component: RadioButtonDocsComponent },
@@ -128,7 +129,7 @@ const routes: Routes = [
   { path: 'ui-kit/toast', component: ToastDocsComponent },
   { path: 'ui-kit/tree', component: TreeDocsComponent },
   { path: 'ui-kit/virtual-scroll', component: VirtualScrollComponent },
-  { path: 'ui-kit/wysiwyg', component: WysiwygDocsComponent }
+  { path: 'ui-kit/wysiwyg', redirectTo: 'ui-kit/forms/editor' }
 ];
 
 @NgModule({

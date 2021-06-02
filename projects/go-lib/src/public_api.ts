@@ -164,6 +164,8 @@ export * from './lib/components/go-table/go-table-paging.model';
 export * from './lib/components/go-table/go-table-search-config.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
+export * from './lib/components/go-table/go-table-child-column.component';
+export * from './lib/components/go-table/go-table-column.component';
 
 // Text Area
 export * from './lib/components/go-text-area/go-text-area.component';

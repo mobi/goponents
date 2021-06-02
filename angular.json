@@ -14,7 +14,7 @@
           "options": {
             "tsConfig": "projects/go-lib/tsconfig.lib.json",
             "project": "projects/go-lib/ng-package.json"
-          },
+          },         
           "configurations": {
             "production": {
               "tsConfig": "projects/go-lib/tsconfig.lib.prod.json"
@@ -204,7 +204,9 @@
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
               "projects/go-style-guide/src/assets",
-              "projects/go-style-guide/src/_redirects"
+              "projects/go-style-guide/src/_redirects",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
+              { "glob": "**/*", "input": "projects/go-lib/src/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
               "projects/go-style-guide/src/styles/styles.scss"

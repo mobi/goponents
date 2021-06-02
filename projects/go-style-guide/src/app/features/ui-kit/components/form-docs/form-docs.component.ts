@@ -13,6 +13,7 @@ export class FormDocsComponent {
         { route: './', routeTitle: 'Overview' },
         { route: './checkbox', routeTitle: 'Checkbox' },
         { route: './datepicker', routeTitle: 'Datepicker' },
+        { route: './editor', routeTitle: 'Editor' },
         { route: './file-upload', routeTitle: 'File Upload' },
         { route: './input', routeTitle: 'Input' },
         { route: './radio', routeTitle: 'Radio' },

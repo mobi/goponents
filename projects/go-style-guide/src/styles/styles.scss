@@ -43,6 +43,14 @@ code {
   }
 }
 
+.card-form-dark {
+  background: $theme-dark-bg;
+  border-radius: $global-radius;
+  margin-bottom: -$column-gutter;
+  padding-bottom: $column-gutter;
+  padding-top: $column-gutter;
+}
+
 .go-list {
   display: flex;
   flex-direction: column;
