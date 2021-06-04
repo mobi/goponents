@@ -118,7 +118,7 @@
     </div>
   </go-card>
 
-  <go-card id="theme-example" class="go-column go-column--100">
+  <!-- <go-card id="theme-example" class="go-column go-column--100">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Theme Example</h2>
       <go-copy cardId="theme-example" goCopyCardLink></go-copy>
@@ -148,7 +148,7 @@
         </div>
       </div>
     </div>
-  </go-card>
+  </go-card> -->
 
   <go-card id="advanced-example" class="go-column go-column--100">
     <ng-container go-card-header>
@@ -162,8 +162,8 @@
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
             <go-editor
               label="Description"
-              plugins="autolink lists link paste hr"
-              toolbar="undo redo | formatselect | bold | bullist numlist | hr | removeformat"
+              plugins="autolink lists link paste hr link"
+              toolbar="undo redo | formatselect | bold | bullist numlist | hr | removeformat | link"
               [formControl]="form.get('description3')">
             </go-editor>
           </div>

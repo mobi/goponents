@@ -25,7 +25,7 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
   @Input() slim: boolean = false;
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @ContentChildren(GoAccordionPanelComponent) panels: QueryList<GoAccordionPanelComponent>;
+  @ContentChildren(GoAccordionPanelComponent, { descendants: true }) panels: QueryList<GoAccordionPanelComponent>;
 
   private destroy$: Subject<void> = new Subject();
   private panelsDestroy$: Subject<void> = new Subject();

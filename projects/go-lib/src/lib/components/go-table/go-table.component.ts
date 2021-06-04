@@ -88,8 +88,8 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Output() selectAllEvent: EventEmitter<SelectionState> = new EventEmitter<SelectionState>();
   @Output() tableChange: EventEmitter<GoTableConfig> = new EventEmitter<GoTableConfig>();
 
-  @ContentChildren(GoTableChildColumnComponent) childRowColumns: QueryList<GoTableChildColumnComponent>;
-  @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
+  @ContentChildren(GoTableChildColumnComponent, { descendants: true }) childRowColumns: QueryList<GoTableChildColumnComponent>;
+  @ContentChildren(GoTableColumnComponent, { descendants: true }) columns: QueryList<GoTableColumnComponent>;
   @ContentChild('goTableChildRows') childRows: TemplateRef<any>;
   @ContentChild('goTableDetails') details: TemplateRef<any>;
   @ContentChild('goTableTitle') tableTitleTemplate: TemplateRef<any>;

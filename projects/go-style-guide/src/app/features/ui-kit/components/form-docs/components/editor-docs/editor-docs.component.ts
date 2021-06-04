@@ -76,13 +76,13 @@ export class EditorDocsComponent {
   </go-editor>
   `;
 
-  htmlThemeExample: string = `
-  <go-editor
-    label="Description"
-    theme="dark"
-    [formControl]="form.get('description')">
-  </go-editor>
-  `;
+  // htmlThemeExample: string = `
+  // <go-editor
+  //   label="Description"
+  //   theme="dark"
+  //   [formControl]="form.get('description')">
+  // </go-editor>
+  // `;
 
   htmlBasicExample: string = `
   <go-editor

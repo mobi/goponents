@@ -43,7 +43,8 @@ export class GoEditorComponent extends EditorComponent implements OnInit, OnDest
   @Input() plugins: string = 'autolink lists link paste';
   @Input() toolbar: string = 'undo redo | formatselect | bold | bullist numlist | removeformat';
 
-  @Input() theme: 'light' | 'dark' = 'light';
+  // @Input() theme: 'light' | 'dark' = 'light';
+  theme: 'light' | 'dark' = 'light';
 
   @HostBinding('class.go-editor--light')
   public isLightEditor: boolean = true;

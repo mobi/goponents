@@ -39,10 +39,10 @@ describe('GoDatepickerComponent', () => {
     fixture = TestBed.createComponent(GoDatepickerComponent);
     component = fixture.componentInstance;
     component.control = new FormControl('');
+    fixture.detectChanges();
   });
 
   it('should create', () => {
-    fixture.detectChanges();
 
     expect(component).toBeTruthy();
   });
@@ -79,7 +79,7 @@ describe('GoDatepickerComponent', () => {
     it('should allow the control to be initialized with a date string', () => {
       component.control.setValue('05/15/2015');
 
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.selectedDate).toEqual('5/15/2015');
       expect(component.control.value).toEqual(new Date (2015, 4, 15));
@@ -88,13 +88,13 @@ describe('GoDatepickerComponent', () => {
     it('sets a min if minDate is passed in', () => {
       component.minDate = '05/15/2015';
 
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.min).toEqual(new Date (2015, 4, 15));
     });
 
     it('sets min to null if no minDate is passed in', () => {
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.min).toEqual(null);
     });
@@ -102,13 +102,13 @@ describe('GoDatepickerComponent', () => {
     it('sets a max date if maxDate is passed in', () => {
       component.maxDate = '05/15/2015';
 
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.max).toEqual(new Date (2015, 4, 15));
     });
 
     it('sets max date to null if no maxDate is passed in', () => {
-      fixture.detectChanges();
+      component.ngOnInit();
 
       expect(component.max).toEqual(null);
     });
@@ -117,7 +117,7 @@ describe('GoDatepickerComponent', () => {
       component.maxDate = '05/15/2015';
       component.control.setValue('05/16/2015');
 
-      fixture.detectChanges();
+      component.ngOnInit();
       expect(component.control.value).toBe(null);
     });
 
@@ -125,7 +125,7 @@ describe('GoDatepickerComponent', () => {
       component.minDate = '05/15/2015';
       component.control.setValue('05/14/2015');
 
-      fixture.detectChanges();
+      component.ngOnInit();
       expect(component.control.value).toBe(null);
     });
 
@@ -134,12 +134,12 @@ describe('GoDatepickerComponent', () => {
       component.maxDate = '05/17/2015';
       component.control.setValue('05/16/2015');
 
-      fixture.detectChanges();
+      component.ngOnInit();
       expect(component.control.value).toEqual(new Date(2015, 4, 16));
     });
 
-        it("should reset control ", () => {
-      component.control.setValue("09/16/2016");
+    it('should reset control', () => {
+      component.control.setValue('09/16/2016');
       component.control.reset();
 
       fixture.detectChanges();
@@ -190,7 +190,6 @@ describe('GoDatepickerComponent', () => {
     it('should set date to null if invalid based on locale', () => {
       component.locale = 'de';
       component.selectedDate = '05.27.15';
-      component.control.setValue(new Date());
 
       component.validateDate();
 
@@ -200,7 +199,6 @@ describe('GoDatepickerComponent', () => {
     it('should set date to null if year is more than 4 digits', () => {
       component.locale = 'en-US';
       component.selectedDate = '05/15/20121';
-      component.control.setValue(new Date());
 
       component.validateDate();
 

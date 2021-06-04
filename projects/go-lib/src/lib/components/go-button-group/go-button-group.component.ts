@@ -10,7 +10,7 @@ export class GoButtonGroupComponent implements OnChanges, AfterContentInit {
   @Input() buttonDisabled: boolean = false;
   @Input() buttonVariant: GoButtonComponent['buttonVariant'] = 'primary';
 
-  @ContentChildren(GoButtonComponent) buttons: QueryList<GoButtonComponent>;
+  @ContentChildren(GoButtonComponent, { descendants: true }) buttons: QueryList<GoButtonComponent>;
 
   ngOnChanges(): void {
     this.processButtons();
