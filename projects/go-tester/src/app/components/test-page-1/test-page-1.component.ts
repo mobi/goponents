@@ -27,7 +27,7 @@ export class TestPage1Component implements OnInit, OnDestroy {
   stickyButton: string = 'Sticky Header';
   stickyHeader: boolean = false;
 
-  @ViewChild('peopleTable', { static: false }) peopleTable: GoTableComponent;
+  @ViewChild('peopleTable') peopleTable: GoTableComponent;
 
   constructor(
     private appService: AppService,

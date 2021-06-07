@@ -120,7 +120,7 @@ export class FileUploadDocsComponent implements OnInit {
   </go-file-upload>
   `;
 
-  @ViewChild('fileUploadReset', { static: false }) fileUploadReset: GoFileUploadComponent;
+  @ViewChild('fileUploadReset') fileUploadReset: GoFileUploadComponent;
 
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'File Upload';

@@ -42,9 +42,9 @@ export class GoSelectComponent implements OnInit {
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number; end: number }>();
 
-  @ContentChild('goSelectOption', { static: false }) goSelectOption: TemplateRef<any>;
-  @ContentChild('goSelectOptionGroup', { static: false }) goSelectOptionGroup: TemplateRef<any>;
-  @ContentChild('goSelectSelectedOption', { static: false }) goSelectSelectedOption: TemplateRef<any>;
+  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');

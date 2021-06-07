@@ -16,7 +16,7 @@ export class GoCheckboxComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() label: string;
   @Input() theme: string = 'light';
 
-  @ViewChild('hiddenInputRef', { static: false }) hiddenInputRef: ElementRef;
+  @ViewChild('hiddenInputRef') hiddenInputRef: ElementRef;
 
   constructor() { }
 

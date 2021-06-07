@@ -12,6 +12,6 @@ export class GoTableColumnComponent extends GoTableChildColumnComponent {
   @Input() title: string;
   @Input() width: number;
 
-  @ContentChild('goTableHead', { static: false }) goTableHead: TemplateRef<any>;
+  @ContentChild('goTableHead') goTableHead: TemplateRef<any>;
 
 }

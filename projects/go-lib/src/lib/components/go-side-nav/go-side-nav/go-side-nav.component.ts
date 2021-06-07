@@ -21,7 +21,7 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() appDrawerHeader: string = 'Launch';
   @Input() attributes: CustomNavAttribute[];
 
-  @ViewChild('sideNavRef', { static: false }) sideNavRef: ElementRef;
+  @ViewChild('sideNavRef') sideNavRef: ElementRef;
 
   private destroy$: Subject<void> = new Subject();
 
