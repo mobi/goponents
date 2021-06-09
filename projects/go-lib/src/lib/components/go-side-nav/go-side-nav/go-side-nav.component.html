@@ -16,15 +16,20 @@
       [icon]="navAppDrawer.currentAppIcon"
       *ngIf="navService.navOpen || !navAppDrawer?.appDrawerConfig">
     </go-icon>
-    <span class="go-side-nav__app-name"
-      *ngIf="navService.navOpen">{{ navAppDrawer.currentAppDisplayName }}</span>
+    <span
+      class="go-side-nav__app-name"
+      *ngIf="navService.navOpen">
+      {{ navAppDrawer.currentAppDisplayName }}
+    </span>
 
-    <go-action-sheet placement="right"
+    <go-action-sheet
+      placement="right"
       class="go-side-nav__app-drawer"
-      *ngIf="navAppDrawer?.appDrawerConfig" #appDrawerActionSheet>
+      *ngIf="navAppDrawer?.appDrawerConfig"
+      #appDrawerActionSheet>
       <ng-container go-action-sheet__button>
         <go-icon-button 
-          buttonSize="large"
+          [buttonSize]="navService.navOpen ? 'medium' : 'large'"
           class="go-side-nav__app-drawer--icon"
           [ngClass]="{'go-side-nav__app-drawer--icon-collapsed': !navService.navOpen}"
           [buttonIcon]="navService.navOpen ? 'more_vert' : navAppDrawer.currentAppIcon">
@@ -34,12 +39,13 @@
         <go-panel [showHeader]="true">
           <p class="go-side-nav__app-drawer--launch">{{ appDrawerHeader }}</p>
         </go-panel>
-        <go-panel *ngFor="let appDrawerItem of (navAppDrawer?.appDrawerConfig || [])"
-                  [icon]="appDrawerItem.icon"
-                  [panelContent]="appDrawerItem.displayName"
-                  [externalLink]="appDrawerItem.url"
-                  [target]="appDrawerItem.target"
-                  (click)="appDrawerActionSheet.triggerAS()">
+        <go-panel
+          *ngFor="let appDrawerItem of (navAppDrawer?.appDrawerConfig || [])"
+          [icon]="appDrawerItem.icon"
+          [panelContent]="appDrawerItem.displayName"
+          [externalLink]="appDrawerItem.url"
+          [target]="appDrawerItem.target"
+          (click)="appDrawerActionSheet.triggerAS()">
         </go-panel>
       </ng-container>
     </go-action-sheet>

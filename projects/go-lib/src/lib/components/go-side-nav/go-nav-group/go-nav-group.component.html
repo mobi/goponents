@@ -18,10 +18,11 @@
         {{ navItem.routeTitle }}
       </span>
     </div>
-    <go-icon class="go-nav-group__expand-icon"
-             icon="expand_more"
-             *ngIf="navService.navOpen"
-             [ngClass]="{ 'go-nav-group__expand-icon--expanded': group.expanded }">
+    <go-icon
+      class="go-nav-group__expand-icon"
+      icon="expand_more"
+      *ngIf="navService.navOpen"
+      [ngClass]="{ 'go-nav-group__expand-icon--expanded': group.expanded }">
     </go-icon>
   </div>
   <div *ngIf="group.expanded">
