@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
@@ -7,6 +7,10 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
   styleUrls: ['./forms-overview.component.scss']
 })
 export class FormsOverviewComponent {
+
+  requiredControl: string = `
+  name: FormControl = new FormControl(null, Validators.required);
+  `;
 
   themeSelect: FormControl = new FormControl('light');
 
@@ -22,7 +26,7 @@ export class FormsOverviewComponent {
   maxBirthDate: Date = new Date();
 
   form: FormGroup = new FormGroup({
-    name: new FormControl(),
+    name: new FormControl(null, Validators.required),
     bio: new FormControl(),
     birthday: new FormControl(),
     birthtime: new FormControl(),
