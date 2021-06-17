@@ -16,6 +16,7 @@ export class GoSelectComponent implements OnInit {
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() clearable: boolean = true;
+  @Input() closeOnSelect: boolean = true;
   @Input() control: FormControl;
   /**
    * A property on each item to group by
@@ -48,6 +49,7 @@ export class GoSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.key || generateId(this.label, 'select');
+    this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
   }
 
   onSelectAll(): void {
