@@ -56,8 +56,13 @@ export class GoHeaderComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.resizeSubscription.unsubscribe();
-    this.configSubscription.unsubscribe();
+    if (this.resizeSubscription) {
+      this.resizeSubscription.unsubscribe();
+    }
+
+    if (this.configSubscription) {
+      this.configSubscription.unsubscribe();
+    }
   }
 
   isNavCollapsed(): boolean {

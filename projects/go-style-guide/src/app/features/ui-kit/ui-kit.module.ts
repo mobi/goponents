@@ -14,8 +14,8 @@ import {
   GoCheckboxModule,
   GoConfigService,
   GoCopyModule,
-  GoDatepickerComponent,
   GoDatepickerModule,
+  GoEditorModule,
   GoFileUploadModule,
   GoIconButtonModule,
   GoIconModule,
@@ -27,7 +27,6 @@ import {
   GoOffCanvasService,
   GoPillModule,
   GoRadioModule,
-  GoSelectComponent,
   GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
   GoTableModule,
@@ -36,7 +35,8 @@ import {
   GoTimepickerModule,
   GoToasterService,
   GoToastModule,
-  GoTreeModule
+  GoTreeModule,
+  TINYMCE_SCRIPT_SRC
 } from '../../../../../go-lib/src/public_api';
 
 // Module Routes
@@ -109,7 +109,7 @@ import { BasicTestLargeComponent } from './components/basic-test-large/basic-tes
 import { BasicTestSubmitButtonComponent } from './components/basic-test-submit-button/basic-test-submit-button.component';
 import { TableChildRowsComponent } from './components/table-docs/components/table-child-rows/table-child-rows.component';
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
-import { WysiwygDocsComponent } from './components/wysiwyg-docs/wysiwyg-docs.component';
+import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
 
 @NgModule({
@@ -123,6 +123,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     GoCheckboxModule,
     GoCopyModule,
     GoDatepickerModule,
+    GoEditorModule,
     GoFileUploadModule,
     GoIconButtonModule,
     GoIconModule,
@@ -213,15 +214,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    WysiwygDocsComponent
-  ],
-  entryComponents: [
-    BasicTestComponent,
-    BasicTestLargeComponent,
-    BasicTestSubmitButtonComponent,
-    GoSelectComponent,
-    ModalTestComponent,
-    GoDatepickerComponent
+    EditorDocsComponent
   ],
   providers: [
     DatePipe,
@@ -229,7 +222,8 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     GoModalService,
     GoOffCanvasService,
     GoToasterService,
-    TitleCasePipe
+    TitleCasePipe,
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce/tinymce.min.js' }
   ]
 })
 

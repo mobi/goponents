@@ -15,7 +15,7 @@ export class GoBadgeComponent implements OnChanges {
 
   @HostBinding('class.go-badge__parent')
 
-  @ContentChild(GoIconButtonComponent, { static: false }) iconButtonChild: GoIconButtonComponent;
+  @ContentChild(GoIconButtonComponent) iconButtonChild: GoIconButtonComponent;
 
   ngOnChanges(): void {
     this.badgeStyles = this.badgeClasses();

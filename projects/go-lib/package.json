@@ -1,6 +1,6 @@
 {
   "name": "@tangoe/goponents",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mobi/goponents.git"
@@ -9,10 +9,12 @@
   "description": "A library of UI components for Angular v8+.",
   "license": "MIT",
   "peerDependencies": {
-    "@ng-select/ng-select": "~3.7.3"
+    "@ng-select/ng-select": ">=3.7.3",
+    "@tinymce/tinymce-angular": "^4.2.3",
+    "tinymce": "^5.8.0"
   },
   "devDependencies": {
-    "@angular/common": "~8.2.14",
-    "@angular/core": "~8.2.14"
+    "@angular/common": ">=8.2.14",
+    "@angular/core": ">=8.2.14"
   }
 }

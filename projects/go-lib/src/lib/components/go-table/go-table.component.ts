@@ -65,6 +65,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Input() minHeight: string;
   @Input() renderBoxShadows: boolean = true;
   @Input() showTableActions: boolean = false;
+  @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
 
@@ -89,9 +90,9 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
 
   @ContentChildren(GoTableChildColumnComponent) childRowColumns: QueryList<GoTableChildColumnComponent>;
   @ContentChildren(GoTableColumnComponent) columns: QueryList<GoTableColumnComponent>;
-  @ContentChild('goTableChildRows', { static: false }) childRows: TemplateRef<any>;
-  @ContentChild('goTableDetails', { static: false }) details: TemplateRef<any>;
-  @ContentChild('goTableTitle', { static: false }) tableTitleTemplate: TemplateRef<any>;
+  @ContentChild('goTableChildRows') childRows: TemplateRef<any>;
+  @ContentChild('goTableDetails') details: TemplateRef<any>;
+  @ContentChild('goTableTitle') tableTitleTemplate: TemplateRef<any>;
 
   allData: any[] = [];
   brandColor: string;

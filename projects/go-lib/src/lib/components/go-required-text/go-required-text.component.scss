@@ -1,7 +1,10 @@
-@import '../../../styles/variables';
+@import '../../../../styles/variables';
 
 .go-form {
   &__required-text {
     color: $ui-color-negative;
+    display: inline-block;
+    font-size: .875rem;
+    margin-top: -3px;
   }
 }

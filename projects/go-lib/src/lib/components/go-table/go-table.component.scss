@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 $go-table-cell-vertical-padding: .875rem;
 $go-table-cell-horizontal-padding: 1.25rem;
@@ -56,7 +56,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
   &__head-column {
     @include transition(background);
 
-    border-bottom: 2px solid $theme-light-app-bg;
+    box-shadow: inset 0 -2px 0 $theme-light-app-bg;
     color: $theme-light-color;
     font-size: .75rem;
     font-weight: $weight-medium;
@@ -73,6 +73,13 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 
     &:last-of-type {
       border-top-right-radius: $global-radius;
+    }
+
+    &--sticky {
+      @include z-index(2);
+      background: $theme-light-bg;
+      position: sticky;
+      top: 0;
     }
   }
 
@@ -302,7 +309,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
     align-items: center;
     background: transparent;
     border: 0;
-    border-radius: 50%;
+    border-radius: .875rem;
     cursor: pointer;
     display: flex;
     font-size: .875rem;
@@ -333,6 +340,7 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
 //================
 .go-table-loader {
   @include transition(opacity);
+  @include z-index(2);
 
   align-items: center;
   background: transparentize($theme-light-bg-hover, .3);

@@ -40,7 +40,7 @@ export class GoCopyComponent {
 
   @Input() text: string;
 
-  @ViewChild('copyText', { static: false }) copyText: ElementRef;
+  @ViewChild('copyText') copyText: ElementRef;
 
   icon: string = 'content_copy';
 

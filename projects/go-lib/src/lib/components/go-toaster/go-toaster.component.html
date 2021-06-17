@@ -4,13 +4,15 @@
   class="go-toaster">
   <div
     @toastAnimation
-    *ngFor="let toast of goToasterService.toasts"
+    *ngFor="let toast of goToasterService.toasts; let i = index"
     class="go-toaster__item">
     <go-toast
+      [dismissable]="toast.dismissable"
       [header]="toast.header"
       [message]="toast.message"
       (mouseover)="pauseTimers()"
       (mouseout)="restartTimers()"
+      (handleDismiss)="dismissToast(i)"
       [type]="toast.type">
     </go-toast>
   </div>

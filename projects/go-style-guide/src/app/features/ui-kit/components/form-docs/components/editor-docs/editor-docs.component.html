@@ -1,0 +1,211 @@
+<div class="go-container">
+  <go-card id="editor-setup" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Setup</h2>
+      <go-copy cardId="editor-setup" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          For any implementation of an Editor, we use <strong>TinyMCE</strong>. However, Goponents provides
+          an extended version of the TinyMCE Editor component to handle default values and theming capabilities
+          that are in line with the styling of Goponents. This is the <code class="code-block--inline">go-editor</code> component.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">
+          Step 1: Install Peer Dependencies
+        </h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          You must install both peer dependencies for the go-editor component to work. You can install them by running:
+          <code class="code-block" [highlight]="tinyMceCommand">
+          </code>
+        </p>
+      </div>
+      
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">
+          Step 2: Setup Reference to TinyMCE & Theme Files
+        </h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          You must tell Angular to include the TinyMCE scripts and theme files in the build as part of the public assets. To do so
+          you can add an entry to the <code class="code-block--inline">build.options.assets</code> section of the
+          <code class="code-block--inline">angular.json</code> file.
+          <code class="code-block" [highlight]="angularJson">
+          </code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">
+          Step 3: Setup Reference to TinyMCE Files
+        </h3>
+        <p class="go-body-copy">
+          Wherever you initially setup your <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>,
+          you need to define the <code class="code-block--inline">tinyMceConfig.base_url</code> property on the config object. This refers to the location in the URL to look for TinyMCE
+          and is relative to the domain of your application.
+          <code class="code-block" [highlight]="goConfigService">
+          </code>
+        </p>
+        <h5 class="go-heading-5">
+          Adding Languages (Optional)
+        </h5>
+        <p class="go-body-copy go-body-copy--no-margin">
+          TinyMCE has a feature to support multiple languages, to enable this support in the go-editor you must provide the language code and Javascript file that holds
+          the translations. You can do this in the <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>.
+          <code class="code-block" [highlight]="goConfigServiceLang">
+          </code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">
+          Step 4: Setup Lazy Loading of the Module
+        </h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          In the module that you're rendering the go-editor (or in a shared module) you must tell Angular where to load the TinyMCE script from
+          when a page that needs it loads. To do this, first add the <code class="code-block--inline">GoEditorModule</code> to the list of imports
+          for the module, then add an entry to the <code class="code-block--inline">providers</code> array. The <code class="code-block--inline">useValue</code>
+          property on the entry refers to the location in the URL to look for the TinyMCE Javascript file and is relative to the domain of your application.
+          <code class="code-block" [highlight]="moduleImport">
+          </code>
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h3 class="go-heading-3">
+          Step 5: Render the Component
+        </h3>
+        <p class="go-body-copy go-body-copy--no-margin">
+          Once all of the previous steps have been completed you can render the go-editior. The only required property
+          on the go-editor is the <code class="code-block--inline">formControl</code> binding.
+          <code class="code-block" [highlight]="htmlExample">
+          </code>
+        </p>
+      </div>
+      
+    </div>
+  </go-card>
+
+  <go-card id="label-example" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Label Example</h2>
+      <go-copy cardId="label-example" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-editor
+              label="Description"
+              [formControl]="form.get('description')">
+            </go-editor>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <p class="go-body-copy">
+              A label for the editor input may be provided like any other form component.
+            </p>
+            <code
+              [highlight]="htmlBasicExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <!-- <go-card id="theme-example" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Theme Example</h2>
+      <go-copy cardId="theme-example" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50 card-form-dark go-form--dark">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-editor
+              label="Description"
+              theme="dark"
+              [formControl]="form.get('description2')">
+            </go-editor>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <p class="go-body-copy">
+              To change the appearance of the editor for dark or light themes a theme attribute can be passed.
+              Valid options are: <code class="code-block--inline">light</code> (default) or <code class="code-block--inline">dark</code>.
+            </p>
+            <code
+              [highlight]="htmlThemeExample"
+              class="code-block--no-bottom-margin">
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card> -->
+
+  <go-card id="advanced-example" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Advanced Example</h2>
+      <go-copy cardId="advanced-example" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">View</h4>
+            <go-editor
+              label="Description"
+              plugins="autolink lists link paste hr link"
+              toolbar="undo redo | formatselect | bold | bullist numlist | hr | removeformat | link"
+              [formControl]="form.get('description3')">
+            </go-editor>
+          </div>
+          <div class="go-column go-column--50">
+            <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+            <p class="go-body-copy">
+              TinyMCE offers various plugins and toolbar configurations and the go-editor component gives you access
+              to set all of those just as you would in TinyMCE. The current defaults that are set by the go-editor component are:
+            </p>
+            <code [highlight]="toolbarPluginsDefaults"></code>
+            <p class="go-body-copy">
+              In the event more functionality is needed you may specify overrides for each that include all of the current defaults.
+              In the example below, we're providing support for adding an hr element by passing the defaults for both plugins and toolbar
+              and including the hr plugin and toolbar references as documented by TinyMCE.
+            </p>
+            <code [highlight]="toolBarPluginsOverride"></code>
+            <p class="go-body-copy go-body-copy--no-margin">
+              For all available options for TinyMCE plugins, <a class="go-link" href="https://www.tiny.cloud/docs/plugins/opensource/">see their list</a>.
+              For all available toolbar configurations, check out <a class="go-link" href="https://www.tiny.cloud/docs/configure/editor-appearance/#toolbar">their documentation</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card id="further-customization" class="go-column go-column--100">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-margin go-heading--no-wrap">Further Customization</h2>
+      <go-copy cardId="further-customization" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+      <div class="go-column go-column--100 go-column--no-padding">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The go-editor component directly extends the TinyMCE Angular component, therefor you have access to all of the
+          bindings available on TinyMCE itself. If you need further customization outside of the documentation provided here please refer
+          to the <a class="go-link" href="https://www.tiny.cloud/docs/">TinyMCE documentation</a>.
+        </p>
+      </div>
+    </div>
+  </go-card>
+
+</div>

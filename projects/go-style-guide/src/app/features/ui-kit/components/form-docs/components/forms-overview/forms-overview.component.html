@@ -28,6 +28,25 @@
     </ng-container>
   </go-card>
 
+  <go-card class="go-column go-column--100" id="required-inputs">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Required Inputs</h2>
+      <go-copy cardId="required-inputs" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">As per the <a class="go-link" href="https://angular.io/api/forms/Validators#validate-that-the-field-is-non-empty">Angular Documentation</a>:</h4>
+      <p class="go-body-copy">
+        Form controls have the ability to pass in Validators. In the case of every form input in Goponents we pass a control
+        thus you may specify on the control passed in to any form input a Validators.required validator on the control. Adding this validator
+        to any control in Goponents will render a red asterisk next to the label automatically.
+      </p>
+      <code
+        [highlight]="requiredControl"
+        class="code-block--no-bottom-margin">
+      </code>
+    </ng-container>
+  </go-card>
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h3 class="go-heading-3">

@@ -13,6 +13,7 @@ export * from './lib/components/go-accordion/go-accordion.module';
 // Action Sheet
 export * from './lib/components/go-action-sheet/go-action-sheet.component';
 export * from './lib/components/go-action-sheet/go-action-sheet.module';
+export * from './lib/components/go-action-sheet/go-panel/go-panel.component';
 
 // Badge
 export * from './lib/components/go-badge/go-badge.component';
@@ -48,6 +49,10 @@ export * from './lib/components/go-copy/go-copy.module';
 export * from './lib/components/go-datepicker/calendar-cell.model';
 export * from './lib/components/go-datepicker/go-datepicker.component';
 export * from './lib/components/go-datepicker/go-datepicker.module';
+
+// Editor
+export * from './lib/components/go-editor/go-editor.component';
+export * from './lib/components/go-editor/go-editor.module';
 
 // File Upload
 export * from './lib/components/go-file-upload/go-file-upload.component';
@@ -104,12 +109,16 @@ export * from './lib/components/go-off-canvas/go-off-canvas.module';
 export * from './lib/components/go-off-canvas/go-off-canvas.service';
 export * from './lib/components/go-off-canvas/go-off-canvas.interface';
 export * from './lib/components/go-off-canvas/go-off-canvas-options';
+export * from './lib/components/go-off-canvas/go-off-canvas-header.component';
+export * from './lib/components/go-off-canvas/go-off-canvas-submit-button/go-off-canvas-submit-button.component';
 
 // Pill
 export * from './lib/components/go-pill/go-pill.component';
 export * from './lib/components/go-pill/go-pill.module';
 
 // Portal
+export * from './lib/components/go-portal/go-portal-attach-to.directive';
+export * from './lib/components/go-portal/go-portal-target.directive';
 export * from './lib/components/go-portal/go-portal.module';
 
 // Radio
@@ -133,10 +142,14 @@ export * from './lib/components/go-side-nav/nav-group.model';
 export * from './lib/components/go-side-nav/nav-item.model';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.component';
 export * from './lib/components/go-side-nav/go-side-nav/go-side-nav.service';
+export * from './lib/components/go-side-nav/go-nav-group/go-nav-group.component';
+export * from './lib/components/go-side-nav/go-nav-item/go-nav-item.component';
 
 // Switch Toggle
 export * from './lib/components/go-switch-toggle/go-switch-toggle.component';
 export * from './lib/components/go-switch-toggle/go-switch-toggle.module';
+export * from './lib/components/go-table/go-table-child-column.component';
+export * from './lib/components/go-table/go-table-column.component';
 
 // Tab
 export * from './lib/components/go-tab/go-tab.component';
@@ -151,6 +164,8 @@ export * from './lib/components/go-table/go-table-paging.model';
 export * from './lib/components/go-table/go-table-search-config.model';
 export * from './lib/components/go-table/go-table-selection.model';
 export * from './lib/components/go-table/go-table-sort.model';
+export * from './lib/components/go-table/go-table-child-column.component';
+export * from './lib/components/go-table/go-table-column.component';
 
 // Text Area
 export * from './lib/components/go-text-area/go-text-area.component';
@@ -172,7 +187,9 @@ export * from './lib/components/go-tree/go-tree-node-config.model';
 
 // Timepicker
 export * from './lib/components/go-timepicker/go-time.component';
+export * from './lib/components/go-timepicker/go-timepicker.component';
 export * from './lib/components/go-timepicker/go-timepicker.module';
+
 /***** Utils *****/
 export * from './lib/utilities/form.utils';
 export * from './lib/utilities/colors.util';

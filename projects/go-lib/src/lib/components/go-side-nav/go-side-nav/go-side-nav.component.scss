@@ -1,5 +1,5 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
 @import '../variables';
 
 .go-side-nav {
@@ -69,6 +69,7 @@
       &__app-drawer {
         &--icon {
           display: flex;
+          font-size: 1.25rem;
           padding-top: .5rem;
         }
       }

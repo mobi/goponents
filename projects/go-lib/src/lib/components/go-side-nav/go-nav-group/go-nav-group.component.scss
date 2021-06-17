@@ -1,4 +1,4 @@
-@import '../../../../styles/mixins';
+@import '../../../../../styles/mixins';
 @import '../variables';
 
 .go-nav-group {
@@ -57,17 +57,21 @@
     padding: 1rem;
 
     &--external {
+      font-size: 1.25rem;
       padding-left: .5rem;
       padding-right: .75rem;
     }
   }
 
   &__expand-icon {
+    align-items: center;
     border-radius: 50%;
     color: $theme-dark-color;
     cursor: pointer;
-    font-size: 1.5rem;
+    display: flex;
+    font-size: 1.25rem;
     height: 2rem;
+    justify-content: center;
     padding: .25rem;
     width: 2rem;
 

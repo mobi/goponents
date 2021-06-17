@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .go-header-bar {
   @include z-index(header-bar);
@@ -38,6 +38,5 @@
     display: flex;
     flex: 1;
     justify-content: flex-end;
-    padding-right: $column-gutter--double;
   }
 }

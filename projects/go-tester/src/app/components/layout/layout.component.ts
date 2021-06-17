@@ -32,7 +32,7 @@ export class LayoutComponent implements OnInit {
     { routeIcon: 'explore', routeTitle: 'Second Test', route: '/test-page-4', description: 'Test Route 4' },
     {
       routeIcon: 'search',
-      routeTitle: 'External Link (In a New Tab)',
+      routeTitle: 'External Tab Reference',
       description: 'Test external link opening in new tab',
       route: 'https://www.google.com/',
       isExternalLink: true,
@@ -40,7 +40,14 @@ export class LayoutComponent implements OnInit {
     },
     {
       routeIcon: 'search',
-      routeTitle: 'External Link (Same Tab)',
+      routeTitle: 'External in a New Tab',
+      description: 'Test external link opening in new tab',
+      route: 'https://www.stackoverflow.com/',
+      isExternalLink: true
+    },
+    {
+      routeIcon: 'search',
+      routeTitle: 'External in Same Tab',
       description: 'Test external link opening in same tab',
       route: 'https://www.google.com/',
       isExternalLink: true,

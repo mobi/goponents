@@ -38,7 +38,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   &__legend {
     margin-left: -($column-gutter--half);
     padding: 0 $column-gutter--half;
-    text-transform: uppercase;
   }
 
   &--dark &__legend,

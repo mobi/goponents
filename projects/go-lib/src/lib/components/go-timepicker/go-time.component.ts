@@ -37,7 +37,7 @@ export class GoTimeComponent implements OnInit, AfterViewInit {
   hour: string;
   minute: string;
 
-  @ViewChild('hourInput', { static: false }) hourInput: ElementRef;
+  @ViewChild('hourInput') hourInput: ElementRef;
 
   @HostListener('click')
   ClickInside(): void {

@@ -28,7 +28,7 @@ export class GoNavItemComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() navItem: NavItem;
   @Input() level: number;
 
-  @ViewChild('navItemRef', { static: false }) navItemRef: ElementRef;
+  @ViewChild('navItemRef') navItemRef: ElementRef;
 
   constructor (
     public navService: GoSideNavService,

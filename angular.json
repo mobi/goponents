@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/go-lib/tsconfig.lib.json",
             "project": "projects/go-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/go-lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -45,13 +50,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/go-tester",
             "index": "projects/go-tester/src/index.html",
             "main": "projects/go-tester/src/main.ts",
@@ -59,7 +65,9 @@
             "tsConfig": "projects/go-tester/tsconfig.app.json",
             "assets": [
               "projects/go-tester/src/favicon.ico",
-              "projects/go-tester/src/assets"
+              "projects/go-tester/src/assets",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
+              { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
               "projects/go-tester/src/styles.scss"
@@ -88,6 +96,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -176,13 +188,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/go-style-guide",
             "index": "projects/go-style-guide/src/index.html",
             "main": "projects/go-style-guide/src/main.ts",
@@ -191,7 +204,9 @@
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
               "projects/go-style-guide/src/assets",
-              "projects/go-style-guide/src/_redirects"
+              "projects/go-style-guide/src/_redirects",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
+              { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
               "projects/go-style-guide/src/styles/styles.scss"
@@ -201,8 +216,7 @@
               "includePaths": [
                 "projects/go-style-guide/src/styles"
               ]
-            },
-            "es5BrowserSupport": true
+            }
           },
           "configurations": {
             "production": {
@@ -226,6 +240,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }

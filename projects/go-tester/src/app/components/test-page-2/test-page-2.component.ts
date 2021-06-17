@@ -13,7 +13,7 @@ import { FormControl } from '@angular/forms';
 })
 export class TestPage2Component implements OnInit {
 
-  @ViewChild('loader', { static: false }) loader: GoLoaderComponent;
+  @ViewChild('loader') loader: GoLoaderComponent;
 
   brandingControl: FormControl;
   title: string = 'Test 2';
