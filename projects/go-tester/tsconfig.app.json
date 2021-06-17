@@ -6,8 +6,11 @@
     "esModuleInterop": true,
     "types": []
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "projects/go-tester/src/**/*.d.ts"
   ]
 }

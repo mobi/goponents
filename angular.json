@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/go-lib/tsconfig.lib.json",
             "project": "projects/go-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/go-lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -45,13 +50,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/go-tester",
             "index": "projects/go-tester/src/index.html",
             "main": "projects/go-tester/src/main.ts",
@@ -88,6 +94,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -176,13 +186,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/go-style-guide",
             "index": "projects/go-style-guide/src/index.html",
             "main": "projects/go-style-guide/src/main.ts",
@@ -226,6 +237,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }

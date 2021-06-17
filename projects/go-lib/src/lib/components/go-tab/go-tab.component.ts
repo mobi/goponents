@@ -18,7 +18,7 @@ export class GoTabComponent {
     return this._active;
   }
 
-  @ContentChild('tabContent', { static: false }) tabContent: TemplateRef<any>;
+  @ContentChild('tabContent') tabContent: TemplateRef<any>;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef

@@ -49,9 +49,6 @@ export class ModalDocsComponent {
       ModalDocsComponent,
       ModalTestComponent
     ],
-    entryComponents: [
-      ModalTestComponent
-    ],
     providers: [
       GoModalService
     ]

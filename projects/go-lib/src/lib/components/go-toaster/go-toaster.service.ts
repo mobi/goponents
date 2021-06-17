@@ -62,7 +62,9 @@ export class GoToasterService {
    */
   pauseTimers(): void {
     this.timers.forEach((clock: Subscription) => {
-      clock.unsubscribe();
+      if (clock) {
+        clock.unsubscribe();
+      }
     });
     this.timers = [];
   }
@@ -98,7 +100,9 @@ export class GoToasterService {
     const clock: Subscription = timer(comp.duration).subscribe(() => {
       const ind: number = this.toasts.indexOf(comp);
       this.toasts.splice(ind, 1);
-      this.timers[ind].unsubscribe();
+      if (this.timers[ind]) {
+        this.timers[ind].unsubscribe();
+      }
       this.timers.splice(ind, 1);
     });
     this.timers.push(clock);

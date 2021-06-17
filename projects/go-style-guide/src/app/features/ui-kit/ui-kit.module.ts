@@ -215,14 +215,6 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     TimepickerDocsComponent,
     WysiwygDocsComponent
   ],
-  entryComponents: [
-    BasicTestComponent,
-    BasicTestLargeComponent,
-    BasicTestSubmitButtonComponent,
-    GoSelectComponent,
-    ModalTestComponent,
-    GoDatepickerComponent
-  ],
   providers: [
     DatePipe,
     GoConfigService,

@@ -1,7 +1,5 @@
-import { compileComponentFromMetadata } from '@angular/compiler';
 import { Component, ViewChild } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoOffCanvasComponent } from './go-off-canvas.component';
@@ -29,18 +27,13 @@ describe('GoOffCanvasComponent', () => {
         GoOffCanvasService
       ]
     })
-    .overrideModule(BrowserDynamicTestingModule, {
-      set: {
-        entryComponents: [ GoTestOffCanvasHostComponent ]
-      }
-    })
     .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GoOffCanvasComponent);
     goOffCanvasHostFixture = TestBed.createComponent(GoTestOffCanvasHostComponent);
-    offCanvasService = TestBed.get(GoOffCanvasService);
+    offCanvasService = TestBed.inject(GoOffCanvasService);
 
     component = fixture.componentInstance;
     component.goOffCanvasHost = goOffCanvasHostFixture.componentInstance.goOffCanvasHost;

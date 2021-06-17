@@ -1,5 +1,5 @@
-@import '../../../styles/variables';
-@import '../../../styles/mixins';
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 $transparent-color: rgba(0, 0, 0, 0);
 $button-shadow-secondary: 0 0 0 3px transparentize($base-light-tertiary, .75);

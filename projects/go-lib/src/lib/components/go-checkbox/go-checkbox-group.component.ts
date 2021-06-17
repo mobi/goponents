@@ -12,7 +12,7 @@ export class GoCheckboxGroupComponent implements AfterContentInit {
   @Input() legend: string;
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @ContentChildren(GoCheckboxComponent) checkboxes: QueryList<GoCheckboxComponent>;
+  @ContentChildren(GoCheckboxComponent, { descendants: true }) checkboxes: QueryList<GoCheckboxComponent>;
 
   ngAfterContentInit(): void {
     this.checkboxes.toArray().forEach((checkbox: GoCheckboxComponent) => {
