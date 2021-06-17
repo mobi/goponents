@@ -1,0 +1,28 @@
+<label
+  *ngIf="label"
+  class="go-form__label"
+  [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  {{ label }}
+  <go-required-text [control]="formControl"></go-required-text>
+</label>
+
+<!--
+  Everything after this point needs to be generated dynamically after the view
+  is initialized for the elements to appear after TinyMCE.
+-->
+
+<ng-template #hintsTemplate>
+  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
+</ng-template>
+
+<ng-template #errorsTemplate>
+  <div *ngIf="formControl?.errors?.length">
+    <go-hint
+      *ngFor="let error of formControl.errors"
+      [message]="error.message"
+      [label]="error.type"
+      [theme]="theme"
+      type="negative">
+    </go-hint>
+  </div>
+</ng-template>

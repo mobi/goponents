@@ -4,7 +4,8 @@ import {
   BrandingMode,
   GoConfigInterface,
   LogoConfig,
-  ThemeColors
+  ThemeColors,
+  TinyMceConfig
 } from './go-config.model';
 
 @Injectable()
@@ -48,12 +49,23 @@ export class GoConfigService {
   }
 
   /**
+   * Use this method to change the TinyMCE configuration
+   * @param tinyMceConfig The new tinyMceConfig to apply to the global config
+   */
+   public setTinyMce(tinyMceConfig: Partial<TinyMceConfig>): void {
+    this._config.tinyMceConfig = tinyMceConfig;
+    this.setConfig(this._config);
+  }
+
+  /**
    * Sets the new global configuration. Use this method when
    * you need to set the configuration initially or to override the
    * current configuraiton.
    * @param config New config to be used
    */
-  public setConfig(config: GoConfigInterface): void {
+  public setConfig(config: Partial<GoConfigInterface>): void {
+    if (!config.brandColor) { config.brandColor = this._config.brandColor; }
+    if (!config.brandingMode) { config.brandingMode = this._config.brandingMode; }
     this._config = JSON.parse(JSON.stringify(config));
     this.config.next(this._config);
   }

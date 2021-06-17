@@ -50,8 +50,7 @@ export class AppComponent {
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' },
       { route: 'ui-kit/tree', routeTitle: 'Tree' },
-      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' },
-      { route: 'ui-kit/wysiwyg', routeTitle: 'WYSIWYG' }
+      { route: 'ui-kit/virtual-scroll', routeTitle: 'Virtual Scroll' }
     ]}
   ];
 
@@ -86,9 +85,14 @@ export class AppComponent {
   constructor (
     private goConfigService: GoConfigService
   ) {
-    this.goConfigService.setLogo({
-      logo: 'assets/images/goDesign.svg',
-      logoCollapsed: 'assets/images/goDesign_green.svg'
+    this.goConfigService.setConfig({
+      logoConfig: {
+        logo: 'assets/images/goDesign.svg',
+        logoCollapsed: 'assets/images/goDesign_green.svg'
+      },
+      tinyMceConfig: {
+        baseUrl: '/assets/tinymce'
+      }
     });
   }
 }

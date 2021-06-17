@@ -25,6 +25,26 @@ export enum BrandingMode {
 }
 
 /**
+ * Use to specify TinyMCE configurations for Goponents
+ */
+export interface TinyMceConfig {
+  /**
+   * Base URL relative to the root domain to load the TinyMCE scripts from
+   */
+  baseUrl: string;
+
+  /**
+   * The language code
+   */
+  language?: string;
+
+  /**
+   * The url to load translations for TinyMCE from
+   */
+  languageUrl?: string;
+}
+
+/**
  * Configurations for the logo area in the
  * layout header of the application
  */
@@ -70,6 +90,11 @@ export interface GoConfigInterface {
    * See `BrandingMode` interface for explanation
    */
   brandingMode: BrandingMode;
+
+  /**
+   * See `TinyMceConfig` interface for explanation
+   */
+  tinyMceConfig?: Partial<TinyMceConfig>;
 
   /**
    * See `LogoConfig` interface for explanation

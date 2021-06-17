@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-page-3',
@@ -47,6 +47,7 @@ export class TestPage3Component implements OnInit {
 
   fileControl: FormControl = new FormControl();
   form: FormGroup = new FormGroup({
+    editor: new FormControl(null, Validators.required),
     food: new FormGroup({
       apples: new FormControl(''),
       bananas: new FormControl({value: '', disabled: true}),
@@ -77,6 +78,9 @@ export class TestPage3Component implements OnInit {
     setTimeout(() => {
       this.loadingSelectOptions = false;
     }, 3000);
+    this.form.get('editor').valueChanges.subscribe((value: string) => {
+      console.log(value);
+    });
   }
 
   onSubmit(): void {
@@ -110,6 +114,14 @@ export class TestPage3Component implements OnInit {
       if (input in this.form.controls) {
         this.form.controls[input].setErrors(errors);
       }
+
+      console.log(this.form.get('editor').value);
+      this.form.get('editor').setErrors([{
+        message: 'This is a default error.'
+      }, {
+        type: 'A Custom message',
+        message: 'Invalid editor'
+      }]);
 
       if (this.validationSelectControl.value.name !== 'Ron') {
         this.validationSelectControl.setErrors(errorResponse['validationSelectControl']);

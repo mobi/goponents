@@ -21,7 +21,7 @@ describe('GoConfigService', () => {
       providers: [GoConfigService]
     });
 
-    service = TestBed.get(GoConfigService);
+    service = TestBed.inject(GoConfigService);
   });
 
   it('should create', () => {
@@ -90,14 +90,10 @@ describe('GoConfigService', () => {
 
   describe('getConfig', () => {
     it('gets the current configuration', () => {
-      service.config.next(configMock);
+      service.setConfig(configMock);
 
-      service.config
-        .pipe(skip(1))
-        .subscribe((updatedConfig: GoConfigInterface) => {
-          const config: GoConfigInterface = service.getConfig();
-          expect(config).toEqual(configMock);
-        });
+      const config: GoConfigInterface = service.getConfig();
+      expect(config).toEqual(configMock);
     });
   });
 });

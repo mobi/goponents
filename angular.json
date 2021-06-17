@@ -65,7 +65,9 @@
             "tsConfig": "projects/go-tester/tsconfig.app.json",
             "assets": [
               "projects/go-tester/src/favicon.ico",
-              "projects/go-tester/src/assets"
+              "projects/go-tester/src/assets",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
+              { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
               "projects/go-tester/src/styles.scss"
@@ -202,7 +204,9 @@
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
               "projects/go-style-guide/src/assets",
-              "projects/go-style-guide/src/_redirects"
+              "projects/go-style-guide/src/_redirects",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
+              { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
               "projects/go-style-guide/src/styles/styles.scss"
@@ -212,8 +216,7 @@
               "includePaths": [
                 "projects/go-style-guide/src/styles"
               ]
-            },
-            "es5BrowserSupport": true
+            }
           },
           "configurations": {
             "production": {

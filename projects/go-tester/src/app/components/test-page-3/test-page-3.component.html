@@ -3,7 +3,6 @@
     <h2 class="go-heading-2">
       Form
     </h2>
-    <hr>
   </header>
   <div>
     <go-card>
@@ -26,6 +25,14 @@
 
           <form [formGroup]="form" (ngSubmit)="onSubmit()" class="go-form go-column go-column--100" *ngIf="form">
             <div class="go-container">
+
+              <go-editor
+                label="Biography"
+                [formControl]="form.get('editor')"
+                [hints]="['Enter a description about yourself']"
+                class="go-column go-column--100">
+              </go-editor>
+
               <div class="go-column go-column--100">
                 <go-datepicker
                   label="DOB"
