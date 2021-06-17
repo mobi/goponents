@@ -3,5 +3,8 @@
   "dest": "../../dist/go-lib",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "assets": [
+    "styles"
+  ]
 }
