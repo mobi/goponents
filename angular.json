@@ -14,7 +14,7 @@
           "options": {
             "tsConfig": "projects/go-lib/tsconfig.lib.json",
             "project": "projects/go-lib/ng-package.json"
-          },         
+          },
           "configurations": {
             "production": {
               "tsConfig": "projects/go-lib/tsconfig.lib.prod.json"

@@ -31,7 +31,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   @Input() theme: string = 'light';
   @Input() appendTo: 'body' | null = null;
 
-  @ViewChild('datepickerInput') datepickerInput: ElementRef;
+  @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 
   constructor() {
     this.goCalendar = new GoCalendar();

@@ -12,7 +12,7 @@ export class GoTabGroupComponent implements AfterViewInit {
 
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @ContentChildren(GoTabComponent, { descendants: true }) tabs: QueryList<GoTabComponent>;
+  @ContentChildren(GoTabComponent) tabs: QueryList<GoTabComponent>;
 
   constructor(
     private changeDetector: ChangeDetectorRef
