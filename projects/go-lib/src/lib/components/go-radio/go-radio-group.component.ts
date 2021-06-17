@@ -16,7 +16,7 @@ export class GoRadioGroupComponent implements AfterContentChecked {
   @Input() enableLegend: boolean = true;
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @ContentChildren(GoRadioButtonComponent) radioButtons: QueryList<GoRadioButtonComponent>;
+  @ContentChildren(GoRadioButtonComponent, { descendants: true }) radioButtons: QueryList<GoRadioButtonComponent>;
 
   ngAfterContentChecked(): void {
     // Only want to set all of these if the number of radio buttons change
