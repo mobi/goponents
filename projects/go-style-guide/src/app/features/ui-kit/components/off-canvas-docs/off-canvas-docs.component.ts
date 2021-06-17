@@ -36,9 +36,6 @@ export class OffCanvasDocsComponent {
     declarations: [
       BasicTestComponent
     ],
-    entryComponents: [
-      BasicTestComponent
-    ],
     providers: [
       GoOffCanvasService
     ]

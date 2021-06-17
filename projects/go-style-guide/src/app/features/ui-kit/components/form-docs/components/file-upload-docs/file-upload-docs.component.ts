@@ -97,7 +97,7 @@ export class FileUploadDocsComponent implements OnInit {
   `;
 
   basicResetExample_ts: string = `
-  @ViewChild('fileUploadReset', { static: false }) fileUploadReset: GoFileUploadComponent;
+  @ViewChild('fileUploadReset') fileUploadReset: GoFileUploadComponent;
 
   resetFileUpload(): void {
     this.fileUploadReset.reset();

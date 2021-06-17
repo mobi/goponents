@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Component, ViewChild } from '@angular/core';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
@@ -23,11 +22,6 @@ describe('GoModalComponent', () => {
       imports: [ GoIconButtonModule ],
       providers: [ GoModalService ]
     })
-    .overrideModule(BrowserDynamicTestingModule, {
-      set: {
-        entryComponents: [ GoTestModalHostComponent ]
-      }
-    })
     .compileComponents();
   }));
 
@@ -37,7 +31,7 @@ describe('GoModalComponent', () => {
 
     component = fixture.componentInstance;
     component.goModalHost = goModalHostFixture.componentInstance.goModalHost;
-    goModalService = TestBed.get(GoModalService);
+    goModalService = TestBed.inject(GoModalService);
 
     fixture.detectChanges();
   });

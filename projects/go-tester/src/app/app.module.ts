@@ -107,11 +107,6 @@ import { AppGuard } from './app.guard';
     AppService,
     AppGuard
   ],
-  entryComponents: [
-    GoButtonComponent,
-    GoSelectComponent,
-    OffCanvasTestComponent
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
