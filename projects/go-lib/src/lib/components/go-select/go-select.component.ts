@@ -56,6 +56,10 @@ export class GoSelectComponent implements OnInit {
     this.control.patchValue(this.items.map((item: any) => this.bindValue ? item[this.bindValue] : item));
   }
 
+  onRemoveAll(): void {
+    this.control.reset();
+  }
+
   onScrollToEnd(): void {
     if (this.virtualScroll) {
       this.scrollToEnd.emit();
