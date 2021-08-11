@@ -114,7 +114,7 @@ describe('GoSelectComponent', () => {
 
       component.onRemoveAll();
 
-      expect(component.control.value).toEqual([]);
+      expect(component.control.value).toBeNull();
     });
   });
 });
