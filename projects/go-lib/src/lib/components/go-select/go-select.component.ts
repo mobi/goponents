@@ -35,6 +35,7 @@ export class GoSelectComponent implements OnInit {
   @Input() placeholder: string;
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
+  @Input() showRemoveAll: boolean = false;
   @Input() theme: 'light' | 'dark' = 'light';
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';

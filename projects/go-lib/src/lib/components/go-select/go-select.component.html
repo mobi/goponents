@@ -39,6 +39,10 @@
         [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }">
         Select All
       </button>
+    </ng-template>
+  </ng-container>
+  <ng-container *ngIf="multiple && showRemoveAll && items?.length">
+    <ng-template ng-header-tmp>
       <button
       (click)="onRemoveAll()"
       class="go-select__select-all-button"
