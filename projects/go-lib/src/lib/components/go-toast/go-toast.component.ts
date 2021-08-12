@@ -3,7 +3,6 @@ import {
   ContentChild,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   TemplateRef
 } from '@angular/core';
@@ -13,14 +12,13 @@ import {
   templateUrl: './go-toast.component.html',
   styleUrls: ['./go-toast.component.scss']
 })
-export class GoToastComponent implements OnInit {
-  statusClass: string = 'go-toast-status--neutral';
-  icon: string = 'notifications_none';
+export class GoToastComponent {
   duration: number;
 
   @Input() dismissable: boolean = false;
   @Input() enableMaxHeight: boolean = true;
   @Input() header: string;
+  @Input() icon: string;
   @Input() message: string;
   @Input() showToastActions: boolean = false;
   @Input() theme: 'light' | 'dark' = 'light';
@@ -40,18 +38,22 @@ export class GoToastComponent implements OnInit {
    */
   @ContentChild('messageContent') messageContent: TemplateRef<any>;
 
-  ngOnInit(): void {
-    this.statusClass = this.getStatus();
-    this.icon = this.getIcon();
+  get _icon(): string {
+    if (this.icon) {
+      return this.icon;
+    } else {
+      switch (this.type) {
+        case 'positive':
+          return 'done';
+        case 'negative':
+          return 'priority_high';
+        default:
+          return 'notifications_none';
+      }
+    }
   }
 
-  public dismiss(): void {
-    this.handleDismiss.emit();
-  }
-
-  //#region Private Methods
-
-  private getStatus(): string {
+  get _status(): string {
     switch (this.type) {
       case 'positive':
         return 'go-toast-status--positive';
@@ -62,16 +64,7 @@ export class GoToastComponent implements OnInit {
     }
   }
 
-  private getIcon(): string {
-    switch (this.type) {
-      case 'positive':
-        return 'done';
-      case 'negative':
-        return 'priority_high';
-      default:
-        return 'notifications_none';
-    }
+  dismiss(): void {
+    this.handleDismiss.emit();
   }
-
-  //#endregion
 }

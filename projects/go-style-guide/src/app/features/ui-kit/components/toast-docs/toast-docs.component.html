@@ -54,6 +54,16 @@
       </div>
 
       <div class="go-column go-column--100">
+        <h4 class="go-heading-4">icon</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          Changes the icon that is displayed within the toast. This is set automatically for each type, but if a value
+          is passed for this binding it will override all of those type icons. See the
+          <a class="go-link" href="https://material.io/tools/icons/">Material Design System Icons</a>
+          page for available icons.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">message</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           The text or non-executable HTML to be displayed as the message of the toast. This is optional, however either this binding or the
@@ -277,6 +287,30 @@
     header="Success!"
     message="The thing you did saved successfully." 
     type="positive">
+  </go-toast>
+
+  <go-card class="go-column go-column--100" id="toast-icon">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Icon Example</h2>
+      <go-copy cardId="toast-icon" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          An icon may be specified with the <code class="code-block--inline">@Input icon: string;</code>
+          binding. If a value is passed to this binding, it will override all of the default icons for each type.
+        </p>
+      </div>
+      <h4 class="go-heading-4">component.html</h4>
+      <code [highlight]="toast_icon_template_html"></code>
+    </ng-container>
+  </go-card>
+
+  <go-toast
+    class="go-column go-column--100"
+    icon="pets"
+    header="Icon Chaos!"
+    message="This shows an example where the icon has been set to something unique from the Material Icons library.">
   </go-toast>
 
   <go-card class="go-column go-column--100" id="max-height">

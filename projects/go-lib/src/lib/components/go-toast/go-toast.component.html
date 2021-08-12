@@ -1,10 +1,10 @@
 <div class="go-toast" [ngClass]="{'go-toast--dark': theme === 'dark'}">
-  <div class="go-toast-strip" [ngClass]="statusClass"></div>
+  <div class="go-toast-strip" [ngClass]="_status"></div>
   <div class="go-toast-status">
     <go-icon
       class="go-toast-status__icon"
-      [ngClass]="statusClass"
-      [icon]="icon">
+      [ngClass]="_status"
+      [icon]="_icon">
     </go-icon>
   </div>
   <div
