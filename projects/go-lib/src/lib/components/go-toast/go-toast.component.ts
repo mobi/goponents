@@ -19,11 +19,12 @@ export class GoToastComponent implements OnInit {
   duration: number;
 
   @Input() dismissable: boolean = false;
+  @Input() enableMaxHeight: boolean = true;
   @Input() header: string;
   @Input() message: string;
-  @Input() type: string;
   @Input() showToastActions: boolean = false;
   @Input() theme: 'light' | 'dark' = 'light';
+  @Input() type: string;
 
   @Output() handleDismiss: EventEmitter<void> = new EventEmitter();
 

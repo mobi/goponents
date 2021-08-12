@@ -39,6 +39,13 @@
       </div>
 
       <div class="go-column go-column--100">
+        <h4 class="go-heading-4">enableMaxHeight</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          By default this is true, but if set to false will allow the toast to expand to the size of its content.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">header</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           The text to be displayed as the header of the toast. This is optional, however either this binding or the
@@ -249,7 +256,7 @@
   <go-card class="go-column go-column--100" id="toast-theme">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Theme</h2>
-      <go-copy cardId="theme-template" goCopyCardLink></go-copy>
+      <go-copy cardId="toast-theme" goCopyCardLink></go-copy>
     </ng-container>
     <ng-container go-card-content>
       <div class="go-column go-column--100">
@@ -270,6 +277,52 @@
     header="Success!"
     message="The thing you did saved successfully." 
     type="positive">
-</go-toast>
+  </go-toast>
+
+  <go-card class="go-column go-column--100" id="max-height">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Max Height Example</h2>
+      <go-copy cardId="max-height" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        By default, the toasts have a max height that allows for vertical overflow scrolling. See below:
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        <go-toast header="Something you should know...">
+          <ng-template #messageContent>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+          </ng-template>
+        </go-toast>
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+        <code
+          [highlight]="toast_maxHeight_html"
+          class="code-block--no-bottom-margin">
+        </code>
+      </div>
+
+      <div class="go-column go-column--100">
+        To disable the max height restriction on toasts, you can pass in a binding:
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">View</h4>
+        <go-toast header="Show me everything!" [enableMaxHeight]="false">
+          <ng-template #messageContent>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+          </ng-template>
+        </go-toast>
+      </div>
+      <div class="go-column go-column--50">
+        <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+        <code
+          [highlight]="toast_maxHeight_enable_html"
+          class="code-block--no-bottom-margin">
+        </code>
+      </div>
+    </div>
+  </go-card>
 
 </section>
