@@ -118,7 +118,10 @@
             <!-- Body - Columns -->
             <td *ngFor="let col of columns"
                 class="go-table__body-column"
-                [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
+                [ngClass]="{
+                  'go-table__body-row--expanded': item.showDetails,
+                  'go-table__body-column--no-wrap': col.wrapContent === null ? !wrapContent : !col.wrapContent
+                }"
                 [ngStyle]="{ 'vertical-align': col.alignment, 'min-width': col.width + 'px' }"
                 [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'">
               <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">

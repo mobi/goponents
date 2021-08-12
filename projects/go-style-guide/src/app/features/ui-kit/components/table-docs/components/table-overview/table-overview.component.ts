@@ -30,6 +30,7 @@ export class TableOverviewComponent {
   @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
+  @Input() wrapContent: boolean = true;
   `;
 
   tableConfigClass: string = `

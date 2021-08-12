@@ -135,6 +135,10 @@ $go-table-body-row-expanded-border: rgba(240, 240, 240, 0);
       }
     }
 
+    &--no-wrap {
+      white-space: nowrap;
+    }
+
     &--selectable {
       padding: calc(#{$go-table-cell-vertical-padding} / 2) $go-table-cell-horizontal-padding;
       text-align: center;
