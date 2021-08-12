@@ -57,6 +57,12 @@
           This binding enables the container for table actions. By default, it is set to <code class="code-block--inline">false</code>.
           Additional details can be found within the "Implementing Table Actions" section.
         </p>
+
+      </div><div class="go-column go-column--100">
+        <h4 class="go-heading-4">stickyHeader</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This property enables sticky column headers on the table, this is optional and defaults to false.
+        </p>
       </div>
 
       <div class="go-column go-column--100">
@@ -78,13 +84,6 @@
         </p>
       </div>
 
-      <div class="go-column go-column--100">
-        <h4 class="go-heading-4">stickyHeader</h4>
-        <p class="go-body-copy go-body-copy--no-margin">
-          This property enables sticky column headers on the table, this is optional and defaults to false.
-        </p>
-      </div>
-
     </div>
   </go-card>
 
@@ -99,6 +98,10 @@
       <h4 class="go-heading-4">example.ts</h4>
       <code [highlight]="basicExample_ts"></code>
     </ng-container>
+    <p class="go-body-copy">
+      Additionally, you can specify a type for the tableData items.
+    </p>
+    <code [highlight]="filterTableEx"></code>
   </go-card>
 
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Default Example">

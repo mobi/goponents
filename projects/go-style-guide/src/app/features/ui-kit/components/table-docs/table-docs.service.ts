@@ -2,6 +2,21 @@ import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import * as faker from 'faker';
 
+export interface FakeData {
+  active: boolean;
+  alive: boolean;
+  email: string;
+  gender: 'Male' | 'Female';
+  id: number;
+  ip_address: string;
+  last_login: string | null;
+  login_attempts: number | undefined;
+  name: {
+    first: string;
+    last: string;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,9 +24,9 @@ export class TableDocsService {
 
   constructor (private datePipe: DatePipe) { }
 
-  public generateData(length: number): Array<{}> {
+  public generateData(length: number): FakeData[] {
     return Array.from({ length: length }, (_: any, key: number) => key).map((index: any) => {
-      const baseObj: object = this.createObject(index);
+      const baseObj: FakeData = this.createObject(index);
       baseObj['children'] = Array.from({ length: 5 }, (_: any, key: number) => key).map((i: any) => {
         return this.createObject(i);
       });
@@ -20,7 +35,7 @@ export class TableDocsService {
     });
   }
 
-  private createObject(index: number): any {
+  private createObject(index: number): FakeData {
     return {
       id: index + 1,
       name: {
