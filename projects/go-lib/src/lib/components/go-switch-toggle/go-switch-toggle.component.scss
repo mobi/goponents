@@ -23,12 +23,13 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
     &__toggle {
       @include transition(all);
 
-      background-color: $base-light-secondary;
-      border: 1px solid $base-light-secondary;
+      background-color: $theme-light-app-bg;
+      border: 1px solid $base-light-tertiary;
       border-radius: 1.125rem;
       bottom: 0;
       cursor: pointer;
       left: 0;
+      overflow: hidden;
       position: absolute;
       right: 0;
       top: 0;
@@ -38,6 +39,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
 
         background-color: $base-light;
         border-radius: 50%;
+        box-shadow: $form-shadow-hover;
         content: '';
         height: calc(1.125rem - 2px);
         position: absolute;
@@ -61,7 +63,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
     }
 
     &__input:focus + &__toggle {
-      box-shadow: 0 0 0 2px linear-gradient($theme-light-bg, $ui-color-primary);
+      box-shadow: $form-shadow-hover;
     }
 
     &__input:checked + &__toggle::before {
@@ -72,6 +74,24 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
       -o-transform: translateX(1.125rem);
       -webkit-transform: translateX(1.125rem);
       transform: translateX(1.125rem);
+    }
+
+    &__input:checked:focus + &__toggle {
+      box-shadow: $form-shadow-active;
+    }
+
+    &:hover {
+      .go-form {
+        &__switch-toggle {
+          &__toggle {
+            box-shadow: $form-shadow-hover;
+          }
+
+          &__input:checked + .go-form__switch-toggle__toggle {
+            box-shadow: $form-shadow-active;
+          }
+        }
+      }
     }
   }
 
