@@ -13,8 +13,12 @@ export class ToastDocsComponent {
 
   componentBindings: string = `
   @Input() dismissable: boolean = false;
+  @Input() enableMaxHeight: boolean = true;
   @Input() header: string;
+  @Input() icon: string;
   @Input() message: string;
+  @Input() showToastActions: boolean = false;
+  @Input() theme: 'light' | 'dark' = 'light';
   @Input() type: string;
 
   @Output() handleDismiss = new EventEmitter();
@@ -131,6 +135,29 @@ export class ToastDocsComponent {
     header="Success!"
     message="The thing you did saved successfully."
     type="positive">
+  </go-toast>
+  `;
+
+  toast_maxHeight_html: string = `
+  <go-toast
+    header="Something you should know..."
+    message="Sed ut perspiciatis... *redacted for brevity* ...voluptas nulla pariatur?">
+  </go-toast>
+  `;
+
+  toast_maxHeight_enable_html: string = `
+  <go-toast
+    [enableMaxHeight]="false"
+    header="Show me everything!"
+    message="Sed ut perspiciatis... *redacted for brevity* ...voluptas nulla pariatur?">
+  </go-toast>
+  `;
+
+  toast_icon_template_html: string = `
+  <go-toast
+    icon="pets"
+    header="Icon Chaos!"
+    message="This shows an example where the icon has been set to something unique from the Material Icons library.">
   </go-toast>
   `;
 

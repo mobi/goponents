@@ -28,31 +28,40 @@ describe('GoToastComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
-    it('sets a default statusClass if no type is passed in', () => {
+  describe('_status', () => {
+    it('returns a default status if no type is passed in', () => {
       fixture.detectChanges();
 
-      expect(component.statusClass).toEqual('go-toast-status--neutral');
+      expect(component._status).toEqual('go-toast-status--neutral');
     });
 
-    it('sets a statusClass if type is passed in', () => {
+    it('returns a type status if type is passed in', () => {
       component.type = 'positive';
       fixture.detectChanges();
 
-      expect(component.statusClass).toEqual('go-toast-status--positive');
+      expect(component._status).toEqual('go-toast-status--positive');
     });
+  });
 
-    it('sets a default icon if no type is passed in', () => {
+  describe('_icon', () => {
+    it('returns a default icon if no type is passed in', () => {
       fixture.detectChanges();
 
-      expect(component.icon).toEqual('notifications_none');
+      expect(component._icon).toEqual('notifications_none');
     });
 
-    it('should set an icon if type is passed in', () => {
+    it('returns an icon if type is passed in', () => {
       component.type = 'positive';
       fixture.detectChanges();
 
-      expect(component.icon).toEqual('done');
+      expect(component._icon).toEqual('done');
+    });
+
+    it('returns an icon if icon is passed in', () => {
+      component.icon = 'pets';
+      fixture.detectChanges();
+
+      expect(component._icon).toEqual('pets');
     });
   });
 
