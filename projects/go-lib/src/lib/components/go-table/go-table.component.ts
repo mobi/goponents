@@ -94,7 +94,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @ContentChild('goTableDetails') details: TemplateRef<any>;
   @ContentChild('goTableTitle') tableTitleTemplate: TemplateRef<any>;
 
-  allData: any[] = [];
+  allData: GoTableConfig['tableData'] = [];
   brandColor: string;
   localTableConfig: GoTableConfig;
   pages: GoTablePage[] = [];
@@ -104,7 +104,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   selectAllControl: FormControl = new FormControl(false);
   selectAllIndeterminate: boolean = false;
   showTable: boolean = false;
-  targetedRows: any[] = [];
+  targetedRows: GoTableConfig['tableData'] = [];
 
   private destroy$: Subject<void> = new Subject();
   private pageChange$: Subject<void> = new Subject();
@@ -209,7 +209,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     {
       sortable: boolean,
       sortConfig?: GoTableSortConfig,
-      tableData: any[]
+      tableData: GoTableConfig['tableData']
     } = this.localTableConfig;
 
     columnSortable = columnSortable !== undefined ? columnSortable : sortable;
@@ -240,7 +240,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     const { pageConfig, tableData, totalCount }:
     {
       pageConfig: GoTablePageConfig,
-      tableData: any[],
+      tableData: GoTableConfig['tableData'],
       totalCount: number
     } = this.localTableConfig;
 
@@ -302,11 +302,11 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     return beginning + ' - ' + ending;
   }
 
-  getDisplayData(): any[] {
+  getDisplayData(): GoTableConfig['tableData'] {
     const { pageConfig, tableData }:
     {
       pageConfig: GoTablePageConfig,
-      tableData: any[]
+      tableData: GoTableConfig['tableData']
     } = this.localTableConfig;
 
     // show all data when in server mode or paging is disabled
@@ -395,7 +395,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     {
       sortConfig?: GoTableSortConfig,
       sortable: boolean,
-      tableData: any[]
+      tableData: GoTableConfig['tableData']
     } = this.localTableConfig;
 
     if (sortConfig && sortable && tableData && sortConfig.column) {
@@ -417,7 +417,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     const { totalCount, tableData }:
     {
       totalCount: number,
-      tableData: any[]
+      tableData: GoTableConfig['tableData']
     } = this.localTableConfig;
 
     this.localTableConfig.totalCount = totalCount !== null ? totalCount : tableData.length;
