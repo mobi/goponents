@@ -65,7 +65,7 @@ export class GoSideNavService {
       if (this.isNavGroup(route)) {
         this.extractNested(route, base);
       } else {
-        this._menuItems.set(this.formatUrl(route.route), route);
+        this._menuItems.set(this.formatUrl(route.route), base);
       }
     }
   }

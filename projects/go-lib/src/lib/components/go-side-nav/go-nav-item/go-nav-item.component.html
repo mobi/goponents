@@ -8,7 +8,7 @@
      [routerLink]="[navItem.route]">
      <span class="go-nav-item--selected"
            [ngStyle]="{ 'background': brandColor }"
-           *ngIf="navItem.routeActive"></span>
+           *ngIf="level === 0 && navItem.routeActive"></span>
     <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
   </a>
 

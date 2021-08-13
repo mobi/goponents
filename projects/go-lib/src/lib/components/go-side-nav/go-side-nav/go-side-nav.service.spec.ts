@@ -103,7 +103,7 @@ describe('GoSideNavService', () => {
       service.setMenuItems(navItems);
       service.setActiveItem('/group_item_1');
 
-      expect((service.menuItems[0] as NavGroup).subRoutes[0].routeActive).toBe(true);
+      expect(service.menuItems[0].routeActive).toBe(true);
     });
 
     it('should set previously active items to false', () => {
@@ -111,7 +111,7 @@ describe('GoSideNavService', () => {
       service.setActiveItem('/group_item_1');
       service.setActiveItem('/level_1_item');
 
-      expect((service.menuItems[0] as NavGroup).subRoutes[0].routeActive).toBe(false);
+      expect(service.menuItems[0].routeActive).toBe(false);
       expect(service.menuItems[1].routeActive).toBe(true);
     });
   });
