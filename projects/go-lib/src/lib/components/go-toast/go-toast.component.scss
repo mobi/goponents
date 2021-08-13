@@ -1,6 +1,8 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
+$toast-padding: 1.25rem;
+
 .go-toast {
   background: $theme-light-bg;
   border-radius: $global-radius;
@@ -14,7 +16,7 @@
     display: flex;
     flex: 1;
     justify-content: flex-end;
-    padding: 1.25rem;
+    padding: $toast-padding;
   }
 
   &__container {
@@ -81,7 +83,7 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: 1.25rem 1.25rem 1.25rem 0;
+  padding: $toast-padding $toast-padding $toast-padding 0;
 
   &__title {
     margin-bottom: .25rem;
