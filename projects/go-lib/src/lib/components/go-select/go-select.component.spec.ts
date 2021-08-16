@@ -103,7 +103,7 @@ describe('GoSelectComponent', () => {
     });
   });
 
-  describe('onRemoveAll()', () => {
+  describe('onRemoveAll', () => {
     it('uses bindValue to get value if bindValue exists', () => {
       component.bindValue = 'id';
       component.items = [
