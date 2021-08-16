@@ -1,6 +1,7 @@
 <!-- External Link -->
 <a
   class="go-panel"
+  [disabled]="disablePanel" 
   [target]="target ? target : '_blank'"
   [rel]="target ? target : 'noreferrer'"
   [ngClass]="panelClasses()"
@@ -17,6 +18,7 @@
 <ng-template #noLink>
   <button
     class="go-panel"
+    [disabled]="disablePanel"
     [ngClass]="panelClasses()"
     (click)="handleAction()">
     <span class="go-panel__title">

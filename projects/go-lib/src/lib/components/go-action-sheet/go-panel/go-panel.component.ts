@@ -15,6 +15,7 @@ export class GoPanelComponent {
   @Input() panelContent: string;
   @Input() target: string;
   @Input() closeOnClick: boolean = true;
+  @Input() disablePanel: boolean = false;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
