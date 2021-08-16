@@ -104,13 +104,15 @@ describe('GoSelectComponent', () => {
   });
 
   describe('onRemoveAll', () => {
-    it('uses bindValue to get value if bindValue exists', () => {
+    it('uses removed the selected values', () => {
       component.bindValue = 'id';
       component.items = [
         { id: 1, label: 'Label 1' },
         { id: 2, label: 'Label 2' },
         { id: 3, label: 'Label 3' }
       ];
+
+      component.onSelectAll();
 
       component.onRemoveAll();
 
