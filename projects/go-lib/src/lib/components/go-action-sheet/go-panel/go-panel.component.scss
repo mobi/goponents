@@ -72,6 +72,11 @@ $base-medium: #767676 !default;
   &--header {
     color: $base-medium;
   }
+
+  &__disabled {
+    opacity: 0.5;
+    pointer-events: none;
+ } 
 }
 
 .go-action-sheet {

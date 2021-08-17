@@ -1,7 +1,7 @@
 <!-- External Link -->
 <a
   class="go-panel"
-  [disabled]="disablePanel" 
+  [class.go-panel__disabled]="disablePanel"
   [target]="target ? target : '_blank'"
   [rel]="target ? target : 'noreferrer'"
   [ngClass]="panelClasses()"
