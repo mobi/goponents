@@ -41,7 +41,7 @@
       </button>
     </ng-template>
   </ng-container>
-  <ng-container *ngIf="multiple && items?.length">
+  <ng-container *ngIf="multiple && items?.length && control.value">
     <ng-template ng-header-tmp>
       <button
       (click)="onRemoveAll()"
