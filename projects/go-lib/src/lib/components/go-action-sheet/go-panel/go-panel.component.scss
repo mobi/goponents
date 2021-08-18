@@ -73,7 +73,7 @@ $base-medium: #767676 !default;
     color: $base-medium;
   }
 
-  &__disabled {
+  &--disabled {
     opacity: 0.5;
     pointer-events: none;
  }

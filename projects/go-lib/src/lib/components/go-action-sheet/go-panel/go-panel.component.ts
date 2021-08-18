@@ -24,7 +24,8 @@ export class GoPanelComponent {
   panelClasses(): object {
     return {
       'go-panel--danger': this.danger,
-      'go-panel--header': this.showHeader
+      'go-panel--header': this.showHeader,
+      'go-panel--disabled': this.disablePanel
     };
   }
 
