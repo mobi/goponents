@@ -128,7 +128,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &__custom-checkbox {
     background-color: $base-light;
-    border: 1px solid lighten($base-light-secondary, 13.5%);
+    border: 1px solid $base-light-tertiary;
     border-radius: $global-radius;
     display: inline-block;
     height: .875rem;
@@ -151,14 +151,26 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
+  &__checkbox:hover ~ &__custom-checkbox {
+    box-shadow: $form-shadow-hover;
+  }
+
   &__checkbox:checked ~ &__custom-checkbox {
     background-color: $ui-color-primary;
     border-color: $ui-color-primary;
   }
 
+  &__checkbox:checked:hover ~ &__custom-checkbox {
+    box-shadow: $form-shadow-active;
+  }
+
   &__checkbox:disabled ~ &__custom-checkbox {
     background-color: $theme-light-app-bg;
     cursor: not-allowed;
+  }
+
+  &__checkbox:disabled:hover ~ &__custom-checkbox {
+    box-shadow: none;
   }
 
   &__checkbox:indeterminate ~ &__custom-checkbox {
