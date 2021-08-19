@@ -2,6 +2,7 @@
 @import '../../../../../styles/mixins';
 
 $base-medium: #767676 !default;
+$theme-light-transparentized: $theme-light-color, .5;
 
 .go-panel {
   @include transition;
@@ -123,6 +124,6 @@ button {
   }
 
   &:disabled {
-    color: transparentize($theme-light-color, .5);
+    color: $theme-light-transparentized;
   }
 }
