@@ -75,7 +75,7 @@ $theme-light-transparentized: $theme-light-color, .5;
   }
 
   &--disabled {
-    color: transparentize($theme-light-color, .5);
+    color: $theme-light-transparentized;
     pointer-events: none;
  }
 }
