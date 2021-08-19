@@ -74,7 +74,7 @@ $base-medium: #767676 !default;
   }
 
   &--disabled {
-    opacity: 0.5;
+    color: transparentize($theme-light-color, .5);
     pointer-events: none;
  }
 }
@@ -123,6 +123,6 @@ button {
   }
 
   &:disabled {
-    opacity: 0.5;
+    color: transparentize($theme-light-color, .5);
   }
 }
