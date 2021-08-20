@@ -17,6 +17,7 @@
 <ng-template #noLink>
   <button
     class="go-panel"
+    [disabled]="disablePanel"
     [ngClass]="panelClasses()"
     (click)="handleAction()">
     <span class="go-panel__title">

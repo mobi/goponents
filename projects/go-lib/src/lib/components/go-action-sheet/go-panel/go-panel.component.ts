@@ -15,6 +15,7 @@ export class GoPanelComponent {
   @Input() panelContent: string;
   @Input() target: string;
   @Input() closeOnClick: boolean = true;
+  @Input() disablePanel: boolean = false;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
@@ -23,7 +24,8 @@ export class GoPanelComponent {
   panelClasses(): object {
     return {
       'go-panel--danger': this.danger,
-      'go-panel--header': this.showHeader
+      'go-panel--header': this.showHeader,
+      'go-panel--disabled': this.disablePanel
     };
   }
 
