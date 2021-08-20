@@ -41,6 +41,16 @@
       </button>
     </ng-template>
   </ng-container>
+  <ng-container *ngIf="multiple && items?.length && control.value">
+    <ng-template ng-header-tmp>
+      <button
+      (click)="onRemoveAll()"
+      class="go-select__select-all-button"
+      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }">
+      Remove  All
+    </button>
+    </ng-template>
+  </ng-container>
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>

@@ -2,7 +2,7 @@ import { GoTablePageConfig } from './go-table-paging.model';
 import { GoTableSortConfig } from './go-table-sort.model';
 import { GoTableSearchConfig } from './go-table-search-config.model';
 
-export class GoTableConfig {
+export class GoTableConfig<T = any> {
   dataMode: GoTableDataSource = GoTableDataSource.client;
   noDataText: string = 'No Data';
   pageable: boolean = true;
@@ -13,7 +13,7 @@ export class GoTableConfig {
   selectBy: string;
   sortConfig?: GoTableSortConfig;
   sortable: boolean = true;
-  tableData: any[];
+  tableData: T[];
   totalCount: number = null;
 
   constructor(fields?: {
@@ -27,7 +27,7 @@ export class GoTableConfig {
     selectBy?: string,
     sortConfig?: GoTableSortConfig,
     sortable?: boolean,
-    tableData: any[],
+    tableData: T[],
     totalCount?: number
   }) {
     if (fields) { Object.assign(this, fields); }

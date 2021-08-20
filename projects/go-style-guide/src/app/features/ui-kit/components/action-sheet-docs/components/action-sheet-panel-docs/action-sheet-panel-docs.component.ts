@@ -16,6 +16,7 @@ export class ActionSheetPanelDocsComponent {
   @Input() panelContent: string;
   @Input() target: string = '_blank';
   @Input() closeOnClick: boolean = true;
+  @Input() disablePanel: boolean = false;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
   `;

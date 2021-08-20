@@ -7,7 +7,7 @@
        [attr.title]="group.description"
        [ngClass]="{ 'go-nav-group__dropdown--expanded': group.expanded, 'go-nav-group__dropdown--first': index === 0 }">
     <div class="go-nav-group__link">
-      <span class="go-nav-item--selected"
+      <span class="go-nav-group--selected"
             [ngStyle]="{ 'background': brandColor }"
             *ngIf="level === 0 && navItem.routeActive"></span>
       <go-icon [icon]="navItem.routeIcon"

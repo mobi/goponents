@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { GoTableConfig } from 'projects/go-lib/src/public_api';
-import { TableDocsService } from '../../table-docs.service';
+import { FakeData, TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
@@ -30,6 +30,7 @@ export class TableOverviewComponent {
   @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
+  @Input() wrapContent: boolean = true;
   `;
 
   tableConfigClass: string = `
@@ -137,7 +138,22 @@ export class TableOverviewComponent {
   }
   `;
 
-  tableConfig: object = new GoTableConfig({
+  filterTableEx: string = `
+  // Specify the generic on the config variable
+  tableConfig: GoTableConfig<FakeData> = new GoTableConfig({
+    tableData: this.tableDocsService.generateData(20)
+  });
+
+  filterTable(): void {
+    // Compiler now recognizes tableData items as \`FakeData\` interfaces
+    // This allows us to keep things strictly typed
+    const filteredData: FakeData[] = this.tableConfig.tableData.filter((item: FakeData) => {
+      return item.email.includes('tangoe');
+    });
+  }
+  `;
+
+  tableConfig: GoTableConfig<FakeData> = new GoTableConfig({
     tableData: this.tableDocsService.generateData(20)
   });
 

@@ -2,6 +2,7 @@
 @import '../../../../../styles/mixins';
 
 $base-medium: #767676 !default;
+$theme-light-transparentized: rgba($theme-light-color, .5);
 
 .go-panel {
   @include transition;
@@ -72,6 +73,11 @@ $base-medium: #767676 !default;
   &--header {
     color: $base-medium;
   }
+
+  &--disabled {
+    color: $theme-light-transparentized;
+    pointer-events: none;
+ }
 }
 
 .go-action-sheet {
@@ -115,5 +121,9 @@ button {
 
   &:focus {
     outline: none;
+  }
+
+  &:disabled {
+    color: $theme-light-transparentized;
   }
 }
