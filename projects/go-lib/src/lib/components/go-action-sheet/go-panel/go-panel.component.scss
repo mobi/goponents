@@ -2,7 +2,7 @@
 @import '../../../../../styles/mixins';
 
 $base-medium: #767676 !default;
-$theme-light-transparentized: $theme-light-color, .5;
+$theme-light-transparentized: rgba($theme-light-color, .5);
 
 .go-panel {
   @include transition;
