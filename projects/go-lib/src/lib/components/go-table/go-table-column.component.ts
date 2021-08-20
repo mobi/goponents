@@ -11,6 +11,7 @@ export class GoTableColumnComponent extends GoTableChildColumnComponent {
   @Input() sortable?: boolean;
   @Input() title: string;
   @Input() width: number;
+  @Input() wrapContent: boolean = null;
 
   @ContentChild('goTableHead') goTableHead: TemplateRef<any>;
 

@@ -68,10 +68,18 @@
         </p>
       </div>
       
-      <div class="go-column go-column--100 go-column--no-padding">
+      <div class="go-column go-column--100">
         <h4 class="go-heading-4">width</h4>
         <p class="go-body-copy go-body-copy--no-margin">
           This binding sets the minimum possible width for column. The value must be in pixels.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">wrapContent</h4>
+        <p class="go-body-copy go-body-copy--no-margin">
+          This binding overrides the <code class="code-block--inline">wrapContent</code> binding on the <code class="code-block--inline">go-table</code>
+          component. By default it is unset and will not override the parent table's binding.
         </p>
       </div>
 
@@ -99,7 +107,7 @@
     <go-table-column field="email" width="50"></go-table-column>
     <go-table-column field="gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
-    <go-table-column field="last_login" title="Last Login"></go-table-column>
+    <go-table-column field="last_login" title="Last Login" [wrapContent]="false"></go-table-column>
     <go-table-column field="alive"></go-table-column>
     <go-table-column field="login_attempts" title="Login Attempts"></go-table-column>
   </go-table>

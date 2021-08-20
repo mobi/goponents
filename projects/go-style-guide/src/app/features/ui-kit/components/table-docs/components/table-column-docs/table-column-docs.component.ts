@@ -20,6 +20,7 @@ export class TableColumnDocsComponent {
   @Input() sortable?:  boolean = true;
   @Input() title:      string;
   @Input() width:      number;
+  @Input() wrapContent: boolean = null;
   `;
 
   fieldExample: string = `
@@ -45,6 +46,9 @@ export class TableColumnDocsComponent {
     <go-table-column field="email" width="50"></go-table-column>
     <go-table-column field="gender"></go-table-column>
     <go-table-column field="ip_address" title="IP Address"></go-table-column>
+    <go-table-column field="last_login" title="Last Login" [wrapContent]="false"></go-table-column>
+    <go-table-column field="alive"></go-table-column>
+    <go-table-column field="login_attempts" title="Login Attempts"></go-table-column>
   </go-table>
   `;
 
