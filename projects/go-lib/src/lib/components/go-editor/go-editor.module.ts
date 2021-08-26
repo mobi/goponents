@@ -7,6 +7,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { GoEditorComponent } from './go-editor.component';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GoHintModule } from '../go-hint/go-hint.module';
     CommonModule,
     EditorModule,
     FormsModule,
+    GoFormErrorsModule,
     GoHintModule,
     GoRequiredTextModule,
     ReactiveFormsModule

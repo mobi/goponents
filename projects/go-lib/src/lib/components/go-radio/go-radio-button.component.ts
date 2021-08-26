@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 
 @Component({
@@ -9,7 +9,7 @@ import { generateId } from '../../utilities/form.utils';
 })
 export class GoRadioButtonComponent implements OnInit {
   id: string;
-  control: FormControl;
+  control: FormControl | AbstractControl;
   theme: string;
   name: string;
 

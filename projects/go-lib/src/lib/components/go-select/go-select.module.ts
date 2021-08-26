@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GoButtonModule } from '../go-button/go-button.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoSelectComponent } from './go-select.component';
@@ -12,6 +13,7 @@ import { GoSelectComponent } from './go-select.component';
   imports: [
     CommonModule,
     GoButtonModule,
+    GoFormErrorsModule,
     GoHintModule,
     GoRequiredTextModule,
     NgSelectModule,

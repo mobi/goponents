@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 
 @Component({
@@ -9,7 +9,7 @@ import { generateId } from '../../utilities/form.utils';
 export class GoTextAreaComponent implements OnInit {
   id: string;
 
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() key: string;
   @Input() hints: Array<string>;
   @Input() label: string;

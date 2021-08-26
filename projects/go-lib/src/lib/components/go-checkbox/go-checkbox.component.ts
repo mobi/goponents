@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 
 @Component({
@@ -9,7 +9,7 @@ import { generateId } from '../../utilities/form.utils';
 export class GoCheckboxComponent implements OnInit, OnChanges, AfterViewInit {
   id: string;
 
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() hints: string[];
   @Input() indeterminate: boolean = false;
   @Input() key: string;

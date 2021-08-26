@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { generateId } from '../../utilities/form.utils';
 
@@ -17,7 +17,7 @@ export class GoSelectComponent implements OnInit {
   @Input() bindValue: string;
   @Input() clearable: boolean = true;
   @Input() closeOnSelect: boolean = true;
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   /**
    * A property on each item to group by
    */

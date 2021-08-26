@@ -6,6 +6,7 @@ import { GoRadioButtonComponent } from './go-radio-button.component';
 import { GoRadioGroupComponent } from './go-radio-group.component';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
   imports: [
     CommonModule,
     FormsModule,
+    GoFormErrorsModule,
     GoHintModule,
     GoRequiredTextModule,
     ReactiveFormsModule

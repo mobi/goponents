@@ -63,6 +63,10 @@ export * from './lib/components/go-file-upload/go-dragon-drop.directive';
 export * from './lib/components/go-footer/go-footer.component';
 export * from './lib/components/go-footer/go-footer.module';
 
+// Form Errors
+export * from './lib/components/go-form-errors/go-form-errors.component';
+export * from './lib/components/go-form-errors/go-form-errors.module';
+
 // Header
 export * from './lib/components/go-header/go-header.component';
 export * from './lib/components/go-header/go-header.module';

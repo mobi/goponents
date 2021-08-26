@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
 import { generateId } from '../../utilities/form.utils';
@@ -20,7 +20,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   subscription: any;
 
   @Input() appendToContent: boolean = false;
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() hints: string[];
   @Input() key: string;
   @Input() label: string;

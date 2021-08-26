@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { generateId } from '../../utilities/form.utils';
 import { GoTimeFormat } from './go-time-format.model';
 
@@ -18,7 +18,7 @@ export class GoTimepickerComponent implements OnInit, AfterViewInit {
 
   @Input() key: string;
   @Input() label: string;
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() hints: string[];
   @Input() placeholder: string = '';
   @Input() theme: 'light' | 'dark' = 'light';

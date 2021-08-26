@@ -18,7 +18,7 @@ export class GoFileUploadComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject();
 
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() hints: Array<string> = [];
   @Input() isLoading: boolean = false;
   @Input() key: string;

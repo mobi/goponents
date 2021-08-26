@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { GoRadioButtonComponent } from './go-radio-button.component';
 export class GoRadioGroupComponent implements AfterContentChecked {
   radioButtonCount: number = 0;
 
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
   @Input() hints: string[];
   @Input() legend: string;
   @Input() enableFieldset: boolean = true;
