@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: '', component: LayoutComponent, children: [
     { path: 'test-page-1', component: TestPage1Component, canActivate: [AppGuard] },
     { path: 'test-page-2', component: TestPage2Component, canActivate: [AppGuard] },
-    { path: 'test-page-3', component: TestPage3Component, canActivate: [AppGuard] }
+    { path: 'test-page-3', component: TestPage3Component, canActivate: [AppGuard] },
+    { path: 'test-page-4', component: TestPage4Component }
   ]},
-  { path: 'test-page-4', component: TestPage4Component },
   { path: '**', redirectTo: '/test-page-1' }
 ];
 
