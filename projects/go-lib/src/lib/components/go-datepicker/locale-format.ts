@@ -35,10 +35,10 @@ export class LocaleFormat {
 
   static validDate(month: number, day: number, year: number): boolean {
     const validDays: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    if (year >= 10000 || month > 12 || month < 1) {
+    if (year >= 10000 || month > 11 || month < 0) {
       return false;
     }
-    if (day <= validDays[month - 1]) {
+    if (day <= validDays[month]) {
       return true;
     }
     if (year % 4 === 0 && month === 2 && day === 29) {
@@ -65,7 +65,7 @@ export class LocaleFormat {
       year = century + year;
     }
 
-    if (!this.validDate(month, day, year)) {
+    if (!this.validDate(month - 1, day, year)) {
       return null;
     }
 
