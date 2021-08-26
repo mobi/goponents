@@ -4,6 +4,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoRadioButtonComponent', () => {
   let component: GoRadioButtonComponent;
@@ -14,6 +15,7 @@ describe('GoRadioButtonComponent', () => {
       declarations: [GoRadioButtonComponent],
       imports: [
         FormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule

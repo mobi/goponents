@@ -4,6 +4,7 @@ import { GoTextAreaComponent } from './go-text-area.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoTextAreaComponent', () => {
   let component: GoTextAreaComponent;
@@ -14,6 +15,7 @@ describe('GoTextAreaComponent', () => {
       declarations: [GoTextAreaComponent],
       imports: [
         FormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule

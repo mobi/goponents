@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoCheckboxComponent } from './go-checkbox.component';
@@ -14,6 +15,7 @@ describe('GoCheckboxComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule
       ]

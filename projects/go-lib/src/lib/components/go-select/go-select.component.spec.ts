@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GoButtonModule } from '../go-button/go-button.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoSelectComponent } from './go-select.component';
@@ -16,6 +17,7 @@ describe('GoSelectComponent', () => {
       declarations: [GoSelectComponent],
       imports: [
         CommonModule,
+        GoFormErrorsModule,
         GoButtonModule,
         GoHintModule,
         GoRequiredTextModule,

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoButtonModule } from '../go-button/go-button.module';
 import { GoTimeFormat } from './go-time-format.model';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoTimeComponent', () => {
   let component: GoTimeComponent;
@@ -14,6 +15,7 @@ describe('GoTimeComponent', () => {
       declarations: [GoTimeComponent],
       imports: [
         GoIconButtonModule,
+        GoFormErrorsModule,
         GoButtonModule,
         FormsModule
       ],
