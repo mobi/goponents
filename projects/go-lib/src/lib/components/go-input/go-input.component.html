@@ -1,14 +1,14 @@
 <div class="go-input-container">
   <label *ngIf="label"
          class="go-form__label"
-         [attr.for]="id"
+         [attr.for]="_id"
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
   </label>
   <input class="go-form__input"
-         [id]="id"
-         [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+         [id]="_id"
+         [ngClass]="inputClasses"
          [type]="inputType"
          [placeholder]="placeholder"
          [formControl]="control"

@@ -1,27 +1,29 @@
 import { AfterContentChecked, Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
+import { GoFormService } from '../../services/form.service';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 
 @Component({
   selector: 'go-radio-group',
   templateUrl: './go-radio-group.component.html'
 })
-export class GoRadioGroupComponent implements AfterContentChecked {
+export class GoRadioGroupComponent extends GoFormBaseComponent implements AfterContentChecked {
   radioButtonCount: number = 0;
 
-  @Input() control: FormControl | AbstractControl;
-  @Input() hints: string[];
   @Input() legend: string;
   @Input() enableFieldset: boolean = true;
   @Input() enableLegend: boolean = true;
-  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoRadioButtonComponent, { descendants: true }) radioButtons: QueryList<GoRadioButtonComponent>;
+
+  constructor(private _goFormService: GoFormService) {
+    super(_goFormService);
+  }
 
   ngAfterContentChecked(): void {
     // Only want to set all of these if the number of radio buttons change
     if (this.radioButtons.length !== this.radioButtonCount) {
-      const radioGroupName: string = this.generateRadioGroupName(this.legend);
+      const radioGroupName: string = this._goFormService.generateId(this.legend, 'radio-group');
       this.radioButtonCount = this.radioButtons.length;
 
       this.radioButtons.toArray().forEach((button: GoRadioButtonComponent) => {
@@ -33,13 +35,10 @@ export class GoRadioGroupComponent implements AfterContentChecked {
     }
   }
 
-  private generateRadioGroupName(label: string): string {
-    const labelText: string = label || 'radio-group';
-    const idArray: Array<string> = labelText.split(' ');
-
-    // NOTE: There is a chance that this number is not unique.
-    idArray.push(String(Math.round(Math.random() * 1000000)));
-
-    return idArray.join('-');
+  getFieldsetClasses(): { [k: string]: boolean } {
+    return {
+      ...this._goFormService.baseFieldsetClasses(this.control, this.theme),
+      'go-form__fieldset': this.enableFieldset
+    };
   }
 }

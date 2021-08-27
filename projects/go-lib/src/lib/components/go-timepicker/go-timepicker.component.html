@@ -1,5 +1,5 @@
 <label
-  [attr.for]="id"
+  [attr.for]="_id"
   class="go-form__label"
   [ngClass]="{ 'go-form__label--dark': theme == 'dark' }"
 >
@@ -10,12 +10,9 @@
   <input
     #datepickerInput
     class="go-form__input go-input-time"
-    [id]="id"
+    [id]="_id"
     [placeholder]="placeholder"
-    [ngClass]="{
-      'go-form__input--error': control?.errors?.length,
-      'go-form__input--dark': theme == 'dark'
-    }"
+    [ngClass]="inputClasses"
     [(ngModel)]="selectedTime"
     [disabled]="control.disabled"
     (click)="toggleTimepicker($event)"

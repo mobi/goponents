@@ -1,15 +1,12 @@
 <fieldset
   [disabled]="control.disabled"
-  [ngClass]="{
-    'go-form__fieldset--error': control?.errors?.length,
-    'go-form__fieldset--dark': theme === 'dark',
-    'go-form__fieldset': enableFieldset
-  }">
+  [ngClass]="getFieldsetClasses()">
   <legend
     class="go-form__legend"
     [ngClass]="{ 'go-form__legend--dark': theme === 'dark' }"
     *ngIf="enableLegend">
     {{ legend }}
+    <go-required-text [control]="control"></go-required-text>
   </legend>
 
   <ng-content></ng-content>

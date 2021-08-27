@@ -1,7 +1,7 @@
 <fieldset
   class="go-form__fieldset go-form__fieldset--no-margin"
   [disabled]="control.disabled"
-  [ngClass]="{ 'go-form__fieldset--error': control?.errors?.length, 'go-form__fieldset--dark': theme === 'dark' }"
+  [ngClass]="fieldsetClasses"
 >
   <legend
     class="go-form__legend"
@@ -11,7 +11,6 @@
   <ng-content></ng-content>
 
   <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-  
-  
+
   <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
 </fieldset>

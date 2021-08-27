@@ -1,10 +1,10 @@
-<div *ngIf="errors && !errors.length">
+<div *ngIf="errors && !errors.length && (control.dirty || control.touched)">
   <go-hint
     *ngFor="let error of errors | keyvalue"
-    [message]="error.value"
+    [message]="errorString(error.key, error.value)"
     [theme]="theme"
-    type="negative"
-  ></go-hint>
+    type="negative">
+  </go-hint>
 </div>
 
 <!--

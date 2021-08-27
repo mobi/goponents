@@ -1,36 +1,27 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { generateId } from '../../utilities/form.utils';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   selector: 'go-file-upload',
   templateUrl: './go-file-upload.component.html',
   styleUrls: ['./go-file-upload.component.scss']
 })
-export class GoFileUploadComponent implements OnInit, OnDestroy {
+export class GoFileUploadComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   form: FormGroup;
   files: FormArray;
   fb: FormBuilder;
   filePreview: Array<string> = [];
-  id: string;
 
   private destroy$: Subject<void> = new Subject();
 
-  @Input() control: FormControl | AbstractControl;
-  @Input() hints: Array<string> = [];
   @Input() isLoading: boolean = false;
-  @Input() key: string;
-  @Input() label: string;
   @Input() multiple: boolean = false;
   @Input() state: 'selecting' | 'selected' = 'selecting';
-  @Input() theme: 'light' | 'dark' = 'light';
-
-  constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || generateId(this.label, 'file-upload');
     this.fb = new FormBuilder();
     this.form = this.fb.group({
       filesArray: this.fb.array([])

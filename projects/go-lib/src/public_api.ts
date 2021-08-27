@@ -37,10 +37,6 @@ export * from './lib/components/go-checkbox/go-checkbox.component';
 export * from './lib/components/go-checkbox/go-checkbox.module';
 export * from './lib/components/go-checkbox/go-checkbox-group.component';
 
-// Configuration
-export * from './lib/go-config.service';
-export * from './lib/go-config.model';
-
 // Copy
 export * from './lib/components/go-copy/go-copy.component';
 export * from './lib/components/go-copy/go-copy.module';
@@ -201,3 +197,12 @@ export * from './lib/utilities/colors.util';
 /***** Directives *****/
 export * from './lib/directives/go-copy-card-link/go-copy-card-link.directive';
 export * from './lib/directives/go-copy-card-link/go-copy-card-link.module';
+
+/***** Services *****/
+
+// Form
+export * from './lib/services/form.service';
+
+// Configuration
+export * from './lib/go-config.service';
+export * from './lib/go-config.model';

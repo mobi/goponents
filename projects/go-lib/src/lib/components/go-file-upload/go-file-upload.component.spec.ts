@@ -8,7 +8,6 @@ import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
-import { createHostListener } from '@angular/compiler/src/core';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
@@ -135,43 +134,6 @@ describe('GoFileUploadComponent', () => {
     it('should remove the file at the given index from our file Preview Array', () => {
       component.removeFile(0);
       expect(component.filePreview.length).toBe(0);
-    });
-  });
-
-  describe('ngOnInit()', () => {
-    beforeEach(() => {
-      component.id = undefined;
-    });
-
-    it('sets the id of the input to `key` if one is passed in', () => {
-      expect(component.id).toBeUndefined();
-
-      component.key = 'a-specific-id';
-      component.ngOnInit();
-
-      expect(component.id).toBe(component.key);
-    });
-
-    it('generates a semi-random id based on the label if key is undefined', () => {
-      expect(component.key).toBeUndefined();
-      expect(component.id).toBeUndefined();
-
-      component.label = 'test label';
-      component.ngOnInit();
-
-      expect(component.id).toBeDefined();
-      expect(component.id).toContain('test-label-');
-    });
-
-    it('generates a semi-random id if a label and key are undefined', () => {
-      expect(component.key).toBeUndefined();
-      expect(component.label).toBeUndefined();
-      expect(component.id).toBeUndefined();
-
-      component.ngOnInit();
-
-      expect(component.id).toBeDefined();
-      expect(component.id).toContain('file-upload-');
     });
   });
 

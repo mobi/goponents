@@ -34,43 +34,6 @@ describe('GoCheckboxComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit()', () => {
-    beforeEach(() => {
-      component.id = undefined;
-    });
-
-    it('sets the id of the input to `key` if one is passed in', () => {
-      expect(component.id).toBeUndefined();
-
-      component.key = 'a-specific-id';
-      component.ngOnInit();
-
-      expect(component.id).toBe(component.key);
-    });
-
-    it('generates a semi-random id based on the label if key is undefined', () => {
-      expect(component.key).toBeUndefined();
-      expect(component.id).toBeUndefined();
-
-      component.label = 'test label';
-      component.ngOnInit();
-
-      expect(component.id).toBeDefined();
-      expect(component.id).toContain('test-label-');
-    });
-
-    it('generates a semi-random id if a label and key are undefined', () => {
-      expect(component.key).toBeUndefined();
-      expect(component.label).toBeUndefined();
-      expect(component.id).toBeUndefined();
-
-      component.ngOnInit();
-
-      expect(component.id).toBeDefined();
-      expect(component.id).toContain('checkbox-');
-    });
-  });
-
   describe('ngAfterViewInit', () => {
     it('sets the hidden input to indeterminate if indeterminate input is true', () => {
       expect(component.hiddenInputRef.nativeElement.indeterminate).toBe(false);

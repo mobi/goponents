@@ -1,12 +1,12 @@
 <div>
-  <label [for]="id"
+  <label [for]="_id"
          class="go-form__label go-form__label--inline go-form__label--checkbox-container"
          [ngClass]="{'go-form__label--dark': theme === 'dark'}">
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
-    <input [id]="id"
+    <input [id]="_id"
            class="go-form__checkbox go-form__checkbox--hidden"
-           [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme === 'dark'}"
+           [ngClass]="inputClasses"
            type="checkbox"
            [formControl]="control"
            #hiddenInputRef>

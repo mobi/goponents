@@ -35,11 +35,6 @@ describe('GoCheckboxComponent', () => {
   });
 
   describe('ngOnInit', () => {
-    it('should set the id', () => {
-      component.ngOnInit();
-
-      expect(component.id.startsWith('toggle')).toBe(true);
-    });
   });
 
   describe('toggle', () => {

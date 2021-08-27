@@ -5,9 +5,9 @@
     class="go-form__switch-toggle"
     (click)="toggle()">
     <input
-      [id]="id"
+      [id]="_id"
       class="go-form__switch-toggle__input"
-      [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
+      [ngClass]="inputClasses"
       type="checkbox"
       [formControl]="control">
     <span

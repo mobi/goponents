@@ -47,6 +47,33 @@
     </ng-container>
   </go-card>
 
+  <go-card class="go-column go-column--100" id="validation-errors">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Validation Errors</h2>
+      <go-copy cardId="validation-errors" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <h4 class="go-heading-4">As per the <a class="go-link" href="https://angular.io/api/forms/AbstractControl#seterrors">Angular Documentation</a>:</h4>
+      <p class="go-body-copy">
+        Form controls have the ability to hold a set of <code class="code-block--inline">ValidationErrors</code>. In the case of every form input in Goponents we automatically look for these
+        <code class="code-block--inline">ValidationErrors</code> and render error text beneath the form element dynamically. This is how form error handling should be done within Goponents.
+      </p>
+      <go-input
+        [control]="validationsExControl"
+        label="School"
+        placeholder="Try typing something...">
+      </go-input>
+      <code [highlight]="validationsEx"></code>
+      <p class="go-body-copy">
+        Angular provides some <code class="code-block--inline">ValidationErrors</code> out of the box, Goponents provides default error messages for:
+        <code class="code-block--inline">email</code>, <code class="code-block--inline">max</code>, <code class="code-block--inline">maxlength</code>, 
+        <code class="code-block--inline">min</code>, <code class="code-block--inline">minlength</code>, <code class="code-block--inline">required</code>, and <code class="code-block--inline">requiredtrue</code>.
+        These will automatically render error messages if the matching Angular Validators are set for the control. If desired, these can be overridden by
+        passing a key/value validator with the same name of the Angular one and a custom string as the value.
+      </p>
+    </ng-container>
+  </go-card>
+
   <go-card class="go-column go-column--100">
     <ng-container go-card-header>
       <h3 class="go-heading-3">
@@ -152,7 +179,7 @@
           </go-checkbox>
         </go-checkbox-group>
         <div class="go-column go-column--100 go-column--no-padding">
-          <go-button>Submit</go-button>
+          <go-button [buttonDisabled]="!form.valid">Submit</go-button>
         </div>
       </form>
     </ng-container>

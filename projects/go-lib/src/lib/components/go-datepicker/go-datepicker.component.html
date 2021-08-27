@@ -1,5 +1,5 @@
 <label 
-  [attr.for]="id"
+  [attr.for]="_id"
   class="go-form__label"
   [ngClass]="{'go-form__label--dark': theme == 'dark'}">
   {{ label }}
@@ -10,10 +10,10 @@
   <input
     #datepickerInput
     class="go-form__input"
-    [id]="id"
+    [id]="_id"
     [placeholder]="placeholder"
     (keyup)="restrictInput()"
-    [ngClass]="{'go-form__input--error': control?.errors?.length, 'go-form__input--dark': theme == 'dark'}"
+    [ngClass]="inputClasses"
     [(ngModel)]="selectedDate"
     (blur)="validateDate()"
     [disabled]="control.disabled"

@@ -1,30 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormControl } from '@angular/forms';
-import { generateId } from '../../utilities/form.utils';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   selector: 'go-input',
   templateUrl: './go-input.component.html',
   styleUrls: ['./go-input.component.scss']
 })
-export class GoInputComponent implements OnInit {
-  id: string;
+export class GoInputComponent extends GoFormBaseComponent implements OnInit {
 
-  @Input() control: FormControl | AbstractControl;
-  @Input() key: string;
   @Input() maxlength: number = 524288;
   @Input() minlength: number = 0;
-  @Input() hints: string[];
   @Input() inputType: string = 'text';
-  @Input() label: string;
-  @Input() placeholder: string = '';
-  @Input() theme: 'light' | 'dark' = 'light';
-
-  constructor() { }
 
   ngOnInit(): void {
-    this.id = this.key || generateId(this.label, 'input');
-
     if (this.minlength > this.maxlength) {
       this.minlength = 0;
     }
