@@ -1,7 +1,7 @@
 <label
   *ngIf="label"
   class="go-form__label"
-  [attr.for]="id"
+  [attr.for]="_id"
   [ngClass]="{'go-form__label--dark': theme === 'dark'}">
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
