@@ -12,7 +12,9 @@ describe('LocaleFormat', () => {
       expect(LocaleFormat.validDate(jan.getMonth(), jan.getDate(), jan.getFullYear())).toBeTruthy(
         jan.toUTCString() + ' is not a valid date'
       );
-      expect(LocaleFormat.validDate(dec.getMonth(), dec.getDate(), dec.getFullYear())).toBeTruthy();
+      expect(LocaleFormat.validDate(dec.getMonth(), dec.getDate(), dec.getFullYear())).toBeTruthy(
+        dec.toUTCString() + ' is not a valid date'
+      );
     });
 
     /**
