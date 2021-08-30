@@ -55,7 +55,12 @@ export class LocaleFormat {
 
   private static parseFromFormat(values: string[], locale: string): Date {
     const format: Array<string> = this.format(locale).split(/[/\-.]/);
-    const month: number = this.dateFromFormat(format, values, 'mm');
+
+    /**
+     * Month index: 0-11
+     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+     */
+    const month: number = this.dateFromFormat(format, values, 'mm') - 1;
     const day: number = this.dateFromFormat(format, values, 'dd');
     let year: number = this.dateFromFormat(format, values, 'yyyy');
 
@@ -65,12 +70,12 @@ export class LocaleFormat {
       year = century + year;
     }
 
-    if (!this.validDate(month - 1, day, year)) {
+    if (!this.validDate(month, day, year)) {
       return null;
     }
 
     // Create a new date with the correct year month and date values based on the locale of the datepicker
-    return new Date(year, month - 1, day);
+    return new Date(year, month, day);
   }
 
   private static parseFromInternational(values: string[]): Date {
