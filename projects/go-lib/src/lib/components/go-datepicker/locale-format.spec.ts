@@ -13,17 +13,5 @@ describe('LocaleFormat', () => {
         dec.toUTCString() + ' is not a valid date'
       );
     });
-
-    /**
-     * @see https://github.com/mobi/goponents/issues/828
-     *
-     * it('should return false when dates are out of range', () => {
-     *   const badDate: Date = new Date(2021, -1, 32);
-     *
-     *   expect(LocaleFormat.validDate(badDate.getMonth(), badDate.getDate(), badDate.getFullYear())).toBeFalsy(
-     *     'Date(2020, -1, 32) should be invalid'
-     *   );
-     * });
-     */
   });
 });
