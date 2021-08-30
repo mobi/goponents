@@ -11,6 +11,7 @@ strong {
 .go-heading {
   font-family: $primary-font-stack;
   font-weight: $weight-regular;
+  line-height: 1.4;
   margin-bottom: $heading-margin-bottom;
 }
 
@@ -100,5 +101,16 @@ strong {
   &__item {
     line-height: 1.5;
     margin: $column-gutter--half 0;
+  }
+}
+
+.go-unordered-list {
+  line-height: 1.6;
+  list-style-position: outside;
+  list-style-type: disc;
+  margin: 0 0 2rem 1.1rem;
+
+  &__inner {
+    list-style-type: circle;
   }
 }
