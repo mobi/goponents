@@ -16,6 +16,7 @@ export class GoSelectComponent implements OnInit {
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() clearable: boolean = true;
+  @Input() clearSearchOnAdd: boolean = true;
   @Input() closeOnSelect: boolean = true;
   @Input() control: FormControl;
   /**
