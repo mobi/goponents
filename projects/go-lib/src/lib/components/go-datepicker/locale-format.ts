@@ -35,10 +35,10 @@ export class LocaleFormat {
 
   static validDate(month: number, day: number, year: number): boolean {
     const validDays: Array<number> = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    if (year >= 10000 || month > 12 || month < 1) {
+    if (year >= 10000 || month > 11 || month < 0) {
       return false;
     }
-    if (day <= validDays[month - 1]) {
+    if (day <= validDays[month]) {
       return true;
     }
     if (year % 4 === 0 && month === 2 && day === 29) {
@@ -55,7 +55,12 @@ export class LocaleFormat {
 
   private static parseFromFormat(values: string[], locale: string): Date {
     const format: Array<string> = this.format(locale).split(/[/\-.]/);
-    const month: number = this.dateFromFormat(format, values, 'mm');
+
+    /**
+     * Month index: 0-11
+     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+     */
+    const month: number = this.dateFromFormat(format, values, 'mm') - 1;
     const day: number = this.dateFromFormat(format, values, 'dd');
     let year: number = this.dateFromFormat(format, values, 'yyyy');
 
@@ -70,7 +75,7 @@ export class LocaleFormat {
     }
 
     // Create a new date with the correct year month and date values based on the locale of the datepicker
-    return new Date(year, month - 1, day);
+    return new Date(year, month, day);
   }
 
   private static parseFromInternational(values: string[]): Date {

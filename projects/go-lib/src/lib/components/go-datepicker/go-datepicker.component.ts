@@ -58,7 +58,10 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
       if (!value) {
         this.selectedDate = null;
       } else {
-        const dateValid: boolean = (value instanceof Date) && LocaleFormat.validDate(value.getMonth(), value.getDay(), value.getFullYear());
+        const localeDateIsValid: boolean = LocaleFormat.validDate(value.getMonth(), value.getDate(), value.getFullYear());
+
+        const dateValid: boolean = (value instanceof Date) && localeDateIsValid;
+
         if (!dateValid) {
           this.control.setErrors([{ message: 'format is invalid' }]);
         } else {

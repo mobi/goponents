@@ -138,8 +138,8 @@ describe('GoDatepickerComponent', () => {
       expect(component.control.value).toEqual(new Date(2015, 4, 16));
     });
 
-        it("should reset control ", () => {
-      component.control.setValue("09/16/2016");
+    it('should reset control', () => {
+      component.control.setValue('09/16/2016');
       component.control.reset();
 
       fixture.detectChanges();

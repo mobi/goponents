@@ -1,3 +1,19 @@
-<p>Page 4 works!</p>
+<div class="go-container">
+  <div class="go-column">
+    <h1>Test Page 4</h1>
+  </div>
+</div>
+
+<form class="go-container card-form-dark">
+  <div class="go-column go-column--50">
+    <go-datepicker
+      #datePicker
+      [control]="form.controls.date"
+    ></go-datepicker>
+  </div>
+  <div class="go-column go-column--50">
+    <go-button (click)="submitForm()">Submit</go-button>
+  </div>
+</form>
 
 <a [routerLink]="['/test-page-1', 123]">Redirect</a>
