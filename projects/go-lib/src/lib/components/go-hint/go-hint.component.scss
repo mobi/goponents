@@ -2,7 +2,6 @@
 
 .go-hint {
   font-size: .875rem;
-  font-style: italic;
   letter-spacing: $base-letter-spacing;
   line-height: 1rem;
   margin: $column-gutter--quarter 0;
@@ -45,7 +44,6 @@
   &__label {
     display: block;
     font-size: .75rem;
-    font-style: normal;
     font-weight: $weight-regular;
     margin-bottom: $column-gutter--quarter;
     text-transform: uppercase;

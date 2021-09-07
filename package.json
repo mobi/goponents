@@ -17,7 +17,7 @@
     "app": "./node_modules/.bin/ng build go-tester --prod",
     "build_lib": "./node_modules/.bin/ng build go-lib",
     "build_lib_scss": "chmod +x ./sass-port.sh && ./sass-port.sh",
-    "test_lib": "./node_modules/.bin/ng test go-lib",
+    "test_lib": "./node_modules/.bin/ng test go-lib --source-map=false",
     "test_lib:browse": "npm run test_lib -- --reporters=kjhtml --browsers=Chrome",
     "test_lib:detailed": "npm run test_lib -- --reporters=spec",
     "test_app": "./node_modules/.bin/ng test go-tester",

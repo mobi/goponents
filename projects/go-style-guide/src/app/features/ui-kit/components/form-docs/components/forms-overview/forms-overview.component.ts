@@ -24,6 +24,19 @@ export class FormsOverviewComponent {
 
   maxBirthDate: Date = new Date();
 
+  validationsExControl: FormControl = new FormControl();
+  validationsEx: string = `
+  school: FormControl = new FormControl();
+
+  this.school.valueChanges.subscribe((v: string) => {
+    if (v !== 'Hogwarts' && v.length > 0) {
+      this.school.setErrors({ invalid: 'School must be Hogwarts.' });
+    } else {
+      this.school.setErrors(null);
+    }
+  });
+  `;
+
   form: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
     bio: new FormControl(),
@@ -32,7 +45,7 @@ export class FormsOverviewComponent {
     picture: new FormControl(),
     favoriteCharacter: new FormControl(),
     enableNotifications: new FormControl(true),
-    notificationMethod: new FormControl('push'),
+    notificationMethod: new FormControl(null, Validators.required),
     notificationsReceived: new FormGroup({
       comments: new FormControl(true),
       mentions: new FormControl(true)
@@ -46,5 +59,12 @@ export class FormsOverviewComponent {
     this.subNavService.linkToSource =
       'https://github.com/mobi/goponents/tree/dev/projects/go-style-guide/src/app/features/standards/components/forms';
     this.maxBirthDate.setDate(this.maxBirthDate.getDate() - 1);
+    this.validationsExControl.valueChanges.subscribe((v: string) => {
+      if (v !== 'Hogwarts' && v.length > 0) {
+        this.validationsExControl.setErrors({ school: 'School must be Hogwarts.' });
+      } else {
+        this.validationsExControl.setErrors(null);
+      }
+    });
   }
 }

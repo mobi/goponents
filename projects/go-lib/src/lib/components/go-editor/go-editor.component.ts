@@ -17,7 +17,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -37,7 +37,7 @@ export const TINYMCE_SCRIPT_SRC: InjectionToken<string> = new InjectionToken<str
 })
 export class GoEditorComponent extends EditorComponent implements OnInit, OnDestroy, OnChanges {
 
-  @Input() formControl: FormControl;
+  @Input() formControl: FormControl | AbstractControl;
   @Input() label: string;
   @Input() hints: string[] = [];
   @Input() plugins: string = 'autolink lists link paste';

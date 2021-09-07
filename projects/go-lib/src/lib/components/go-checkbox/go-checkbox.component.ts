@@ -1,28 +1,15 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { generateId } from '../../utilities/form.utils';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   selector: 'go-checkbox',
   templateUrl: './go-checkbox.component.html'
 })
-export class GoCheckboxComponent implements OnInit, OnChanges, AfterViewInit {
-  id: string;
+export class GoCheckboxComponent extends GoFormBaseComponent implements OnChanges, AfterViewInit {
 
-  @Input() control: FormControl;
-  @Input() hints: string[];
   @Input() indeterminate: boolean = false;
-  @Input() key: string;
-  @Input() label: string;
-  @Input() theme: string = 'light';
 
   @ViewChild('hiddenInputRef') hiddenInputRef: ElementRef;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.id = this.key || generateId(this.label, 'checkbox');
-  }
 
   ngOnChanges(): void {
     if (this.hiddenInputRef) {

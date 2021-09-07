@@ -9,6 +9,7 @@ import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.comp
 import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
 import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    GoFormErrorsModule,
     GoIconButtonModule,
     GoHintModule,
     GoRequiredTextModule

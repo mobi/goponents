@@ -6,6 +6,7 @@ import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRadioGroupComponent } from './go-radio-group.component';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @Component({
   selector: 'go-test',
@@ -35,6 +36,7 @@ describe('GoRadioGroupComponent', () => {
       declarations: [GoRadioButtonComponent, GoRadioGroupComponent, GoTestRadioGroupComponent],
       imports: [
         FormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule

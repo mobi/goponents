@@ -9,6 +9,7 @@ import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.comp
 import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
 import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoDatepickerComponent', () => {
   let component: GoDatepickerComponent;
@@ -24,6 +25,7 @@ describe('GoDatepickerComponent', () => {
         GoDatepickerComponent
       ],
       imports: [
+        GoFormErrorsModule,
         GoIconButtonModule,
         GoHintModule,
         FormsModule,
