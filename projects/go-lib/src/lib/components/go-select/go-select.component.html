@@ -32,26 +32,24 @@
   [virtualScroll]="virtualScroll"
   (scrollToEnd)="onScrollToEnd()"
   (scroll)="onScroll($event)">
-  <ng-container *ngIf="multiple && showSelectAll && items?.length">
-    <ng-template ng-header-tmp>
-      <button
-        (click)="onSelectAll()"
-        class="go-select__select-all-button"
-        [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }">
-        Select All
-      </button>
-    </ng-template>
-  </ng-container>
-  <ng-container *ngIf="multiple && items?.length && control.value">
-    <ng-template ng-header-tmp>
-      <button
+  <ng-template
+    *ngIf="multiple && items?.length"
+    ng-header-tmp>
+    <button
+      (click)="onSelectAll()"
+      class="go-select__select-all-button"
+      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
+      *ngIf="showSelectAll && control.value?.length < items?.length">
+      Select All
+    </button>
+    <button
       (click)="onRemoveAll()"
       class="go-select__select-all-button"
-      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }">
+      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
+      *ngIf="control.value">
       Remove  All
     </button>
-    </ng-template>
-  </ng-container>
+  </ng-template>
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
