@@ -10,6 +10,7 @@ import { DragonDropDirective } from './go-dragon-drop.directive';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
   imports: [
     CommonModule,
     FormsModule,
+    GoFormErrorsModule,
     GoButtonModule,
     GoHintModule,
     GoIconModule,

@@ -8,14 +8,15 @@ import { GoActionSheetComponent } from '../go-action-sheet.component';
 })
 export class GoPanelComponent {
 
-  @Input() danger: boolean;
-  @Input() showHeader: boolean;
-  @Input() icon: string;
-  @Input() externalLink: string;
-  @Input() panelContent: string;
-  @Input() target: string;
   @Input() closeOnClick: boolean = true;
+  @Input() danger: boolean;
   @Input() disablePanel: boolean = false;
+  @Input() externalLink: string;
+  @Input() icon: string;
+  @Input() panelContent: string;
+  @Input() readonly: boolean = false;
+  @Input() showHeader: boolean;
+  @Input() target: string;
 
   @Output() action: EventEmitter<void> = new EventEmitter<void>();
 
@@ -25,13 +26,16 @@ export class GoPanelComponent {
     return {
       'go-panel--danger': this.danger,
       'go-panel--header': this.showHeader,
-      'go-panel--disabled': this.disablePanel
+      'go-panel--disabled': this.disablePanel,
+      'go-panel--readonly': this.readonly
     };
   }
 
   handleAction(): void {
-    this.action.emit();
-    this.panelClicked();
+    if (!this.readonly && !this.disablePanel) {
+      this.action.emit();
+      this.panelClicked();
+    }
   }
 
   panelClicked(): void {

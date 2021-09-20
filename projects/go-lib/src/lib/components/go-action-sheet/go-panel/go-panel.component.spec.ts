@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
 
 import { GoPanelComponent } from './go-panel.component';
 import { GoActionSheetComponent } from '../go-action-sheet.component';
-import { ElementRef } from '@angular/core';
 
 class MockGoActionSheetComponent extends GoActionSheetComponent {
   showContent: boolean = false;
@@ -36,20 +36,55 @@ describe('GoPanelComponent', () => {
   });
 
   describe('handleAction', () => {
-    it('should emit an event', () => {
-      spyOn(component.action, 'emit').and.callThrough();
+    describe('if readonly and disablePanel are false', () => {
+      beforeEach(() => {
+        component.readonly = false;
+        component.disablePanel = false;
+      });
 
-      component.handleAction();
+      it('should emit an event', () => {
+        spyOn(component.action, 'emit').and.callThrough();
 
-      expect(component.action.emit).toHaveBeenCalled();
+        component.handleAction();
+
+        expect(component.action.emit).toHaveBeenCalled();
+      });
+
+      it('should call panelClicked', () => {
+        spyOn(component, 'panelClicked');
+
+        component.handleAction();
+
+        expect(component.panelClicked).toHaveBeenCalled();
+      });
     });
 
-    it('should call panelClicked', () => {
-      spyOn(component, 'panelClicked');
+    describe('if readonly is true', () => {
+      beforeEach(() => {
+        component.readonly = true;
+      });
 
-      component.handleAction();
+      it('should not emit an event', () => {
+        spyOn(component.action, 'emit').and.callThrough();
 
-      expect(component.panelClicked).toHaveBeenCalled();
+        component.handleAction();
+
+        expect(component.action.emit).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('if disabled is true', () => {
+      beforeEach(() => {
+        component.disablePanel = true;
+      });
+
+      it('should not emit an event', () => {
+        spyOn(component.action, 'emit').and.callThrough();
+
+        component.handleAction();
+
+        expect(component.action.emit).not.toHaveBeenCalled();
+      });
     });
   });
 

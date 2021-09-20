@@ -6,6 +6,7 @@ import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoCheckboxComponent } from './go-checkbox.component';
 import { Component } from '@angular/core';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @Component({
   selector: 'go-test',
@@ -37,6 +38,7 @@ describe('GoCheckboxGroupComponent', () => {
     TestBed.configureTestingModule({
       declarations: [GoCheckboxGroupComponent, GoCheckboxComponent, GoTestCheckboxGroupComponent],
       imports: [
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         FormsModule,

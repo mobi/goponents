@@ -8,6 +8,7 @@ import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.comp
 import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
 import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
 import { GoCalendar } from './go-calendar';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoCalendarComponent', () => {
   let component: GoCalendarComponent;
@@ -22,6 +23,7 @@ describe('GoCalendarComponent', () => {
         GoCalendarYearViewComponent
       ],
       imports: [
+        GoFormErrorsModule,
         GoIconButtonModule,
         GoHintModule,
         FormsModule,

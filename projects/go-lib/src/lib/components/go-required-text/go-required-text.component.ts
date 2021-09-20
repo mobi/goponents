@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { requiredValidatorExists } from '../../utilities/form.utils';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
+import { GoFormService } from '../../services/form.service';
 
 @Component({
   selector: 'go-required-text',
@@ -9,10 +9,12 @@ import { FormControl } from '@angular/forms';
 })
 export class GoRequiredTextComponent {
 
-  @Input() control: FormControl;
+  @Input() control: FormControl | AbstractControl;
 
-  get validator(): boolean | void {
-    return requiredValidatorExists(this.control);
+  get validator(): boolean {
+    return this.goFormService.requiredValidatorExists(this.control);
   }
+
+  constructor(private goFormService: GoFormService) {}
 
 }

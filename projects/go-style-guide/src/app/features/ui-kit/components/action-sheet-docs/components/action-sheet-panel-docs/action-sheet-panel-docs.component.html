@@ -82,7 +82,15 @@
         <h4 class="go-heading-4">disablePanel</h4>
         <p class="go-body-copy">
           This determines whether the panel will be disabled or not.
-          Defaults to <code class="code-block--inline">false</code>.
+          Defaults to <code class="code-block--inline">false</code>. Click events will not fire.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">readonly</h4>
+        <p class="go-body-copy">
+          This determines whether the panel is readonly or not.
+          Defaults to <code class="code-block--inline">false</code>. Click events will not fire.
         </p>
       </div>
 
@@ -269,6 +277,82 @@
               <go-panel panelContent="Home">
               </go-panel>
               <go-panel (action)="toast()" panelContent="Toast Me">
+              </go-panel>
+              <go-panel panelContent="Settings">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="disabled">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Disabled</h2>
+      <go-copy cardId="disabled" goCopyCardLink></go-copy>
+    </ng-container>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            This example shows an instance where the one of the action sheet panels is disabled.
+          </p>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="disabledHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Actions Sheet
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Home" [disablePanel]="true">
+              </go-panel>
+              <go-panel panelContent="Profile">
+              </go-panel>
+              <go-panel panelContent="Settings">
+              </go-panel>
+            </ng-container>
+          </go-action-sheet>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="readonly">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Readonly</h2>
+      <go-copy cardId="readonly" goCopyCardLink></go-copy>
+    </ng-container>
+    <div go-card-content>
+      <div class="go-container">
+        <div class="go-column--100 go-column go-column--no-padding">
+          <p class="go-body-copy">
+            This example shows an instance where the one of the action sheet panels is readonly.
+          </p>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding">
+          <h4 class="go-heading-4 go-heading--underlined">Code</h4>
+          <code [highlight]="readonlyHtml"></code>
+        </div>
+        <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
+          <h4 class="go-heading-4 go-heading--underlined">View</h4>
+          <go-action-sheet>
+            <ng-container go-action-sheet__button>
+              <go-button>
+                Actions Sheet
+              </go-button>
+            </ng-container>
+            <ng-container go-action-sheet-content>
+              <go-panel panelContent="Home" [readonly]="true">
+              </go-panel>
+              <go-panel panelContent="Profile">
               </go-panel>
               <go-panel panelContent="Settings">
               </go-panel>

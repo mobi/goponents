@@ -1,16 +1,14 @@
 import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { GoCheckboxComponent } from './go-checkbox.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   selector: 'go-checkbox-group',
   templateUrl: './go-checkbox-group.component.html'
 })
-export class GoCheckboxGroupComponent implements AfterContentInit {
-  @Input() control: FormControl | FormGroup;
-  @Input() hints: string[];
+export class GoCheckboxGroupComponent extends GoFormBaseComponent implements AfterContentInit {
+
   @Input() legend: string;
-  @Input() theme: 'light' | 'dark' = 'light';
 
   @ContentChildren(GoCheckboxComponent, { descendants: true }) checkboxes: QueryList<GoCheckboxComponent>;
 

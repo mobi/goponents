@@ -72,10 +72,28 @@ $theme-light-transparentized: rgba($theme-light-color, .5);
 
   &--header {
     color: $base-medium;
+    cursor: default;
+    pointer-events: none;
+
+    &:hover,
+    &:active {
+      background: $theme-light-bg;
+    }
+  }
+
+  &--readonly {
+    cursor: default;
+    pointer-events: none;
+
+    &:hover,
+    &:active {
+      background: $theme-light-bg;
+    }
   }
 
   &--disabled {
     color: $theme-light-transparentized;
+    cursor: default;
     pointer-events: none;
  }
 }

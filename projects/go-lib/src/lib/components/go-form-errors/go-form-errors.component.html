@@ -1,0 +1,22 @@
+<div *ngIf="errors && !errors.length && (control.dirty || control.touched)">
+  <go-hint
+    *ngFor="let error of errors | keyvalue"
+    [message]="errorString(error.key, error.value)"
+    [theme]="theme"
+    type="negative">
+  </go-hint>
+</div>
+
+<!--
+  This is the old approach and is deprecated,
+  support for errors as an array will eventually be dropped.
+-->
+<div *ngIf="control?.errors?.length">
+  <go-hint
+    *ngFor="let error of control.errors"
+    [message]="error.message"
+    [label]="error.type"
+    [theme]="theme"
+    type="negative">
+  </go-hint>
+</div>

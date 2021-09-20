@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoSwitchToggleComponent } from './go-switch-toggle.component';
@@ -13,6 +14,7 @@ describe('GoCheckboxComponent', () => {
       declarations: [GoSwitchToggleComponent],
       imports: [
         FormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule
@@ -33,11 +35,6 @@ describe('GoCheckboxComponent', () => {
   });
 
   describe('ngOnInit', () => {
-    it('should set the id', () => {
-      component.ngOnInit();
-
-      expect(component.id.startsWith('toggle')).toBe(true);
-    });
   });
 
   describe('toggle', () => {

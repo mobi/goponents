@@ -4,6 +4,7 @@ import { GoInputComponent } from './go-input.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoInputComponent', () => {
   let component: GoInputComponent;
@@ -14,6 +15,7 @@ describe('GoInputComponent', () => {
       declarations: [GoInputComponent],
       imports: [
         FormsModule,
+        GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,
         ReactiveFormsModule

@@ -1,7 +1,7 @@
 <label 
   *ngIf="label"
   class="go-form__label"
-  [attr.for]="id"
+  [attr.for]="_id"
   [ngClass]="{'go-form__label--dark': theme === 'dark'}">
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
@@ -41,7 +41,7 @@
 
       <input
         type="file"
-        [id]="id"
+        [id]="_id"
         #filePicker
         class="go-file-upload__input"
         (change)="onFilePicked($event)"
@@ -76,12 +76,4 @@
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme">
 </go-hint>
 
-<div *ngIf="control?.errors?.length">
-  <go-hint
-    *ngFor="let error of control.errors"
-    [message]="error.message"
-    [label]="error.type"
-    [theme]="theme"
-    type="negative"
-  ></go-hint>
-</div>
+<go-form-errors [control]="control" [theme]="theme"></go-form-errors>

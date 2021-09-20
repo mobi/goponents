@@ -1,7 +1,6 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { generateId } from '../../utilities/form.utils';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -9,15 +8,14 @@ import { generateId } from '../../utilities/form.utils';
   templateUrl: './go-select.component.html',
   styleUrls: ['./go-select.component.scss']
 })
-export class GoSelectComponent implements OnInit {
-  id: string;
+export class GoSelectComponent extends GoFormBaseComponent implements OnInit {
 
   @Input() appendTo: string;
   @Input() bindLabel: string;
   @Input() bindValue: string;
   @Input() clearable: boolean = true;
+  @Input() clearSearchOnAdd: boolean = true;
   @Input() closeOnSelect: boolean = true;
-  @Input() control: FormControl;
   /**
    * A property on each item to group by
    */
@@ -26,16 +24,11 @@ export class GoSelectComponent implements OnInit {
    * If true, hides drop down arrow on select
    */
   @Input() hideDropDownArrow: boolean = false;
-  @Input() hints: string[];
   @Input() items: any[];
-  @Input() key: string;
-  @Input() label: string;
   @Input() loading: boolean = false;
   @Input() multiple: boolean = false;
-  @Input() placeholder: string;
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
-  @Input() theme: 'light' | 'dark' = 'light';
   @Input() typeahead?: Subject<string>;
   @Input() typeToSearchText: string = 'Type to Search';
   @Input() virtualScroll: boolean = false;
@@ -48,7 +41,6 @@ export class GoSelectComponent implements OnInit {
   @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
 
   ngOnInit(): void {
-    this.id = this.key || generateId(this.label, 'select');
     this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
   }
 

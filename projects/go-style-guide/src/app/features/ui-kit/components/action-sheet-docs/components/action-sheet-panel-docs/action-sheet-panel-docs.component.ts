@@ -111,6 +111,42 @@ export class ActionSheetPanelDocsComponent {
   </go-action-sheet>
   `;
 
+  disabledHtml: string = `
+  <go-action-sheet>
+    <ng-container go-action-sheet__button>
+      <go-button>
+        Actions Sheet
+      </go-button>
+    </ng-container>
+    <ng-container go-action-sheet-content>
+      <go-panel panelContent="Home" [disablePanel]="true">
+      </go-panel>
+      <go-panel panelContent="Profile">
+      </go-panel>
+      <go-panel panelContent="Settings">
+      </go-panel>
+    </ng-container>
+  </go-action-sheet>
+  `;
+
+  readonlyHtml: string = `
+  <go-action-sheet>
+    <ng-container go-action-sheet__button>
+      <go-button>
+        Actions Sheet
+      </go-button>
+    </ng-container>
+    <ng-container go-action-sheet-content>
+      <go-panel panelContent="Home" [readonly]="true">
+      </go-panel>
+      <go-panel panelContent="Profile">
+      </go-panel>
+      <go-panel panelContent="Settings">
+      </go-panel>
+    </ng-container>
+  </go-action-sheet>
+  `;
+
   routerHtml: string = `
   <go-action-sheet>
     <ng-container go-action-sheet__button>

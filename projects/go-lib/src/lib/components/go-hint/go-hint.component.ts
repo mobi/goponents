@@ -28,7 +28,7 @@ export class GoHintComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     if (this.type === 'negative' && !this.label) {
-      this.label = 'Error:';
+      this.label = 'Error';
     }
   }
 }

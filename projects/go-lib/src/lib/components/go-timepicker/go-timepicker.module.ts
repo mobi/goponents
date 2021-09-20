@@ -9,6 +9,7 @@ import { GoInputModule } from '../go-input/go-input.module';
 import { GoButtonModule } from '../go-button/go-button.module';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GoHintModule } from '../go-hint/go-hint.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    GoFormErrorsModule,
     GoIconButtonModule,
     GoInputModule,
     GoButtonModule,

@@ -1,46 +1,39 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
-import { generateId } from '../../utilities/form.utils';
+import { GoFormService } from '../../services/form.service';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
   selector: 'go-datepicker',
   styleUrls: ['./go-datepicker.component.scss'],
   templateUrl: './go-datepicker.component.html'
 })
-export class GoDatepickerComponent implements OnDestroy, OnInit {
+export class GoDatepickerComponent extends GoFormBaseComponent implements OnDestroy, OnInit {
   displayAbove: boolean = false;
   displayFromRight: boolean = true;
   goCalendar: GoCalendar;
-  id: string;
   max: Date;
   min: Date;
   selectedDate: string;
   subscription: any;
 
+  @Input() appendTo: 'body' | null = null;
   @Input() appendToContent: boolean = false;
-  @Input() control: FormControl;
-  @Input() hints: string[];
-  @Input() key: string;
-  @Input() label: string;
   @Input() locale: string = 'en-US';
   @Input() maxDate: Date | string;
   @Input() minDate: Date | string;
-  @Input() placeholder: string = '';
-  @Input() theme: string = 'light';
-  @Input() appendTo: 'body' | null = null;
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 
-  constructor() {
+  constructor(goFormService: GoFormService) {
+    super(goFormService);
     this.goCalendar = new GoCalendar();
   }
 
   ngOnInit(): void {
     this.min = this.initializeDate(this.minDate);
     this.max = this.initializeDate(this.maxDate);
-    this.id = this.key || generateId(this.label, 'datepicker');
 
     this.selectedDate = this.control.value;
     if (this.control.value) {
@@ -58,7 +51,10 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
       if (!value) {
         this.selectedDate = null;
       } else {
-        const dateValid: boolean = (value instanceof Date) && LocaleFormat.validDate(value.getMonth(), value.getDay(), value.getFullYear());
+        const localeDateIsValid: boolean = LocaleFormat.validDate(value.getMonth(), value.getDate(), value.getFullYear());
+
+        const dateValid: boolean = (value instanceof Date) && localeDateIsValid;
+
         if (!dateValid) {
           this.control.setErrors([{ message: 'format is invalid' }]);
         } else {
@@ -109,7 +105,7 @@ export class GoDatepickerComponent implements OnDestroy, OnInit {
   }
 
   public restrictInput(): void {
-    this.selectedDate = this.selectedDate.replace(/[^0-9/.-]/g, '');
+    this.selectedDate = this.selectedDate?.replace(/[^0-9/.-]/g, '');
   }
 
   private initializeDate(date: Date | string): Date {

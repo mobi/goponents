@@ -8,6 +8,7 @@ import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoButtonModule } from '../go-button/go-button.module';
 import { GoTimeFormat } from './go-time-format.model';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 describe('GoTimepickerComponent', () => {
   let component: GoTimepickerComponent;
@@ -20,6 +21,7 @@ describe('GoTimepickerComponent', () => {
         GoTimepickerComponent
       ],
       imports: [
+        GoFormErrorsModule,
         GoIconButtonModule,
         GoButtonModule,
         GoHintModule,

@@ -5,9 +5,9 @@
     class="go-form__switch-toggle"
     (click)="toggle()">
     <input
-      [id]="id"
+      [id]="_id"
       class="go-form__switch-toggle__input"
-      [ngClass]="{'go-form__input--error': control?.errors?.length && control.invalid, 'go-form__input--dark': theme === 'dark'}"
+      [ngClass]="inputClasses"
       type="checkbox"
       [formControl]="control">
     <span
@@ -25,20 +25,12 @@
   [theme]="theme">
 </go-hint>
 
-<div *ngIf="control?.errors?.length">
-  <go-hint
-    *ngFor="let error of control.errors"
-    [message]="error.message"
-    [label]="error.type"
-    [theme]="theme"
-    type="negative">
-  </go-hint>
-</div>
+<go-form-errors [control]="control" [theme]="theme"></go-form-errors>
 
 <ng-template #labelTemplate>
   <label
     *ngIf="label"
-    [attr.for]="id"
+    [attr.for]="_id"
     class="go-form__label go-form__label--inline go-form__switch-toggle__label"
     [ngClass]="{
       'go-form__label--dark': theme === 'dark',

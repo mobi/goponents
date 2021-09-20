@@ -61,7 +61,7 @@ describe('GoHintComponent', () => {
 
       component.ngOnInit();
 
-      expect(component.label).toBe('Error:');
+      expect(component.label).toBe('Error');
     });
 
     it('does not set a label by default', () => {
