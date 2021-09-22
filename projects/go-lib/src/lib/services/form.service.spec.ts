@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 
 import { GoFormService } from './form.service';
 
-fdescribe('GoFormService', () => {
+describe('GoFormService', () => {
   let service: GoFormService;
 
   beforeEach(() => {

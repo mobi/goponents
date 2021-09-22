@@ -25,7 +25,7 @@ export class GoFormErrorsComponent {
    */
   errorString(k: string, v: any): string {
     const ngValidator: (...args: any) => string = this.goFormService.ngValidators[k];
-    return ngValidator ? (typeof v === 'object') ? ngValidator(v) : v : v;
+    return ngValidator ? ngValidator(v) : v;
   }
 
 }
