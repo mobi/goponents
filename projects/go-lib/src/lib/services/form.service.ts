@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { AbstractControl, FormControl, ValidationErrors } from "@angular/forms";
+import { Injectable } from '@angular/core';
+import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class GoFormService {
   /**
@@ -11,7 +11,7 @@ export class GoFormService {
    */
   ngValidators: { [k: string]: (...args: any) => string } = {
     email: (obj: ValidationErrors): string =>
-      !obj.email ? `Must be a valid email address.` : "",
+      !obj.email ? `Must be a valid email address.` : '',
     max: (obj: ValidationErrors): string =>
       `Must be less than ${obj.max}, entered ${obj.actual}`,
     maxlength: (obj: ValidationErrors): string =>
@@ -20,9 +20,9 @@ export class GoFormService {
       `Must be greater than ${obj.min}, entered ${obj.actual}`,
     minlength: (obj: ValidationErrors): string =>
       `Must contain at least ${obj.requiredLength} characters, entered ${obj.actualLength}`,
-    required: (): string => "This is a required field",
-    requiredtrue: (): string => "This is a required field",
-    pattern: (): string => "Invalid Input",
+    required: (): string => 'This is a required field',
+    requiredtrue: (): string => 'This is a required field',
+    pattern: (): string => 'Invalid Input',
   };
 
   /**
@@ -33,11 +33,11 @@ export class GoFormService {
    */
   baseInputClasses(
     control: FormControl | AbstractControl,
-    theme: "light" | "dark"
+    theme: 'light' | 'dark'
   ): { [k: string]: boolean } {
     return {
-      "go-form__input--error": control.invalid && control.touched,
-      "go-form__input--dark": theme === "dark",
+      'go-form__input--error': control.invalid && control.touched,
+      'go-form__input--dark': theme === 'dark',
     };
   }
 
@@ -49,11 +49,11 @@ export class GoFormService {
    */
   baseFieldsetClasses(
     control: FormControl | AbstractControl,
-    theme: "light" | "dark"
+    theme: 'light' | 'dark'
   ): { [k: string]: boolean } {
     return {
-      "go-form__fieldset--error": control.invalid && control.touched,
-      "go-form__fieldset--dark": theme === "dark",
+      'go-form__fieldset--error': control.invalid && control.touched,
+      'go-form__fieldset--dark': theme === 'dark',
     };
   }
 
@@ -65,12 +65,12 @@ export class GoFormService {
    */
   generateId(label: string, inputType: string): string {
     const labelText: string = label || inputType;
-    const idArray: Array<string> = labelText.split(" ");
+    const idArray: Array<string> = labelText.split(' ');
 
     // NOTE: There is a chance that this number is not unique.
     idArray.push(String(Math.round(Math.random() * 1000000)));
 
-    return idArray.join("-");
+    return idArray.join('-');
   }
 
   /**
