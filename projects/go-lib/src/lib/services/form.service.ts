@@ -18,7 +18,7 @@ export class GoFormService {
     minlength: (obj: ValidationErrors): string => `Must contain at least ${obj.requiredLength} characters, entered ${obj.actualLength}`,
     required: (): string => 'This is a required field',
     requiredtrue: (): string => 'This is a required field',
-	  pattern: () => 'Invalid Input'
+    pattern: () => 'Invalid Input'
   };
 
   /**
