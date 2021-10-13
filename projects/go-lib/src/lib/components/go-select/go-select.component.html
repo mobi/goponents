@@ -36,6 +36,7 @@
     *ngIf="multiple && items?.length"
     ng-header-tmp>
     <button
+      type="button"
       (click)="onSelectAll()"
       class="go-select__select-all-button"
       [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
@@ -43,6 +44,7 @@
       Select All
     </button>
     <button
+      type="button"
       (click)="onRemoveAll()"
       class="go-select__select-all-button"
       [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
