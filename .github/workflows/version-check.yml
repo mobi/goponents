@@ -21,13 +21,13 @@ jobs:
         id: package-version-current
         uses: martinbeentjes/npm-get-version-action@master
         with:
-          path: projects/go-lib/package.json
+          path: projects/go-lib
       - uses: actions/checkout@v2
       - name: Get New Package Version
         id: package-version-new
         uses: martinbeentjes/npm-get-version-action@master
         with:
-          path: projects/go-lib/package.json
+          path: projects/go-lib
       - name: Ensure New Version
         if: steps.package-version-current.outputs.current-version == steps.package-version-new.outputs.current-version
         uses: actions/github-script@v3
