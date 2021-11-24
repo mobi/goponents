@@ -1,6 +1,7 @@
 ![CI](https://github.com/mobi/goponents/actions/workflows/ci.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/51dc6df26aa65c6d11b9/maintainability)](https://codeclimate.com/github/mobi/goponents/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/51dc6df26aa65c6d11b9/test_coverage)](https://codeclimate.com/github/mobi/goponents/test_coverage)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b4506f44-16c0-4852-9b75-3c89196e7216/deploy-status)](https://app.netlify.com/sites/goponents/deploys)
 
 # Goponents
 
