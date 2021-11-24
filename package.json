@@ -30,7 +30,8 @@
     "sass-lint": "./node_modules/.bin/sass-lint -c .sass-lint.yml",
     "style_guide": "./node_modules/.bin/ng serve --project=go-style-guide",
     "style_guide_publish": "ng build --prod --project=go-style-guide",
-    "tester": "./node_modules/.bin/ng serve --project=go-tester"
+    "tester": "./node_modules/.bin/ng serve --project=go-tester",
+    "postinstall": "ngcc"
   },
   "private": true,
   "engines": {
