@@ -1,7 +1,7 @@
 ## PR Checklist
 Please check if your PR fulfills the following requirements:
 <!-- Please check all that apply using "x". -->
-- [ ] The commit message follows our [guidelines](https://github.com/mobi/goponents/blob/master/CONTRIBUTING.md)
+- [ ] The commit message follows our [guidelines](https://github.com/mobi/goponents/blob/main/CONTRIBUTING.md)
 - [ ] Tests for the changes have been added
 - [ ] Docs have been added or updated
 

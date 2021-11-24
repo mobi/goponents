@@ -1,8 +1,8 @@
 # Contribution Guide
-_**Note:** The guide for contributing to this repo is based on the [contribution guide for Angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md) itself. Parts of this guide were taken verbatim and were originally written by many [fine Angular contributors](https://github.com/angular/angular/blame/master/CONTRIBUTING.md)_
+_**Note:** The guide for contributing to this repo is based on the [contribution guide for Angular](https://github.com/angular/angular/blob/main/CONTRIBUTING.md) itself. Parts of this guide were taken verbatim and were originally written by many [fine Angular contributors](https://github.com/angular/angular/blame/main/CONTRIBUTING.md)_
 
 ## Code of Conduct
-Please read and follow our [Code of conduct](https://github.com/mobi/goponents/blob/master/CODE_OF_CONDUCT.md).
+Please read and follow our [Code of conduct](https://github.com/mobi/goponents/blob/main/CODE_OF_CONDUCT.md).
 
 ## Feature requests
 You can request a new feature by submitting an issue to our [GitHub Repository](https://github.com/mobi/goponents/issues). If you would like to _implement_ a new feature, please submit an issue with a proposal for your work first. 
@@ -46,7 +46,7 @@ Before you submit your pull request (PR) consider the following guidelines:
    git push origin my-branch-name
    ```
 9. In GitHub, send a pull request to `goponents:dev`.
-  - Please format the description of your PR with our [pull request template](https://github.com/mobi/goponents/blob/master/.github/PULL_REQUEST_TEMPLATE.md)
+  - Please format the description of your PR with our [pull request template](https://github.com/mobi/goponents/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
   - If we suggest changes then:
     1. Make the required updates.
     2. Re-run the test suite to ensure tests are still passing.
