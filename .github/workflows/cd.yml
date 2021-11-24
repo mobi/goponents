@@ -47,7 +47,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NVMRC }}
-          registry_url: "https://registry.npmjs.org"
+          registry-url: "https://registry.npmjs.org"
       - name: Install npm Packages
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
