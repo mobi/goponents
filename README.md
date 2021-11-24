@@ -1,3 +1,7 @@
+![CI](https://github.com/mobi/goponents/actions/workflows/ci.yml/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/51dc6df26aa65c6d11b9/maintainability)](https://codeclimate.com/github/mobi/goponents/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/51dc6df26aa65c6d11b9/test_coverage)](https://codeclimate.com/github/mobi/goponents/test_coverage)
+
 # Goponents
 
 ###### Currently `v1.13.2`
