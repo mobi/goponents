@@ -1,0 +1,35 @@
+name: Version Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  checkVersion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Get Current Package Version
+        id: package-version-current
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: projects/go-lib/package.json
+      - uses: actions/checkout@v2
+      - name: Get New Package Version
+        id: package-version-new
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: projects/go-lib/package.json
+      - name: Ensure New Version
+        if: steps.package-version-current.outputs.current-version == steps.package-version-new.outputs.current-version
+        uses: actions/github-script@v3
+        with:
+          script: core.setFailed('Package version has not be incremented!')
