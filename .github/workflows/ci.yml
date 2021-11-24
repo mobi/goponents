@@ -1,0 +1,65 @@
+name: CI
+
+on: [pull_request]
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  library:
+    name: Library
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: library-npm-${{ hashFiles('package-lock.json') }}
+      - name: Read .nvmrc
+        run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NVMRC }}
+      - name: Install npm Packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Run Production Build
+        run: npm run build_lib
+      - name: Run Tests
+        run: npm run test_lib:ci
+      - name: Upload Code Coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          coverageLocations: ${{github.workspace}}/projects/coverage/lcov.info:lcov
+
+  styleGuide:
+    name: Style Guide
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: style-guide-npm-${{ hashFiles('package-lock.json') }}
+      - name: Read .nvmrc
+        run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NVMRC }}
+      - name: Install npm Packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Run Production Build
+        run: npm run style_guide_publish
