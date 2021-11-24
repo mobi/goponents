@@ -1,4 +1,5 @@
 name: CD
+
 on:
   push:
     branches:
@@ -39,7 +40,7 @@ jobs:
           cache-name: cache-node-modules
         with:
           path: ./node_modules
-          key: library-npm-${{ hashFiles('package-lock.json') }}
+          key: npm-${{ hashFiles('package-lock.json') }}
       - name: Read .nvmrc
         run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
       - name: Install Node
