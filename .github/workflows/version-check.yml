@@ -11,6 +11,7 @@ concurrency:
 
 jobs:
   checkVersion:
+    name: Validate New Version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
