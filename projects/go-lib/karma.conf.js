@@ -23,7 +23,7 @@ module.exports = function (config) {
         statements: 93,
         lines: 92,
         branches: 79,
-        functions: 89,
+        functions: 88,
       },
     },
     reporters: ['progress'],
