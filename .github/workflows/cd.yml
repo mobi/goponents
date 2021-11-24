@@ -27,6 +27,8 @@ jobs:
     name: Publish New Package
     runs-on: ubuntu-latest
     needs: createRelease
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Cache Node Modules
@@ -43,11 +45,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NVMRC }}
-          registry-url: "https://registry.npmjs.org"
       - name: Install npm Packages
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Publish Package
-        run: npm run publish -- --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+          npm run publish --ignore-scripts
