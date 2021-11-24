@@ -6,7 +6,7 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: version_check_${{ github.head_ref }}
   cancel-in-progress: true
 
 jobs:
