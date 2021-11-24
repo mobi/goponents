@@ -29,8 +29,7 @@ $go-icon-button-hover-bg: #dcdcdc;
   }
 
   &--disabled {
-    // scss-lint:disable VariableForProperty
-    color: lighten($theme-light-color, 40);
+    color: $base-light-secondary;
     cursor: not-allowed;
     pointer-events: none;
 
