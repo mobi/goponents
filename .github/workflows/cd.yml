@@ -50,6 +50,4 @@ jobs:
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Publish Package
-        run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-          npm run publish --ignore-scripts
+        run: npm run publish -- --ignore-scripts
