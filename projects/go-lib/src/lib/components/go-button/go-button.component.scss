@@ -459,7 +459,6 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     @include transition;
     @include z-index(off-canvas);
 
-	white-space: nowrap;
     background: $theme-light-bg;
     border: 1px solid $base-light-tertiary;
     border-radius: $global-radius;
@@ -469,6 +468,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     right: 0;
     top: calc(2rem + 2px);
     visibility: hidden;
+    white-space: nowrap;
 
     &--active {
       opacity: 1;
