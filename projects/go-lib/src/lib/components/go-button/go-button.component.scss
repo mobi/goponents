@@ -459,6 +459,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     @include transition;
     @include z-index(off-canvas);
 
+	white-space: nowrap;
     background: $theme-light-bg;
     border: 1px solid $base-light-tertiary;
     border-radius: $global-radius;
@@ -482,7 +483,6 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     cursor: pointer;
     font-size: .875rem;
     font-weight: normal;
-    max-width: 10rem;
     padding: .75rem;
 
     &:hover {
