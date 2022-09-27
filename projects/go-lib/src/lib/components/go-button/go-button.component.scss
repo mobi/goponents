@@ -54,7 +54,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
   }
 
   &--icon-only {
-    padding: calc(.625rem - 2px) .625rem;
+    padding: calc(.625rem - 2px) 1rem;
   }
 
   &__icon ~ &__text:not(:empty) {
