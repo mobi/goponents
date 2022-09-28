@@ -155,8 +155,8 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
   }
 
   &--tertiary {
-    border: 1px solid $theme-light-bg;
     background: $theme-light-bg;
+    border: 1px solid $theme-light-bg;
     color: $theme-light-color;
 
     &:hover,
