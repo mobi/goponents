@@ -67,7 +67,7 @@
 
     cursor: pointer;
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     padding: 1.2rem 1rem;
     position: relative;
 
@@ -76,10 +76,10 @@
     }
 
     &--dark {
-      background-color: darken($base-dark-secondary, 7%);
+      background-color: #313536;
 
       &:hover {
-        background-color: darken($base-dark-secondary, 3.5%);
+        background-color: #313536;
       }
     }
 
@@ -93,8 +93,8 @@
     }
 
     &--slim {
-      font-size: 1rem;
-      padding: 1rem;
+      font-size: 0.875rem;
+      padding: 0.625rem 1rem;
     }
   }
 
@@ -133,9 +133,11 @@
 
   &__content {
     padding: 1.5rem 1rem;
+    font-size: 0.875rem;
 
     &--slim {
       padding: 1rem;
+      font-size: 0.875rem;
     }
 
     &--no-padding {
@@ -146,7 +148,7 @@
 
 // ----- Dark Theme Classes
 .go-accordion--theme-dark {
-  background: $theme-dark-bg;
+  background: #313536;
   border: 1px solid $theme-dark-border;
   color: $theme-dark-color;
   font-weight: $weight-light;
