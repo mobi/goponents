@@ -26,6 +26,7 @@ import {
   GoOffCanvasModule,
   GoOffCanvasService,
   GoPillModule,
+  GoProgressBarModule,
   GoRadioModule,
   GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
@@ -111,6 +112,7 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
+import { ProgressBarDocsComponent } from './components/progress-bar-docs/progress-bar-docs.component';
 
 @NgModule({
   imports: [
@@ -146,7 +148,8 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     FormsModule,
     ReactiveFormsModule,
     GoTreeModule,
-    GoTimepickerModule
+    GoTimepickerModule,
+    GoProgressBarModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -214,7 +217,8 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    EditorDocsComponent
+    EditorDocsComponent,
+    ProgressBarDocsComponent
   ],
   providers: [
     DatePipe,
