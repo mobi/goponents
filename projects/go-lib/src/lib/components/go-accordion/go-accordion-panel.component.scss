@@ -76,13 +76,13 @@
     }
 
     &--dark {
-      background-color: #313536;
+      background-color: $base-dark;
 
       &:hover {
-        background-color: #313536;
+        background-color: darken($base-dark, 3.5%);
       }
     }
-
+    
     &--active {
       background-color: darken($base-light, 3.5%);
 
@@ -148,7 +148,7 @@
 
 // ----- Dark Theme Classes
 .go-accordion--theme-dark {
-  background: #313536;
+  background: $theme-dark-bg;
   border: 1px solid $theme-dark-border;
   color: $theme-dark-color;
   font-weight: $weight-light;
