@@ -13,7 +13,7 @@ export class ToastDocsComponent {
 
   componentBindings: string = `
   @Input() dismissable: boolean = false;
-  @Input() enableMaxHeight: boolean = true;
+  @Input() enableMaxHeight: boolean = false;
   @Input() header: string;
   @Input() icon: string;
   @Input() message: string;
@@ -147,7 +147,7 @@ export class ToastDocsComponent {
 
   toast_maxHeight_enable_html: string = `
   <go-toast
-    [enableMaxHeight]="false"
+    [enableMaxHeight]="true"
     header="Show me everything!"
     message="Sed ut perspiciatis... *redacted for brevity* ...voluptas nulla pariatur?">
   </go-toast>
