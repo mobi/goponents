@@ -80,6 +80,7 @@ $base-light: #fff;
 $base-light-secondary: #b1b1b1;
 $base-light-tertiary: #d3d3d3;
 $base-primary: #65b360;
+$base-color:#00000080;
 
 $base-primary-hover: darken($base-primary, 10%);
 $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-hover);
