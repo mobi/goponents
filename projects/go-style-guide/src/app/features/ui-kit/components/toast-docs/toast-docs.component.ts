@@ -140,7 +140,7 @@ export class ToastDocsComponent {
 
   toast_maxHeight_html: string = `
   <go-toast
-    header="Something you should know..."
+    header="Show me everything!"
     message="Sed ut perspiciatis... *redacted for brevity* ...voluptas nulla pariatur?">
   </go-toast>
   `;
@@ -148,7 +148,7 @@ export class ToastDocsComponent {
   toast_maxHeight_enable_html: string = `
   <go-toast
     [enableMaxHeight]="true"
-    header="Show me everything!"
+    header="Something you should know..."
     message="Sed ut perspiciatis... *redacted for brevity* ...voluptas nulla pariatur?">
   </go-toast>
   `;
