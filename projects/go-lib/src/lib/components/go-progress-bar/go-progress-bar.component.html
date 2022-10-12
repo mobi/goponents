@@ -1,6 +1,35 @@
-
-
-<div class="go-progress-bar">
-
+<div class="go-progress-bar" tabindex="-1">
+  <ng-container
+    *ngTemplateOutlet="mode === 'determinate' ? determinate : indeterminate"
+  >
+  </ng-container>
 </div>
 
+<ng-template #determinate>
+  <div class="go-progress-bar__determinate">
+    <span class="go-progress-bar__determinate__left-label">
+      {{ leftLabel }}</span
+    >
+    <div class="go-progress-bar__determinate--track">
+      <div
+        class="go-progress-bar__determinate--indicator"
+        [ngStyle]="{ width: indicatorWidth + '%' }"
+      ></div>
+    </div>
+    <span class="go-progress-bar__determinate__right-label">{{
+      rightLabel
+    }}</span>
+  </div>
+</ng-template>
+
+<ng-template #indeterminate>
+  <div class="go-progress-bar__indeterminate">
+    <div class="go-progress-bar__indeterminate--track"></div>
+    <div
+      class="go-progress-bar__indeterminate--indicator go-progress-bar__indeterminate--primary-indicator"
+    ></div>
+    <div
+      class="go-progress-bar__indeterminate--indicator go-progress-bar__indeterminate--secondary-indicator"
+    ></div>
+  </div>
+</ng-template>

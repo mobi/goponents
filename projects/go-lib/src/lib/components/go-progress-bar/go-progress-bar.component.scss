@@ -1,9 +1,125 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
-.go-progress-bar{
+@mixin label-style($float, $padding) {
+    float: $float;
+    padding: $padding;
+    font-weight: $weight-regular;
+    white-space: nowrap;
+}
+
+@mixin determinate-elem($width, $background-color) {
+    width: $width;
     height: 10px;
-   //background-color: $theme-light-app-bg;
-    background-color: black;
-    border-radius: 5px;
+    background-color: $background-color;
+}
 
+@mixin indeterminate-elem($background-color ) {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background-color: $background-color;
+}
+
+.go-progress-bar {
+
+    &__determinate {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        &__left-label {
+            @include label-style(left, 0px 8px 0px 0px);
+        }
+
+        &__right-label {
+            @include label-style(right, 0px 0px 0px 8px);
+        }
+
+        &--track {
+            @include determinate-elem(100%, $theme-light-app-bg);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        &--indicator {
+            @include determinate-elem(0%, $ui-color-primary);
+            transition: width 2s ease-in;
+            transition-timing-function: ease-in;
+        }
+    }
+
+    &__indeterminate {
+        height: 10px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        border-radius: 5px;
+
+        &--track {
+            @include indeterminate-elem($theme-light-app-bg);
+        }
+
+        &--indicator {
+            @include indeterminate-elem($ui-color-primary);
+            transform-origin: top left;
+            transition: transform 250ms ease;
+            backface-visibility: hidden;
+        }
+
+        &--primary-indicator {
+            animation: primary-indeterminate-translate 2000ms infinite linear;
+            left: -99.166611%;
+
+        }
+
+        &--secondary-indicator {
+            animation: secondary-indeterminate-translate 2000ms infinite linear;
+            left: 0;
+        }
+    }
+}
+
+@keyframes primary-indeterminate-translate {
+    0% {
+        transform: translateX(0) scaleX(0.4);
+    }
+
+    20% {
+        animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);
+        transform: translateX(20%) scaleX(0.2);
+    }
+
+    60% {
+        animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);
+        transform: translateX(80%) scaleX(0.9);
+    }
+
+    100% {
+        transform: translateX(200%) scaleX(0.2);
+    }
+}
+
+@keyframes secondary-indeterminate-translate {
+    0% {
+        animation-timing-function: cubic-bezier(0.15, 0, 0.515058, 0.409685);
+        transform: translateX(0) scaleX(0);
+    }
+
+    25% {
+        animation-timing-function: cubic-bezier(0.31033, 0.284058, 0.8, 0.733712);
+        transform: translateX(25%) scaleX(0.5);
+    }
+
+    60.35% {
+        animation-timing-function: cubic-bezier(0.4, 0.627035, 0.6, 0.902026);
+        transform: translateX(100%) scaleX(0.8);
+    }
+
+    100% {
+        transform: translateX(200%);
+    }
 }

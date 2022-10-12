@@ -131,7 +131,7 @@ const routes: Routes = [
   { path: 'ui-kit/tree', component: TreeDocsComponent },
   { path: 'ui-kit/virtual-scroll', component: VirtualScrollComponent },
   { path: 'ui-kit/wysiwyg', redirectTo: 'ui-kit/forms/editor' },
-  { path: 'uikit/progress-bar', component: ProgressBarDocsComponent}
+  { path: 'ui-kit/progress-bar', component: ProgressBarDocsComponent}
 ];
 
 @NgModule({
