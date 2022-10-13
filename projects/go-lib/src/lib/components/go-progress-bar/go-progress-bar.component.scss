@@ -14,7 +14,7 @@
     background-color: $background-color;
 }
 
-@mixin indeterminate-elem($background-color ) {
+@mixin indeterminate-elem($background-color) {
     height: 100%;
     position: absolute;
     width: 100%;
@@ -24,19 +24,19 @@
 .go-progress-bar {
 
     &__determinate {
-        width: 100%;
-        position: relative;
+        align-items: center;
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
+        position: relative;
+        width: 100%;
 
         &__left-label {
-            @include label-style(left, 0px 8px 0px 0px);
+            @include label-style(left, 0 8px 0 0);
         }
 
         &__right-label {
-            @include label-style(right, 0px 0px 0px 8px);
+            @include label-style(right, 0 0 0 8px);
         }
 
         &--track {
@@ -53,15 +53,13 @@
     }
 
     &__indeterminate {
-        height: 10px;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
+        backface-visibility: hidden;
         border-radius: 5px;
-        -webkit-backface-visibility: hidden;
-        -moz-backface-visibility: hidden;
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
+        height: 10px;
+        overflow: hidden;
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        width: 100%;
 
         &--track {
             @include indeterminate-elem($theme-light-app-bg);
@@ -69,9 +67,9 @@
 
         &--indicator {
             @include indeterminate-elem($ui-color-primary);
+            backface-visibility: hidden;
             transform-origin: top left;
             transition: transform 250ms ease;
-            backface-visibility: hidden;
         }
 
         &--primary-indicator {
