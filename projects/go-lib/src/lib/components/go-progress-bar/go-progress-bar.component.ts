@@ -14,9 +14,10 @@ export class GoProgressBarComponent implements OnChanges {
   indicatorWidth: number;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes && changes["value"])
+    if ("value" in changes){
       setTimeout(() => {
-        this.indicatorWidth = this.value;
+        this.indicatorWidth = changes.value.currentValue;
       }, 500);
+    }
   }
 }
