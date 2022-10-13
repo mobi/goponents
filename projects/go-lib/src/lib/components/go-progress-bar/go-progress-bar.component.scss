@@ -54,10 +54,14 @@
 
     &__indeterminate {
         height: 10px;
-        overflow: hidden;
-        position: relative;
         width: 100%;
+        position: relative;
+        overflow: hidden;
         border-radius: 5px;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
 
         &--track {
             @include indeterminate-elem($theme-light-app-bg);
@@ -73,7 +77,6 @@
         &--primary-indicator {
             animation: primary-indeterminate-translate 2000ms infinite linear;
             left: -99.166611%;
-
         }
 
         &--secondary-indicator {
