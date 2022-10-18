@@ -82,12 +82,15 @@
         background-color: darken($base-dark, 3.5%);
       }
     }
-    
+
     &--active {
       background-color: darken($base-light, 3.5%);
 
       // scss-lint:disable SelectorFormat
       &.go-accordion-panel__header--dark {
+        background-color: darken($base-dark-secondary, 3.5%);
+      }
+      &.go-accordion-panel__header--dark:hover {
         background-color: darken($base-dark-secondary, 7%);
       }
     }
@@ -132,12 +135,12 @@
   }
 
   &__content {
-    padding: 1.5rem 1rem;
     font-size: 0.875rem;
+    padding: 1rem 1rem;
 
     &--slim {
-      padding: 1rem;
       font-size: 0.875rem;
+      padding: 1rem;
     }
 
     &--no-padding {
