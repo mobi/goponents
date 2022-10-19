@@ -65,7 +65,7 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
   loadComponent(): void {
     const componentFactory: ComponentFactory<{}> = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
     const viewContainerRef: ViewContainerRef = this.goModalHost.viewContainerRef;
-
+    viewContainerRef.clear();
     const componentRef: ComponentRef<{}> = viewContainerRef.createComponent(componentFactory);
 
     Object.keys(this.currentComponent.bindings).forEach((key: string) => {
