@@ -90,6 +90,7 @@
       &.go-accordion-panel__header--dark {
         background-color: darken($base-dark-secondary, 3.5%);
       }
+      
       &.go-accordion-panel__header--dark:hover {
         background-color: darken($base-dark-secondary, 7%);
       }
@@ -136,7 +137,7 @@
 
   &__content {
     font-size: 0.875rem;
-    padding: 1rem 1rem;
+    padding: 1rem;
 
     &--slim {
       font-size: 0.875rem;
