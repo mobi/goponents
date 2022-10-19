@@ -93,7 +93,7 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
       this.currentOffCanvasItem.component
     );
     const viewContainerRef: ViewContainerRef = this.goOffCanvasHost.viewContainerRef;
-    viewContainerRef.clear(); 
+    viewContainerRef.clear();
     const componentRef: ComponentRef<any> = viewContainerRef.createComponent(componentFactory);
 
     Object.keys(this.currentOffCanvasItem.bindings).forEach((key: string) => {
