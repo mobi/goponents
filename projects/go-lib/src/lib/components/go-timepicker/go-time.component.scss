@@ -64,6 +64,10 @@
   padding-left: $column-gutter--half;
 }
 
+.go-width {
+  min-width: 9.813rem;
+}
+
 :host ::ng-deep .go-time-button {
   // scss-lint:disable SelectorDepth
   .go-button {

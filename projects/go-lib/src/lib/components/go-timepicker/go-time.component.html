@@ -8,7 +8,8 @@
       'go-time--dark': theme === 'dark'
     }"
   >
-  <div class="go-time-column">
+  <div class="go-width">
+   <div class="go-time-column">
       <go-icon-button
         buttonIcon="keyboard_arrow_up"
         (click)="increaseHour()"
@@ -55,6 +56,7 @@
        {{ format ? 'AM' : 'PM' }}
       </go-button>
     </div>
+  </div>  
     <!-- Action Button Group -->
     <div>
       <ul class="go-button-group go-time-action">
