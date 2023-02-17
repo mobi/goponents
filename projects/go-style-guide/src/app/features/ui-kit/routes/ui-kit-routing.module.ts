@@ -62,6 +62,8 @@ import { TableChildRowsComponent } from '../components/table-docs/components/tab
 import { TimepickerDocsComponent } from '../components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from '../components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from '../components/button-group-docs/button-group-docs.component';
+import { PositionedBadgeDocsComponent } from '../components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
+import { PillBadgeDocsComponent } from '../components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -74,7 +76,10 @@ const routes: Routes = [
     { path: '', component: ActionSheetOverviewComponent },
     { path: 'panel', component: ActionSheetPanelDocsComponent }
   ]},
-  { path: 'ui-kit/badge', component: BadgeDocsComponent },
+  { path: 'ui-kit/badge', component: BadgeDocsComponent , children: [
+    { path: '', component: PositionedBadgeDocsComponent },
+    { path: 'pill', component: PillBadgeDocsComponent }
+  ]},
   { path: 'ui-kit/button', component: ButtonDocsComponent },
   { path: 'ui-kit/button-group', component: ButtonGroupDocsComponent },
   { path: 'ui-kit/card', component: CardDocsComponent },

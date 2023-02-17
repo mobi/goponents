@@ -1,0 +1,30 @@
+@import '../../../../styles/variables';
+@import '../../../../styles//mixins';
+
+.go-pill-badge-container {
+    display: inline-flex;
+}
+
+.go-pill-badge {
+    border-radius: .75rem;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 6px 8px;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+
+    &--info {
+        border: 1px solid $ui-color-neutral;
+        color: $ui-color-neutral;
+    }
+
+    &--success {
+        border: 1px solid $ui-color-positive;
+        color: $ui-color-positive;
+    }
+
+    &--error {
+        border: 1px solid $ui-color-negative;
+        color: $ui-color-negative;
+    }
+}

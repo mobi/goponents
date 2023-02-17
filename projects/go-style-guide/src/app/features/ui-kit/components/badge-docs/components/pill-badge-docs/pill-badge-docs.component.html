@@ -1,0 +1,86 @@
+<section class="go-container">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <p class="go-body-copy">
+          The <code class="code-block--inline">&lt;go-pill-badge&gt;</code> are
+          used to display short details or numbers.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">badgeData</h4>
+        <p class="go-body-copy">
+          This is the text or data that we want to show up inside of the badge
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h4 class="go-heading-4">type</h4>
+        <p class="go-body-copy">
+          The type can be one of three things
+          <code class="code-block--inline">info</code>,
+          <code class="code-block--inline">success</code> or
+          <code class="code-block--inline">error</code>. These will denote what
+          type of badge it is whether it's a success, error or just information.
+          The type defaults to `info`
+        </p>
+      </div>
+    </ng-container>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="pill-badge">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Examples</h2>
+      <go-copy cardId="pill-badge" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Info</h3>
+        <section class="go-container">
+          <div class="go-column go-column--50 go-column--no-padding">
+            <code [highlight]="iconBadgeInfo"></code>
+          </div>
+          <div class="go-column go-column--50 go-column--no-padding">
+            <go-pill-badge badgeData="12" type="info"></go-pill-badge>
+          </div>
+        </section>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Success</h3>
+        <section class="go-container">
+          <div class="go-column go-column--50">
+            <code [highlight]="iconBadgeSuccess"></code>
+          </div>
+          <div class="go-column go-column--50">
+            <go-pill-badge badgeData="Success" type="success"></go-pill-badge>
+          </div>
+        </section>
+      </div>
+
+      <div class="go-column go-column--100">
+        <h3 class="go-heading-3">Error</h3>
+        <section class="go-container">
+          <div class="go-column go-column--50 go-column--no-padding">
+            <code [highlight]="iconBadgeError"></code>
+          </div>
+          <div class="go-column go-column--50 go-column--no-padding">
+            <go-pill-badge badgeData="Error" type="error"></go-pill-badge>
+          </div>
+        </section>
+      </div>
+    </ng-container>
+  </go-card>
+</section>

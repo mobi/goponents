@@ -9,6 +9,7 @@ import {
   GoAccordionModule,
   GoActionSheetModule,
   GoBadgeModule,
+  GoBadgePillModule,
   GoButtonModule,
   GoCardModule,
   GoCheckboxModule,
@@ -111,6 +112,8 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
+import { PillBadgeDocsComponent } from './components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
+import { PositionedBadgeDocsComponent } from './components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 
 @NgModule({
   imports: [
@@ -118,6 +121,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
+    GoBadgePillModule,
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
@@ -214,7 +218,9 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    EditorDocsComponent
+    EditorDocsComponent,
+    PillBadgeDocsComponent,
+    PositionedBadgeDocsComponent
   ],
   providers: [
     DatePipe,
