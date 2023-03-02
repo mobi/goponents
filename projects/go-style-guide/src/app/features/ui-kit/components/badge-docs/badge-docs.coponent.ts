@@ -10,7 +10,7 @@ export class BadgeDocsComponent {
     {
       routeTitle: 'Badges', subRoutes: [
         { route: './', routeTitle: 'Positioned' },
-        { route: './pill', routeTitle: 'Pill Badge' },
+        { route: './pill', routeTitle: 'Pill' },
       ]
     }
   ];
