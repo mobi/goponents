@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoPillBadgeComponent } from "./go-pill-badge.component";
+import { GoPillBadgeComponent } from './go-pill-badge.component';
 
-describe("GoPillBadgeComponent", () => {
+describe('GoPillBadgeComponent', () => {
   let component: GoPillBadgeComponent;
   let fixture: ComponentFixture<GoPillBadgeComponent>;
 
@@ -18,7 +18,7 @@ describe("GoPillBadgeComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
