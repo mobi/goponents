@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { SubNavService } from "projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service";
+import { Component } from '@angular/core';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: "app-pill-badge-docs",
-  templateUrl: "./pill-badge-docs.component.html",
+  selector: 'app-pill-badge-docs',
+  templateUrl: './pill-badge-docs.component.html',
 })
 export class PillBadgeDocsComponent {
   componentBindings: string = `
@@ -20,6 +20,6 @@ export class PillBadgeDocsComponent {
   constructor(private subNavService: SubNavService) {
     this.subNavService.pageTitle = 'Pill Badge';
     this.subNavService.linkToSource =
-    "https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-pill-badge"
+      'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-pill-badge';
   }
 }
