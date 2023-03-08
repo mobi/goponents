@@ -46,7 +46,7 @@ import { UiKitRoutesModule } from './routes/ui-kit-routing.module';
 // Module Components
 import { AccordionDocsComponent } from './components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from './components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
-import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
+import { BadgeDocsComponent } from './components/badge-docs/badge-docs.component';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
 import { ConfigurationDocsComponent } from './components/configuration-docs/configuration-docs.component';

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccordionDocsComponent } from '../components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from '../components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { ActionSheetDocsComponent } from '../components/action-sheet-docs/action-sheet-docs.component';
-import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.coponent';
+import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.component';
 import { ButtonDocsComponent } from '../components/button-docs/button-docs.component';
 import { CardDocsComponent } from '../components/card-docs/card-docs.component';
 import { CopyDocsComponent } from '../components/copy-docs/copy-docs.component';
