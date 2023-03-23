@@ -19,6 +19,10 @@ export * from './lib/components/go-action-sheet/go-panel/go-panel.component';
 export * from './lib/components/go-badge/go-badge.component';
 export * from './lib/components/go-badge/go-badge.module';
 
+// v2 Badge
+export * from './lib/components/go-pill-badge/go-pill-badge.component';
+export * from './lib/components/go-pill-badge/go-pill-badge.module';
+
 // Button
 export * from './lib/components/go-button/go-split-button-option.model';
 export * from './lib/components/go-button/go-button.component';

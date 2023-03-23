@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { GoAccordionModule } from './components/go-accordion/go-accordion.module';
 import { GoActionSheetModule } from './components/go-action-sheet/go-action-sheet.module';
 import { GoBadgeModule } from './components/go-badge/go-badge.module';
+import { GoBadgePillModule } from './components/go-pill-badge/go-pill-badge.module';
 import { GoButtonGroupModule } from './components/go-button-group/go-button-group.module';
 import { GoButtonModule } from './components/go-button/go-button.module';
 import { GoCardModule } from './components/go-card/go-card.module';
@@ -40,6 +41,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
+    GoBadgePillModule,
     GoButtonGroupModule,
     GoButtonModule,
     GoCardModule,
@@ -76,6 +78,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
+    GoBadgePillModule,
     GoButtonGroupModule,
     GoButtonModule,
     GoCardModule,
