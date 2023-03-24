@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgressBarDocsComponent implements OnInit {
   pageTitle: string = 'Progress bar';
-  linkToSource: string = 'https://github.com/mobi/goponents';
+  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-progress-bar';
   basic_html: string = `
   <go-pill [removable]="false">Without remove icon</go-pill>
   `;
