@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccordionDocsComponent } from '../components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from '../components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
 import { ActionSheetDocsComponent } from '../components/action-sheet-docs/action-sheet-docs.component';
-import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.coponent';
+import { BadgeDocsComponent } from '../components/badge-docs/badge-docs.component';
 import { ButtonDocsComponent } from '../components/button-docs/button-docs.component';
 import { CardDocsComponent } from '../components/card-docs/card-docs.component';
 import { CopyDocsComponent } from '../components/copy-docs/copy-docs.component';
@@ -63,6 +63,8 @@ import { TimepickerDocsComponent } from '../components/form-docs/components/time
 import { EditorDocsComponent } from '../components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from '../components/button-group-docs/button-group-docs.component';
 import { ProgressBarDocsComponent } from '../components/progress-bar-docs/progress-bar-docs.component';
+import { PositionedBadgeDocsComponent } from '../components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
+import { PillBadgeDocsComponent } from '../components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -75,7 +77,10 @@ const routes: Routes = [
     { path: '', component: ActionSheetOverviewComponent },
     { path: 'panel', component: ActionSheetPanelDocsComponent }
   ]},
-  { path: 'ui-kit/badge', component: BadgeDocsComponent },
+  { path: 'ui-kit/badge', component: BadgeDocsComponent , children: [
+    { path: '', component: PositionedBadgeDocsComponent },
+    { path: 'pill', component: PillBadgeDocsComponent }
+  ]},
   { path: 'ui-kit/button', component: ButtonDocsComponent },
   { path: 'ui-kit/button-group', component: ButtonGroupDocsComponent },
   { path: 'ui-kit/card', component: CardDocsComponent },

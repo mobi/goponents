@@ -9,6 +9,7 @@ import {
   GoAccordionModule,
   GoActionSheetModule,
   GoBadgeModule,
+  GoBadgePillModule,
   GoButtonModule,
   GoCardModule,
   GoCheckboxModule,
@@ -46,7 +47,7 @@ import { UiKitRoutesModule } from './routes/ui-kit-routing.module';
 // Module Components
 import { AccordionDocsComponent } from './components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from './components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
-import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
+import { BadgeDocsComponent } from './components/badge-docs/badge-docs.component';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
 import { ConfigurationDocsComponent } from './components/configuration-docs/configuration-docs.component';
@@ -113,6 +114,8 @@ import { TimepickerDocsComponent } from './components/form-docs/components/timep
 import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
 import { ProgressBarDocsComponent } from './components/progress-bar-docs/progress-bar-docs.component';
+import { PillBadgeDocsComponent } from './components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
+import { PositionedBadgeDocsComponent } from './components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 
 @NgModule({
   imports: [
@@ -120,6 +123,7 @@ import { ProgressBarDocsComponent } from './components/progress-bar-docs/progres
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
+    GoBadgePillModule,
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
@@ -218,7 +222,9 @@ import { ProgressBarDocsComponent } from './components/progress-bar-docs/progres
     TableChildRowsComponent,
     TimepickerDocsComponent,
     EditorDocsComponent,
-    ProgressBarDocsComponent
+    ProgressBarDocsComponent,
+    PillBadgeDocsComponent,
+    PositionedBadgeDocsComponent
   ],
   providers: [
     DatePipe,
