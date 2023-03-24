@@ -9,6 +9,7 @@ import {
   GoAccordionModule,
   GoActionSheetModule,
   GoBadgeModule,
+  GoBadgePillModule,
   GoButtonModule,
   GoCardModule,
   GoCheckboxModule,
@@ -45,7 +46,7 @@ import { UiKitRoutesModule } from './routes/ui-kit-routing.module';
 // Module Components
 import { AccordionDocsComponent } from './components/accordion-docs/accordion-docs.component';
 import { AccordionPanelDocsComponent } from './components/accordion-docs/components/accordion-panel-docs/accordion-panel-docs.component';
-import { BadgeDocsComponent } from './components/badge-docs/badge-docs.coponent';
+import { BadgeDocsComponent } from './components/badge-docs/badge-docs.component';
 import { ButtonDocsComponent } from './components/button-docs/button-docs.component';
 import { CardDocsComponent } from './components/card-docs/card-docs.component';
 import { ConfigurationDocsComponent } from './components/configuration-docs/configuration-docs.component';
@@ -111,6 +112,8 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
+import { PillBadgeDocsComponent } from './components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
+import { PositionedBadgeDocsComponent } from './components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 
 @NgModule({
   imports: [
@@ -118,6 +121,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
+    GoBadgePillModule,
     GoButtonModule,
     GoCardModule,
     GoCheckboxModule,
@@ -214,7 +218,9 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
     VirtualScrollComponent,
     TableChildRowsComponent,
     TimepickerDocsComponent,
-    EditorDocsComponent
+    EditorDocsComponent,
+    PillBadgeDocsComponent,
+    PositionedBadgeDocsComponent
   ],
   providers: [
     DatePipe,

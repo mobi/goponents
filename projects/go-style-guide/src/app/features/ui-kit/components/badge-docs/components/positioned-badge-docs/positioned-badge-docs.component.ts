@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-badge-docs',
-  templateUrl: './badge-docs.component.html'
+  selector: 'app-positioned-badge-docs',
+  templateUrl: './positioned-badge-docs.component.html',
 })
-export class BadgeDocsComponent {
+export class PositionedBadgeDocsComponent {
   componentBindings: string = `
   @Input() badgeData: string;
   @Input() badgeColor: string = 'neutral';
@@ -35,6 +36,9 @@ export class BadgeDocsComponent {
   </go-badge>
   `;
 
-  pageTitle: string = 'Badge';
-  linkToSource: string = 'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge';
+  constructor(private subNavService: SubNavService) {
+    this.subNavService.pageTitle = 'Positioned Badge';
+    this.subNavService.linkToSource =
+      'https://github.com/mobi/goponents/tree/dev/projects/go-lib/src/lib/components/go-badge';
+  }
 }
