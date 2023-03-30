@@ -142,22 +142,21 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:disabled:not(.go-button--loading) {
-      border: 1px solid $theme-light-bg-active;
+      @include disabled-states($theme-light-bg-active, 'dark');
+      border: 1px solid $base-light-tertiary;
 
       &:hover,
       &:focus {
-        border: 1px solid $theme-light-bg-active;
+        @include disabled-states($theme-light-bg-active, 'dark');
+        border: 1px solid $base-light-tertiary;
+        box-shadow: none;
       }
     }
   }
 
   &--tertiary {
-    border: 1px solid $theme-light-bg;
-  }
-
-  &--secondary,
-  &--tertiary {
     background: $theme-light-bg;
+    border: 1px solid $theme-light-bg;
     color: $theme-light-color;
 
     &:hover,
@@ -442,13 +441,13 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:disabled:not(.go-button--loading) {
-      border: 1px solid $theme-light-bg-active;
+      border: 1px solid $base-light-tertiary;
       border-left: 0;
 
       &:hover,
       &:focus {
         background: $theme-light-bg-hover;
-        border: 1px solid $theme-light-bg-active;
+        border: 1px solid $base-light-tertiary;
         border-left: 0;
         box-shadow: none;
       }
