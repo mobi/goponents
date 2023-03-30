@@ -62,6 +62,7 @@ import { TableChildRowsComponent } from '../components/table-docs/components/tab
 import { TimepickerDocsComponent } from '../components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from '../components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from '../components/button-group-docs/button-group-docs.component';
+import { ProgressBarDocsComponent } from '../components/progress-bar-docs/progress-bar-docs.component';
 import { PositionedBadgeDocsComponent } from '../components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 import { PillBadgeDocsComponent } from '../components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
 
@@ -134,7 +135,8 @@ const routes: Routes = [
   { path: 'ui-kit/toast', component: ToastDocsComponent },
   { path: 'ui-kit/tree', component: TreeDocsComponent },
   { path: 'ui-kit/virtual-scroll', component: VirtualScrollComponent },
-  { path: 'ui-kit/wysiwyg', redirectTo: 'ui-kit/forms/editor' }
+  { path: 'ui-kit/wysiwyg', redirectTo: 'ui-kit/forms/editor' },
+  { path: 'ui-kit/progress-bar', component: ProgressBarDocsComponent}
 ];
 
 @NgModule({
