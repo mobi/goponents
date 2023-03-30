@@ -468,6 +468,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     right: 0;
     top: calc(2rem + 2px);
     visibility: hidden;
+    white-space: nowrap;
 
     &--active {
       opacity: 1;
@@ -482,7 +483,6 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     cursor: pointer;
     font-size: .875rem;
     font-weight: normal;
-    max-width: 10rem;
     padding: .75rem;
 
     &:hover {
