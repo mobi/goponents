@@ -41,7 +41,7 @@
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">enableMaxHeight</h4>
         <p class="go-body-copy go-body-copy--no-margin">
-          By default this is true, but if set to false will allow the toast to expand to the size of its content.
+          By default this is false, but if set to true will allow the toast to have a max height that allows for vertical overflow scrolling.
         </p>
       </div>
 
@@ -320,11 +320,11 @@
     </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
-        By default, the toasts have a max height that allows for vertical overflow scrolling. See below:
+        By default, the toasts allows to expand to the size of its content. See below:
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">View</h4>
-        <go-toast header="Something you should know...">
+        <go-toast header="Show me everything!">
           <ng-template #messageContent>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
           </ng-template>
@@ -339,11 +339,11 @@
       </div>
 
       <div class="go-column go-column--100">
-        To disable the max height restriction on toasts, you can pass in a binding:
+        To enable the max height on toasts, you can pass in a binding:
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">View</h4>
-        <go-toast header="Show me everything!" [enableMaxHeight]="false">
+        <go-toast header="Something you should know..." [enableMaxHeight]="true">
           <ng-template #messageContent>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
           </ng-template>
