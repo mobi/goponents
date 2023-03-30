@@ -61,12 +61,8 @@ $theme-light-transparentized: rgba($theme-light-color, .5);
       color: $ui-color-negative;
     }
 
-    .go-panel {
-      &__title {
-        & &-text {
-          color: $ui-color-negative;
-        }
-      }
+    .go-panel__title-text {
+      color: $ui-color-negative;
     }
   }
 
