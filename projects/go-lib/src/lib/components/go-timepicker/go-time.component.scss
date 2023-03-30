@@ -25,6 +25,10 @@
   &--wrapper {
     display: flex;
   }
+  
+  &--width {
+    min-width: 9.813rem;
+  }
 
   &--dark {
     background: $theme-dark-bg;
@@ -63,6 +67,7 @@
   margin-top: 1.8rem;
   padding-left: $column-gutter--half;
 }
+
 
 :host ::ng-deep .go-time-button {
   // scss-lint:disable SelectorDepth
