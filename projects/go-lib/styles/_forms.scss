@@ -4,9 +4,8 @@
 $input--disabled-background: rgba($base-dark-secondary, .4);
 
 .go-form {
-
   // Fieldsets
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__fieldset {
     border: 1px solid $theme-light-border;
     border-radius: $global-radius;
@@ -46,7 +45,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Labels
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__label {
     color: $theme-light-color;
     display: block;
@@ -76,7 +75,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Inputs
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__input {
     @include transition(all);
     @include regular-input;
@@ -96,8 +95,14 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
+  // TextArea
+  // ----------------------------------------------
+  &__textarea {
+    min-height: 70px;
+  }
+
   // Selects
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__select {
     @include transition(all);
     @include regular-input;
@@ -107,7 +112,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Checkboxes
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__checkbox {
     margin-bottom: $column-gutter--three-quarters;
     margin-right: $column-gutter--three-quarters;
@@ -199,7 +204,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Dark Overrides
-  // ---------------------------------------------
+  // ----------------------------------------------
   &--dark,
   &--dark &__input,
   &--dark &__select,
@@ -221,7 +226,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Margin Overrides
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__select--no-margin,
   &__input--no-margin,
   &__fieldset--no-margin {
@@ -229,7 +234,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   // Error Overrides
-  // ---------------------------------------------
+  // ----------------------------------------------
   &__select--error,
   &__input--error {
     border-color: $ui-color-negative;
