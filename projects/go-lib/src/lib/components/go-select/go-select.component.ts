@@ -66,6 +66,7 @@ export class GoSelectComponent
 
   ngOnInit(): void {
     this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
+    this.handleControlInitialValue();
     this.controlSubscription = this.control.valueChanges.subscribe((value) => {
       if (this.multiple && this.showSelectAll) {
         this.emptyRefinedItems();
@@ -87,6 +88,14 @@ export class GoSelectComponent
     }
     const items = this.refinedItems.length ? this.refinedItems : this.items;
     this.processSelectAll(items);
+  }
+
+  private handleControlInitialValue() {
+    if(!this.typeahead && !Array.isArray(this.control.value)){
+      return
+    }
+    this.previousSelectedItems = this.items;
+
   }
 
   private processSelectAll(items: any[]) {
@@ -112,11 +121,21 @@ export class GoSelectComponent
         items.unshift(previousItem);
       }
     }
-
-    this.previousSelectedItems = items;
+    this.previousSelectedItems = items
     this.items = items;
     this.control.reset([], { emitEvent: false });
     this.processSelectAll(items);
+  }
+
+  private resetTypeaheadItems() {
+    if (this.typeahead) {
+      this.items = [];
+      this.previousSelectedItems = [];
+    }
+  }
+
+  private emptyRefinedItems(): void {
+    this.refinedItems = [];
   }
 
   handleInput(search: { term: string; items: any[] }) {
@@ -138,16 +157,7 @@ export class GoSelectComponent
     this.scroll.emit($event);
   }
 
-  private resetTypeaheadItems() {
-    if (this.typeahead) {
-      this.items = [];
-      this.previousSelectedItems = [];
-    }
-  }
 
-  private emptyRefinedItems(): void {
-    this.refinedItems = [];
-  }
 
   onClose() {
     this.emptyRefinedItems();
