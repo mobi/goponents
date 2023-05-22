@@ -93,6 +93,8 @@ export class GoSelectComponent
     const refinedArr = items.map((item: any) =>
       this.bindValue ? item[this.bindValue] : item
     );
+
+
     const existing = Array.isArray(this.control.value) ? this.control.value : [];
     this.control.patchValue(existing.concat(refinedArr));
     this.ngSelect.searchTerm = "";
@@ -150,4 +152,18 @@ export class GoSelectComponent
   onClose() {
     this.emptyRefinedItems();
   }
+
+  // store previous selected items incase of multiple and typeahead.
+  handleItemAdd(item) {
+    if(!this.multiple || !this.typeahead) return;
+    this.previousSelectedItems.push(item)
+  }
+
+  // remove item from previous selected items incase of multiple and typeahead.
+  handleItemRemove(item) {
+    if(!this.multiple || !this.typeahead) return;
+    const index = this.previousSelectedItems.findIndex(prev => prev[this.bindValue] === item.value[this.bindValue]);
+    this.previousSelectedItems.splice(index, 1)
+  }
+
 }

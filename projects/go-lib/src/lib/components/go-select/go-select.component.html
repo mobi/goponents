@@ -9,6 +9,8 @@
 <ng-select
   [appendTo]="appendTo"
   [clearable]="clearable"
+  (add)="handleItemAdd($event)"
+  (remove)="handleItemRemove($event)"
   [clearSearchOnAdd]="clearSearchOnAdd"
   [closeOnSelect]="closeOnSelect"
   [bindLabel]="bindLabel"
@@ -32,6 +34,7 @@
   [virtualScroll]="virtualScroll"
   (scrollToEnd)="onScrollToEnd()"
   (close)="onClose()"
+
   (scroll)="onScroll($event)">
     <ng-template
     *ngIf="multiple && items?.length"
