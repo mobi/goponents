@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, fakeAsync, TestBed } from "@angular/core/testing";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { GoButtonModule } from "../go-button/go-button.module";
@@ -148,21 +148,34 @@ describe("GoSelectComponent", () => {
       component.handleItemRemove({ value: { id: 1, label: "banana" } });
       expect(component["previousSelectedItems"]).toEqual([]);
     });
+
+    it("handleControlInitialValue(), should assign previousSelectedItems", () => {
+      component.control.patchValue([1]);
+      component.bindValue = "id";
+      component.items = [
+        { id: 1, label: "banana" },
+        { id: 2, label: "apple" },
+      ];
+      component["handleControlInitialValue"]();
+      expect(component["previousSelectedItems"]).toEqual([
+        { id: 1, label: "banana" },
+      ]);
+    });
   });
 
   describe("processSelectAll", () => {
     it("process select all and patch value in form", () => {
-      component.bindValue = 'id';
-        const items = [
-          { id: 1, label: "banana" },
-          { id: 2, label: "apple" },
-          { id: 3, label: "green apple" },
-          { id: 4, label: "grapes" },
-        ]
+      component.bindValue = "id";
+      const items = [
+        { id: 1, label: "banana" },
+        { id: 2, label: "apple" },
+        { id: 3, label: "green apple" },
+        { id: 4, label: "grapes" },
+      ];
 
-        component['processSelectAll'](items);
+      component["processSelectAll"](items);
 
-        expect(component.control.value).toEqual([1,2,3,4])
+      expect(component.control.value).toEqual([1, 2, 3, 4]);
     });
   });
 

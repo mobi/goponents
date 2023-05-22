@@ -91,7 +91,7 @@ export class GoSelectComponent
   }
 
   private handleControlInitialValue() {
-    if(!this.typeahead || !Array.isArray(this.control.value)){
+    if((!this.typeahead && !this.multiple) || !Array.isArray(this.control.value)){
       return
     }
 
