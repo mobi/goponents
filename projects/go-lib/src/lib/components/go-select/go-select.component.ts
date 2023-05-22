@@ -94,8 +94,14 @@ export class GoSelectComponent
     if(!this.typeahead && !Array.isArray(this.control.value)){
       return
     }
-    this.previousSelectedItems = this.items;
 
+    const selected = this.control.value;
+    for(let value of selected) {
+      const exist = this.items.find(item => item[this.bindValue] === value);
+      if(exist) {
+        this.previousSelectedItems.push(exist)
+      }
+    }
   }
 
   private processSelectAll(items: any[]) {
