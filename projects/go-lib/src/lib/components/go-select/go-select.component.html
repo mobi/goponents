@@ -6,7 +6,6 @@
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
-
 <ng-select
   [appendTo]="appendTo"
   [clearable]="clearable"
@@ -19,6 +18,7 @@
   [items]="items"
   [labelForId]="_id"
   [loading]="loading"
+  (search)="handleInput($event)"
   [multiple]="multiple"
   [ngClass]="{
     'go-select--dark': theme === 'dark',
@@ -31,8 +31,9 @@
   [typeToSearchText]="typeToSearchText"
   [virtualScroll]="virtualScroll"
   (scrollToEnd)="onScrollToEnd()"
+  (close)="onClose()"
   (scroll)="onScroll($event)">
-  <ng-template
+    <ng-template
     *ngIf="multiple && items?.length"
     ng-header-tmp>
     <button
@@ -40,7 +41,8 @@
       (click)="onSelectAll()"
       class="go-select__select-all-button"
       [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
-      *ngIf="showSelectAll && control.value?.length < items?.length">
+      *ngIf="showSelectAll && (control.value?.length < items?.length || typeahead)"
+      >
       Select All
     </button>
     <button
@@ -48,10 +50,11 @@
       (click)="onRemoveAll()"
       class="go-select__select-all-button"
       [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
-      *ngIf="control.value">
+      *ngIf="control.value?.length">
       Remove  All
     </button>
   </ng-template>
+
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
       <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
