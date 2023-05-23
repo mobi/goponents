@@ -24,8 +24,8 @@ describe('GoSelectComponent', () => {
         GoRequiredTextModule,
         NgSelectModule,
         FormsModule,
-        ReactiveFormsModule,
-      ],
+        ReactiveFormsModule
+      ]
     }).compileComponents();
   }));
 
@@ -46,7 +46,7 @@ describe('GoSelectComponent', () => {
       component.items = [
         { value: 1, label: 'Label 1' },
         { value: 2, label: 'Label 2' },
-        { value: 3, label: 'Label 3' },
+        { value: 3, label: 'Label 3' }
       ];
 
       component.onSelectAll();
@@ -59,7 +59,7 @@ describe('GoSelectComponent', () => {
       component.items = [
         { id: 1, label: 'Label 1' },
         { id: 2, label: 'Label 2' },
-        { id: 3, label: 'Label 3' },
+        { id: 3, label: 'Label 3' }
       ];
 
       component.onSelectAll();
@@ -72,11 +72,11 @@ describe('GoSelectComponent', () => {
       component.items = [
         { id: 1, label: 'banana' },
         { id: 2, label: 'apple' },
-        { id: 3, label: 'green apple' },
+        { id: 3, label: 'green apple' }
       ];
       const filteredItems = [
         { id: 2, label: 'apple' },
-        { id: 3, label: 'green apple' },
+        { id: 3, label: 'green apple' }
       ];
       component.handleInput({ items: filteredItems, term: 'apple' });
       component.onSelectAll();
@@ -90,11 +90,11 @@ describe('GoSelectComponent', () => {
         { id: 1, label: 'banana' },
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' },
-        { id: 4, label: 'grapes' },
+        { id: 4, label: 'grapes' }
       ];
       const filteredItems = [
         { id: 2, label: 'apple' },
-        { id: 3, label: 'green apple' },
+        { id: 3, label: 'green apple' }
       ];
       component.handleInput({ items: filteredItems, term: 'apple' });
       component.onSelectAll();

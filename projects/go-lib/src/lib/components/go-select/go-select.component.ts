@@ -7,7 +7,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   encapsulation: ViewEncapsulation.None,
   selector: 'go-select',
   templateUrl: './go-select.component.html',
-  styleUrls: ['./go-select.component.scss'],
+  styleUrls: ['./go-select.component.scss']
 })
 export class GoSelectComponent
   extends GoFormBaseComponent
@@ -39,12 +39,11 @@ export class GoSelectComponent
   @Input() virtualScroll: boolean = false;
 
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() scroll: EventEmitter<{ start: number; end: number }> = new EventEmitter<{ start: number; end: number }>();
+  @Output() scroll: EventEmitter<{ start: number; end: number }> = new EventEmitter<{ start: number, end: number }>();
 
   @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
   @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
-  @ContentChild('goSelectSelectedOption')
-  goSelectSelectedOption: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
 
   private controlSubscription: Subscription;
   // store refined items after search
