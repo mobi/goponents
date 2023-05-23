@@ -128,7 +128,9 @@ export class GoSelectComponent
   }
 
   private emptyRefinedItems(): void {
-    this.refinedItems = [];
+    if(!this.ngSelect.searchTerm) {
+      this.refinedItems = [];
+    }
   }
 
   handleInput(search: { term: string; items: any[] }) {
@@ -149,8 +151,6 @@ export class GoSelectComponent
   onScroll($event: { start: number; end: number }): void {
     this.scroll.emit($event);
   }
-
-
 
   onClose() {
     this.emptyRefinedItems();
