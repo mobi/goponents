@@ -1,24 +1,13 @@
-import {
-  Component,
-  ContentChild,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-  ViewEncapsulation,
-} from "@angular/core";
-import { Subject, Subscription } from "rxjs";
-import { GoFormBaseComponent } from "../go-form-base/go-form-base.component";
-import { NgSelectComponent } from "@ng-select/ng-select";
+import { Component, ContentChild, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "go-select",
-  templateUrl: "./go-select.component.html",
-  styleUrls: ["./go-select.component.scss"],
+  selector: 'go-select',
+  templateUrl: './go-select.component.html',
+  styleUrls: ['./go-select.component.scss'],
 })
 export class GoSelectComponent
   extends GoFormBaseComponent
@@ -46,16 +35,15 @@ export class GoSelectComponent
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
   @Input() typeahead?: Subject<string>;
-  @Input() typeToSearchText: string = "Type to Search";
+  @Input() typeToSearchText: string = 'Type to Search';
   @Input() virtualScroll: boolean = false;
 
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() scroll: EventEmitter<{ start: number; end: number }> =
-    new EventEmitter<{ start: number; end: number }>();
+  @Output() scroll: EventEmitter<{ start: number; end: number }> = new EventEmitter<{ start: number; end: number }>();
 
-  @ContentChild("goSelectOption") goSelectOption: TemplateRef<any>;
-  @ContentChild("goSelectOptionGroup") goSelectOptionGroup: TemplateRef<any>;
-  @ContentChild("goSelectSelectedOption")
+  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
+  @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
+  @ContentChild('goSelectSelectedOption')
   goSelectSelectedOption: TemplateRef<any>;
 
   private controlSubscription: Subscription;
@@ -112,7 +100,7 @@ export class GoSelectComponent
 
     const existing = Array.isArray(this.control.value) ? this.control.value : [];
     this.control.patchValue(existing.concat(refinedArr));
-    this.ngSelect.searchTerm = "";
+    this.ngSelect.searchTerm = '';
     this.ngSelect.itemsList.resetFilteredItems();
   }
 
