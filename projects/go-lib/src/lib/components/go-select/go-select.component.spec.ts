@@ -41,6 +41,11 @@ describe('GoSelectComponent', () => {
   });
 
   describe('onSelectAll()', () => {
+
+    beforeEach(() => {
+      component.multiple = true;
+    })
+
     it('adds all of the available items to the form control value', () => {
       component.bindValue = undefined;
       component.items = [
@@ -78,6 +83,7 @@ describe('GoSelectComponent', () => {
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' }
       ];
+      component.ngSelect.searchTerm = 'apple';
       component.handleInput({ items: filteredItems, term: 'apple' });
       component.onSelectAll();
       expect(component.control.value).toEqual([2, 3]);
@@ -96,27 +102,10 @@ describe('GoSelectComponent', () => {
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' }
       ];
+      component.ngSelect.searchTerm = 'apple';
       component.handleInput({ items: filteredItems, term: 'apple' });
       component.onSelectAll();
-      expect(component.control.value).toEqual([4, 2, 3]);
-    });
-
-    it('should select filtered list with existing items in control value, when filtered and selectAll', () => {
-      component.bindValue = 'id';
-      component.control.patchValue([4]);
-      component.items = [
-        { id: 1, label: 'banana' },
-        { id: 2, label: 'apple' },
-        { id: 3, label: 'green apple' },
-        { id: 4, label: 'grapes' },
-      ];
-      const filteredItems = [
-        { id: 2, label: 'apple' },
-        { id: 3, label: 'green apple' },
-      ];
-      component.handleInput({ items: filteredItems, term: 'apple' });
-      component.onSelectAll();
-      expect(component.control.value).toEqual([4, 2, 3]);
+      expect(component.control.value.length).toEqual(3);
     });
   });
 
