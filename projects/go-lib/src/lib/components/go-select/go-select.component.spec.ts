@@ -44,7 +44,7 @@ describe('GoSelectComponent', () => {
 
     beforeEach(() => {
       component.multiple = true;
-    })
+    });
 
     it('adds all of the available items to the form control value', () => {
       component.bindValue = undefined;
@@ -79,7 +79,7 @@ describe('GoSelectComponent', () => {
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' }
       ];
-      const filteredItems = [
+      const filteredItems: any[] = [
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' }
       ];
@@ -98,7 +98,7 @@ describe('GoSelectComponent', () => {
         { id: 3, label: 'green apple' },
         { id: 4, label: 'grapes' }
       ];
-      const filteredItems = [
+      const filteredItems: any[] = [
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' }
       ];
@@ -116,7 +116,7 @@ describe('GoSelectComponent', () => {
     });
 
     it('should store items in previousSelectedItems', () => {
-      const initialItems = [
+      const initialItems: any[] = [
         { id: 1, label: 'banana' },
         { id: 2, label: 'apple' },
       ];
@@ -155,7 +155,7 @@ describe('GoSelectComponent', () => {
   describe('processSelectAll', () => {
     it('process select all and patch value in form', () => {
       component.bindValue = 'id';
-      const items = [
+      const items: any[] = [
         { id: 1, label: 'banana' },
         { id: 2, label: 'apple' },
         { id: 3, label: 'green apple' },

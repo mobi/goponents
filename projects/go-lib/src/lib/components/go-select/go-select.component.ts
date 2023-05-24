@@ -1,4 +1,15 @@
-import { Component, ContentChild, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { NgSelectComponent } from '@ng-select/ng-select';
@@ -9,10 +20,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   templateUrl: './go-select.component.html',
   styleUrls: ['./go-select.component.scss']
 })
-export class GoSelectComponent
-  extends GoFormBaseComponent
-  implements OnInit, OnDestroy
-{
+export class GoSelectComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   @ViewChild(NgSelectComponent) ngSelect: NgSelectComponent;
 
   @Input() appendTo: string;
@@ -54,7 +62,7 @@ export class GoSelectComponent
   ngOnInit(): void {
     this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
     this.handleControlInitialValue();
-    this.controlSubscription = this.control.valueChanges.subscribe((value) => {
+    this.controlSubscription = this.control.valueChanges.subscribe((value: any) => {
       if (this.multiple && this.showSelectAll) {
         this.emptyRefinedItems();
         if (!value?.length) {
@@ -74,74 +82,85 @@ export class GoSelectComponent
       return;
     }
 
-    const items = this.ngSelect.searchTerm ? this.refinedItems : this.items;
+    const items: any[] = this.ngSelect.searchTerm ? this.refinedItems : this.items;
     this.processSelectAll(items);
   }
 
-  private handleControlInitialValue() {
-    if((!this.typeahead && !this.multiple) || !Array.isArray(this.control.value)){
-      return
+  private handleControlInitialValue(): void {
+    if ((!this.typeahead && !this.multiple) || !Array.isArray(this.control.value)) {
+      return;
     }
 
-    const selected = this.control.value;
-    for(let value of selected) {
-      const exist = this.items.find(item => item[this.bindValue] === value);
-      if(exist) {
-        this.previousSelectedItems.push(exist)
+    const selected: any[] = this.control.value;
+
+    for (const value of selected) {
+
+      const exist: boolean = this.items.some((item: any) => item[this.bindValue] === value);
+
+      if (exist) {
+        this.previousSelectedItems.push(exist);
       }
     }
   }
 
-  private processSelectAll(items: any[]) {
-    const refinedArr = items.map((item: any) =>
+  private processSelectAll(items: any[]): void {
+    const refinedArr: any[] = items.map((item: any) =>
       this.bindValue ? item[this.bindValue] : item
     );
 
-    const existing = Array.isArray(this.control.value) ? this.control.value : [];
-    const uniq = Array.from(new Set(existing.concat(refinedArr)))
+    const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
+    const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
     this.control.patchValue(uniq);
     this.ngSelect.searchTerm = '';
     this.ngSelect.itemsList.resetFilteredItems();
   }
 
-  private handleTypeaheadSelectAll() {
+  private handleTypeaheadSelectAll(): void {
     // because spread operator is not supported due to tslib version
-    const items = JSON.parse(JSON.stringify(this.items));
-    for (let previousItem of this.previousSelectedItems) {
-      const exists = items.find(
-        (item) => item[this.bindValue] === previousItem[this.bindValue]
+    const items: any[] = JSON.parse(JSON.stringify(this.items));
+    for (const previousItem of this.previousSelectedItems) {
+      const exists: any = items.find(
+        (item: any) => item[this.bindValue] === previousItem[this.bindValue]
       );
       if (!exists) {
         items.unshift(previousItem);
       }
     }
-    this.previousSelectedItems = items
+    this.previousSelectedItems = items;
     this.items = items;
     this.control.reset([], { emitEvent: false });
     this.processSelectAll(items);
   }
 
-  private resetTypeaheadItems() {
+  private resetTypeaheadItems(): void {
+
     if (this.typeahead) {
       this.items = [];
       this.previousSelectedItems = [];
     }
+
   }
 
   private emptyRefinedItems(): void {
-    if(!this.ngSelect.searchTerm) {
+
+    if (!this.ngSelect.searchTerm) {
       this.refinedItems = [];
     }
+
   }
 
-  handleInput(search: { term: string; items: any[] }) {
-    if(this.multiple) {
+  handleInput(search: { term: string; items: any[] }): void {
+
+    if (this.multiple) {
       this.refinedItems = search.items;
     }
+
   }
 
   onRemoveAll(): void {
+
     this.control.reset();
+
     this.resetTypeaheadItems();
   }
 
@@ -155,21 +174,29 @@ export class GoSelectComponent
     this.scroll.emit($event);
   }
 
-  onClose() {
+  onClose(): void {
     this.emptyRefinedItems();
   }
 
   // store previous selected items incase of multiple and typeahead.
-  handleItemAdd(item) {
-    if(!this.multiple || !this.typeahead) return;
-    this.previousSelectedItems.push(item)
+  handleItemAdd(item: any): void {
+
+    if (!this.multiple || !this.typeahead) {
+      return;
+    }
+
+    this.previousSelectedItems.push(item);
   }
 
   // remove item from previous selected items incase of multiple and typeahead.
-  handleItemRemove(item) {
-    if(!this.multiple || !this.typeahead) return;
-    const index = this.previousSelectedItems.findIndex(prev => prev[this.bindValue] === item.value[this.bindValue]);
-    this.previousSelectedItems.splice(index, 1)
+  handleItemRemove(item: any): void {
+
+    if (!this.multiple || !this.typeahead ) {
+      return;
+    }
+
+    const index: number = this.previousSelectedItems.findIndex((prev: any) => prev[this.bindValue] === item.value[this.bindValue]);
+    this.previousSelectedItems.splice(index, 1);
   }
 
 }
