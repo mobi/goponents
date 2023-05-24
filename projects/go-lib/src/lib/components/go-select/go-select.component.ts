@@ -112,7 +112,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   }
 
   private shouldHandleControlInitialValue(): boolean {
-    return (this.typeahead || this.multiple) && Array.isArray(this.control.value)
+    return (this.typeahead || this.multiple) && Array.isArray(this.control.value);
   }
 
   private findItemByValue(value: any): any {
