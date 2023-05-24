@@ -95,7 +95,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
     for (const value of selected) {
 
-      const exist: boolean = this.items.some((item: any) => item[this.bindValue] === value);
+      const exist: any = this.items.find((item: any) => item[this.bindValue] === value);
 
       if (exist) {
         this.previousSelectedItems.push(exist);
@@ -119,7 +119,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     // because spread operator is not supported due to tslib version
     const items: any[] = JSON.parse(JSON.stringify(this.items));
     for (const previousItem of this.previousSelectedItems) {
-      const exists: any = items.find(
+      const exists: boolean = items.some(
         (item: any) => item[this.bindValue] === previousItem[this.bindValue]
       );
       if (!exists) {
