@@ -39,7 +39,7 @@ export class GoSelectComponent
   @Input() virtualScroll: boolean = false;
 
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() scroll: EventEmitter<{ start: number; end: number }> = new EventEmitter<{ start: number, end: number }>();
+  @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number, end: number }>();
 
   @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
   @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
@@ -95,7 +95,6 @@ export class GoSelectComponent
     const refinedArr = items.map((item: any) =>
       this.bindValue ? item[this.bindValue] : item
     );
-
 
     const existing = Array.isArray(this.control.value) ? this.control.value : [];
     this.control.patchValue(existing.concat(refinedArr));
