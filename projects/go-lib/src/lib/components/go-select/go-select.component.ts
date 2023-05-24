@@ -62,18 +62,26 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   ngOnInit(): void {
     this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
     this.handleControlInitialValue();
-    this.controlSubscription = this.control.valueChanges.subscribe((value: any) => {
-      if (this.multiple && this.showSelectAll) {
-        this.emptyRefinedItems();
-        if (!value?.length) {
-          this.resetTypeaheadItems();
-        }
-      }
-    });
+    this.subscribeToControlChanges();
   }
 
   ngOnDestroy(): void {
     this.controlSubscription.unsubscribe();
+  }
+
+  private subscribeToControlChanges(): void {
+    if (this.multiple && this.showSelectAll) {
+      this.controlSubscription = this.control.valueChanges.subscribe((value: any) => {
+        this.handleMultipleControlChanges(value);
+      });
+    }
+  }
+
+  private handleMultipleControlChanges(value: any): void {
+    this.emptyRefinedItems();
+    if (!value?.length) {
+      this.resetTypeaheadItems();
+    }
   }
 
   onSelectAll(): void {
@@ -87,7 +95,9 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   }
 
   private handleControlInitialValue(): void {
-    if ((!this.typeahead && !this.multiple) || !Array.isArray(this.control.value)) {
+    const shouldHandleControlInitialValue: boolean = (this.typeahead || this.multiple) && Array.isArray(this.control.value);
+
+    if (!shouldHandleControlInitialValue) {
       return;
     }
 
@@ -95,12 +105,16 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
     for (const value of selected) {
 
-      const exist: any = this.items.find((item: any) => item[this.bindValue] === value);
+      const exist: any = this.findItemByValue(value);
 
       if (exist) {
         this.previousSelectedItems.push(exist);
       }
     }
+  }
+
+  private findItemByValue(value: any): any {
+    return this.items.find((item: any) => item[this.bindValue] === value);
   }
 
   private processSelectAll(items: any[]): void {
