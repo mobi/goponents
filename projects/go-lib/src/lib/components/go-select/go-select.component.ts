@@ -53,11 +53,11 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
   @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
 
-  private controlSubscription: Subscription;
   // store refined items after search
   refinedItems: any[] = [];
   // stores previous selected items when typeahead is enabled only in case of selectAll.
   private previousSelectedItems: any[] = [];
+  private controlSubscription: Subscription;
 
   ngOnInit(): void {
     this.closeOnSelect = this.multiple ? false : this.closeOnSelect;
@@ -66,7 +66,60 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   }
 
   ngOnDestroy(): void {
-    this.controlSubscription.unsubscribe();
+    this.controlSubscription?.unsubscribe();
+  }
+
+  onSelectAll(): void {
+    if (this.typeahead) {
+      this.handleTypeaheadSelectAll();
+      return;
+    }
+
+    const items: any[] = this.ngSelect.searchTerm ? this.refinedItems : this.items;
+    this.processSelectAll(items);
+  }
+
+  handleInput(search: { term: string; items: any[] }): void {
+    if (this.multiple) {
+      this.refinedItems = search.items;
+    }
+  }
+
+  onRemoveAll(): void {
+    this.control.reset();
+    this.resetTypeAheadItems();
+  }
+
+  onScrollToEnd(): void {
+    if (this.virtualScroll) {
+      this.scrollToEnd.emit();
+    }
+  }
+
+  onScroll($event: { start: number; end: number }): void {
+    this.scroll.emit($event);
+  }
+
+  onClose(): void {
+    this.emptyRefinedItems();
+  }
+
+  // store previous selected items incase of multiple and typeahead.
+  handleItemAdd(item: any): void {
+    if (!this.multiple || !this.typeahead) {
+      return;
+    }
+    this.previousSelectedItems.push(item);
+  }
+
+  // remove item from previous selected items incase of multiple and typeahead.
+  handleItemRemove(item: any): void {
+    if (!this.multiple || !this.typeahead ) {
+      return;
+    }
+
+    const index: number = this.previousSelectedItems.findIndex((prev: any) => prev[this.bindValue] === item.value[this.bindValue]);
+    this.previousSelectedItems.splice(index, 1);
   }
 
   private subscribeToControlChanges(): void {
@@ -80,55 +133,8 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   private handleMultipleControlChanges(value: any): void {
     this.emptyRefinedItems();
     if (!value?.length) {
-      this.resetTypeaheadItems();
+      this.resetTypeAheadItems();
     }
-  }
-
-  onSelectAll(): void {
-    if (this.typeahead) {
-      this.handleTypeaheadSelectAll();
-      return;
-    }
-
-    const items: any[] = this.ngSelect.searchTerm ? this.refinedItems : this.items;
-    this.processSelectAll(items);
-  }
-
-  private handleControlInitialValue(): void {
-    if (!this.shouldHandleControlInitialValue()) {
-      return;
-    }
-
-    const selected: any[] = this.control.value;
-
-    for (const value of selected) {
-
-      const exist: any = this.findItemByValue(value);
-
-      if (exist) {
-        this.previousSelectedItems.push(exist);
-      }
-    }
-  }
-
-  private shouldHandleControlInitialValue(): boolean {
-    return (this.typeahead || this.multiple) && Array.isArray(this.control.value);
-  }
-
-  private findItemByValue(value: any): any {
-    return this.items.find((item: any) => item[this.bindValue] === value);
-  }
-
-  private processSelectAll(items: any[]): void {
-    const refinedArr: any[] = items.map((item: any) =>
-      this.bindValue ? item[this.bindValue] : item
-    );
-
-    const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
-    const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
-    this.control.patchValue(uniq);
-    this.ngSelect.searchTerm = '';
-    this.ngSelect.itemsList.resetFilteredItems();
   }
 
   private handleTypeaheadSelectAll(): void {
@@ -148,71 +154,52 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     this.processSelectAll(items);
   }
 
-  private resetTypeaheadItems(): void {
-
+  private resetTypeAheadItems(): void {
     if (this.typeahead) {
       this.items = [];
       this.previousSelectedItems = [];
     }
-
   }
 
   private emptyRefinedItems(): void {
-
     if (!this.ngSelect.searchTerm) {
       this.refinedItems = [];
     }
-
   }
 
-  handleInput(search: { term: string; items: any[] }): void {
+  private processSelectAll(items: any[]): void {
+    const refinedArr: any[] = items.map((item: any) =>
+      this.bindValue ? item[this.bindValue] : item
+    );
 
-    if (this.multiple) {
-      this.refinedItems = search.items;
-    }
-
+    const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
+    const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
+    this.control.patchValue(uniq);
+    this.ngSelect.searchTerm = '';
+    this.ngSelect.itemsList.resetFilteredItems();
   }
 
-  onRemoveAll(): void {
-
-    this.control.reset();
-
-    this.resetTypeaheadItems();
+  private shouldHandleControlInitialValue(): boolean {
+    return (this.typeahead || this.multiple) && Array.isArray(this.control.value);
   }
 
-  onScrollToEnd(): void {
-    if (this.virtualScroll) {
-      this.scrollToEnd.emit();
-    }
+  private findItemByValue(value: any): any {
+    return this.items.find((item: any) => item[this.bindValue] === value);
   }
 
-  onScroll($event: { start: number; end: number }): void {
-    this.scroll.emit($event);
-  }
-
-  onClose(): void {
-    this.emptyRefinedItems();
-  }
-
-  // store previous selected items incase of multiple and typeahead.
-  handleItemAdd(item: any): void {
-
-    if (!this.multiple || !this.typeahead) {
+  private handleControlInitialValue(): void {
+    if (!this.shouldHandleControlInitialValue()) {
       return;
     }
 
-    this.previousSelectedItems.push(item);
-  }
+    const selected: any[] = this.control.value;
 
-  // remove item from previous selected items incase of multiple and typeahead.
-  handleItemRemove(item: any): void {
-
-    if (!this.multiple || !this.typeahead ) {
-      return;
+    for (const value of selected) {
+      const exist: any = this.findItemByValue(value);
+      if (exist) {
+        this.previousSelectedItems.push(exist);
+      }
     }
-
-    const index: number = this.previousSelectedItems.findIndex((prev: any) => prev[this.bindValue] === item.value[this.bindValue]);
-    this.previousSelectedItems.splice(index, 1);
   }
 
 }

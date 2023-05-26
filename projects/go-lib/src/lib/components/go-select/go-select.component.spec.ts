@@ -171,7 +171,7 @@ describe('GoSelectComponent', () => {
   describe('onRemoveAll', () => {
     it('uses removed the selected values', () => {
       component.bindValue = 'id';
-      spyOn<any>(component, 'resetTypeaheadItems');
+      spyOn<any>(component, 'resetTypeAheadItems');
       component.items = [
         { id: 1, label: 'Label 1' },
         { id: 2, label: 'Label 2' },
@@ -183,7 +183,7 @@ describe('GoSelectComponent', () => {
       component.onRemoveAll();
 
       expect(component.control.value).toBeNull();
-      expect(component['resetTypeaheadItems']).toHaveBeenCalled();
+      expect(component['resetTypeAheadItems']).toHaveBeenCalled();
     });
   });
 });
