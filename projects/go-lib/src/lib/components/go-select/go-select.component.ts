@@ -71,7 +71,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
   onSelectAll(): void {
     if (this.typeahead) {
-      this.handleTypeaheadSelectAll();
+      this.handleTypeAheadSelectAll();
       return;
     }
 
@@ -137,7 +137,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     }
   }
 
-  private handleTypeaheadSelectAll(): void {
+  private handleTypeAheadSelectAll(): void {
     // because spread operator is not supported due to tslib version
     const items: any[] = JSON.parse(JSON.stringify(this.items));
     for (const previousItem of this.previousSelectedItems) {

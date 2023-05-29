@@ -121,7 +121,7 @@ describe('GoSelectComponent', () => {
         { id: 2, label: 'apple' },
       ];
       component.items = initialItems;
-      component['handleTypeaheadSelectAll']();
+      component['handleTypeAheadSelectAll']();
       expect(component['previousSelectedItems']).toEqual(initialItems);
     });
 
