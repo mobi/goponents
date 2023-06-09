@@ -30,6 +30,10 @@ strong {
   margin-bottom: $column-gutter--three-quarters;
 }
 
+go-body-copy:last-child {
+  margin-bottom: 0;
+}
+
 .go-heading--no-margin,
 .go-body-copy--no-margin {
   @extend %element--no-margin;

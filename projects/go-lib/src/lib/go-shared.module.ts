@@ -24,6 +24,7 @@ import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
 import { GoModalModule } from './components/go-modal/go-modal.module';
 import { GoOffCanvasModule } from './components/go-off-canvas/go-off-canvas.module';
+import { GoProgressBarModule } from './components/go-progress-bar/go-progress-bar.module';
 import { GoRadioModule } from './components/go-radio/go-radio.module';
 import { GoSearchModule } from './components/go-search/go-search.module';
 import { GoSelectModule } from './components/go-select/go-select.module';
@@ -72,7 +73,8 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoTextAreaModule,
     GoTimepickerModule,
     GoToasterModule,
-    GoToastModule
+    GoToastModule,
+    GoProgressBarModule
   ],
   exports: [
     GoAccordionModule,
@@ -108,7 +110,8 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoTableModule,
     GoTextAreaModule,
     GoToasterModule,
-    GoToastModule
+    GoToastModule,
+    GoProgressBarModule
   ]
 })
 

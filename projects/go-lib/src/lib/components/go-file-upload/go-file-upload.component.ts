@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -20,6 +20,7 @@ export class GoFileUploadComponent extends GoFormBaseComponent implements OnInit
   @Input() isLoading: boolean = false;
   @Input() multiple: boolean = false;
   @Input() state: 'selecting' | 'selected' = 'selecting';
+  @ViewChild('filePicker') filePicker: any;
 
   ngOnInit(): void {
     this.fb = new FormBuilder();
@@ -51,6 +52,7 @@ export class GoFileUploadComponent extends GoFormBaseComponent implements OnInit
         this.filePreview.push(file.name);
       });
     }
+    this.filePicker.nativeElement.value = '';
   }
 
   removeFile(index: number): void {

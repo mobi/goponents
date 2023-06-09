@@ -1,0 +1,139 @@
+<header class="go-page-title">
+  <h1 class="go-heading-1">{{ pageTitle }}</h1>
+  <a [href]="linkToSource" target="_blank">
+    <go-button buttonVariant="neutral"> View on GitHub </go-button>
+  </a>
+</header>
+
+<div class="go-container">
+  <go-card class="go-column go-column--100" id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <!-- Intro -->
+        <p class="go-body-copy">
+          The
+          <code class="code-block--inline">&lt;go-progress-bar&gt;</code>
+          component should be used for displaying unspecified wait time or
+          progress of an activity.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100">
+        <!-- Bindings -->
+        <h3 class="go-heading-3">Bindings</h3>
+        <code [highlight]="componentBindings"></code>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">mode</h4>
+            <p class="go-body-copy">
+              <code class="code-block--inline">mode</code> is the input data
+              which decides what type of progress bar either determinate or
+              indeterminate. By default, mode is set to determinate progress
+              bar.
+            </p>
+          </div>
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">value</h4>
+            <p class="go-body-copy">
+              <code class="code-block--inline">value</code> indicator is a
+              mandatory param for determinate progress bar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">rightLabel</h4>
+            <p class="go-body-copy">
+              <code class="code-block--inline">rightLabel</code> is a right side
+              optional label.
+            </p>
+          </div>
+
+          <div class="go-column go-column--100">
+            <h4 class="go-heading-4">leftLabel</h4>
+            <p class="go-body-copy">
+              <code class="code-block--inline">leftLabel</code> is a left side
+              optional label.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="linear-determinate">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Linear Determinate</h2>
+      <go-copy cardId="linear-determinate" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Determinate progress bar display's progress of an activity. This
+          should be used where the percentage of the activity completion is
+          known.
+        </p>
+        <code [highlight]="determinateBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <go-progress-bar mode="determinate" [value]="80"></go-progress-bar>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="determinate-with-labels">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">With labels (example)</h2>
+      <go-copy cardId="determinate-with-labels" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <code [highlight]="withLabelBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <go-progress-bar
+          mode="determinate"
+          [value]="40"
+          [rightLabel]="'End label'"
+          [leftLabel]="'Beginning label'"
+        ></go-progress-bar>
+      </div>
+    </div>
+  </go-card>
+
+  <go-card class="go-column go-column--100" id="linear-indeterminate">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Linear Indeterminate</h2>
+      <go-copy cardId="linear-indeterminate" goCopyCardLink></go-copy>
+    </ng-container>
+    <div class="go-container" go-card-content>
+      <div class="go-column go-column--100">
+        <p class="go-body-copy">
+          Indeterminate progress bar is used when the user is asked to wait
+          while something finishes. This should be used where the wait time of
+          an activity is unknown.
+        </p>
+        <code [highlight]="inDeterminateBindings"></code>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <go-progress-bar mode="indeterminate"></go-progress-bar>
+      </div>
+    </div>
+  </go-card>
+</div>
+
+<div></div>

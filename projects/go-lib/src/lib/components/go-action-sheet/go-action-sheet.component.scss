@@ -10,13 +10,13 @@ $as-before-box-diag-width: 21.21px;
   position: relative;
 
   &__scroll-container {
-    max-height: 375px;
-    overflow: auto;
+    overflow: hidden;
   }
 
   &__content {
     border-radius: $global-radius;
-    overflow: hidden;
+    max-height: 375px;
+    overflow: auto;
   }
 
   &__content-container {

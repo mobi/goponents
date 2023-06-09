@@ -27,6 +27,7 @@ import {
   GoOffCanvasModule,
   GoOffCanvasService,
   GoPillModule,
+  GoProgressBarModule,
   GoRadioModule,
   GoSelectModule, GoSharedModule,
   GoSwitchToggleModule,
@@ -112,6 +113,7 @@ import { TableChildRowsComponent } from './components/table-docs/components/tabl
 import { TimepickerDocsComponent } from './components/form-docs/components/timepicker-docs/timepicker-docs.component';
 import { EditorDocsComponent } from './components/form-docs/components/editor-docs/editor-docs.component';
 import { ButtonGroupDocsComponent } from './components/button-group-docs/button-group-docs.component';
+import { ProgressBarDocsComponent } from './components/progress-bar-docs/progress-bar-docs.component';
 import { PillBadgeDocsComponent } from './components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
 import { PositionedBadgeDocsComponent } from './components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 
@@ -150,7 +152,8 @@ import { PositionedBadgeDocsComponent } from './components/badge-docs/components
     FormsModule,
     ReactiveFormsModule,
     GoTreeModule,
-    GoTimepickerModule
+    GoTimepickerModule,
+    GoProgressBarModule
   ],
   declarations: [
     AccordionDocsComponent,
@@ -219,6 +222,7 @@ import { PositionedBadgeDocsComponent } from './components/badge-docs/components
     TableChildRowsComponent,
     TimepickerDocsComponent,
     EditorDocsComponent,
+    ProgressBarDocsComponent,
     PillBadgeDocsComponent,
     PositionedBadgeDocsComponent
   ],

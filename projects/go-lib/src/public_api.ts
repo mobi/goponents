@@ -198,6 +198,10 @@ export * from './lib/components/go-timepicker/go-time.component';
 export * from './lib/components/go-timepicker/go-timepicker.component';
 export * from './lib/components/go-timepicker/go-timepicker.module';
 
+// Progressbar
+export * from './lib/components/go-progress-bar/go-progress-bar.component';
+export * from './lib/components/go-progress-bar/go-progress-bar.module';
+
 /***** Utils *****/
 export * from './lib/utilities/form.utils';
 export * from './lib/utilities/colors.util';

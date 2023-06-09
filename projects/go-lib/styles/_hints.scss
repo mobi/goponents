@@ -1,5 +1,6 @@
 .go-hint {
   font-size: .75rem;
+  font-style: italic;
   line-height: 1rem;
   margin: $column-gutter--half 0;
   padding-bottom: $column-gutter--quarter;
@@ -32,8 +33,10 @@
   }
 
   &__status {
+    color: $ui-color-negative;
     display: block;
-    font-size: .5rem;
+    font-size: 9px;
+    font-style: initial;
     font-weight: $weight-medium;
     text-transform: uppercase;
   }

@@ -67,7 +67,7 @@
 
     cursor: pointer;
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     padding: 1.2rem 1rem;
     position: relative;
 
@@ -76,10 +76,10 @@
     }
 
     &--dark {
-      background-color: darken($base-dark-secondary, 7%);
+      background-color: $base-dark;
 
       &:hover {
-        background-color: darken($base-dark-secondary, 3.5%);
+        background-color: darken($base-dark, 3.5%);
       }
     }
 
@@ -88,13 +88,17 @@
 
       // scss-lint:disable SelectorFormat
       &.go-accordion-panel__header--dark {
+        background-color: darken($base-dark-secondary, 3.5%);
+      }
+
+      &.go-accordion-panel__header--dark:hover {
         background-color: darken($base-dark-secondary, 7%);
       }
     }
 
     &--slim {
-      font-size: 1rem;
-      padding: 1rem;
+      font-size: 0.875rem;
+      padding: 0.625rem 1rem;
     }
   }
 
@@ -132,9 +136,11 @@
   }
 
   &__content {
-    padding: 1.5rem 1rem;
+    font-size: 0.875rem;
+    padding: 1rem;
 
     &--slim {
+      font-size: 0.875rem;
       padding: 1rem;
     }
 

@@ -54,7 +54,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
   }
 
   &--icon-only {
-    padding: calc(.625rem - 2px) .625rem;
+    padding: calc(.625rem - 2px) 1rem;
   }
 
   &__icon ~ &__text:not(:empty) {
@@ -142,22 +142,21 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:disabled:not(.go-button--loading) {
-      border: 1px solid $theme-light-bg-active;
+      @include disabled-states($theme-light-bg-active, 'dark');
+      border: 1px solid $base-light-tertiary;
 
       &:hover,
       &:focus {
-        border: 1px solid $theme-light-bg-active;
+        @include disabled-states($theme-light-bg-active, 'dark');
+        border: 1px solid $base-light-tertiary;
+        box-shadow: none;
       }
     }
   }
 
   &--tertiary {
-    border: 1px solid $theme-light-bg;
-  }
-
-  &--secondary,
-  &--tertiary {
     background: $theme-light-bg;
+    border: 1px solid $theme-light-bg;
     color: $theme-light-color;
 
     &:hover,
@@ -442,13 +441,13 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:disabled:not(.go-button--loading) {
-      border: 1px solid $theme-light-bg-active;
+      border: 1px solid $base-light-tertiary;
       border-left: 0;
 
       &:hover,
       &:focus {
         background: $theme-light-bg-hover;
-        border: 1px solid $theme-light-bg-active;
+        border: 1px solid $base-light-tertiary;
         border-left: 0;
         box-shadow: none;
       }
@@ -468,6 +467,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     right: 0;
     top: calc(2rem + 2px);
     visibility: hidden;
+    white-space: nowrap;
 
     &--active {
       opacity: 1;
@@ -482,7 +482,6 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     cursor: pointer;
     font-size: .875rem;
     font-weight: normal;
-    max-width: 10rem;
     padding: .75rem;
 
     &:hover {

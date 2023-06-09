@@ -7,6 +7,7 @@ import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 import { GoSelectComponent } from './go-select.component';
+import { Subject } from 'rxjs';
 
 describe('GoSelectComponent', () => {
   let component: GoSelectComponent;
@@ -25,8 +26,7 @@ describe('GoSelectComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -41,6 +41,11 @@ describe('GoSelectComponent', () => {
   });
 
   describe('onSelectAll()', () => {
+
+    beforeEach(() => {
+      component.multiple = true;
+    });
+
     it('adds all of the available items to the form control value', () => {
       component.bindValue = undefined;
       component.items = [
@@ -66,15 +71,111 @@ describe('GoSelectComponent', () => {
 
       expect(component.control.value).toEqual([1, 2, 3]);
     });
+
+    it('should select only filtered list, when filtered and selectAll', () => {
+      component.bindValue = 'id';
+      component.items = [
+        { id: 1, label: 'banana' },
+        { id: 2, label: 'apple' },
+        { id: 3, label: 'green apple' }
+      ];
+      const filteredItems: any[] = [
+        { id: 2, label: 'apple' },
+        { id: 3, label: 'green apple' }
+      ];
+      component.ngSelect.searchTerm = 'apple';
+      component.handleInput({ items: filteredItems, term: 'apple' });
+      component.onSelectAll();
+      expect(component.control.value).toEqual([2, 3]);
+    });
+
+    it('should select filtered list with existing items in control value, when filtered and selectAll', () => {
+      component.bindValue = 'id';
+      component.control.patchValue([4]);
+      component.items = [
+        { id: 1, label: 'banana' },
+        { id: 2, label: 'apple' },
+        { id: 3, label: 'green apple' },
+        { id: 4, label: 'grapes' }
+      ];
+      const filteredItems: any[] = [
+        { id: 2, label: 'apple' },
+        { id: 3, label: 'green apple' }
+      ];
+      component.ngSelect.searchTerm = 'apple';
+      component.handleInput({ items: filteredItems, term: 'apple' });
+      component.onSelectAll();
+      expect(component.control.value.length).toEqual(3);
+    });
+  });
+
+  describe('onSelectAll() with typeahead', () => {
+    beforeEach(() => {
+      component.typeahead = new Subject();
+      component.multiple = true;
+    });
+
+    it('should store items in previousSelectedItems', () => {
+      const initialItems: any[] = [
+        { id: 1, label: 'banana' },
+        { id: 2, label: 'apple' },
+      ];
+      component.items = initialItems;
+      component['handleTypeAheadSelectAll']();
+      expect(component['previousSelectedItems']).toEqual(initialItems);
+    });
+
+    it('should add items in previousSelectedItems', () => {
+      component.handleItemAdd({ id: 1, label: 'banana' });
+      expect(component['previousSelectedItems']).toEqual([
+        { id: 1, label: 'banana' },
+      ]);
+    });
+
+    it('should remove items from previousSelectedItems', () => {
+      component['previousSelectedItems'] = [{ id: 1, label: 'banana' }];
+      component.handleItemRemove({ value: { id: 1, label: 'banana' } });
+      expect(component['previousSelectedItems']).toEqual([]);
+    });
+
+    it('handleControlInitialValue(), should assign previousSelectedItems', () => {
+      component.control.patchValue([1]);
+      component.bindValue = 'id';
+      component.items = [
+        { id: 1, label: 'banana' },
+        { id: 2, label: 'apple' },
+      ];
+      component['handleControlInitialValue']();
+      expect(component['previousSelectedItems']).toEqual([
+        { id: 1, label: 'banana' },
+      ]);
+    });
+  });
+
+  describe('processSelectAll', () => {
+    it('process select all and patch value in form', () => {
+      component.bindValue = 'id';
+      const items: any[] = [
+        { id: 1, label: 'banana' },
+        { id: 2, label: 'apple' },
+        { id: 3, label: 'green apple' },
+        { id: 4, label: 'grapes' },
+      ];
+
+      component['processSelectAll'](items);
+
+      expect(component.control.value).toEqual([1, 2, 3, 4]);
+    });
   });
 
   describe('onRemoveAll', () => {
     it('uses removed the selected values', () => {
       component.bindValue = 'id';
+      spyOn<any>(component, 'resetTypeAheadItems');
       component.items = [
         { id: 1, label: 'Label 1' },
         { id: 2, label: 'Label 2' },
-        { id: 3, label: 'Label 3' }
+        { id: 3, label: 'Label 3' },
       ];
 
       component.onSelectAll();
@@ -82,6 +183,7 @@ describe('GoSelectComponent', () => {
       component.onRemoveAll();
 
       expect(component.control.value).toBeNull();
+      expect(component['resetTypeAheadItems']).toHaveBeenCalled();
     });
   });
 });

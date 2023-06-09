@@ -46,6 +46,7 @@ export class AppComponent {
       { route: 'ui-kit/off-canvas', routeTitle: 'Off Canvas' },
       { route: 'ui-kit/pills', routeTitle: 'Pills' },
       { route: 'ui-kit/portal', routeTitle: 'Portal' },
+      { route: 'ui-kit/progress-bar', routeTitle: 'Progress Bar' },
       { route: 'ui-kit/tabs', routeTitle: 'Tabs', },
       { route: 'ui-kit/table', routeTitle: 'Table'},
       { route: 'ui-kit/toast', routeTitle: 'Toast' },

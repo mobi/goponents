@@ -16,7 +16,7 @@ export class GoToastComponent {
   duration: number;
 
   @Input() dismissable: boolean = false;
-  @Input() enableMaxHeight: boolean = true;
+  @Input() enableMaxHeight: boolean = false;
   @Input() header: string;
   @Input() icon: string;
   @Input() message: string;

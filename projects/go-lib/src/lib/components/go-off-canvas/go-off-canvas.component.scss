@@ -4,7 +4,7 @@
 .go-off-canvas-backdrop {
   @include z-index(off-canvas);
 
-  background: rgba($base-dark, .5);
+  background: rgba($base-color, .5);
   height: 100vh;
   left: 0;
   position: fixed;
