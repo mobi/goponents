@@ -235,4 +235,15 @@ describe('GoDatepickerComponent', () => {
       expect(component.goCalendar.isOpen).toBe(false);
     });
   });
+
+  describe("onInputCloseCalendar", () => {
+    it('close the calendar when the user interacts with the date field by typing inside it. ', () => {
+      component.goCalendar.openCalendar(new Date());
+
+      component.onInputCloseCalendar();
+
+      expect(component.goCalendar.isOpen).toBe(false);
+    });
+  });
+
 });
