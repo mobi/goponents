@@ -23,6 +23,7 @@ export class GoDatepickerComponent extends GoFormBaseComponent implements OnDest
   @Input() locale: string = 'en-US';
   @Input() maxDate: Date | string;
   @Input() minDate: Date | string;
+  @Input() displayDateFormat: string = 'MMM DD, YYYY';
 
   @ViewChild('datepickerInput', { static: true }) datepickerInput: ElementRef;
 
@@ -58,7 +59,7 @@ export class GoDatepickerComponent extends GoFormBaseComponent implements OnDest
         if (!dateValid) {
           this.control.setErrors([{ message: 'format is invalid' }]);
         } else {
-          this.selectedDate = LocaleFormat.formatDate(value, this.locale);
+          this.selectedDate = LocaleFormat.formatDate(value, this.locale, this.displayDateFormat);
         }
       }
     });
@@ -92,7 +93,7 @@ export class GoDatepickerComponent extends GoFormBaseComponent implements OnDest
     if (!this.goCalendar.dateOutOfRange(date, this.min, this.max)) {
       this.control.setValue(date);
       if (this.control.value) {
-        this.selectedDate = LocaleFormat.formatDate(date, this.locale);
+        this.selectedDate = LocaleFormat.formatDate(date, this.locale, this.displayDateFormat);
       }
     } else {
       this.control.setValue(null);

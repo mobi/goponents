@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export class LocaleFormat {
   static parse(date: string, locale: string): Date {
     if (!date) {
@@ -47,8 +49,10 @@ export class LocaleFormat {
     return false;
   }
 
-  static formatDate(date: Date, locale: string): string {
-    if (date) {
+  static formatDate(date: Date, locale: string, displayDateFormat: string): string {
+    if (displayDateFormat) {
+      return moment(date).format(displayDateFormat);
+    } else {
       return new Intl.DateTimeFormat(locale).format(date);
     }
   }
