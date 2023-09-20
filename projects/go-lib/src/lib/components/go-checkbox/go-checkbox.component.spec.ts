@@ -1,11 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
-import { GoHintModule } from '../go-hint/go-hint.module';
-import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
-import { GoCheckboxComponent } from './go-checkbox.component';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { GoFormErrorsModule } from "../go-form-errors/go-form-errors.module";
+import { GoHintModule } from "../go-hint/go-hint.module";
+import { GoRequiredTextModule } from "../go-required-text/go-required-text.module";
+import { GoCheckboxComponent } from "./go-checkbox.component";
+import { By } from "@angular/platform-browser";
 
-describe('GoCheckboxComponent', () => {
+describe("GoCheckboxComponent", () => {
   let component: GoCheckboxComponent;
   let fixture: ComponentFixture<GoCheckboxComponent>;
 
@@ -17,10 +18,9 @@ describe('GoCheckboxComponent', () => {
         ReactiveFormsModule,
         GoFormErrorsModule,
         GoHintModule,
-        GoRequiredTextModule
-      ]
-    })
-    .compileComponents();
+        GoRequiredTextModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,12 +30,12 @@ describe('GoCheckboxComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngAfterViewInit', () => {
-    it('sets the hidden input to indeterminate if indeterminate input is true', () => {
+  describe("ngAfterViewInit", () => {
+    it("sets the hidden input to indeterminate if indeterminate input is true", () => {
       expect(component.hiddenInputRef.nativeElement.indeterminate).toBe(false);
 
       component.indeterminate = true;
@@ -44,5 +44,19 @@ describe('GoCheckboxComponent', () => {
 
       expect(component.hiddenInputRef.nativeElement.indeterminate).toBe(true);
     });
+  });
+  it("component should not render go-form-errors if hideFieldError property is true ", () => {
+    component.hideFieldError = true;
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
+    ).toBe(0);
+  });
+  it("component should render go-form-errors if hideFieldError property is false ", () => {
+    component.hideFieldError = false;
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
+    ).toBe(1);
   });
 });

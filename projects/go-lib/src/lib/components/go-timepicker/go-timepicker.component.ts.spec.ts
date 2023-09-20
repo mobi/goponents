@@ -1,25 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { GoTimepickerComponent } from './go-timepicker.component';
-import { GoTimeComponent } from './go-time.component';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GoHintModule } from '../go-hint/go-hint.module';
-import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
-import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
-import { GoButtonModule } from '../go-button/go-button.module';
-import { GoTimeFormat } from './go-time-format.model';
-import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
+import { GoTimepickerComponent } from "./go-timepicker.component";
+import { GoTimeComponent } from "./go-time.component";
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { GoHintModule } from "../go-hint/go-hint.module";
+import { GoIconButtonModule } from "../go-icon-button/go-icon-button.module";
+import { GoRequiredTextModule } from "../go-required-text/go-required-text.module";
+import { GoButtonModule } from "../go-button/go-button.module";
+import { GoTimeFormat } from "./go-time-format.model";
+import { GoFormErrorsModule } from "../go-form-errors/go-form-errors.module";
+import { By } from "@angular/platform-browser";
 
-describe('GoTimepickerComponent', () => {
+describe("GoTimepickerComponent", () => {
   let component: GoTimepickerComponent;
   let fixture: ComponentFixture<GoTimepickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoTimeComponent,
-        GoTimepickerComponent
-      ],
+      declarations: [GoTimeComponent, GoTimepickerComponent],
       imports: [
         GoFormErrorsModule,
         GoIconButtonModule,
@@ -35,107 +33,121 @@ describe('GoTimepickerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoTimepickerComponent);
     component = fixture.componentInstance;
-    component.control = new FormControl('');
+    component.control = new FormControl("");
   });
 
-  it('should create', () => {
+  it("should create", () => {
     component.ngOnInit();
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
+  describe("ngOnInit", () => {
     afterEach(() => {
       component.selectedTime = null;
     });
 
-    it('check with date object', () => {
-      const time: string = '05:15 AM';
-      component.control.setValue(new Date('2017-04-30 05:15:00'));
+    it("check with date object", () => {
+      const time: string = "05:15 AM";
+      component.control.setValue(new Date("2017-04-30 05:15:00"));
       component.ngOnInit();
 
       expect(component.changeTimeFormat(component.selectedTime)).toBe(time);
     });
 
-    it('change the time format 24hr to 12hr', () => {
-      component.control.setValue('18:15:00');
-      const time: string = '06:15 PM';
+    it("change the time format 24hr to 12hr", () => {
+      component.control.setValue("18:15:00");
+      const time: string = "06:15 PM";
       component.ngOnInit();
 
       expect(component.selectedTime).toEqual(time);
     });
   });
 
-  describe('ngAfterViewInit', () => {
+  describe("ngAfterViewInit", () => {
     afterEach(() => {
       component.selectedTime = null;
     });
 
-    it('after change the value of time', () => {
-      const time: string = '06:15 PM';
+    it("after change the value of time", () => {
+      const time: string = "06:15 PM";
 
       component.ngAfterViewInit();
-      component.control.setValue('18:15:00');
+      component.control.setValue("18:15:00");
 
       expect(component.selectedTime).toEqual(time);
     });
   });
 
-  describe('timePicked', () => {
+  describe("timePicked", () => {
     afterEach(() => {
       component.selectedTime = null;
     });
 
-    it('set the time with AM', () => {
-      const time: string = '10:20 AM';
+    it("set the time with AM", () => {
+      const time: string = "10:20 AM";
       const goTimeFormat: GoTimeFormat = {
-        hours: '10',
-        minutes: '20',
-        ampm: 'AM',
+        hours: "10",
+        minutes: "20",
+        ampm: "AM",
       };
       component.timePicked(goTimeFormat);
 
       expect(component.selectedTime).toEqual(time);
     });
 
-    it('set the time with PM', () => {
-      const time: string = '10:20 PM';
+    it("set the time with PM", () => {
+      const time: string = "10:20 PM";
       const goTimeFormat: GoTimeFormat = {
-        hours: '10',
-        minutes: '20',
-        ampm: 'PM',
+        hours: "10",
+        minutes: "20",
+        ampm: "PM",
       };
       component.timePicked(goTimeFormat);
 
       expect(component.selectedTime).toEqual(time);
     });
 
-    it('clear selected time', () => {
-      const time: string = '';
+    it("clear selected time", () => {
+      const time: string = "";
       component.timePicked(null);
 
       expect(component.selectedTime).toEqual(time);
     });
   });
 
-  describe('toggleTimepicker', () => {
+  describe("toggleTimepicker", () => {
     afterEach(() => {
       component.selectedTime = null;
     });
 
-    it('should not open timepicker if control is disabled', () => {
+    it("should not open timepicker if control is disabled", () => {
       component.control.disable();
 
-      component.toggleTimepicker(new Event('click'));
+      component.toggleTimepicker(new Event("click"));
 
       expect(component.timeOpen).toBe(false);
     });
 
-    it('change selected time format to 24H', () => {
-      component.selectedTime = '05:42 PM';
-      const convertTime: string = '17:42';
+    it("change selected time format to 24H", () => {
+      component.selectedTime = "05:42 PM";
+      const convertTime: string = "17:42";
 
-      component.toggleTimepicker(new Event('click'));
+      component.toggleTimepicker(new Event("click"));
       expect(component.openTimeValue).toBe(convertTime);
     });
+  });
+  it("component should not render go-form-errors if hideFieldError property is true ", () => {
+    component.hideFieldError = true;
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
+    ).toBe(0);
+  });
+  it("component should render go-form-errors if hideFieldError property is false ", () => {
+    component.hideFieldError = false;
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
+    ).toBe(1);
   });
 });

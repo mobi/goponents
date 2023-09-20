@@ -3,7 +3,7 @@
     *ngIf="label"
     class="go-form__label"
     [attr.for]="_id"
-    [ngClass]="{'go-form__label--dark': theme === 'dark'}"
+    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
   >
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
@@ -19,7 +19,12 @@
     [minlength]="minlength"
   ></textarea>
 
-  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-
-  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+  <go-hint
+    *ngFor="let hint of hints"
+    [message]="hint"
+    [theme]="theme"
+  ></go-hint>
+  <div *ngIf="!hideFieldError">
+    <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+  </div>
 </div>

@@ -25,18 +25,18 @@
     (click)="toggleTimepicker($event)"
   ></go-icon-button>
   <go-time
-    *ngIf=timeOpen
+    *ngIf="timeOpen"
     [appendToContent]="appendToContent"
     [displayFromRight]="displayFromRight"
     [displayAbove]="displayAbove"
-    [selectedTime] = "openTimeValue"
+    [selectedTime]="openTimeValue"
     (timePicked)="timePicked($event)"
-    (closeTime) = "closeTime()"
+    (closeTime)="closeTime()"
     [theme]="theme"
   >
   </go-time>
 </div>
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-
-<go-form-errors [control]="control" [theme]="theme"></go-form-errors>
-
+<div *ngIf="!hideFieldError">
+  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+</div>

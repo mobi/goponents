@@ -1,7 +1,8 @@
-<label 
+<label
   [attr.for]="_id"
   class="go-form__label"
-  [ngClass]="{'go-form__label--dark': theme == 'dark'}">
+  [ngClass]="{ 'go-form__label--dark': theme == 'dark' }"
+>
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
@@ -39,5 +40,6 @@
 </div>
 
 <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-
-<go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+<div *ngIf="!hideFieldError">
+  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+</div>
