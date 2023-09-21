@@ -1,9 +1,9 @@
-import { Component, Input } from "@angular/core";
-import { AbstractControl, FormControl } from "@angular/forms";
-import { GoFormService } from "../../services/form.service";
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
+import { GoFormService } from '../../services/form.service';
 
 @Component({
-  template: "",
+  template: '',
 })
 export class GoFormBaseComponent {
   /**
@@ -34,12 +34,12 @@ export class GoFormBaseComponent {
   /**
    * Placeholder text for the element
    */
-  @Input() placeholder: string = "";
+  @Input() placeholder: string = '';
 
   /**
    * Theme for the component, defaults to 'light'
    */
-  @Input() theme: "light" | "dark" = "light";
+  @Input() theme: 'light' | 'dark' = 'light';
 
   /**
    * Property to control the visibility of go-form-errors under form field.
@@ -68,6 +68,6 @@ export class GoFormBaseComponent {
    * Generates a unique id for the form element
    */
   private generateId(): void {
-    this._id = this.key || this.goFormService.generateId(this.label, "input");
+    this._id = this.key || this.goFormService.generateId(this.label, 'input');
   }
 }
