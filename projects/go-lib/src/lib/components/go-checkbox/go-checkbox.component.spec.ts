@@ -59,4 +59,10 @@ describe("GoCheckboxComponent", () => {
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(1);
   });
+  it("component should render go-form-errors if hideFieldError is not set ", () => {
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
+    ).toBe(1);
+  });
 });
