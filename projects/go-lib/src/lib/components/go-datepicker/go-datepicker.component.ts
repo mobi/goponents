@@ -118,4 +118,10 @@ export class GoDatepickerComponent extends GoFormBaseComponent implements OnDest
   private initializePlaceholder(): void {
     this.placeholder = this.placeholder || LocaleFormat.format(this.locale);
   }
+
+  public onInputCloseCalendar(): void {
+    if (this.goCalendar.isOpen) {
+      this.goCalendar.closeCalendar();
+    }
+  }
 }
