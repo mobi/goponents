@@ -18,6 +18,8 @@
     [(ngModel)]="selectedDate"
     (blur)="validateDate()"
     [disabled]="control.disabled"
+    (input)="onInputCloseCalendar()"
+    (click)="toggleDatepicker($event)"
   />
   <go-icon-button
     class="go-datepicker__toggle"

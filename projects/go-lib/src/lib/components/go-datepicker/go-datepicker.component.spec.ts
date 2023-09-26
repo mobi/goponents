@@ -15,6 +15,7 @@ import { By } from "@angular/platform-browser";
 describe("GoDatepickerComponent", () => {
   let component: GoDatepickerComponent;
   let fixture: ComponentFixture<GoDatepickerComponent>;
+  let inputElement: HTMLInputElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -40,7 +41,8 @@ describe("GoDatepickerComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoDatepickerComponent);
     component = fixture.componentInstance;
-    component.control = new FormControl("");
+    component.control = new FormControl('');
+    inputElement = fixture.nativeElement.querySelector("input");
   });
 
   it("should create", () => {
@@ -255,4 +257,33 @@ describe("GoDatepickerComponent", () => {
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(1);
   });
+
+  describe("onInputCloseCalendar", () => {
+    it('close the calendar when the user interacts with the date field by typing inside it. ', () => {
+      component.goCalendar.openCalendar(new Date());
+
+      component.onInputCloseCalendar();
+
+      expect(component.goCalendar.isOpen).toBe(false);
+    });
+  });
+
+  describe("onInputCloseCalendar", () => {
+    it("close the calendar when the user interacts with the date field by typing inside it. ", () => {
+      component.goCalendar.openCalendar(new Date());
+
+      component.onInputCloseCalendar();
+
+      expect(component.goCalendar.isOpen).toBe(false);
+    });
+
+    it("should call onInputCloseCalendar() when input event is emitted.", () => {
+      const onInputCloseCalendarSpy = spyOn(component, "onInputCloseCalendar");
+
+      inputElement.dispatchEvent(new Event("input"));
+
+      expect(onInputCloseCalendarSpy).toHaveBeenCalled();
+    });
+  });
+
 });
