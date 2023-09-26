@@ -1,19 +1,28 @@
 <div>
-  <label [for]="_id"
-         class="go-form__label go-form__label--inline go-form__label--checkbox-container"
-         [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  <label
+    [for]="_id"
+    class="go-form__label go-form__label--inline go-form__label--checkbox-container"
+    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+  >
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
-    <input [id]="_id"
-           class="go-form__checkbox go-form__checkbox--hidden"
-           [ngClass]="inputClasses"
-           type="checkbox"
-           [formControl]="control"
-           #hiddenInputRef>
+    <input
+      [id]="_id"
+      class="go-form__checkbox go-form__checkbox--hidden"
+      [ngClass]="inputClasses"
+      type="checkbox"
+      [formControl]="control"
+      #hiddenInputRef
+    />
     <span class="go-form__custom-checkbox"></span>
   </label>
 
-  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-
-  <go-form-errors [control]="control"></go-form-errors>
+  <go-hint
+    *ngFor="let hint of hints"
+    [message]="hint"
+    [theme]="theme"
+  ></go-hint>
+  <div *ngIf="!hideFieldError">
+    <go-form-errors [control]="control"></go-form-errors>
+  </div>
 </div>
