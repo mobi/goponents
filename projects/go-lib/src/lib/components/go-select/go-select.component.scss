@@ -28,6 +28,10 @@
   min-height: auto;
 }
 
+.ng-select.ng-select-disabled>.ng-select-container {
+  background-color: #f0f0f0 !important;
+}
+
 .ng-select.ng-select.ng-select-multiple .ng-select-container .ng-value-container,
 .ng-select.ng-select-single .ng-select-container .ng-value-container {
   align-items: flex-start;
