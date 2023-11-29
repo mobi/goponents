@@ -93,13 +93,13 @@
     }
 
     &--launch {
+      color: $app-launch-color-secondary;
       cursor: default;
+      font-family: 'Nunito';
+      font-size: 0.875rem;
+      font-weight: lighter;
       padding: .75rem;
       width: 100%;
-      font-family: 'Nunito';
-      font-weight: lighter; 
-      font-size: 0.875rem;
-      color: $app-launch-color-secondary;
 
       &:hover {
         background: $theme-light-bg;
