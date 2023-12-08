@@ -46,6 +46,13 @@ describe("GoSelectComponent", () => {
       component.multiple = true;
     });
 
+    it("should apply the correct styles for ng-select-disabled", () => {
+      fixture.detectChanges();
+      expect(
+        fixture.debugElement.queryAll(By.css(".ng-select-container"))?.length
+      ).toBe(1);
+    });
+
     it("adds all of the available items to the form control value", () => {
       component.bindValue = undefined;
       component.items = [
