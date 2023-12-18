@@ -93,9 +93,11 @@
     }
 
     &--launch {
-      color: $base-light-secondary;
+      color: $app-launch-color-secondary;
       cursor: default;
-      font-size: .6875rem;
+      font-family: 'Nunito';
+      font-size: 0.875rem;
+      font-weight: lighter;
       padding: .75rem;
       width: 100%;
 

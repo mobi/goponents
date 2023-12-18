@@ -75,6 +75,34 @@ describe('GoSideNavComponent', () => {
         ]
       }
     ];
+	
+	component.navAppDrawer = {
+      currentAppIcon: 'power_settings_new',
+      currentAppDisplayName: 'go-design',
+      appDrawerConfig: [
+        {
+          displayName: 'GitHub',
+          icon: 'code',
+          url: 'https://github.com/',
+          target: 'github'
+        },
+        {
+          displayName: 'Go Design',
+          icon: 'power_settings_new',
+          url: 'https://tangoe.design/getting-started'
+        },
+        {
+          displayName: 'Google',
+          icon: 'search',
+          url: 'https://www.google.com/'
+        },
+        {
+          displayName: 'Stack Overflow',
+          icon: 'contact_support',
+          url: 'https://stackoverflow.com/'
+        }
+      ]
+    };
 
     fixture.detectChanges();
   });
