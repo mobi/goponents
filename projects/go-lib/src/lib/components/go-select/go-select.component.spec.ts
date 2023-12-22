@@ -34,6 +34,10 @@ describe("GoSelectComponent", () => {
     fixture = TestBed.createComponent(GoSelectComponent);
     component = fixture.componentInstance;
     component.control = new FormControl("Some Value");
+    component.virtualScroll = false;
+    component.loading = false;
+    component.typeToSearchText = 'Type to Search';
+    component.hideDropDownArrow = false;
     fixture.detectChanges();
   });
 
@@ -186,6 +190,7 @@ describe("GoSelectComponent", () => {
       expect(component["resetTypeAheadItems"]).toHaveBeenCalled();
     });
   });
+  
   it("component should not render go-form-errors if hideFieldError property is true ", () => {
     component.hideFieldError = true;
     fixture.detectChanges();
@@ -193,6 +198,7 @@ describe("GoSelectComponent", () => {
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(0);
   });
+
   it("component should render go-form-errors if hideFieldError property is false ", () => {
     component.hideFieldError = false;
     fixture.detectChanges();
