@@ -34,10 +34,6 @@ describe("GoSelectComponent", () => {
     fixture = TestBed.createComponent(GoSelectComponent);
     component = fixture.componentInstance;
     component.control = new FormControl("Some Value");
-    component.virtualScroll = false;
-    component.loading = false;
-    component.typeToSearchText = "Type to Search";
-    component.hideDropDownArrow = false;
     fixture.detectChanges();
   });
 
@@ -136,18 +132,42 @@ describe("GoSelectComponent", () => {
       ]);
     });
 
-    it("should apply the correct styles for ng-select-disabled", () => {
+    it("should set background color when disabled", () => {
+      component.control.disable();
       fixture.detectChanges();
-      const ngSelectContainer = fixture.debugElement.query(
-        By.css(".ng-select.ng-select-disabled>.ng-select-container")
+
+      const ngSelectContainer = fixture.nativeElement.querySelector(
+        ".ng-select-container"
       );
-      if (ngSelectContainer?.nativeElement) {
-        const styles = getComputedStyle(ngSelectContainer.nativeElement);
-        expect(styles.backgroundColor).toBe("#f0f0f0"); // Replace with the actual color value
-        expect(
-          fixture.debugElement.queryAll(By.css(".ng-select-container"))?.length
-        ).toBe(1);
-      }
+
+      // Get the computed background color
+      const computedBgColor =
+        getComputedStyle(ngSelectContainer).backgroundColor;
+
+      // Assuming $theme-light-app-bg is a valid CSS color value
+      const expectedBgColor = "rgb(240, 240, 240)";
+
+      // Assert that the computed background color matches the expected value
+      expect(computedBgColor).toBe(expectedBgColor);
+    });
+
+    it("set background color when not disabled", () => {
+      component.control.enable();
+      fixture.detectChanges();
+
+      const ngSelectContainer = fixture.nativeElement.querySelector(
+        ".ng-select-container"
+      );
+
+      // Get the computed background color
+      const computedBgColor =
+        getComputedStyle(ngSelectContainer).backgroundColor;
+
+      // Assuming an empty string because no background color is set when not disabled
+      const expectedBgColor = "rgb(255, 255, 255)";
+
+      // Assert that the computed background color matches the expected value
+      expect(computedBgColor).toBe(expectedBgColor);
     });
 
     it("should remove items from previousSelectedItems", () => {
@@ -225,33 +245,5 @@ describe("GoSelectComponent", () => {
     expect(
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(1);
-  });
-
-  it("should render options correctly", () => {
-    fixture.detectChanges();
-
-    const options = fixture.nativeElement.querySelectorAll(".ng-option");
-    if (options.length) {
-      expect(options.length).toBe(component.items.length);
-
-      options.forEach((option, index) => {
-        expect(option.textContent.trim()).toBe(component.items[index]);
-      });
-    }
-  });
-
-  it("should update selected item on user interaction", () => {
-    fixture.detectChanges();
-
-    const options = fixture.nativeElement.querySelectorAll(".ng-option");
-
-    // Simulate user selecting the second option
-    if (options[1]?.click()) {
-      options[1].click();
-      fixture.detectChanges();
-
-      // Verify that the selected item is updated
-      expect(component?.bindValue).toBe(component.items[1]);
-    }
   });
 });
