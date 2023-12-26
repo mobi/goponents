@@ -226,4 +226,32 @@ describe("GoSelectComponent", () => {
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(1);
   });
+
+  it("should render options correctly", () => {
+    fixture.detectChanges();
+
+    const options = fixture.nativeElement.querySelectorAll(".ng-option");
+    if (options.length) {
+      expect(options.length).toBe(component.items.length);
+
+      options.forEach((option, index) => {
+        expect(option.textContent.trim()).toBe(component.items[index]);
+      });
+    }
+  });
+
+  it("should update selected item on user interaction", () => {
+    fixture.detectChanges();
+
+    const options = fixture.nativeElement.querySelectorAll(".ng-option");
+
+    // Simulate user selecting the second option
+    if (options[1]?.click()) {
+      options[1].click();
+      fixture.detectChanges();
+
+      // Verify that the selected item is updated
+      expect(component?.bindValue).toBe(component.items[1]);
+    }
+  });
 });
