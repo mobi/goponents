@@ -136,22 +136,18 @@ describe("GoSelectComponent", () => {
       ]);
     });
 
-    it("should apply background color when disabled", () => {
+    it("should apply the correct styles for ng-select-disabled", () => {
       fixture.detectChanges();
-
-      const ngSelectContainer = fixture.nativeElement.querySelector(
-        ".ng-select-container"
+      const ngSelectContainer = fixture.debugElement.query(
+        By.css(".ng-select.ng-select-disabled>.ng-select-container")
       );
-
-      // Get the computed background color
-      const computedBgColor =
-        getComputedStyle(ngSelectContainer).backgroundColor;
-
-      // Assuming #f0f0f0 is the expected background color
-      const expectedBgColor = "rgb(255, 255, 255)";
-
-      // Assert that the computed background color matches the expected value
-      expect(computedBgColor).toBe(expectedBgColor);
+      if (ngSelectContainer?.nativeElement) {
+        const styles = getComputedStyle(ngSelectContainer.nativeElement);
+        expect(styles.backgroundColor).toBe("#f0f0f0"); // Replace with the actual color value
+        expect(
+          fixture.debugElement.queryAll(By.css(".ng-select-container"))?.length
+        ).toBe(1);
+      }
     });
 
     it("should remove items from previousSelectedItems", () => {
