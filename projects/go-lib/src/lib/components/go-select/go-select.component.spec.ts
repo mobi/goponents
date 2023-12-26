@@ -136,6 +136,13 @@ describe("GoSelectComponent", () => {
       ]);
     });
 
+    it('should apply the correct styles for ng-select-disabled', () => {
+      fixture.detectChanges();
+      const ngSelectContainer = fixture.debugElement.query(By.css('.ng-select.ng-select-disabled>.ng-select-container'));
+      const styles = getComputedStyle(ngSelectContainer.nativeElement);
+      expect(styles.backgroundColor).toBe('#f0f0f0'); // Replace with the actual color value
+    });
+
     it("should remove items from previousSelectedItems", () => {
       component["previousSelectedItems"] = [{ id: 1, label: "banana" }];
       component.handleItemRemove({ value: { id: 1, label: "banana" } });
