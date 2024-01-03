@@ -132,6 +132,44 @@ describe("GoSelectComponent", () => {
       ]);
     });
 
+    it("should set background color when disabled", () => {
+      component.control.disable();
+      fixture.detectChanges();
+
+      const ngSelectContainer = fixture.nativeElement.querySelector(
+        ".ng-select-container"
+      );
+
+      // Get the computed background color
+      const computedBgColor =
+        getComputedStyle(ngSelectContainer).backgroundColor;
+
+      // Assuming $theme-light-app-bg is a valid CSS color value
+      const expectedBgColor = "rgb(240, 240, 240)";
+
+      // Assert that the computed background color matches the expected value
+      expect(computedBgColor).toBe(expectedBgColor);
+    });
+
+    it("set background color when not disabled", () => {
+      component.control.enable();
+      fixture.detectChanges();
+
+      const ngSelectContainer = fixture.nativeElement.querySelector(
+        ".ng-select-container"
+      );
+
+      // Get the computed background color
+      const computedBgColor =
+        getComputedStyle(ngSelectContainer).backgroundColor;
+
+      // Assuming an empty string because no background color is set when not disabled
+      const expectedBgColor = "rgb(255, 255, 255)";
+
+      // Assert that the computed background color matches the expected value
+      expect(computedBgColor).toBe(expectedBgColor);
+    });
+
     it("should remove items from previousSelectedItems", () => {
       component["previousSelectedItems"] = [{ id: 1, label: "banana" }];
       component.handleItemRemove({ value: { id: 1, label: "banana" } });
@@ -186,6 +224,7 @@ describe("GoSelectComponent", () => {
       expect(component["resetTypeAheadItems"]).toHaveBeenCalled();
     });
   });
+
   it("component should not render go-form-errors if hideFieldError property is true ", () => {
     component.hideFieldError = true;
     fixture.detectChanges();
@@ -193,6 +232,7 @@ describe("GoSelectComponent", () => {
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
     ).toBe(0);
   });
+
   it("component should render go-form-errors if hideFieldError property is false ", () => {
     component.hideFieldError = false;
     fixture.detectChanges();
