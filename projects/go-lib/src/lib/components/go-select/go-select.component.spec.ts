@@ -26,7 +26,7 @@ describe("GoSelectComponent", () => {
         NgSelectModule,
         FormsModule,
         ReactiveFormsModule,
-      ],
+      ]
     }).compileComponents();
   }));
 
