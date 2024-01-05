@@ -2,7 +2,8 @@
   *ngIf="label"
   class="go-form__label"
   [attr.for]="_id"
-  [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+>
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
@@ -24,7 +25,8 @@
   [multiple]="multiple"
   [ngClass]="{
     'go-select--dark': theme === 'dark',
-    'go-select--hide-arrow': hideDropDownArrow || (typeahead && items?.length === 0),
+    'go-select--hide-arrow':
+      hideDropDownArrow || (typeahead && items?.length === 0),
     'go-select--hide-dropdown': searchable && items?.length === 0
   }"
   [placeholder]="placeholder"
@@ -37,53 +39,60 @@
   (scroll)="onScroll($event)"
   #select
 >
-  <ng-template
-    *ngIf="multiple && items?.length"
-    ng-header-tmp
-  >
+  <ng-template *ngIf="multiple && items?.length" ng-header-tmp>
     <button
       type="button"
       (click)="onSelectAll()"
       class="go-select__select-all-button"
-      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
-      *ngIf="showSelectAll && (control.value?.length < items?.length || typeahead)"
+      [ngClass]="{ 'go-select__select-all-button--dark': theme === 'dark' }"
+      *ngIf="
+        showSelectAll && (control.value?.length < items?.length || typeahead)
+      "
     >
-      Select {{!select.searchTerm || typeahead ? items.length : refinedItems.length}} Result(s)
+      Select
+      {{ !select.searchTerm || typeahead ? items.length : refinedItems.length }}
+      Result(s)
     </button>
     <button
       type="button"
       (click)="onRemoveAll()"
       class="go-select__select-all-button"
-      [ngClass]="{ 'go-select__select-all-button--dark' : theme === 'dark' }"
-      *ngIf="control.value?.length">
-      Remove  All
+      [ngClass]="{ 'go-select__select-all-button--dark': theme === 'dark' }"
+      *ngIf="control.value?.length"
+    >
+      Remove All
     </button>
   </ng-template>
 
   <ng-container *ngIf="goSelectSelectedOption">
     <ng-template ng-label-tmp let-item="item">
-      <ng-container *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="goSelectSelectedOption; context: { $implicit: item }"
+      ></ng-container>
     </ng-template>
   </ng-container>
   <ng-container *ngIf="goSelectOptionGroup">
     <ng-template ng-optgroup-tmp let-item="item">
-      <ng-container *ngTemplateOutlet="goSelectOptionGroup; context: { $implicit: item }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="goSelectOptionGroup; context: { $implicit: item }"
+      ></ng-container>
     </ng-template>
   </ng-container>
   <ng-container *ngIf="goSelectOption">
     <ng-template *ngIf="!goSelectSelectedOption" ng-label-tmp let-item="item">
-      <ng-container *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"
+      ></ng-container>
     </ng-template>
     <ng-template ng-option-tmp let-item="item">
-      <ng-container *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="goSelectOption; context: { $implicit: item }"
+      ></ng-container>
     </ng-template>
   </ng-container>
 </ng-select>
 
-<go-hint
-  *ngFor="let hint of hints"
-  [message]="hint"
-  [theme]="theme">
-</go-hint>
-
-<go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"> </go-hint>
+<div *ngIf="!hideFieldError">
+  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+</div>

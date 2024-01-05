@@ -1,13 +1,18 @@
-<label 
+<label
   *ngIf="label"
   class="go-form__label"
   [attr.for]="_id"
-  [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+  [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+>
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
-<div [ngClass]="{ 'go-file-upload--disabled': this.state === 'selected' || isLoading, 'go-file-upload--dark': theme === 'dark' }">
-
+<div
+  [ngClass]="{
+    'go-file-upload--disabled': this.state === 'selected' || isLoading,
+    'go-file-upload--dark': theme === 'dark'
+  }"
+>
   <ng-container *ngIf="!isLoading; else loading">
     <div
       goDragonDrop
@@ -16,25 +21,22 @@
       (click)="filePicker.click()"
       (dropped)="onFilePicked($event)"
       (dragonDropOver)="onDragOver()"
-      (dragonDropleave)="onDragLeave()">
-
-      <div
-        *ngIf="state === 'selecting'"
-        class="go-file-upload__container">
-        <go-icon
-          icon="publish"
-          iconModifier="large">
-        </go-icon>
+      (dragonDropleave)="onDragLeave()"
+    >
+      <div *ngIf="state === 'selecting'" class="go-file-upload__container">
+        <go-icon icon="publish" iconModifier="large"> </go-icon>
         Drag and Drop File or Click to Browse
       </div>
 
       <div
         *ngIf="state === 'selected'"
-        class="go-file-upload__container go-file-upload__container--selected">
+        class="go-file-upload__container go-file-upload__container--selected"
+      >
         <go-icon
           icon="check"
           class="go-file-upload__selected-checkmark"
-          iconClass="go-icon--large">
+          iconClass="go-icon--large"
+        >
         </go-icon>
         File Selected
       </div>
@@ -45,35 +47,53 @@
         #filePicker
         class="go-file-upload__input"
         (change)="onFilePicked($event)"
-        [attr.multiple]="multiple ? true : null">
-
+        [attr.multiple]="multiple ? true : null"
+      />
     </div>
   </ng-container>
 
   <ng-template #loading>
-    <div class="go-file-upload go-file-upload__container go-file-upload__container--loading">
-      <go-loader
-        *ngIf="isLoading"
-        loaderSize="small">
-      </go-loader>
+    <div
+      class="go-file-upload go-file-upload__container go-file-upload__container--loading"
+    >
+      <go-loader *ngIf="isLoading" loaderSize="small"> </go-loader>
       <span class="go-file-upload__container--loading-text">
         Uploading File...
       </span>
     </div>
   </ng-template>
-
 </div>
 
 <div *ngIf="filePreview.length" class="go-file-upload__file-name">
-  <label class="go-form__label go-file-upload__file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="multiple">Files</label>
-  <label class="go-form__label go-file-upload__file-name__label" [ngClass]="{'go-form__label--dark': theme === 'dark'}" *ngIf="!multiple">File Name</label>
-  <p *ngFor="let file of filePreview; let i = index" class="go-file-upload__file-list">
-    <span class="go-file-upload__file-name" [ngClass]="{'go-file-upload__file-name--dark': theme === 'dark'}">{{ file }}</span>
-    <go-icon-button buttonIcon="close" (handleClick)="removeFile(i)"></go-icon-button>
+  <label
+    class="go-form__label go-file-upload__file-name__label"
+    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+    *ngIf="multiple"
+    >Files</label
+  >
+  <label
+    class="go-form__label go-file-upload__file-name__label"
+    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+    *ngIf="!multiple"
+    >File Name</label
+  >
+  <p
+    *ngFor="let file of filePreview; let i = index"
+    class="go-file-upload__file-list"
+  >
+    <span
+      class="go-file-upload__file-name"
+      [ngClass]="{ 'go-file-upload__file-name--dark': theme === 'dark' }"
+      >{{ file }}</span
+    >
+    <go-icon-button
+      buttonIcon="close"
+      (handleClick)="removeFile(i)"
+    ></go-icon-button>
   </p>
 </div>
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme">
-</go-hint>
-
-<go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"> </go-hint>
+<div *ngIf="!hideFieldError">
+  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+</div>

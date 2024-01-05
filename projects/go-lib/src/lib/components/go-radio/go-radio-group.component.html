@@ -1,17 +1,21 @@
-<fieldset
-  [disabled]="control.disabled"
-  [ngClass]="getFieldsetClasses()">
+<fieldset [disabled]="control.disabled" [ngClass]="getFieldsetClasses()">
   <legend
     class="go-form__legend"
     [ngClass]="{ 'go-form__legend--dark': theme === 'dark' }"
-    *ngIf="enableLegend">
+    *ngIf="enableLegend"
+  >
     {{ legend }}
     <go-required-text [control]="control"></go-required-text>
   </legend>
 
   <ng-content></ng-content>
 
-  <go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-  
-  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+  <go-hint
+    *ngFor="let hint of hints"
+    [message]="hint"
+    [theme]="theme"
+  ></go-hint>
+  <div *ngIf="!hideFieldError">
+    <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+  </div>
 </fieldset>
