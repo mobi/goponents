@@ -41,7 +41,7 @@ export class LocaleFormat {
     if (day <= validDays[month]) {
       return true;
     }
-    if (year % 4 === 0 && month === 2 && day === 29) {
+    if (year % 4 === 0 && (month + 1) === 2 && day === 29) {
       return true;
     }
     return false;
