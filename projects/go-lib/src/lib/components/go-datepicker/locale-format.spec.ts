@@ -13,5 +13,16 @@ describe('LocaleFormat', () => {
         dec.toUTCString() + ' is not a valid date'
       );
     });
+    it('should return true for a leap year date', () => {
+      const nonLeapYear: Date = new Date(2021, 1, 29);
+      expect(LocaleFormat.validDate(nonLeapYear.getMonth(), nonLeapYear.getDate(), nonLeapYear.getFullYear())).toBeTruthy(
+        nonLeapYear.toUTCString() + ' is not a valid date'
+      )});
+
+    it('should return false for a non leap year date', () => {
+      const leapYear: Date = new Date(2020, 1, 29);
+      expect(LocaleFormat.validDate(leapYear.getMonth(), leapYear.getDate(), leapYear.getFullYear())).toBeTruthy(
+        leapYear.toUTCString() + ' is a valid date'
+      )});
   });
 });
