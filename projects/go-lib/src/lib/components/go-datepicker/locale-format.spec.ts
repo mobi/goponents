@@ -13,5 +13,14 @@ describe('LocaleFormat', () => {
         dec.toUTCString() + ' is not a valid date'
       );
     });
+    it('should return true for a leap year date', () => {
+      const feb = 1;
+      expect(LocaleFormat.validDate(feb, 29, 2024)).toBe(true);
+    });
+
+    it('should return false for a non leap year date', () => {
+      const feb = 1;
+      expect(LocaleFormat.validDate(feb, 29, 2023)).toBe(false);
+    });
   });
 });
