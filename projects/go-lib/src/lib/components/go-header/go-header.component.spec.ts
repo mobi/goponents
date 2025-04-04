@@ -136,12 +136,20 @@ describe('GoHeaderComponent', () => {
       expect(component.getLogo()).toBe('luna.jpg');
     });
 
-    it('returns the normal version of the logo if the side nav is expanded', () => {
+    it('returns the normal version of the logo if the side nav is expanded', async () => {
       sideNavService.navOpen = true;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
+      configService.setConfig({
+        brandColor: '#65B360',
+        logoConfig: {
+          logoCollapsed: 'luna.jpg',
+          logo: 'hedwig.jpg'
+        }
+      });
+      await fixture.whenStable();
       fixture.detectChanges();
       expect(component.getLogo()).toBe('hedwig.jpg');
     });
+
   });
 
   describe('enableMenuHover', () => {
