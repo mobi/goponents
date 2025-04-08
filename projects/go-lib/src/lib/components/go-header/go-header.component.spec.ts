@@ -114,9 +114,10 @@ describe('GoHeaderComponent', () => {
   });
 
   describe('getLogoBackground', () => {
-    it('returns brandColor if it is defined and the side nav is expanded', () => {
+    it('returns brandColor if it is defined and the side nav is expanded', async () => {
       sideNavService.navOpen = true;
       configService.setConfig({ brandColor: '#65B360', logoConfig: { logo: 'hedwig.jpg' } });
+      await fixture.whenStable();
       fixture.detectChanges();
       expect(component.getLogoBackground()).toBe('#65B360');
     });
