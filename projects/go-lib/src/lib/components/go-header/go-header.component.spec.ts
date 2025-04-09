@@ -116,9 +116,14 @@ describe('GoHeaderComponent', () => {
   describe('getLogoBackground', () => {
     it('returns brandColor if it is defined and the side nav is expanded', async () => {
       sideNavService.navOpen = true;
-      configService.setConfig({ brandColor: '#65B360', logoConfig: { logo: 'hedwig.jpg' } });
+      configService.setConfig({
+        brandColor: '#65B360',
+        logoConfig: { logo: 'hedwig.jpg' }
+      });
+      fixture.detectChanges();
       await fixture.whenStable();
       fixture.detectChanges();
+      await fixture.whenStable();
       expect(component.getLogoBackground()).toBe('#65B360');
     });
 
@@ -135,7 +140,7 @@ describe('GoHeaderComponent', () => {
       component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
       expect(component.getLogo()).toBe('luna.jpg');
     });
-    
+
     it('returns the normal version of the logo if the side nav is expanded', async () => {
       component.brandColor = '#65B360';
       sideNavService.navOpen = true;
