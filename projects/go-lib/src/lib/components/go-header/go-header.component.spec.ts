@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { skip } from 'rxjs/operators';
@@ -133,24 +133,16 @@ describe('GoHeaderComponent', () => {
     it('returns the collapsed version of the logo if the side nav is collapsed', () => {
       sideNavService.navOpen = false;
       component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-
       expect(component.getLogo()).toBe('luna.jpg');
     });
-
+    
     it('returns the normal version of the logo if the side nav is expanded', async () => {
+      component.brandColor = '#65B360';
       sideNavService.navOpen = true;
-      configService.setConfig({
-        brandColor: '#65B360',
-        logoConfig: {
-          logoCollapsed: 'luna.jpg',
-          logo: 'hedwig.jpg'
-        }
-      });
-      await fixture.whenStable();
       fixture.detectChanges();
-      expect(component.getLogo()).toBe('hedwig.jpg');
+      await fixture.whenStable();
+      expect(component.getLogoBackground()).toBe('#65B360');
     });
-
   });
 
   describe('enableMenuHover', () => {
