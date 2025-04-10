@@ -114,23 +114,36 @@ describe('GoHeaderComponent', () => {
   });
 
   describe('getLogoBackground', () => {
+    beforeEach(() => {
+      sideNavService.navOpen = false;
+      configService.setConfig({ brandColor: null });
+    });
+
     it('returns brandColor if it is defined and the side nav is expanded', async () => {
       sideNavService.navOpen = true;
       configService.setConfig({
         brandColor: '#65B360',
         logoConfig: { logo: 'hedwig.jpg' }
       });
+
       fixture.detectChanges();
       await fixture.whenStable();
       fixture.detectChanges();
-      await fixture.whenStable();
+
       expect(component.getLogoBackground()).toBe('#65B360');
     });
 
-    it('returns null if side nav is collapsed', () => {
+    it('returns null if side nav is collapsed', async () => {
       sideNavService.navOpen = false;
+      configService.setConfig({
+        brandColor: '#65B360',
+        logoConfig: { logo: 'hedwig.jpg' }
+      });
 
-      expect(component.getLogoBackground()).toBe(null);
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.getLogoBackground()).toBeNull();
     });
   });
 
@@ -141,12 +154,10 @@ describe('GoHeaderComponent', () => {
       expect(component.getLogo()).toBe('luna.jpg');
     });
 
-    it('returns the normal version of the logo if the side nav is expanded', async () => {
-      component.brandColor = '#65B360';
+    it('returns the normal version of the logo if the side nav is expanded', () => {
       sideNavService.navOpen = true;
-      fixture.detectChanges();
-      await fixture.whenStable();
-      expect(component.getLogoBackground()).toBe('#65B360');
+      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
+      expect(component.getLogo()).toBe('hedwig.jpg');
     });
   });
 
