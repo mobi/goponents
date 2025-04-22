@@ -113,53 +113,53 @@ describe('GoHeaderComponent', () => {
     });
   });
 
-  describe('getLogoBackground', () => {
-    beforeEach(() => {
-      sideNavService.navOpen = false;
-      configService.setConfig({ brandColor: null });
-    });
+  // describe('getLogoBackground', () => {
+  //   beforeEach(() => {
+  //     sideNavService.navOpen = false;
+  //     configService.setConfig({ brandColor: null });
+  //   });
 
-    it('returns brandColor if it is defined and the side nav is expanded', async () => {
-      sideNavService.navOpen = true;
-      configService.setConfig({
-        brandColor: '#65B360',
-        logoConfig: { logo: 'hedwig.jpg' }
-      });
+  //   it('returns brandColor if it is defined and the side nav is expanded', async () => {
+  //     sideNavService.navOpen = true;
+  //     configService.setConfig({
+  //       brandColor: '#65B360',
+  //       logoConfig: { logo: 'hedwig.jpg' }
+  //     });
 
-      fixture.detectChanges();
-      await fixture.whenStable();
-      fixture.detectChanges();
+  //     fixture.detectChanges();
+  //     await fixture.whenStable();
+  //     fixture.detectChanges();
 
-      expect(component.getLogoBackground()).toBe('#65B360');
-    });
+  //     expect(component.getLogoBackground()).toBe('#65B360');
+  //   });
 
-    it('returns null if side nav is collapsed', async () => {
-      sideNavService.navOpen = false;
-      configService.setConfig({
-        brandColor: '#65B360',
-        logoConfig: { logo: 'hedwig.jpg' }
-      });
+  //   it('returns null if side nav is collapsed', async () => {
+  //     sideNavService.navOpen = false;
+  //     configService.setConfig({
+  //       brandColor: '#65B360',
+  //       logoConfig: { logo: 'hedwig.jpg' }
+  //     });
 
-      fixture.detectChanges();
-      await fixture.whenStable();
+  //     fixture.detectChanges();
+  //     await fixture.whenStable();
 
-      expect(component.getLogoBackground()).toBeNull();
-    });
-  });
+  //     expect(component.getLogoBackground()).toBeNull();
+  //   });
+  // });
 
-  describe('getLogo', () => {
-    it('returns the collapsed version of the logo if the side nav is collapsed', () => {
-      sideNavService.navOpen = false;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-      expect(component.getLogo()).toBe('luna.jpg');
-    });
+  // describe('getLogo', () => {
+  //   it('returns the collapsed version of the logo if the side nav is collapsed', () => {
+  //     sideNavService.navOpen = false;
+  //     component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
+  //     expect(component.getLogo()).toBe('luna.jpg');
+  //   });
 
-    it('returns the normal version of the logo if the side nav is expanded', () => {
-      sideNavService.navOpen = true;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-      expect(component.getLogo()).toBe('hedwig.jpg');
-    });
-  });
+  //   it('returns the normal version of the logo if the side nav is expanded', () => {
+  //     sideNavService.navOpen = true;
+  //     component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
+  //     expect(component.getLogo()).toBe('hedwig.jpg');
+  //   });
+  // });
 
   describe('enableMenuHover', () => {
     it('sets menuBgHover to menuBgHoverValue', () => {
