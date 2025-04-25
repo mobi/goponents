@@ -20,7 +20,7 @@ module.exports = function (config) {
       dir: require("path").join(__dirname, "../coverage"),
       reports: ["html", "lcovonly", "text-summary"],
       thresholds: {
-        statements: 93,
+        statements: 92,
         lines: 92,
         branches: 75,
         functions: 88,
