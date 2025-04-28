@@ -33,9 +33,3 @@ jobs:
         run: npm run build_lib
       - name: Run Tests
         run: npm run test_lib:ci
-      - name: Run Tests & Upload Coverage
-        uses: paambaati/codeclimate-action@v3.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: ${{github.workspace}}/projects/coverage/lcov.info:lcov
