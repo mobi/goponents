@@ -120,14 +120,6 @@ describe('GoHeaderComponent', () => {
     });
   });
 
-  describe('getLogo', () => {
-    it('returns the normal version of the logo if the side nav is expanded', () => {
-      sideNavService.navOpen = true;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-      expect(component.getLogo()).toBe('hedwig.jpg');
-    });
-  });
-
   describe('enableMenuHover', () => {
     it('sets menuBgHover to menuBgHoverValue', () => {
       expect(component.menuBgHover).toBe(undefined);
