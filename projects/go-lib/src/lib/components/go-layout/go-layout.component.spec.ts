@@ -60,28 +60,10 @@ describe('GoLayoutComponent', () => {
 
     fixture = TestBed.createComponent(GoLayoutComponent);
     component = fixture.componentInstance;
-    // Replace headerBar and routeContainer
     component.headerBar = new MockHeaderBar() as any;
     component.routeContainer = new ElementRef({ scrollTop: 0 });
     fixture.detectChanges();
   });
-
-  it('should set routeLoader true and save scrollTop on NavigationStart', () => {
-    (mockRouter.url as string) = '/page1';
-    component.routeContainer.nativeElement.scrollTop = 123;
-    routerEvents$.next(new NavigationStart(1, '/page2'));
-    expect(component.routeLoader).toBe(true);
-    expect(component['routeScrollPositions']['/page1']).toBe(123);
-    expect(component['goingBack']).toBeFalsy();
-  });
-
-  it('should detect popstate on NavigationStart', () => {
-    const start = new NavigationStart(2, '/page3', 'popstate');
-    routerEvents$.next(start);
-    expect(component.routeLoader).toBe(true);
-    expect(component['goingBack']).toBe(true);
-  });
-
 
   [NavigationEnd, NavigationCancel, NavigationError].forEach(eventType => {
     const name = eventType.name;
@@ -108,7 +90,24 @@ describe('GoLayoutComponent', () => {
     });
   });
 
+  it('should set routeLoader true and save scrollTop on NavigationStart', () => {
+    (mockRouter.url as string) = '/page1';
+    component.routeContainer.nativeElement.scrollTop = 123;
+    routerEvents$.next(new NavigationStart(1, '/page2'));
+    expect(component.routeLoader).toBe(true);
+    expect(component['routeScrollPositions']['/page1']).toBe(123);
+    expect(component['goingBack']).toBeFalsy();
+  });
+
+  it('should detect popstate on NavigationStart', () => {
+    const start = new NavigationStart(2, '/page3', 'popstate');
+    routerEvents$.next(start);
+    expect(component.routeLoader).toBe(true);
+    expect(component['goingBack']).toBe(true);
+  });
+
   it('should create the component', () => {
     expect(component).toBeTruthy();
   });
+
 });
