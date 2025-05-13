@@ -65,6 +65,10 @@ describe('GoLayoutComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
+  
   [NavigationEnd, NavigationCancel, NavigationError].forEach(eventType => {
     const name = eventType.name;
 
@@ -104,10 +108,6 @@ describe('GoLayoutComponent', () => {
     routerEvents$.next(start);
     expect(component.routeLoader).toBe(true);
     expect(component['goingBack']).toBe(true);
-  });
-
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
   });
 
 });
