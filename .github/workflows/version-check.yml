@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
       - name: Get Current Package Version
@@ -23,7 +23,7 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@master
         with:
           path: projects/go-lib
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get New Package Version
         id: package-version-new
         uses: martinbeentjes/npm-get-version-action@master
@@ -31,6 +31,6 @@ jobs:
           path: projects/go-lib
       - name: Ensure New Version
         if: steps.package-version-current.outputs.current-version == steps.package-version-new.outputs.current-version
-        uses: actions/github-script@v3
+        uses: actions/github-script@v7
         with:
           script: core.setFailed('Package version has not be incremented!')
