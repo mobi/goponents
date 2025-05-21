@@ -9,7 +9,7 @@ concurrency:
 jobs:
   library:
     name: Library Build & Tests
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, oracle9]
     steps:
       - uses: actions/checkout@v4
       - name: Get Token
