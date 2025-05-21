@@ -9,7 +9,7 @@ concurrency:
 jobs:
   library:
     name: Library Build & Tests
-    runs-on: [self-hosted, oracle9]
+    runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
     steps:
       - uses: actions/checkout@v4
       - name: Get Token
