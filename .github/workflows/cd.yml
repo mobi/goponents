@@ -9,6 +9,8 @@ jobs:
   createRelease:
     name: Create Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Get Package Version
@@ -23,7 +25,7 @@ jobs:
           application_id: ${{ secrets.GH_ROLE_APPLICATION_ID }}
           application_private_key: ${{ secrets.GH_ROLE_APPLICATION_PRIVATE_KEY }}
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
