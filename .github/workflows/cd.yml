@@ -10,16 +10,22 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Get Package Version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
         with:
           path: projects/go-lib
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ secrets.GH_ROLE_APPLICATION_ID }}
+          application_private_key: ${{ secrets.GH_ROLE_APPLICATION_PRIVATE_KEY }}
       - name: Create Release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
         with:
           generate_release_notes: true
           tag_name: v${{ steps.package-version.outputs.current-version }}
@@ -31,10 +37,10 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Cache Node Modules
         id: cache-node-modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         env:
           cache-name: cache-node-modules
         with:
@@ -43,7 +49,7 @@ jobs:
       - name: Read .nvmrc
         run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
       - name: Install Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NVMRC }}
       - name: Install npm Packages

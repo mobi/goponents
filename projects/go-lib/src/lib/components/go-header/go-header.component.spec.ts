@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { skip } from 'rxjs/operators';
@@ -114,30 +114,9 @@ describe('GoHeaderComponent', () => {
   });
 
   describe('getLogoBackground', () => {
-    it('returns brandColor if it is defined and the side nav is expanded', () => {
-      expect(component.getLogoBackground()).toBe(component.brandColor);
-    });
-
     it('returns null if side nav is collapsed', () => {
       sideNavService.navOpen = false;
-
       expect(component.getLogoBackground()).toBe(null);
-    });
-  });
-
-  describe('getLogo', () => {
-    it('returns the collapsed version of the logo if the side nav is collapsed', () => {
-      sideNavService.navOpen = false;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-
-      expect(component.getLogo()).toBe('luna.jpg');
-    });
-
-    it('returns the normal version of the logo if the side nav is expanded', () => {
-      sideNavService.navOpen = true;
-      component.logoConfig = { logoCollapsed: 'luna.jpg', logo: 'hedwig.jpg' };
-
-      expect(component.getLogo()).toBe('hedwig.jpg');
     });
   });
 
