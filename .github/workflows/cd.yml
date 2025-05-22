@@ -18,16 +18,10 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@master
         with:
           path: projects/go-lib
-      - name: Get Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
-        with:
-          application_id: ${{ secrets.GH_ROLE_APPLICATION_ID }}
-          application_private_key: ${{ secrets.GH_ROLE_APPLICATION_PRIVATE_KEY }}
       - name: Create Release
         uses: softprops/action-gh-release@v2
         env:
-          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           generate_release_notes: true
           tag_name: v${{ steps.package-version.outputs.current-version }}
