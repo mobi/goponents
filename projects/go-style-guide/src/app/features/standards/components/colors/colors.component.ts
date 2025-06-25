@@ -10,7 +10,7 @@ export class ColorsComponent {
   baseColors: string = `
   $base-primary: #65B360;
   $base-light: #FFFFFF;
-  $base-light-secondary: #B1B1B1;
+  $base-light-secondary: #ADB5BD;
   $base-dark: #313536;
   $base-dark-secondary: #202626;
   `;
@@ -64,7 +64,7 @@ export class ColorsComponent {
 
   horizonRed: string = `
   // Use this to apply the negative (error) state color
-  $ui-color-negative: #DB3939;
+  $ui-color-negative: #DC3545;
 
   // Used when the ui color needs a hover state
   $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
