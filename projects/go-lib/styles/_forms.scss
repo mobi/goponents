@@ -90,7 +90,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
 
     &::placeholder {
-      color: $theme-light-border;
+      color: $theme-light-color;
       font-weight: $weight-light;
     }
   }
@@ -109,6 +109,9 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     @include input-states;
 
     height: 2.25rem;
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   // Checkboxes
