@@ -8,7 +8,7 @@ export class ColorsComponent {
   pageTitle: string = 'Colors';
 
   baseColors: string = `
-  $base-primary: #65B360;
+  $base-primary: #20A65F;
   $base-light: #FFFFFF;
   $base-light-secondary: #ADB5BD;
   $base-dark: #313536;

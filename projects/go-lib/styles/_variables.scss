@@ -79,7 +79,7 @@ $base-dark-tertiary: #474747;
 $base-light: #fff;
 $base-light-secondary: #DEE2E6;
 $base-light-tertiary: #6C757D;
-$base-primary: #65b360;
+$base-primary: #20A65F;
 $base-color: #00000080;
 
 $base-primary-hover: darken($base-primary, 10%);
@@ -148,7 +148,7 @@ $form-border-error: $ui-color-negative;
 $form-border-neutral: transparentize($ui-color-neutral, .25);
 $form-shadow-neutral: 0 0 0 4px transparentize($ui-color-neutral, .75);
 
-$form-shadow-hover: 0 0 0 4px transparentize($base-light-tertiary, .2);
+$form-shadow-hover: 0 0 0 4px transparentize($theme-light-app-bg, .2);
 
 //App launch
 $app-launch-color-secondary: #6c757d;
