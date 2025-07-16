@@ -34,7 +34,7 @@ export class ColorsComponent {
 
   earthGreen: string = `
   // Use this to apply the positive (success) state color
-  $ui-color-positive: #1D8915;
+  $ui-color-positive: #198754;
 
   // Used when the ui color needs a hover state
   $ui-color-positive-hover: darken($ui-color-positive, 3.5%);
@@ -79,7 +79,7 @@ export class ColorsComponent {
 
   nebulaPurple: string = `
   // Use this to apply the neutral (info) state color
-  $ui-color-neutral: #7F47CC;
+  $ui-color-neutral: #6633CA;
 
   // Used when the ui color needs a hover state
   $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
