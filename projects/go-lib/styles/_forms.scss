@@ -90,7 +90,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
 
     &::placeholder {
-      color: $theme-light-color;
+      color: rgba($theme-light-color, 0.75);
       font-weight: $weight-light;
     }
   }
