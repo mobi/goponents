@@ -17,7 +17,7 @@ export class ColorsComponent {
 
   lightTheme: string = `
   // Use as the app background
-  $theme-light-app-bg: #F0F0F0;
+  $theme-light-app-bg: #F8F9FA;
   // Used as the base background for all components
   $theme-light-bg: $base-light;
   // Used when the background needs an active state

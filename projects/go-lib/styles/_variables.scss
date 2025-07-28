@@ -9,6 +9,7 @@ $global-transition-duration: .25s;
 
 // Box Shadows
 // scss-lint:disable ColorVariable
+$tab-box-shadow--regular: 0 2px 4px 0 rgba(0, 0, 0, .75), 0 3px 6px 0 rgba(0, 0, 0, .20);
 $global-box-shadow--regular: 0 0 2px 0 rgba(0, 0, 0, .12), 0 3px 6px 0 rgba(0, 0, 0, .20);
 $global-box-shadow--search: 0 1px 6px 0 rgba(32, 33, 36, .28);
 $global-box-shadow--large: 0 7px 14px 0 rgba(65, 54, 94, .10), 0 3px 6px 0 rgba(0, 0, 0, .07);
@@ -75,7 +76,7 @@ $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
 // Base Colors
 $base-dark: #313536;
 $base-dark-secondary: #202626;
-$base-dark-tertiary: #474747;
+$base-dark-tertiary: #495057;
 $base-light: #fff;
 $base-light-secondary: #DEE2E6;
 $base-light-tertiary: #6C757D;
