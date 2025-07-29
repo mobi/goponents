@@ -12,18 +12,10 @@
   margin-right: $column-gutter--half;
   padding: .375rem .5rem;
   transition: background-color $global-transition-duration;
-
-  &:hover {
-    background-color: $ui-color-primary-hover;
-  }
-
   &__remove-icon {
     cursor: pointer;
     height: .75rem;
     margin-left: .5rem;
-
-    &:hover {
-      color: $base-dark;
-    }
+    cursor: pointer;
   }
 }
