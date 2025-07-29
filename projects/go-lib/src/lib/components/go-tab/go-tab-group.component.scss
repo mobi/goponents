@@ -13,14 +13,14 @@
     padding: $column-gutter--three-quarters $column-gutter;
 
     &:hover {
-      background-color: $theme-light-bg-hover;
+      background-color: $theme-light-border;
     }
 
     &--active {
       @include z-index(1);
 
       background: $theme-light-bg;
-      box-shadow: $global-box-shadow--regular;
+      box-shadow: $tab-box-shadow--regular;
       position: relative;
 
       &:hover {
