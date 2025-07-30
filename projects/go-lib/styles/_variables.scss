@@ -133,8 +133,8 @@ $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-
 // Primary Colors -
 // These are used to portray primary actions, states, or other generally primary items in the interface
 $ui-color-primary: #157DB9;
-$ui-color-primary-hover: darken($ui-color-primary, 10%);
-$ui-color-primary-active: darken($ui-color-primary, 20%);
+$ui-color-primary-hover: darken($ui-color-primary, 3.5%);
+$ui-color-primary-active: darken($ui-color-primary, 7%);
 $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
 $ui-background-primary: rgba($ui-color-primary, .2);
 

@@ -101,8 +101,8 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:active {
-      background: rgba($ui-color-primary, 0.07);
-      border: 1px solid $ui-color-primary;
+      background: $ui-color-primary-active;
+      border: 1px solid $ui-color-primary-active;
       box-shadow: none;
     }
 
