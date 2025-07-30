@@ -140,7 +140,7 @@ $ui-background-primary: rgba($ui-color-primary, .2);
 
 // Forms
 // ----------------------------------------------------------------------------
-$form-shadow-active:  0 0 0 4px transparentize($ui-color-primary, .75);
+$form-shadow-active:  0 0 0 4px transparentize($ui-color-primary, .5);
 $form-border-active: transparentize($ui-color-primary, .5);
 
 $form-shadow-error: 0 0 0 4px transparentize($ui-color-negative, .75);
