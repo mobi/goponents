@@ -103,7 +103,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     &:active {
       background: $ui-color-primary-active;
       border: 1px solid $ui-color-primary-active;
-      box-shadow: $form-shadow-active;
+      box-shadow: none;
     }
 
     &:disabled:not(.go-button--loading) {
@@ -112,9 +112,10 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
       border: 1px solid rgba($ui-color-primary, 0.65);
 
       &:hover,
-      &:focus {
-        @include disabled-states($ui-color-primary, 'light');
-        border: 1px solid rgba($ui-color-primary, 0);
+      &:focus,
+      &:active {
+        background: rgba($ui-color-primary, 0.65);
+        border: 1px solid rgba($ui-color-primary, 0.65);
         box-shadow: none;
       }
     }
