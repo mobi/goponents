@@ -20,7 +20,7 @@
       @include z-index(1);
 
       background: $theme-light-bg;
-      box-shadow: $tab-box-shadow--regular;
+      box-shadow: $global-box-shadow--regular;
       position: relative;
 
       &:hover {
