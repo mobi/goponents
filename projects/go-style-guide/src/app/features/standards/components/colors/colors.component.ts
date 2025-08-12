@@ -12,7 +12,7 @@ export class ColorsComponent {
   $base-light: #FFFFFF;
   $base-light-secondary: #ADB5BD;
   $base-dark: #313536;
-  $base-dark-secondary: #202626;
+  $base-dark-secondary: #212529;
   `;
 
   lightTheme: string = `
@@ -48,18 +48,18 @@ export class ColorsComponent {
   `;
 
   galaxyBlue: string = `
-  // Use this to apply the positive (success) state color
-  $ui-color-positive: #4EDED2;
+  // Use this to apply the primary state color
+  $ui-color-primary: #157DB9;
 
   // Used when the ui color needs a hover state
-  $ui-color-positive-hover: darken($ui-color-primary, 3.5%);
+  $ui-color-primary-hover: darken($ui-color-primary, 3.5%);
 
   // Used when the ui color needs an active state
-  $ui-color-positive-active: darken($ui-color-primary, 7%);
+  $ui-color-primary-active: darken($ui-color-primary, 7%);
 
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent
-  $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+  $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
   `;
 
   horizonRed: string = `

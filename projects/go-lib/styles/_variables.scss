@@ -74,7 +74,7 @@ $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
 
 // Base Colors
 $base-dark: #313536;
-$base-dark-secondary: #202626;
+$base-dark-secondary: #212529;
 $base-dark-tertiary: #495057;
 $base-light: #fff;
 $base-light-secondary: #DEE2E6;
@@ -113,7 +113,10 @@ $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
 $ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
 $ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
 $ui-background-negative: rgba($ui-color-negative, .1);
-
+// UI Colors
+// secondary button 
+$ui-button-secondary-active: darken($base-light-tertiary, 3.5%);
+$ui-button-secondary-shadow: 0 0 0 0.25rem rgba(130,138,145, .5);
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
 $ui-color-neutral: #6633CA;
@@ -149,6 +152,17 @@ $form-border-neutral: transparentize($ui-color-neutral, .25);
 $form-shadow-neutral: 0 0 0 4px transparentize($ui-color-neutral, .75);
 
 $form-shadow-hover: 0 0 0 4px transparentize($theme-light-app-bg, .2);
+
+//Gray colors 
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #DEE2E6;
+$gray-400: #CED4DA;
+$gray-500: #ADB5BD;
+$gray-600: #6C757D;
+$gray-700: #495057;
+$gray-800: #343A40;
+$gray-900: #212529;
 
 //App launch
 $app-launch-color-secondary: #6c757d;
