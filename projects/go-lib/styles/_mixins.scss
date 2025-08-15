@@ -68,7 +68,7 @@ $z-index: (
 @mixin regular-input {
   border: 1px solid $theme-light-border;
   border-radius: $global-radius;
-  box-shadow: none;
+  // box-shadow: none;
   color: $theme-light-color;
   font-family: $primary-font-stack;
   font-size: .875rem;

@@ -10,14 +10,14 @@ export class ColorsComponent {
   baseColors: string = `
   $base-primary: #20A65F;
   $base-light: #FFFFFF;
-  $base-light-secondary: #ADB5BD;
+  $base-light-secondary: $gray-500;
   $base-dark: #313536;
-  $base-dark-secondary: #212529;
+  $base-dark-secondary: $gray-900;
   `;
 
   lightTheme: string = `
   // Use as the app background
-  $theme-light-app-bg: #F8F9FA;
+  $theme-light-app-bg: $gray-100;
   // Used as the base background for all components
   $theme-light-bg: $base-light;
   // Used when the background needs an active state
