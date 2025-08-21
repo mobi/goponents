@@ -18,10 +18,12 @@
 
     &--active {
       @include z-index(1);
-
+      border: 1px solid $gray-300;
+      border-bottom: none;
       background: $theme-light-bg;
       box-shadow: $global-box-shadow--regular;
       position: relative;
+      top: 1px;
 
       &:hover {
         background: $theme-light-bg;
@@ -76,5 +78,6 @@
     border-radius: $global-radius;
     box-shadow: $global-box-shadow--regular;
     position: relative;
+    border: 1px solid $gray-300;
   }
 }

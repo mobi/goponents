@@ -128,6 +128,10 @@
   }
 }
 
+.ng-select .ng-select-container:hover{
+  @include hover-input;
+}
+
 // overrides active/focus/hover state for error
 .ng-select.ng-invalid.ng-select-focused .ng-select-container {
   @include error-input;
