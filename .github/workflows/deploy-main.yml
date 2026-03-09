@@ -1,0 +1,86 @@
+# GoComponents Main Branch Deployment Workflow
+# Deploys to root URL when changes are pushed to main branch
+
+name: Deploy Main Branch
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+env:
+  DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER_HOST }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_SERVER_USER }}
+  MAIN_DEPLOY_PATH: /var/www/goponents/main
+
+jobs:
+  deploy-main:
+    name: Deploy Main Branch
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: main-npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NVMRC }}
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build Style Guide for Production
+        run: |
+          # Build with root base href for main branch
+          npm run style_guide_publish -- --base-href=/
+        env:
+          CI: true
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_USER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Main
+        run: |
+          # Create deployment directory if not exists
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "mkdir -p ${{ env.MAIN_DEPLOY_PATH }}"
+          
+          # Sync built files to server
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            dist/go-style-guide/ \
+            ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}:${{ env.MAIN_DEPLOY_PATH }}/
+          
+          # Set proper permissions
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "chmod -R 755 ${{ env.MAIN_DEPLOY_PATH }}"
+
+      - name: Deployment Summary
+        run: |
+          echo "## ✅ Main Branch Deployed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** https://${{ env.DEPLOY_SERVER }}/" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "_Deployed at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")_" >> $GITHUB_STEP_SUMMARY

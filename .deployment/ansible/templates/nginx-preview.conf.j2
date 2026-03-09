@@ -1,0 +1,123 @@
+# Nginx Configuration for GoComponents
+# Main branch: https://dc2devgopolib01.corp.tangoe.com/
+# PR previews: https://dc2devgopolib01.corp.tangoe.com/pr/991/
+
+# HTTP -> HTTPS redirect
+server {
+    listen 80;
+    listen [::]:80;
+    server_name {{ preview_domain }};
+    
+    # Redirect to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+# Main HTTPS server block
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    
+    server_name {{ preview_domain }};
+
+    # SSL Configuration - IT provided certificate
+    ssl_certificate {{ ssl_certificate_path | default('/etc/ssl/certs/dc2devgopolib01.corp.tangoe.com.crt') }};
+    ssl_certificate_key {{ ssl_certificate_key_path | default('/etc/ssl/private/dc2devgopolib01.corp.tangoe.com.key') }};
+    
+    # SSL Security Settings
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+
+    # Main branch root
+    root {{ main_deploy_path | default('/var/www/goponents/main') }};
+    index index.html index.htm;
+
+    # Logging
+    access_log /var/log/nginx/goponents-access.log;
+    error_log /var/log/nginx/goponents-error.log;
+
+    # Gzip compression
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript;
+    gzip_min_length 1000;
+
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # ============================================
+    # PR Preview Routing
+    # URL: /pr/991/getting-started -> /var/www/goponents/pr/991/getting-started
+    # ============================================
+    location ~ ^/pr/(?<pr_number>\d+)(?<pr_path>/.*)?$ {
+        alias {{ preview_base_path | default('/var/www/goponents/pr') }}/$pr_number$pr_path;
+        
+        # Handle Angular routing - fallback to PR's index.html
+        try_files $uri $uri/ @pr_fallback;
+    }
+
+    # Fallback for Angular routing within PR
+    location @pr_fallback {
+        rewrite ^/pr/(\d+)/.* /pr/$1/index.html last;
+    }
+
+    # Cache static assets within PR paths
+    location ~* ^/pr/\d+/.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        alias {{ preview_base_path | default('/var/www/goponents/pr') }}/;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # ============================================
+    # Dev Branch Routing
+    # URL: /dev/getting-started -> /var/www/goponents/dev/getting-started
+    # ============================================
+    location ^~ /dev/ {
+        alias {{ dev_deploy_path | default('/var/www/goponents/dev') }}/;
+        try_files $uri $uri/ /dev/index.html;
+    }
+
+    # ============================================
+    # Main Branch Routing (root /)
+    # URL: /getting-started -> /var/www/goponents/main/getting-started
+    # ============================================
+    
+    # Cache static assets for main branch
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    # Health check endpoint
+    location /health {
+        return 200 'GoComponents Server is healthy\nMain: /\nPR Previews: /pr/{number}/';
+        add_header Content-Type text/plain;
+    }
+
+    # Main branch - Angular SPA routing
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Deny access to hidden files
+    location ~ /\. {
+        deny all;
+    }
+}
+
+# Status/monitoring endpoint (optional)
+server {
+    listen 8080;
+    server_name localhost;
+    
+    location /nginx_status {
+        stub_status on;
+        allow 127.0.0.1;
+        deny all;
+    }
+}

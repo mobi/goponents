@@ -1,0 +1,358 @@
+---
+# Ansible Playbook: Setup GoComponents PR Preview Server
+# Run with: sudo ansible-playbook -i inventory/hosts.yml playbooks/setup-preview-server.yml
+
+- name: Setup GoComponents PR Preview Server
+  hosts: localhost
+  become: true
+  vars:
+    nodejs_version: "10.16.3"  # Matches .nvmrc
+    deploy_user: tng_deploy
+    app_base_path: /var/www/goponents
+    preview_base_path: /var/www/goponents/pr
+    main_deploy_path: /var/www/goponents/main
+    dev_deploy_path: /var/www/goponents/dev
+    preview_domain: dc2devgopolib01.corp.tangoe.com
+
+  tasks:
+    # ============================================
+    # SECTION 1: System Prerequisites
+    # ============================================
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Install required system packages
+      apt:
+        name:
+          - curl
+          - gnupg
+          - ca-certificates
+          - git
+          - nginx
+          - certbot
+          - python3-certbot-nginx
+          - unzip
+          - rsync
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    # For RHEL/CentOS
+    - name: Install required system packages (RHEL)
+      yum:
+        name:
+          - curl
+          - gnupg
+          - ca-certificates
+          - git
+          - nginx
+          - certbot
+          - python3-certbot-nginx
+          - unzip
+          - rsync
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+    # ============================================
+    # SECTION 2: Node.js Installation (Binary Download)
+    # ============================================
+    - name: Create deploy user
+      user:
+        name: "{{ deploy_user }}"
+        shell: /bin/bash
+        create_home: yes
+        state: present
+
+    - name: Download Node.js binary
+      get_url:
+        url: "https://nodejs.org/dist/v{{ nodejs_version }}/node-v{{ nodejs_version }}-linux-x64.tar.xz"
+        dest: /tmp/nodejs.tar.xz
+        mode: '0644'
+
+    - name: Create Node.js installation directory
+      file:
+        path: /usr/local/lib/nodejs
+        state: directory
+        mode: '0755'
+
+    - name: Extract Node.js binary
+      unarchive:
+        src: /tmp/nodejs.tar.xz
+        dest: /usr/local/lib/nodejs
+        remote_src: yes
+        creates: /usr/local/lib/nodejs/node-v{{ nodejs_version }}-linux-x64
+
+    - name: Create symlinks for node, npm, npx
+      file:
+        src: "/usr/local/lib/nodejs/node-v{{ nodejs_version }}-linux-x64/bin/{{ item }}"
+        dest: "/usr/local/bin/{{ item }}"
+        state: link
+      loop:
+        - node
+        - npm
+        - npx
+
+    - name: Verify Node.js installation
+      command: node --version
+      register: node_version
+      changed_when: false
+
+    - name: Display Node.js version
+      debug:
+        msg: "Node.js version: {{ node_version.stdout }}"
+
+    - name: Verify npm installation
+      command: npm --version
+      register: npm_version
+      changed_when: false
+
+    - name: Display npm version
+      debug:
+        msg: "npm version: {{ npm_version.stdout }}"
+
+    # ============================================
+    # SECTION 3: Directory Structure Setup
+    # ============================================
+    - name: Create app base directory
+      file:
+        path: "{{ app_base_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create main branch deployment directory
+      file:
+        path: "{{ main_deploy_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create dev branch deployment directory
+      file:
+        path: "{{ dev_deploy_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create PR previews directory
+      file:
+        path: "{{ preview_base_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create cleanup script directory
+      file:
+        path: /opt/pr-preview-scripts
+        state: directory
+        mode: '0755'
+
+    # ============================================
+    # SECTION 4: Nginx Configuration
+    # ============================================
+    - name: Create nginx sites-available directory
+      file:
+        path: /etc/nginx/sites-available
+        state: directory
+        mode: '0755'
+
+    - name: Create nginx sites-enabled directory
+      file:
+        path: /etc/nginx/sites-enabled
+        state: directory
+        mode: '0755'
+
+    - name: Deploy nginx configuration for goponents
+      template:
+        src: ../templates/nginx-preview.conf.j2
+        dest: /etc/nginx/sites-available/goponents
+        mode: '0644'
+      notify: Reload nginx
+
+    - name: Enable nginx site
+      file:
+        src: /etc/nginx/sites-available/goponents
+        dest: /etc/nginx/sites-enabled/goponents
+        state: link
+      notify: Reload nginx
+
+    - name: Remove default nginx site
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: Reload nginx
+
+    # ============================================
+    # SECTION 4.1: Self-signed SSL Certificate (Temporary)
+    # ============================================
+    - name: Check if SSL certificate exists
+      stat:
+        path: /etc/ssl/certs/{{ preview_domain }}.crt
+      register: ssl_cert_check
+
+    - name: Create self-signed SSL certificate (temporary until IT provides real cert)
+      command: >
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048
+        -keyout /etc/ssl/private/{{ preview_domain }}.key
+        -out /etc/ssl/certs/{{ preview_domain }}.crt
+        -subj "/CN={{ preview_domain }}/O=Tangoe/C=US"
+      when: not ssl_cert_check.stat.exists
+
+    - name: Set SSL certificate permissions
+      file:
+        path: /etc/ssl/private/{{ preview_domain }}.key
+        mode: '0600'
+      when: not ssl_cert_check.stat.exists
+
+    - name: Test nginx configuration
+      command: nginx -t
+      changed_when: false
+
+    # ============================================
+    # SECTION 5: Cleanup Cron Job (Remove old PRs)
+    # ============================================
+    - name: Create PR cleanup script
+      copy:
+        dest: /opt/pr-preview-scripts/cleanup-old-prs.sh
+        mode: '0755'
+        content: |
+          #!/bin/bash
+          # Cleanup PR preview deployments older than 360 days
+          # Runs daily via cron
+          
+          PREVIEW_DIR="{{ preview_base_path }}"
+          MAX_AGE_DAYS=360
+          
+          find "$PREVIEW_DIR" -maxdepth 1 -type d -mtime +$MAX_AGE_DAYS -exec rm -rf {} \;
+          
+          echo "$(date): Cleanup completed" >> /var/log/pr-preview-cleanup.log
+
+    - name: Setup daily cleanup cron job
+      cron:
+        name: "Cleanup old PR previews"
+        minute: "0"
+        hour: "3"
+        job: "/opt/pr-preview-scripts/cleanup-old-prs.sh"
+        user: root
+
+    # ============================================
+    # SECTION 6: Firewall Configuration
+    # ============================================
+    - name: Allow HTTP through firewall (UFW)
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+      when: ansible_facts['os_family'] == "Debian"
+      ignore_errors: yes
+
+    - name: Allow HTTPS through firewall (UFW)
+      ufw:
+        rule: allow
+        port: '443'
+        proto: tcp
+      when: ansible_facts['os_family'] == "Debian"
+      ignore_errors: yes
+
+    # ============================================
+    # SECTION 7: SSH Key Setup for GitHub Actions
+    # ============================================
+    - name: Create .ssh directory for deploy user
+      file:
+        path: "/home/{{ deploy_user }}/.ssh"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0700'
+
+    - name: Check if GitHub Actions SSH key exists
+      stat:
+        path: "/home/{{ deploy_user }}/.ssh/github_actions"
+      register: github_actions_key
+
+    - name: Generate SSH key pair for GitHub Actions
+      become_user: "{{ deploy_user }}"
+      command: ssh-keygen -t ed25519 -C "github-actions-deploy" -f "/home/{{ deploy_user }}/.ssh/github_actions" -N ""
+      when: not github_actions_key.stat.exists
+
+    - name: Read public key
+      slurp:
+        src: "/home/{{ deploy_user }}/.ssh/github_actions.pub"
+      register: github_actions_pubkey
+
+    - name: Add public key to authorized_keys
+      authorized_key:
+        user: "{{ deploy_user }}"
+        key: "{{ github_actions_pubkey.content | b64decode }}"
+        state: present
+
+    - name: Set correct permissions on private key
+      file:
+        path: "/home/{{ deploy_user }}/.ssh/github_actions"
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0600'
+
+    - name: Read private key for display
+      slurp:
+        src: "/home/{{ deploy_user }}/.ssh/github_actions"
+      register: github_actions_privkey
+
+    - name: Display GitHub Actions SSH private key
+      debug:
+        msg: |
+          ============================================================
+          GITHUB SECRET: PREVIEW_SERVER_SSH_KEY
+          Copy the entire key below (including BEGIN/END lines):
+          ============================================================
+          {{ github_actions_privkey.content | b64decode }}
+          ============================================================
+
+  handlers:
+    - name: Reload nginx
+      service:
+        name: nginx
+        state: reloaded
+
+    - name: Restart nginx
+      service:
+        name: nginx
+        state: restarted
+
+# ============================================
+# Play 2: SSL Certificate Setup (Optional)
+# ============================================
+- name: Setup SSL Certificate
+  hosts: localhost
+  become: true
+  vars:
+    preview_domain: dc2devgopolib01.corp.tangoe.com
+    admin_email: devops@tangoe.com
+
+  tasks:
+    - name: Check if SSL certificate exists
+      stat:
+        path: "/etc/letsencrypt/live/{{ preview_domain }}/fullchain.pem"
+      register: ssl_cert
+
+    - name: Display SSL setup instructions
+      debug:
+        msg: |
+          SSL Certificate Setup Required!
+          
+          Option 1 - Wildcard cert from IT:
+          Place certificate at: /etc/ssl/certs/goponents-preview.crt
+          Place key at: /etc/ssl/private/goponents-preview.key
+          
+          Option 2 - Let's Encrypt (requires DNS challenge for wildcard):
+          Run: certbot certonly --manual --preferred-challenges dns -d "*.{{ preview_domain }}"
+          
+          Option 3 - Individual certs per PR (automated):
+          Add certbot renewal to deployment workflow
+      when: not ssl_cert.stat.exists

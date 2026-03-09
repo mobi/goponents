@@ -1,0 +1,203 @@
+# GoComponents PR Preview Deployment Workflow
+# Triggered on PR creation, synchronization (push), and closure
+
+name: PR Preview Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER_HOST }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_SERVER_USER }}
+  PR_PREVIEW_BASE_PATH: /var/www/goponents/pr
+
+jobs:
+  # ===========================================
+  # Deploy PR Preview
+  # ===========================================
+  deploy-preview:
+    name: Deploy PR Preview
+    runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get PR Number
+        id: pr
+        run: echo "number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: preview-npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NVMRC }}
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      # Build the go-style-guide (documentation site) for preview
+      # Alternative: use 'go-tester' for the component tester app
+      - name: Build Style Guide for Preview
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.number }}
+          # Set base href for path-based deployment: /pr/991/
+          npm run style_guide_publish -- --base-href=/pr/${PR_NUMBER}/
+        env:
+          CI: true
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_USER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Preview Server
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.number }}
+          DEPLOY_PATH="${{ env.PR_PREVIEW_BASE_PATH }}/${PR_NUMBER}"
+          
+          # Create deployment directory if not exists
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "mkdir -p ${DEPLOY_PATH}"
+          
+          # Sync built files to server
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            dist/go-style-guide/ \
+            ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}:${DEPLOY_PATH}/
+          
+          # Set proper permissions
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "chmod -R 755 ${DEPLOY_PATH}"
+
+      - name: Comment Preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const previewUrl = `https://${{ env.DEPLOY_SERVER }}/pr/${prNumber}`;
+            
+            const body = `## 🚀 PR Preview Deployed!
+            
+            Your changes have been deployed to a preview environment.
+            
+            **Preview URL:**
+            🔗 ${previewUrl}
+            
+            **Quick Links:**
+            - [Getting Started](${previewUrl}/getting-started)
+            - [Components](${previewUrl}/components)
+            
+            > ⏱️ Preview will be automatically removed 360 days after the PR is closed.
+            
+            ---
+            _Last deployed: ${new Date().toISOString()}_`;
+            
+            // Find existing comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('PR Preview Deployed')
+            );
+            
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: body
+              });
+            }
+
+  # ===========================================
+  # Cleanup on PR Close
+  # ===========================================
+  cleanup-preview:
+    name: Cleanup PR Preview
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed'
+    
+    steps:
+      - name: Get PR Number
+        id: pr
+        run: echo "number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_USER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Remove Preview Deployment
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.number }}
+          DEPLOY_PATH="${{ env.PR_PREVIEW_BASE_PATH }}/${PR_NUMBER}"
+          
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "rm -rf ${DEPLOY_PATH}"
+          
+          echo "✅ Cleaned up preview for PR #${PR_NUMBER}"
+
+      - name: Update PR Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            
+            const body = `## 🧹 PR Preview Removed
+            
+            The preview environment for this PR has been cleaned up.
+            
+            ---
+            _Removed: ${new Date().toISOString()}_`;
+            
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('PR Preview')
+            );
+            
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            }
