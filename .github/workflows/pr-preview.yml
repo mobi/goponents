@@ -14,7 +14,7 @@ concurrency:
 env:
   DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER_HOST }}
   DEPLOY_USER: ${{ secrets.DEPLOY_SERVER_USER }}
-  PR_PREVIEW_BASE_PATH: /var/www/goponents/pr
+  PR_PREVIEW_DEPLOY_PATH: /var/www/goponents/pr
 
 jobs:
   # ===========================================
@@ -72,7 +72,7 @@ jobs:
       - name: Deploy to Preview Server
         run: |
           PR_NUMBER=${{ steps.pr.outputs.number }}
-          DEPLOY_PATH="${{ env.PR_PREVIEW_BASE_PATH }}/${PR_NUMBER}"
+          DEPLOY_PATH="${{ env.PR_PREVIEW_DEPLOY_PATH }}/${PR_NUMBER}"
           
           # Create deployment directory if not exists
           ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
@@ -162,7 +162,7 @@ jobs:
       - name: Remove Preview Deployment
         run: |
           PR_NUMBER=${{ steps.pr.outputs.number }}
-          DEPLOY_PATH="${{ env.PR_PREVIEW_BASE_PATH }}/${PR_NUMBER}"
+          DEPLOY_PATH="${{ env.PR_PREVIEW_DEPLOY_PATH }}/${PR_NUMBER}"
           
           ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
             "rm -rf ${DEPLOY_PATH}"

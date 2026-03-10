@@ -6,7 +6,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name {{ preview_domain }};
+    server_name {{ server_hostname }};
     
     # Redirect to HTTPS
     return 301 https://$host$request_uri;
@@ -17,7 +17,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
     
-    server_name {{ preview_domain }};
+    server_name {{ server_hostname }};
 
     # SSL Configuration - IT provided certificate
     ssl_certificate {{ ssl_certificate_path | default('/etc/ssl/certs/dc2devgopolib01.corp.tangoe.com.crt') }};
@@ -54,7 +54,7 @@ server {
     # URL: /pr/991/getting-started -> /var/www/goponents/pr/991/getting-started
     # ============================================
     location ~ ^/pr/(?<pr_number>\d+)(?<pr_path>/.*)?$ {
-        alias {{ preview_base_path | default('/var/www/goponents/pr') }}/$pr_number$pr_path;
+        alias {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }}/$pr_number$pr_path;
         
         # Handle Angular routing - fallback to PR's index.html
         try_files $uri $uri/ @pr_fallback;
@@ -67,7 +67,7 @@ server {
 
     # Cache static assets within PR paths
     location ~* ^/pr/\d+/.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        alias {{ preview_base_path | default('/var/www/goponents/pr') }}/;
+        alias {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }}/;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
@@ -79,6 +79,15 @@ server {
     location ^~ /dev/ {
         alias {{ dev_deploy_path | default('/var/www/goponents/dev') }}/;
         try_files $uri $uri/ /dev/index.html;
+    }
+
+    # ============================================
+    # Custom Branch Routing (manual deployments)
+    # URL: /custom/getting-started -> /var/www/goponents/custom/getting-started
+    # ============================================
+    location ^~ /custom/ {
+        alias {{ custom_deploy_path | default('/var/www/goponents/custom') }}/;
+        try_files $uri $uri/ /custom/index.html;
     }
 
     # ============================================
@@ -95,7 +104,7 @@ server {
 
     # Health check endpoint
     location /health {
-        return 200 'GoComponents Server is healthy\nMain: /\nPR Previews: /pr/{number}/';
+        return 200 'GoComponents Server is healthy\nMain: /\nDev: /dev/\nCustom: /custom/\nPR Previews: /pr/{number}/';
         add_header Content-Type text/plain;
     }
 

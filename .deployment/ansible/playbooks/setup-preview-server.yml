@@ -9,10 +9,11 @@
     nodejs_version: "10.16.3"  # Matches .nvmrc
     deploy_user: tng_deploy
     app_base_path: /var/www/goponents
-    preview_base_path: /var/www/goponents/pr
+    pr_preview_deploy_path: /var/www/goponents/pr
     main_deploy_path: /var/www/goponents/main
     dev_deploy_path: /var/www/goponents/dev
-    preview_domain: dc2devgopolib01.corp.tangoe.com
+    custom_deploy_path: /var/www/goponents/custom
+    server_hostname: dc2devgopolib01.corp.tangoe.com
 
   tasks:
     # ============================================
@@ -141,7 +142,15 @@
 
     - name: Create PR previews directory
       file:
-        path: "{{ preview_base_path }}"
+        path: "{{ pr_preview_deploy_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create custom deployment directory
+      file:
+        path: "{{ custom_deploy_path }}"
         state: directory
         owner: "{{ deploy_user }}"
         group: "{{ deploy_user }}"
@@ -193,20 +202,20 @@
     # ============================================
     - name: Check if SSL certificate exists
       stat:
-        path: /etc/ssl/certs/{{ preview_domain }}.crt
+        path: /etc/ssl/certs/{{ server_hostname }}.crt
       register: ssl_cert_check
 
     - name: Create self-signed SSL certificate (temporary until IT provides real cert)
       command: >
         openssl req -x509 -nodes -days 365 -newkey rsa:2048
-        -keyout /etc/ssl/private/{{ preview_domain }}.key
-        -out /etc/ssl/certs/{{ preview_domain }}.crt
-        -subj "/CN={{ preview_domain }}/O=Tangoe/C=US"
+        -keyout /etc/ssl/private/{{ server_hostname }}.key
+        -out /etc/ssl/certs/{{ server_hostname }}.crt
+        -subj "/CN={{ server_hostname }}/O=Tangoe/C=US"
       when: not ssl_cert_check.stat.exists
 
     - name: Set SSL certificate permissions
       file:
-        path: /etc/ssl/private/{{ preview_domain }}.key
+        path: /etc/ssl/private/{{ server_hostname }}.key
         mode: '0600'
       when: not ssl_cert_check.stat.exists
 
@@ -226,7 +235,7 @@
           # Cleanup PR preview deployments older than 360 days
           # Runs daily via cron
           
-          PREVIEW_DIR="{{ preview_base_path }}"
+          PREVIEW_DIR="{{ pr_preview_deploy_path }}"
           MAX_AGE_DAYS=360
           
           find "$PREVIEW_DIR" -maxdepth 1 -type d -mtime +$MAX_AGE_DAYS -exec rm -rf {} \;
@@ -332,13 +341,13 @@
   hosts: localhost
   become: true
   vars:
-    preview_domain: dc2devgopolib01.corp.tangoe.com
+    server_hostname: dc2devgopolib01.corp.tangoe.com
     admin_email: devops@tangoe.com
 
   tasks:
     - name: Check if SSL certificate exists
       stat:
-        path: "/etc/letsencrypt/live/{{ preview_domain }}/fullchain.pem"
+        path: "/etc/letsencrypt/live/{{ server_hostname }}/fullchain.pem"
       register: ssl_cert
 
     - name: Display SSL setup instructions
@@ -351,7 +360,7 @@
           Place key at: /etc/ssl/private/goponents-preview.key
           
           Option 2 - Let's Encrypt (requires DNS challenge for wildcard):
-          Run: certbot certonly --manual --preferred-challenges dns -d "*.{{ preview_domain }}"
+          Run: certbot certonly --manual --preferred-challenges dns -d "*.{{ server_hostname }}"
           
           Option 3 - Individual certs per PR (automated):
           Add certbot renewal to deployment workflow
