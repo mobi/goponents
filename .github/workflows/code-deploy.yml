@@ -26,23 +26,28 @@ jobs:
       - name: Set deployment variables
         id: vars
         run: |
+          SERVER="${{ env.DEPLOY_SERVER }}"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "deploy_path=/var/www/goponents/custom" >> $GITHUB_OUTPUT
             echo "base_href=/custom/" >> $GITHUB_OUTPUT
-            echo "url_path=/custom" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/custom/" >> $GITHUB_OUTPUT
+            echo "deploy_label=custom (workflow_dispatch)" >> $GITHUB_OUTPUT
           elif [ "${{ github.ref_name }}" = "main" ]; then
             echo "deploy_path=/var/www/goponents/main" >> $GITHUB_OUTPUT
             echo "base_href=/" >> $GITHUB_OUTPUT
-            echo "url_path=" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/" >> $GITHUB_OUTPUT
+            echo "deploy_label=main" >> $GITHUB_OUTPUT
           elif [ "${{ github.ref_name }}" = "dev" ]; then
             echo "deploy_path=/var/www/goponents/dev" >> $GITHUB_OUTPUT
             echo "base_href=/dev/" >> $GITHUB_OUTPUT
-            echo "url_path=/dev" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/dev/" >> $GITHUB_OUTPUT
+            echo "deploy_label=dev" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" = "pull_request" ]; then
             PR_NUMBER=${{ github.event.pull_request.number }}
             echo "deploy_path=/var/www/goponents/pr/${PR_NUMBER}" >> $GITHUB_OUTPUT
             echo "base_href=/pr/${PR_NUMBER}/" >> $GITHUB_OUTPUT
-            echo "url_path=/pr/${PR_NUMBER}" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/pr/${PR_NUMBER}/" >> $GITHUB_OUTPUT
+            echo "deploy_label=PR #${PR_NUMBER}" >> $GITHUB_OUTPUT
           fi
 
       - name: Checkout code
@@ -103,11 +108,11 @@ jobs:
         run: |
           echo "## ✅ Deployment Complete!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**URL:** https://${{ env.DEPLOY_SERVER }}${{ steps.vars.outputs.url_path }}/" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** ${{ steps.vars.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Branch/PR:** ${{ github.ref_name || github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed:** ${{ steps.vars.outputs.deploy_label }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "_Deployed at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")_" >> $GITHUB_STEP_SUMMARY
 
