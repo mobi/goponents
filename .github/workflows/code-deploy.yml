@@ -20,7 +20,7 @@ env:
 jobs:
   deploy:
     name: Deploy Branch/PR Preview
-    runs-on: ubuntu-latest
+    runs-on: gomobilesharedstagedeploy
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     steps:
       - name: Set deployment variables
