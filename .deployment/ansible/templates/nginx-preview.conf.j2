@@ -53,23 +53,24 @@ server {
     # PR Preview Routing
     # URL: /pr/991/getting-started -> /var/www/goponents/pr/991/getting-started
     # ============================================
-    location ~ ^/pr/(?<pr_number>\d+)(?<pr_path>/.*)?$ {
-        alias {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }}/$pr_number$pr_path;
-        
-        # Handle Angular routing - fallback to PR's index.html
-        try_files $uri $uri/ @pr_fallback;
-    }
 
-    # Fallback for Angular routing within PR
-    location @pr_fallback {
-        rewrite ^/pr/(\d+)/.* /pr/$1/index.html last;
+    # Redirect /pr/NUMBER to /pr/NUMBER/ (trailing slash)
+    location ~ ^/pr/(\d+)$ {
+        return 301 /pr/$1/;
     }
 
     # Cache static assets within PR paths
     location ~* ^/pr/\d+/.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        alias {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }}/;
+        root {{ app_base_path | default('/var/www/goponents') }};
         expires 1y;
         add_header Cache-Control "public, immutable";
+    }
+
+    # PR preview Angular SPA routing (uses root, not alias, to work with try_files in regex location)
+    location ~ ^/pr/(?<pr_number>\d+)/ {
+        root {{ app_base_path | default('/var/www/goponents') }};
+        index index.html;
+        try_files $uri $uri/ /pr/$pr_number/index.html;
     }
 
     # ============================================

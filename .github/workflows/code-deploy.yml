@@ -20,7 +20,7 @@ env:
 jobs:
   deploy:
     name: Deploy Branch/PR Preview
-    runs-on: ubuntu-latest
+    runs-on: gomobilesharedstagedeploy
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     steps:
       - name: Set deployment variables
@@ -82,19 +82,22 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          # Create deployment directory if not exists
-          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
-            "mkdir -p ${{ steps.vars.outputs.deploy_path }}"
+          DEPLOY_PATH="${{ steps.vars.outputs.deploy_path }}"
+          SERVER="${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}"
+          SSH_CMD="ssh -i ~/.ssh/deploy_key"
+          TEMP_PATH="${DEPLOY_PATH}_new"
 
-          # Sync built files to server
-          rsync -avz --delete \
-            -e "ssh -i ~/.ssh/deploy_key" \
-            dist/go-style-guide/ \
-            ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}:${{ steps.vars.outputs.deploy_path }}/
+          # Create temp directory for new files
+          $SSH_CMD $SERVER "rm -rf ${TEMP_PATH} && mkdir -p ${TEMP_PATH}"
+
+          # Transfer built files to temp directory
+          tar -czf - -C dist/go-style-guide . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+
+          # Atomic swap: remove old, rename new
+          $SSH_CMD $SERVER "rm -rf ${DEPLOY_PATH} && mv ${TEMP_PATH} ${DEPLOY_PATH}"
 
           # Set proper permissions
-          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
-            "chmod -R 755 ${{ steps.vars.outputs.deploy_path }}"
+          $SSH_CMD $SERVER "chmod -R 755 ${DEPLOY_PATH}"
 
       - name: Deployment Summary
         run: |
@@ -115,7 +118,7 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request.number;
             const previewUrl = `https://${{ env.DEPLOY_SERVER }}/pr/${prNumber}`;
-            const body = `## 🚀 PR Preview Deployed!\n\nYour changes have been deployed to a preview environment.\n\n**Preview URL:**\n🔗 ${previewUrl}\n\n**Quick Links:**\n- [Getting Started](${previewUrl}/getting-started)\n- [Components](${previewUrl}/components)\n\n> ⏱️ Preview will be automatically removed 360 days after the PR is closed.\n\n---\n_Last deployed: ${new Date().toISOString()}_`;
+            const body = `## 🚀 PR Preview Deployed!\n\nYour changes have been deployed to a preview environment.\n\n**Preview URL:**\n🔗 ${previewUrl}\n\n**Quick Links:**\n- [Getting Started](${previewUrl}/getting-started)\n- [Components](${previewUrl}/components)\n\n> 🧹 Preview will be automatically removed when the PR is closed.\n\n---\n_Last deployed: ${new Date().toISOString()}_`;
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
