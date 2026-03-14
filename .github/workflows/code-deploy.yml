@@ -1,0 +1,190 @@
+name: Code Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+concurrency:
+  group: deploy-${{ github.event_name == 'workflow_dispatch' && 'custom' || github.ref_name || github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  DEPLOY_SERVER: ${{ vars.DEPLOY_SERVER_HOST }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_SERVER_USER }}
+
+jobs:
+  deploy:
+    name: Deploy Branch/PR Preview
+    runs-on: gomobilesharedstagedeploy
+    if: github.event_name != 'pull_request' || github.event.action != 'closed'
+    steps:
+      - name: Print current date
+        run: date +"%d/%m/%Y %H:%M:%S"
+
+      - name: Fix Storage
+        run: |
+          cd $(dirname $(dirname $GITHUB_WORKSPACE))
+          rm -rf goponents
+          mkdir -p goponents/goponents
+          cd goponents
+
+      - name: Set deployment variables
+        id: vars
+        run: |
+          SERVER="${{ env.DEPLOY_SERVER }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "deploy_path=/var/www/goponents/custom" >> $GITHUB_OUTPUT
+            echo "base_href=/custom/" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/custom/" >> $GITHUB_OUTPUT
+            echo "deploy_label=custom (workflow_dispatch)" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref_name }}" = "main" ]; then
+            echo "deploy_path=/var/www/goponents/main" >> $GITHUB_OUTPUT
+            echo "base_href=/" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/" >> $GITHUB_OUTPUT
+            echo "deploy_label=main" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref_name }}" = "dev" ]; then
+            echo "deploy_path=/var/www/goponents/dev" >> $GITHUB_OUTPUT
+            echo "base_href=/dev/" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/dev/" >> $GITHUB_OUTPUT
+            echo "deploy_label=dev" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            PR_NUMBER=${{ github.event.pull_request.number }}
+            echo "deploy_path=/var/www/goponents/pr/${PR_NUMBER}" >> $GITHUB_OUTPUT
+            echo "base_href=/pr/${PR_NUMBER}/" >> $GITHUB_OUTPUT
+            echo "deploy_url=https://${SERVER}/pr/${PR_NUMBER}/" >> $GITHUB_OUTPUT
+            echo "deploy_label=PR #${PR_NUMBER}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v5
+        with:
+          path: ./node_modules
+          key: library-npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Read .nvmrc
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_ENV
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NVMRC }}
+
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build Style Guide
+        run: |
+          npm run style_guide_publish -- --base-href=${{ steps.vars.outputs.base_href }}
+        env:
+          CI: true
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_USER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: |
+          DEPLOY_PATH="${{ steps.vars.outputs.deploy_path }}"
+          SERVER="${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}"
+          SSH_CMD="ssh -i ~/.ssh/deploy_key"
+          TEMP_PATH="${DEPLOY_PATH}_new"
+
+          # Create temp directory for new files
+          $SSH_CMD $SERVER "rm -rf ${TEMP_PATH} && mkdir -p ${TEMP_PATH}"
+
+          # Transfer built files to temp directory
+          tar -czf - -C dist/go-style-guide . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+
+          # Atomic swap: remove old, rename new
+          $SSH_CMD $SERVER "rm -rf ${DEPLOY_PATH} && mv ${TEMP_PATH} ${DEPLOY_PATH}"
+
+          # Set proper permissions
+          $SSH_CMD $SERVER "chmod -R 755 ${DEPLOY_PATH}"
+
+      - name: Deployment Summary
+        run: |
+          echo "## ✅ Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** ${{ steps.vars.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed:** ${{ steps.vars.outputs.deploy_label }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "_Deployed at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")_" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment Preview URL on PR
+        if: github.event_name == 'pull_request' && github.event.action != 'closed'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const previewUrl = `https://${{ env.DEPLOY_SERVER }}/pr/${prNumber}`;
+            const body = `## 🚀 PR Preview Deployed!\n\nYour changes have been deployed to a preview environment.\n\n**Preview URL:**\n🔗 ${previewUrl}\n\n**Quick Links:**\n- [Getting Started](${previewUrl}/getting-started)\n- [Components](${previewUrl}/components)\n\n> 🧹 Preview will be automatically removed when the PR is closed.\n\n**Commit:** \`${context.sha}\`\n\n---\n_Last deployed: ${new Date().toISOString()}_`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: body
+            });
+
+  cleanup-preview:
+    name: Cleanup PR Preview
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    steps:
+      - name: Get PR Number
+        id: pr
+        run: echo "number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_USER_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Remove Preview Deployment
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.number }}
+          DEPLOY_PATH="/var/www/goponents/pr/${PR_NUMBER}"
+          ssh -i ~/.ssh/deploy_key ${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }} \
+            "rm -rf ${DEPLOY_PATH}"
+          echo "✅ Cleaned up preview for PR #${PR_NUMBER}"
+
+      - name: Update PR Comment
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const body = `## 🧹 PR Preview Removed\n\nThe preview environment for this PR has been cleaned up.\n\n---\n_Removed: ${new Date().toISOString()}_`;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('PR Preview')
+            );
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            }
