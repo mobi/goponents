@@ -10,7 +10,7 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 concurrency:
-  group: deploy-${{ github.event_name == 'workflow_dispatch' && 'custom' || github.ref_name || github.event.pull_request.number }}
+  group: deploy-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || github.event_name == 'workflow_dispatch' && 'custom' || github.ref_name }}
   cancel-in-progress: true
 
 env:
