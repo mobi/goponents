@@ -143,7 +143,7 @@ jobs:
 
   cleanup-preview:
     name: Cleanup PR Preview
-    runs-on: ubuntu-latest
+    runs-on: gomobilesharedstagedeploy
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     steps:
       - name: Get PR Number
