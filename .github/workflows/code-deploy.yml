@@ -68,7 +68,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ./node_modules
-          key: npm-${{ hashFiles('package-lock.json') }}
+          key: library-npm-${{ hashFiles('package-lock.json') }}
 
       - name: Read .nvmrc
         run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_ENV
@@ -140,15 +140,6 @@ jobs:
               issue_number: prNumber,
               body: body
             });
-
-      # Clean Up Runner
-      - name: Clean Up
-        if: always()
-        run: |
-          cd $(dirname $(dirname $GITHUB_WORKSPACE))
-          rm -rf goponents
-          mkdir -p goponents/goponents
-          cd goponents
 
   cleanup-preview:
     name: Cleanup PR Preview
