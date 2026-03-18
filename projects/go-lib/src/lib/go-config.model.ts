@@ -2,7 +2,7 @@
  * Theme colors for Goponents
  */
 export enum ThemeColors {
-  brand = '#65B360',
+  brand = '#20A65F',
   dark = '#202626',
   light = '#ffffff'
 }

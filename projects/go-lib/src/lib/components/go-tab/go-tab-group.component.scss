@@ -3,7 +3,6 @@
 
 .go-tab {
   &__header {
-    @include transition(all);
 
     border-radius: $global-radius $global-radius 0 0;
     cursor: pointer;
@@ -11,17 +10,21 @@
     font-size: 1.125rem;
     font-weight: $weight-regular;
     padding: $column-gutter--three-quarters $column-gutter;
-
+    position: relative;
+    top: 4px;
+    border: 1px solid rgba(0,0,0,0);
     &:hover {
-      background-color: $theme-light-bg-hover;
+      background-color: $theme-light-border;
     }
 
     &--active {
       @include z-index(1);
-
+      border: 1px solid $gray-300;
+      border-bottom: none;
       background: $theme-light-bg;
       box-shadow: $global-box-shadow--regular;
       position: relative;
+      top: 4px;
 
       &:hover {
         background: $theme-light-bg;
@@ -67,14 +70,15 @@
     }
 
     &--first-tab-active {
-      border-radius: 0 $global-radius $global-radius;
+      border-radius: $global-radius-zero $global-radius $global-radius;
     }
   }
 
   &__card-wrapper {
     background: $theme-light-bg;
-    border-radius: $global-radius;
+    border-radius: $global-radius-zero $global-radius $global-radius;
     box-shadow: $global-box-shadow--regular;
     position: relative;
+    border: 1px solid $gray-300;
   }
 }

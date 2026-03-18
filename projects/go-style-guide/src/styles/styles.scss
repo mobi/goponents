@@ -15,7 +15,8 @@ code {
   white-space: pre;
 
   &.hljs {
-    border: 1px solid $theme-light-app-bg;
+    border: 1px solid $theme-light-border;
+    padding: 1rem;
   }
 
   .hljs-section,

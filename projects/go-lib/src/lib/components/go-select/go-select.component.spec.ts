@@ -145,7 +145,7 @@ describe("GoSelectComponent", () => {
         getComputedStyle(ngSelectContainer).backgroundColor;
 
       // Assuming $theme-light-app-bg is a valid CSS color value
-      const expectedBgColor = "rgb(240, 240, 240)";
+      const expectedBgColor = "rgb(233, 236, 239)";
 
       // Assert that the computed background color matches the expected value
       expect(computedBgColor).toBe(expectedBgColor);

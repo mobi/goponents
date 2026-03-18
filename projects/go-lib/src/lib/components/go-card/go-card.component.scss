@@ -2,6 +2,7 @@
 @import '../../../../styles/mixins';
 
 .card {
+  border: 1px solid $theme-light-border;
   background: $theme-light-bg;
   border-radius: $global-radius;
   box-shadow: $global-box-shadow--regular;

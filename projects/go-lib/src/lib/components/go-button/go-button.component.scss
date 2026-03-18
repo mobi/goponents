@@ -93,8 +93,11 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     background: $ui-color-primary;
     border: 1px solid $ui-color-primary;
 
-    &:hover,
-    &:focus {
+    &:hover {
+      background: $ui-color-primary-hover;
+    }
+    
+    &:focus-visible {
       background: $ui-color-primary-hover;
       border: 1px solid $ui-color-primary-hover;
       box-shadow: $form-shadow-active;
@@ -103,17 +106,19 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     &:active {
       background: $ui-color-primary-active;
       border: 1px solid $ui-color-primary-active;
-      box-shadow: $form-shadow-active;
+      box-shadow: none;
     }
 
     &:disabled:not(.go-button--loading) {
       @include disabled-states($ui-color-primary, 'light');
-      border: 1px solid rgba($ui-color-primary, 0);
+      background: rgba($ui-color-primary, 0.65);
+      border: 1px solid rgba($ui-color-primary, 0.65);
 
       &:hover,
-      &:focus {
-        @include disabled-states($ui-color-primary, 'light');
-        border: 1px solid rgba($ui-color-primary, 0);
+      &:focus,
+      &:active {
+        background: rgba($ui-color-primary, 0.65);
+        border: 1px solid rgba($ui-color-primary, 0.65);
         box-shadow: none;
       }
     }
@@ -121,14 +126,20 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
 
   &--secondary {
     border: 1px solid $base-light-tertiary;
-
+    background: $theme-light-bg;
     &:hover {
-      box-shadow: $button-shadow-secondary-hover;
+      background: $base-light-tertiary;
+      color: $base-light;
     }
 
-    &:focus,
+    &:focus-visible{
+      box-shadow: $ui-button-secondary-shadow;
+      background: $base-light-tertiary;
+      color: $base-light;
+    }
     &:active {
-      box-shadow: $button-shadow-secondary-active;
+      background: $ui-button-secondary-active;
+      color: $base-light;
     }
 
     &.go-button-group {
@@ -187,8 +198,11 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     background: $ui-color-negative;
     border: 1px solid $ui-color-negative;
 
-    &:hover,
-    &:focus {
+    &:hover{
+      background: $ui-color-negative-hover;
+      border: 1px solid $ui-color-negative-hover;
+    }
+    &:focus-visible {
       background: $ui-color-negative-hover;
       border: 1px solid $ui-color-negative-hover;
       box-shadow: $form-shadow-error;
@@ -197,7 +211,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     &:active {
       background: $ui-color-negative-active;
       border: 1px solid $ui-color-negative-active;
-      box-shadow: $form-shadow-error;
+      
     }
 
     &:disabled:not(.go-button--loading) {
@@ -217,8 +231,11 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     background: $ui-color-neutral;
     border: 1px solid $ui-color-neutral;
 
-    &:hover,
-    &:focus {
+    &:hover{
+      background: $ui-color-neutral-hover;
+      border: 1px solid $ui-color-neutral-hover;
+    }
+    &:focus-visible{
       background: $ui-color-neutral-hover;
       border: 1px solid $ui-color-neutral-hover;
       box-shadow: $form-shadow-neutral;
@@ -227,7 +244,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     &:active {
       background: $ui-color-neutral-active;
       border: 1px solid $ui-color-neutral-active;
-      box-shadow: $form-shadow-neutral;
+     
     }
 
     &:disabled:not(.go-button--loading) {

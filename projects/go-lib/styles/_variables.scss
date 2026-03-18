@@ -2,14 +2,15 @@
 // ----------------------------------------------------------------------------
 
 // Presentational
-$global-radius: 4px;
+$global-radius-zero: 0px;
+$global-radius: 6px;
 $global-radius--round: 100%;
 $global-transition-timing: cubic-bezier(.25, .8, .25, 1);
 $global-transition-duration: .25s;
 
 // Box Shadows
 // scss-lint:disable ColorVariable
-$global-box-shadow--regular: 0 0 2px 0 rgba(0, 0, 0, .12), 0 3px 6px 0 rgba(0, 0, 0, .20);
+$global-box-shadow--regular: 0 2px 4px 0 rgba(0, 0, 0, 0.075);
 $global-box-shadow--search: 0 1px 6px 0 rgba(32, 33, 36, .28);
 $global-box-shadow--large: 0 7px 14px 0 rgba(65, 54, 94, .10), 0 3px 6px 0 rgba(0, 0, 0, .07);
 $global-box-shadow--small: 0 1px 2px 0 rgba(0, 0, 0, .20);
@@ -74,19 +75,19 @@ $secondary-font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
 
 // Base Colors
 $base-dark: #313536;
-$base-dark-secondary: #202626;
-$base-dark-tertiary: #474747;
+$base-dark-secondary: #212529;
+$base-dark-tertiary: #495057;
 $base-light: #fff;
-$base-light-secondary: #ADB5BD;
-$base-light-tertiary: #DEE2E6;
-$base-primary: #65b360;
+$base-light-secondary: #DEE2E6;
+$base-light-tertiary: #6C757D;
+$base-primary: #20A65F;
 $base-color: #00000080;
 
 $base-primary-hover: darken($base-primary, 10%);
 $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-hover);
 
 // Light Theme
-$theme-light-app-bg: #f0f0f0;
+$theme-light-app-bg: #E9ECEF;
 $theme-light-bg: $base-light;
 $theme-light-bg-hover: darken($base-light, 3.5%);
 $theme-light-bg-active: darken($base-light, 7%);
@@ -113,10 +114,13 @@ $ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
 $ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
 $ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
 $ui-background-negative: rgba($ui-color-negative, .1);
-
+// UI Colors
+// secondary button 
+$ui-button-secondary-active: darken($base-light-tertiary, 3.5%);
+$ui-button-secondary-shadow: 0 0 0 0.25rem rgba(130,138,145, .5);
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
-$ui-color-neutral: #7f47cc;
+$ui-color-neutral: #6633CA;
 $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
 $ui-color-neutral-active: darken($ui-color-neutral, 7%);
 $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
@@ -124,7 +128,7 @@ $ui-background-neutral: rgba($ui-color-neutral, .1);
 
 // Positive Colors -
 // These are used to portray good actions, states, or other generally positive states in the interface
-$ui-color-positive: #1d8915;
+$ui-color-positive: #198754;
 $ui-color-positive-hover: darken($ui-color-positive, 3.5%);
 $ui-color-positive-active: darken($ui-color-positive, 7%);
 $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
@@ -139,16 +143,27 @@ $ui-background-primary: rgba($ui-color-primary, .2);
 
 // Forms
 // ----------------------------------------------------------------------------
-$form-shadow-active:  0 0 0 3px transparentize($ui-color-primary, .75);
-$form-border-active: transparentize($ui-color-primary, .25);
+$form-shadow-active:  0 0 0 4px transparentize($ui-color-primary, .75);
+$form-border-active: transparentize($ui-color-primary, .5);
 
-$form-shadow-error: 0 0 0 3px transparentize($ui-color-negative, .75);
-$form-border-error: transparentize($ui-color-negative, .25);
+$form-shadow-error: 0 0 0 4px transparentize($ui-color-negative, .75);
+$form-border-error: $ui-color-negative;
 
 $form-border-neutral: transparentize($ui-color-neutral, .25);
-$form-shadow-neutral: 0 0 0 3px transparentize($ui-color-neutral, .75);
+$form-shadow-neutral: 0 0 0 4px transparentize($ui-color-neutral, .75);
 
-$form-shadow-hover: 0 0 0 3px transparentize($base-light-tertiary, .5);
+$form-shadow-hover: 0 0 0 4px transparentize($theme-light-app-bg, .2);
+
+//Gray colors 
+$gray-100: #F8F9FA;
+$gray-200: #E9ECEF;
+$gray-300: #DEE2E6;
+$gray-400: #CED4DA;
+$gray-500: #ADB5BD;
+$gray-600: #6C757D;
+$gray-700: #495057;
+$gray-800: #343A40;
+$gray-900: #212529;
 
 //App launch
 $app-launch-color-secondary: #6c757d;

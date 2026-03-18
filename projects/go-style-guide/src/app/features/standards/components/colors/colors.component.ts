@@ -8,16 +8,16 @@ export class ColorsComponent {
   pageTitle: string = 'Colors';
 
   baseColors: string = `
-  $base-primary: #65B360;
+  $base-primary: #20A65F;
   $base-light: #FFFFFF;
-  $base-light-secondary: #B1B1B1;
+  $base-light-secondary: $gray-500;
   $base-dark: #313536;
-  $base-dark-secondary: #202626;
+  $base-dark-secondary: $gray-900;
   `;
 
   lightTheme: string = `
   // Use as the app background
-  $theme-light-app-bg: #F0F0F0;
+  $theme-light-app-bg: $gray-100;
   // Used as the base background for all components
   $theme-light-bg: $base-light;
   // Used when the background needs an active state
@@ -34,7 +34,7 @@ export class ColorsComponent {
 
   earthGreen: string = `
   // Use this to apply the positive (success) state color
-  $ui-color-positive: #1D8915;
+  $ui-color-positive: #198754;
 
   // Used when the ui color needs a hover state
   $ui-color-positive-hover: darken($ui-color-positive, 3.5%);
@@ -48,18 +48,18 @@ export class ColorsComponent {
   `;
 
   galaxyBlue: string = `
-  // Use this to apply the positive (success) state color
-  $ui-color-positive: #4EDED2;
+  // Use this to apply the primary state color
+  $ui-color-primary: #157DB9;
 
   // Used when the ui color needs a hover state
-  $ui-color-positive-hover: darken($ui-color-primary, 3.5%);
+  $ui-color-primary-hover: darken($ui-color-primary, 3.5%);
 
   // Used when the ui color needs an active state
-  $ui-color-positive-active: darken($ui-color-primary, 7%);
+  $ui-color-primary-active: darken($ui-color-primary, 7%);
 
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent
-  $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
+  $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
   `;
 
   horizonRed: string = `
@@ -79,7 +79,7 @@ export class ColorsComponent {
 
   nebulaPurple: string = `
   // Use this to apply the neutral (info) state color
-  $ui-color-neutral: #7F47CC;
+  $ui-color-neutral: #6633CA;
 
   // Used when the ui color needs a hover state
   $ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);

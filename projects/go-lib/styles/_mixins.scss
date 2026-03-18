@@ -66,7 +66,7 @@ $z-index: (
 // Form Mixins
 // ----------------------------------------------------------------------------
 @mixin regular-input {
-  border: 1px solid lighten($theme-light-border, 13.5%);
+  border: 1px solid $theme-light-border;
   border-radius: $global-radius;
   box-shadow: none;
   color: $theme-light-color;
@@ -92,7 +92,7 @@ $z-index: (
     size: auto $column-gutter--three-quarters;
   }
 
-  color: $base-light-secondary;
+  color: $theme-light-color;
   cursor: not-allowed;
 
   &:hover {
