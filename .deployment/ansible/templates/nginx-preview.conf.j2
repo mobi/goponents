@@ -63,6 +63,9 @@ server {
     location ~ ^/pr/(?<pr_number>\d+)/$ {
         root {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/pr/$pr_number/">';
         try_files /$pr_number/index.html =404;
     }
 
@@ -78,6 +81,9 @@ server {
     location ~ ^/pr/(?<pr_number>\d+)/(?<pr_path>.*)$ {
         root {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/pr/$pr_number/">';
         try_files /$pr_number/$pr_path /$pr_number/$pr_path/ /$pr_number/index.html;
     }
 
@@ -94,12 +100,18 @@ server {
     location = /dev/ {
         root {{ dev_deploy_path | default('/var/www/goponents/dev') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/dev/">';
         try_files /index.html =404;
     }
 
     location ~ ^/dev/(?<dev_path>.*)$ {
         root {{ dev_deploy_path | default('/var/www/goponents/dev') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/dev/">';
         try_files /$dev_path /$dev_path/ /index.html;
     }
 
@@ -116,12 +128,18 @@ server {
     location = /custom/ {
         root {{ custom_deploy_path | default('/var/www/goponents/custom') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/custom/">';
         try_files /index.html =404;
     }
 
     location ~ ^/custom/(?<custom_path>.*)$ {
         root {{ custom_deploy_path | default('/var/www/goponents/custom') }};
         index index.html;
+        sub_filter_types text/html;
+        sub_filter_once on;
+        sub_filter '<base href="/">' '<base href="/custom/">';
         try_files /$custom_path /$custom_path/ /index.html;
     }
 
