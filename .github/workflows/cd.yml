@@ -48,8 +48,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NVMRC }}
+          registry-url: https://registry.npmjs.org
+          scope: '@tangoe'
       - name: Install npm Packages
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
       - name: Publish Package
-        run: npm run publish -- --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run publish -- --access public --ignore-scripts
