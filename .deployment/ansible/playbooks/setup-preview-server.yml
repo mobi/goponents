@@ -14,6 +14,8 @@
     dev_deploy_path: /var/www/goponents/dev
     custom_deploy_path: /var/www/goponents/custom
     server_hostname: dc2devgopolib01.corp.tangoe.com
+    ssl_certificate_path: /etc/ssl/certs/{{ server_hostname }}.pem
+    ssl_certificate_key_path: /etc/ssl/private/{{ server_hostname }}.key
 
   tasks:
     # ============================================
@@ -202,20 +204,20 @@
     # ============================================
     - name: Check if SSL certificate exists
       stat:
-        path: /etc/ssl/certs/{{ server_hostname }}.crt
+        path: "{{ ssl_certificate_path }}"
       register: ssl_cert_check
 
     - name: Create self-signed SSL certificate (temporary until IT provides real cert)
       command: >
         openssl req -x509 -nodes -days 365 -newkey rsa:2048
-        -keyout /etc/ssl/private/{{ server_hostname }}.key
-        -out /etc/ssl/certs/{{ server_hostname }}.crt
+        -keyout {{ ssl_certificate_key_path }}
+        -out {{ ssl_certificate_path }}
         -subj "/CN={{ server_hostname }}/O=Tangoe/C=US"
       when: not ssl_cert_check.stat.exists
 
     - name: Set SSL certificate permissions
       file:
-        path: /etc/ssl/private/{{ server_hostname }}.key
+        path: "{{ ssl_certificate_key_path }}"
         mode: '0600'
       when: not ssl_cert_check.stat.exists
 
@@ -343,6 +345,8 @@
   vars:
     server_hostname: dc2devgopolib01.corp.tangoe.com
     admin_email: devops@tangoe.com
+    ssl_certificate_path: /etc/ssl/certs/{{ server_hostname }}.pem
+    ssl_certificate_key_path: /etc/ssl/private/{{ server_hostname }}.key
 
   tasks:
     - name: Check if SSL certificate exists
@@ -356,8 +360,8 @@
           SSL Certificate Setup Required!
           
           Option 1 - Wildcard cert from IT:
-          Place certificate at: /etc/ssl/certs/goponents-preview.crt
-          Place key at: /etc/ssl/private/goponents-preview.key
+          Place certificate at: {{ ssl_certificate_path }}
+          Place key at: {{ ssl_certificate_key_path }}
           
           Option 2 - Let's Encrypt (requires DNS challenge for wildcard):
           Run: certbot certonly --manual --preferred-challenges dns -d "*.{{ server_hostname }}"
