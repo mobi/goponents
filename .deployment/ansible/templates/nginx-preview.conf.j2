@@ -59,36 +59,70 @@ server {
         return 301 /pr/$1/;
     }
 
-    # Cache static assets within PR paths
-    location ~* ^/pr/\d+/.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        root {{ app_base_path | default('/var/www/goponents') }};
-        expires 1y;
-        add_header Cache-Control "public, immutable";
+    # Handle /pr/NUMBER/ explicitly
+    location ~ ^/pr/(?<pr_number>\d+)/$ {
+        root {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }};
+        index index.html;
+        try_files /$pr_number/index.html =404;
     }
 
-    # PR preview Angular SPA routing (uses root, not alias, to work with try_files in regex location)
-    location ~ ^/pr/(?<pr_number>\d+)/ {
-        root {{ app_base_path | default('/var/www/goponents') }};
+    # Cache static assets within PR paths
+    location ~* ^/pr/(?<pr_number>\d+)/(?<pr_asset>.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$ {
+        root {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }};
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files /$pr_number/$pr_asset =404;
+    }
+
+    # PR preview Angular SPA routing
+    location ~ ^/pr/(?<pr_number>\d+)/(?<pr_path>.*)$ {
+        root {{ pr_preview_deploy_path | default('/var/www/goponents/pr') }};
         index index.html;
-        try_files $uri $uri/ /pr/$pr_number/index.html;
+        try_files /$pr_number/$pr_path /$pr_number/$pr_path/ /$pr_number/index.html;
     }
 
     # ============================================
     # Dev Branch Routing
     # URL: /dev/getting-started -> /var/www/goponents/dev/getting-started
     # ============================================
-    location ^~ /dev/ {
-        alias {{ dev_deploy_path | default('/var/www/goponents/dev') }}/;
-        try_files $uri $uri/ /dev/index.html;
+    # Redirect /dev to /dev/ (trailing slash)
+    location = /dev {
+        return 301 /dev/;
+    }
+
+    # Handle /dev/ without falling through to main /
+    location = /dev/ {
+        root {{ dev_deploy_path | default('/var/www/goponents/dev') }};
+        index index.html;
+        try_files /index.html =404;
+    }
+
+    location ~ ^/dev/(?<dev_path>.*)$ {
+        root {{ dev_deploy_path | default('/var/www/goponents/dev') }};
+        index index.html;
+        try_files /$dev_path /$dev_path/ /index.html;
     }
 
     # ============================================
     # Custom Branch Routing (manual deployments)
     # URL: /custom/getting-started -> /var/www/goponents/custom/getting-started
     # ============================================
-    location ^~ /custom/ {
-        alias {{ custom_deploy_path | default('/var/www/goponents/custom') }}/;
-        try_files $uri $uri/ /custom/index.html;
+    # Redirect /custom to /custom/ (trailing slash)
+    location = /custom {
+        return 301 /custom/;
+    }
+
+    # Handle /custom/ without falling through to main /
+    location = /custom/ {
+        root {{ custom_deploy_path | default('/var/www/goponents/custom') }};
+        index index.html;
+        try_files /index.html =404;
+    }
+
+    location ~ ^/custom/(?<custom_path>.*)$ {
+        root {{ custom_deploy_path | default('/var/www/goponents/custom') }};
+        index index.html;
+        try_files /$custom_path /$custom_path/ /index.html;
     }
 
     # ============================================
@@ -107,6 +141,15 @@ server {
     location /health {
         return 200 'GoComponents Server is healthy\nMain: /\nDev: /dev/\nCustom: /custom/\nPR Previews: /pr/{number}/';
         add_header Content-Type text/plain;
+    }
+
+    # Nginx status endpoint on primary HTTPS host
+    location = /nginx_status {
+        stub_status on;
+        allow 127.0.0.1;
+        allow ::1;
+        allow {{ nginx_status_allow_cidr | default('all') }};
+        deny all;
     }
 
     # Main branch - Angular SPA routing
@@ -128,6 +171,8 @@ server {
     location /nginx_status {
         stub_status on;
         allow 127.0.0.1;
+        allow ::1;
+        allow {{ nginx_status_allow_cidr | default('all') }};
         deny all;
     }
 }
