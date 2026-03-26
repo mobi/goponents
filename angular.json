@@ -307,6 +307,5 @@
         }
       }
     }
-  },
-  "defaultProject": "go-lib"
+  }
 }
