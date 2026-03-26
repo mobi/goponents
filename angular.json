@@ -69,6 +69,7 @@
               { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "projects/go-tester/src/styles.scss"
             ],
             "scripts": [],
@@ -90,7 +91,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -213,6 +213,7 @@
               { "glob": "**/*", "input": "projects/go-lib/styles/tinymce", "output": "/assets/tinymce/" }
             ],
             "styles": [
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "projects/go-style-guide/src/styles/styles.scss"
             ],
             "scripts": [],
@@ -239,7 +240,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
