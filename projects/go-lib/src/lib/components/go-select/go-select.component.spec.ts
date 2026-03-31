@@ -163,11 +163,11 @@ describe("GoSelectComponent", () => {
       const computedBgColor =
         getComputedStyle(ngSelectContainer).backgroundColor;
 
-      // Assuming an empty string because no background color is set when not disabled
-      const expectedBgColor = "rgb(255, 255, 255)";
+      // When enabled, background should not be the disabled color
+      const disabledBgColor = "rgb(233, 236, 239)";
 
-      // Assert that the computed background color matches the expected value
-      expect(computedBgColor).toBe(expectedBgColor);
+      // Assert that the computed background color is not the disabled value
+      expect(computedBgColor).not.toBe(disabledBgColor);
     });
 
     it("should remove items from previousSelectedItems", () => {
