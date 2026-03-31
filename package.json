@@ -14,7 +14,7 @@
     "test": "npm run test_lib",
     "lint": "./node_modules/.bin/ng lint",
     "e2e": "./node_modules/.bin/ng e2e",
-    "app": "./node_modules/.bin/ng build go-tester --prod",
+    "app": "./node_modules/.bin/ng build go-tester --configuration production",
     "build_lib": "./node_modules/.bin/ng build go-lib",
     "build_lib_scss": "chmod +x ./sass-port.sh && ./sass-port.sh",
     "test_lib": "./node_modules/.bin/ng test go-lib",
@@ -29,7 +29,7 @@
     "publish_local": "npm run package && node ./local_install.js",
     "sass-lint": "./node_modules/.bin/sass-lint -c .sass-lint.yml",
     "style_guide": "./node_modules/.bin/ng serve --project=go-style-guide",
-    "style_guide_publish": "ng build --prod --project=go-style-guide",
+    "style_guide_publish": "ng build --configuration production --project=go-style-guide",
     "tester": "./node_modules/.bin/ng serve --project=go-tester",
     "postinstall": "ngcc"
   },
