@@ -45,7 +45,7 @@ jobs:
             echo "base_href=/custom/" >> $GITHUB_OUTPUT
             echo "deploy_url=https://${SERVER}/custom/" >> $GITHUB_OUTPUT
             echo "deploy_label=custom (workflow_dispatch)" >> $GITHUB_OUTPUT
-          elif [ "${{ github.ref_name }}" = "main" ]; then
+          elif [ "${{ github.ref_name }}" = "main" ] || [ "${{ github.ref_name }}" = "PCP-1226-publish-to-nexus-1.17.0" ]; then
             echo "deploy_path=/var/www/goponents/main" >> $GITHUB_OUTPUT
             echo "base_href=/" >> $GITHUB_OUTPUT
             echo "deploy_url=https://${SERVER}/" >> $GITHUB_OUTPUT
