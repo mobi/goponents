@@ -65,6 +65,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - name: Get Package Version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: projects/go-lib
+
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v5
@@ -116,6 +122,31 @@ jobs:
           # Set proper permissions
           $SSH_CMD $SERVER "chmod -R 755 ${DEPLOY_PATH}"
 
+      - name: Deploy Version Snapshot
+        if: github.ref_name == 'main'
+        run: |
+          VERSION="${{ steps.package-version.outputs.current-version }}"
+          VERSION_PATH="/var/www/goponents/versions/${VERSION}"
+          SERVER="${{ env.DEPLOY_USER }}@${{ env.DEPLOY_SERVER }}"
+          SSH_CMD="ssh -i ~/.ssh/deploy_key"
+          TEMP_PATH="${VERSION_PATH}_new"
+
+          echo "Deploying version ${VERSION} to ${VERSION_PATH}"
+
+          # Create temp directory for new files
+          $SSH_CMD $SERVER "rm -rf ${TEMP_PATH} && mkdir -p ${TEMP_PATH}"
+
+          # Transfer built files to temp directory
+          tar -czf - -C dist/go-style-guide . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+
+          # Atomic swap: remove old, rename new
+          $SSH_CMD $SERVER "rm -rf ${VERSION_PATH} && mv ${TEMP_PATH} ${VERSION_PATH}"
+
+          # Set proper permissions
+          $SSH_CMD $SERVER "chmod -R 755 ${VERSION_PATH}"
+
+          echo "✅ Version ${VERSION} deployed to ${VERSION_PATH}"
+
       - name: Deployment Summary
         run: |
           echo "## ✅ Deployment Complete!" >> $GITHUB_STEP_SUMMARY
@@ -123,6 +154,11 @@ jobs:
           echo "**URL:** ${{ steps.vars.outputs.deploy_url }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Deployed:** ${{ steps.vars.outputs.deploy_label }}" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            VERSION="${{ steps.package-version.outputs.current-version }}"
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Version Snapshot:** [v${VERSION}](https://${{ env.DEPLOY_SERVER }}/v/${VERSION}/)" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
