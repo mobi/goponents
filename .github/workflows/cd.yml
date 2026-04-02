@@ -21,6 +21,9 @@ jobs:
         with:
           path: projects/go-lib
 
+      - name: Log Package Version
+        run: echo "📦 Publishing version - ${{ steps.package-version.outputs.current-version }}"
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         env:
