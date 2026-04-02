@@ -10,6 +10,7 @@
     deploy_user: tng_deploy
     app_base_path: /var/www/goponents
     pr_preview_deploy_path: /var/www/goponents/pr
+    version_deploy_path: /var/www/goponents/versions
     main_deploy_path: /var/www/goponents/main
     dev_deploy_path: /var/www/goponents/dev
     custom_deploy_path: /var/www/goponents/custom
@@ -145,6 +146,14 @@
     - name: Create PR previews directory
       file:
         path: "{{ pr_preview_deploy_path }}"
+        state: directory
+        owner: "{{ deploy_user }}"
+        group: "{{ deploy_user }}"
+        mode: '0755'
+
+    - name: Create versions deployment directory
+      file:
+        path: "{{ version_deploy_path }}"
         state: directory
         owner: "{{ deploy_user }}"
         group: "{{ deploy_user }}"
