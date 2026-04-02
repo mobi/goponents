@@ -161,7 +161,7 @@ jobs:
           if [ "${{ github.ref_name }}" = "main" ]; then
             VERSION="${{ steps.package-version.outputs.current-version }}"
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Version Snapshot:** [v${VERSION}](https://${{ env.DEPLOY_SERVER }}/v/${VERSION}/)" >> $GITHUB_STEP_SUMMARY
+            echo "**Version Snapshot:** [v${VERSION}](https://${{ env.DEPLOY_SERVER }}/versions/${VERSION}/)" >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
