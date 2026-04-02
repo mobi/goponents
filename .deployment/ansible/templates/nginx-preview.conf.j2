@@ -99,26 +99,26 @@ server {
 
     # ============================================
     # Version Routing
-    # URL: /v/1.17.0/getting-started -> /var/www/goponents/versions/1.17.0/getting-started
+    # URL: /versions/1.17.0/getting-started -> /var/www/goponents/versions/1.17.0/getting-started
     # ============================================
 
-    # Redirect /v/VERSION to /v/VERSION/ (trailing slash)
-    location ~ ^/v/([\d]+\.[\d]+\.[\d]+)$ {
-        return 301 /v/$1/;
+    # Redirect /versions/VERSION to /versions/VERSION/ (trailing slash)
+    location ~ ^/versions/([\d]+\.[\d]+\.[\d]+)$ {
+        return 301 /versions/$1/;
     }
 
-    # Handle /v/VERSION/ explicitly
-    location ~ ^/v/(?<version>[\d]+\.[\d]+\.[\d]+)/$ {
+    # Handle /versions/VERSION/ explicitly
+    location ~ ^/versions/(?<version>[\d]+\.[\d]+\.[\d]+)/$ {
         root {{ version_deploy_path | default('/var/www/goponents/versions') }};
         index index.html;
         sub_filter_types text/html;
         sub_filter_once on;
-        sub_filter '<base href="/">' '<base href="/v/$version/">';
+        sub_filter '<base href="/">' '<base href="/versions/$version/">';
         try_files /$version/index.html =404;
     }
 
     # Cache static assets within version paths
-    location ~* ^/v/(?<version>[\d]+\.[\d]+\.[\d]+)/(?<version_asset>.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$ {
+    location ~* ^/versions/(?<version>[\d]+\.[\d]+\.[\d]+)/(?<version_asset>.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$ {
         root {{ version_deploy_path | default('/var/www/goponents/versions') }};
         expires 1y;
         add_header Cache-Control "public, immutable";
@@ -126,13 +126,13 @@ server {
     }
 
     # Version Angular SPA routing
-    location ~ ^/v/(?<version>[\d]+\.[\d]+\.[\d]+)/(?<version_path>.*)$ {
+    location ~ ^/versions/(?<version>[\d]+\.[\d]+\.[\d]+)/(?<version_path>.*)$ {
         set $current_version $version;
         root {{ version_deploy_path | default('/var/www/goponents/versions') }};
         index index.html;
         sub_filter_types text/html;
         sub_filter_once on;
-        sub_filter '<base href="/">' '<base href="/v/$version/">';
+        sub_filter '<base href="/">' '<base href="/versions/$version/">';
         try_files /$version/$version_path /$version/$version_path/ @version_spa_index;
     }
 
@@ -141,7 +141,7 @@ server {
         index index.html;
         sub_filter_types text/html;
         sub_filter_once on;
-        sub_filter '<base href="/">' '<base href="/v/$current_version/">';
+        sub_filter '<base href="/">' '<base href="/versions/$current_version/">';
         try_files /$current_version/index.html =404;
     }
 
@@ -233,7 +233,7 @@ server {
 
     # Health check endpoint
     location /health {
-        return 200 'GoComponents Server is healthy\nMain: /\nDev: /dev/\nCustom: /custom/\nPR Previews: /pr/{number}/\nVersions: /v/{version}/';
+        return 200 'GoComponents Server is healthy\nMain: /\nDev: /dev/\nCustom: /custom/\nPR Previews: /pr/{number}/\nVersions: /versions/{version}/';
         add_header Content-Type text/plain;
     }
 
