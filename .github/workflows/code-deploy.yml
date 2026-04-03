@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - dev
-      - PCP-1226-publish-to-nexus-1.18.1
+      - PCP-1226-publish-to-nexus-1.18.3
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened, closed]
@@ -45,7 +45,7 @@ jobs:
             echo "base_href=/custom/" >> $GITHUB_OUTPUT
             echo "deploy_url=https://${SERVER}/custom/" >> $GITHUB_OUTPUT
             echo "deploy_label=custom (workflow_dispatch)" >> $GITHUB_OUTPUT
-          elif [ "${{ github.ref_name }}" = "main" ] || [ "${{ github.ref_name }}" = "PCP-1226-publish-to-nexus-1.18.1" ]; then
+          elif [ "${{ github.ref_name }}" = "main" ] || [ "${{ github.ref_name }}" = "PCP-1226-publish-to-nexus-1.18.3" ]; then
             echo "deploy_path=/var/www/goponents/main" >> $GITHUB_OUTPUT
             echo "base_href=/" >> $GITHUB_OUTPUT
             echo "deploy_url=https://${SERVER}/" >> $GITHUB_OUTPUT
@@ -127,7 +127,7 @@ jobs:
           $SSH_CMD $SERVER "chmod -R 755 ${DEPLOY_PATH}"
 
       - name: Deploy Version Snapshot
-        if: github.ref_name == 'main' || github.ref_name == 'PCP-1226-publish-to-nexus-1.18.1'
+        if: github.ref_name == 'main' || github.ref_name == 'PCP-1226-publish-to-nexus-1.18.3'
         run: |
           VERSION="${{ steps.package-version.outputs.current-version }}"
           VERSION_PATH="/var/www/goponents/versions/${VERSION}"
