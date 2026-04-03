@@ -9,8 +9,8 @@
   "description": "A library of UI components for Angular v8+.",
   "license": "MIT",
   "peerDependencies": {
-    "@ng-select/ng-select": ">=10.0.0",
-    "@tinymce/tinymce-angular": "4.2.3",
+    "@ng-select/ng-select": ">=11.0.0",
+    "@tinymce/tinymce-angular": "7.0.0",
     "tinymce": "5.8.0"
   },
   "devDependencies": {
