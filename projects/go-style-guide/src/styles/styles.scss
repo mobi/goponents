@@ -3,7 +3,7 @@
 
 @import 'settings';
 @import 'typography';
-@import 'highlight.js/styles/github.css';
+@import 'highlight-github-v9.min.css';
 
 // Base Styling
 code {
@@ -11,8 +11,16 @@ code {
   font-family: $roboto-code;
   font-size: 0.75rem;
   line-height: 1.6;
-  overflow-x: auto;
-  white-space: pre;
+  white-space: normal;
+
+  &:not(.code-block--inline) {
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+    width: 100%;
+  }
 
   &.hljs {
     border: 1px solid $theme-light-border;
@@ -24,6 +32,7 @@ code {
   .hljs-strong {
     font-weight: normal;
   }
+
 }
 
 .code-block--inline {
