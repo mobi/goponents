@@ -54,7 +54,7 @@ export class LayoutNavComponent {
     GoIconButtonModule,
     GoLayoutModule,
     GoSideNavModule
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   @NgModule({
     declarations: [
@@ -81,7 +81,7 @@ export class LayoutNavComponent {
   `;
 
   basicExample_ts: string = `
-  import { NavGroup, NavItem } from '@tangoe/goponents';
+  import { NavGroup, NavItem } from 'goponents';
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
@@ -98,7 +98,7 @@ export class LayoutNavComponent {
   `;
 
   serviceExample_ts: string = `
-  import { GoSideNavService } from '@tangoe/goponents';
+  import { GoSideNavService } from 'goponents';
 
   constructor(private sideNavService: GoSideNavService) {
     this.sideNavService.navOpen = true;

@@ -84,7 +84,7 @@ export class ToastDocsComponent {
   `;
 
   toaster_ts: string = `
-  import { GoToasterService } from '@tangoe/goponents';
+  import { GoToasterService } from 'goponents';
 
   constructor(private toasterService: GoToasterService) { }
 
@@ -98,7 +98,7 @@ export class ToastDocsComponent {
   `;
 
   toaster_app_ts: string = `
-  import { GoToasterModule } from '@tangoe/goponents';
+  import { GoToasterModule } from 'goponents';
 
   NgModule({
     imports: [

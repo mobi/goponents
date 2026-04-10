@@ -21,7 +21,7 @@ export class ModalDocsComponent {
   `;
 
   appModuleImport: string = `
-  import { GoModalModule } from '@tangoe/goponents';
+  import { GoModalModule } from 'goponents';
 
   @NgModule({
     declarations: [
@@ -36,7 +36,7 @@ export class ModalDocsComponent {
   `;
 
   ex_UiKitModule: string = `
-  import { GoModalModule, GoModalService } from '@tangoe/goponents';
+  import { GoModalModule, GoModalService } from 'goponents';
 
   import { ModalDocsComponent } from './components/modal-docs/modal-docs.component';
   import { ModalTestComponent } from './components/modal-test/modal-test.component';
@@ -58,7 +58,7 @@ export class ModalDocsComponent {
   `;
 
   ex_ModalDocsImports: string = `
-  import { GoModalService } from '@tangoe/goponents';
+  import { GoModalService } from 'goponents';
   import { ModalTestComponent } from '../modal-test/modal-test.component';
 
   constructor(private goModalService: GoModalService) { }

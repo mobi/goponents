@@ -16,7 +16,7 @@ export class LayoutOverviewComponent {
     GoIconButtonModule,
     GoLayoutModule,
     GoSideNavModule
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   @NgModule({
     declarations: [
