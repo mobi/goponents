@@ -1,1 +1,181 @@
-.hljs{display:block;overflow-x:auto;padding:0.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:bold}.hljs-number,.hljs-literal,.hljs-variable,.hljs-template-variable,.hljs-tag .hljs-attr{color:#008080}.hljs-string,.hljs-doctag{color:#d14}.hljs-title,.hljs-section,.hljs-selector-id{color:#900;font-weight:bold}.hljs-subst{font-weight:normal}.hljs-type,.hljs-class .hljs-title{color:#458;font-weight:bold}.hljs-tag,.hljs-name,.hljs-attribute{color:#000080;font-weight:normal}.hljs-regexp,.hljs-link{color:#009926}.hljs-symbol,.hljs-bullet{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:bold}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}
+/*
+ * highlight-github-v9.css
+ *
+ * A custom theme for highlight.js v11 that replicates the exact appearance
+ * of the highlight.js v9.13.1 "github.css" theme.
+ *
+ * WHY:  highlight.js was upgraded from v9 to v11 as part of Angular 15→16.
+ *       The v11 GitHub theme uses a completely different color palette AND
+ *       the v11 tokenizer emits new CSS classes that v9 never produced.
+ *       This file:
+ *         1. Preserves every original v9 rule (same selectors + values).
+ *         2. Maps each v11-only class to the closest v9 color equivalent.
+ *       Result: code blocks render identically to the pre-upgrade site.
+ *
+ * MAINTENANCE: if highlight.js is upgraded further, check for new token
+ *   classes at https://highlightjs.readthedocs.io/en/latest/css-classes-reference.html
+ *   and add them to the appropriate group below.
+ *
+ * Source: https://github.com/highlightjs/highlight.js/blob/9.13.1/src/styles/github.css
+ */
+
+/* ═══ Base ════════════════════════════════════════════════════════════ */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+/* ═══ Comments ────────────────────────────────────────────────────── */
+/* v9: .hljs-comment, .hljs-quote                                     */
+/* v11 adds: .hljs-code, .hljs-formula                                */
+.hljs-comment,
+.hljs-quote,
+.hljs-code,
+.hljs-formula {
+  color: #998;
+  font-style: italic;
+}
+
+/* ═══ Keywords / control flow ─────────────────────────────────────── */
+/* v9: .hljs-keyword, .hljs-selector-tag, .hljs-subst                 */
+/* v11 adds: .hljs-template-tag, .hljs-variable.language_              */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-template-tag,
+.hljs-variable.language_ {
+  color: #333;
+  font-weight: bold;
+}
+
+/* ═══ Numbers / literals / teal group ─────────────────────────────── */
+/* v9: .hljs-number, .hljs-literal, .hljs-variable,                   */
+/*     .hljs-template-variable, .hljs-tag .hljs-attr                  */
+/* v11: no new classes in this group                                   */
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+/* ═══ Strings ─────────────────────────────────────────────────────── */
+/* v9: .hljs-string, .hljs-doctag                                     */
+/* v11 adds: .hljs-meta .hljs-string                                  */
+.hljs-string,
+.hljs-doctag,
+.hljs-meta .hljs-string {
+  color: #d14;
+}
+
+/* ═══ Titles / headings ───────────────────────────────────────────── */
+/* v9: .hljs-title, .hljs-section, .hljs-selector-id                  */
+/* NOTE: .hljs-title.function_ is NOT here — v9 rendered function     */
+/*   names as plain text (#333). See "v11-only" group below.          */
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+/* ═══ Subst override (must follow keyword rule) ───────────────────── */
+.hljs-subst {
+  font-weight: normal;
+}
+
+/* ═══ Types ───────────────────────────────────────────────────────── */
+/* v9: .hljs-type, .hljs-class .hljs-title                            */
+/* NOTE: .hljs-title.class_ is NOT here — v9 rendered class names     */
+/*   like SplitButtonOption, EventEmitter as plain text (#333).       */
+/*   See "v11-only" group below.                                      */
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+/* ═══ HTML/XML tags, names, attributes ────────────────────────────── */
+/* v9: .hljs-tag, .hljs-name, .hljs-attribute                         */
+/* NOTE: .hljs-property is NOT here — v9 rendered property accesses   */
+/*   like this.submitButton as plain text (#333). See below.          */
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+/* ═══ Regex / links ───────────────────────────────────────────────── */
+/* v9: .hljs-regexp, .hljs-link                                       */
+/* v11 adds: .hljs-char.escape_                                       */
+.hljs-regexp,
+.hljs-link,
+.hljs-char.escape_ {
+  color: #009926;
+}
+
+/* ═══ Symbols / bullets ───────────────────────────────────────────── */
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+/* ═══ Built-ins ───────────────────────────────────────────────────── */
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+/* ═══ Meta / decorators ───────────────────────────────────────────── */
+/* v9: .hljs-meta                                                     */
+/* v11 adds: .hljs-meta .hljs-keyword                                 */
+.hljs-meta,
+.hljs-meta .hljs-keyword {
+  color: #999;
+  font-weight: bold;
+}
+
+/* ═══ Diff blocks ─────────────────────────────────────────────────── */
+.hljs-deletion {
+  background: #fdd;
+}
+.hljs-addition {
+  background: #dfd;
+}
+
+/* ═══ Emphasis / strong ───────────────────────────────────────────── */
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* ═══ Selector-class (v11-only, map to selector-id in v9) ─────────── */
+.hljs-selector-class {
+  color: #900;
+  font-weight: bold;
+}
+
+/* ═══ v11-only tokens with no v9 equivalent → base text color ─────── */
+/* These classes did not exist in v9; the text was rendered as plain    */
+/* #333 (the base .hljs color). We make that explicit so v11's default */
+/* theme cannot override them.                                         */
+.hljs-title.function_,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-property,
+.hljs-attr,
+.hljs-operator,
+.hljs-punctuation,
+.hljs-params,
+.hljs-selector-pseudo,
+.hljs-selector-attr {
+  color: #333;
+  font-weight: normal;
+}

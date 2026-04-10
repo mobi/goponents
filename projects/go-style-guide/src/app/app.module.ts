@@ -44,7 +44,21 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
-        fullLibraryLoader: () => import('highlight.js'),
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          bash: () => import('highlight.js/lib/languages/bash'),
+          scss: () => import('highlight.js/lib/languages/scss'),
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          xml: () => import('highlight.js/lib/languages/xml'),
+        },
+        config: {
+          // Restrict auto-detection to these languages only.
+          // SCSS is registered but excluded from auto-detection because its
+          // grammar outscores TypeScript for @Input() decorator patterns.
+          // Templates that show CSS/SCSS code pass [languages]="['scss']"
+          // explicitly.
+          languages: ['typescript', 'xml', 'bash']
+        }
       }
     }
   ],

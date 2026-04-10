@@ -11,28 +11,19 @@ code {
   font-family: $roboto-code;
   font-size: 0.75rem;
   line-height: 1.6;
-  white-space: normal;
-
-  &:not(.code-block--inline) {
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-    overflow-x: auto;
-    white-space: pre;
-    width: 100%;
-  }
+  overflow-x: auto;
+  white-space: pre;
 
   &.hljs {
     border: 1px solid $theme-light-border;
     padding: 1rem;
   }
+}
 
-  .hljs-section,
-  .hljs-name,
-  .hljs-strong {
-    font-weight: normal;
-  }
-
+.hljs-name,
+code .hljs-section,
+code .hljs-strong {
+  font-weight: normal;
 }
 
 .code-block--inline {
