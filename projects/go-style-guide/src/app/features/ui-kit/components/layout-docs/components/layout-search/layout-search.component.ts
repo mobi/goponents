@@ -27,7 +27,7 @@ export class LayoutSearchComponent {
     GoIconButtonModule,
     GoLayoutModule,
     GoSearchModule
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   @NgModule({
     declarations: [
@@ -45,7 +45,7 @@ export class LayoutSearchComponent {
   `;
 
   basicExample_ts: string = `
-  import { GoSearchService } from '@tangoe/goponents';
+  import { GoSearchService } from 'goponents';
   import { YourService } from './your.service';
 
   @Component({

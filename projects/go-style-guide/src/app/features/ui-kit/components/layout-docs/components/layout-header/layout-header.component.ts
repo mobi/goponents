@@ -20,7 +20,7 @@ export class LayoutHeaderComponent {
     GoHeaderModule,
     GoIconButtonModule,
     GoLayoutModule
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   @NgModule({
     declarations: [

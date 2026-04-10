@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
 })
 export class GettingStartedComponent {
 
-  installGoponents: string = `npm install @tangoe/goponents`;
-  importStylesBase: string = `@import "~@tangoe/goponents/styles/styles"`;
-  importStylesPartials: string = `@import "~@tangoe/goponents/styles/*"`;
+  installGoponents: string = `npm install goponents`;
+  importStylesBase: string = `@import "~goponents/styles/styles"`;
+  importStylesPartials: string = `@import "~goponents/styles/*"`;
 
   constructor() { }
 
