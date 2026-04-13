@@ -33,7 +33,7 @@ export class TableSortingComponent {
 
   tableConfigEx: string = `
   // import these at the top of the file
-  import { GoTableConfig, GoTableSortConfig, SortDirection } from '@tangoe/goponents';
+  import { GoTableConfig, GoTableSortConfig, SortDirection } from 'goponents';
 
   this.tableConfig = new GoTableConfig({
     sortConfig: new GoTableSortConfig({
@@ -57,7 +57,7 @@ export class TableSortingComponent {
 
   tableConfigEx_nosort: string = `
   // import these at the top of the file
-  import { GoTableConfig, GoTableSortConfig, SortDirection } from '@tangoe/goponents';
+  import { GoTableConfig, GoTableSortConfig, SortDirection } from 'goponents';
 
   this.tableConfig = new GoTableConfig({
     sortable: false,

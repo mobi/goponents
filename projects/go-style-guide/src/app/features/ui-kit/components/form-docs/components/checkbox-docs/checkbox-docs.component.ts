@@ -37,7 +37,7 @@ export class CheckboxDocsComponent {
   checkbox3Hints: Array<string> = ['this is a hint for the this checkbox'];
 
   checkboxSetup: string = `
-  import { GoCheckboxModule } from '@tangoe/goponents';
+  import { GoCheckboxModule } from 'goponents';
 
   @NgModule({
     imports: [
