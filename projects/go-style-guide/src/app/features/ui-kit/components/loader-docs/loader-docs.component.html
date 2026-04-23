@@ -28,7 +28,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -71,7 +71,7 @@
         <p class="go-body-copy">
           Shows a basic use case of each type and size.
         </p>
-        <code [highlight]="basicHtml"></code>
+        <app-code-block [content]="basicHtml" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -100,7 +100,7 @@
           syntax that fades the loader in/out. To implement this, simply throw an <code class="code-block--inline">*ngIf</code>
           on the <code class="code-block--inline">&lt;go-loader&gt;</code>
         </p>
-        <code [highlight]="fadeHtml"></code>
+        <app-code-block [content]="fadeHtml" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">

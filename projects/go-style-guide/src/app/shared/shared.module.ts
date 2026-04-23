@@ -9,6 +9,7 @@ import {
 
 import { SubNavComponent } from './components/sub-nav/sub-nav.component';
 import { SubNavService} from './components/sub-nav/sub-nav.service';
+import { CodeBlockComponent } from './components/code-block/code-block.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,12 @@ import { SubNavService} from './components/sub-nav/sub-nav.service';
     CommonModule,
     GoIconModule,
     GoButtonModule,
-    RouterModule
+    RouterModule,
+    CodeBlockComponent
   ],
   exports: [
     SubNavComponent,
+    CodeBlockComponent
   ],
   providers: [
     SubNavService

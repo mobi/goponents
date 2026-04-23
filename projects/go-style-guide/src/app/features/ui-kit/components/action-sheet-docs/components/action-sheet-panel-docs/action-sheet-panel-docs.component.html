@@ -12,7 +12,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="bindings"></code>
+        <app-code-block [content]="bindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -111,7 +111,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="iconHtml"></code>
+          <app-code-block [content]="iconHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -149,7 +149,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="headerHtml"></code>
+          <app-code-block [content]="headerHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -160,7 +160,7 @@
               </go-button>
             </ng-container>
             <ng-container go-action-sheet-content>
-              <go-panel [showHeader]="true" panelContent="<i>John Smith</i><p>john.smith@tangoe.com</p>">
+              <go-panel [showHeader]="true" panelContent="<i>John Smith</i><p>john.smith&#64;tangoe.com</p>">
               </go-panel>
               <go-panel panelContent="Landscape">
               </go-panel>
@@ -187,7 +187,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="dangerHtml"></code>
+          <app-code-block [content]="dangerHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -225,7 +225,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="externalHtml"></code>
+          <app-code-block [content]="externalHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -263,7 +263,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="actionsHtml"></code>
+          <app-code-block [content]="actionsHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -301,7 +301,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="disabledHtml"></code>
+          <app-code-block [content]="disabledHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -339,7 +339,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="readonlyHtml"></code>
+          <app-code-block [content]="readonlyHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -377,7 +377,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="routerHtml"></code>
+          <app-code-block [content]="routerHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -415,7 +415,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="closeOnClickHtml"></code>
+          <app-code-block [content]="closeOnClickHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -463,7 +463,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="contentProjectionHtml"></code>
+          <app-code-block [content]="contentProjectionHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -495,3 +495,4 @@
     </div>
   </go-card>
 </section>
+

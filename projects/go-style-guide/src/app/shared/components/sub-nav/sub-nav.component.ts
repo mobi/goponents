@@ -1,9 +1,13 @@
 import {
   Component,
   Input,
+  OnDestroy,
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 import { routerAnimation } from '../../../app.animations';
 
 import { NavGroup } from '../../../../../../go-lib/src/public_api';
@@ -21,11 +25,27 @@ export class SubNavComponent {
   @Input() menuItems: Array<NavGroup>;
 
   mobileSubmenuShown: boolean;
+  routeAnimationKey: number = 0;
 
-  constructor(public subNavService: SubNavService) { }
+  private destroy$: Subject<void> = new Subject<void>();
 
-  getRouteAnimation(outlet: any): void {
-    return outlet.isActivated ? outlet.activatedRoute : '';
+  constructor(public subNavService: SubNavService,
+              private router: Router) { }
+
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter((event: any) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.routeAnimationKey += 1;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   toggleSubmenu(): void {

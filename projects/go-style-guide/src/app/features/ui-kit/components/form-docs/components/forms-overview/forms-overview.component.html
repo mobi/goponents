@@ -52,8 +52,7 @@
         on the control. Adding this validator to any control in Goponents will
         render a red asterisk next to the label automatically.
       </p>
-      <code [highlight]="requiredControl" class="code-block--no-bottom-margin">
-      </code>
+      <app-code-block [content]="requiredControl" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -88,7 +87,7 @@
         placeholder="Try typing something..."
       >
       </go-input>
-      <code [highlight]="validationsEx"></code>
+      <app-code-block [content]="validationsEx" language="html"></app-code-block>
       <p class="go-body-copy">
         Angular provides some
         <code class="code-block--inline">ValidationErrors</code> out of the box,

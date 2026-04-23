@@ -17,7 +17,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -35,7 +35,7 @@
           when constructing <code class="code-block--inline">GoTableConfig</code>. For example if <code class="code-block--inline">tableData</code>
           was set to:
 
-          <code [highlight]="fieldExample"></code>
+          <app-code-block [content]="fieldExample" language="html"></app-code-block>
   
           and we wanted "John" to show, then <code class="code-block--inline">field</code> would be set to <code class="code-block--inline">name.first</code>.
         </p>
@@ -93,9 +93,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="basicExample_html"></code>
+      <app-code-block [content]="basicExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="basicExample_ts"></code>
+      <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -112,3 +112,4 @@
     <go-table-column field="login_attempts" title="Login Attempts"></go-table-column>
   </go-table>
 </section>
+

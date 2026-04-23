@@ -22,7 +22,7 @@ export class EditorDocsComponent {
   angularJson: string = `
   "assets": [
     { "glob": "**/*", "input": "node_modules/tinymce", "output": "/assets/tinymce/" },
-    { "glob": "**/*", "input": "node_modules/@tangoe/goponents/styles/tinymce", "output": "/assets/tinymce/" }
+    { "glob": "**/*", "input": "node_modules/goponents/styles/tinymce", "output": "/assets/tinymce/" }
   ]
   `;
 
@@ -52,7 +52,7 @@ export class EditorDocsComponent {
   moduleImport: string = `
   import { CommonModule } from '@angular/common';
   import { NgModule } from '@angular/core';
-  import { GoEditorModule, TINYMCE_SCRIPT_SRC } from '@tangoe/goponents';
+  import { GoEditorModule, TINYMCE_SCRIPT_SRC } from 'goponents';
 
   @NgModule({
     imports: [

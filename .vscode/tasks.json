@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run go-style-guide locally",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"ng",
+				"serve",
+				"--project=go-style-guide"
+			],
+			"isBackground": true
+		}
+	]
+}

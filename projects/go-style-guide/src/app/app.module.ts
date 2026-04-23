@@ -48,8 +48,12 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
         languages: {
           bash: () => import('highlight.js/lib/languages/bash'),
           scss: () => import('highlight.js/lib/languages/scss'),
+          sass: () => import('highlight.js/lib/languages/scss'),
+          css: () => import('highlight.js/lib/languages/css'),
           typescript: () => import('highlight.js/lib/languages/typescript'),
           xml: () => import('highlight.js/lib/languages/xml'),
+          html: () => import('highlight.js/lib/languages/xml'),
+          json: () => import('highlight.js/lib/languages/json'),
         },
         config: {
           // Restrict auto-detection to these languages only.

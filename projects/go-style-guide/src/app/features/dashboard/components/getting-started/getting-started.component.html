@@ -24,8 +24,8 @@
         </p>
         <section class="go-column go-column--100 go-column--no-padding">
           <p class="go-body-copy">
-            <strong>@tangoe/goponents</strong>
-            (<a class="go-link" href="https://www.npmjs.com/package/@tangoe/goponents">npmjs</a> /
+            <strong>goponents</strong>
+            (<a class="go-link" href="https://www.npmjs.com/package/goponents">npmjs</a> /
             <a class="go-link" href="https://github.com/mobi/goponents">GitHub</a>)
           </p>
           <p class="go-body-copy">
@@ -51,7 +51,7 @@
           <h3 class="go-heading-3">
             Install goponents:
           </h3>
-          <code [highlight]="installGoponents" [languages]="['bash']"></code>
+          <app-code-block [content]="installGoponents" language="bash"></app-code-block>
         </section>
       </div>
     </ng-container>
@@ -82,11 +82,11 @@
             To utlize all of the benefits our styles have to offer, in the root <code class="code-block--inline">styles.scss</code>
             of the project import: 
           </p>
-          <code [highlight]="importStylesBase" [languages]="['scss']"></code>
+          <app-code-block [content]="importStylesBase" language="scss"></app-code-block>
           <p class="go-body-copy">
             Alternatively, partials can be imported individually. These can be found:
           </p>
-          <code [highlight]="importStylesPartials" [languages]="['scss']"></code>
+          <app-code-block [content]="importStylesPartials" language="scss"></app-code-block>
         </section>
       </div>
     </ng-container>

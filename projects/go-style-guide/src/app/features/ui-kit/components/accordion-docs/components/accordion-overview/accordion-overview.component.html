@@ -20,7 +20,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -91,7 +91,7 @@
       <div class="go-column go-column--100 go-column--no-padding">
         <!-- theme -->
         <h4 class="go-heading-4">theme</h4>
-        <code [highlight]="themeOptions"></code>
+        <app-code-block [content]="themeOptions" language="html"></app-code-block>
         <p class="go-body-copy">
           This will set the appearance of the <code class="code-block--inline">accordion</code>. <code class="code-block--inline">light</code>
           is the default <code class="code-block--inline">theme</code> and should be used in most places. The only time the
@@ -111,7 +111,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="defaultExample"></code>
+          <app-code-block [content]="defaultExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -140,7 +140,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="borderlessExample"></code>
+          <app-code-block [content]="borderlessExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -169,7 +169,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="boxShadowExample"></code>
+          <app-code-block [content]="boxShadowExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -199,7 +199,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="expandAllExample"></code>
+          <app-code-block [content]="expandAllExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -228,7 +228,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="multiExpandExample"></code>
+          <app-code-block [content]="multiExpandExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -257,7 +257,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="showIconsExample"></code>
+          <app-code-block [content]="showIconsExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -286,7 +286,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="slimExample"></code>
+          <app-code-block [content]="slimExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -315,7 +315,7 @@
       <div class="go-container">
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="themeExample"></code>
+          <app-code-block [content]="themeExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -335,3 +335,4 @@
     </div>
   </go-card>
 </section>
+

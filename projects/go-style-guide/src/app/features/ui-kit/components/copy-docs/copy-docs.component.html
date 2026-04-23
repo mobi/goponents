@@ -27,7 +27,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -50,7 +50,7 @@
         <a [href]="url" class="copy-docs__link">Click the button to copy the link!</a>
         <go-copy [text]="url"></go-copy>
       </p>
-      <code [highlight]="exampleCopy"></code>
+      <app-code-block [content]="exampleCopy" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -91,8 +91,9 @@
       <h4 class="go-heading-4">
         Example implementation (code for this card):
       </h4>
-      <code [highlight]="goCopyCardLinkDirectiveExample"></code>
+      <app-code-block [content]="goCopyCardLinkDirectiveExample" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
 </div>
+

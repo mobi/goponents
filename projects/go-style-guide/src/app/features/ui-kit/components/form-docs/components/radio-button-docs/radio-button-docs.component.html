@@ -10,10 +10,7 @@
       <p class="go-body-copy">
         To use the radio components, you'll need to import the RadioModule into your module:
       </p>
-      <code
-        [highlight]="radioSetup"
-        class="code-block--no-bottom-margin">
-      </code>
+      <app-code-block [content]="radioSetup" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -66,10 +63,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio1Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="radio1Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -87,7 +81,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           The label attribute is used to generate a unique ID to associate the label with the radio button.
-          As this might not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          As this might not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute of the radio directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the radio and
@@ -120,10 +114,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio2Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="radio2Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
         <div class="go-column go-column--100">
@@ -134,10 +125,7 @@
             the input and the <code class="code-block--inline">for</code> attribute
             on the label.
           </p>
-          <code
-            [highlight]="radio2KeyCode"
-            class="code-block--no-bottom-margin">
-          </code>
+          <app-code-block [content]="radio2KeyCode" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
         </div>
       </div>
       
@@ -154,7 +142,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the
-          radio groups they are attached to. The <code class="code-block--inline">@Input() hints: Array&lt;string&gt;</code>
+          radio groups they are attached to. The <code class="code-block--inline">&#64;Input() hints: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to the radio group component.
         </p>
       </div>
@@ -179,14 +167,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio3HintsCode"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="radio3Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="radio3HintsCode" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="radio3Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -229,10 +211,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio4Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="radio4Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -277,10 +256,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="radio5Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="radio5Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@
           class to the <code class="code-block--inline">sortConfig</code> property on the <code class="code-block--inline">GoTableConfig</code> object.
         </p>
   
-        <code [highlight]="tableSortConfig"></code>
+        <app-code-block [content]="tableSortConfig" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -30,7 +30,7 @@
           This property determines the direction to sort the data. By default, it will sort <code class="code-block--inline">ascending</code>.
           This property is an enum, <code class="code-block--inline">SortDirection</code> (see below).
         </p>
-        <code [highlight]="tableSortDir"></code>
+        <app-code-block [content]="tableSortDir" language="html"></app-code-block>
       </div>
 
     </div>
@@ -43,9 +43,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableConfigEx_html"></code>
+      <app-code-block [content]="tableConfigEx_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableConfigEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -65,9 +65,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableConfigEx_html"></code>
+      <app-code-block [content]="tableConfigEx_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableConfigEx_nosort" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -94,7 +94,7 @@
           can disable sorting by default on the table and enable it on a couple columns we want to be sortable.
         </p>
   
-        <code [highlight]="tableSortConfig"></code>
+        <app-code-block [content]="tableSortConfig" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -107,12 +107,12 @@
 
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">example.html</h4>
-        <code [highlight]="tableConfigRestrictColumn_html"></code>
+        <app-code-block [content]="tableConfigRestrictColumn_html" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">example.ts</h4>
-        <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+        <app-code-block [content]="tableConfigEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </div>
 
     </div>
@@ -134,9 +134,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableConfigEnableColumn_html"></code>
+      <app-code-block [content]="tableConfigEnableColumn_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableConfigEx_nosort" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableConfigEx_nosort" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 

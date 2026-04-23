@@ -18,7 +18,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="bindings"></code>
+        <app-code-block [content]="bindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -53,7 +53,7 @@
         The simplest way to get the action sheet working is with two <code class="code-block--inline">ng-container</code>s.
       </p>
 
-      <code [highlight]="structureHtml"></code>
+      <app-code-block [content]="structureHtml" language="html"></app-code-block>
     </div>
   </go-card>
 
@@ -71,7 +71,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="simpleHtml"></code>
+          <app-code-block [content]="simpleHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -112,7 +112,7 @@
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-          <code [highlight]="accordionHtml"></code>
+          <app-code-block [content]="accordionHtml" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding go-column--collapse">
           <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -148,7 +148,7 @@
           <h4 class="go-heading-4 go-heading--underlined">Code</h4>
           <p class="go-body-copy">
             A simple example to demo different placements defined by <code class="code-block--inline">placement</code>.
-            <code [highlight]="placementGenericHtml"></code>
+            <app-code-block [content]="placementGenericHtml" language="html"></app-code-block>
           </p>
         </div>
       </div>
@@ -214,3 +214,4 @@
     </div>
   </go-card>
 </section>
+

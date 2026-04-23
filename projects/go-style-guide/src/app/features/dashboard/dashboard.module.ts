@@ -3,6 +3,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 
 // Module Imports
 import { GoCardModule, GoCopyCardLinkModule, GoCopyModule } from '../../../../../go-lib/src/public_api';
+import { SharedModule } from '../../shared/shared.module';
 
 // Module Routes
 import { DashboardRoutesModule } from './routes/dashboard-routing.module';
@@ -17,7 +18,8 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
     GoCardModule,
     GoCopyCardLinkModule,
     GoCopyModule,
-    HighlightModule
+    HighlightModule,
+    SharedModule
   ],
   declarations: [
     DashboardComponent,

@@ -16,7 +16,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -81,7 +81,7 @@
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
           It has these properties:
-          <code [highlight]="tableConfigClass"></code>
+          <app-code-block [content]="tableConfigClass" language="html"></app-code-block>
         </p>
       </div>
 
@@ -111,14 +111,14 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="basicExample_html"></code>
+      <app-code-block [content]="basicExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="basicExample_ts"></code>
+      <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
     </ng-container>
     <p class="go-body-copy">
       Additionally, you can specify a type for the tableData items.
     </p>
-    <code [highlight]="filterTableEx"></code>
+    <app-code-block [content]="filterTableEx" language="html"></app-code-block>
   </go-card>
 
   <go-table class="go-column go-column--100" [tableConfig]="tableConfig" tableTitle="Default Example">
@@ -137,9 +137,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="boxShadowExample_html"></code>
+      <app-code-block [content]="boxShadowExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="basicExample_ts"></code>
+      <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -159,9 +159,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="maxHeightExample_html"></code>
+      <app-code-block [content]="maxHeightExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="basicExample_ts"></code>
+      <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -185,9 +185,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="minHeightExample_html"></code>
+      <app-code-block [content]="minHeightExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="basicExample_ts"></code>
+      <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -211,9 +211,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableStickyConfig_html"></code>
+      <app-code-block [content]="tableStickyConfig_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableStickyConfig_ts" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableStickyConfig_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -238,3 +238,4 @@
   </go-table>
 
 </section>
+

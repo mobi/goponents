@@ -27,7 +27,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -104,7 +104,7 @@
       <p class="go-body-copy">
         Shows a basic use case of each type.
       </p>
-      <code [highlight]="basic_html"></code>
+      <app-code-block [content]="basic_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -137,9 +137,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="dismiss_html"></code>
+      <app-code-block [content]="dismiss_html" language="html"></app-code-block>
       <h4 class="go-heading-4">component.ts</h4>
-      <code [highlight]="dismiss_ts"></code>
+      <app-code-block [content]="dismiss_ts" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -163,11 +163,11 @@
         then when they hover off of the toast the timer will start over.
       </p>
       <h4 class="go-heading-4">component.ts</h4>
-      <code [highlight]="toaster_ts"></code>
+      <app-code-block [content]="toaster_ts" language="html"></app-code-block>
       <h4 class="go-heading-4">app.module.ts</h4>
-      <code [highlight]="toaster_app_ts"></code>
+      <app-code-block [content]="toaster_app_ts" language="html"></app-code-block>
       <h4 class="go-heading-4">app.component.html</h4>
-      <code [highlight]="toaster_app_html"></code>
+      <app-code-block [content]="toaster_app_html" language="html"></app-code-block>
       <go-button (handleClick)="sendToast()">Make Toast</go-button>
     </ng-container>
   </go-card>
@@ -184,7 +184,7 @@
           set to <code class="code-block--inline">true</code> for the action button to appear.
         </p>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="action_btn_html"></code>
+      <app-code-block [content]="action_btn_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -224,7 +224,7 @@
         </strong>
       </p>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="toast_header_template_html"></code>
+      <app-code-block [content]="toast_header_template_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -251,7 +251,7 @@
         </strong>
       </p>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="toast_message_template_html"></code>
+      <app-code-block [content]="toast_message_template_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -271,13 +271,13 @@
     <ng-container go-card-content>
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          A dark or light theme can be triggered through the <code class="code-block--inline">@Input theme: 'dark' | 'light' = 'light';</code>
+          A dark or light theme can be triggered through the <code class="code-block--inline">&#64;Input theme: 'dark' | 'light' = 'light';</code>
           binding. The theme signifies which color of background the element is being placed upon. A light theme will be good for a light background,
           while a dark theme would be better for something like being placed in the off canvas which has a dark background.
         </p>
       </div>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="toast_theme_template_html"></code>
+      <app-code-block [content]="toast_theme_template_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -297,12 +297,12 @@
     <ng-container go-card-content>
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          An icon may be specified with the <code class="code-block--inline">@Input icon: string;</code>
+          An icon may be specified with the <code class="code-block--inline">&#64;Input icon: string;</code>
           binding. If a value is passed to this binding, it will override all of the default icons for each type.
         </p>
       </div>
       <h4 class="go-heading-4">component.html</h4>
-      <code [highlight]="toast_icon_template_html"></code>
+      <app-code-block [content]="toast_icon_template_html" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -332,10 +332,7 @@
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code
-          [highlight]="toast_maxHeight_html"
-          class="code-block--no-bottom-margin">
-        </code>
+        <app-code-block [content]="toast_maxHeight_html" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -351,12 +348,10 @@
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code
-          [highlight]="toast_maxHeight_enable_html"
-          class="code-block--no-bottom-margin">
-        </code>
+        <app-code-block [content]="toast_maxHeight_enable_html" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </div>
     </div>
   </go-card>
 
 </section>
+

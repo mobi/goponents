@@ -28,10 +28,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="controlEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="controlEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -48,7 +45,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          All form components include an <code class="code-block--inline">&#64;Input() label: string;</code>
           that can be used to add a label to the component.
           In addition to displaying an HTML label, the text passed
           in via the <code class="code-block--inline">[label]</code>
@@ -69,10 +66,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="labelEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="labelEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -91,7 +85,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           As stated above the label attribute is used to generate a
           unique ID to associate the label with the switch toggle. As this might
-          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the switch toggle and
@@ -107,10 +101,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="keyEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="keyEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
           <div class="go-column go-column--100">
             <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
@@ -120,10 +111,7 @@
               the toggle and the <code class="code-block--inline">for</code> attribute
               on the label.
             </p>
-            <code
-              [highlight]="customKeyEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="customKeyEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -141,7 +129,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the
-          toggles they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          toggles they are attached to. The <code class="code-block--inline">&#64;Input() key: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to the component.
         </p>
       </div>
@@ -158,14 +146,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="hintsExTs"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="hintsExHtml"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="hintsExTs" language="typescript" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="hintsExHtml" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -204,14 +186,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="errorsExTs"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="errorsExHtml"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="errorsExTs" language="typescript" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="errorsExHtml" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -246,10 +222,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="labelPositionEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="labelPositionEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -284,10 +257,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="themeEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="themeEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>

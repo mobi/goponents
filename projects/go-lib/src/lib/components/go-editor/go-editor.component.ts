@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EmbeddedViewRef,
@@ -63,12 +64,13 @@ export class GoEditorComponent extends EditorComponent implements OnInit, OnDest
   constructor(
     elementRef: ElementRef,
     ngZone: NgZone,
+    changeDetectorRef: ChangeDetectorRef,
     viewContainerRef: ViewContainerRef,
     goConfigService: GoConfigService,
     @Inject(PLATFORM_ID) platformId: Object,
     @Optional() @Inject(TINYMCE_SCRIPT_SRC) tinymceScriptSrc?: string
   ) {
-    super(elementRef, ngZone, platformId, tinymceScriptSrc);
+    super(elementRef, ngZone, changeDetectorRef, platformId, tinymceScriptSrc);
 
     if (!this.theme) {
       this.theme = 'light';

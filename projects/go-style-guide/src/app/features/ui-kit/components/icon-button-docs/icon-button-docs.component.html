@@ -26,7 +26,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -76,7 +76,7 @@
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
-        <code [highlight]="disabledExample"></code>
+        <app-code-block [content]="disabledExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <go-icon-button
@@ -95,7 +95,7 @@
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
-        <code [highlight]="iconExample"></code>
+        <app-code-block [content]="iconExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <div class="go-column">
@@ -127,7 +127,7 @@
     </ng-container>
     <section class="go-container" go-card-content>
       <div class="go-column go-column--50">
-        <code [highlight]="sizeExample"></code>
+        <app-code-block [content]="sizeExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <div class="go-column">
@@ -167,7 +167,7 @@
       </div>
 
       <div class="go-column go-column--50">
-        <code [highlight]="titleExample"></code>
+        <app-code-block [content]="titleExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <div class="go-column">
@@ -195,4 +195,5 @@
     </section>
   </go-card>
 </div>
+
 

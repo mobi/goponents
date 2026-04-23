@@ -19,7 +19,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -67,7 +67,7 @@
       <h3 class="go-heading-3">Icon</h3>
       <section class="go-container">
         <div class="go-column go-column--50 go-column--no-padding">
-          <code [highlight]="iconBadge"></code>
+          <app-code-block [content]="iconBadge" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <go-badge badgeData="12">
@@ -87,7 +87,7 @@
       <h3 class="go-heading-3">Positive</h3>
       <section class="go-container">
         <div class="go-column go-column--50">
-          <code [highlight]="iconBadgePositive"></code>
+          <app-code-block [content]="iconBadgePositive" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50">
           <go-badge badgeData="12" badgeColor="positive">
@@ -99,7 +99,7 @@
       <h3 class="go-heading-3">Negative</h3>
       <section class="go-container">
         <div class="go-column go-column--50 go-column--no-padding">
-          <code [highlight]="iconBadgeNegative"></code>
+          <app-code-block [content]="iconBadgeNegative" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--50 go-column--no-padding">
           <go-badge badgeData="12" badgeColor="negative">
@@ -118,7 +118,7 @@
     <ng-container go-card-content>
       <section class="go-container">
         <div class="go-column go-column--75 go-column--no-padding">
-          <code [highlight]="iconBadgeDisplay"></code>
+          <app-code-block [content]="iconBadgeDisplay" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--25 go-column--no-padding">
           <go-badge
@@ -132,3 +132,4 @@
     </ng-container>
   </go-card>
 </section>
+

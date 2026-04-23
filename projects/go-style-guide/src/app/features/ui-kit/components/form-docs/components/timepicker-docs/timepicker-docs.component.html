@@ -10,7 +10,7 @@
   
         <div class="go-column go-column--100">
           <p class="go-body-copy go-body-copy--no-margin">
-            As with most of the form components, the only <code class="code-block--inline">@Input</code>
+            As with most of the form components, the only <code class="code-block--inline">&#64;Input</code>
             required of the timepicker component is a <code class="code-block--inline">FormControl</code>.
             The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
             attribute on the &lt;go-timepicker&gt; component. A time can be initialized into the timepicker
@@ -27,14 +27,8 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicInputExampleComponent"
-                class="code-block--no-bottom-margin">
-              </code>
-              <code
-                [highlight]="basicInputExample"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicInputExampleComponent" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+              <app-code-block [content]="basicInputExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -50,7 +44,7 @@
   
         <div class="go-column go-column--100">
           <p class="go-body-copy go-body-copy--no-margin">
-            All form components include an <code class="code-block--inline">@Input() label: string;</code>
+            All form components include an <code class="code-block--inline">&#64;Input() label: string;</code>
             that can be used to add a label to the input components.
             In addition to displaying an HTML label, the text passed
             in via the <code class="code-block--inline">[label]</code>
@@ -71,10 +65,7 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicInputLabelExample"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicInputLabelExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -92,7 +83,7 @@
           <p class="go-body-copy go-body-copy--no-margin">
             As stated above the label attribute is used to generate a
             unique ID to associate the label with the timepicker. As this might
-            not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+            not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
             can be used to configure the ID attribute of the timepicker directly.
             Anything passed into the component via the <code class="code-block--inline">[key]</code>
             attribute will be used to both assign the ID to the timepicker and
@@ -112,10 +103,7 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicInputKeyExample"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicInputKeyExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
             <div class="go-column go-column--100">
               <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
@@ -125,10 +113,7 @@
                 the input and the <code class="code-block--inline">for</code> attribute
                 on the label.
               </p>
-              <code
-                [highlight]="basicInputKeyExampleOutput"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicInputKeyExampleOutput" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -145,7 +130,7 @@
         <div class="go-column go-column--100">
           <p class="go-body-copy go-body-copy--no-margin">
             Form hints exist to help give more information about the
-            inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+            inputs they are attached to. The <code class="code-block--inline">&#64;Input() key: Array&lt;string&gt;</code>
             can be used to pass in an array of hints to the timepicker component.
           </p>
         </div>
@@ -162,14 +147,8 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicHintsTemplate"
-                class="code-block--no-bottom-margin">
-              </code>
-              <code
-                [highlight]="basicInputHintsExample"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicHintsTemplate" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+              <app-code-block [content]="basicInputHintsExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -207,14 +186,8 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicInputLabelExample"
-                class="code-block--no-bottom-margin">
-              </code>
-              <code
-                [highlight]="basicErrorsTemplate"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicInputLabelExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+              <app-code-block [content]="basicErrorsTemplate" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -256,14 +229,8 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicDisabledExample"
-                class="code-block--no-bottom-margin">
-              </code>
-              <code
-                [highlight]="basicDisabledExample2"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicDisabledExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+              <app-code-block [content]="basicDisabledExample2" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>
@@ -280,7 +247,7 @@
         <div class="go-column go-column--100">
           <p class="go-body-copy">
             The timepicker components placeholder attribute can be set via
-            <code class="code-block--inline">@Input() placeholder: string;</code>
+            <code class="code-block--inline">&#64;Input() placeholder: string;</code>
             and the <code class="code-block--inline">[placeholder]</code> attribute.
           </p>
         </div>
@@ -297,10 +264,7 @@
             </div>
             <div class="go-column go-column--50">
               <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-              <code
-                [highlight]="basicPlaceholderExample"
-                class="code-block--no-bottom-margin">
-              </code>
+              <app-code-block [content]="basicPlaceholderExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
             </div>
           </div>
         </div>

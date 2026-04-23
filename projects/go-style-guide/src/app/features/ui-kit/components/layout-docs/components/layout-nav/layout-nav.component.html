@@ -19,7 +19,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -29,7 +29,7 @@
           data could look, but it has to conform to either a <code class="code-block--inline">NavItem</code> or a
           <code class="code-block--inline">NavGroup</code> model. These models have the following properties:
         </p>
-        <code [highlight]="bindings_menuItems"></code>
+        <app-code-block [content]="bindings_menuItems" language="typescript"></app-code-block>
         <p class="go-body-copy">
           Setting a value for <code class="code-block--inline">attributes</code> on a <code class="code-block--inline">NavItem</code>
           or <code class="code-block--inline">NavGroup</code> will add html attributes to the top level html element for
@@ -37,7 +37,7 @@
           model, which defines how the value of each item in the array set to <code class="code-block--inline">attributes</code>
           should be structured, has the following properties:
         </p>
-        <code [highlight]="bindings_attributes"></code>
+        <app-code-block [content]="bindings_attributes" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -102,13 +102,13 @@
         </p>
         
         <h4 class="go-heading-4">app.module</h4>
-        <code [highlight]="basicExample_module"></code>
+        <app-code-block [content]="basicExample_module" language="html"></app-code-block>
         
         <h4 class="go-heading-4">app.component.html</h4>
-        <code [highlight]="basicExample_html"></code>
+        <app-code-block [content]="basicExample_html" language="html"></app-code-block>
         
         <h4 class="go-heading-4">app.component.ts</h4>
-        <code [highlight]="basicExample_ts"></code>
+        <app-code-block [content]="basicExample_ts" language="html"></app-code-block>
       </div>
 
     </div>
@@ -129,10 +129,11 @@
         </p>
         
         <h4 class="go-heading-4">component.ts</h4>
-        <code [highlight]="serviceExample_ts"></code>
+        <app-code-block [content]="serviceExample_ts" language="html"></app-code-block>
       </div>
 
     </div>
   </go-card>
 
 </div>
+

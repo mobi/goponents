@@ -12,8 +12,8 @@
         <p class="go-body-copy">
           All of the available sass variables for theming, branding, & other
           UI states are available via the goponents package. 
-          These can be imported in a scss file with: 
-          <code class="code-block--inline">@import '~@tangoe/goponents/styles/variables';</code>
+            These can be imported in a scss file with: 
+            <code class="code-block--inline">&#64;import '~goponents/styles/variables';</code>
         </p>
       </ng-container>
     </go-card>
@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="go-column go-column--50">
-            <code [highlight]="baseColors" [languages]="['scss']"></code>
+            <app-code-block [content]="baseColors" language="scss"></app-code-block>
           </div>
         </section>
       </ng-container>
@@ -84,7 +84,7 @@
             </div>
           </div>
           <div class="go-column go-column--50">
-            <code [highlight]="galaxyBlue" [languages]="['scss']"></code>
+            <app-code-block [content]="galaxyBlue" language="scss"></app-code-block>
           </div>
         </section>
       </ng-container>
@@ -121,7 +121,7 @@
             </div>
           </div>
           <div class="go-column go-column--50">
-            <code [highlight]="earthGreen" [languages]="['scss']"></code>
+            <app-code-block [content]="earthGreen" language="scss"></app-code-block>
           </div>
         </section>
       </ng-container>
@@ -159,7 +159,7 @@
             </div>
           </div>
           <div class="go-column go-column--50">
-            <code [highlight]="horizonRed" [languages]="['scss']"></code>
+            <app-code-block [content]="horizonRed" language="scss"></app-code-block>
           </div>
         </section>
       </ng-container>
@@ -195,7 +195,7 @@
             </div>
           </div>
           <div class="go-column go-column--50">
-            <code [highlight]="nebulaPurple" [languages]="['scss']"></code>
+            <app-code-block [content]="nebulaPurple" language="scss"></app-code-block>
           </div>
         </section>
       </ng-container>

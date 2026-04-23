@@ -16,7 +16,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -50,7 +50,7 @@
         <h3 class="go-heading-3">Info</h3>
         <section class="go-container">
           <div class="go-column go-column--50 go-column--no-padding">
-            <code [highlight]="iconBadgeInfo"></code>
+            <app-code-block [content]="iconBadgeInfo" language="html"></app-code-block>
           </div>
           <div class="go-column go-column--50 go-column--no-padding">
             <go-pill-badge badgeData="12" type="info"></go-pill-badge>
@@ -62,7 +62,7 @@
         <h3 class="go-heading-3">Success</h3>
         <section class="go-container">
           <div class="go-column go-column--50">
-            <code [highlight]="iconBadgeSuccess"></code>
+            <app-code-block [content]="iconBadgeSuccess" language="html"></app-code-block>
           </div>
           <div class="go-column go-column--50">
             <go-pill-badge badgeData="Success" type="success"></go-pill-badge>
@@ -74,7 +74,7 @@
         <h3 class="go-heading-3">Error</h3>
         <section class="go-container">
           <div class="go-column go-column--50 go-column--no-padding">
-            <code [highlight]="iconBadgeError"></code>
+            <app-code-block [content]="iconBadgeError" language="html"></app-code-block>
           </div>
           <div class="go-column go-column--50 go-column--no-padding">
             <go-pill-badge badgeData="Error" type="error"></go-pill-badge>
@@ -84,3 +84,4 @@
     </ng-container>
   </go-card>
 </section>
+
