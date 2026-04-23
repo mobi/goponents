@@ -47,12 +47,12 @@
         <h2 class="go-heading-2">Back Arrow</h2>
         <p class="go-body-copy">The Header Bar can optionally include a back arrow on the left and buttons on the right</p>
         <go-switch-toggle [control]="backArrowSwitchControl" label="Back Arrow"></go-switch-toggle>
-        <code class="show-arrow-input code-block--inline">@Input() showBackArrow: boolean = {{ showBackArrow }}</code>
+        <code class="show-arrow-input code-block--inline">&#64;Input() showBackArrow: boolean = {{ showBackArrow }}</code>
       </div>
 
       <div class="go-column go-column--100">
         <h2 class="go-heading-2">Bindings</h2>
-        <code [highlight]="inputsBindings"></code>
+        <app-code-block [content]="inputsBindings" language="typescript"></app-code-block>
         <p class="go-body-copy"><code class="code-block--inline">title</code> will display the title on the left side of the Header Bar</p>
         <p class="go-body-copy"><code class="code-block--inline">showBackArrow</code> will show or hide the back arrow</p>
         <p class="go-body-copy">
@@ -63,9 +63,10 @@
 
       <div class="go-column go-column--100">
         <h2 class="go-heading-2">Example</h2>
-        <code [highlight]="exampleCode"></code>
+        <app-code-block [content]="exampleCode" language="html"></app-code-block>
       </div>
     </div>
 
   </go-card>
 </section>
+

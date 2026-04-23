@@ -23,9 +23,9 @@ body {
   &__view-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 1 1 auto;
     height: calc(100vh - #{$header-height});
-    width: 0;
+    min-width: 0;
   }
 
   &__route-container {

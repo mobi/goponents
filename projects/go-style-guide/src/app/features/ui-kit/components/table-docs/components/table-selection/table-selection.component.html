@@ -13,7 +13,7 @@
           that must be set, <code class="code-block--inline">selectable</code> and <code class="code-block--inline">selectBy</code>.
         </p>
 
-        <code [highlight]="tableSelectConfig"></code>
+        <app-code-block [content]="tableSelectConfig" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -67,14 +67,14 @@
       <h4 class="go-heading-4">Binding to the table's selection events</h4>
 
       <p class="go-body-copy">There are two outputs that emit selection events from the table</p>
-      <code [highlight]="tableSelectionEventOutputs"></code>
+      <app-code-block [content]="tableSelectionEventOutputs" language="html"></app-code-block>
 
       <p class="go-body-copy">
         The interfaces for the <code class="code-block--inline">RowSelectionEvent</code> and the
         <code class="code-block--inline">SelectionState</code> provide more information about the
         structure of these events:
       </p>
-      <code [highlight]="tableSelectionModels"></code>
+      <app-code-block [content]="tableSelectionModels" language="html"></app-code-block>
       <p class="go-body-copy">
         To summarize: in selection mode, the user is selecting individual rows. This means that these selected rows are being added to the selectedRows array.
         In deselection mode, the user has checked the 'check all' check box and is now removing items from the selection; we call this deselection.
@@ -82,9 +82,9 @@
       </p>
 
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableSelectionExample_html"></code>
+      <app-code-block [content]="tableSelectionExample_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableSelectionExample_ts"></code>
+      <app-code-block [content]="tableSelectionExample_ts" language="html"></app-code-block>
 
       <p class="go-body-copy">
         Interact with the table below to see how the selection works.
@@ -121,9 +121,9 @@
         This approach should be used when an action is performed after a user has finished their selecting (ex. button click).
       </p>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="eleRef_html"></code>
+      <app-code-block [content]="eleRef_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="eleRef_ts" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="eleRef_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -154,9 +154,9 @@
           This approach should be used when an action necessary upon individual row selection or deselection.
         </p>
         <h4 class="go-heading-4">example.html</h4>
-        <code [highlight]="rowEvent_html"></code>
+        <app-code-block [content]="rowEvent_html" language="html"></app-code-block>
         <h4 class="go-heading-4">example.ts</h4>
-        <code [highlight]="rowEvent_ts" class="code-block--no-bottom-margin"></code>
+        <app-code-block [content]="rowEvent_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </ng-container>
     </go-card>
 
@@ -185,9 +185,9 @@
         <code class="code-block--inline">preselected</code> option in the <code class="code-block--inline">GoTableConfig</code>.
       </p>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="preselectedTable_html"></code>
+      <app-code-block [content]="preselectedTable_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="preselectedTable_ts" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="preselectedTable_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 

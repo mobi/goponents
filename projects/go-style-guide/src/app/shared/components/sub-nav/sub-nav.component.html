@@ -1,14 +1,14 @@
 <header class="go-page-title">
-  <h1 class="go-heading-1">{{ subNavService.pageTitle }}</h1>
+  <h1 class="go-heading-1">{{ (subNavService.pageTitle$ | async) || '' }}</h1>
   <a
-  [href]="subNavService.linkToSource"
+  [attr.href]="(subNavService.linkToSource$ | async) || null"
   target="_blank">
   <go-button buttonVariant="neutral">View on GitHub</go-button>
 </a>
 </header>
 <div class="sub-nav-container">
-  <div class="sub-nav-outlet" [@routerAnimation]="getRouteAnimation(o)">
-    <router-outlet class="sub-nav-container-outlet" #o="outlet"></router-outlet>
+  <div class="sub-nav-outlet" [@routerAnimation]="routeAnimationKey">
+    <router-outlet class="sub-nav-container-outlet"></router-outlet>
   </div>
   <div class="sub-nav-submenu" [ngClass]="{ 'sub-nav-submenu--mobile-show': mobileSubmenuShown }" (click)="closeMobileMenu()">
 

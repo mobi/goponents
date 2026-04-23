@@ -36,7 +36,7 @@
 
       <div class="go-column go-column--100">
         <h4 class="go-heading-4">example.html</h4>
-        <code [highlight]="tableConfig_html"></code>
+        <app-code-block [content]="tableConfig_html" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -55,7 +55,7 @@
 
       <div class="go-column go-column--100 go-column--no-padding">
         <h4 class="go-heading-4">example.ts</h4>
-        <code [highlight]="tableConfig_ts"></code>
+        <app-code-block [content]="tableConfig_ts" language="html"></app-code-block>
         <p class="go-body-copy">
           It is recommended to pass the entire <code class="code-block--inline">GoTableConfig</code>
           to the service that is retrieving the data and map
@@ -66,7 +66,7 @@
           When the data is successfully returned, the properties
           shown below must be set.
         </p>
-        <code [highlight]="tableConfig_ts_tableChange" class="code-block--no-bottom-margin"></code>
+        <app-code-block [content]="tableConfig_ts_tableChange" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </div>
 
     </div>
@@ -85,7 +85,7 @@
           For the best user experience with server-side integrations,
           the data returned from the server should have two properties:
         </p>
-        <code [highlight]="server_response"></code>
+        <app-code-block [content]="server_response" language="html"></app-code-block>
         <p class="go-body-copy go-body-copy--no-margin">
           These properties should then be set, upon a successful response,
           to the corresponding properties on the <code class="code-block--inline">GoTableConfig</code>,

@@ -26,7 +26,7 @@
 
       <div class="go-column go-column--100">
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -58,7 +58,7 @@
             <p class="go-body-copy">
               Import the <code class="code-block--inline">GoModalModule</code> into <code class="code-block--inline">app.module.ts</code>
             </p>
-            <code [highlight]="appModuleImport"></code>
+            <app-code-block [content]="appModuleImport" language="html"></app-code-block>
           </li>
           <li>
             <p class="go-body-copy">
@@ -90,21 +90,21 @@
               In the module that imports your component, import the <code class="code-block--inline">GoModalModule</code>
               and add the <code class="code-block--inline">GoModalService</code> to the providers.
             </p>
-            <code [highlight]="ex_UiKitModule"></code>
+            <app-code-block [content]="ex_UiKitModule" language="html"></app-code-block>
           </li>
           <li>
             <p class="go-body-copy">
               In the component that is telling the modal to open, import the <code class="code-block--inline">GoModalService</code>,
               and the component that is being rendered inside the modal.
             </p>
-            <code [highlight]="ex_ModalDocsImports"></code>
+            <app-code-block [content]="ex_ModalDocsImports" language="html"></app-code-block>
           </li>
           <li>
             <p class="go-body-copy">
               To open the modal, use the service to call <code class="code-block--inline">openModal</code>. This method takes the component type
               (ModalTestComponent in our case), and the bindings for that component as an object.
             </p>
-            <code [highlight]="ex_ModalDocsOpenModal"></code>
+            <app-code-block [content]="ex_ModalDocsOpenModal" language="html"></app-code-block>
           </li>
           <li>
             <p class="go-body-copy">
@@ -113,7 +113,7 @@
             <div class="go-container">
               <div class="go-column go-column--50">
                 <h4 class="go-heading-4">component.html</h4>
-                <code [highlight]="ex_ModalDocsHtml"></code>
+                <app-code-block [content]="ex_ModalDocsHtml" language="html"></app-code-block>
               </div>
               <div class="go-column go-column--50">
                 <h4 class="go-heading-4">View</h4>
@@ -144,7 +144,7 @@
 
       <div class="go-column go-column--75">
         <h4 class="go-heading-4">Code</h4>
-        <code [highlight]="ex_ModalDocsCloseWithBackdrop"></code>
+        <app-code-block [content]="ex_ModalDocsCloseWithBackdrop" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--25">
@@ -173,7 +173,7 @@
 
       <div class="go-column go-column--75">
         <h4 class="go-heading-4">Code</h4>
-        <code [highlight]="ex_ModalDocsNoCloseIcon"></code>
+        <app-code-block [content]="ex_ModalDocsNoCloseIcon" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--25">
@@ -193,7 +193,7 @@
 
       <div class="go-column go-column--75">
         <h4 class="go-heading-4">LG Code (Default)</h4>
-        <code [highlight]="ex_ModalDocsOpenLgModal"></code>
+        <app-code-block [content]="ex_ModalDocsOpenLgModal" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--25">
@@ -203,7 +203,7 @@
 
       <div class="go-column go-column--75">
         <h4 class="go-heading-4">XL Code</h4>
-        <code [highlight]="ex_ModalDocsOpenXlModal"></code>
+        <app-code-block [content]="ex_ModalDocsOpenXlModal" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--25">
@@ -223,7 +223,7 @@
 
       <div class="go-column go-column--75">
         <h4 class="go-heading-4">Code</h4>
-        <code [highlight]="ex_ModalDocsNoPadding"></code>
+        <app-code-block [content]="ex_ModalDocsNoPadding" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--25">
@@ -234,3 +234,4 @@
     </div>
   </go-card>
 </section>
+

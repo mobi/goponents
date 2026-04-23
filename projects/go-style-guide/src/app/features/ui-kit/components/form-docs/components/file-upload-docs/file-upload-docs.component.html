@@ -10,7 +10,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          As with most of the form components, the only <code class="code-block--inline">@Input</code>
+          As with most of the form components, the only <code class="code-block--inline">&#64;Input</code>
           required of the file upload component is a <code class="code-block--inline">FormControl</code>.
           The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
           attribute on the &lt;go-file-upload&gt; component.
@@ -25,10 +25,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -45,7 +42,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          All form components include an <code class="code-block--inline">&#64;Input() label: string;</code>
           that can be used to add a label to the input components.
           In addition to displaying an HTML label, the text passed
           in via the <code class="code-block--inline">[label]</code>
@@ -66,10 +63,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicLabelExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicLabelExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -88,7 +82,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           As stated above the label attribute is used to generate a
           unique ID to associate the label with the input. As this might
-          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute of the input directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the input and
@@ -108,10 +102,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicKeyExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicKeyExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
           <div class="go-column go-column--100">
             <h4 class="go-heading-4 go-heading--underlined">Example Output</h4>
@@ -121,10 +112,7 @@
               the input and the <code class="code-block--inline">for</code> attribute
               on the label.
             </p>
-            <code
-              [highlight]="basicKeyExampleOutput"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicKeyExampleOutput" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -142,7 +130,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the
-          inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          inputs they are attached to. The <code class="code-block--inline">&#64;Input() key: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to the file upload component.
         </p>
       </div>
@@ -159,14 +147,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicHintsTemplate"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="basicHintsExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicHintsTemplate" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="basicHintsExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -205,14 +187,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicLabelExample"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="basicErrorsExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicLabelExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="basicErrorsExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -230,7 +206,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Sometimes we may want to be able to upload multiple files in an array. This can be achieved through
-          the <code class="code-block--inline">@Input multiple: boolean = false;</code> binding. Setting multiple
+          the <code class="code-block--inline">&#64;Input multiple: boolean = false;</code> binding. Setting multiple
           to true will allow the user to select multiple files instead of just one.
         </p>
       </div>
@@ -247,10 +223,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicMultipleExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicMultipleExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -292,12 +265,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="basicResetExample_html">
-            </code>
-            <code
-              [highlight]="basicResetExample_ts"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicResetExample_html" language="html"></app-code-block>
+            <app-code-block [content]="basicResetExample_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -314,7 +283,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          A loading state can be triggered through the <code class="code-block--inline">@Input isLoading: boolean = false;</code>
+          A loading state can be triggered through the <code class="code-block--inline">&#64;Input isLoading: boolean = false;</code>
           binding. Setting <code class="code-block--inline">is-loading</code> to true will disable the file upload and show
           a loading spinner in the drop box.
         </p>
@@ -332,10 +301,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicLoadingExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicLoadingExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -352,7 +318,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          A dark or light theme can be triggered through the <code class="code-block--inline">@Input theme: 'dark' | 'light' = 'light';</code>
+          A dark or light theme can be triggered through the <code class="code-block--inline">&#64;Input theme: 'dark' | 'light' = 'light';</code>
           binding. The theme signifies which color of background the element is being placed upon. A light theme will be good for a light background,
           while a dark theme would be better for something like being placed in the off canvas which has a dark background.
         </p>
@@ -370,10 +336,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="basicThemeExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="basicThemeExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>

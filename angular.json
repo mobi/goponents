@@ -1,4 +1,4 @@
-{
+﻿{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -30,15 +30,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-lib/tsconfig.lib.json",
-              "projects/go-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
@@ -107,24 +101,23 @@
                 }
               ]
             }
-          },
-          "defaultConfiguration": ""
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "go-tester:build"
+            "buildTarget": "go-tester:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "go-tester:build:production"
+              "buildTarget": "go-tester:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "go-tester:build"
+            "buildTarget": "go-tester:build"
           }
         },
         "test": {
@@ -145,43 +138,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-tester/tsconfig.app.json",
-              "projects/go-tester/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "go-tester-e2e": {
-      "root": "projects/go-tester-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/go-tester-e2e/protractor.conf.js",
-            "devServerTarget": "go-tester:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "go-tester:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/go-tester-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
@@ -214,6 +173,7 @@
             ],
             "styles": [
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/highlight.js/styles/default.css",
               "projects/go-style-guide/src/styles/styles.scss"
             ],
             "scripts": [],
@@ -256,24 +216,23 @@
                 }
               ]
             }
-          },
-          "defaultConfiguration": ""
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "go-style-guide:build"
+            "buildTarget": "go-style-guide:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "go-style-guide:build:production"
+              "buildTarget": "go-style-guide:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "go-style-guide:build"
+            "buildTarget": "go-style-guide:build"
           }
         },
         "test": {
@@ -284,8 +243,15 @@
             "tsConfig": "projects/go-style-guide/tsconfig.spec.json",
             "karmaConfig": "projects/go-style-guide/karma.conf.js",
             "styles": [
-              "projects/go-style-guide/src/styles.css"
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/highlight.js/styles/default.css",
+              "projects/go-style-guide/src/styles/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/go-style-guide/src/styles"
+              ]
+            },
             "scripts": [],
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
@@ -294,15 +260,9 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-style-guide/tsconfig.app.json",
-              "projects/go-style-guide/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }

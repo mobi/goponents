@@ -25,7 +25,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--50 go-column--no-padding">
@@ -84,7 +84,7 @@
           should be used where the percentage of the activity completion is
           known.
         </p>
-        <code [highlight]="determinateBindings"></code>
+        <app-code-block [content]="determinateBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -100,7 +100,7 @@
     </ng-container>
     <div class="go-container" go-card-content>
       <div class="go-column go-column--100">
-        <code [highlight]="withLabelBindings"></code>
+        <app-code-block [content]="withLabelBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -126,7 +126,7 @@
           while something finishes. This should be used where the wait time of
           an activity is unknown.
         </p>
-        <code [highlight]="inDeterminateBindings"></code>
+        <app-code-block [content]="inDeterminateBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -137,3 +137,4 @@
 </div>
 
 <div></div>
+

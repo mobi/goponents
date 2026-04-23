@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
-import * as faker from 'faker';
+import { faker } from '@faker-js/faker';
 
 export interface FakeData {
   active: boolean;
@@ -39,16 +39,16 @@ export class TableDocsService {
     return {
       id: index + 1,
       name: {
-        first: faker.name.firstName(),
-        last: faker.name.lastName()
+        first: faker.person.firstName(),
+        last: faker.person.lastName()
       },
       email: faker.internet.email(),
       gender: index % 3 ? 'Male' : 'Female',
       ip_address: faker.internet.ip(),
-      active: faker.random.boolean(),
-      alive: faker.random.number({ min: 0, max: 1}),
-      last_login: faker.random.boolean() ? this.datePipe.transform(faker.date.past(1), 'short') : null,
-      login_attempts: faker.random.boolean() ? faker.random.number({ min: 1, max: 5 }) : undefined
+      active: faker.datatype.boolean(),
+      alive: faker.datatype.boolean(),
+      last_login: faker.datatype.boolean() ? this.datePipe.transform(faker.date.past({ years: 1 }), 'short') : null,
+      login_attempts: faker.datatype.boolean() ? faker.number.int({ min: 1, max: 5 }) : undefined
     };
   }
 }

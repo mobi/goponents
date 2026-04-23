@@ -10,7 +10,8 @@ import {
   NavigationError,
   NavigationStart,
   Router,
-  RouterEvent
+  RouterEvent,
+  Event as RouterEventUnion
 } from '@angular/router';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoModalModule } from '../go-modal/go-modal.module';
@@ -29,11 +30,11 @@ class MockHeaderBar {
 describe('GoLayoutComponent', () => {
   let component: GoLayoutComponent;
   let fixture: ComponentFixture<GoLayoutComponent>;
-  let routerEvents$: Subject<RouterEvent>;
+  let routerEvents$: Subject<RouterEventUnion>;
   let mockRouter: Partial<Router>;
 
   beforeEach(async () => {
-    routerEvents$ = new Subject<RouterEvent>();
+    routerEvents$ = new Subject<RouterEventUnion>();
     mockRouter = {
       events: routerEvents$.asObservable(),
       url: '/initial'

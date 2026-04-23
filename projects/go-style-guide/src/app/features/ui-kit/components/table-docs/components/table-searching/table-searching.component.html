@@ -12,7 +12,7 @@
           class to the <code class="code-block--inline">searchConfig</code> property on the <code class="code-block--inline">GoTableConfig</code> object.
         </p>
   
-        <code [highlight]="tableSearchConfig"></code>
+        <app-code-block [content]="tableSearchConfig" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -58,9 +58,9 @@
     </ng-container>
     <ng-container go-card-content>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableConfigEx_html"></code>
+      <app-code-block [content]="tableConfigEx_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableConfigEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -86,9 +86,9 @@
         This approach will only affect client side searches.
       </p>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="tableConfigRestrictColumn_html"></code>
+      <app-code-block [content]="tableConfigRestrictColumn_html" language="html"></app-code-block>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="tableConfigEx" class="code-block--no-bottom-margin"></code>
+      <app-code-block [content]="tableConfigEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 

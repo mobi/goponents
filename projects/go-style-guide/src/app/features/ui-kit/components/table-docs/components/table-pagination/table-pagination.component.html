@@ -13,7 +13,7 @@
           to <code class="code-block--inline">pageConfig</code> on the <code class="code-block--inline">GoTableConfig</code> class.
         </p>
   
-        <code [highlight]="pageConfig"></code>
+        <app-code-block [content]="pageConfig" language="html"></app-code-block>
       </div>
 
       <div class="go-column go-column--100">
@@ -62,9 +62,9 @@
 
         <div class="go-column go-column--100">
           <h4 class="go-heading-4">example.html</h4>
-          <code [highlight]="tableConfig_html"></code>
+          <app-code-block [content]="tableConfig_html" language="html"></app-code-block>
           <h4 class="go-heading-4">example.ts</h4>
-          <code [highlight]="tableConfig_ts" class="code-block--no-bottom-margin"></code>
+          <app-code-block [content]="tableConfig_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
         </div>
 
       </div>

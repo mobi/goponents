@@ -3,7 +3,14 @@
 
 @import 'settings';
 @import 'typography';
-@import 'highlight.js/styles/github.css';
+
+body {
+  color: $theme-light-color;
+  font-family: $primary-font-stack;
+  font-weight: $weight-regular;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
 
 // Base Styling
 code {
@@ -13,16 +20,109 @@ code {
   line-height: 1.6;
   overflow-x: auto;
   white-space: pre;
+}
 
-  &.hljs {
-    border: 1px solid $theme-light-border;
-    padding: 1rem;
+.hljs {
+  background-color: $gray-100;
+  border-radius: $global-radius;
+  color: $syntax-color-code-text;
+  display: block;
+  font-family: $roboto-code;
+  font-size: 0.75rem;
+  font-weight: $weight-light;
+  line-height: 1.6;
+  margin: 0.5rem 0 1.5rem;
+  overflow-x: auto;
+  padding: 1rem !important;
+  white-space: pre;
+
+  span {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  .hljs-section,
+  .hljs-tag,
   .hljs-name,
+  .hljs-section,
   .hljs-strong {
-    font-weight: normal;
+    color: $syntax-color-navy;
+    font-weight: $weight-regular;
+  }
+
+  .hljs-tag .hljs-name {
+    color: $syntax-color-navy;
+    font-weight: $weight-regular;
+  }
+
+  .hljs-attribute {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
+  }
+
+  .hljs-attr {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
+  }
+
+  .hljs-tag .hljs-attr {
+    color: $syntax-color-teal;
+  }
+
+  .hljs-string,
+  .hljs-doctag {
+    color: $syntax-color-red;
+    font-weight: $weight-regular;
+  }
+
+  .hljs-property,
+  .hljs-title.function_,
+  .hljs-function .hljs-title {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
+  }
+
+  .hljs-number,
+  .hljs-literal,
+  .hljs-variable,
+  .hljs-template-variable {
+    color: $syntax-color-teal;
+    font-weight: $weight-regular;
+  }
+
+  .hljs-meta {
+    color: $syntax-color-meta;
+    font-weight: 700;
+  }
+
+  .hljs-variable.language_,
+  .hljs-keyword {
+    color: $syntax-color-code-text;
+    font-weight: 700;
+  }
+
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-type {
+    color: $syntax-color-built-in;
+    font-weight: $weight-regular;
+  }
+
+  .hljs-built_in.hljs-title,
+  .hljs-title.class_.hljs-built_in {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
+  }
+
+  .hljs-title.class_ {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: $syntax-color-comment;
+    font-style: italic;
   }
 }
 

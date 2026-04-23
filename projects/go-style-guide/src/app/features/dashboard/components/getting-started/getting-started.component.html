@@ -51,7 +51,7 @@
           <h3 class="go-heading-3">
             Install goponents:
           </h3>
-          <code [highlight]="installGoponents" [languages]="['bash']"></code>
+          <app-code-block [content]="installGoponents" language="bash"></app-code-block>
         </section>
       </div>
     </ng-container>
@@ -82,11 +82,11 @@
             To utlize all of the benefits our styles have to offer, in the root <code class="code-block--inline">styles.scss</code>
             of the project import: 
           </p>
-          <code [highlight]="importStylesBase"></code>
+          <app-code-block [content]="importStylesBase" language="html"></app-code-block>
           <p class="go-body-copy">
             Alternatively, partials can be imported individually. These can be found:
           </p>
-          <code [highlight]="importStylesPartials"></code>
+          <app-code-block [content]="importStylesPartials" language="html"></app-code-block>
         </section>
       </div>
     </ng-container>

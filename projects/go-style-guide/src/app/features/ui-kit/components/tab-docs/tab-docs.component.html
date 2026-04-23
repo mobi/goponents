@@ -28,7 +28,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -52,7 +52,7 @@
     <div go-card-content class="go-container">
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code [highlight]="defaultExample"></code>
+        <app-code-block [content]="defaultExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -79,7 +79,7 @@
     <div go-card-content class="go-container">
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code [highlight]="darkExample"></code>
+        <app-code-block [content]="darkExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -113,7 +113,7 @@
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-        <code [highlight]="lazyLoadExample"></code>
+        <app-code-block [content]="lazyLoadExample" language="html"></app-code-block>
       </div>
       <div class="go-column go-column--50">
         <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -138,3 +138,4 @@
     </div>
   </go-card>
 </section>
+

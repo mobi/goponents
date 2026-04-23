@@ -10,10 +10,7 @@
       <p class="go-body-copy">
         To use the checkbox components, you'll need to import the CheckboxModule into your module:
       </p>
-      <code
-        [highlight]="checkboxSetup"
-        class="code-block--no-bottom-margin">
-      </code>
+      <app-code-block [content]="checkboxSetup" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -45,10 +42,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="checkbox1Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="checkbox1Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -88,14 +82,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="checkboxGroup1Ex_ts"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="checkboxGroup1Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="checkboxGroup1Ex_ts" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="checkboxGroup1Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -113,7 +101,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           The label attribute is used to generate a unique ID to associate the label with the checkbox.
-          As this might not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          As this might not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute of the checkbox directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the checkbox and
@@ -133,7 +121,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code [highlight]="checkbox2Ex" class="code-block--no-bottom-margin"></code>
+            <app-code-block [content]="checkbox2Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -146,7 +134,7 @@
           the input and the <code class="code-block--inline">for</code> attribute
           on the label.
         </p>
-        <code [highlight]="checkbox2KeyCode" class="code-block--no-bottom-margin"></code>
+        <app-code-block [content]="checkbox2KeyCode" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
       </div>
 
     </div>
@@ -162,7 +150,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the checkbox & checkbox groups they are attached to.
-          The <code class="code-block--inline">@Input() hints: Array&lt;string&gt;</code>
+          The <code class="code-block--inline">&#64;Input() hints: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to either the checkbox group or an individual checkbox component.
         </p>
       </div>
@@ -202,14 +190,8 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="checkbox3HintsCode"
-              class="code-block--no-bottom-margin">
-            </code>
-            <code
-              [highlight]="checkbox3Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="checkbox3HintsCode" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
+            <app-code-block [content]="checkbox3Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -267,10 +249,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="checkbox4Ex"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="checkbox4Ex" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -287,7 +266,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy">
-          The <code class="code-block--inline">@Input() indeterminate: boolean = false;</code> can be used to set the display state of the
+          The <code class="code-block--inline">&#64;Input() indeterminate: boolean = false;</code> can be used to set the display state of the
           checkbox to <code class="code-block--inline">indeterminate</code>.
         </p>
         <p class="go-body-copy go-body-copy--no-margin">
@@ -307,10 +286,7 @@
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">Code</h4>
-            <code
-              [highlight]="checkboxIndeterminateEx"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="checkboxIndeterminateEx" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--100 go-column--no-padding">
@@ -46,7 +46,7 @@
     </ng-container>
     <ng-container go-card-content>
       <h3 class="go-heading-3">Code (for this card)</h3>
-      <code [highlight]="defaultExample"></code>
+      <app-code-block [content]="defaultExample" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -56,7 +56,7 @@
     </ng-container>
     <ng-container go-card-content>
       <h3 class="go-heading-3">Code (for this card, no header example)</h3>
-      <code [highlight]="showHeaderExample"></code>
+      <app-code-block [content]="showHeaderExample" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -73,10 +73,7 @@
         within the card's <code class="code-block--inline">go-card-content</code>.
       </p>
       <hr class="go-hr">
-      <code
-        [highlight]="hrExample"
-        class="code-block">
-      </code>
+      <app-code-block [content]="hrExample" language="html" codeClass="code-block"></app-code-block>
 
       <h4 class="go-heading-4">With Padding</h4>
       <p class="go-body-copy">
@@ -84,10 +81,8 @@
         cause the width of the horizontal rule to respect the padding of the card containing it.
       </p>
       <hr class="go-hr go-hr--allow-padding">
-      <code
-        [highlight]="hrAllowPaddingExample"
-        class="code-block">
-      </code>
+      <app-code-block [content]="hrAllowPaddingExample" language="html" codeClass="code-block"></app-code-block>
     </ng-container>
   </go-card>
 </section>
+

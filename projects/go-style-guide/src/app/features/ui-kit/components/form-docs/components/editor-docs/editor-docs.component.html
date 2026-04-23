@@ -19,8 +19,7 @@
         </h3>
         <p class="go-body-copy go-body-copy--no-margin">
           You must install both peer dependencies for the go-editor component to work. You can install them by running:
-          <code class="code-block" [highlight]="tinyMceCommand">
-          </code>
+          <app-code-block [content]="tinyMceCommand" language="html" codeClass="code-block"></app-code-block>
         </p>
       </div>
       
@@ -32,8 +31,7 @@
           You must tell Angular to include the TinyMCE scripts and theme files in the build as part of the public assets. To do so
           you can add an entry to the <code class="code-block--inline">build.options.assets</code> section of the
           <code class="code-block--inline">angular.json</code> file.
-          <code class="code-block" [highlight]="angularJson">
-          </code>
+          <app-code-block [content]="angularJson" language="html" codeClass="code-block"></app-code-block>
         </p>
       </div>
 
@@ -45,8 +43,7 @@
           Wherever you initially setup your <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>,
           you need to define the <code class="code-block--inline">tinyMceConfig.base_url</code> property on the config object. This refers to the location in the URL to look for TinyMCE
           and is relative to the domain of your application.
-          <code class="code-block" [highlight]="goConfigService">
-          </code>
+          <app-code-block [content]="goConfigService" language="html" codeClass="code-block"></app-code-block>
         </p>
         <h5 class="go-heading-5">
           Adding Languages (Optional)
@@ -54,8 +51,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           TinyMCE has a feature to support multiple languages, to enable this support in the go-editor you must provide the language code and Javascript file that holds
           the translations. You can do this in the <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>.
-          <code class="code-block" [highlight]="goConfigServiceLang">
-          </code>
+          <app-code-block [content]="goConfigServiceLang" language="html" codeClass="code-block"></app-code-block>
         </p>
       </div>
 
@@ -68,8 +64,7 @@
           when a page that needs it loads. To do this, first add the <code class="code-block--inline">GoEditorModule</code> to the list of imports
           for the module, then add an entry to the <code class="code-block--inline">providers</code> array. The <code class="code-block--inline">useValue</code>
           property on the entry refers to the location in the URL to look for the TinyMCE Javascript file and is relative to the domain of your application.
-          <code class="code-block" [highlight]="moduleImport">
-          </code>
+          <app-code-block [content]="moduleImport" language="html" codeClass="code-block"></app-code-block>
         </p>
       </div>
 
@@ -80,8 +75,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           Once all of the previous steps have been completed you can render the go-editior. The only required property
           on the go-editor is the <code class="code-block--inline">formControl</code> binding.
-          <code class="code-block" [highlight]="htmlExample">
-          </code>
+          <app-code-block [content]="htmlExample" language="html" codeClass="code-block"></app-code-block>
         </p>
       </div>
       
@@ -108,10 +102,7 @@
             <p class="go-body-copy">
               A label for the editor input may be provided like any other form component.
             </p>
-            <code
-              [highlight]="htmlBasicExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="htmlBasicExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -140,10 +131,7 @@
               To change the appearance of the editor for dark or light themes a theme attribute can be passed.
               Valid options are: <code class="code-block--inline">light</code> (default) or <code class="code-block--inline">dark</code>.
             </p>
-            <code
-              [highlight]="htmlThemeExample"
-              class="code-block--no-bottom-margin">
-            </code>
+            <app-code-block [content]="htmlThemeExample" language="html" codeClass="code-block--no-bottom-margin"></app-code-block>
           </div>
         </div>
       </div>
@@ -173,13 +161,13 @@
               TinyMCE offers various plugins and toolbar configurations and the go-editor component gives you access
               to set all of those just as you would in TinyMCE. The current defaults that are set by the go-editor component are:
             </p>
-            <code [highlight]="toolbarPluginsDefaults"></code>
+            <app-code-block [content]="toolbarPluginsDefaults" language="html"></app-code-block>
             <p class="go-body-copy">
               In the event more functionality is needed you may specify overrides for each that include all of the current defaults.
               In the example below, we're providing support for adding an hr element by passing the defaults for both plugins and toolbar
               and including the hr plugin and toolbar references as documented by TinyMCE.
             </p>
-            <code [highlight]="toolBarPluginsOverride"></code>
+            <app-code-block [content]="toolBarPluginsOverride" language="html"></app-code-block>
             <p class="go-body-copy go-body-copy--no-margin">
               For all available options for TinyMCE plugins, <a class="go-link" href="https://www.tiny.cloud/docs/plugins/opensource/">see their list</a>.
               For all available toolbar configurations, check out <a class="go-link" href="https://www.tiny.cloud/docs/configure/editor-appearance/#toolbar">their documentation</a>.

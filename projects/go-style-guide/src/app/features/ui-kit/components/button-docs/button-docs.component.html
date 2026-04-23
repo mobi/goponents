@@ -27,7 +27,7 @@
       <div class="go-column go-column--100">
         <!-- Bindings -->
         <h3 class="go-heading-3">Bindings</h3>
-        <code [highlight]="componentBindings"></code>
+        <app-code-block [content]="componentBindings" language="typescript"></app-code-block>
       </div>
 
       <div class="go-column go-column--50 go-column--no-padding">
@@ -144,7 +144,7 @@
         The Primary button is the default button variant and should be used to indicate
         the primary action on a page, such as a "save" button.
       </p>
-      <code [highlight]="primaryExample"></code>
+      <app-code-block [content]="primaryExample" language="html"></app-code-block>
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()">Primary</go-button>
@@ -172,7 +172,7 @@
         The Secondary button variant should be used to indicate a secondary action
         on a page. Examples could be: a refresh, opening modals, etc.
       </p>
-      <code [highlight]="secondaryExample"></code>
+      <app-code-block [content]="secondaryExample" language="html"></app-code-block>
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button buttonVariant="secondary" (handleClick)="testClick()">Secondary</go-button>
@@ -200,7 +200,7 @@
         The Tertiary button variant should be used after both a primary and secondary variants have been used.
         It should generally only appear next to secondary variant buttons.
       </p>
-      <code [highlight]="tertiaryExample"></code>
+      <app-code-block [content]="tertiaryExample" language="html"></app-code-block>
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button buttonVariant="tertiary" (handleClick)="testClick()">Tertiary</go-button>
@@ -231,7 +231,7 @@
         used to guide a user away from an action we don't want them to
         take.
       </p>
-      <code [highlight]="negativeExample"></code>
+      <app-code-block [content]="negativeExample" language="html"></app-code-block>
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="negative">Negative</go-button>
@@ -263,7 +263,7 @@
         user towards an action that isn't necessarily required, but still
         important.
       </p>
-      <code [highlight]="neutralExample"></code>
+      <app-code-block [content]="neutralExample" language="html"></app-code-block>
       <div class="go-container">
         <div class="go-column go-column--25">
           <go-button (handleClick)="testClick()" buttonVariant="neutral">Neutral</go-button>
@@ -297,9 +297,9 @@
         from being taken more than once.
       </p>
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="loadingExampleTS"></code>
+      <app-code-block [content]="loadingExampleTS" language="typescript"></app-code-block>
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="loadingExampleHTML"></code>
+      <app-code-block [content]="loadingExampleHTML" language="html"></app-code-block>
       <h4 class="go-heading-4">View</h4>
       <div class="go-container">
         <div class="go-column go-column--50">
@@ -385,7 +385,7 @@
             binding to <code class="code-block--inline">true</code>.
           </p>
 
-          <code [highlight]="darkButtonExample"></code>
+          <app-code-block [content]="darkButtonExample" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--100 go-column--no-padding">
           <div class="dark-example-area">
@@ -464,7 +464,7 @@
             Sometimes it will be necessary to group buttons together. There are a set of helper
             classes available to accomplish this.
           </p>
-          <code [highlight]="buttonGroup"></code>
+          <app-code-block [content]="buttonGroup" language="html"></app-code-block>
         </div>
         <div class="go-column go-column--100 go-column--no-padding">
           <ul class="go-button-group">
@@ -487,14 +487,14 @@
     </ng-container>
     <ng-container go-card-content>
       <p class="go-body-copy">
-        The <code class="code-block--inline">@Input() splitButtonOptions: SplitButtonOption[]</code>
+        The <code class="code-block--inline">&#64;Input() splitButtonOptions: SplitButtonOption[]</code>
         input allows you to turn the button into a split-button.
       </p>
 
       <p class="go-body-copy">
         The interface for the options looks like this:
       </p>
-      <code [highlight]="splitButtonOptionInterface"></code>
+      <app-code-block [content]="splitButtonOptionInterface" language="html"></app-code-block>
 
       <p class="go-body-copy">
         The <code class="code-block--inline">label</code> of an option will determine the
@@ -510,10 +510,10 @@
       </p>
 
       <h4 class="go-heading-4">example.ts</h4>
-      <code [highlight]="splitExampleTS"></code>
+      <app-code-block [content]="splitExampleTS" language="typescript"></app-code-block>
 
       <h4 class="go-heading-4">example.html</h4>
-      <code [highlight]="splitExampleHTML"></code>
+      <app-code-block [content]="splitExampleHTML" language="html"></app-code-block>
 
       <caption>
         <strong>NOTE:</strong> Currently, only the Primary and Secondary button types
@@ -589,3 +589,4 @@
     </ng-container>
   </go-card>
 </div>
+

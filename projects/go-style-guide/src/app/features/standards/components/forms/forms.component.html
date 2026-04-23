@@ -70,7 +70,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="basicForm"></code>
+      <app-code-block [content]="basicForm" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -137,7 +137,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="formHints"></code>
+      <app-code-block [content]="formHints" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -212,7 +212,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="inputModifiers"></code>
+      <app-code-block [content]="inputModifiers" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -305,7 +305,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="selectModifiers"></code>
+      <app-code-block [content]="selectModifiers" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -440,7 +440,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="checkboxModifiers"></code>
+      <app-code-block [content]="checkboxModifiers" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -493,7 +493,7 @@
 
   <go-card class="go-column go-column--50" [showHeader]="false">
     <ng-container go-card-content>
-      <code [highlight]="darkForm"></code>
+      <app-code-block [content]="darkForm" language="html"></app-code-block>
     </ng-container>
   </go-card>
 
@@ -687,7 +687,7 @@
 
       <div class="go-container">
         <div class="go-column go-column--100 go-column--no-padding">
-          <code [highlight]="advancedForm"></code>
+          <app-code-block [content]="advancedForm" language="html"></app-code-block>
         </div>
       </div>
     </ng-container>
