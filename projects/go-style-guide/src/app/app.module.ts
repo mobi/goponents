@@ -18,7 +18,7 @@ import {
 import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { provideHighlightOptions } from 'ngx-highlightjs';
 
 
 @NgModule({
@@ -38,33 +38,27 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     GoOffCanvasModule,
     GoSideNavModule,
     GoToasterModule,
-    HighlightModule,
   ],
   providers: [
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        languages: {
-          bash: () => import('highlight.js/lib/languages/bash'),
-          scss: () => import('highlight.js/lib/languages/scss'),
-          sass: () => import('highlight.js/lib/languages/scss'),
-          css: () => import('highlight.js/lib/languages/css'),
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          xml: () => import('highlight.js/lib/languages/xml'),
-          html: () => import('highlight.js/lib/languages/xml'),
-          json: () => import('highlight.js/lib/languages/json'),
-        },
-        config: {
-          // Restrict auto-detection to these languages only.
-          // SCSS is registered but excluded from auto-detection because its
-          // grammar outscores TypeScript for @Input() decorator patterns.
-          // Templates that show CSS/SCSS code pass [languages]="['scss']"
-          // explicitly.
-          languages: ['typescript', 'xml', 'bash']
-        }
+    provideHighlightOptions({
+      coreLibraryLoader: () => import('highlight.js/lib/core'),
+      languages: {
+        bash: () => import('highlight.js/lib/languages/bash'),
+        scss: () => import('highlight.js/lib/languages/scss'),
+        sass: () => import('highlight.js/lib/languages/scss'),
+        css: () => import('highlight.js/lib/languages/css'),
+        typescript: () => import('highlight.js/lib/languages/typescript'),
+        xml: () => import('highlight.js/lib/languages/xml'),
+        html: () => import('highlight.js/lib/languages/xml'),
+        json: () => import('highlight.js/lib/languages/json'),
+      },
+      highlightOptions: {
+        // Restrict auto-detection to these languages only.
+        // SCSS is registered but excluded from auto-detection because its
+        // grammar outscores TypeScript for @Input() decorator patterns.
+        languages: ['typescript', 'xml', 'bash']
       }
-    }
+    })
   ],
   bootstrap: [AppComponent]
 })

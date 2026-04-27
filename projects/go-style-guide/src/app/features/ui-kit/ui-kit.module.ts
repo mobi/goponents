@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HighlightModule } from 'ngx-highlightjs';
 import { SharedModule } from '../../shared/shared.module';
 
 // GoPonents
@@ -145,7 +144,6 @@ import { PositionedBadgeDocsComponent } from './components/badge-docs/components
     GoRadioModule,
     GoTableModule,
     GoToastModule,
-    HighlightModule,
     SharedModule,
     UiKitRoutesModule,
     GoSharedModule,

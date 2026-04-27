@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HighlightModule } from 'ngx-highlightjs';
 
 // Module Routes
 import { StandardsRoutesModule } from './routes/standards-routing.module';
@@ -17,7 +16,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    HighlightModule,
     StandardsRoutesModule,
     GoSharedModule,
     FormsModule,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -70,7 +70,6 @@ import { AppGuard } from './app.guard';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    FormsModule,
     GoAccordionModule,
     GoActionSheetModule,
     GoBadgeModule,
@@ -100,8 +99,6 @@ import { AppGuard } from './app.guard';
     GoTextAreaModule,
     GoToasterModule,
     GoToastModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     ReactiveFormsModule,
     GoPortalModule,
     GoTimepickerModule
@@ -109,7 +106,8 @@ import { AppGuard } from './app.guard';
   providers: [
     AppService,
     AppGuard,
-    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce/tinymce.min.js' }
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce/tinymce.min.js' },
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })
