@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HighlightModule } from 'ngx-highlightjs';
 
 // Module Imports
 import { GoCardModule, GoCopyCardLinkModule, GoCopyModule } from '../../../../../go-lib/src/public_api';
@@ -18,7 +17,6 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
     GoCardModule,
     GoCopyCardLinkModule,
     GoCopyModule,
-    HighlightModule,
     SharedModule
   ],
   declarations: [

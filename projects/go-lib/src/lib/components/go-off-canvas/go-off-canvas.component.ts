@@ -1,7 +1,5 @@
 import {
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
   ComponentRef,
   HostListener,
   OnDestroy,
@@ -44,7 +42,6 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
   }
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
     private goOffCanvasService: GoOffCanvasService
   ) {
     super();
@@ -89,12 +86,11 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
   }
 
   private loadComponent(): void {
-    const componentFactory: ComponentFactory<any> = this.componentFactoryResolver.resolveComponentFactory(
-      this.currentOffCanvasItem.component
-    );
     const viewContainerRef: ViewContainerRef = this.goOffCanvasHost.viewContainerRef;
     viewContainerRef.clear();
-    const componentRef: ComponentRef<any> = viewContainerRef.createComponent(componentFactory);
+    const componentRef: ComponentRef<any> = viewContainerRef.createComponent(
+      this.currentOffCanvasItem.component
+    );
 
     Object.keys(this.currentOffCanvasItem.bindings).forEach((key: string) => {
       componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
@@ -116,9 +112,9 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
         this[key] = this.currentOffCanvasItem.offCanvasOptions[key];
       });
     } else {
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       this.size = this.currentOffCanvasItem.size || 'small';
-      // tslint:disable-next-line: deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       this.header = this.currentOffCanvasItem.header;
     }
   }
