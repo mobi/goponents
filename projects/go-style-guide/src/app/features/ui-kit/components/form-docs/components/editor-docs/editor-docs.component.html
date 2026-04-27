@@ -43,7 +43,7 @@
           Wherever you initially setup your <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>,
           you need to define the <code class="code-block--inline">tinyMceConfig.base_url</code> property on the config object. This refers to the location in the URL to look for TinyMCE
           and is relative to the domain of your application.
-          <app-code-block [content]="goConfigService" language="html" codeClass="code-block"></app-code-block>
+          <app-code-block [content]="goConfigService" language="typescript" codeClass="code-block"></app-code-block>
         </p>
         <h5 class="go-heading-5">
           Adding Languages (Optional)
@@ -51,7 +51,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           TinyMCE has a feature to support multiple languages, to enable this support in the go-editor you must provide the language code and Javascript file that holds
           the translations. You can do this in the <code class="code-block--inline">GoConfigInterface</code> on the <code class="code-block--inline">GoConfigService</code>.
-          <app-code-block [content]="goConfigServiceLang" language="html" codeClass="code-block"></app-code-block>
+          <app-code-block [content]="goConfigServiceLang" language="typescript" codeClass="code-block"></app-code-block>
         </p>
       </div>
 
@@ -64,7 +64,7 @@
           when a page that needs it loads. To do this, first add the <code class="code-block--inline">GoEditorModule</code> to the list of imports
           for the module, then add an entry to the <code class="code-block--inline">providers</code> array. The <code class="code-block--inline">useValue</code>
           property on the entry refers to the location in the URL to look for the TinyMCE Javascript file and is relative to the domain of your application.
-          <app-code-block [content]="moduleImport" language="html" codeClass="code-block"></app-code-block>
+          <app-code-block [content]="moduleImport" language="typescript" codeClass="code-block"></app-code-block>
         </p>
       </div>
 
@@ -161,7 +161,7 @@
               TinyMCE offers various plugins and toolbar configurations and the go-editor component gives you access
               to set all of those just as you would in TinyMCE. The current defaults that are set by the go-editor component are:
             </p>
-            <app-code-block [content]="toolbarPluginsDefaults" language="html"></app-code-block>
+            <app-code-block [content]="toolbarPluginsDefaults" language="typescript"></app-code-block>
             <p class="go-body-copy">
               In the event more functionality is needed you may specify overrides for each that include all of the current defaults.
               In the example below, we're providing support for adding an hr element by passing the defaults for both plugins and toolbar

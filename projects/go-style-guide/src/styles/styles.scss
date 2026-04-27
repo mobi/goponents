@@ -24,6 +24,7 @@ code {
 
 .hljs {
   background-color: $gray-100;
+  border: 1px solid $gray-300;
   border-radius: $global-radius;
   color: $syntax-color-code-text;
   display: block;
@@ -66,7 +67,8 @@ code {
   }
 
   .hljs-tag .hljs-attr {
-    color: $syntax-color-teal;
+    color: $syntax-color-code-text;
+    font-weight: 700;
   }
 
   .hljs-string,
@@ -123,6 +125,16 @@ code {
   .hljs-quote {
     color: $syntax-color-comment;
     font-style: italic;
+  }
+}
+
+// In hljs v11 the SCSS grammar tags all function calls (darken, linear-gradient, etc.)
+// as hljs-built_in. In v9 (dev) they were plain text. Override for SCSS only so those
+// function names render in the default code-text colour, not teal-blue.
+.hljs.language-scss {
+  .hljs-built_in {
+    color: $syntax-color-code-text;
+    font-weight: inherit;
   }
 }
 

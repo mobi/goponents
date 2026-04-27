@@ -1,7 +1,5 @@
 import {
   Component,
-  ComponentFactory,
-  ComponentFactoryResolver,
   ComponentRef,
   ElementRef,
   OnDestroy,
@@ -32,7 +30,6 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
   @ViewChild('goModal', { static: true }) goModal: ElementRef<HTMLElement>;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
     private goModalService: GoModalService
   ) {
     super();
@@ -63,10 +60,9 @@ export class GoModalComponent extends GoModalOptions implements OnInit, OnDestro
   }
 
   loadComponent(): void {
-    const componentFactory: ComponentFactory<{}> = this.componentFactoryResolver.resolveComponentFactory(this.currentComponent.component);
     const viewContainerRef: ViewContainerRef = this.goModalHost.viewContainerRef;
     viewContainerRef.clear();
-    const componentRef: ComponentRef<{}> = viewContainerRef.createComponent(componentFactory);
+    const componentRef: ComponentRef<{}> = viewContainerRef.createComponent(this.currentComponent.component);
 
     Object.keys(this.currentComponent.bindings).forEach((key: string) => {
       componentRef.instance[key] = this.currentComponent.bindings[key];
