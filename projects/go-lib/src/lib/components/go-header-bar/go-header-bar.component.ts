@@ -8,9 +8,10 @@ import { GoHeaderBarItem } from './go-header-bar.interface';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'go-header-bar',
-  templateUrl: './go-header-bar.component.html',
-  styleUrls: ['./go-header-bar.component.scss']
+    selector: 'go-header-bar',
+    templateUrl: './go-header-bar.component.html',
+    styleUrls: ['./go-header-bar.component.scss'],
+    standalone: false
 })
 export class GoHeaderBarComponent implements OnInit, OnDestroy {
 

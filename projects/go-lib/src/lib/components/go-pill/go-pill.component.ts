@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'go-pill',
-  templateUrl: './go-pill.component.html',
-  styleUrls: ['./go-pill.component.scss'],
+    selector: 'go-pill',
+    templateUrl: './go-pill.component.html',
+    styleUrls: ['./go-pill.component.scss'],
+    standalone: false
 })
 export class GoPillComponent {
   @Input() removable: boolean = true;

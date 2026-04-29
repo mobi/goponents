@@ -6,8 +6,8 @@ import { GoTabComponent } from './go-tab.component';
 import { GoTabGroupComponent } from './go-tab-group.component';
 
 @Component({
-  selector: 'go-test',
-  template: `
+    selector: 'go-test',
+    template: `
     <go-tab-group>
       <go-tab title="Test 1">
         This is some content for Test 1.
@@ -16,7 +16,8 @@ import { GoTabGroupComponent } from './go-tab-group.component';
         This is a second thing.
       </go-tab>
     </go-tab-group>
-  `
+  `,
+    standalone: false
 })
 class GoTestTabGroupComponent {}
 

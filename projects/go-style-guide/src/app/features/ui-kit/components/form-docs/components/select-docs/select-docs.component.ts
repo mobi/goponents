@@ -6,7 +6,8 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 import { concat, Observable, of, Subject } from 'rxjs';
 
 @Component({
-  templateUrl: './select-docs.component.html'
+    templateUrl: './select-docs.component.html',
+    standalone: false
 })
 export class SelectDocsComponent implements OnInit {
   itemInput: Subject<string> = new Subject<string>();

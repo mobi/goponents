@@ -12,9 +12,10 @@ import {
 } from '../../go-config.model';
 
 @Component({
-  selector: 'go-header',
-  templateUrl: './go-header.component.html',
-  styleUrls: ['./go-header.component.scss']
+    selector: 'go-header',
+    templateUrl: './go-header.component.html',
+    styleUrls: ['./go-header.component.scss'],
+    standalone: false
 })
 export class GoHeaderComponent implements OnDestroy {
 

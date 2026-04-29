@@ -4,8 +4,9 @@ import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-n
 import { GoFileUploadComponent } from 'projects/go-lib/src/lib/components/go-file-upload/go-file-upload.component';
 
 @Component({
-  selector: 'app-file-upload-docs',
-  templateUrl: './file-upload-docs.component.html'
+    selector: 'app-file-upload-docs',
+    templateUrl: './file-upload-docs.component.html',
+    standalone: false
 })
 export class FileUploadDocsComponent implements OnInit {
   fileControl: FormControl = new FormControl('');

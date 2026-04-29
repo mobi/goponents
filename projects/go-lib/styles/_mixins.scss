@@ -1,4 +1,5 @@
-@import './variables';
+@use 'sass:map';
+@use './variables' as *;
 
 @mixin transition($prop) {
   // scss-lint:disable VendorPrefix
@@ -27,7 +28,7 @@ $z-index: (
 }
 
 @function z-index($key) {
-  @return map-get($z-index, $key);
+  @return map.get($z-index, $key);
 }
 
 @mixin fill-text-background($fill: null, $color: $base-dark) {

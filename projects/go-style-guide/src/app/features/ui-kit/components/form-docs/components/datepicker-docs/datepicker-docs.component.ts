@@ -4,7 +4,8 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { GoDatepickerComponent, GoModalService } from '../../../../../../../../../go-lib/src/public_api';
 
 @Component({
-  templateUrl: './datepicker-docs.component.html'
+    templateUrl: './datepicker-docs.component.html',
+    standalone: false
 })
 export class DatepickerDocsComponent implements OnInit {
   dob: FormControl = new FormControl('2015-08-15');

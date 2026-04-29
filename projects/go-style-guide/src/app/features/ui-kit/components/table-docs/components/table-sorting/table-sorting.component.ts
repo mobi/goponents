@@ -4,7 +4,8 @@ import { GoTableConfig, GoTableSortConfig, SortDirection } from 'projects/go-lib
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './table-sorting.component.html'
+    templateUrl: './table-sorting.component.html',
+    standalone: false
 })
 export class TableSortingComponent {
   constructor(

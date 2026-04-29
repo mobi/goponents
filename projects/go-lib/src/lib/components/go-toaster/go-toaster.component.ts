@@ -3,10 +3,11 @@ import { GoToasterService } from './go-toaster.service';
 import { toastAnimation } from '../../animations/toasts';
 
 @Component({
-  animations: [toastAnimation],
-  selector: 'go-toaster',
-  templateUrl: './go-toaster.component.html',
-  styleUrls: ['./go-toaster.component.scss']
+    animations: [toastAnimation],
+    selector: 'go-toaster',
+    templateUrl: './go-toaster.component.html',
+    styleUrls: ['./go-toaster.component.scss'],
+    standalone: false
 })
 export class GoToasterComponent {
   constructor(public goToasterService: GoToasterService) { }

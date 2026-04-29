@@ -16,12 +16,13 @@ import { DateAdapter } from './date-adapter';
 import { CalendarCell } from './calendar-cell.model';
 
 @Component({
-  selector: 'go-calendar',
-  styleUrls: ['./go-calendar.component.scss'],
-  templateUrl: './go-calendar.component.html',
-  animations: [
-    fadeAnimation
-  ]
+    selector: 'go-calendar',
+    styleUrls: ['./go-calendar.component.scss'],
+    templateUrl: './go-calendar.component.html',
+    animations: [
+        fadeAnimation
+    ],
+    standalone: false
 })
 export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked {
   canClose: boolean = true;

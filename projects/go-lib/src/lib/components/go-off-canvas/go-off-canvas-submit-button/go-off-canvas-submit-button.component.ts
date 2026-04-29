@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'go-off-canvas-submit-button',
-  templateUrl: './go-off-canvas-submit-button.component.html',
-  styleUrls: ['./go-off-canvas-submit-button.component.scss']
+    selector: 'go-off-canvas-submit-button',
+    templateUrl: './go-off-canvas-submit-button.component.html',
+    styleUrls: ['./go-off-canvas-submit-button.component.scss'],
+    standalone: false
 })
 export class GoOffCanvasSubmitButtonComponent {
   @Input() disabled: boolean = false;

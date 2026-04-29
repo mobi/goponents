@@ -10,8 +10,8 @@ import { GoFormErrorsModule } from "../go-form-errors/go-form-errors.module";
 import { By } from "@angular/platform-browser";
 
 @Component({
-  selector: "go-test",
-  template: `
+    selector: "go-test",
+    template: `
     <go-radio-group label="Options" [control]="radioControl">
       <div>
         <go-radio-button
@@ -29,6 +29,7 @@ import { By } from "@angular/platform-browser";
       </div>
     </go-radio-group>
   `,
+    standalone: false
 })
 class GoTestRadioGroupComponent {
   radioControl: FormControl = new FormControl("");

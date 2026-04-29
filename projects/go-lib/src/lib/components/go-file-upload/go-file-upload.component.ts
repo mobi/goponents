@@ -5,9 +5,10 @@ import { takeUntil } from 'rxjs/operators';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
-  selector: 'go-file-upload',
-  templateUrl: './go-file-upload.component.html',
-  styleUrls: ['./go-file-upload.component.scss']
+    selector: 'go-file-upload',
+    templateUrl: './go-file-upload.component.html',
+    styleUrls: ['./go-file-upload.component.scss'],
+    standalone: false
 })
 export class GoFileUploadComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   form: FormGroup;

@@ -1,9 +1,10 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
 
 @Component({
-  selector: 'go-action-sheet',
-  templateUrl: './go-action-sheet.component.html',
-  styleUrls: ['./go-action-sheet.component.scss']
+    selector: 'go-action-sheet',
+    templateUrl: './go-action-sheet.component.html',
+    styleUrls: ['./go-action-sheet.component.scss'],
+    standalone: false
 })
 export class GoActionSheetComponent {
   showContent: boolean = false;

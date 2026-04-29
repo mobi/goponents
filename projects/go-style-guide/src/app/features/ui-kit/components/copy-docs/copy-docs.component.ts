@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-copy-docs',
-  styleUrls: ['./copy-docs.component.scss'],
-  templateUrl: './copy-docs.component.html'
+    selector: 'app-copy-docs',
+    styleUrls: ['./copy-docs.component.scss'],
+    templateUrl: './copy-docs.component.html',
+    standalone: false
 })
 export class CopyDocsComponent {
   componentBindings: string = `

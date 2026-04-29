@@ -3,8 +3,9 @@ import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-radio-button-docs',
-  templateUrl: './radio-button-docs.component.html'
+    selector: 'app-radio-button-docs',
+    templateUrl: './radio-button-docs.component.html',
+    standalone: false
 })
 export class RadioButtonDocsComponent {
 

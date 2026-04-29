@@ -3,9 +3,10 @@ import { DateAdapter } from '../date-adapter';
 import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
-  selector: 'go-calendar-month-view',
-  styleUrls: ['../calendar-views.scss'],
-  templateUrl: './go-calendar-month-view.component.html',
+    selector: 'go-calendar-month-view',
+    styleUrls: ['../calendar-views.scss'],
+    templateUrl: './go-calendar-month-view.component.html',
+    standalone: false
 })
 export class GoCalendarMonthViewComponent implements OnChanges, OnInit {
   focusedMonth: CalendarCell;

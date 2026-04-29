@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-layout-nav',
-  templateUrl: './layout-nav.component.html'
+    selector: 'app-layout-nav',
+    templateUrl: './layout-nav.component.html',
+    standalone: false
 })
 export class LayoutNavComponent {
 

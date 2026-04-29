@@ -4,8 +4,9 @@ import { TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './table-templates.component.html',
-  styleUrls: ['./table-templates.component.scss']
+    templateUrl: './table-templates.component.html',
+    styleUrls: ['./table-templates.component.scss'],
+    standalone: false
 })
 export class TableTemplatesComponent {
   constructor(

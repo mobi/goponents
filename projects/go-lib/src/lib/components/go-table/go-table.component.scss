@@ -1,5 +1,6 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 $go-table-cell-vertical-padding: .875rem;
 $go-table-cell-horizontal-padding: 1.25rem;
@@ -215,7 +216,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     position: relative;
 
     &:hover {
-      background: lighten($theme-light-app-bg, 3%);
+      background: color.adjust($theme-light-app-bg, $lightness: 3%);
       box-shadow: $global-box-shadow--search;
     }
   }
@@ -347,7 +348,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   @include z-index(2);
 
   align-items: center;
-  background: transparentize($theme-light-bg-hover, .3);
+  background: color.adjust($theme-light-bg-hover, $alpha: -.3);
   border-radius: $global-radius;
   display: flex;
   height: 100%;

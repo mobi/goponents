@@ -2,37 +2,38 @@ import { animate, group, keyframes, state, style, transition, trigger } from '@a
 import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
 
 @Component({
-  animations: [
-    trigger('checkMarkFadeInOut', [
-      state('content_copy', style({
-        opacity: '1'
-      })),
-      state('check', style({
-        opacity: '1'
-      })),
-      transition('content_copy => check', [
-        group([
-          animate('1.5s', keyframes([
-            style({ opacity: '0', offset: 0 }),
-            style({ opacity: '1', offset: 0.1 }),
-            style({ opacity: '1', offset: 0.9 }),
-            style({ opacity: '0', offset: 1 })
-          ]))
+    animations: [
+        trigger('checkMarkFadeInOut', [
+            state('content_copy', style({
+                opacity: '1'
+            })),
+            state('check', style({
+                opacity: '1'
+            })),
+            transition('content_copy => check', [
+                group([
+                    animate('1.5s', keyframes([
+                        style({ opacity: '0', offset: 0 }),
+                        style({ opacity: '1', offset: 0.1 }),
+                        style({ opacity: '1', offset: 0.9 }),
+                        style({ opacity: '0', offset: 1 })
+                    ]))
+                ])
+            ]),
+            transition('check => content_copy', [
+                group([
+                    animate('300ms', keyframes([
+                        style({ opacity: '0' }),
+                        style({ opacity: '1' })
+                    ]))
+                ])
+            ]),
         ])
-      ]),
-      transition('check => content_copy', [
-        group([
-          animate('300ms', keyframes([
-            style({ opacity: '0' }),
-            style({ opacity: '1' })
-          ]))
-        ])
-      ]),
-    ])
-  ],
-  selector: 'go-copy',
-  templateUrl: './go-copy.component.html',
-  styleUrls: ['./go-copy.component.scss']
+    ],
+    selector: 'go-copy',
+    templateUrl: './go-copy.component.html',
+    styleUrls: ['./go-copy.component.scss'],
+    standalone: false
 })
 export class GoCopyComponent {
 

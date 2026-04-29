@@ -3,7 +3,8 @@ import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
 @Component({
-  templateUrl: './forms.component.html'
+    templateUrl: './forms.component.html',
+    standalone: false
 })
 export class FormsComponent {
   pageTitle: string = 'Forms';

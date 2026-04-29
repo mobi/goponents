@@ -1,4 +1,5 @@
-@import '../../../../styles/variables';
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
 
 @mixin upload-active {
   cursor: pointer;
@@ -19,7 +20,7 @@
   &--disabled {
     border-style: solid;
     // scss-lint:disable VariableForProperty
-    color: lighten($theme-light-color, 40);
+    color: color.adjust($theme-light-color, $lightness: 40%);
     cursor: not-allowed;
   }
 

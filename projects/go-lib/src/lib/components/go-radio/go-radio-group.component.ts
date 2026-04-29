@@ -4,8 +4,9 @@ import { GoFormService } from '../../services/form.service';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 
 @Component({
-  selector: 'go-radio-group',
-  templateUrl: './go-radio-group.component.html'
+    selector: 'go-radio-group',
+    templateUrl: './go-radio-group.component.html',
+    standalone: false
 })
 export class GoRadioGroupComponent extends GoFormBaseComponent implements AfterContentChecked {
   radioButtonCount: number = 0;

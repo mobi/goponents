@@ -2,8 +2,9 @@ import { AfterViewInit, Component, ElementRef, Input, OnChanges, ViewChild } fro
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
-  selector: 'go-checkbox',
-  templateUrl: './go-checkbox.component.html'
+    selector: 'go-checkbox',
+    templateUrl: './go-checkbox.component.html',
+    standalone: false
 })
 export class GoCheckboxComponent extends GoFormBaseComponent implements OnChanges, AfterViewInit {
 

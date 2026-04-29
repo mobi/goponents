@@ -1,5 +1,6 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:map';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 .go-modal {
   @include transition(all);
@@ -36,8 +37,8 @@
     transform: scale(1.1);
 
     &--lg {
-      max-width: map-get($modal-container-sizes, 'lg');
-      min-width: map-get($modal-container-sizes, 'lg');
+      max-width: map.get($modal-container-sizes, 'lg');
+      min-width: map.get($modal-container-sizes, 'lg');
 
       @media (max-width: $breakpoint-mobile) {
         max-width: 100%;
@@ -46,8 +47,8 @@
     }
 
     &--xl {
-      max-width: map-get($modal-container-sizes, 'xl');
-      min-width: map-get($modal-container-sizes, 'xl');
+      max-width: map.get($modal-container-sizes, 'xl');
+      min-width: map.get($modal-container-sizes, 'xl');
 
       @media (max-width: $breakpoint-mobile) {
         max-width: 100%;

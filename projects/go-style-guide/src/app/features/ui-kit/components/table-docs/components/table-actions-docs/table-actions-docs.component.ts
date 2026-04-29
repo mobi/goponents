@@ -4,8 +4,9 @@ import { TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-table-actions-docs',
-  templateUrl: './table-actions-docs.component.html'
+    selector: 'app-table-actions-docs',
+    templateUrl: './table-actions-docs.component.html',
+    standalone: false
 })
 export class TableActionsDocsComponent {
 

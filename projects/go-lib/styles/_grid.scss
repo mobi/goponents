@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use './variables' as *;
+
 @mixin grid-column-modifiers {
   &--no-padding {
     padding-bottom: 0;
@@ -20,9 +23,9 @@
 
 @each $name, $size in $column-sizes {
   .go-column--#{$name} {
-    flex-basis: percentage($size);
-    max-width: percentage($size);
-    width: percentage($size);
+    flex-basis: math.percentage($size);
+    max-width: math.percentage($size);
+    width: math.percentage($size);
 
     @if ($name <= 25) {
       @extend %flex-basis-tablet-50;

@@ -4,8 +4,9 @@ import { FormControl } from '@angular/forms';
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'neutral' | 'negative';
 
 @Component({
-  selector: 'app-button-group-docs',
-  templateUrl: './button-group-docs.component.html'
+    selector: 'app-button-group-docs',
+    templateUrl: './button-group-docs.component.html',
+    standalone: false
 })
 export class ButtonGroupDocsComponent implements OnInit {
 

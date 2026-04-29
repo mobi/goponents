@@ -3,8 +3,9 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-switch-toggle-docs',
-  templateUrl: './switch-toggle-docs.component.html'
+    selector: 'app-switch-toggle-docs',
+    templateUrl: './switch-toggle-docs.component.html',
+    standalone: false
 })
 export class SwitchToggleDocsComponent implements OnInit {
 

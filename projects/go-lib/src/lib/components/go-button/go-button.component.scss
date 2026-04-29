@@ -1,9 +1,10 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 $transparent-color: rgba(0, 0, 0, 0);
-$button-shadow-secondary-hover: 0 0 0 3px transparentize($theme-light-bg-hover, .5);
-$button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover, .5);
+$button-shadow-secondary-hover: 0 0 0 3px color.adjust($theme-light-bg-hover, $alpha: -.5);
+$button-shadow-secondary-active: 0 0 0 3px color.adjust($theme-light-bg-hover, $alpha: -.5);
 
 @mixin disabled-states($bg, $color, $color-opacity: .7) {
   // scss-lint:disable VariableForProperty
@@ -419,8 +420,8 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:active {
-      background: darken($ui-color-primary, 10%);
-      border: 1px solid darken($ui-color-primary, 10%);
+      background: color.adjust($ui-color-primary, $lightness: -10%);
+      border: 1px solid color.adjust($ui-color-primary, $lightness: -10%);
       border-left: 0;
       box-shadow: $form-shadow-active;
     }
@@ -452,7 +453,7 @@ $button-shadow-secondary-active: 0 0 0 3px transparentize($theme-light-bg-hover,
     }
 
     &:active {
-      background: darken($theme-light-bg, 10%);
+      background: color.adjust($theme-light-bg, $lightness: -10%);
       border-left: 0;
       box-shadow: $button-shadow-secondary-active;
     }

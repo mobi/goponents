@@ -1,5 +1,6 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 $go-icon-button-hover-bg: #dcdcdc;
 
@@ -21,7 +22,7 @@ $go-icon-button-hover-bg: #dcdcdc;
 
   &:hover,
   &:focus {
-    background: transparentize($go-icon-button-hover-bg, .7);
+    background: color.adjust($go-icon-button-hover-bg, $alpha: -.7);
   }
 
   &:active {

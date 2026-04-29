@@ -5,7 +5,8 @@ import { FakeData, TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './table-overview.component.html'
+    templateUrl: './table-overview.component.html',
+    standalone: false
 })
 export class TableOverviewComponent {
   stickyButton: string = 'Sticky Header';

@@ -17,12 +17,13 @@ import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
-  selector: 'go-accordion-panel',
-  templateUrl: './go-accordion-panel.component.html',
-  styleUrls: ['./go-accordion-panel.component.scss'],
-  animations: [
-    accordionAnimation
-  ]
+    selector: 'go-accordion-panel',
+    templateUrl: './go-accordion-panel.component.html',
+    styleUrls: ['./go-accordion-panel.component.scss'],
+    animations: [
+        accordionAnimation
+    ],
+    standalone: false
 })
 export class GoAccordionPanelComponent implements OnInit, OnChanges, OnDestroy {
   _expanded: boolean = false; // Note: Use _expanded in the template

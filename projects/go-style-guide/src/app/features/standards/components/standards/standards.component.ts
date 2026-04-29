@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  templateUrl: './standards.component.html'
+    templateUrl: './standards.component.html',
+    standalone: false
 })
 export class StandardsComponent implements OnInit {
 

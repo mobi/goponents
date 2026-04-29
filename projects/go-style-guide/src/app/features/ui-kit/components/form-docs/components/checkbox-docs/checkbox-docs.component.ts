@@ -3,8 +3,9 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-checkbox-docs',
-  templateUrl: './checkbox-docs.component.html'
+    selector: 'app-checkbox-docs',
+    templateUrl: './checkbox-docs.component.html',
+    standalone: false
 })
 export class CheckboxDocsComponent {
   checkbox1: FormControl = new FormControl('');

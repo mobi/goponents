@@ -1,6 +1,6 @@
-@import '../../../../../styles/mixins';
-@import '../../../../../styles/variables';
-@import '../variables';
+@use '../../../../../styles/mixins' as *;
+@use '../../../../../styles/variables' as *;
+@use '../variables' as *;
 
 .go-nav-item {
   @include transition(all);

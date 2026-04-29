@@ -3,8 +3,9 @@ import { GoCheckboxComponent } from './go-checkbox.component';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
-  selector: 'go-checkbox-group',
-  templateUrl: './go-checkbox-group.component.html'
+    selector: 'go-checkbox-group',
+    templateUrl: './go-checkbox-group.component.html',
+    standalone: false
 })
 export class GoCheckboxGroupComponent extends GoFormBaseComponent implements AfterContentInit {
 

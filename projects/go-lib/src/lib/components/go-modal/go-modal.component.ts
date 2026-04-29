@@ -15,9 +15,10 @@ import { GoModalItem } from './go-modal.item';
 import { GoModalService } from './go-modal.service';
 
 @Component({
-  selector: 'go-modal',
-  templateUrl: './go-modal.component.html',
-  styleUrls: ['./go-modal.component.scss']
+    selector: 'go-modal',
+    templateUrl: './go-modal.component.html',
+    styleUrls: ['./go-modal.component.scss'],
+    standalone: false
 })
 export class GoModalComponent extends GoModalOptions implements OnInit, OnDestroy {
 

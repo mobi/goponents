@@ -3,9 +3,10 @@ import { DateAdapter } from '../date-adapter';
 import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
-  selector: 'go-calendar-year-view',
-  styleUrls: ['../calendar-views.scss'],
-  templateUrl: './go-calendar-year-view.component.html',
+    selector: 'go-calendar-year-view',
+    styleUrls: ['../calendar-views.scss'],
+    templateUrl: './go-calendar-year-view.component.html',
+    standalone: false
 })
 export class GoCalendarYearViewComponent implements OnInit {
   firstYear: CalendarCell;

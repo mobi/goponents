@@ -5,9 +5,10 @@ import { GoFormService } from '../../services/form.service';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
-  selector: 'go-datepicker',
-  styleUrls: ['./go-datepicker.component.scss'],
-  templateUrl: './go-datepicker.component.html'
+    selector: 'go-datepicker',
+    styleUrls: ['./go-datepicker.component.scss'],
+    templateUrl: './go-datepicker.component.html',
+    standalone: false
 })
 export class GoDatepickerComponent extends GoFormBaseComponent implements OnDestroy, OnInit {
   displayAbove: boolean = false;

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-layout-header',
-  templateUrl: './layout-header.component.html'
+    selector: 'app-layout-header',
+    templateUrl: './layout-header.component.html',
+    standalone: false
 })
 export class LayoutHeaderComponent {
 

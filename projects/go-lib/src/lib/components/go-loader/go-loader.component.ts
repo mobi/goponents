@@ -2,12 +2,13 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
-  selector: 'go-loader',
-  templateUrl: './go-loader.component.html',
-  styleUrls: ['./go-loader.component.scss'],
-  animations: [
-    fadeTemplateAnimation
-  ]
+    selector: 'go-loader',
+    templateUrl: './go-loader.component.html',
+    styleUrls: ['./go-loader.component.scss'],
+    animations: [
+        fadeTemplateAnimation
+    ],
+    standalone: false
 })
 export class GoLoaderComponent {
 

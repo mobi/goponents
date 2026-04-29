@@ -1,5 +1,7 @@
-@import './variables';
-@import './mixins';
+@use 'sass:color';
+@use './variables' as *;
+@use './mixins' as *;
+@use './placeholders' as *;
 
 $input--disabled-background: rgba($base-dark-secondary, .4);
 
@@ -186,8 +188,8 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   &__checkbox:disabled:checked ~ &__custom-checkbox {
-    background-color: lighten($base-light-secondary, 13.5%);
-    border: 1px solid lighten($base-light-secondary, 13.5%);
+    background-color: color.adjust($base-light-secondary, $lightness: 13.5%);
+    border: 1px solid color.adjust($base-light-secondary, $lightness: 13.5%);
     cursor: not-allowed;
   }
 

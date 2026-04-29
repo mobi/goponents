@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './text-area-docs.component.html'
+    templateUrl: './text-area-docs.component.html',
+    standalone: false
 })
 export class TextAreaDocsComponent implements OnInit {
   message: FormControl = new FormControl('');

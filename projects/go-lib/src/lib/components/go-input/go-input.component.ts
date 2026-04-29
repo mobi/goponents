@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
-  selector: 'go-input',
-  templateUrl: './go-input.component.html',
-  styleUrls: ['./go-input.component.scss']
+    selector: 'go-input',
+    templateUrl: './go-input.component.html',
+    styleUrls: ['./go-input.component.scss'],
+    standalone: false
 })
 export class GoInputComponent extends GoFormBaseComponent implements OnInit {
 

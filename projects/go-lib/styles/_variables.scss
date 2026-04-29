@@ -1,4 +1,5 @@
 @use "sass:math";
+@use 'sass:color';
 
 // UI Details
 // ----------------------------------------------------------------------------
@@ -85,76 +86,76 @@ $base-light-tertiary: #6C757D;
 $base-primary: #20A65F;
 $base-color: #00000080;
 
-$base-primary-hover: darken($base-primary, 10%);
+$base-primary-hover: color.adjust($base-primary, $lightness: -10%);
 $base-primary-gradient: linear-gradient(to right, $base-primary, $base-primary-hover);
 
 // Light Theme
 $theme-light-app-bg: #E9ECEF;
 $theme-light-bg: $base-light;
-$theme-light-bg-hover: darken($base-light, 3.5%);
-$theme-light-bg-active: darken($base-light, 7%);
+$theme-light-bg-hover: color.adjust($base-light, $lightness: -3.5%);
+$theme-light-bg-active: color.adjust($base-light, $lightness: -7%);
 $theme-light-color: $base-dark;
-$theme-light-color-hover: lighten($base-dark, 20%);
+$theme-light-color-hover: color.adjust($base-dark, $lightness: 20%);
 $theme-light-border: $base-light-secondary;
 
 // Dark Theme
 $theme-dark-bg: $base-dark-secondary;
-$theme-dark-bg-hover: darken($base-dark-secondary, 3.5%);
-$theme-dark-bg-active: darken($base-dark-secondary, 7%);
+$theme-dark-bg-hover: color.adjust($base-dark-secondary, $lightness: -3.5%);
+$theme-dark-bg-active: color.adjust($base-dark-secondary, $lightness: -7%);
 $theme-dark-color: $base-light;
-$theme-dark-text-color: mix($base-light, $base-light-secondary);
-$theme-dark-color-hover: darken($base-light, 20%);
-$theme-dark-border: darken($base-dark-secondary, 7%);
+$theme-dark-text-color: color.mix($base-light, $base-light-secondary);
+$theme-dark-color-hover: color.adjust($base-light, $lightness: -20%);
+$theme-dark-border: color.adjust($base-dark-secondary, $lightness: -7%);
 
 // UI Colors
 // Negative Colors -
 // These are used to portray dangerous actions, error states, or other negative states in the interface
 $ui-color-negative: #db3939;
-$ui-color-negative-hover: darken($ui-color-negative, 3.5%);
-$ui-color-negative-active: darken($ui-color-negative, 7%);
-$ui-color-negative-dark: darken($ui-color-negative-hover, 10%);
-$ui-color-negative-darker: darken($ui-color-negative-dark, 5%);
+$ui-color-negative-hover: color.adjust($ui-color-negative, $lightness: -3.5%);
+$ui-color-negative-active: color.adjust($ui-color-negative, $lightness: -7%);
+$ui-color-negative-dark: color.adjust($ui-color-negative-hover, $lightness: -10%);
+$ui-color-negative-darker: color.adjust($ui-color-negative-dark, $lightness: -5%);
 $ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
 $ui-background-negative: rgba($ui-color-negative, .1);
 // UI Colors
 // secondary button 
-$ui-button-secondary-active: darken($base-light-tertiary, 3.5%);
+$ui-button-secondary-active: color.adjust($base-light-tertiary, $lightness: -3.5%);
 $ui-button-secondary-shadow: 0 0 0 0.25rem rgba(130,138,145, .5);
 // Neutral Colors -
 // These are used to portray informational actions, states, or other generally neutral states in the interface
 $ui-color-neutral: #6633CA;
-$ui-color-neutral-hover: darken($ui-color-neutral, 3.5%);
-$ui-color-neutral-active: darken($ui-color-neutral, 7%);
+$ui-color-neutral-hover: color.adjust($ui-color-neutral, $lightness: -3.5%);
+$ui-color-neutral-active: color.adjust($ui-color-neutral, $lightness: -7%);
 $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
 $ui-background-neutral: rgba($ui-color-neutral, .1);
 
 // Positive Colors -
 // These are used to portray good actions, states, or other generally positive states in the interface
 $ui-color-positive: #198754;
-$ui-color-positive-hover: darken($ui-color-positive, 3.5%);
-$ui-color-positive-active: darken($ui-color-positive, 7%);
+$ui-color-positive-hover: color.adjust($ui-color-positive, $lightness: -3.5%);
+$ui-color-positive-active: color.adjust($ui-color-positive, $lightness: -7%);
 $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
 
 // Primary Colors -
 // These are used to portray primary actions, states, or other generally primary items in the interface
 $ui-color-primary: #157DB9;
-$ui-color-primary-hover: darken($ui-color-primary, 3.5%);
-$ui-color-primary-active: darken($ui-color-primary, 7%);
+$ui-color-primary-hover: color.adjust($ui-color-primary, $lightness: -3.5%);
+$ui-color-primary-active: color.adjust($ui-color-primary, $lightness: -7%);
 $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
 $ui-background-primary: rgba($ui-color-primary, .2);
 
 // Forms
 // ----------------------------------------------------------------------------
-$form-shadow-active:  0 0 0 4px transparentize($ui-color-primary, .75);
-$form-border-active: transparentize($ui-color-primary, .5);
+$form-shadow-active:  0 0 0 4px color.adjust($ui-color-primary, $alpha: -.75);
+$form-border-active: color.adjust($ui-color-primary, $alpha: -.5);
 
-$form-shadow-error: 0 0 0 4px transparentize($ui-color-negative, .75);
+$form-shadow-error: 0 0 0 4px color.adjust($ui-color-negative, $alpha: -.75);
 $form-border-error: $ui-color-negative;
 
-$form-border-neutral: transparentize($ui-color-neutral, .25);
-$form-shadow-neutral: 0 0 0 4px transparentize($ui-color-neutral, .75);
+$form-border-neutral: color.adjust($ui-color-neutral, $alpha: -.25);
+$form-shadow-neutral: 0 0 0 4px color.adjust($ui-color-neutral, $alpha: -.75);
 
-$form-shadow-hover: 0 0 0 4px transparentize($theme-light-app-bg, .2);
+$form-shadow-hover: 0 0 0 4px color.adjust($theme-light-app-bg, $alpha: -.2);
 
 //Gray colors 
 $gray-100: #F8F9FA;
