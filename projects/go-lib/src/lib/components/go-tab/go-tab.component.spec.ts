@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
 import { GoTabComponent } from './go-tab.component';
@@ -7,7 +7,7 @@ describe('GoTabComponent', () => {
   let component: GoTabComponent;
   let fixture: ComponentFixture<GoTabComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoTabComponent

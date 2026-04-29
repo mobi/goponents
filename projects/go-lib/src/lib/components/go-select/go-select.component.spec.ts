@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgSelectModule } from "@ng-select/ng-select";
 import { GoButtonModule } from "../go-button/go-button.module";
@@ -14,7 +14,7 @@ describe("GoSelectComponent", () => {
   let component: GoSelectComponent;
   let fixture: ComponentFixture<GoSelectComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoSelectComponent],
       imports: [

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoIconComponent } from './go-icon.component';
 
@@ -6,7 +6,7 @@ describe('GoIconComponent', () => {
   let component: GoIconComponent;
   let fixture: ComponentFixture<GoIconComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoIconComponent ]
     })

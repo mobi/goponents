@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { Component } from "@angular/core";
 
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -41,7 +41,7 @@ describe("GoRadioGroupComponent", () => {
   let buttonOne: GoRadioButtonComponent;
   let buttonTwo: GoRadioButtonComponent;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoRadioButtonComponent,

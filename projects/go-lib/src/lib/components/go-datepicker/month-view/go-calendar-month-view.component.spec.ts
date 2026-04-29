@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
@@ -10,7 +10,7 @@ describe('GoCalendarMonthViewComponent', () => {
   let component: GoCalendarMonthViewComponent;
   let fixture: ComponentFixture<GoCalendarMonthViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoCalendarMonthViewComponent

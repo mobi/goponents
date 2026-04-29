@@ -1,5 +1,5 @@
 import { EmbeddedViewRef, EventEmitter } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoHeaderBarComponent } from './go-header-bar.component';
 import { GoHeaderBarItem } from './go-header-bar.interface';
@@ -11,7 +11,7 @@ describe('GoHeaderBarComponent', () => {
   let fixture: ComponentFixture<GoHeaderBarComponent>;
   let goHeaderBarService: GoHeaderBarService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     goHeaderBarService = new GoHeaderBarService();
 
     TestBed.configureTestingModule({

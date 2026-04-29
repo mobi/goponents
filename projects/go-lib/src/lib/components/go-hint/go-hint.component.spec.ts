@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoHintComponent } from './go-hint.component';
 import { SimpleChange } from '@angular/core';
@@ -7,7 +7,7 @@ describe('GoHintComponent', () => {
   let component: GoHintComponent;
   let fixture: ComponentFixture<GoHintComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoHintComponent],
       imports: []

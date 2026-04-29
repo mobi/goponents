@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GoTimepickerComponent } from "./go-timepicker.component";
 import { GoTimeComponent } from "./go-time.component";
@@ -15,7 +15,7 @@ describe("GoTimepickerComponent", () => {
   let component: GoTimepickerComponent;
   let fixture: ComponentFixture<GoTimepickerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoTimeComponent, GoTimepickerComponent],
       imports: [

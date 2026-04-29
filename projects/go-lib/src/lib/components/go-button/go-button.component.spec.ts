@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconModule } from '../go-icon/go-icon.module';
@@ -9,7 +9,7 @@ describe('GoButtonComponent', () => {
   let component: GoButtonComponent;
   let fixture: ComponentFixture<GoButtonComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoButtonComponent ],
       imports: [

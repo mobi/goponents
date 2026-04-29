@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
@@ -10,7 +10,7 @@ describe('GoAccordionPanelComponent', () => {
   let component: GoAccordionPanelComponent;
   let fixture: ComponentFixture<GoAccordionPanelComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoAccordionPanelComponent ],
       imports: [

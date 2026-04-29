@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoOffCanvasComponent } from './go-off-canvas.component';
@@ -12,7 +12,7 @@ describe('GoOffCanvasComponent', () => {
   let offCanvasService: GoOffCanvasService;
   let goOffCanvasHostFixture: ComponentFixture<GoTestOffCanvasHostComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoOffCanvasComponent,
