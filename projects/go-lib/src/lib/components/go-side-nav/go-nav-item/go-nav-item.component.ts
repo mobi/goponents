@@ -16,9 +16,10 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
 import { NavItem } from '../nav-item.model';
 
 @Component({
-  selector: 'go-nav-item',
-  templateUrl: './go-nav-item.component.html',
-  styleUrls: ['./go-nav-item.component.scss']
+    selector: 'go-nav-item',
+    templateUrl: './go-nav-item.component.html',
+    styleUrls: ['./go-nav-item.component.scss'],
+    standalone: false
 })
 export class GoNavItemComponent implements AfterViewInit, OnInit, OnDestroy {
   brandColor: string;

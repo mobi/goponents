@@ -45,13 +45,14 @@ import {
 } from './index';
 
 @Component({
-  animations: [
-    tableRowBorderAnim,
-    fadeTemplateAnimation
-  ],
-  selector: 'go-table',
-  templateUrl: './go-table.component.html',
-  styleUrls: ['./go-table.component.scss']
+    animations: [
+        tableRowBorderAnim,
+        fadeTemplateAnimation
+    ],
+    selector: 'go-table',
+    templateUrl: './go-table.component.html',
+    styleUrls: ['./go-table.component.scss'],
+    standalone: false
 })
 export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 

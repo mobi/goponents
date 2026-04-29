@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-icon-button-docs',
-  templateUrl: './icon-button-docs.component.html'
+    selector: 'app-icon-button-docs',
+    templateUrl: './icon-button-docs.component.html',
+    standalone: false
 })
 export class IconButtonDocsComponent {
   pageTitle: string = 'Icon Button';

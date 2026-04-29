@@ -15,10 +15,11 @@ import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
-  encapsulation: ViewEncapsulation.None,
-  selector: 'go-select',
-  templateUrl: './go-select.component.html',
-  styleUrls: ['./go-select.component.scss']
+    encapsulation: ViewEncapsulation.None,
+    selector: 'go-select',
+    templateUrl: './go-select.component.html',
+    styleUrls: ['./go-select.component.scss'],
+    standalone: false
 })
 export class GoSelectComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   @ViewChild(NgSelectComponent) ngSelect: NgSelectComponent;

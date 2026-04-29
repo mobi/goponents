@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './input-docs.component.html'
+    templateUrl: './input-docs.component.html',
+    standalone: false
 })
 export class InputDocsComponent implements OnInit {
   name: FormControl = new FormControl('');

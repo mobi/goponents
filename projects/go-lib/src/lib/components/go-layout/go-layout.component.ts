@@ -23,15 +23,16 @@ import { routerAnimation } from '../../animations/route.animation';
 import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
 
 @Component({
-  selector: 'go-layout',
-  templateUrl: './go-layout.component.html',
-  styleUrls: ['./go-layout.component.scss'],
-  animations: [
-    routerAnimation,
-    fadeAnimation,
-    fadeTemplateAnimation
-  ],
-  encapsulation: ViewEncapsulation.None
+    selector: 'go-layout',
+    templateUrl: './go-layout.component.html',
+    styleUrls: ['./go-layout.component.scss'],
+    animations: [
+        routerAnimation,
+        fadeAnimation,
+        fadeTemplateAnimation
+    ],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class GoLayoutComponent implements OnInit, OnDestroy {
   private routeScrollPositions: { [url: string]: number }[] = [];

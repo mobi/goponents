@@ -3,8 +3,9 @@ import { GoToasterService } from 'projects/go-lib/src/public_api';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-action-sheet-panel-docs',
-  templateUrl: './action-sheet-panel-docs.component.html'
+    selector: 'app-action-sheet-panel-docs',
+    templateUrl: './action-sheet-panel-docs.component.html',
+    standalone: false
 })
 export class ActionSheetPanelDocsComponent {
 

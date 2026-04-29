@@ -1,4 +1,5 @@
-@import '../../../../../../../go-lib/styles/variables';
+@use 'sass:list';
+@use '../../../../../../../go-lib/styles/variables' as *;
 
 $colors: (
   base: (
@@ -40,7 +41,7 @@ $colors: (
   #go-color-#{$name} {
     @each $color in $palette {
       .go-color-items__item:nth-of-type(#{$index}) {
-        background: nth($palette, $index);
+        background: list.nth($palette, $index);
       }
 
       $index: $index + 1;

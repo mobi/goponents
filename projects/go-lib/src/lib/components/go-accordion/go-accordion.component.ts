@@ -12,8 +12,9 @@ import { takeUntil } from 'rxjs/operators';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 @Component({
-  selector: 'go-accordion',
-  template: '<ng-content></ng-content>'
+    selector: 'go-accordion',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy {
   @Input() borderless: boolean = false;

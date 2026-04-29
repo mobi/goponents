@@ -5,8 +5,9 @@ import { TitleCasePipe } from '@angular/common';
 import { SplitButtonOption } from 'projects/go-lib/src/lib/components/go-button/go-split-button-option.model';
 
 @Component({
-  selector: 'app-button-docs',
-  templateUrl: './button-docs.component.html'
+    selector: 'app-button-docs',
+    templateUrl: './button-docs.component.html',
+    standalone: false
 })
 export class ButtonDocsComponent {
 

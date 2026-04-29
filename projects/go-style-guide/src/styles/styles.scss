@@ -1,8 +1,8 @@
-@import 'reset';
-@import '../../../go-lib/styles/styles';
+@use 'reset' as *;
+@use '../../../go-lib/styles/styles' as *;
 
-@import 'settings';
-@import 'typography';
+@use 'settings' as *;
+@use 'typography' as *;
 
 body {
   color: $theme-light-color;
@@ -67,8 +67,7 @@ code {
   }
 
   .hljs-tag .hljs-attr {
-    color: $syntax-color-code-text;
-    font-weight: 700;
+    color: $syntax-color-teal;
   }
 
   .hljs-string,

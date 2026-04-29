@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progress-bar-docs',
-  templateUrl: './progress-bar-docs.component.html',
+    selector: 'app-progress-bar-docs',
+    templateUrl: './progress-bar-docs.component.html',
+    standalone: false
 })
 export class ProgressBarDocsComponent implements OnInit {
   pageTitle: string = 'Progress bar';

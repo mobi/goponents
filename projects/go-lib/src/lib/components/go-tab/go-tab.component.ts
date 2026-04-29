@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'go-tab',
-  templateUrl: './go-tab.component.html'
+    selector: 'go-tab',
+    templateUrl: './go-tab.component.html',
+    standalone: false
 })
 export class GoTabComponent {
   private _active: boolean = false;

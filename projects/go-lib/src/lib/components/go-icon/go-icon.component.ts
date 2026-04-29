@@ -1,9 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
-  selector: 'go-icon',
-  templateUrl: 'go-icon.component.html',
-  styleUrls: ['go-icon.component.scss']
+    selector: 'go-icon',
+    templateUrl: 'go-icon.component.html',
+    styleUrls: ['go-icon.component.scss'],
+    standalone: false
 })
 export class GoIconComponent implements OnChanges {
   classObject: object = {};

@@ -1,9 +1,10 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'go-progress-bar',
-  templateUrl: './go-progress-bar.component.html',
-  styleUrls: ['./go-progress-bar.component.scss'],
+    selector: 'go-progress-bar',
+    templateUrl: './go-progress-bar.component.html',
+    styleUrls: ['./go-progress-bar.component.scss'],
+    standalone: false
 })
 export class GoProgressBarComponent implements OnChanges {
   @Input() mode: 'determinate' | 'indeterminate' = 'determinate';

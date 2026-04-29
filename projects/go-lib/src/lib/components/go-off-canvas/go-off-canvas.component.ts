@@ -17,15 +17,16 @@ import { GoOffCanvasItem } from './go-off-canvas.interface';
 import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
-  selector: 'go-off-canvas',
-  templateUrl: './go-off-canvas.component.html',
-  styleUrls: [
-    './go-off-canvas.component.scss'
-  ],
-  animations: [
-    fadeAnimation,
-    offCanvasAnimation
-  ]
+    selector: 'go-off-canvas',
+    templateUrl: './go-off-canvas.component.html',
+    styleUrls: [
+        './go-off-canvas.component.scss'
+    ],
+    animations: [
+        fadeAnimation,
+        offCanvasAnimation
+    ],
+    standalone: false
 })
 export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, OnDestroy {
   currentOffCanvasItem: GoOffCanvasItem<any>;

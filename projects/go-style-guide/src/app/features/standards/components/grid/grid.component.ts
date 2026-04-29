@@ -4,8 +4,9 @@ import { GoOffCanvasService } from 'projects/go-lib/src/public_api';
 import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
 @Component({
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+    templateUrl: './grid.component.html',
+    styleUrls: ['./grid.component.scss'],
+    standalone: false
 })
 export class GridComponent {
   pageTitle: string = 'Grid System';

@@ -7,9 +7,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'go-icon-button',
-  templateUrl: './go-icon-button.component.html',
-  styleUrls: ['./go-icon-button.component.scss']
+    selector: 'go-icon-button',
+    templateUrl: './go-icon-button.component.html',
+    styleUrls: ['./go-icon-button.component.scss'],
+    standalone: false
 })
 export class GoIconButtonComponent implements OnChanges {
 

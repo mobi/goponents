@@ -3,8 +3,9 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {GoDatepickerComponent} from '../../../../../go-lib/src/lib/components/go-datepicker/go-datepicker.component';
 
 @Component({
-  selector: 'app-test-page-4',
-  templateUrl: './test-page-4.component.html'
+    selector: 'app-test-page-4',
+    templateUrl: './test-page-4.component.html',
+    standalone: false
 })
 export class TestPage4Component implements OnInit, AfterViewInit {
   form: FormGroup;

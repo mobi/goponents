@@ -3,9 +3,10 @@ import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { GoTimeFormat } from './go-time-format.model';
 
 @Component({
-  selector: 'go-timepicker',
-  styleUrls: ['./go-timepicker.component.scss'],
-  templateUrl: './go-timepicker.component.html',
+    selector: 'go-timepicker',
+    styleUrls: ['./go-timepicker.component.scss'],
+    templateUrl: './go-timepicker.component.html',
+    standalone: false
 })
 
 export class GoTimepickerComponent extends GoFormBaseComponent implements OnInit, AfterViewInit {

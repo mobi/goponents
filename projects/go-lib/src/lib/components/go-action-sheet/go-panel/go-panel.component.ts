@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GoActionSheetComponent } from '../go-action-sheet.component';
 
 @Component({
-  selector: 'go-panel',
-  templateUrl: './go-panel.component.html',
-  styleUrls: ['./go-panel.component.scss']
+    selector: 'go-panel',
+    templateUrl: './go-panel.component.html',
+    styleUrls: ['./go-panel.component.scss'],
+    standalone: false
 })
 export class GoPanelComponent {
 

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { Highlight } from 'ngx-highlightjs';
 
 export type CodeBlockLanguage =
@@ -19,12 +20,11 @@ export type CodeBlockLanguage =
  *   <app-code-block [content]="snippet" language="html"></app-code-block>
  */
 @Component({
-  selector: 'app-code-block',
-  standalone: true,
-  imports: [Highlight],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<code [highlight]="content" [language]="language" [class]="'language-' + language + (codeClass ? ' ' + codeClass : '')"></code>`,
-  styles: [':host{display:block}']
+    selector: 'app-code-block',
+    imports: [Highlight, NgClass],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `<code [highlight]="content" [language]="language" [ngClass]="'language-' + language + (codeClass ? ' ' + codeClass : '')"></code>`,
+    styles: [':host{display:block}']
 })
 export class CodeBlockComponent {
   @Input() content = '';

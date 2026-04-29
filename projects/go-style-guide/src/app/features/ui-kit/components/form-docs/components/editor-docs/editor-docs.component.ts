@@ -4,8 +4,9 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-editor-docs',
-  templateUrl: './editor-docs.component.html'
+    selector: 'app-editor-docs',
+    templateUrl: './editor-docs.component.html',
+    standalone: false
 })
 export class EditorDocsComponent {
   form: FormGroup = new FormGroup({

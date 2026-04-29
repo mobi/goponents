@@ -14,11 +14,12 @@ import { NavGroup } from '../../../../../../go-lib/src/public_api';
 import { SubNavService } from './sub-nav.service';
 
 @Component({
-  animations: [routerAnimation],
-  selector: 'app-sub-nav',
-  templateUrl: './sub-nav.component.html',
-  styleUrls: ['./sub-nav.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    animations: [routerAnimation],
+    selector: 'app-sub-nav',
+    templateUrl: './sub-nav.component.html',
+    styleUrls: ['./sub-nav.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SubNavComponent {
 

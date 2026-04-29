@@ -19,11 +19,12 @@ import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 
 @Component({
-  selector: 'go-nav-group',
-  templateUrl: './go-nav-group.component.html',
-  styleUrls: ['./go-nav-group.component.scss'],
-  // tslint:disable-next-line: use-component-view-encapsulation
-  encapsulation: ViewEncapsulation.None
+    selector: 'go-nav-group',
+    templateUrl: './go-nav-group.component.html',
+    styleUrls: ['./go-nav-group.component.scss'],
+    // tslint:disable-next-line: use-component-view-encapsulation
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class GoNavGroupComponent implements OnInit, OnDestroy {
   @Input() navItem: NavGroup | NavItem;

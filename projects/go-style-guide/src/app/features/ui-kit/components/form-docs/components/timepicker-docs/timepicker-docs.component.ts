@@ -3,7 +3,8 @@ import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  templateUrl: './timepicker-docs.component.html'
+    templateUrl: './timepicker-docs.component.html',
+    standalone: false
 })
 export class TimepickerDocsComponent implements OnInit {
 

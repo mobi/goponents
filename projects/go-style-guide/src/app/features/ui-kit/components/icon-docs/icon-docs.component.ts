@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-icon-docs',
-  templateUrl: './icon-docs.component.html',
-  styleUrls: ['./icon-docs.component.scss']
+    selector: 'app-icon-docs',
+    templateUrl: './icon-docs.component.html',
+    styleUrls: ['./icon-docs.component.scss'],
+    standalone: false
 })
 export class IconDocsComponent {
   pageTitle: string = 'Icon';

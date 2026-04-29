@@ -15,10 +15,11 @@ import { searchLoaderAnim, searchResultsAnim } from '../../animations/search.ani
 import { GoSearchService } from './go-search.service';
 
 @Component({
-  selector: 'go-search',
-  templateUrl: './go-search.component.html',
-  styleUrls: ['./go-search.component.scss'],
-  animations: [searchLoaderAnim, searchResultsAnim]
+    selector: 'go-search',
+    templateUrl: './go-search.component.html',
+    styleUrls: ['./go-search.component.scss'],
+    animations: [searchLoaderAnim, searchResultsAnim],
+    standalone: false
 })
 export class GoSearchComponent implements OnInit, OnDestroy {
 

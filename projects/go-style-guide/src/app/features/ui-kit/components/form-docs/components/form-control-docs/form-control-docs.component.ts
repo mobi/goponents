@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './form-control-docs.component.html',
-  selector: 'app-form-control-docs'
+    templateUrl: './form-control-docs.component.html',
+    selector: 'app-form-control-docs',
+    standalone: false
 })
 export class FormControlDocsComponent {
   basicFormControl: string = `

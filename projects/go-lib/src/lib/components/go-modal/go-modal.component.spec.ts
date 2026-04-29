@@ -292,8 +292,9 @@ describe('GoModalComponent', () => {
 });
 
 @Component({
-  selector: 'go-test',
-  template: '<ng-template go-modal-host></ng-template>'
+    selector: 'go-test',
+    template: '<ng-template go-modal-host></ng-template>',
+    standalone: false
 })
 class GoTestModalHostComponent {
   @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;

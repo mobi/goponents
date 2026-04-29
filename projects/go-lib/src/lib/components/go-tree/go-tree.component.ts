@@ -4,10 +4,11 @@ import { GoTreeNodeConfig } from './go-tree-node-config.model';
 import { treeAnimation } from '../../animations/tree.animation';
 
 @Component({
-  animations: [ treeAnimation ],
-  selector: 'go-tree',
-  templateUrl: './go-tree.component.html',
-  styleUrls: ['./go-tree.component.scss']
+    animations: [treeAnimation],
+    selector: 'go-tree',
+    templateUrl: './go-tree.component.html',
+    styleUrls: ['./go-tree.component.scss'],
+    standalone: false
 })
 export class GoTreeComponent {
   @Input() nodeConfig: GoTreeNodeConfig[];

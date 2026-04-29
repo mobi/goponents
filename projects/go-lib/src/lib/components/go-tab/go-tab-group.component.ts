@@ -2,9 +2,10 @@ import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, Qu
 import { GoTabComponent } from './go-tab.component';
 
 @Component({
-  selector: 'go-tab-group',
-  styleUrls: ['./go-tab-group.component.scss'],
-  templateUrl: './go-tab-group.component.html'
+    selector: 'go-tab-group',
+    styleUrls: ['./go-tab-group.component.scss'],
+    templateUrl: './go-tab-group.component.html',
+    standalone: false
 })
 export class GoTabGroupComponent implements AfterViewInit {
   activeTab: number = 0;

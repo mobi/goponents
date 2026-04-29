@@ -8,8 +8,8 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
-  selector: 'go-test',
-  template: `
+    selector: 'go-test',
+    template: `
     <go-accordion [showIcons]="true">
       <go-accordion-panel heading="Test 1" icon="home">
         This is some content for Test 1.
@@ -18,7 +18,8 @@ import { GoConfigService } from '../../go-config.service';
         This is a second thing.
       </go-accordion-panel>
     </go-accordion>
-  `
+  `,
+    standalone: false
 })
 class GoTestAccordionComponent {}
 

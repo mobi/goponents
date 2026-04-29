@@ -2,8 +2,9 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 import { extractFieldData } from './go-table-utils';
 
 @Component({
-  selector: 'go-table-child-column',
-  template: ''
+    selector: 'go-table-child-column',
+    template: '',
+    standalone: false
 })
 export class GoTableChildColumnComponent {
 

@@ -4,8 +4,9 @@ import { NavGroup } from '../../../../../../../go-lib/src/public_api';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-layout-docs',
-  templateUrl: './layout-docs.component.html'
+    selector: 'app-layout-docs',
+    templateUrl: './layout-docs.component.html',
+    standalone: false
 })
 export class LayoutDocsComponent {
 

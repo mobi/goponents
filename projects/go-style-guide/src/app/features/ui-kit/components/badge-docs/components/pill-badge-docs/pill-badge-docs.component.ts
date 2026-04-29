@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
-  selector: 'app-pill-badge-docs',
-  templateUrl: './pill-badge-docs.component.html',
+    selector: 'app-pill-badge-docs',
+    templateUrl: './pill-badge-docs.component.html',
+    standalone: false
 })
 export class PillBadgeDocsComponent {
   componentBindings: string = `

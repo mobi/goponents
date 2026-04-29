@@ -19,14 +19,15 @@ import { GoSelectModule } from '../go-select/go-select.module';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
-  selector: 'go-table-test',
-  template: `
+    selector: 'go-table-test',
+    template: `
     <go-table [tableConfig]="tableConfig">
       <go-table-column field="id" title="ID" [searchable]="false"></go-table-column>
       <go-table-column field="value" title="Value"></go-table-column>
       <go-table-column field="animal" title="Animal"></go-table-column>
     </go-table>
-  `
+  `,
+    standalone: false
 })
 class GoTestTableComponent {
   tableConfig: GoTableConfig = new GoTableConfig({

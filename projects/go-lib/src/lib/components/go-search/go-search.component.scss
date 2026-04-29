@@ -1,5 +1,6 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:color';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 :host.go-search {
   &__parent {
@@ -29,7 +30,7 @@
     // height of input + border, halfed
 
     &:hover {
-      background: lighten($theme-light-app-bg, 3%);
+      background: color.adjust($theme-light-app-bg, $lightness: 3%);
     }
 
     @media (max-width: $breakpoint-tablet) {

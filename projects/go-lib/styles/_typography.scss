@@ -1,3 +1,7 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use './placeholders' as *;
+
 body {
   color: $theme-light-color;
   font-family: $primary-font-stack;

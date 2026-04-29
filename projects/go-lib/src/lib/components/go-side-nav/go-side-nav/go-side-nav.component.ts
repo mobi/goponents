@@ -9,11 +9,12 @@ import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from './go-side-nav.service';
 
 @Component({
-  selector: 'go-side-nav',
-  templateUrl: './go-side-nav.component.html',
-  styleUrls: ['./go-side-nav.component.scss'],
-  // tslint:disable-next-line: use-component-view-encapsulation
-  encapsulation: ViewEncapsulation.None
+    selector: 'go-side-nav',
+    templateUrl: './go-side-nav.component.html',
+    styleUrls: ['./go-side-nav.component.scss'],
+    // tslint:disable-next-line: use-component-view-encapsulation
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() menuItems: Array<NavGroup | NavItem>;

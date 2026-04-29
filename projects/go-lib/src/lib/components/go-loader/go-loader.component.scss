@@ -1,5 +1,6 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/mixins';
+@use 'sass:map';
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
 
 $loader-sizes: (
   xsmall: 1.5rem,
@@ -24,9 +25,9 @@ $loader-colors: (
 
 .go-loader {
   display: inline-block;
-  height: map-get($loader-sizes, medium);
+  height: map.get($loader-sizes, medium);
   position: relative;
-  width: map-get($loader-sizes, medium);
+  width: map.get($loader-sizes, medium);
 
   path {
     @include transition(fill, .5s);

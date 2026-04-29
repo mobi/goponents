@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -49,12 +49,15 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/go-tester",
+            "outputPath": {
+              "base": "dist/go-tester"
+            },
             "index": "projects/go-tester/src/index.html",
-            "main": "projects/go-tester/src/main.ts",
-            "polyfills": "projects/go-tester/src/polyfills.ts",
+            "polyfills": [
+              "projects/go-tester/src/polyfills.ts"
+            ],
             "tsConfig": "projects/go-tester/tsconfig.app.json",
             "assets": [
               "projects/go-tester/src/favicon.ico",
@@ -67,12 +70,11 @@
               "projects/go-tester/src/styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/go-tester/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -87,8 +89,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -157,12 +157,15 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/go-style-guide",
+            "outputPath": {
+              "base": "dist/go-style-guide"
+            },
             "index": "projects/go-style-guide/src/index.html",
-            "main": "projects/go-style-guide/src/main.ts",
-            "polyfills": "projects/go-style-guide/src/polyfills.ts",
+            "polyfills": [
+              "projects/go-style-guide/src/polyfills.ts"
+            ],
             "tsConfig": "projects/go-style-guide/tsconfig.app.json",
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
@@ -182,12 +185,11 @@
                 "projects/go-style-guide/src/styles"
               ]
             },
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/go-style-guide/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -202,8 +204,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",

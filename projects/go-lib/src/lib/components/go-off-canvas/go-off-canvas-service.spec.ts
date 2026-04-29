@@ -4,8 +4,9 @@ import { GoOffCanvasItem } from './go-off-canvas.interface';
 import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
-  selector: 'go-test',
-  template: '<div>This is a test off-canvas component</div>'
+    selector: 'go-test',
+    template: '<div>This is a test off-canvas component</div>',
+    standalone: false
 })
 class GoTestOffCanvasComponent {}
 

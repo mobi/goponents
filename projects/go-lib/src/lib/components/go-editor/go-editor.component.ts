@@ -28,13 +28,14 @@ import { GoConfigInterface } from '../../go-config.model';
 export const TINYMCE_SCRIPT_SRC: InjectionToken<string> = new InjectionToken<string>('TINYMCE_SCRIPT_SRC');
 
 @Component({
-  selector: 'go-editor',
-  templateUrl: './go-editor.component.html',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => GoEditorComponent),
-    multi: true
-  }]
+    selector: 'go-editor',
+    templateUrl: './go-editor.component.html',
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => GoEditorComponent),
+            multi: true
+        }],
+    standalone: false
 })
 export class GoEditorComponent extends EditorComponent implements OnInit, OnDestroy, OnChanges {
 

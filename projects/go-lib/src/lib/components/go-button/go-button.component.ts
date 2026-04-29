@@ -12,10 +12,11 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 import { SplitButtonOption } from './go-split-button-option.model';
 
 @Component({
-  animations: [fadeTemplateAnimation],
-  selector: 'go-button',
-  templateUrl: './go-button.component.html',
-  styleUrls: ['./go-button.component.scss']
+    animations: [fadeTemplateAnimation],
+    selector: 'go-button',
+    templateUrl: './go-button.component.html',
+    styleUrls: ['./go-button.component.scss'],
+    standalone: false
 })
 export class GoButtonComponent implements OnChanges, OnInit {
 

@@ -13,10 +13,11 @@ import { fadeAnimation } from '../../animations/fade.animation';
 import { GoTimeFormat } from './go-time-format.model';
 
 @Component({
-  selector: 'go-time',
-  styleUrls: ['./go-time.component.scss'],
-  templateUrl: './go-time.component.html',
-  animations: [fadeAnimation],
+    selector: 'go-time',
+    styleUrls: ['./go-time.component.scss'],
+    templateUrl: './go-time.component.html',
+    animations: [fadeAnimation],
+    standalone: false
 })
 export class GoTimeComponent implements OnInit, AfterViewInit {
 

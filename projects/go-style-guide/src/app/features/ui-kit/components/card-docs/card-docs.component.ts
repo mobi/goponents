@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-card-docs',
-  templateUrl: './card-docs.component.html'
+    selector: 'app-card-docs',
+    templateUrl: './card-docs.component.html',
+    standalone: false
 })
 export class CardDocsComponent {
 

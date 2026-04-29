@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'go-toast',
-  templateUrl: './go-toast.component.html',
-  styleUrls: ['./go-toast.component.scss']
+    selector: 'go-toast',
+    templateUrl: './go-toast.component.html',
+    styleUrls: ['./go-toast.component.scss'],
+    standalone: false
 })
 export class GoToastComponent {
   duration: number;
