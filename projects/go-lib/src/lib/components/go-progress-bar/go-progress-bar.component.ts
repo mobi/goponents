@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'go-progress-bar',
     templateUrl: './go-progress-bar.component.html',
     styleUrls: ['./go-progress-bar.component.scss'],
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoProgressBarComponent implements OnChanges {
   @Input() mode: 'determinate' | 'indeterminate' = 'determinate';

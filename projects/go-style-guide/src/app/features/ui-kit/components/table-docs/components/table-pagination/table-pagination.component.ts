@@ -6,7 +6,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './table-pagination.component.html',
-    standalone: false
 })
 export class TablePaginationComponent {
   constructor(

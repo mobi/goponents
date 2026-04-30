@@ -13,10 +13,7 @@ describe('GoCalendarDayViewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoCalendarDayViewComponent
-      ],
-      imports: [
+      imports: [GoCalendarDayViewComponent, 
         GoIconButtonModule,
         FormsModule,
         ReactiveFormsModule

@@ -4,13 +4,13 @@ import { GoPillComponent } from './go-pill.component';
 import {GoIconModule} from '../go-icon/go-icon.module';
 
 @NgModule({
-  declarations: [GoPillComponent],
-  exports: [
-    GoPillComponent
-  ],
   imports: [
     CommonModule,
-    GoIconModule
+    GoIconModule,
+    GoPillComponent
+  ],
+  exports: [
+    GoPillComponent
   ]
 })
 export class GoPillModule { }

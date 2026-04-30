@@ -14,6 +14,7 @@ import {
   SimpleChanges,
   TemplateRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
@@ -44,6 +45,12 @@ import {
   SortDirection
 } from './index';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoCheckboxModule } from '../go-checkbox/go-checkbox.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoSelectModule } from '../go-select/go-select.module';
 @Component({
     animations: [
         tableRowBorderAnim,
@@ -52,7 +59,7 @@ import {
     selector: 'go-table',
     templateUrl: './go-table.component.html',
     styleUrls: ['./go-table.component.scss'],
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoCheckboxModule, GoIconButtonModule, GoIconModule, GoLoaderModule, GoSelectModule],
 })
 export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
 

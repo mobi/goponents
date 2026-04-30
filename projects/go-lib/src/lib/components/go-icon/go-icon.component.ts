@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'go-icon',
     templateUrl: 'go-icon.component.html',
     styleUrls: ['go-icon.component.scss'],
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoIconComponent implements OnChanges {
   classObject: object = {};

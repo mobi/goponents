@@ -8,7 +8,7 @@ describe('GoOffCanvasSubmitButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoOffCanvasSubmitButtonComponent ]
+      imports: [GoOffCanvasSubmitButtonComponent],
     })
     .compileComponents();
   }));

@@ -10,7 +10,6 @@ import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-n
 @Component({
     selector: 'app-table-title',
     templateUrl: './table-title-template.component.html',
-    standalone: false
 })
 export class TableTitleTemplateComponent {
 

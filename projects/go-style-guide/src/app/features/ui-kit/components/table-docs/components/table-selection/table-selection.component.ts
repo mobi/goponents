@@ -12,7 +12,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-table-selection',
     templateUrl: './table-selection.component.html',
-    standalone: false
 })
 export class TableSelectionComponent {
 

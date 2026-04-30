@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GoCopyCardLinkDirective } from './go-copy-card-link.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
     GoCopyCardLinkDirective
   ],
   exports: [

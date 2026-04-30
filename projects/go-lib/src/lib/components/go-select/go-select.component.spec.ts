@@ -16,8 +16,7 @@ describe("GoSelectComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoSelectComponent],
-      imports: [
+      imports: [GoSelectComponent, 
         CommonModule,
         GoFormErrorsModule,
         GoButtonModule,

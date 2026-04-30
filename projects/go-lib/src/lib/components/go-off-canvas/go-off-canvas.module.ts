@@ -8,13 +8,11 @@ import { GoOffCanvasComponent } from './go-off-canvas.component';
 import { GoOffCanvasDirective } from './go-off-canvas.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
     GoOffCanvasComponent,
     GoOffCanvasDirective,
     GoOffCanvasHeaderComponent,
-    GoOffCanvasSubmitButtonComponent
-  ],
-  imports: [
+    GoOffCanvasSubmitButtonComponent,
     CommonModule,
     GoIconButtonModule,
     GoPortalModule

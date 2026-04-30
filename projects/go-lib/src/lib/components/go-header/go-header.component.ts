@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { GoConfigService } from '../../go-config.service';
@@ -11,11 +12,14 @@ import {
   ThemeColors
 } from '../../go-config.model';
 
+import { RouterModule } from '@angular/router';
+import { GoIconModule} from '../go-icon/go-icon.module';
+import { GoSideNavModule } from '../go-side-nav/go-side-nav.module';
 @Component({
     selector: 'go-header',
     templateUrl: './go-header.component.html',
     styleUrls: ['./go-header.component.scss'],
-    standalone: false
+  imports: [CommonModule, RouterModule, GoSideNavModule, GoIconModule],
 })
 export class GoHeaderComponent implements OnDestroy {
 

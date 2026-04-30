@@ -9,8 +9,8 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
 import { GoSelectComponent } from './go-select.component';
 
 @NgModule({
-  declarations: [GoSelectComponent],
   imports: [
+    GoSelectComponent,
     CommonModule,
     GoButtonModule,
     GoFormErrorsModule,

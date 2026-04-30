@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-portal-docs',
     templateUrl: './portal-docs.component.html',
-    standalone: false
 })
 export class PortalDocsComponent {
   goPortalAttachToExample: string = `

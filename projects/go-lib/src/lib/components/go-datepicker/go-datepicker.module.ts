@@ -12,14 +12,12 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
 import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
-  declarations: [
+  imports: [
     GoCalendarComponent,
     GoCalendarDayViewComponent,
     GoCalendarMonthViewComponent,
     GoCalendarYearViewComponent,
-    GoDatepickerComponent
-  ],
-  imports: [
+    GoDatepickerComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

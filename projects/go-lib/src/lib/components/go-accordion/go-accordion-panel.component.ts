@@ -10,12 +10,14 @@ import {
   Output,
   TemplateRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { accordionAnimation } from '../../animations/accordion.animation';
 import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-accordion-panel',
     templateUrl: './go-accordion-panel.component.html',
@@ -23,7 +25,7 @@ import { GoConfigService } from '../../go-config.service';
     animations: [
         accordionAnimation
     ],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoAccordionPanelComponent implements OnInit, OnChanges, OnDestroy {
   _expanded: boolean = false; // Note: Use _expanded in the template

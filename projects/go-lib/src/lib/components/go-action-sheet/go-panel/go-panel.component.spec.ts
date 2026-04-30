@@ -15,7 +15,7 @@ describe('GoPanelComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoPanelComponent ],
+      imports: [GoPanelComponent],
       providers: [
         { provide: ElementRef, useValue: new ElementRef(MockGoActionSheetComponent) },
         { provide: GoActionSheetComponent, useClass: MockGoActionSheetComponent }

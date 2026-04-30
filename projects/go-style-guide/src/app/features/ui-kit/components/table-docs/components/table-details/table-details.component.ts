@@ -8,7 +8,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-table-details',
     templateUrl: './table-details.component.html',
-    standalone: false
 })
 export class TableDetailsComponent {
   tableDetailsConfig: GoTableConfig = new GoTableConfig({

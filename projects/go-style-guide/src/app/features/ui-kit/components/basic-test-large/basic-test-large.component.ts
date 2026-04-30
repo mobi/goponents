@@ -7,7 +7,6 @@ import { FormControl } from '@angular/forms';
     selector: 'app-basic-test-large',
     templateUrl: './basic-test-large.component.html',
     styleUrls: ['./basic-test-large.component.scss'],
-    standalone: false
 })
 export class BasicTestLargeComponent {
   @ViewChild('submitButton', { static: true }) submitButton: GoButtonComponent;

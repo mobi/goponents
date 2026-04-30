@@ -3,7 +3,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './server-integration.component.html',
-    standalone: false
 })
 export class ServerIntegrationComponent {
   constructor(private subNavService: SubNavService) {

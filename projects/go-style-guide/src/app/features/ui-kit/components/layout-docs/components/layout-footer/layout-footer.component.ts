@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-layout-footer',
     templateUrl: './layout-footer.component.html',
-    standalone: false
 })
 export class LayoutFooterComponent {
   constructor(private subNavService: SubNavService) {

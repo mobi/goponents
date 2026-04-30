@@ -9,8 +9,7 @@ describe('GoPillComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [GoIconModule],
-      declarations: [ GoPillComponent ]
+      imports: [GoPillComponent, GoIconModule],
     })
     .compileComponents();
   }));

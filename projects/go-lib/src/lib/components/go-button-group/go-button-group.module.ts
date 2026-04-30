@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GoButtonGroupComponent } from './go-button-group.component';
 
 @NgModule({
-  declarations: [GoButtonGroupComponent],
   imports: [
+    GoButtonGroupComponent,
     CommonModule
   ],
   exports: [GoButtonGroupComponent]

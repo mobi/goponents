@@ -13,11 +13,7 @@ describe('GoNavGroupComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoNavGroupComponent,
-        GoNavItemComponent
-      ],
-      imports: [
+      imports: [GoNavGroupComponent, GoNavItemComponent, 
         GoIconModule,
         RouterTestingModule
       ],

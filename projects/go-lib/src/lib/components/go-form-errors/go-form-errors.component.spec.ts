@@ -9,8 +9,7 @@ describe('GoFormErrorsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoFormErrorsComponent ],
-      imports: [
+      imports: [GoFormErrorsComponent, 
         FormsModule,
         ReactiveFormsModule
       ]

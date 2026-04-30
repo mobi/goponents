@@ -9,7 +9,7 @@ describe('GoRequiredTextComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoRequiredTextComponent ]
+      imports: [GoRequiredTextComponent],
     })
     .compileComponents();
   }));

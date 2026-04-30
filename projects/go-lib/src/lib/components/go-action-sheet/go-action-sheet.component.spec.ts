@@ -8,7 +8,7 @@ describe('GoActionSheetComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoActionSheetComponent ]
+      imports: [GoActionSheetComponent],
     })
     .compileComponents();
   }));

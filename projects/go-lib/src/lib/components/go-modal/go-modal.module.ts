@@ -7,11 +7,9 @@ import { GoModalDirective } from './go-modal.directive';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 
 @NgModule({
-  declarations: [
-    GoModalComponent,
-    GoModalDirective
-  ],
   imports: [
+    GoModalComponent,
+    GoModalDirective,
     CommonModule,
     GoIconButtonModule
   ],

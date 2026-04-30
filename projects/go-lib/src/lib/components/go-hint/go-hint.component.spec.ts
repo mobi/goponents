@@ -9,8 +9,7 @@ describe('GoHintComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoHintComponent],
-      imports: []
+      imports: [GoHintComponent, ]
     })
     .compileComponents();
   }));

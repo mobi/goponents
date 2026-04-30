@@ -3,7 +3,6 @@ import {Component, OnInit} from '@angular/core';
 @Component({
     selector: 'app-pill-docs',
     templateUrl: './pill-docs.component.html',
-    standalone: false
 })
 export class PillDocsComponent {
   pageTitle: string = 'Filter Pills';

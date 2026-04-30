@@ -1,10 +1,12 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-action-sheet',
     templateUrl: './go-action-sheet.component.html',
     styleUrls: ['./go-action-sheet.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoActionSheetComponent {
   showContent: boolean = false;

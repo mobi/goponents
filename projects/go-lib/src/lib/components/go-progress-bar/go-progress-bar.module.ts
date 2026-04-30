@@ -5,8 +5,8 @@ import { GoProgressBarComponent } from './go-progress-bar.component';
 
 
 @NgModule({
-  declarations: [GoProgressBarComponent],
   imports: [
+    GoProgressBarComponent,
     CommonModule
   ],
   exports: [

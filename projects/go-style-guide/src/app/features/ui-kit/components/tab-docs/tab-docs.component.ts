@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     templateUrl: './tab-docs.component.html',
-    standalone: false
 })
 export class TabDocsComponent {
   componentBindings: string = `

@@ -9,8 +9,8 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
 import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
-  declarations: [GoSwitchToggleComponent],
   imports: [
+    GoSwitchToggleComponent,
     CommonModule,
     FormsModule,
     GoFormErrorsModule,

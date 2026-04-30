@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GoBadgeComponent } from './go-badge.component';
 
 @NgModule({
-  declarations: [GoBadgeComponent],
   imports: [
+    GoBadgeComponent,
     CommonModule
   ],
   exports: [GoBadgeComponent]

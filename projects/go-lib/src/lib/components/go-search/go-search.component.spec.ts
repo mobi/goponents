@@ -15,8 +15,7 @@ describe('GoSearchComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoSearchComponent ],
-      imports: [
+      imports: [GoSearchComponent, 
         CommonModule,
         GoIconModule,
         GoLoaderModule,

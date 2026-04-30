@@ -8,7 +8,6 @@ import { GoToasterService } from '../../../../../../../go-lib/src/public_api';
     selector: 'app-header-bar-docs',
     templateUrl: './header-bar-docs.component.html',
     styleUrls: ['./header-bar-docs.component.scss'],
-    standalone: false
 })
 export class HeaderBarDocsComponent implements OnInit, OnDestroy {
 

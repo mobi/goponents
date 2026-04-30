@@ -8,15 +8,18 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 import { SplitButtonOption } from './go-split-button-option.model';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
 @Component({
     animations: [fadeTemplateAnimation],
     selector: 'go-button',
     templateUrl: './go-button.component.html',
     styleUrls: ['./go-button.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule, GoLoaderModule],
 })
 export class GoButtonComponent implements OnChanges, OnInit {
 

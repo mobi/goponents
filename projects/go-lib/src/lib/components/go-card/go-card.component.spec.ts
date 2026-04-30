@@ -8,7 +8,7 @@ describe('GoCardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoCardComponent ]
+      imports: [GoCardComponent],
     })
     .compileComponents();
   }));

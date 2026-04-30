@@ -8,7 +8,7 @@ describe('GoFooterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoFooterComponent ]
+      imports: [GoFooterComponent],
     })
     .compileComponents();
   }));

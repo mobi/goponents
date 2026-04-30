@@ -10,7 +10,7 @@ describe('GoModalService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GoTestModalComponent],
+      imports: [GoTestModalComponent],
       providers: [GoModalService]
     });
 
@@ -78,6 +78,5 @@ describe('GoModalService', () => {
 @Component({
     selector: 'go-test',
     template: '<div>This is a test modal component</div>',
-    standalone: false
 })
 class GoTestModalComponent {}

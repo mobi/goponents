@@ -6,6 +6,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
   Event,
@@ -22,6 +23,13 @@ import { fadeAnimation, fadeTemplateAnimation } from '../../animations/fade.anim
 import { routerAnimation } from '../../animations/route.animation';
 import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
 
+import { RouterModule } from '@angular/router';
+import { GoHeaderModule  } from '../go-header/go-header.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoModalModule } from '../go-modal/go-modal.module';
+import { GoOffCanvasModule } from '../go-off-canvas/go-off-canvas.module';
+import { GoToasterModule } from '../go-toaster/go-toaster.module';
+import { GoHeaderBarModule } from '../go-header-bar/go-header-bar.module';
 @Component({
     selector: 'go-layout',
     templateUrl: './go-layout.component.html',
@@ -32,7 +40,7 @@ import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
         fadeTemplateAnimation
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+  imports: [CommonModule, RouterModule, GoHeaderModule, GoLoaderModule, GoModalModule, GoOffCanvasModule, GoToasterModule, GoHeaderBarModule],
 })
 export class GoLayoutComponent implements OnInit, OnDestroy {
   private routeScrollPositions: { [url: string]: number }[] = [];

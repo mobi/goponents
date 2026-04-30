@@ -10,7 +10,6 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'app-test-page-2',
     templateUrl: './test-page-2.component.html',
-    standalone: false
 })
 export class TestPage2Component implements OnInit {
 

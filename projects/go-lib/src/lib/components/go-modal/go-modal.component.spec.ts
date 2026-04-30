@@ -14,12 +14,7 @@ describe('GoModalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoModalComponent,
-        GoTestModalHostComponent,
-        GoModalDirective
-      ],
-      imports: [ GoIconButtonModule ],
+      imports: [GoModalComponent, GoTestModalHostComponent, GoModalDirective,  GoIconButtonModule ],
       providers: [ GoModalService ]
     })
     .compileComponents();
@@ -294,7 +289,7 @@ describe('GoModalComponent', () => {
 @Component({
     selector: 'go-test',
     template: '<ng-template go-modal-host></ng-template>',
-    standalone: false
+    imports: [GoModalDirective],
 })
 class GoTestModalHostComponent {
   @ViewChild(GoModalDirective, { static: true }) goModalHost: GoModalDirective;

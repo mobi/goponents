@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-pill-badge-docs',
     templateUrl: './pill-badge-docs.component.html',
-    standalone: false
 })
 export class PillBadgeDocsComponent {
   componentBindings: string = `

@@ -9,15 +9,12 @@ import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoSideNavComponent } from './go-side-nav/go-side-nav.component';
 import { GoNavGroupComponent } from './go-nav-group/go-nav-group.component';
 import { GoNavItemComponent } from './go-nav-item/go-nav-item.component';
-import { GoConfigService } from '../../go-config.service';
 
 @NgModule({
-  declarations: [
+  imports: [
     GoSideNavComponent,
     GoNavGroupComponent,
-    GoNavItemComponent
-  ],
-  imports: [
+    GoNavItemComponent,
     CommonModule,
     GoIconModule,
     GoIconButtonModule,
@@ -28,9 +25,6 @@ import { GoConfigService } from '../../go-config.service';
     GoSideNavComponent,
     GoNavGroupComponent,
     GoNavItemComponent
-  ],
-  providers: [
-    GoConfigService
   ]
 })
 

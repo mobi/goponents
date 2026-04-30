@@ -14,12 +14,7 @@ describe('GoOffCanvasComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoOffCanvasComponent,
-        GoOffCanvasDirective,
-        GoTestOffCanvasHostComponent
-      ],
-      imports: [
+      imports: [GoOffCanvasComponent, GoOffCanvasDirective, GoTestOffCanvasHostComponent, 
         BrowserAnimationsModule,
         GoIconButtonModule
       ],
@@ -145,7 +140,7 @@ describe('GoOffCanvasComponent', () => {
 @Component({
     selector: 'go-test',
     template: '<ng-template go-off-canvas-host></ng-template>',
-    standalone: false
+    imports: [GoOffCanvasDirective],
 })
 class GoTestOffCanvasHostComponent {
   @ViewChild(GoOffCanvasDirective, { static: true }) goOffCanvasHost: GoOffCanvasDirective;

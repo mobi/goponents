@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-action-sheet-panel-docs',
     templateUrl: './action-sheet-panel-docs.component.html',
-    standalone: false
 })
 export class ActionSheetPanelDocsComponent {
 

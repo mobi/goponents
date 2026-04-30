@@ -19,7 +19,7 @@ import { GoConfigService } from '../../go-config.service';
       </go-accordion-panel>
     </go-accordion>
   `,
-    standalone: false
+    imports: [GoAccordionComponent, GoAccordionPanelComponent],
 })
 class GoTestAccordionComponent {}
 
@@ -31,12 +31,7 @@ describe('AccordionComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoAccordionComponent,
-        GoAccordionPanelComponent,
-        GoTestAccordionComponent
-      ],
-      imports: [
+      imports: [GoAccordionComponent, GoAccordionPanelComponent, GoTestAccordionComponent, 
         BrowserAnimationsModule,
         GoIconModule
       ],

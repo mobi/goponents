@@ -12,7 +12,6 @@ import {
 @Component({
     selector: 'app-configuration-docs',
     templateUrl: './configuration-docs.component.html',
-    standalone: false
 })
 export class ConfigurationDocsComponent implements OnInit, OnDestroy {
   pageTitle: string = 'Configuration Service';

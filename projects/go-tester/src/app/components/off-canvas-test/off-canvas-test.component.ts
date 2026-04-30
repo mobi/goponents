@@ -4,7 +4,6 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'off-canvas-test',
     templateUrl: './off-canvas-test.component.html',
-    standalone: false
 })
 export class OffCanvasTestComponent {
   selectControl: FormControl = new FormControl();

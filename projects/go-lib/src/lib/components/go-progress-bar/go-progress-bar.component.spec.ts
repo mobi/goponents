@@ -15,7 +15,7 @@ describe("GoProgressBarComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoProgressBarComponent],
+      imports: [GoProgressBarComponent],
     }).compileComponents();
   }));
 

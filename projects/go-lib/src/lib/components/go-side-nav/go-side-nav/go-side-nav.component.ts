@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -8,13 +9,18 @@ import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from './go-side-nav.service';
 
+import { RouterModule } from '@angular/router';
+import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.module';
+import { GoIconModule } from '../../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
+import { GoNavGroupComponent } from '../go-nav-group/go-nav-group.component';
 @Component({
     selector: 'go-side-nav',
     templateUrl: './go-side-nav.component.html',
     styleUrls: ['./go-side-nav.component.scss'],
     // tslint:disable-next-line: use-component-view-encapsulation
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+  imports: [CommonModule, RouterModule, GoActionSheetModule, GoIconModule, GoIconButtonModule, GoNavGroupComponent],
 })
 export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() menuItems: Array<NavGroup | NavItem>;

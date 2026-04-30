@@ -6,12 +6,13 @@ import { GoPortalTargetDirective } from './go-portal-target.directive';
 
 
 @NgModule({
-  declarations: [GoPortalAttachToDirective, GoPortalTargetDirective],
   exports: [
     GoPortalTargetDirective,
     GoPortalAttachToDirective
   ],
   imports: [
+    GoPortalAttachToDirective,
+    GoPortalTargetDirective,
     CommonModule
   ]
 })

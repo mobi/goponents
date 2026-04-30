@@ -5,7 +5,6 @@ import { GoDatepickerComponent, GoModalService } from '../../../../../../../../.
 
 @Component({
     templateUrl: './datepicker-docs.component.html',
-    standalone: false
 })
 export class DatepickerDocsComponent implements OnInit {
   dob: FormControl = new FormControl('2015-08-15');

@@ -7,6 +7,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoModalOptions } from './go-modal-options';
@@ -14,11 +15,12 @@ import { GoModalDirective } from './go-modal.directive';
 import { GoModalItem } from './go-modal.item';
 import { GoModalService } from './go-modal.service';
 
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 @Component({
     selector: 'go-modal',
     templateUrl: './go-modal.component.html',
     styleUrls: ['./go-modal.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconButtonModule],
 })
 export class GoModalComponent extends GoModalOptions implements OnInit, OnDestroy {
 

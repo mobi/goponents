@@ -15,7 +15,6 @@ import {
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
 })
 export class AppComponent {
   date: Date = new Date();

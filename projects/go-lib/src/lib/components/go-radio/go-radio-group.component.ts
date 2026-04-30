@@ -1,12 +1,17 @@
 import { AfterContentChecked, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { GoFormService } from '../../services/form.service';
 import { GoRadioButtonComponent } from './go-radio-button.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 @Component({
     selector: 'go-radio-group',
     templateUrl: './go-radio-group.component.html',
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoHintModule, GoRequiredTextModule, GoFormErrorsModule],
 })
 export class GoRadioGroupComponent extends GoFormBaseComponent implements AfterContentChecked {
   radioButtonCount: number = 0;

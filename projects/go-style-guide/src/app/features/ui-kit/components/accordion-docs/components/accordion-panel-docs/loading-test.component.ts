@@ -4,7 +4,6 @@ import { GoToasterService } from 'projects/go-lib/src/public_api';
 @Component({
     selector: 'app-loading-test',
     template: '',
-    standalone: false
 })
 export class LoadingTestComponent {
   constructor(private toasterService: GoToasterService) {

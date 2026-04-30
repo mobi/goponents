@@ -8,18 +8,22 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { searchLoaderAnim, searchResultsAnim } from '../../animations/search.animation';
 import { GoSearchService } from './go-search.service';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
 @Component({
     selector: 'go-search',
     templateUrl: './go-search.component.html',
     styleUrls: ['./go-search.component.scss'],
     animations: [searchLoaderAnim, searchResultsAnim],
-    standalone: false
+  imports: [CommonModule, ReactiveFormsModule, GoIconModule, GoLoaderModule],
 })
 export class GoSearchComponent implements OnInit, OnDestroy {
 

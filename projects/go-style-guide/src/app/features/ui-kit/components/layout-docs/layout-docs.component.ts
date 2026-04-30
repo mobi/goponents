@@ -6,7 +6,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-layout-docs',
     templateUrl: './layout-docs.component.html',
-    standalone: false
 })
 export class LayoutDocsComponent {
 

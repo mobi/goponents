@@ -41,8 +41,7 @@ describe('GoLayoutComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [GoLayoutComponent],
-      imports: [
+      imports: [GoLayoutComponent, 
         BrowserAnimationsModule,
         GoHeaderBarModule,
         GoLoaderModule,

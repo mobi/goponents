@@ -12,11 +12,9 @@ import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
-  declarations: [
-    GoTimepickerComponent,
-    GoTimeComponent
-  ],
   imports: [
+    GoTimepickerComponent,
+    GoTimeComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

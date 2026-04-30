@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: 'app-table-details-test',
     templateUrl: './table-details-test.component.html',
-    standalone: false
 })
 export class TableDetailsTestComponent implements OnInit {
   loading: boolean = false;

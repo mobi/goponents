@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-layout-search',
     templateUrl: './layout-search.component.html',
-    standalone: false
 })
 export class LayoutSearchComponent {
 

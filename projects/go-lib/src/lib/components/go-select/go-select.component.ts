@@ -10,16 +10,23 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject, Subscription } from 'rxjs';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { GoButtonModule } from '../go-button/go-button.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'go-select',
     templateUrl: './go-select.component.html',
     styleUrls: ['./go-select.component.scss'],
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgSelectModule, GoButtonModule, GoFormErrorsModule, GoHintModule, GoRequiredTextModule],
 })
 export class GoSelectComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   @ViewChild(NgSelectComponent) ngSelect: NgSelectComponent;

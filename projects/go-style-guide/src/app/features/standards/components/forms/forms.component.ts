@@ -4,7 +4,6 @@ import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-
 
 @Component({
     templateUrl: './forms.component.html',
-    standalone: false
 })
 export class FormsComponent {
   pageTitle: string = 'Forms';

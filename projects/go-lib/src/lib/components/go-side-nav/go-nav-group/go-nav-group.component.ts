@@ -10,6 +10,7 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
@@ -18,13 +19,18 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
 import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 
+import { RouterModule } from '@angular/router';
+import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.module';
+import { GoIconModule } from '../../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
+import { GoNavItemComponent } from '../go-nav-item/go-nav-item.component';
 @Component({
     selector: 'go-nav-group',
     templateUrl: './go-nav-group.component.html',
     styleUrls: ['./go-nav-group.component.scss'],
     // tslint:disable-next-line: use-component-view-encapsulation
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+  imports: [CommonModule, RouterModule, GoActionSheetModule, GoIconModule, GoIconButtonModule, GoNavItemComponent, GoNavGroupComponent],
 })
 export class GoNavGroupComponent implements OnInit, OnDestroy {
   @Input() navItem: NavGroup | NavItem;

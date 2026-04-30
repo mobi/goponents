@@ -6,10 +6,8 @@ import { GoToasterComponent } from './go-toaster.component';
 import { GoToastModule } from '../go-toast/go-toast.module';
 
 @NgModule({
-  declarations: [
-    GoToasterComponent
-  ],
   imports: [
+    GoToasterComponent,
     CommonModule,
     GoToastModule
   ],

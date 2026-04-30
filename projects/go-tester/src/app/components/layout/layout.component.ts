@@ -16,7 +16,6 @@ import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.compo
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
-    standalone: false
 })
 export class LayoutComponent implements OnInit {
 

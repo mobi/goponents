@@ -10,11 +10,20 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { fadeAnimation } from '../../animations/fade.animation';
 import { GoCalendar } from './go-calendar';
 import { DateAdapter } from './date-adapter';
 import { CalendarCell } from './calendar-cell.model';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
+import { GoCalendarDayViewComponent } from './day-view/go-calendar-day-view.component';
+import { GoCalendarYearViewComponent } from './year-view/go-calendar-year-view.component';
+import { GoCalendarMonthViewComponent } from './month-view/go-calendar-month-view.component';
 @Component({
     selector: 'go-calendar',
     styleUrls: ['./go-calendar.component.scss'],
@@ -22,7 +31,7 @@ import { CalendarCell } from './calendar-cell.model';
     animations: [
         fadeAnimation
     ],
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoIconButtonModule, GoHintModule, GoRequiredTextModule, GoFormErrorsModule, GoCalendarDayViewComponent, GoCalendarYearViewComponent, GoCalendarMonthViewComponent],
 })
 export class GoCalendarComponent implements OnDestroy, OnInit, AfterViewChecked {
   canClose: boolean = true;

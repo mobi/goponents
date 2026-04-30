@@ -5,12 +5,14 @@ import {
   OnChanges,
   Output
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-icon-button',
     templateUrl: './go-icon-button.component.html',
     styleUrls: ['./go-icon-button.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoIconButtonComponent implements OnChanges {
 

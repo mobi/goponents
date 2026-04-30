@@ -3,15 +3,17 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoHeaderBarService } from './go-header-bar.service';
 import { GoHeaderBarItem } from './go-header-bar.interface';
 import { Subscription } from 'rxjs';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-header-bar',
     templateUrl: './go-header-bar.component.html',
     styleUrls: ['./go-header-bar.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoHeaderBarComponent implements OnInit, OnDestroy {
 

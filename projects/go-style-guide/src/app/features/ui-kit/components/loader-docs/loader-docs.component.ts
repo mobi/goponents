@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-loader-docs',
     templateUrl: './loader-docs.component.html',
-    standalone: false
 })
 export class LoaderDocsComponent {
 

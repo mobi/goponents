@@ -25,8 +25,7 @@ describe('GoHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoHeaderComponent ],
-      imports: [
+      imports: [GoHeaderComponent, 
         CommonModule,
         GoIconModule,
         RouterModule,

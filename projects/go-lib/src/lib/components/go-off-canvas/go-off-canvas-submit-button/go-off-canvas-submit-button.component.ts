@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
+import { GoPortalModule } from '../../go-portal/go-portal.module';
 @Component({
     selector: 'go-off-canvas-submit-button',
     templateUrl: './go-off-canvas-submit-button.component.html',
     styleUrls: ['./go-off-canvas-submit-button.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconButtonModule, GoPortalModule],
 })
 export class GoOffCanvasSubmitButtonComponent {
   @Input() disabled: boolean = false;

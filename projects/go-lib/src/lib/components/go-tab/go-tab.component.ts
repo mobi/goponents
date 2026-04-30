@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'go-tab',
     templateUrl: './go-tab.component.html',
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoTabComponent {
   private _active: boolean = false;

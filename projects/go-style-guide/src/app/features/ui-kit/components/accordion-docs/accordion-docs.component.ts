@@ -3,7 +3,6 @@ import { NavGroup } from 'projects/go-lib/src/public_api';
 
 @Component({
     templateUrl: './accordion-docs.component.html',
-    standalone: false
 })
 export class AccordionDocsComponent {
 

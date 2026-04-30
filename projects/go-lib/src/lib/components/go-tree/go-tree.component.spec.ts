@@ -9,8 +9,7 @@ describe('GoTreeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoTreeComponent ],
-      imports: [
+      imports: [GoTreeComponent, 
         GoIconModule
       ]
     })

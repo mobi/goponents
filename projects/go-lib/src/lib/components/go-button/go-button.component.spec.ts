@@ -11,8 +11,7 @@ describe('GoButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoButtonComponent ],
-      imports: [
+      imports: [GoButtonComponent, 
         BrowserModule,
         BrowserAnimationsModule,
         GoIconModule,

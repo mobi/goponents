@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-action-sheet-overview',
     templateUrl: './action-sheet-overview.component.html',
-    standalone: false
 })
 export class ActionSheetOverviewComponent {
 

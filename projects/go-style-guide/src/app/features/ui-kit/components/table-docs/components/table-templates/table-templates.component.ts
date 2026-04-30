@@ -6,7 +6,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     templateUrl: './table-templates.component.html',
     styleUrls: ['./table-templates.component.scss'],
-    standalone: false
 })
 export class TableTemplatesComponent {
   constructor(

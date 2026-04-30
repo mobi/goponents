@@ -17,8 +17,7 @@ describe("GoTimepickerComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoTimeComponent, GoTimepickerComponent],
-      imports: [
+      imports: [GoTimeComponent, GoTimepickerComponent, 
         GoFormErrorsModule,
         GoIconButtonModule,
         GoButtonModule,

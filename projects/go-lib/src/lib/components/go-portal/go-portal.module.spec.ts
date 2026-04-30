@@ -8,7 +8,7 @@ import { By } from '@angular/platform-browser';
     <div class="starship">
       <ng-container goPortalTarget="enterprise"></ng-container>
     </div>`,
-    standalone: false
+    imports: [GoPortalModule],
 })
 class TestPortalTargetComponent { }
 
@@ -17,7 +17,7 @@ class TestPortalTargetComponent { }
     template: `
     <span *goPortalAttachTo="'enterprise'" id="kirk">Beam me up, Scotty!</span>
   `,
-    standalone: false
+    imports: [GoPortalModule],
 })
 class TestPortalAttachToComponent { }
 
@@ -27,11 +27,7 @@ describe('GoPortalModule', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestPortalTargetComponent,
-        TestPortalAttachToComponent,
-      ],
-      imports: [
+      imports: [TestPortalTargetComponent, TestPortalAttachToComponent, 
         GoPortalModule,
       ],
     }).compileComponents();

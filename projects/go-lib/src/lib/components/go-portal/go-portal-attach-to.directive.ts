@@ -1,9 +1,9 @@
 import { Directive, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoPortalService } from './go-portal.service';
 
 @Directive({
     selector: '[goPortalAttachTo]',
-    standalone: false
 })
 export class GoPortalAttachToDirective implements OnInit, OnDestroy {
   @Input('goPortalAttachTo') targetName: string;

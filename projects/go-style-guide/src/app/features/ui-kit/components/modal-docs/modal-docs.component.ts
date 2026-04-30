@@ -7,7 +7,6 @@ import { ModalTestComponent } from '../modal-test/modal-test.component';
 @Component({
     selector: 'app-modal-docs',
     templateUrl: './modal-docs.component.html',
-    standalone: false
 })
 export class ModalDocsComponent {
 

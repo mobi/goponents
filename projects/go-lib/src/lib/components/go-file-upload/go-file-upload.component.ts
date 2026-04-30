@@ -1,14 +1,23 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoButtonModule } from '../go-button/go-button.module';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoIconModule } from '../go-icon/go-icon.module';
+import { GoLoaderModule } from '../go-loader/go-loader.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 @Component({
     selector: 'go-file-upload',
     templateUrl: './go-file-upload.component.html',
     styleUrls: ['./go-file-upload.component.scss'],
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoHintModule, GoButtonModule, GoIconButtonModule, GoIconModule, GoLoaderModule, GoRequiredTextModule, GoFormErrorsModule],
 })
 export class GoFileUploadComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
   form: FormGroup;

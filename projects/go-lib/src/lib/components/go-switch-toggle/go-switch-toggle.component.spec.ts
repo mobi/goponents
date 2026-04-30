@@ -11,8 +11,7 @@ describe('GoCheckboxComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoSwitchToggleComponent],
-      imports: [
+      imports: [GoSwitchToggleComponent, 
         FormsModule,
         GoFormErrorsModule,
         GoHintModule,

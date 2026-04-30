@@ -12,10 +12,7 @@ describe('GoCalendarYearViewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoCalendarYearViewComponent
-      ],
-      imports: [
+      imports: [GoCalendarYearViewComponent, 
         GoIconButtonModule,
         FormsModule,
         ReactiveFormsModule

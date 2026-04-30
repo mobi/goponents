@@ -13,12 +13,10 @@ import { GoTableColumnComponent } from './go-table-column.component';
 import { GoTableComponent } from './go-table.component';
 
 @NgModule({
-  declarations: [
+  imports: [
     GoTableChildColumnComponent,
     GoTableColumnComponent,
-    GoTableComponent
-  ],
-  imports: [
+    GoTableComponent,
     CommonModule,
     FormsModule,
     GoCheckboxModule,

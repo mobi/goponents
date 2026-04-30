@@ -6,12 +6,10 @@ import { GoTabGroupComponent } from './go-tab-group.component';
 
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     GoTabComponent,
     GoTabGroupComponent
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     GoTabComponent,

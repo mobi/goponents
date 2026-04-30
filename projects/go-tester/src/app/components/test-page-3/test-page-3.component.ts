@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector: 'app-test-page-3',
     templateUrl: './test-page-3.component.html',
-    standalone: false
 })
 export class TestPage3Component implements OnInit {
   selectData: any = [{

@@ -5,7 +5,6 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'app-switch-toggle-docs',
     templateUrl: './switch-toggle-docs.component.html',
-    standalone: false
 })
 export class SwitchToggleDocsComponent implements OnInit {
 

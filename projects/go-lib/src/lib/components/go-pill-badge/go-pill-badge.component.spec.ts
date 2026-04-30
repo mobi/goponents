@@ -8,7 +8,7 @@ describe("GoPillBadgeComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoPillBadgeComponent],
+      imports: [GoPillBadgeComponent],
     }).compileComponents();
   }));
 

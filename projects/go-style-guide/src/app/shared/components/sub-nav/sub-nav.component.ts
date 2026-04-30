@@ -19,7 +19,6 @@ import { SubNavService } from './sub-nav.service';
     templateUrl: './sub-nav.component.html',
     styleUrls: ['./sub-nav.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
 })
 export class SubNavComponent {
 

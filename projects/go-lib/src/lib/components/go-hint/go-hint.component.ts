@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'go-hint',
     styleUrls: ['./go-hint.component.scss'],
     templateUrl: './go-hint.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoHintComponent implements OnChanges, OnInit {
   hintClasses: object = {};

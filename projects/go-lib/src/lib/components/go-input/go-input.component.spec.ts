@@ -13,8 +13,7 @@ describe("GoInputComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoInputComponent],
-      imports: [
+      imports: [GoInputComponent, 
         FormsModule,
         GoFormErrorsModule,
         GoHintModule,

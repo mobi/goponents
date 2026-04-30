@@ -4,23 +4,17 @@ import { CommonModule } from '@angular/common';
 import { GoAccordionComponent } from './go-accordion.component';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoIconModule } from '../go-icon/go-icon.module';
-import { GoConfigService } from '../../go-config.service';
 
 @NgModule({
-  declarations: [
-    GoAccordionComponent,
-    GoAccordionPanelComponent
-  ],
   imports: [
+    GoAccordionComponent,
+    GoAccordionPanelComponent,
     CommonModule,
     GoIconModule
   ],
   exports: [
     GoAccordionComponent,
     GoAccordionPanelComponent
-  ],
-  providers: [
-    GoConfigService
   ]
 })
 

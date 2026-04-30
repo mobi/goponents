@@ -18,6 +18,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { EditorComponent } from '@tinymce/tinymce-angular';
 import { take } from 'rxjs/operators';
@@ -27,6 +28,11 @@ import { GoConfigInterface } from '../../go-config.model';
 
 export const TINYMCE_SCRIPT_SRC: InjectionToken<string> = new InjectionToken<string>('TINYMCE_SCRIPT_SRC');
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 @Component({
     selector: 'go-editor',
     templateUrl: './go-editor.component.html',
@@ -35,7 +41,7 @@ export const TINYMCE_SCRIPT_SRC: InjectionToken<string> = new InjectionToken<str
             useExisting: forwardRef(() => GoEditorComponent),
             multi: true
         }],
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, EditorModule, GoRequiredTextModule, GoHintModule, GoFormErrorsModule],
 })
 export class GoEditorComponent extends EditorComponent implements OnInit, OnDestroy, OnChanges {
 

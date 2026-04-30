@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoPortalModule } from '../go-portal/go-portal.module';
 @Component({
     selector: 'go-off-canvas-header',
     template: `
@@ -7,6 +10,6 @@ import { Component } from '@angular/core';
       <ng-content></ng-content>
     </ng-template>
   `,
-    standalone: false
+  imports: [CommonModule, GoIconButtonModule, GoPortalModule],
 })
 export class GoOffCanvasHeaderComponent {}

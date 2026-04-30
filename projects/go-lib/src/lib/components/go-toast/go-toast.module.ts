@@ -7,10 +7,8 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoToastComponent } from './go-toast.component';
 
 @NgModule({
-  declarations: [
-    GoToastComponent
-  ],
   imports: [
+    GoToastComponent,
     CommonModule,
     GoIconButtonModule,
     GoIconModule

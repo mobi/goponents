@@ -6,7 +6,6 @@ import { TableDocsService } from '../../table-docs.service';
 @Component({
     selector: 'app-table-column-docs',
     templateUrl: './table-column-docs.component.html',
-    standalone: false
 })
 export class TableColumnDocsComponent {
   constructor(private tableDocsService: TableDocsService, private subNavService: SubNavService) {

@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './form-docs.component.html',
-    standalone: false
 })
 export class FormDocsComponent {
   menuItems: Array<NavGroup> = [

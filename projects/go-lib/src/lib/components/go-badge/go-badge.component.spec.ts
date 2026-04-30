@@ -8,7 +8,7 @@ describe('GoBadgeComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoBadgeComponent ]
+      imports: [GoBadgeComponent],
     })
     .compileComponents();
   }));

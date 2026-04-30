@@ -1,10 +1,11 @@
 import { AfterContentInit, Component, ContentChildren, Input, OnChanges, QueryList } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoButtonComponent } from '../go-button/go-button.component';
 
 @Component({
     selector: 'go-button-group',
     templateUrl: './go-button-group.component.html',
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoButtonGroupComponent implements OnChanges, AfterContentInit {
 

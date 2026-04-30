@@ -1,6 +1,8 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-loader',
     templateUrl: './go-loader.component.html',
@@ -8,7 +10,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
     animations: [
         fadeTemplateAnimation
     ],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoLoaderComponent {
 

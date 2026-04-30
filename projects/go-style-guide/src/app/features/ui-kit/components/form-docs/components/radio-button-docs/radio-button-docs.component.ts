@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-radio-button-docs',
     templateUrl: './radio-button-docs.component.html',
-    standalone: false
 })
 export class RadioButtonDocsComponent {
 

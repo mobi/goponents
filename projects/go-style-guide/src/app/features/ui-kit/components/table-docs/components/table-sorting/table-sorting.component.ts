@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './table-sorting.component.html',
-    standalone: false
 })
 export class TableSortingComponent {
   constructor(

@@ -19,14 +19,7 @@ describe("GoDatepickerComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoCalendarComponent,
-        GoCalendarDayViewComponent,
-        GoCalendarMonthViewComponent,
-        GoCalendarYearViewComponent,
-        GoDatepickerComponent,
-      ],
-      imports: [
+      imports: [GoCalendarComponent, GoCalendarDayViewComponent, GoCalendarMonthViewComponent, GoCalendarYearViewComponent, GoDatepickerComponent, 
         GoFormErrorsModule,
         GoIconButtonModule,
         GoHintModule,

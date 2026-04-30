@@ -27,7 +27,7 @@ import { GoConfigService } from '../../go-config.service';
       <go-table-column field="animal" title="Animal"></go-table-column>
     </go-table>
   `,
-    standalone: false
+    imports: [GoTableComponent, GoTableColumnComponent],
 })
 class GoTestTableComponent {
   tableConfig: GoTableConfig = new GoTableConfig({
@@ -55,8 +55,7 @@ describe('GoTableComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoTableComponent, GoTableColumnComponent, GoTestTableComponent ],
-      imports: [
+      imports: [GoTableComponent, GoTableColumnComponent, GoTestTableComponent, 
         FormsModule,
         GoCheckboxModule,
         GoIconButtonModule,

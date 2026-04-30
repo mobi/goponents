@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     templateUrl: './colors.component.html',
     styleUrls: ['./colors.component.scss'],
-    standalone: false
 })
 export class ColorsComponent {
   pageTitle: string = 'Colors';

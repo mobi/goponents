@@ -13,8 +13,7 @@ describe("GoTextAreaComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoTextAreaComponent],
-      imports: [
+      imports: [GoTextAreaComponent, 
         FormsModule,
         GoFormErrorsModule,
         GoHintModule,

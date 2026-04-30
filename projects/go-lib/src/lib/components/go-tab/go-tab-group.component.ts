@@ -1,11 +1,12 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoTabComponent } from './go-tab.component';
 
 @Component({
     selector: 'go-tab-group',
     styleUrls: ['./go-tab-group.component.scss'],
     templateUrl: './go-tab-group.component.html',
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoTabGroupComponent implements AfterViewInit {
   activeTab: number = 0;

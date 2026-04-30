@@ -6,7 +6,6 @@ type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'neutral' | 'negativ
 @Component({
     selector: 'app-button-group-docs',
     templateUrl: './button-group-docs.component.html',
-    standalone: false
 })
 export class ButtonGroupDocsComponent implements OnInit {
 

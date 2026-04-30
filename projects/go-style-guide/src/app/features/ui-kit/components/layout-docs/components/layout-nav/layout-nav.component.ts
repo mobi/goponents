@@ -5,7 +5,6 @@ import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-n
 @Component({
     selector: 'app-layout-nav',
     templateUrl: './layout-nav.component.html',
-    standalone: false
 })
 export class LayoutNavComponent {
 

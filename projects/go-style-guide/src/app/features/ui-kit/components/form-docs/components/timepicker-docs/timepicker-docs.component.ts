@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './timepicker-docs.component.html',
-    standalone: false
 })
 export class TimepickerDocsComponent implements OnInit {
 

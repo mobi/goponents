@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './text-area-docs.component.html',
-    standalone: false
 })
 export class TextAreaDocsComponent implements OnInit {
   message: FormControl = new FormControl('');

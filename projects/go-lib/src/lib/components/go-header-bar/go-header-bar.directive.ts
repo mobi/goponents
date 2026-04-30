@@ -6,12 +6,13 @@ import {
   Output,
   TemplateRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { GoHeaderBarService } from './go-header-bar.service';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Directive({
     selector: '[goHeaderBar]',
-    standalone: false
 })
 export class GoHeaderBarDirective implements OnChanges {
 

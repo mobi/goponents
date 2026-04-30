@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 import { GoFormService } from '../../services/form.service';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoHintModule } from '../go-hint/go-hint.module';
 @Component({
     selector: 'go-form-errors',
     templateUrl: './go-form-errors.component.html',
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoHintModule],
 })
 export class GoFormErrorsComponent {
 

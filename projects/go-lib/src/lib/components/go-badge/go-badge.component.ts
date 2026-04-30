@@ -1,11 +1,12 @@
 import { Component, ContentChild, HostBinding, Input, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoIconButtonComponent } from '../go-icon-button/go-icon-button.component';
 
 @Component({
     selector: 'go-badge',
     templateUrl: './go-badge.component.html',
     styleUrls: ['./go-badge.component.scss'],
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoBadgeComponent implements OnChanges {
   badgeStyles: object;

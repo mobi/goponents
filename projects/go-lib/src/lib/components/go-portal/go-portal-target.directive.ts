@@ -1,9 +1,9 @@
 import { Directive, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoPortalService } from './go-portal.service';
 
 @Directive({
     selector: '[goPortalTarget]',
-    standalone: false
 })
 export class GoPortalTargetDirective implements OnInit {
   @Input('goPortalTarget') targetName: string;

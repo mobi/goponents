@@ -7,7 +7,6 @@ import { AppService } from '../../app.service';
 @Component({
     selector: 'app-search-test',
     templateUrl: './search-test.component.html',
-    standalone: false
 })
 export class SearchTestComponent implements OnInit, OnDestroy {
 

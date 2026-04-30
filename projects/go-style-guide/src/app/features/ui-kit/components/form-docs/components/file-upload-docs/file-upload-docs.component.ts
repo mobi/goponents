@@ -6,7 +6,6 @@ import { GoFileUploadComponent } from 'projects/go-lib/src/lib/components/go-fil
 @Component({
     selector: 'app-file-upload-docs',
     templateUrl: './file-upload-docs.component.html',
-    standalone: false
 })
 export class FileUploadDocsComponent implements OnInit {
   fileControl: FormControl = new FormControl('');

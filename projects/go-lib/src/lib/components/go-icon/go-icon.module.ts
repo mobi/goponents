@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GoIconComponent } from './go-icon.component';
 
 @NgModule({
-  declarations: [GoIconComponent],
   imports: [
+    GoIconComponent,
     CommonModule
   ],
   exports: [GoIconComponent]

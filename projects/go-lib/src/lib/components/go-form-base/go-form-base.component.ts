@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { GoFormService } from '../../services/form.service';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
     template: '',
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class GoFormBaseComponent {
   /**

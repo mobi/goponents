@@ -8,7 +8,7 @@ import {
   TinyMceConfig
 } from './go-config.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class GoConfigService {
   private _config: GoConfigInterface = {
     brandColor: ThemeColors.brand,

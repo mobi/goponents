@@ -29,7 +29,7 @@ import { By } from "@angular/platform-browser";
       </div>
     </go-radio-group>
   `,
-    standalone: false
+    imports: [GoRadioGroupComponent, GoRadioButtonComponent],
 })
 class GoTestRadioGroupComponent {
   radioControl: FormControl = new FormControl("");
@@ -43,12 +43,7 @@ describe("GoRadioGroupComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoRadioButtonComponent,
-        GoRadioGroupComponent,
-        GoTestRadioGroupComponent,
-      ],
-      imports: [
+      imports: [GoRadioButtonComponent, GoRadioGroupComponent, GoTestRadioGroupComponent, 
         FormsModule,
         GoFormErrorsModule,
         GoHintModule,

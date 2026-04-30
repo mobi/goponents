@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { GoRequiredTextComponent } from './go-required-text.component';
 
 @NgModule({
-  declarations: [GoRequiredTextComponent],
   imports: [
+    GoRequiredTextComponent,
     CommonModule,
     FormsModule
   ],

@@ -6,7 +6,6 @@ import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-
 @Component({
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.scss'],
-    standalone: false
 })
 export class GridComponent {
   pageTitle: string = 'Grid System';

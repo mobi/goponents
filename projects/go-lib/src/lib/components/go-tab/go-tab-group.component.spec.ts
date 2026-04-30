@@ -17,7 +17,7 @@ import { GoTabGroupComponent } from './go-tab-group.component';
       </go-tab>
     </go-tab-group>
   `,
-    standalone: false
+    imports: [GoTabGroupComponent, GoTabComponent],
 })
 class GoTestTabGroupComponent {}
 
@@ -27,12 +27,7 @@ describe('GoTabGroupComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoTabComponent,
-        GoTabGroupComponent,
-        GoTestTabGroupComponent
-      ],
-      imports: [
+      imports: [GoTabComponent, GoTabGroupComponent, GoTestTabGroupComponent, 
         CommonModule
       ]
     })

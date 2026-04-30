@@ -15,8 +15,7 @@ describe('GoHeaderBarComponent', () => {
     goHeaderBarService = new GoHeaderBarService();
 
     TestBed.configureTestingModule({
-      declarations: [GoHeaderBarComponent],
-      imports: [GoIconModule],
+      imports: [GoHeaderBarComponent, GoIconModule],
       providers: [
         { provide: GoHeaderBarService, useValue: goHeaderBarService }
       ]

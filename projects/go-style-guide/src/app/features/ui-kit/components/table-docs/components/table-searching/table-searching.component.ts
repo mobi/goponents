@@ -9,7 +9,6 @@ import { GoTableSearchConfig } from 'projects/go-lib/src/lib/components/go-table
 @Component({
     selector: 'app-table-searching',
     templateUrl: './table-searching.component.html',
-    standalone: false
 })
 export class TableSearchingComponent {
   tableConfig: GoTableConfig = new GoTableConfig({

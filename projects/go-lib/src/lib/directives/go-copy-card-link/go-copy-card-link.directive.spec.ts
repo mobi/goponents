@@ -7,7 +7,6 @@ import { GoIconModule } from '../../components/go-icon/go-icon.module';
 
 @Component({
     template: `<go-copy cardId="testId" goCopyCardLink></go-copy>`,
-    standalone: false
 })
 class TestParentComponent {}
 
@@ -19,10 +18,7 @@ describe('GoCopyCardLinkDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestParentComponent
-      ],
-      imports: [
+      imports: [TestParentComponent, 
         GoCopyModule,
         GoIconModule
       ]

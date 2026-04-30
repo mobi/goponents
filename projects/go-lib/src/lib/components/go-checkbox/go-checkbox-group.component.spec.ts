@@ -34,7 +34,7 @@ import { By } from "@angular/platform-browser";
       </div>
     </go-checkbox-group>
   `,
-    standalone: false
+    imports: [GoCheckboxGroupComponent, GoCheckboxComponent],
 })
 class GoTestCheckboxGroupComponent {
   checkboxForm: FormGroup = new FormGroup({
@@ -51,12 +51,7 @@ describe("GoCheckboxGroupComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoCheckboxGroupComponent,
-        GoCheckboxComponent,
-        GoTestCheckboxGroupComponent,
-      ],
-      imports: [
+      imports: [GoCheckboxGroupComponent, GoCheckboxComponent, GoTestCheckboxGroupComponent, 
         GoFormErrorsModule,
         GoHintModule,
         GoRequiredTextModule,

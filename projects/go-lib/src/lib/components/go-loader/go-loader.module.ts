@@ -6,10 +6,8 @@ import { GoLoaderComponent } from './go-loader.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  declarations: [
-    GoLoaderComponent
-  ],
   imports: [
+    GoLoaderComponent,
     CommonModule,
     GoIconModule
   ],

@@ -5,8 +5,8 @@ import { GoHintModule } from '../go-hint/go-hint.module';
 import { GoFormErrorsComponent } from './go-form-errors.component';
 
 @NgModule({
-  declarations: [GoFormErrorsComponent],
   imports: [
+    GoFormErrorsComponent,
     CommonModule,
     GoHintModule,
     FormsModule,

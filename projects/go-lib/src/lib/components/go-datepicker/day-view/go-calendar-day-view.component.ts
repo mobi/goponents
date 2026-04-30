@@ -1,12 +1,18 @@
 import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { DateAdapter } from '../date-adapter';
 import { CalendarCell, CalendarCellDate } from '../calendar-cell.model';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
+import { GoHintModule } from '../../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../../go-form-errors/go-form-errors.module';
 @Component({
     selector: 'go-calendar-day-view',
     styleUrls: ['../calendar-views.scss'],
     templateUrl: './go-calendar-day-view.component.html',
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoIconButtonModule, GoHintModule, GoRequiredTextModule, GoFormErrorsModule],
 })
 export class GoCalendarDayViewComponent implements OnChanges, OnInit {
   focusedDate: CalendarCellDate;

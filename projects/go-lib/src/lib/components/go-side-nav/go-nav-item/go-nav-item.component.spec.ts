@@ -13,10 +13,7 @@ describe('GoNavItemComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoNavItemComponent
-      ],
-      imports: [
+      imports: [GoNavItemComponent, 
         GoIconModule,
         RouterTestingModule
       ],

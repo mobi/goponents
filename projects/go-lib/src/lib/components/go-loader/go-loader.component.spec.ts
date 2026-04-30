@@ -9,8 +9,7 @@ describe('GoLoaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoLoaderComponent ],
-      imports: [ BrowserAnimationsModule ]
+      imports: [GoLoaderComponent,  BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

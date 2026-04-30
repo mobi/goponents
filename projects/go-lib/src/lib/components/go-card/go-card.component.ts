@@ -1,11 +1,12 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'go-card',
     styleUrls: ['./go-card.component.scss'],
     templateUrl: './go-card.component.html',
-    standalone: false
+  imports: [CommonModule],
 })
 
 export class GoCardComponent {

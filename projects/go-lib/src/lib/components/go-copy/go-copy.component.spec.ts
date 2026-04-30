@@ -9,8 +9,7 @@ describe('goCopyComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoCopyComponent ],
-      imports: [
+      imports: [GoCopyComponent, 
         BrowserAnimationsModule,
         GoIconModule
       ]

@@ -5,7 +5,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-layout-app-drawer',
     templateUrl: './layout-app-drawer.component.html',
-    standalone: false
 })
 export class LayoutAppDrawerComponent {
   interfaceHtml: string = `

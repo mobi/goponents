@@ -4,10 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GoFooterComponent } from './go-footer.component';
 
 @NgModule({
-  declarations: [
-    GoFooterComponent
-  ],
   imports: [
+    GoFooterComponent,
     CommonModule
   ],
   exports: [

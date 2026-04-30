@@ -1,6 +1,8 @@
 import { animate, group, keyframes, state, style, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     animations: [
         trigger('checkMarkFadeInOut', [
@@ -33,7 +35,7 @@ import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/c
     selector: 'go-copy',
     templateUrl: './go-copy.component.html',
     styleUrls: ['./go-copy.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoCopyComponent {
 

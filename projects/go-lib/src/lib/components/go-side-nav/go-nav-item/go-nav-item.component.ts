@@ -8,6 +8,7 @@ import {
   Renderer2,
   ViewChild
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { distinctUntilKeyChanged, takeUntil } from 'rxjs/operators';
 import { GoConfigInterface } from '../../../go-config.model';
@@ -15,11 +16,15 @@ import { GoConfigService } from '../../../go-config.service';
 import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
 import { NavItem } from '../nav-item.model';
 
+import { RouterModule } from '@angular/router';
+import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.module';
+import { GoIconModule } from '../../go-icon/go-icon.module';
+import { GoIconButtonModule } from '../../go-icon-button/go-icon-button.module';
 @Component({
     selector: 'go-nav-item',
     templateUrl: './go-nav-item.component.html',
     styleUrls: ['./go-nav-item.component.scss'],
-    standalone: false
+  imports: [CommonModule, RouterModule, GoActionSheetModule, GoIconModule, GoIconButtonModule],
 })
 export class GoNavItemComponent implements AfterViewInit, OnInit, OnDestroy {
   brandColor: string;

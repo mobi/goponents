@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoActionSheetComponent } from '../go-action-sheet.component';
 
+import { GoIconModule } from '../../go-icon/go-icon.module';
 @Component({
     selector: 'go-panel',
     templateUrl: './go-panel.component.html',
     styleUrls: ['./go-panel.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconModule],
 })
 export class GoPanelComponent {
 

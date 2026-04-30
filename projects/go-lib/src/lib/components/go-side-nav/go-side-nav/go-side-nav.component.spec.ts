@@ -13,7 +13,6 @@ import { Component } from '@angular/core';
 
 @Component({
     template: '',
-    standalone: false
 })
 export class FakeComponent {
 }
@@ -24,13 +23,7 @@ describe('GoSideNavComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        FakeComponent,
-        GoNavGroupComponent,
-        GoNavItemComponent,
-        GoSideNavComponent
-      ],
-      imports: [
+      imports: [FakeComponent, GoNavGroupComponent, GoNavItemComponent, GoSideNavComponent, 
         GoActionSheetModule,
         GoIconModule,
         GoIconButtonModule,

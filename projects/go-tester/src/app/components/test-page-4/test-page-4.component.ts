@@ -5,7 +5,6 @@ import {GoDatepickerComponent} from '../../../../../go-lib/src/lib/components/go
 @Component({
     selector: 'app-test-page-4',
     templateUrl: './test-page-4.component.html',
-    standalone: false
 })
 export class TestPage4Component implements OnInit, AfterViewInit {
   form: FormGroup;

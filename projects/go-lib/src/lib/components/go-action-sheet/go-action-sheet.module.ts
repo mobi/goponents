@@ -5,11 +5,9 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoActionSheetComponent } from './go-action-sheet.component';
 import { GoPanelComponent } from '../go-action-sheet/go-panel/go-panel.component';
 @NgModule({
-  declarations: [
-    GoActionSheetComponent,
-    GoPanelComponent
-  ],
   imports: [
+    GoActionSheetComponent,
+    GoPanelComponent,
     CommonModule,
     GoIconModule
   ],

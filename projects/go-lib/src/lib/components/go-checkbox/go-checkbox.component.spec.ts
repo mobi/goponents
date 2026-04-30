@@ -12,8 +12,7 @@ describe("GoCheckboxComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoCheckboxComponent],
-      imports: [
+      imports: [GoCheckboxComponent, 
         FormsModule,
         ReactiveFormsModule,
         GoFormErrorsModule,

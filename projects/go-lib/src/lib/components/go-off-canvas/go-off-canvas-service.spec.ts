@@ -6,7 +6,6 @@ import { GoOffCanvasService } from './go-off-canvas.service';
 @Component({
     selector: 'go-test',
     template: '<div>This is a test off-canvas component</div>',
-    standalone: false
 })
 class GoTestOffCanvasComponent {}
 
@@ -19,7 +18,7 @@ describe('GoOffCanvasService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GoTestOffCanvasComponent],
+      imports: [GoTestOffCanvasComponent],
       providers: [GoOffCanvasService]
     });
 

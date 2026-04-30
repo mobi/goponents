@@ -4,7 +4,6 @@ import { GoToasterService } from 'projects/go-lib/src/public_api';
 @Component({
     selector: 'app-toast-docs',
     templateUrl: './toast-docs.component.html',
-    standalone: false
 })
 export class ToastDocsComponent {
 

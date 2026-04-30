@@ -16,10 +16,8 @@ import { GoToasterService } from '../go-toaster/go-toaster.service';
 import { GoLayoutComponent } from './go-layout.component';
 
 @NgModule({
-  declarations: [
-    GoLayoutComponent
-  ],
   imports: [
+    GoLayoutComponent,
     // Angular
     CommonModule,
     RouterModule,

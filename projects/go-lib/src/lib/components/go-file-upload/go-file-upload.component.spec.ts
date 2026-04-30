@@ -24,8 +24,7 @@ describe("GoFileUploadComponent", () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoFileUploadComponent],
-      imports: [
+      imports: [GoFileUploadComponent, 
         CommonModule,
         FormsModule,
         GoFormErrorsModule,

@@ -8,7 +8,7 @@ describe('GoIconComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoIconComponent ]
+      imports: [GoIconComponent],
     })
     .compileComponents();
   }));

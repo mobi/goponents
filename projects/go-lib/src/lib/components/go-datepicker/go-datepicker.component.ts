@@ -1,14 +1,21 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GoCalendar } from './go-calendar';
 import { LocaleFormat } from './locale-format';
 import { GoFormService } from '../../services/form.service';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoHintModule } from '../go-hint/go-hint.module';
+import { GoRequiredTextModule } from '../go-required-text/go-required-text.module';
+import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
+import { GoCalendarComponent } from './go-calendar.component';
 @Component({
     selector: 'go-datepicker',
     styleUrls: ['./go-datepicker.component.scss'],
     templateUrl: './go-datepicker.component.html',
-    standalone: false
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoIconButtonModule, GoHintModule, GoRequiredTextModule, GoFormErrorsModule, GoCalendarComponent],
 })
 export class GoDatepickerComponent extends GoFormBaseComponent implements OnDestroy, OnInit {
   displayAbove: boolean = false;

@@ -6,12 +6,15 @@ import {
   Output,
   TemplateRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-toast',
     templateUrl: './go-toast.component.html',
     styleUrls: ['./go-toast.component.scss'],
-    standalone: false
+  imports: [CommonModule, GoIconButtonModule, GoIconModule],
 })
 export class GoToastComponent {
   duration: number;

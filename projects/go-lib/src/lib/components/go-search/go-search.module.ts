@@ -8,8 +8,8 @@ import { GoLoaderModule } from '../go-loader/go-loader.module';
 import { GoSearchComponent } from './go-search.component';
 
 @NgModule({
-  declarations: [GoSearchComponent],
   imports: [
+    GoSearchComponent,
     CommonModule,
     GoIconModule,
     GoLoaderModule,

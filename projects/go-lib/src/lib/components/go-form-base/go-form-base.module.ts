@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoFormBaseComponent } from './go-form-base.component';
 
 @NgModule({
-  declarations: [GoFormBaseComponent],
   imports: [
+    GoFormBaseComponent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule

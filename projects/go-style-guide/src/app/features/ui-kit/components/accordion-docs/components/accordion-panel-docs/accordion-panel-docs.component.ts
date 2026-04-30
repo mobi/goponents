@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-accordion-panel-docs',
     templateUrl: './accordion-panel-docs.component.html',
-    standalone: false
 })
 export class AccordionPanelDocsComponent {
 

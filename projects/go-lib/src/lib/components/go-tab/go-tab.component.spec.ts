@@ -9,10 +9,7 @@ describe('GoTabComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoTabComponent
-      ],
-      imports: [
+      imports: [GoTabComponent, 
         CommonModule
       ]
     })

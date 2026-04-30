@@ -6,8 +6,8 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoLoaderModule } from '../go-loader/go-loader.module';
 
 @NgModule({
-  declarations: [GoButtonComponent],
   imports: [
+    GoButtonComponent,
     CommonModule,
     GoIconModule,
     GoLoaderModule

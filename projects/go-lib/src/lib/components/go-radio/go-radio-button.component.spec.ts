@@ -12,8 +12,7 @@ describe('GoRadioButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GoRadioButtonComponent],
-      imports: [
+      imports: [GoRadioButtonComponent, 
         FormsModule,
         GoFormErrorsModule,
         GoHintModule,

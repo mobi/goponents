@@ -7,6 +7,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { fadeAnimation } from '../../animations/fade.animation';
@@ -16,6 +17,8 @@ import { GoOffCanvasDirective } from './go-off-canvas.directive';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
 import { GoOffCanvasService } from './go-off-canvas.service';
 
+import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
+import { GoPortalModule } from '../go-portal/go-portal.module';
 @Component({
     selector: 'go-off-canvas',
     templateUrl: './go-off-canvas.component.html',
@@ -26,7 +29,7 @@ import { GoOffCanvasService } from './go-off-canvas.service';
         fadeAnimation,
         offCanvasAnimation
     ],
-    standalone: false
+  imports: [CommonModule, GoIconButtonModule, GoPortalModule],
 })
 export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, OnDestroy {
   currentOffCanvasItem: GoOffCanvasItem<any>;

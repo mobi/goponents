@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { GoCardComponent } from './go-card.component';
 
 @NgModule({
-  declarations: [GoCardComponent],
   imports: [
+    GoCardComponent,
     CommonModule
   ],
   exports: [GoCardComponent]

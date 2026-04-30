@@ -6,11 +6,9 @@ import { GoHeaderBarComponent } from './go-header-bar.component';
 import { GoHeaderBarDirective } from './go-header-bar.directive';
 
 @NgModule({
-  declarations: [
-    GoHeaderBarComponent,
-    GoHeaderBarDirective
-  ],
   imports: [
+    GoHeaderBarComponent,
+    GoHeaderBarDirective,
     // Angular
     CommonModule,
     GoIconModule

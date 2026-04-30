@@ -7,7 +7,6 @@ import { BasicTestComponent } from '../basic-test/basic-test.component';
 @Component({
     selector: 'app-off-canvas-docs',
     templateUrl: './off-canvas-docs.component.html',
-    standalone: false
 })
 export class OffCanvasDocsComponent {
   noteMessage: string = `For this example, the component we want to render in the off canvas is "BasicTestComponent",

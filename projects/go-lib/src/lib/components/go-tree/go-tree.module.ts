@@ -5,12 +5,10 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoTreeComponent } from './go-tree.component';
 
 @NgModule({
-  declarations: [
-    GoTreeComponent
-  ],
   imports: [
     CommonModule,
-    GoIconModule
+    GoIconModule,
+    GoTreeComponent
   ],
   exports: [
     GoTreeComponent

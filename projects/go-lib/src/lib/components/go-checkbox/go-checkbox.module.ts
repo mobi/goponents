@@ -9,11 +9,9 @@ import { GoRequiredTextModule } from '../go-required-text/go-required-text.modul
 import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 
 @NgModule({
-  declarations: [
-    GoCheckboxComponent,
-    GoCheckboxGroupComponent
-  ],
   imports: [
+    GoCheckboxComponent,
+    GoCheckboxGroupComponent,
     CommonModule,
     FormsModule,
     GoFormErrorsModule,

@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 @Component({
     selector: 'app-positioned-badge-docs',
     templateUrl: './positioned-badge-docs.component.html',
-    standalone: false
 })
 export class PositionedBadgeDocsComponent {
   componentBindings: string = `

@@ -6,7 +6,6 @@ import { TableDocsService } from '../../table-docs.service';
 @Component({
     selector: 'app-table-filters',
     templateUrl: './table-filters.component.html',
-    standalone: false
 })
 export class TableFiltersComponent {
 

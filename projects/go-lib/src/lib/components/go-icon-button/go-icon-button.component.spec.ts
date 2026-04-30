@@ -9,10 +9,7 @@ describe('GoButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        GoIconButtonComponent
-      ],
-      imports: [
+      imports: [GoIconButtonComponent, 
         GoIconModule
       ]
     })

@@ -4,7 +4,6 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 
 @Component({
     templateUrl: './input-docs.component.html',
-    standalone: false
 })
 export class InputDocsComponent implements OnInit {
   name: FormControl = new FormControl('');

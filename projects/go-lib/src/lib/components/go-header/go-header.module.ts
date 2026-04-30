@@ -10,10 +10,8 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service
 import { GoHeaderComponent } from './go-header.component';
 
 @NgModule({
-  declarations: [
-    GoHeaderComponent
-  ],
   imports: [
+    GoHeaderComponent,
     CommonModule,
     GoIconModule,
     GoSideNavModule,

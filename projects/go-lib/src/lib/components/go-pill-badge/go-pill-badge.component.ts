@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'go-pill-badge',
     templateUrl: './go-pill-badge.component.html',
     styleUrls: ['./go-pill-badge.component.scss'],
-    standalone: false
+  imports: [CommonModule],
 })
 export class GoPillBadgeComponent implements OnChanges {
   badgeStyles: object;

@@ -12,8 +12,7 @@ describe('GoAccordionPanelComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoAccordionPanelComponent ],
-      imports: [
+      imports: [GoAccordionPanelComponent, 
         BrowserAnimationsModule,
         GoIconModule
       ],

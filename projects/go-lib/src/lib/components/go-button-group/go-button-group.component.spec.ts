@@ -9,7 +9,7 @@ describe('GoButtonGroupComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoButtonGroupComponent ]
+      imports: [GoButtonGroupComponent],
     })
     .compileComponents();
   }));
