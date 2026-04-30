@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, ViewChild } from '@angular/core';
 import { TableDocsService } from '../../table-docs.service';
 import {
@@ -10,6 +11,7 @@ import {
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-table-selection',
     templateUrl: './table-selection.component.html',
 })

@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import { NavGroup } from 'projects/go-lib/src/public_api';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     templateUrl: './table-docs.component.html',
 })
 export class TableDocsComponent {

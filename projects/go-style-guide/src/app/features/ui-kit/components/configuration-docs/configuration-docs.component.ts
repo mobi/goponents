@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -10,6 +11,7 @@ import {
 } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-configuration-docs',
     templateUrl: './configuration-docs.component.html',
 })

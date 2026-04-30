@@ -1,8 +1,10 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import {AfterViewInit, Component, ContentChild, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {GoDatepickerComponent} from '../../../../../go-lib/src/lib/components/go-datepicker/go-datepicker.component';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'app-test-page-4',
     templateUrl: './test-page-4.component.html',
 })

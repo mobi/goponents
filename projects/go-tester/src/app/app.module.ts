@@ -55,16 +55,6 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { AppGuard } from './app.guard';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchTestComponent,
-    OffCanvasTestComponent,
-    TestPage1Component,
-    TestPage2Component,
-    TestPage3Component,
-    TestPage4Component,
-    LayoutComponent
-  ],
   imports: [
     AppRoutesModule,
     BrowserAnimationsModule,
@@ -101,7 +91,15 @@ import { AppGuard } from './app.guard';
     GoToastModule,
     ReactiveFormsModule,
     GoPortalModule,
-    GoTimepickerModule
+    GoTimepickerModule,
+    AppComponent,
+    SearchTestComponent,
+    OffCanvasTestComponent,
+    TestPage1Component,
+    TestPage2Component,
+    TestPage3Component,
+    TestPage4Component,
+    LayoutComponent,
   ],
   providers: [
     AppService,

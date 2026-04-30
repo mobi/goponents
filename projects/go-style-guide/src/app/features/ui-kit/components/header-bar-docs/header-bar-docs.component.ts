@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -5,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GoToasterService } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-header-bar-docs',
     templateUrl: './header-bar-docs.component.html',
     styleUrls: ['./header-bar-docs.component.scss'],

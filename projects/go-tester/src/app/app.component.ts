@@ -1,7 +1,9 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component } from '@angular/core';
 import { BrandingMode, GoConfigService, ThemeColors } from '../../../go-lib/src/public_api';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

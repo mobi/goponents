@@ -1,7 +1,9 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-accordion-panel-docs',
     templateUrl: './accordion-panel-docs.component.html',
 })
@@ -71,6 +73,7 @@ export class AccordionPanelDocsComponent {
 
   appLoadingTestExample: string = `
   @Component({
+    imports: [DemoImportsModule],
     selector: 'app-loading-test',
     template: ''
   })

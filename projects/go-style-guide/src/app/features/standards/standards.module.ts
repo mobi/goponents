@@ -20,14 +20,12 @@ import { SharedModule } from '../../shared/shared.module';
     GoSharedModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
-  ],
-  declarations: [
+    SharedModule,
     ColorsComponent,
     FormsComponent,
     GridComponent,
     StandardsComponent,
-    TypographyComponent
+    TypographyComponent,
   ]
 })
 

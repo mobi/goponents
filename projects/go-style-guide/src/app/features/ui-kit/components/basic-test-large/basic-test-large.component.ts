@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, ViewChild } from '@angular/core';
 import { faker } from '@faker-js/faker';
 import { GoButtonComponent, GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 import { FormControl } from '@angular/forms';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-basic-test-large',
     templateUrl: './basic-test-large.component.html',
     styleUrls: ['./basic-test-large.component.scss'],

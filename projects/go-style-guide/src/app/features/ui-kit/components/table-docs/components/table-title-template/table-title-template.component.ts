@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import {
@@ -8,6 +9,7 @@ import { TableDocsService } from '../../table-docs.service';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-table-title',
     templateUrl: './table-title-template.component.html',
 })

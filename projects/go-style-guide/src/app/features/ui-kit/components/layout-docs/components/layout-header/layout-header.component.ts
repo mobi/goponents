@@ -1,7 +1,9 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-layout-header',
     templateUrl: './layout-header.component.html',
 })
@@ -26,8 +28,7 @@ export class LayoutHeaderComponent {
     declarations: [
       AppComponent
     ],
-    imports: [
-      GoHeaderModule,
+    imports: [      GoHeaderModule,
       GoIconButtonModule,
       GoLayoutModule
     ],

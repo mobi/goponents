@@ -1,8 +1,12 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
+import { FormControlDocsComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/form-control-docs/form-control-docs.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     templateUrl: './input-docs.component.html',
 })
 export class InputDocsComponent implements OnInit {

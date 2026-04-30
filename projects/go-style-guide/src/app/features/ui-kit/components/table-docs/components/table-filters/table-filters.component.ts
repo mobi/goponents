@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, OnInit } from '@angular/core';
 import { GoTableConfig } from '../../../../../../../../../go-lib/src/public_api';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 import { TableDocsService } from '../../table-docs.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-table-filters',
     templateUrl: './table-filters.component.html',
 })

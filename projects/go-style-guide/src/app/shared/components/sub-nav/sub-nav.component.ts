@@ -5,12 +5,13 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { routerAnimation } from '../../../app.animations';
 
-import { NavGroup } from '../../../../../../go-lib/src/public_api';
+import { NavGroup, GoButtonModule, GoIconModule } from '../../../../../../go-lib/src/public_api';
 import { SubNavService } from './sub-nav.service';
 
 @Component({
@@ -19,6 +20,7 @@ import { SubNavService } from './sub-nav.service';
     templateUrl: './sub-nav.component.html',
     styleUrls: ['./sub-nav.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    imports: [CommonModule, RouterModule, GoButtonModule, GoIconModule],
 })
 export class SubNavComponent {
 

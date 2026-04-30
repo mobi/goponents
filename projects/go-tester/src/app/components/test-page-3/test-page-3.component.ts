@@ -1,7 +1,9 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'app-test-page-3',
     templateUrl: './test-page-3.component.html',
 })

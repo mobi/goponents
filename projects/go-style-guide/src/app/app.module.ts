@@ -22,9 +22,6 @@ import { provideHighlightOptions } from 'ngx-highlightjs';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
   imports: [
     AppRoutingModule,
     CoreModule,
@@ -38,6 +35,7 @@ import { provideHighlightOptions } from 'ngx-highlightjs';
     GoOffCanvasModule,
     GoSideNavModule,
     GoToasterModule,
+    AppComponent,
   ],
   providers: [
     provideHighlightOptions({

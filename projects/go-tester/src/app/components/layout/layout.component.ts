@@ -1,3 +1,6 @@
+import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.component';
+import { SearchTestComponent } from '../search-test/search-test.component';
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component, OnInit } from '@angular/core';
 import {
   GoConfigService,
@@ -11,9 +14,9 @@ import {
   NavItem,
 } from '../../../../../go-lib/src/public_api';
 import { FormControl } from '@angular/forms';
-import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.component';
 
 @Component({
+    imports: [TesterImportsModule, SearchTestComponent],
     selector: 'app-layout',
     templateUrl: './layout.component.html',
 })

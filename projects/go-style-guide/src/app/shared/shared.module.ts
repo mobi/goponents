@@ -12,15 +12,13 @@ import { SubNavService} from './components/sub-nav/sub-nav.service';
 import { CodeBlockComponent } from './components/code-block/code-block.component';
 
 @NgModule({
-  declarations: [
-    SubNavComponent
-  ],
   imports: [
     CommonModule,
     GoIconModule,
     GoButtonModule,
     RouterModule,
-    CodeBlockComponent
+    CodeBlockComponent,
+    SubNavComponent,
   ],
   exports: [
     SubNavComponent,

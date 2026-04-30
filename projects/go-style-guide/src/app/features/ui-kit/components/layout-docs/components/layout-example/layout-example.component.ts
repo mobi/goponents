@@ -1,8 +1,10 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-layout-example',
     templateUrl: './layout-example.component.html',
 })
@@ -27,8 +29,7 @@ export class LayoutExampleComponent {
     declarations: [
       AppComponent
     ],
-    imports: [
-      GoFooterModule,
+    imports: [      GoFooterModule,
       GoHeaderModule,
       GoIconButtonModule,
       GoLayoutModule,
@@ -94,6 +95,7 @@ export class LayoutExampleComponent {
   import { YourService } from './your.service';
 
   @Component({
+    imports: [DemoImportsModule],
     selector: 'app-search-test',
     templateUrl: './search-test.component.html'
   })

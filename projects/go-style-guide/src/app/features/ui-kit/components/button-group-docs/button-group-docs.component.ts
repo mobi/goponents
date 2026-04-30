@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'neutral' | 'negative';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-button-group-docs',
     templateUrl: './button-group-docs.component.html',
 })

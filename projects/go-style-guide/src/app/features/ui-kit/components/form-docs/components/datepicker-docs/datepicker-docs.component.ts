@@ -1,9 +1,13 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
+import { FormControlDocsComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/form-control-docs/form-control-docs.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 import { GoDatepickerComponent, GoModalService } from '../../../../../../../../../go-lib/src/public_api';
 
 @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     templateUrl: './datepicker-docs.component.html',
 })
 export class DatepickerDocsComponent implements OnInit {
@@ -31,6 +35,8 @@ export class DatepickerDocsComponent implements OnInit {
   import { FormControl } from '@angular/forms';
 
   @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     selector: 'app-name-editor',
     templateUrl: './name-editor.component.html',
     styleUrls: ['./name-editor.component.css']

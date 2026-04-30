@@ -1,3 +1,4 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   GoButtonComponent,
@@ -8,6 +9,7 @@ import {
 import { FormControl } from '@angular/forms';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'app-test-page-2',
     templateUrl: './test-page-2.component.html',
 })

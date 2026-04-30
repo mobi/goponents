@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GoOffCanvasService } from 'projects/go-lib/src/public_api';
 import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
 @Component({
+    imports: [DemoImportsModule],
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.scss'],
 })

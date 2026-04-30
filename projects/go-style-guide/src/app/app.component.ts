@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import {
   Component,
   ViewEncapsulation
@@ -11,6 +12,7 @@ import {
 } from '../../../go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

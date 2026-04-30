@@ -17,11 +17,9 @@ import { GettingStartedComponent } from './components/getting-started/getting-st
     GoCardModule,
     GoCopyCardLinkModule,
     GoCopyModule,
-    SharedModule
-  ],
-  declarations: [
+    SharedModule,
     DashboardComponent,
-    GettingStartedComponent
+    GettingStartedComponent,
   ]
 })
 

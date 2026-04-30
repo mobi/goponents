@@ -1,8 +1,10 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import { GoTreeNodeConfig } from 'projects/go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     templateUrl: './tree-docs.component.html',
 })
 export class TreeDocsComponent {

@@ -1,8 +1,12 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
+import { FormControlDocsComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/form-control-docs/form-control-docs.component';
 import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     selector: 'app-checkbox-docs',
     templateUrl: './checkbox-docs.component.html',
 })
@@ -41,7 +45,7 @@ export class CheckboxDocsComponent {
 
   @NgModule({
     imports: [
-      GoCheckboxModule
+    FormControlDocsComponent,      GoCheckboxModule
     ]
   });
   `;

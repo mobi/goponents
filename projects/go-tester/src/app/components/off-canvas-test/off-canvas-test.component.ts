@@ -1,7 +1,9 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'off-canvas-test',
     templateUrl: './off-canvas-test.component.html',
 })

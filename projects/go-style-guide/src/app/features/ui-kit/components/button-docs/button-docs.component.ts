@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component, ViewChild } from '@angular/core';
 
 import { GoButtonComponent } from '../../../../../../../go-lib/src/public_api';
@@ -5,6 +6,7 @@ import { TitleCasePipe } from '@angular/common';
 import { SplitButtonOption } from 'projects/go-lib/src/lib/components/go-button/go-split-button-option.model';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-button-docs',
     templateUrl: './button-docs.component.html',
 })

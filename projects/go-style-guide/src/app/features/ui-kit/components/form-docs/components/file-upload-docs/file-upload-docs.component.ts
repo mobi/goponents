@@ -1,9 +1,13 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
+import { FormControlDocsComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/form-control-docs/form-control-docs.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 import { GoFileUploadComponent } from 'projects/go-lib/src/lib/components/go-file-upload/go-file-upload.component';
 
 @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     selector: 'app-file-upload-docs',
     templateUrl: './file-upload-docs.component.html',
 })

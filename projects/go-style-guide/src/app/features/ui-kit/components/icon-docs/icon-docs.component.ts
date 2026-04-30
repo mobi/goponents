@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-icon-docs',
     templateUrl: './icon-docs.component.html',
     styleUrls: ['./icon-docs.component.scss'],

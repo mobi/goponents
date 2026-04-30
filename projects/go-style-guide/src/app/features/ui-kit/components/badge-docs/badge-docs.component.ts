@@ -1,7 +1,9 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { NavGroup } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-badge-docs',
     templateUrl: './badge-docs.component.html',
 })

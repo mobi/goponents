@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import { GoModalService } from '../../../../../../../go-lib/src/public_api';
@@ -5,6 +6,7 @@ import { GoModalService } from '../../../../../../../go-lib/src/public_api';
 import { ModalTestComponent } from '../modal-test/modal-test.component';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-modal-docs',
     templateUrl: './modal-docs.component.html',
 })
@@ -27,8 +29,7 @@ export class ModalDocsComponent {
     declarations: [
       AppComponent,
     ],
-    imports: [
-      GoModalModule
+    imports: [      GoModalModule
     ],
     bootstrap: [AppComponent]
   })
@@ -42,8 +43,7 @@ export class ModalDocsComponent {
   import { ModalTestComponent } from './components/modal-test/modal-test.component';
 
   @NgModule({
-    imports: [
-      GoModalModule
+    imports: [      GoModalModule
     ],
     declarations: [
       ModalDocsComponent,

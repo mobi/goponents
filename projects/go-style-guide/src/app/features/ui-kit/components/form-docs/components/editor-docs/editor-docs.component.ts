@@ -1,9 +1,11 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import pkg from '../../../../../../../../../go-lib/package.json';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-editor-docs',
     templateUrl: './editor-docs.component.html',
 })
@@ -55,8 +57,7 @@ export class EditorDocsComponent {
   import { GoEditorModule, TINYMCE_SCRIPT_SRC } from 'goponents';
 
   @NgModule({
-    imports: [
-      CommonModule,
+    imports: [      CommonModule,
       FormsModule,
       GoEditorModule
     ],

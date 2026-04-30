@@ -1,3 +1,4 @@
+import { TesterImportsModule } from 'projects/go-tester/src/app/tester-imports.module';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,6 +12,7 @@ import {
 import { AppService } from '../../app.service';
 
 @Component({
+    imports: [TesterImportsModule],
     selector: 'app-test-page-1',
     templateUrl: './test-page-1.component.html',
 })

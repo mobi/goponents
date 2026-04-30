@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 
 import { GoTableConfig } from 'projects/go-lib/src/public_api';
@@ -5,6 +6,7 @@ import { FakeData, TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+    imports: [DemoImportsModule],
     templateUrl: './table-overview.component.html',
 })
 export class TableOverviewComponent {

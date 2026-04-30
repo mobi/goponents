@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 import { BasicTestLargeComponent } from '../basic-test-large/basic-test-large.component';
@@ -5,6 +6,7 @@ import { BasicTestSubmitButtonComponent } from '../basic-test-submit-button/basi
 import { BasicTestComponent } from '../basic-test/basic-test.component';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-off-canvas-docs',
     templateUrl: './off-canvas-docs.component.html',
 })
@@ -17,8 +19,7 @@ export class OffCanvasDocsComponent {
 
   @NgModule({
     declarations: [AppComponent],
-    imports: [
-      GoOffCanvasModule
+    imports: [      GoOffCanvasModule
     ],
     bootstrap: [AppComponent]
   })
@@ -30,8 +31,7 @@ export class OffCanvasDocsComponent {
   import { BasicTestComponent } from './components/basic-test/basic-test.component';
 
   @NgModule({
-    imports: [
-      GoOffCanvasModule
+    imports: [      GoOffCanvasModule
     ],
     declarations: [
       BasicTestComponent

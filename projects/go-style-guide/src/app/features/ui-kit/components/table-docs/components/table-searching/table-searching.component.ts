@@ -1,3 +1,4 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { TableDocsService } from '../../table-docs.service';
 import {
@@ -7,6 +8,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { GoTableSearchConfig } from 'projects/go-lib/src/lib/components/go-table/go-table-search-config.model';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-table-searching',
     templateUrl: './table-searching.component.html',
 })

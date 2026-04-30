@@ -1,3 +1,5 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
+import { FormControlDocsComponent } from 'projects/go-style-guide/src/app/features/ui-kit/components/form-docs/components/form-control-docs/form-control-docs.component';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { GoModalService, GoSelectComponent } from '../../../../../../../../../go-lib/src/public_api';
@@ -6,6 +8,8 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 import { concat, Observable, of, Subject } from 'rxjs';
 
 @Component({
+    imports: [
+    FormControlDocsComponent,DemoImportsModule],
     templateUrl: './select-docs.component.html',
 })
 export class SelectDocsComponent implements OnInit {

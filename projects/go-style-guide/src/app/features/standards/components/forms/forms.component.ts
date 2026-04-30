@@ -1,8 +1,10 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { GoOffCanvasService } from '../../../../../../../go-lib/src/public_api';
 import { BasicTestComponent } from '../../../ui-kit/components/basic-test/basic-test.component';
 
 @Component({
+    imports: [DemoImportsModule],
     templateUrl: './forms.component.html',
 })
 export class FormsComponent {

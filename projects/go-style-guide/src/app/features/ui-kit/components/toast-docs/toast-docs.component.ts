@@ -1,7 +1,9 @@
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 import { Component } from '@angular/core';
 import { GoToasterService } from 'projects/go-lib/src/public_api';
 
 @Component({
+    imports: [DemoImportsModule],
     selector: 'app-toast-docs',
     templateUrl: './toast-docs.component.html',
 })
@@ -101,8 +103,7 @@ export class ToastDocsComponent {
   import { GoToasterModule } from 'goponents';
 
   NgModule({
-    imports: [
-      GoToasterModule
+    imports: [      GoToasterModule
     ]
   });
   `;
