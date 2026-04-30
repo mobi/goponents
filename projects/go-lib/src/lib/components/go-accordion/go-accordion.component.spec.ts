@@ -72,14 +72,14 @@ describe('AccordionComponent', () => {
 
   describe('ngAfterContentInit', () => {
     beforeEach(() => {
-      panelOne.theme = undefined;
-      panelTwo.theme = undefined;
-      panelOne.slim = undefined;
-      panelTwo.slim = undefined;
-      panelOne.borderless = undefined;
-      panelTwo.borderless = undefined;
-      panelOne.boxShadow = undefined;
-      panelTwo.boxShadow = undefined;
+      panelOne.theme = undefined as any;
+      panelTwo.theme = undefined as any;
+      panelOne.slim = undefined as any;
+      panelTwo.slim = undefined as any;
+      panelOne.borderless = undefined as any;
+      panelTwo.borderless = undefined as any;
+      panelOne.boxShadow = undefined as any;
+      panelTwo.boxShadow = undefined as any;
 
       spyOn(panelOne, 'updateClasses');
       spyOn(panelTwo, 'updateClasses');

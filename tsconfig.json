@@ -1,5 +1,14 @@
 {
   "compileOnSave": false,
+  "files": [],
+  "references": [
+    { "path": "./projects/go-lib/tsconfig.lib.json" },
+    { "path": "./projects/go-lib/tsconfig.spec.json" },
+    { "path": "./projects/go-style-guide/tsconfig.app.json" },
+    { "path": "./projects/go-style-guide/tsconfig.spec.json" },
+    { "path": "./projects/go-tester/tsconfig.app.json" },
+    { "path": "./projects/go-tester/tsconfig.spec.json" }
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "importHelpers": true,
