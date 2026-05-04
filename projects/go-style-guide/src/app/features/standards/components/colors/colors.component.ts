@@ -10,7 +10,7 @@ export class ColorsComponent {
   baseColors: string = `
   $base-primary: #20A65F;
   $base-light: #FFFFFF;
-  $base-light-secondary: $gray-500;
+  $base-light-secondary: #DEE2E6; // $gray-300
   $base-dark: #313536;
   $base-dark-secondary: $gray-900;
   `;

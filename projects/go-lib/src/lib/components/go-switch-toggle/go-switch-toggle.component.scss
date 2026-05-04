@@ -24,7 +24,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
       @include transition(all);
 
       background-color: $theme-light-app-bg;
-      border: 1px solid $base-light-tertiary;
+      border: 1px solid $base-light-secondary;
       border-radius: 1.125rem;
       bottom: 0;
       cursor: pointer;
@@ -48,7 +48,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
 
       &--disabled {
         background-color: $base-light-tertiary;
-        border: 1px solid $base-light-tertiary;
+        border: 1px solid $base-light-secondary;
         cursor: default;
       }
     }

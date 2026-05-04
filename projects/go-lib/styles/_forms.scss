@@ -136,8 +136,8 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &__custom-checkbox {
     background-color: $base-light;
-    border: 1px solid $base-light-tertiary;
-    border-radius: $global-radius;
+    border: 1px solid $base-light-secondary;
+    border-radius: $checkbox-radius; // Checkbox-specific: design standard is 4px, not $global-radius (6px)
     display: inline-block;
     height: .875rem;
     left: 0;
