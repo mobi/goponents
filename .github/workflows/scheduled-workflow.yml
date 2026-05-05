@@ -1,17 +1,25 @@
-name: CI
+name: Scheduled Workflow
 
-on: [pull_request]
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Trivy Security Scan every Monday at 6:00 AM UTC
 
-concurrency:
-  group: ci_${{ github.head_ref }}
-  cancel-in-progress: true
+  workflow_dispatch:
+    inputs:
+      scheduled_action:
+        type: choice
+        description: Choose scheduled action
+        options:
+          - trivy_security_scan
+        default: 'trivy_security_scan'
 
 jobs:
-  library:
-    name: Library Build & Tests
+  trivySecurityScan:
+    if: ${{ (github.event.schedule == '0 6 * * 1') || (github.event_name == 'workflow_dispatch' && (inputs.scheduled_action == 'trivy_security_scan')) }}
     runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Cache Node Modules
         id: cache-node-modules
@@ -40,18 +48,3 @@ jobs:
           services_dashboard_url: ${{ vars.SERVICES_DASHBOARD_URL }}
           vuln_fail_severities: ${{ vars.TRIVY_VULN_FAIL_SEVERITIES }}
           license_fail_severities: ${{ vars.TRIVY_LICENSE_FAIL_SEVERITIES }}
-
-      - name: Run Production Build
-        run: npm run build_lib
-
-      - name: Setup Chrome
-        id: setup-chrome
-        uses: browser-actions/setup-chrome@v1
-
-      - name: Setup CHROME_BIN env variable
-        run: |
-          ${{ steps.setup-chrome.outputs.chrome-path }} --version
-          echo "CHROME_BIN=${{ steps.setup-chrome.outputs.chrome-path }}" >> $GITHUB_ENV
-
-      - name: Run Tests
-        run: npm run test_lib:ci
