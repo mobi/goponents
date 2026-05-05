@@ -1,0 +1,306 @@
+name: 'Trivy Security Scan'
+description: 'Performs comprehensive security scanning using Trivy, including vulnerability detection, license scanning, and SBOM generation. Generates security reports and optionally submits results to a security API.'
+inputs:
+  services_dashboard_url:
+    description: 'Base URL of the services dashboard for API submissions'
+    required: false
+    default: ''
+  vuln_fail_severities:
+    description: 'Comma-separated vulnerability severities to fail on (e.g., CRITICAL,HIGH). Leave empty to skip enforcement.'
+    required: false
+    default: ''
+  license_fail_severities:
+    description: 'Comma-separated license severities to fail on (e.g., CRITICAL,HIGH). Leave empty to skip enforcement.'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Trivy Scanner
+      id: trivy_scanner
+      shell: bash
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/workspace \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          aquasec/trivy:0.69.3 \
+          fs --scanners vuln,license \
+          --exit-code 0 \
+          --format json \
+          --output /workspace/trivy-results.json \
+          --db-repository public.ecr.aws/aquasecurity/trivy-db \
+          --skip-dirs "./node_modules/.cache,./dist,./.git" \
+          --include-dev-deps \
+          /workspace
+
+    - name: Trivy Security CSV Report
+      shell: bash
+      run: |
+        echo "=== Creating Vulnerability CSV Report ==="
+
+        if [ ! -f "trivy-results.json" ]; then
+          echo "❌ Trivy vulnerability results file not found. Skipping CSV creation."
+          exit 0
+        fi
+
+        VULN_CSV_FILE="trivy-vulnerabilities-report.csv"
+        echo "SEVERITY,VULN_ID,PACKAGE,VERSION,FIXED_VERSION,TARGET_FILE,TITLE,DESCRIPTION" > "$VULN_CSV_FILE"
+
+        jq -r '
+          [
+            .Results[]? |
+            select(.Vulnerabilities) |
+            .Target as $target |
+            .Vulnerabilities[] |
+            {
+              severity: .Severity,
+              severity_order: (
+                if .Severity == "CRITICAL" then 1
+                elif .Severity == "HIGH" then 2
+                elif .Severity == "MEDIUM" then 3
+                elif .Severity == "LOW" then 4
+                elif .Severity == "UNKNOWN" then 5
+                else 6 end
+              ),
+              vuln_id: .VulnerabilityID,
+              package: .PkgName,
+              version: (.InstalledVersion // "N/A"),
+              fixed_version: (.FixedVersion // "N/A"),
+              target_file: $target,
+              title: (.Title // "N/A"),
+              description: (.Description // "N/A")
+            }
+          ] |
+          sort_by(.severity_order) |
+          .[] |
+          [.severity, .vuln_id, .package, .version, .fixed_version, .target_file, .title, .description] |
+          @csv
+        ' trivy-results.json >> "$VULN_CSV_FILE"
+
+        if [ -f "$VULN_CSV_FILE" ]; then
+          echo "✅ Vulnerability CSV file created: $VULN_CSV_FILE"
+          TOTAL_ROWS=$(wc -l < "$VULN_CSV_FILE")
+          VULN_ROWS=$((TOTAL_ROWS - 1))
+          echo "Total vulnerabilities in CSV: $VULN_ROWS"
+        fi
+
+        echo "=== Creating License CSV Report ==="
+
+        LICENSE_CSV_FILE="trivy-license-report.csv"
+        echo "SEVERITY,LICENSE,PACKAGE,VERSION,TARGET_FILE,CATEGORY" > "$LICENSE_CSV_FILE"
+
+        jq -r '
+          [
+            .Results[]? |
+            select(.Licenses) |
+            .Target as $target |
+            .Licenses[] |
+            {
+              severity: .Severity,
+              severity_order: (
+                if .Severity == "CRITICAL" then 1
+                elif .Severity == "HIGH" then 2
+                elif .Severity == "MEDIUM" then 3
+                elif .Severity == "LOW" then 4
+                elif .Severity == "UNKNOWN" then 5
+                else 6 end
+              ),
+              license: (.Name // "N/A"),
+              package: .PkgName,
+              version: (.PkgVersion // "N/A"),
+              target_file: $target,
+              category: (.Category // "N/A")
+            }
+          ] |
+          sort_by(.severity_order) |
+          .[] |
+          [.severity, .license, .package, .version, .target_file, .category] |
+          @csv
+        ' trivy-results.json >> "$LICENSE_CSV_FILE"
+
+        if [ -f "$LICENSE_CSV_FILE" ]; then
+          echo "✅ License CSV file created: $LICENSE_CSV_FILE"
+          TOTAL_ROWS=$(wc -l < "$LICENSE_CSV_FILE")
+          LICENSE_ROWS=$((TOTAL_ROWS - 1))
+          echo "Total license issues in CSV: $LICENSE_ROWS"
+        fi
+
+    - name: Upload Trivy CSV Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: trivy-security-report-${{ github.run_number }}
+        path: |
+          trivy-vulnerabilities-report.csv
+          trivy-license-report.csv
+          trivy-results.json
+        retention-days: 30
+
+    - name: Process and Send Trivy Data to API
+      shell: bash
+      env:
+        TRIVY_SECURITY_API_URL: '${{ inputs.services_dashboard_url }}/api/security/trivy'
+      run: |
+        if [ ! -f "trivy-results.json" ]; then
+          echo "Trivy results file not found. Skipping API submission."
+          exit 0
+        fi
+
+        if [ -z "$TRIVY_SECURITY_API_URL" ] || [ "$TRIVY_SECURITY_API_URL" = "/api/security/trivy" ]; then
+          echo "TRIVY_SECURITY_API_URL not configured. Skipping API submission."
+          exit 0
+        fi
+
+        API_HOST=$(echo "$TRIVY_SECURITY_API_URL" | sed -e 's|^[^/]*//||' -e 's|/.*$||')
+        echo "Checking connectivity to API host: $API_HOST"
+
+        CONNECTIVITY_OK=true
+        if ! ping -c 3 -W 5 "$API_HOST" > /dev/null 2>&1; then
+          echo "⚠️  WARNING: Unable to ping $API_HOST - network connectivity issue or host unreachable"
+          echo "::warning title=API Connectivity Issue::Unable to reach $API_HOST - Trivy data submission skipped"
+          CONNECTIVITY_OK=false
+        else
+          echo "✅ Network connectivity to $API_HOST confirmed"
+        fi
+
+        if [ "$CONNECTIVITY_OK" = "true" ]; then
+          SCAN_TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          REPO_NAME="${{ github.repository }}"
+          REPO_NAME_ONLY="${REPO_NAME##*/}"
+          BRANCH_NAME="${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}"
+          COMMIT_SHA="${{ github.sha }}"
+          PR_NUMBER="${{ github.event_name == 'pull_request' && github.event.pull_request.number || '0' }}"
+          SOURCE_PLATFORM="github"
+
+          API_PAYLOAD=$(jq -n \
+            --arg timestamp "$SCAN_TIMESTAMP" \
+            --arg repo "$REPO_NAME_ONLY" \
+            --arg branch "$BRANCH_NAME" \
+            --arg commit "$COMMIT_SHA" \
+            --arg pr "$PR_NUMBER" \
+            --arg source_platform "$SOURCE_PLATFORM" \
+            --slurpfile trivyResults trivy-results.json \
+            '{
+              scan_info: {
+                timestamp: $timestamp,
+                repository: $repo,
+                branch: $branch,
+                commit_sha: $commit,
+                product_id: 15,
+                pull_request: $pr,
+                source_platform: $source_platform
+              },
+              trivyResults: $trivyResults[0]
+            }')
+
+          echo "$API_PAYLOAD" > api_payload.json
+
+          PAYLOAD_SIZE=$(du -h api_payload.json | cut -f1)
+          echo "API payload size: $PAYLOAD_SIZE"
+
+          if ! jq empty api_payload.json 2>/dev/null; then
+            echo "⚠️  WARNING: Generated API payload is not valid JSON!"
+          else
+            echo "✅ API payload JSON validation passed"
+          fi
+
+          echo "Attempting to send Trivy data to: $TRIVY_SECURITY_API_URL"
+
+          set +e
+          rm -f api_response.json curl_error.log
+
+          HTTP_STATUS=$(curl -s -w "%{http_code}" -o api_response.json \
+            -k \
+            --connect-timeout 30 \
+            --max-time 300 \
+            --retry 0 \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: GitHub-Actions-Trivy/1.0" \
+            --data-binary @api_payload.json \
+            "$TRIVY_SECURITY_API_URL" 2>curl_error.log)
+          CURL_EXIT_CODE=$?
+
+          if [ -z "$HTTP_STATUS" ] || ! echo "$HTTP_STATUS" | grep -q '^[0-9]\{3\}$'; then
+            HTTP_STATUS="000"
+          fi
+          set -e
+
+          echo "Curl exit code: $CURL_EXIT_CODE, HTTP Status: $HTTP_STATUS"
+
+          if [ $CURL_EXIT_CODE -ne 0 ]; then
+            echo "⚠️  WARNING: Curl failed with exit code: $CURL_EXIT_CODE"
+            if [ -f "curl_error.log" ] && [ -s "curl_error.log" ]; then
+              cat curl_error.log
+            fi
+            echo "::warning title=Trivy API Submission Failed::Failed to submit Trivy scan results (curl exit code: $CURL_EXIT_CODE, HTTP: $HTTP_STATUS)"
+          elif [ "$HTTP_STATUS" -eq 200 ] || [ "$HTTP_STATUS" -eq 201 ]; then
+            echo "✅ Successfully sent vulnerability data to API (HTTP $HTTP_STATUS)"
+          else
+            echo "⚠️  WARNING: API returned HTTP status $HTTP_STATUS"
+            if [ -f "api_response.json" ]; then
+              cat api_response.json
+            fi
+            echo "::warning title=API Error Response::Trivy API returned HTTP $HTTP_STATUS"
+          fi
+
+          rm -f api_response.json api_payload.json curl_error.log
+        else
+          echo "Skipping API submission - connectivity check failed"
+        fi
+
+    - name: Check Vulnerability Severity Threshold
+      shell: bash
+      env:
+        VULN_FAIL_SEVERITIES: '${{ inputs.vuln_fail_severities }}'
+        LICENSE_FAIL_SEVERITIES: '${{ inputs.license_fail_severities }}'
+      run: |
+        if [ ! -f "trivy-results.json" ]; then
+          echo "Trivy results file not found. Skipping severity check."
+          exit 0
+        fi
+
+        FAILED=false
+
+        # Check vulnerability severities
+        if [ -n "$VULN_FAIL_SEVERITIES" ]; then
+          echo "=== Checking vulnerabilities against severity threshold: $VULN_FAIL_SEVERITIES ==="
+          IFS=',' read -ra VSEV <<< "$VULN_FAIL_SEVERITIES"
+          for sev in "${VSEV[@]}"; do
+            sev=$(echo "$sev" | xargs)  # trim whitespace
+            COUNT=$(jq -r --arg s "$sev" '[.Results[]? | select(.Vulnerabilities) | .Vulnerabilities[] | select(.Severity == $s)] | length' trivy-results.json)
+            if [ "$COUNT" -gt 0 ]; then
+              echo "❌ Found $COUNT $sev vulnerability issue(s)"
+              FAILED=true
+            else
+              echo "✅ No $sev vulnerability issues found"
+            fi
+          done
+        else
+          echo "Vulnerability severity threshold not configured. Skipping check."
+        fi
+
+        # Check license severities
+        if [ -n "$LICENSE_FAIL_SEVERITIES" ]; then
+          echo "=== Checking licenses against severity threshold: $LICENSE_FAIL_SEVERITIES ==="
+          IFS=',' read -ra LSEV <<< "$LICENSE_FAIL_SEVERITIES"
+          for sev in "${LSEV[@]}"; do
+            sev=$(echo "$sev" | xargs)
+            COUNT=$(jq -r --arg s "$sev" '[.Results[]? | select(.Licenses) | .Licenses[] | select(.Severity == $s)] | length' trivy-results.json)
+            if [ "$COUNT" -gt 0 ]; then
+              echo "❌ Found $COUNT $sev license issue(s)"
+              FAILED=true
+            else
+              echo "✅ No $sev license issues found"
+            fi
+          done
+        else
+          echo "License severity threshold not configured. Skipping check."
+        fi
+
+        if [ "$FAILED" = "true" ]; then
+          echo "::error::Trivy scan found issues matching the configured severity thresholds"
+          exit 1
+        fi
+
+        echo "✅ All severity checks passed"
