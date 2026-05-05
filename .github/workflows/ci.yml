@@ -44,5 +44,14 @@ jobs:
       - name: Run Production Build
         run: npm run build_lib
 
+      - name: Setup Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Setup CHROME_BIN env variable
+        run: |
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
+          echo "CHROME_BIN=${{ steps.setup-chrome.outputs.chrome-path }}" >> $GITHUB_ENV
+
       - name: Run Tests
         run: npm run test_lib:ci
