@@ -16,7 +16,7 @@ on:
 jobs:
   trivySecurityScan:
     if: ${{ (github.event.schedule == '0 6 * * 1') || (github.event_name == 'workflow_dispatch' && (inputs.scheduled_action == 'trivy_security_scan')) }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
