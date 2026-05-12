@@ -74,4 +74,40 @@
       }
     }
   }
+
+  // -------------------------------------------------------------------------
+  // Scoped form field overrides — applies only inside the off-canvas panel.
+  // ::ng-deep is required because form content is projected via ng-template
+  // from child components and lives outside this component's shadow boundary.
+  // The parent selector `.go-off-canvas` keeps the scope contained.
+  // -------------------------------------------------------------------------
+  /* stylelint-disable selector-pseudo-element-no-unknown */
+  ::ng-deep {
+
+    // Label spacing: 16px above (top spacing) and 16px below (label → input gap)
+    .go-form__label {
+      padding-bottom: $column-gutter; // 16px — label to input
+      padding-top: $column-gutter;    // 16px — top spacing above each label
+
+      &:first-child {
+        padding-top: 1 rem; // suppress extra top gap for the first label in a group
+      }
+    }
+
+    // Border colour override — dark theme only: #495057
+    // Targets inputs/selects rendered with dark-theme modifier classes.
+    // Light-theme form fields are intentionally left unchanged.
+    .go-form--dark .go-form__input,
+    .go-form--dark .go-form__select,
+    .go-form__input--dark,
+    .go-form__select--dark {
+      border-color: $base-dark-tertiary; // #495057
+    }
+
+    // ng-select dark variant border override: #495057
+    .ng-select.go-select--dark .ng-select-container {
+      border-color: $base-dark-tertiary; // #495057
+    }
+  }
+  /* stylelint-enable selector-pseudo-element-no-unknown */
 }
