@@ -66,7 +66,9 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
         this.opened = value;
         if (this.opened === false) {
           this.destroyComponent();
-          this.resetDefaults();
+          setTimeout(() => {
+            this.resetDefaults();
+          }, 500);
         }
       });
   }
@@ -82,7 +84,7 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
 
   getOffCanvasWidth(): string {
     if (this.screenWidth > 768) {
-      return this.size === 'large' ? '75vw' : '350px';
+      return this.size === 'large' ? '75vw' : '400px';
     } else {
       return '100vw';
     }

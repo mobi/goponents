@@ -18,6 +18,7 @@ import {
 })
 export class AppComponent {
   date: Date = new Date();
+  isDarkTheme: boolean = false;
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
@@ -95,5 +96,10 @@ export class AppComponent {
         baseUrl: '/assets/tinymce'
       }
     });
+  }
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    document.body.classList.toggle('go-dark-theme', this.isDarkTheme);
   }
 }

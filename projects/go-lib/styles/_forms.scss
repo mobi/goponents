@@ -29,6 +29,8 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &--dark &__fieldset,
   &__fieldset--dark {
+    border-color: $theme-dark-border;
+
     &:disabled {
       background: $theme-dark-border;
     }
@@ -208,24 +210,71 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   // Dark Overrides
   // ----------------------------------------------
-  &--dark,
+  &--dark {
+    color: $theme-dark-color;
+  }
+
   &--dark &__input,
   &--dark &__select,
   &__input--dark,
   &__select--dark {
-    background-color: $base-dark;
-    border-color: $base-dark-secondary;
-    color: $theme-dark-color;
+    background-color: $base-dark-secondary;
+    border-color: $base-dark-tertiary;
+    color: $base-light-secondary;
 
     option {
       color: $base-dark-secondary;
     }
 
+    &:hover {
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+    }
+
+    &::placeholder {
+      color: rgba($base-light-secondary, .75);
+      font-weight: $weight-light;
+    }
+
+    &:-ms-input-placeholder {
+      color: rgba($base-light-secondary, .75);
+      font-weight: $weight-light;
+    }
+
     &:disabled {
-      background-color: $input--disabled-background;
+      background-color: $base-dark;
       border-color: $theme-dark-border;
       color: $theme-light-border;
     }
+  }
+
+  // Checkbox Dark Overrides
+  &--dark &__custom-checkbox,
+  &__custom-checkbox--dark {
+    background-color: $base-dark-secondary;
+    border-color: $theme-dark-border;
+  }
+
+  &--dark &__checkbox:hover ~ &__custom-checkbox,
+  &__checkbox--dark:hover ~ &__custom-checkbox--dark {
+    box-shadow: $form-shadow-hover;
+  }
+
+  &--dark &__checkbox:checked ~ &__custom-checkbox,
+  &__checkbox--dark:checked ~ &__custom-checkbox--dark {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+  }
+
+  &--dark &__checkbox:disabled ~ &__custom-checkbox,
+  &__checkbox--dark:disabled ~ &__custom-checkbox--dark {
+    background-color: $base-dark;
+    cursor: not-allowed;
+  }
+
+  &--dark &__checkbox:disabled:checked ~ &__custom-checkbox,
+  &__checkbox--dark:disabled:checked ~ &__custom-checkbox--dark {
+    background-color: $base-dark-tertiary;
+    border-color: $base-dark-tertiary;
   }
 
   // Margin Overrides

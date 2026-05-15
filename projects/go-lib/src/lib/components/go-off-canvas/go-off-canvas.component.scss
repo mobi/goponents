@@ -17,6 +17,7 @@
   @include z-index(off-canvas);
 
   background-color: $theme-dark-bg;
+  border-left: 1px solid $theme-dark-border;
   bottom: 0;
   color: $base-light;
   display: flex;
@@ -24,7 +25,7 @@
   left: 100%;
   position: fixed;
   top: 0;
-  width: 350px;
+  width: 400px;
 
   @media (max-width: $breakpoint-mobile) {
     width: 100vw;
@@ -35,9 +36,10 @@
     align-self: flex-start;
     display: flex;
     flex: 0 0 auto;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: $column-gutter;
     width: 100%;
+    box-sizing: border-box;
   }
 
   &__title {
@@ -50,6 +52,16 @@
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  &__footer {
+    border-top: 1px solid $theme-dark-border;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: .625rem;
+    padding: 1rem $column-gutter;
+    width: 100%;
   }
 
   &--large {
@@ -71,6 +83,11 @@
 
       &__content {
         padding: 1rem;
+      }
+
+      &__footer {
+        background-color: $theme-light-bg;
+        border-top-color: $theme-light-border;
       }
     }
   }

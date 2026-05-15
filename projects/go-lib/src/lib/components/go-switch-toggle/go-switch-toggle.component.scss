@@ -110,5 +110,30 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
     &--disabled {
       color: $base-light-secondary;
     }
+
+    &--dark {
+      color: $theme-dark-color;
+
+      &.go-form__label--disabled {
+        color: $base-dark-tertiary;
+      }
+    }
+  }
+}
+
+// Dark Theme
+.go-form__switch-toggle--dark {
+  .go-form__switch-toggle__toggle {
+    background-color: $base-dark-tertiary;
+    border-color: $theme-dark-border;
+
+    &::before {
+      background-color: $theme-dark-color;
+    }
+
+    &--disabled {
+      background-color: $base-dark;
+      border-color: $theme-dark-border;
+    }
   }
 }
