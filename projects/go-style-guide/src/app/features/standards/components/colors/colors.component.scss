@@ -31,6 +31,17 @@ $colors: (
     $ui-color-neutral-hover,
     $ui-color-neutral-active,
     $ui-color-neutral-gradient
+  ),
+  gray-scale: (
+    $gray-100,
+    $gray-200,
+    $gray-300,
+    $gray-400,
+    $gray-500,
+    $gray-600,
+    $gray-700,
+    $gray-800,
+    $gray-900
   )
 );
 
@@ -67,4 +78,15 @@ $colors: (
 
 .go-color-items__item--dark {
   color: $base-dark;
+}
+
+.go-color-items--compact {
+  .go-color-items__item {
+    height: 80px;
+  }
+}
+
+.go-color-items__item--third {
+  flex-basis: 33.333%;
+  max-width: 33.333%;
 }

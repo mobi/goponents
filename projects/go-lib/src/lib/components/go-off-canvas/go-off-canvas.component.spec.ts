@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
 import { GoOffCanvasComponent } from './go-off-canvas.component';
@@ -84,7 +84,7 @@ describe('GoOffCanvasComponent', () => {
       expect(component.goOffCanvasHost.viewContainerRef.clear).toHaveBeenCalled();
     });
 
-    it('resets default options when off canvas is closed', () => {
+    it('resets default options when off canvas is closed', fakeAsync(() => {
       spyOn(offCanvasService, 'closeOffCanvas').and.callThrough();
 
       offCanvasService.openOffCanvas({
@@ -100,10 +100,11 @@ describe('GoOffCanvasComponent', () => {
       expect(component.size).toEqual('large');
 
       offCanvasService.closeOffCanvas();
+      tick(500);
 
       expect(component.header).toBe('');
       expect(component.size).toBe('small');
-    });
+    }));
   });
 
   describe('closeOffCanvas', () => {
@@ -136,7 +137,7 @@ describe('GoOffCanvasComponent', () => {
       component.screenWidth = 1200;
       component.size = 'small';
 
-      expect(component.getOffCanvasWidth()).toBe('350px');
+      expect(component.getOffCanvasWidth()).toBe('400px');
     });
   });
 

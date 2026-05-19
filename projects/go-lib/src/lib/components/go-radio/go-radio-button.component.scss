@@ -54,3 +54,26 @@
     width: .75rem;
   }
 }
+
+// Dark Theme
+.go-radio--dark {
+  .go-radio__custom-radio {
+    background-color: $base-dark-secondary;
+    border-color: $theme-dark-border;
+  }
+
+  .go-radio__input {
+    &:enabled:checked + .go-radio__custom-radio {
+      background-color: $base-dark-secondary;
+      border: 4px solid $ui-color-primary;
+    }
+
+    &:disabled + .go-radio__custom-radio {
+      background-color: $base-dark;
+    }
+
+    &:disabled:checked + .go-radio__custom-radio {
+      border: 4px solid $base-dark-tertiary;
+    }
+  }
+}

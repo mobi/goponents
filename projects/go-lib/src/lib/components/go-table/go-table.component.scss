@@ -14,6 +14,11 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   &__disable-box-shadow {
     box-shadow: none;
   }
+
+  &--dark {
+    background: $theme-dark-bg;
+    box-shadow: $global-box-shadow--dark-popup;
+  }
 }
 
 .go-table-header {
@@ -51,6 +56,10 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     border-spacing: 0;
     color: $theme-light-color;
     width: 100%;
+
+    &--dark {
+      color: $theme-dark-color;
+    }
   }
 
   &__head-column {
@@ -80,6 +89,10 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
       background: $theme-light-bg;
       position: sticky;
       top: 0;
+
+      &--dark {
+        background: $theme-dark-bg;
+      }
     }
   }
 
@@ -370,5 +383,87 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     font-size: .875rem;
     padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
     text-align: center;
+  }
+
+  &--dark td {
+    border-top-color: $theme-dark-border;
+    color: $theme-dark-color;
+  }
+}
+
+// Dark Theme
+//================
+.go-table--dark {
+  .go-table {
+    &__table {
+      color: $theme-dark-color;
+    }
+
+    &__head-column {
+      box-shadow: inset 0 -2px 0 $theme-dark-border;
+      color: $theme-dark-color;
+
+      &--sticky {
+        background: $theme-dark-bg;
+      }
+    }
+
+    &__head--sortable:hover {
+      background: $theme-dark-bg-hover;
+    }
+
+    &__body-column {
+      border-bottom-color: $theme-dark-border;
+      border-top-color: $theme-dark-border;
+    }
+
+    &__body-row {
+      &:nth-child(even) {
+        background: rgba($theme-dark-bg-hover, .5);
+      }
+
+      &--active-parent {
+        background-color: $theme-dark-bg-hover;
+        border-top-color: $theme-dark-border;
+      }
+    }
+
+    &__search-container {
+      background: $theme-dark-bg;
+      border-color: $theme-dark-border;
+      color: $theme-dark-color;
+
+      &:hover {
+        background: $theme-dark-bg-hover;
+      }
+    }
+
+    &__search-input {
+      color: $theme-dark-color;
+    }
+  }
+
+  .go-table-toolbar {
+    border-top-color: $theme-dark-border;
+    color: $theme-dark-color;
+
+    &__page-numbers {
+      color: $theme-dark-color;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background: $theme-dark-bg-hover;
+      }
+    }
+  }
+
+  .go-table-placeholder td {
+    border-top-color: $theme-dark-border;
+    color: $theme-dark-color;
+  }
+
+  .go-table-loader {
+    background: transparentize($theme-dark-bg-hover, .3);
   }
 }

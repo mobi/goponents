@@ -13,6 +13,12 @@ $breakpoint-header-mobile-small: 500px;
   justify-content: space-between;
   position: relative;
 
+  &--dark {
+    background: $theme-dark-bg;
+    box-shadow: $global-box-shadow--dark-popup;
+    color: $theme-dark-color;
+  }
+
   @media (max-width: $breakpoint-mobile) {
     flex-wrap: wrap;
     height: auto;

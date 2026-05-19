@@ -155,7 +155,18 @@ $form-shadow-neutral: 0 0 0 4px transparentize($ui-color-neutral, .75);
 
 $form-shadow-hover: 0 0 0 4px transparentize($theme-light-app-bg, .2);
 
-//Gray colors 
+// TDS Blue Palette
+$blue-100: #D0E5F1;
+$blue-200: #A1CBE3;
+$blue-300: #73B1D5;
+$blue-400: #4497C7;
+$blue-500: #157DB9;
+$blue-600: #116494;
+$blue-700: #0D4B6F;
+$blue-800: #08324A;
+$blue-900: #041925;
+
+// Gray colors 
 $gray-100: #F8F9FA;
 $gray-200: #E9ECEF;
 $gray-300: #DEE2E6;

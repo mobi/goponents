@@ -9,6 +9,7 @@ import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 export class GoSwitchToggleComponent extends GoFormBaseComponent {
 
   @Input() labelPosition: 'before' | 'after' = 'after';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   toggle(): void {
     if (!this.control.disabled) {
