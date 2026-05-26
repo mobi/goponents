@@ -14,9 +14,8 @@
     <ng-content select="[go-table-filters]"></ng-content>
   </div>
   <div class="go-table__search-container" *ngIf="localTableConfig.searchConfig.searchable">
-    <go-icon icon="search" class="go-table__search-icon"></go-icon>
     <input
-      class="go-table__search-input"
+      class="go-form__input go-table__search-input"
       [placeholder]="localTableConfig.searchConfig.placeholder"
       [formControl]="searchTerm"
     />
@@ -171,7 +170,7 @@
       </tbody>
     </table>
   </div>
-  <div class="go-table-toolbar" *ngIf="showPaging()">
+  <div class="go-table-toolbar" *ngIf="showPaging() && hasData()">
     <div class="go-table-toolbar__page-size">
       <go-select
         class="go-table-toolbar__select"
@@ -222,13 +221,9 @@
     <go-loader></go-loader>
   </div>
   <ng-template #noDataTable>
-    <table class="go-table-placeholder">
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>{{ localTableConfig.noDataText }}</td></tr>
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>&nbsp;</td></tr>
-    </table>
+    <div class="go-table-no-results my-5">
+      <h2 class="go-heading-2">{{ localTableConfig.noDataText }}</h2>
+    </div>
   </ng-template>
 </div>
 
