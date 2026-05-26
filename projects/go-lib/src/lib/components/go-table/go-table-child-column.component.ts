@@ -1,5 +1,5 @@
 import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { extractFieldData } from './go-table-utils';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { GoSelectModule } from '../go-select/go-select.module';
 @Component({
     selector: 'go-table-child-column',
     template: '',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, GoCheckboxModule, GoIconButtonModule, GoIconModule, GoLoaderModule, GoSelectModule],
+  imports: [FormsModule, ReactiveFormsModule, GoCheckboxModule, GoIconButtonModule, GoIconModule, GoLoaderModule, GoSelectModule],
 })
 export class GoTableChildColumnComponent {
 

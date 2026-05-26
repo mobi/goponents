@@ -1,240 +1,259 @@
-<div class="go-table-container" *ngIf="showTable" [ngClass]="{ 'go-table-container__disable-box-shadow': !renderBoxShadows }">
-  <div class="go-table-header">
-    <ng-container *ngIf="tableTitleTemplate; else tableTitleTemplateElse">
-      <ng-container *ngTemplateOutlet="tableTitleTemplate"></ng-container>
-    </ng-container>
-    <ng-template #tableTitleTemplateElse>
-      <h3 class="go-heading-3 go-heading--no-margin go-table-header__title" *ngIf="tableTitle">{{ tableTitle }}</h3>
-    </ng-template>
-    <div class="go-table-header__actions" *ngIf="showTableActions">
-      <ng-content select="[go-table-actions]"></ng-content>
+@if (showTable) {
+  <div class="go-table-container" [ngClass]="{ 'go-table-container__disable-box-shadow': !renderBoxShadows }">
+    <div class="go-table-header">
+      @if (tableTitleTemplate) {
+        <ng-container *ngTemplateOutlet="tableTitleTemplate"></ng-container>
+      } @else {
+        @if (tableTitle) {
+          <h3 class="go-heading-3 go-heading--no-margin go-table-header__title">{{ tableTitle }}</h3>
+        }
+      }
+      @if (showTableActions) {
+        <div class="go-table-header__actions">
+          <ng-content select="[go-table-actions]"></ng-content>
+        </div>
+      }
     </div>
-  </div>
-  <div class="go-table__filter-container">
-    <ng-content select="[go-table-filters]"></ng-content>
-  </div>
-  <div class="go-table__search-container" *ngIf="localTableConfig.searchConfig.searchable">
-    <go-icon icon="search" class="go-table__search-icon"></go-icon>
-    <input
-      class="go-table__search-input"
-      [placeholder]="localTableConfig.searchConfig.placeholder"
-      [formControl]="searchTerm"
-    />
-    <go-icon-button
-      (handleClick)="clearSearch()"
-      buttonIcon="close"
-      class="go-table__search-close-icon"
-      *ngIf="searchTerm.value">
-    </go-icon-button>
-  </div>
-  <div
-    [ngStyle]="{ 'max-height': maxHeight, 'min-height': minHeight }"
-    class="go-table">
-    <table
-      class="go-table__table"
-      *ngIf="hasData(); else noDataTable">
-      <thead class="go-table__head">
-        <tr>
-
-          <!-- Header - Detail Row / Child Row Arrow Column -->
-          <th
-            class="go-table__body-column"
-            *ngIf="details || childRows"
-            width="40">
-          </th>
-
-          <!-- Header - Select All Checkbox Column -->
-          <th
-            [ngClass]="{ 'go-table__head-column--sticky': stickyHeader }"
-            class="go-table__head-column go-table__head-checkbox go-table__head--sortable"
-            *ngIf="localTableConfig.selectable && localTableConfig.selectBy && rowSelectForm"
-            width="60">
-            <go-checkbox
-              class="go-table__select-all-checkbox"
-              [control]="selectAllControl"
-              [indeterminate]="selectAllIndeterminate">
-            </go-checkbox>
-          </th>
-
-          <!-- Header - Columns -->
-          <th *ngFor="let col of columns"
-              class="go-table__head-column"
-              (click)="toggleSort(col.sortable, col.field)"
+    <div class="go-table__filter-container">
+      <ng-content select="[go-table-filters]"></ng-content>
+    </div>
+    @if (localTableConfig.searchConfig.searchable) {
+      <div class="go-table__search-container">
+        <go-icon icon="search" class="go-table__search-icon"></go-icon>
+        <input
+          class="go-table__search-input"
+          [placeholder]="localTableConfig.searchConfig.placeholder"
+          [formControl]="searchTerm"
+          />
+          @if (searchTerm.value) {
+            <go-icon-button
+              (handleClick)="clearSearch()"
+              buttonIcon="close"
+              class="go-table__search-close-icon"
+              >
+            </go-icon-button>
+          }
+        </div>
+      }
+      <div
+        [ngStyle]="{ 'max-height': maxHeight, 'min-height': minHeight }"
+        class="go-table">
+        @if (hasData()) {
+          <table
+            class="go-table__table"
+            >
+            <thead class="go-table__head">
+              <tr>
+                <!-- Header - Detail Row / Child Row Arrow Column -->
+                @if (details || childRows) {
+                  <th
+                    class="go-table__body-column"
+                    width="40">
+                  </th>
+                }
+                <!-- Header - Select All Checkbox Column -->
+                @if (localTableConfig.selectable && localTableConfig.selectBy && rowSelectForm) {
+                  <th
+                    [ngClass]="{ 'go-table__head-column--sticky': stickyHeader }"
+                    class="go-table__head-column go-table__head-checkbox go-table__head--sortable"
+                    width="60">
+                    <go-checkbox
+                      class="go-table__select-all-checkbox"
+                      [control]="selectAllControl"
+                      [indeterminate]="selectAllIndeterminate">
+                    </go-checkbox>
+                  </th>
+                }
+                <!-- Header - Columns -->
+                @for (col of columns; track col) {
+                  <th
+                    class="go-table__head-column"
+                    (click)="toggleSort(col.sortable, col.field)"
               [ngClass]="{
                 'go-table__head-column--sticky': stickyHeader,
                 'go-table__head--sortable': col.sortable !== undefined ? col.sortable : localTableConfig.sortable
               }"
-              [ngStyle]="{ 'min-width': col.width + 'px' }">
-            <div class="go-table__head-content">
-              <ng-container *ngIf="!col.goTableHead; else columnHeaderOutlet">
-                {{ col.title || col.field }}
-              </ng-container>
-              <ng-template #columnHeaderOutlet>
-                <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
-              </ng-template>
-              <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
-            </div>
-          </th>
-
-        </tr>
-      </thead>
-      <tbody class="go-table__body">
-        <ng-container *ngFor="let item of getDisplayData()">
-          <tr
-            class="go-table__body-row"
-            [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item), 'go-table__body-row--active-parent': item.showDetails }">
-
-            <!-- Body - Detail Row / Child Rows Column -->
-            <td
-              class="go-table__body-column go-table__icon-button-column"
-              [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
-              [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
-              width="40"
-              *ngIf="details || childRows">
-              <span
-                [ngStyle]="{ 'border-left-color': brandColor }"
-                [ngClass]="{ 'go-table__body-row--active': item.showDetails }">
-              </span>
-              <go-icon-button
-                class="go-table__details-button"
-                [buttonIcon]="item.showDetails ? 'expand_more' : 'chevron_right'"
-                (handleClick)="toggleDetails(item)"
-                *ngIf="!childRowsKey || item[childRowsKey]">
-              </go-icon-button>
-            </td>
-
-            <!-- Body - Checkbox Column -->
-            <td
-              class="go-table__body-column go-table__body-column--selectable"
-              [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
-              [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
-              *ngIf="localTableConfig.selectable && localTableConfig.selectBy && rowSelectForm"
-              width="60">
-              <go-checkbox
-                [control]="rowSelectForm.get('selection_' + item[localTableConfig.selectBy])">
-              </go-checkbox>
-            </td>
-
-            <!-- Body - Columns -->
-            <td *ngFor="let col of columns"
-                class="go-table__body-column"
+                    [ngStyle]="{ 'min-width': col.width + 'px' }">
+                    <div class="go-table__head-content">
+                      @if (!col.goTableHead) {
+                        {{ col.title || col.field }}
+                      } @else {
+                        <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
+                      }
+                      <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
+                    </div>
+                  </th>
+                }
+              </tr>
+            </thead>
+            <tbody class="go-table__body">
+              @for (item of getDisplayData(); track item) {
+                <tr
+                  class="go-table__body-row"
+                  [ngClass]="{ 'go-table__body-row--selected': isRowSelected(item), 'go-table__body-row--active-parent': item.showDetails }">
+                  <!-- Body - Detail Row / Child Rows Column -->
+                  @if (details || childRows) {
+                    <td
+                      class="go-table__body-column go-table__icon-button-column"
+                      [ngClass]="{ 'go-table__body-row--expanded': item.showDetails }"
+                      [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
+                      width="40"
+                      >
+                      <span
+                        [ngStyle]="{ 'border-left-color': brandColor }"
+                        [ngClass]="{ 'go-table__body-row--active': item.showDetails }">
+                      </span>
+                      @if (!childRowsKey || item[childRowsKey]) {
+                        <go-icon-button
+                          class="go-table__details-button"
+                          [buttonIcon]="item.showDetails ? 'expand_more' : 'chevron_right'"
+                          (handleClick)="toggleDetails(item)"
+                          >
+                        </go-icon-button>
+                      }
+                    </td>
+                  }
+                  <!-- Body - Checkbox Column -->
+                  @if (localTableConfig.selectable && localTableConfig.selectBy && rowSelectForm) {
+                    <td
+                      class="go-table__body-column go-table__body-column--selectable"
+                      [ngClass]="{'go-table__body-row--expanded': item.showDetails}"
+                      [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'"
+                      width="60">
+                      <go-checkbox
+                        [control]="rowSelectForm.get('selection_' + item[localTableConfig.selectBy])">
+                      </go-checkbox>
+                    </td>
+                  }
+                  <!-- Body - Columns -->
+                  @for (col of columns; track col) {
+                    <td
+                      class="go-table__body-column"
                 [ngClass]="{
                   'go-table__body-row--expanded': item.showDetails,
                   'go-table__body-column--no-wrap': col.wrapContent === null ? !wrapContent : !col.wrapContent
                 }"
-                [ngStyle]="{ 'vertical-align': col.alignment, 'min-width': col.width + 'px' }"
-                [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'">
-              <ng-container *ngIf="!col.goTableCell; else columnCellOutlet">
-                {{ col.getFieldData(item) }}
-              </ng-container>
-              <ng-template #columnCellOutlet>
-                <ng-container *ngTemplateOutlet="col.goTableCell; context: { $implicit: item }"></ng-container>
-              </ng-template>
-            </td>
-          </tr>
-
-          <!-- Body - Child Rows Template -->
-          <ng-container *ngIf="childRows && item.showDetails">
-            <tr *ngFor="let childItem of item[childRowsKey]">
-              <td class="go-table__body-column">
-                <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
-              </td>
-              <td
-                *ngIf="localTableConfig.selectable"
-                class="go-table__body-column"
-                width="60">
-              </td>
-              <td
-                *ngFor="let col of childRowColumns"
-                class="go-table__body-column"
-                [ngStyle]="{ 'vertical-align': col.alignment }">
-                <ng-container *ngIf="!col.goTableCell; else childColumnCellOutlet">
-                  {{ col.getFieldData(childItem) }}
-                </ng-container>
-                <ng-template #childColumnCellOutlet>
-                  <ng-container *ngTemplateOutlet="col.goTableCell context: { $implicit: childItem, parentItem: item }">
-                  </ng-container>
-                </ng-template>
-              </td>
-            </tr>
-          </ng-container>
-
-          <!-- Body - Detail Row Template -->
-          <tr class="go-table__body-row" *ngIf="details && item.showDetails">
-            <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
-              <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
-              <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
-            </td>
-          </tr>
-
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
-  <div class="go-table-toolbar" *ngIf="showPaging()">
-    <div class="go-table-toolbar__page-size">
-      <go-select
-        class="go-table-toolbar__select"
-        [clearable]="false"
-        [control]="pageSizeControl"
-        [items]="localTableConfig.pageConfig.pageSizes"
-        [searchable]="false">
-      </go-select>
-      <label class="go-table-toolbar__label">Page Size</label>
+                      [ngStyle]="{ 'vertical-align': col.alignment, 'min-width': col.width + 'px' }"
+                      [@tableRowBorderAnim]="item.showDetails ? 'open' : 'close'">
+                      @if (!col.goTableCell) {
+                        {{ col.getFieldData(item) }}
+                      } @else {
+                        <ng-container *ngTemplateOutlet="col.goTableCell; context: { $implicit: item }"></ng-container>
+                      }
+                    </td>
+                  }
+                </tr>
+                <!-- Body - Child Rows Template -->
+                @if (childRows && item.showDetails) {
+                  @for (childItem of item[childRowsKey]; track childItem) {
+                    <tr>
+                      <td class="go-table__body-column">
+                        <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
+                      </td>
+                      @if (localTableConfig.selectable) {
+                        <td
+                          class="go-table__body-column"
+                          width="60">
+                        </td>
+                      }
+                      @for (col of childRowColumns; track col) {
+                        <td
+                          class="go-table__body-column"
+                          [ngStyle]="{ 'vertical-align': col.alignment }">
+                          @if (!col.goTableCell) {
+                            {{ col.getFieldData(childItem) }}
+                          } @else {
+                            <ng-container *ngTemplateOutlet="col.goTableCell context: { $implicit: childItem, parentItem: item }">
+                            </ng-container>
+                          }
+                        </td>
+                      }
+                    </tr>
+                  }
+                }
+                <!-- Body - Detail Row Template -->
+                @if (details && item.showDetails) {
+                  <tr class="go-table__body-row">
+                    <td [attr.colspan]="columns.length + 1" [ngClass]="{ 'go-table__body-column': item.showDetails }">
+                      <ng-container *ngTemplateOutlet="activeRowIndicator"></ng-container>
+                      <ng-content *ngTemplateOutlet="details; context: { $implicit: item }"></ng-content>
+                    </td>
+                  </tr>
+                }
+              }
+            </tbody>
+          </table>
+        } @else {
+          <table class="go-table-placeholder">
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>{{ localTableConfig.noDataText }}</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+          </table>
+        }
+      </div>
+      @if (showPaging()) {
+        <div class="go-table-toolbar">
+          <div class="go-table-toolbar__page-size">
+            <go-select
+              class="go-table-toolbar__select"
+              [clearable]="false"
+              [control]="pageSizeControl"
+              [items]="localTableConfig.pageConfig.pageSizes"
+              [searchable]="false">
+            </go-select>
+            <label class="go-table-toolbar__label">Page Size</label>
+          </div>
+          <div class="go-table-toolbar__label">
+            {{ outputResultsPerPage() }} /
+            {{ localTableConfig.totalCount | number : '1.0-0' }} Results
+          </div>
+          <div class="go-table-toolbar__page-controls">
+            <go-icon-button
+              (handleClick)="setFirstPage()"
+              [buttonDisabled]="isFirstPage()"
+              buttonIcon="first_page">
+            </go-icon-button>
+            <go-icon-button
+              (handleClick)="prevPage()"
+              [buttonDisabled]="isFirstPage()"
+              buttonIcon="chevron_left">
+            </go-icon-button>
+            @for (page of pages; track page) {
+              <button class="go-table-toolbar__page-numbers"
+                type="button"
+                (click)="setPageByPageNumber(page.number)"
+                [ngClass]="{ 'go-table-toolbar__page-numbers--active': page.active }">
+                {{page.number}}
+              </button>
+            }
+            <go-icon-button
+              (handleClick)="nextPage()"
+              [buttonDisabled]="isLastPage()"
+              buttonIcon="chevron_right">
+            </go-icon-button>
+            <go-icon-button
+              (handleClick)="setLastPage()"
+              [buttonDisabled]="isLastPage()"
+              buttonIcon="last_page">
+            </go-icon-button>
+          </div>
+        </div>
+      }
+      @if (loadingData) {
+        <div class="go-table-loader"
+          @fadeTemplate
+          >
+          <go-loader></go-loader>
+        </div>
+      }
     </div>
-    <div class="go-table-toolbar__label">
-      {{ outputResultsPerPage() }} /
-      {{ localTableConfig.totalCount | number : '1.0-0' }} Results
-    </div>
-    <div class="go-table-toolbar__page-controls">
-      <go-icon-button
-        (handleClick)="setFirstPage()"
-        [buttonDisabled]="isFirstPage()"
-        buttonIcon="first_page">
-      </go-icon-button>
-      <go-icon-button
-        (handleClick)="prevPage()"
-        [buttonDisabled]="isFirstPage()"
-        buttonIcon="chevron_left">
-      </go-icon-button>
-      <button class="go-table-toolbar__page-numbers"
-              type="button"
-              *ngFor="let page of pages"
-              (click)="setPageByPageNumber(page.number)"
-              [ngClass]="{ 'go-table-toolbar__page-numbers--active': page.active }">
-        {{page.number}}
-      </button>
-      <go-icon-button
-        (handleClick)="nextPage()"
-        [buttonDisabled]="isLastPage()"
-        buttonIcon="chevron_right">
-      </go-icon-button>
-      <go-icon-button
-        (handleClick)="setLastPage()"
-        [buttonDisabled]="isLastPage()"
-        buttonIcon="last_page">
-      </go-icon-button>
-    </div>
-  </div>
-  <div class="go-table-loader"
-       @fadeTemplate
-       *ngIf="loadingData">
-    <go-loader></go-loader>
-  </div>
-  <ng-template #noDataTable>
-    <table class="go-table-placeholder">
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>{{ localTableConfig.noDataText }}</td></tr>
-      <tr><td>&nbsp;</td></tr>
-      <tr><td>&nbsp;</td></tr>
-    </table>
+  }
+
+  <ng-template #activeRowIndicator>
+    <span
+      class="go-table__child-row-indicator"
+      [ngStyle]="{ 'border-left-color': brandColor }">
+    </span>
   </ng-template>
-</div>
-
-<ng-template #activeRowIndicator>
-  <span
-    class="go-table__child-row-indicator"
-    [ngStyle]="{ 'border-left-color': brandColor }">
-  </span>
-</ng-template>

@@ -22,7 +22,7 @@ describe('GoOffCanvasService', () => {
       providers: [GoOffCanvasService]
     });
 
-    service = TestBed.get(GoOffCanvasService);
+    service = TestBed.inject(GoOffCanvasService);
   });
 
   it('should create', () => {

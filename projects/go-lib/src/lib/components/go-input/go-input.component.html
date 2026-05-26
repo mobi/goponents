@@ -1,11 +1,13 @@
 <div class="go-input-container">
-  <label *ngIf="label"
-         class="go-form__label"
-         [attr.for]="_id"
-         [ngClass]="{'go-form__label--dark': theme === 'dark'}">
-    {{ label }}
-    <go-required-text [control]="control"></go-required-text>
-  </label>
+  @if (label) {
+    <label
+      class="go-form__label"
+      [attr.for]="_id"
+      [ngClass]="{'go-form__label--dark': theme === 'dark'}">
+      {{ label }}
+      <go-required-text [control]="control"></go-required-text>
+    </label>
+  }
   <input
     class="go-form__input"
     [id]="_id"
@@ -15,14 +17,17 @@
     [formControl]="control"
     [maxlength]="maxlength"
     [minlength]="minlength"
-  />
+    />
 
-  <go-hint
-    *ngFor="let hint of hints"
-    [message]="hint"
-    [theme]="theme"
-  ></go-hint>
-  <div *ngIf="!hideFieldError">
-    <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+    @for (hint of hints; track hint) {
+      <go-hint
+        [message]="hint"
+        [theme]="theme"
+      ></go-hint>
+    }
+    @if (!hideFieldError) {
+      <div>
+        <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+      </div>
+    }
   </div>
-</div>

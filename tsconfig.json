@@ -16,7 +16,7 @@
     "sourceMap": true,
     "declaration": false,
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,

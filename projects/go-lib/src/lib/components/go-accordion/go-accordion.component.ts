@@ -7,7 +7,7 @@ import {
   OnInit,
   QueryList
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
@@ -16,7 +16,7 @@ import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
     selector: 'go-accordion',
     template: '<ng-content></ng-content>',
-  imports: [CommonModule, GoIconModule],
+  imports: [GoIconModule],
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy {
   @Input() borderless: boolean = false;

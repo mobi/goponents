@@ -2,7 +2,7 @@
   [attr.for]="_id"
   class="go-form__label"
   [ngClass]="{ 'go-form__label--dark': theme == 'dark' }"
->
+  >
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
@@ -20,28 +20,33 @@
     [disabled]="control.disabled"
     (input)="onInputCloseCalendar()"
     (click)="toggleDatepicker($event)"
-  />
-  <go-icon-button
-    class="go-datepicker__toggle"
-    [buttonDisabled]="control.disabled"
-    buttonIcon="today"
-    (click)="toggleDatepicker($event)"
-  ></go-icon-button>
-  <go-calendar
-    *ngIf="goCalendar.isOpen"
-    [appendToContent]="appendToContent"
-    [appendTo]="appendTo"
-    (datePicked)="datePicked($event)"
-    [maxDate]="max"
-    [minDate]="min"
-    [locale]="locale"
-    [displayFromRight]="displayFromRight"
-    [displayAbove]="displayAbove"
-    [calendar]="goCalendar"
-  ></go-calendar>
-</div>
+    />
+    <go-icon-button
+      class="go-datepicker__toggle"
+      [buttonDisabled]="control.disabled"
+      buttonIcon="today"
+      (click)="toggleDatepicker($event)"
+    ></go-icon-button>
+    @if (goCalendar.isOpen) {
+      <go-calendar
+        [appendToContent]="appendToContent"
+        [appendTo]="appendTo"
+        (datePicked)="datePicked($event)"
+        [maxDate]="max"
+        [minDate]="min"
+        [locale]="locale"
+        [displayFromRight]="displayFromRight"
+        [displayAbove]="displayAbove"
+        [calendar]="goCalendar"
+      ></go-calendar>
+    }
+  </div>
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-<div *ngIf="!hideFieldError">
-  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
-</div>
+  @for (hint of hints; track hint) {
+    <go-hint [message]="hint" [theme]="theme"></go-hint>
+  }
+  @if (!hideFieldError) {
+    <div>
+      <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+    </div>
+  }

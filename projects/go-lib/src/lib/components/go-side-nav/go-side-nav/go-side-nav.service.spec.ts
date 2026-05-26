@@ -32,7 +32,7 @@ describe('GoSideNavService', () => {
       ]
     });
 
-    service = TestBed.get(GoSideNavService);
+    service = TestBed.inject(GoSideNavService);
   });
 
   it('should create', () => {
