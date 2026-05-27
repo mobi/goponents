@@ -349,12 +349,8 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   text-align: center;
   padding: 2rem 1rem;
 
-  h2 {
+  .go-heading-2 {
     color: $theme-light-color;
-  }
-
-  &--dark h2 {
-    color: $theme-dark-color;
   }
 }
 
@@ -395,10 +391,6 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
       }
     }
 
-    &__search-container {
-      // Container has no custom styling — relies on go-form__input
-    }
-
     &__search-input {
       background-color: $base-dark-secondary;
       border-color: $base-dark-tertiary;
@@ -425,7 +417,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     }
   }
 
-  .go-table-no-results h2 {
+  .go-table-no-results .go-heading-2 {
     color: $theme-dark-color;
   }
 

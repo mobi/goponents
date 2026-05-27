@@ -170,7 +170,7 @@
       </tbody>
     </table>
   </div>
-  <div class="go-table-toolbar" *ngIf="showPaging() && hasData()">
+  <div class="go-table-toolbar" *ngIf="showPaging()">
     <div class="go-table-toolbar__page-size">
       <go-select
         class="go-table-toolbar__select"
@@ -221,8 +221,8 @@
     <go-loader></go-loader>
   </div>
   <ng-template #noDataTable>
-    <div class="go-table-no-results my-5">
-      <h2 class="go-heading-2">{{ localTableConfig.noDataText }}</h2>
+    <div class="go-table-no-results my5">
+      <p class="go-heading-2">{{ localTableConfig.noDataText }}</p>
     </div>
   </ng-template>
 </div>
