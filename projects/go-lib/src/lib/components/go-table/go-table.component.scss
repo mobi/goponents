@@ -216,54 +216,26 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   }
 
   &__search-container {
-    @include transition(all);
-
-    align-items: center;
-    background: $theme-light-bg;
-    border: 1px solid $base-light-tertiary;
-    border-radius: 1rem;
-    color: $theme-light-border;
     display: flex;
     margin: .25rem $go-table-cell-horizontal-padding 1rem;
     position: relative;
-
-    &:hover {
-      background: lighten($theme-light-app-bg, 3%);
-      box-shadow: $global-box-shadow--search;
-    }
-  }
-
-  &__search-icon {
-    height: 1rem;
-    padding: 0 .5rem;
   }
 
   &__search-input {
-    background: transparent;
-    border: 0;
     flex: 1;
-    font-family: $primary-font-stack;
-    font-size: .875rem;
-    font-weight: $weight-light;
-    letter-spacing: .02rem;
-    line-height: 1.3;
     min-width: 250px;
-    padding: $column-gutter--half $column-gutter--half $column-gutter--half 0;
+    padding-right: 2rem;
 
     &::-ms-clear {
       display: none;
-    }
-
-    &:active,
-    &:focus {
-      outline: none;
     }
   }
 
   &__search-close-icon {
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__filter-container {
@@ -373,21 +345,12 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
 // Placeholder Table
 //=====================
-.go-table-placeholder {
-  border-spacing: 0;
-  width: 100%;
+.go-table-no-results {
+  text-align: center;
+  padding: 2rem 1rem;
 
-  td {
-    border-top: 1px solid $theme-light-app-bg;
+  .go-heading-2 {
     color: $theme-light-color;
-    font-size: .875rem;
-    padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
-    text-align: center;
-  }
-
-  &--dark td {
-    border-top-color: $theme-dark-border;
-    color: $theme-dark-color;
   }
 }
 
@@ -428,18 +391,14 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
       }
     }
 
-    &__search-container {
-      background: $theme-dark-bg;
-      border-color: $theme-dark-border;
-      color: $theme-dark-color;
-
-      &:hover {
-        background: $theme-dark-bg-hover;
-      }
-    }
-
     &__search-input {
-      color: $theme-dark-color;
+      background-color: $base-dark-secondary;
+      border-color: $base-dark-tertiary;
+      color: $base-light-secondary;
+
+      &::placeholder {
+        color: rgba($base-light-secondary, .75);
+      }
     }
   }
 
@@ -458,8 +417,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     }
   }
 
-  .go-table-placeholder td {
-    border-top-color: $theme-dark-border;
+  .go-table-no-results .go-heading-2 {
     color: $theme-dark-color;
   }
 
