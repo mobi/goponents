@@ -1,79 +1,97 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .go-radio {
   &__input {
-    display: none;
+    appearance: none;
+    background-color: $base-light;
+    border: 1px solid $base-light-secondary;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 1em;
+    margin-top: .25em;
+    margin-right: .5em;
+    print-color-adjust: exact;
+    vertical-align: top;
+    width: 1em;
+    @include transition(all);
 
-    &:enabled:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: $form-shadow-hover;
-      }
+    // Checked — SVG inner circle
+    &:checked {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
     }
 
-    &:enabled:checked + .go-radio {
-      &__custom-radio {
-        background-color: $base-light;
-        border: 4px solid $ui-color-primary;
-      }
+    // Hover
+    &:hover {
+      box-shadow: $form-shadow-hover;
     }
 
-    &:enabled:checked:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: $form-shadow-active;
-      }
+    // Focus
+    &:focus {
+      border-color: transparentize($ui-color-primary, .5);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
+      outline: 0;
     }
 
-    &:disabled + .go-radio {
-      &__custom-radio {
-        background-color: $theme-light-app-bg;
-        cursor: not-allowed;
-      }
+    // Disabled
+    &:disabled {
+      cursor: not-allowed;
+      filter: none;
+      opacity: .5;
+      pointer-events: none;
     }
 
-    &:disabled:checked + .go-radio {
-      &__custom-radio {
-        border: 4px solid lighten($base-light-secondary, 13.5%);
-      }
-    }
-
-    &:disabled:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: none;
-      }
+    &:disabled:checked {
+      background-color: lighten($base-light-secondary, 13.5%);
+      border-color: lighten($base-light-secondary, 13.5%);
     }
   }
 
   &__custom-radio {
     background-color: $base-light;
     border: 1px solid $base-light-secondary;
-    border-radius: 100%;
+    border-radius: 50%;
     cursor: pointer;
     display: inline-block;
-    height: .75rem;
-    margin: 3px 3px 0 5px;
-    width: .75rem;
+    height: 1em;
+    margin: .25em .5em 0 0;
+    width: 1em;
   }
 }
 
 // Dark Theme
 .go-radio--dark {
-  .go-radio__custom-radio {
-    background-color: $base-dark-secondary;
-    border-color: $theme-dark-border;
-  }
-
   .go-radio__input {
-    &:enabled:checked + .go-radio__custom-radio {
-      background-color: $base-dark-secondary;
-      border: 4px solid $ui-color-primary;
+    background-color: $gray-900;
+    border-color: $gray-700;
+
+    &:hover {
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
     }
 
-    &:disabled + .go-radio__custom-radio {
-      background-color: $base-dark;
+    &:checked {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
     }
 
-    &:disabled:checked + .go-radio__custom-radio {
-      border: 4px solid $base-dark-tertiary;
+    &:focus {
+      border-color: lighten($ui-color-primary, 15%);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+    }
+
+    &:disabled {
+      opacity: .5;
+    }
+
+    &:disabled:checked {
+      background-color: $base-dark-tertiary;
+      border-color: $base-dark-tertiary;
     }
   }
 }
