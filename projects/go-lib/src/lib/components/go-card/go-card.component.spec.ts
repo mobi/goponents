@@ -32,7 +32,7 @@ describe('GoCardComponent', () => {
     });
 
     it('hides the header if showHeader is false', () => {
-      component.showHeader = false;
+      fixture.componentRef.setInput('showHeader', false);
       fixture.detectChanges();
 
       const goCardTemplate: HTMLElement = fixture.nativeElement;

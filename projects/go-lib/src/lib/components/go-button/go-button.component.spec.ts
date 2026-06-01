@@ -125,7 +125,7 @@ describe('GoButtonComponent', () => {
     });
 
     it('does include a <go-icon> if buttonIcon is set', () => {
-      component.buttonIcon = 'test';
+      fixture.componentRef.setInput('buttonIcon', 'test');
       fixture.detectChanges();
 
       const goButtonTemplate: HTMLElement = fixture.nativeElement;
@@ -135,7 +135,7 @@ describe('GoButtonComponent', () => {
     });
 
     it('disables the button if buttonDisabled is set to true', () => {
-      component.buttonDisabled = true;
+      fixture.componentRef.setInput('buttonDisabled', true);
       fixture.detectChanges();
 
       const goButtonTemplate: HTMLElement = fixture.nativeElement;
@@ -145,7 +145,7 @@ describe('GoButtonComponent', () => {
     });
 
     it('disables the button if isProcessing is set to true', () => {
-      component.isProcessing = true;
+      fixture.componentRef.setInput('isProcessing', true);
       fixture.detectChanges();
 
       const goButtonTemplate: HTMLElement = fixture.nativeElement;
@@ -162,7 +162,7 @@ describe('GoButtonComponent', () => {
     });
 
     it('sets the button type if buttonType is passed in', () => {
-      component.buttonType = 'submit';
+      fixture.componentRef.setInput('buttonType', 'submit');
       fixture.detectChanges();
 
       const goButtonTemplate: HTMLElement = fixture.nativeElement;

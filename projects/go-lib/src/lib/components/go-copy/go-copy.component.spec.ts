@@ -31,7 +31,7 @@ describe('goCopyComponent', () => {
     it('selects the text in the text area', () => {
       spyOn(component.copyText.nativeElement, 'select').and.callThrough();
 
-      component.text = 'Ohhhhh Snappppp!';
+      fixture.componentRef.setInput('text', 'Ohhhhh Snappppp!');
       fixture.detectChanges();
       component.copyStringToClipboard();
 
@@ -68,7 +68,7 @@ describe('goCopyComponent', () => {
 
   describe('template', () => {
     it('child element should contain the text to be copied', () => {
-      component.text = 'test';
+      fixture.componentRef.setInput('text', 'test');
       fixture.detectChanges();
 
       const goCopyFixture: HTMLElement = fixture.nativeElement;

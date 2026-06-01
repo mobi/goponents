@@ -57,11 +57,9 @@ describe('GoIconComponent', () => {
     let iconElement: HTMLElement;
 
     beforeEach(() => {
-      component.icon = 'sentiment_very_satisfied';
-      component.iconClass = 'awesome test classes';
-      component.iconModifier = 'positive';
-
-      component.ngOnChanges();
+      fixture.componentRef.setInput('icon', 'sentiment_very_satisfied');
+      fixture.componentRef.setInput('iconClass', 'awesome test classes');
+      fixture.componentRef.setInput('iconModifier', 'positive');
       fixture.detectChanges();
 
       goIconTemplate = fixture.nativeElement;

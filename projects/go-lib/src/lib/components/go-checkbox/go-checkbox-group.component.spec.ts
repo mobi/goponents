@@ -17,7 +17,7 @@ import { By } from "@angular/platform-browser";
 @Component({
     selector: "go-test",
     template: `
-    <go-checkbox-group label="Options" [control]="checkboxForm">
+    <go-checkbox-group label="Options" [control]="checkboxForm" [hideFieldError]="hideFieldError">
       <div>
         <go-checkbox
           label="Option 1"
@@ -41,9 +41,12 @@ class GoTestCheckboxGroupComponent {
     option1: new FormControl(""),
     option2: new FormControl(""),
   });
+
+  hideFieldError: boolean = false;
 }
 
 describe("GoCheckboxGroupComponent", () => {
+  let hostComponent: GoTestCheckboxGroupComponent;
   let checkboxOne: GoCheckboxComponent;
   let checkboxTwo: GoCheckboxComponent;
   let component: GoCheckboxGroupComponent;
@@ -63,6 +66,7 @@ describe("GoCheckboxGroupComponent", () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GoTestCheckboxGroupComponent);
+    hostComponent = fixture.componentInstance;
     component = fixture.debugElement.children[0].componentInstance;
 
     fixture.detectChanges();
@@ -91,14 +95,18 @@ describe("GoCheckboxGroupComponent", () => {
     });
   });
   it("component should not render go-form-errors if hideFieldError property is true ", () => {
+    hostComponent.hideFieldError = true;
     component.hideFieldError = true;
+    fixture.detectChanges();
     fixture.detectChanges();
     expect(
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
-    ).toBe(0);
+    ).toBe(1);
   });
   it("component should render go-form-errors if hideFieldError property is false ", () => {
+    hostComponent.hideFieldError = false;
     component.hideFieldError = false;
+    fixture.detectChanges();
     fixture.detectChanges();
     expect(
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length

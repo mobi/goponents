@@ -183,8 +183,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
     const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
     this.control.patchValue(uniq);
-    this.ngSelect.searchTerm = '';
-    this.ngSelect.itemsList.resetFilteredItems();
+    this.ngSelect.filter('');
   }
 
   private shouldHandleControlInitialValue(): boolean {

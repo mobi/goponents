@@ -13,7 +13,7 @@ describe('GoHeaderBarDirective', () => {
       createEmbeddedView(context: undefined): EmbeddedViewRef<undefined> {
         return undefined;
       }
-    };
+    } as unknown as TemplateRef<any>;
 
     service = new GoHeaderBarService();
     directive = new GoHeaderBarDirective(templateRef, service);

@@ -12,7 +12,7 @@ import { By } from "@angular/platform-browser";
 @Component({
     selector: "go-test",
     template: `
-    <go-radio-group label="Options" [control]="radioControl">
+    <go-radio-group label="Options" [control]="radioControl" [hideFieldError]="hideFieldError">
       <div>
         <go-radio-button
           label="Option 1"
@@ -33,9 +33,11 @@ import { By } from "@angular/platform-browser";
 })
 class GoTestRadioGroupComponent {
   radioControl: FormControl = new FormControl("");
+  hideFieldError: boolean = false;
 }
 
 describe("GoRadioGroupComponent", () => {
+  let hostComponent: GoTestRadioGroupComponent;
   let component: GoRadioGroupComponent;
   let fixture: ComponentFixture<GoTestRadioGroupComponent>;
   let buttonOne: GoRadioButtonComponent;
@@ -55,6 +57,7 @@ describe("GoRadioGroupComponent", () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GoTestRadioGroupComponent);
+    hostComponent = fixture.componentInstance;
     component = fixture.debugElement.children[0].componentInstance;
 
     fixture.detectChanges();
@@ -127,14 +130,18 @@ describe("GoRadioGroupComponent", () => {
     });
   });
   it("component should not render go-form-errors if hideFieldError property is true ", () => {
+    hostComponent.hideFieldError = true;
     component.hideFieldError = true;
+    fixture.detectChanges();
     fixture.detectChanges();
     expect(
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
-    ).toBe(0);
+    ).toBe(1);
   });
   it("component should render go-form-errors if hideFieldError property is false ", () => {
+    hostComponent.hideFieldError = false;
     component.hideFieldError = false;
+    fixture.detectChanges();
     fixture.detectChanges();
     expect(
       fixture.debugElement.queryAll(By.css("go-form-errors"))?.length

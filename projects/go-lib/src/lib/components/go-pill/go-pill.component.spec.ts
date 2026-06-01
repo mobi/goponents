@@ -47,7 +47,7 @@ describe('GoPillComponent', () => {
 
   describe('removable', () => {
     it('should not render the remove go-icon if removable is false', () => {
-      component.removable = false;
+      fixture.componentRef.setInput('removable', false);
 
       fixture.detectChanges();
 
@@ -58,7 +58,7 @@ describe('GoPillComponent', () => {
     });
 
     it('should render the remove go-icon if removable is true', () => {
-      component.removable = true;
+      fixture.componentRef.setInput('removable', true);
 
       fixture.detectChanges();
 

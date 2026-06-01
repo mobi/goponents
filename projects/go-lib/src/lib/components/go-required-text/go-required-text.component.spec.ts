@@ -17,7 +17,7 @@ describe('GoRequiredTextComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoRequiredTextComponent);
     component = fixture.componentInstance;
-    component.control = new FormControl('');
+    fixture.componentRef.setInput('control', new FormControl(''));
     fixture.detectChanges();
   });
 
@@ -33,7 +33,7 @@ describe('GoRequiredTextComponent', () => {
     });
 
     it('should render html if form control has required validator', () => {
-      component.control = new FormControl('', Validators.required);
+      fixture.componentRef.setInput('control', new FormControl('', Validators.required));
 
       fixture.detectChanges();
 

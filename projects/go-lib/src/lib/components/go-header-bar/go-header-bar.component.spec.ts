@@ -41,7 +41,7 @@ describe('GoHeaderBarComponent', () => {
           createEmbeddedView(context: any): EmbeddedViewRef<any> {
             return undefined;
           }
-        },
+        } as any,
         title: 'Some Title',
         backButtonFn: new EventEmitter<any>(),
         showBackArrow: true
@@ -85,7 +85,7 @@ describe('GoHeaderBarComponent', () => {
           createEmbeddedView(context: any): EmbeddedViewRef<any> {
             return undefined;
           }
-        },
+        } as any,
         title: 'Some Title',
         backButtonFn: new EventEmitter<any>(),
         showBackArrow: true

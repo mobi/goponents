@@ -53,14 +53,14 @@ describe("GoInputComponent", () => {
       expect(component.maxlength).toBe(524288);
     });
     it("component should not render go-form-errors if hideFieldError property is true ", () => {
-      component.hideFieldError = true;
+      fixture.componentRef.setInput("hideFieldError", true);
       fixture.detectChanges();
       expect(
         fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
       ).toBe(0);
     });
     it("component should render go-form-errors if hideFieldError property is false ", () => {
-      component.hideFieldError = false;
+      fixture.componentRef.setInput("hideFieldError", false);
       fixture.detectChanges();
       expect(
         fixture.debugElement.queryAll(By.css("go-form-errors"))?.length
