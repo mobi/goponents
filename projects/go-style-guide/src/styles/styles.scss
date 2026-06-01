@@ -310,11 +310,11 @@ code {
   }
 
   .go-form__fieldset {
-    border-color: $theme-dark-border;
+    border-color: $gray-700;
   }
 
   .go-form__legend {
-    color: $theme-dark-color;
+    color: $gray-300;
   }
 
   .go-form__checkbox {
@@ -595,14 +595,6 @@ code {
       border-color: $gray-700;
       color: $gray-300;
     }
-  }
-
-  .go-form__fieldset {
-    border-color: $gray-700;
-  }
-
-  .go-form__legend {
-    color: $gray-300;
   }
 
   // Flip loader

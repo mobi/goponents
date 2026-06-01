@@ -54,14 +54,8 @@
   }
 
   &__custom-radio {
-    background-color: $base-light;
-    border: 1px solid $base-light-secondary;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
-    height: 1em;
-    margin: .25em .5em 0 0;
-    width: 1em;
+    // Native input now handles the visual — hide legacy custom span
+    display: none;
   }
 }
 
