@@ -127,8 +127,16 @@ $accordion-dark-btn-active-color: $blue-300;
     position: relative;
     background-color: $accordion-btn-bg;
 
+    &:hover {
+      background-color: $accordion-btn-hover-bg;
+    }
+
     &--dark {
       background-color: $accordion-dark-btn-bg;
+
+      &:hover {
+        background-color: $accordion-dark-btn-hover-bg;
+      }
     }
 
     &--active {

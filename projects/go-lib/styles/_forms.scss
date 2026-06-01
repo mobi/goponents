@@ -29,10 +29,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &--dark &__fieldset,
   &__fieldset--dark {
-    border-color: $theme-dark-border;
+    border-color: $gray-700;
 
     &:disabled {
-      background: $theme-dark-border;
+      background: $gray-800;
     }
   }
 
@@ -43,7 +43,7 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &--dark &__legend,
   &__legend--dark {
-    color: $theme-dark-color;
+    color: $gray-300;
   }
 
   // Labels
@@ -318,20 +318,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       border-color: $gray-700;
       color: $gray-300;
     }
-  }
-
-  &--dark &__fieldset,
-  &__fieldset--dark {
-    border-color: $gray-700;
-
-    &:disabled {
-      background: $gray-800;
-    }
-  }
-
-  &--dark &__legend,
-  &__legend--dark {
-    color: $gray-300;
   }
 
   // Checkbox Dark Overrides
