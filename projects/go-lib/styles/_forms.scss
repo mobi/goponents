@@ -46,8 +46,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     color: $gray-300;
   }
 
-  // Labels
-  // ----------------------------------------------
   &__label {
     color: $theme-light-color;
     display: block;
@@ -76,8 +74,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     color: $theme-dark-color;
   }
 
-  // Inputs
-  // ----------------------------------------------
   &__input {
     @include transition(all);
     @include regular-input;
@@ -97,14 +93,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // TextArea
-  // ----------------------------------------------
   &__textarea {
     min-height: 70px;
   }
 
-  // Selects
-  // ----------------------------------------------
   &__select {
     @include transition(all);
     @include regular-input;
@@ -116,8 +108,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // Checkboxes
-  // ----------------------------------------------
   &__checkbox {
     appearance: none;
     background-color: $base-light;
@@ -133,7 +123,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     width: 1em;
     @include transition(all);
 
-    // Checked — SVG checkmark
     &:checked {
       background-color: $ui-color-primary;
       border-color: $ui-color-primary;
@@ -143,7 +132,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       background-size: contain;
     }
 
-    // Indeterminate — SVG dash
     &:indeterminate {
       background-color: $ui-color-primary;
       border-color: $ui-color-primary;
@@ -153,19 +141,16 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       background-size: contain;
     }
 
-    // Focus
     &:focus {
       border-color: transparentize($ui-color-primary, .5);
       box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
       outline: 0;
     }
 
-    // Hover
     &:hover {
       box-shadow: $form-shadow-hover;
     }
 
-    // Disabled
     &:disabled {
       cursor: not-allowed;
       filter: none;
@@ -173,7 +158,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       pointer-events: none;
     }
 
-    // Hidden — for component-based checkbox (go-checkbox)
     &--hidden {
       cursor: pointer;
       height: 0;
@@ -183,7 +167,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // Custom checkbox overlay — for go-checkbox component (hidden input + visible span)
   &__custom-checkbox {
     appearance: none;
     background-color: $base-light;
@@ -237,7 +220,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     opacity: .5;
   }
 
-  // Dark checkbox overlay states
   &__checkbox--dark.go-form__checkbox--hidden:hover ~ &__custom-checkbox--dark {
     box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
   }
@@ -276,8 +258,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     opacity: .5;
   }
 
-  // Dark Overrides
-  // ----------------------------------------------
   &--dark {
     color: $theme-dark-color;
   }
@@ -320,7 +300,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // Checkbox Dark Overrides
   &--dark &__checkbox,
   &__checkbox--dark {
     background-color: $gray-900;
@@ -372,16 +351,12 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     border-color: $base-dark-tertiary;
   }
 
-  // Margin Overrides
-  // ----------------------------------------------
   &__select--no-margin,
   &__input--no-margin,
   &__fieldset--no-margin {
     @extend %element--no-margin;
   }
 
-  // Error Overrides
-  // ----------------------------------------------
   &__select--error,
   &__input--error {
     border-color: $ui-color-negative;

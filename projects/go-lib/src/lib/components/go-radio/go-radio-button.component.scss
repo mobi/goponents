@@ -17,7 +17,6 @@
     width: 1em;
     @include transition(all);
 
-    // Checked — SVG inner circle
     &:checked {
       background-color: $ui-color-primary;
       border-color: $ui-color-primary;
@@ -27,19 +26,16 @@
       background-size: contain;
     }
 
-    // Hover
     &:hover {
       box-shadow: $form-shadow-hover;
     }
 
-    // Focus
     &:focus {
       border-color: transparentize($ui-color-primary, .5);
       box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
       outline: 0;
     }
 
-    // Disabled
     &:disabled {
       cursor: not-allowed;
       filter: none;
@@ -53,13 +49,9 @@
     }
   }
 
-  &__custom-radio {
-    // Native input now handles the visual — hide legacy custom span
-    display: none;
-  }
+
 }
 
-// Dark Theme
 .go-radio--dark {
   .go-radio__input {
     background-color: $gray-900;

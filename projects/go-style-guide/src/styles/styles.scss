@@ -5,7 +5,6 @@
 @import 'typography';
 @import 'highlight.js/styles/github.css';
 
-// Base Styling
 code {
   border-radius: $global-radius;
   font-family: $roboto-code;
@@ -82,7 +81,6 @@ code {
   background: $theme-dark-bg;
   color: $theme-dark-color;
 
-  // Flip all cards
   go-card .card {
     background: $theme-dark-bg;
     border-color: $theme-dark-border;
@@ -90,7 +88,6 @@ code {
     color: $theme-dark-color;
   }
 
-  // Flip tables
   .go-table-container {
     background: $theme-dark-bg;
     box-shadow: $global-box-shadow--dark-popup;
@@ -152,7 +149,6 @@ code {
     background: transparentize($theme-dark-bg-hover, .3);
   }
 
-  // Flip pills
   .go-pill {
     background-color: $ui-color-primary-hover;
     color: $theme-dark-color;
@@ -173,13 +169,11 @@ code {
     color: lighten($ui-color-negative, 20%);
   }
 
-  // Flip progress bar
   .go-progress-bar__determinate--track,
   .go-progress-bar__indeterminate--track {
     background-color: $base-dark-tertiary;
   }
 
-  // Flip icon button
   .go-icon-button {
     color: $theme-dark-color;
 
@@ -193,12 +187,10 @@ code {
     }
   }
 
-  // Flip footer
   .go-footer {
     color: $theme-dark-color;
   }
 
-  // Flip datepicker/calendar
   .go-calendar {
     background: $gray-900;
     border-color: $gray-700;
@@ -227,12 +219,10 @@ code {
     }
   }
 
-  // Flip the side nav area
   .go-side-nav {
     background: darken($theme-dark-bg, 2%);
   }
 
-  // Flip links
   .go-link {
     color: $theme-dark-color;
 
@@ -247,7 +237,6 @@ code {
     }
   }
 
-  // Flip layout
   .go-layout {
     background: $theme-dark-bg;
   }
@@ -257,24 +246,20 @@ code {
     color: $theme-dark-color;
   }
 
-  // Page titles
   .go-page-title {
     background: $theme-dark-bg;
     border-bottom-color: $theme-dark-border;
   }
 
-  // Code blocks
   .code-block {
     background: $base-dark;
     color: $theme-dark-color;
   }
 
-  // Body copy
   .go-body-copy {
     color: $theme-dark-color;
   }
 
-  // Headings
   .go-heading-1,
   .go-heading-2,
   .go-heading-3,
@@ -284,12 +269,10 @@ code {
     color: $theme-dark-color;
   }
 
-  // HR
   .go-hr {
     border-color: $theme-dark-border;
   }
 
-  // Search container in table
   .go-table__search-container {
     background: $theme-dark-bg;
     border-color: $theme-dark-border;
@@ -304,7 +287,6 @@ code {
     color: $theme-dark-color;
   }
 
-  // Flip forms
   .go-form__label {
     color: $theme-dark-color;
   }
@@ -356,7 +338,6 @@ code {
     box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
   }
 
-  // Flip radio
   .go-radio__input {
     background-color: $gray-900;
     border-color: $gray-700;
@@ -381,7 +362,6 @@ code {
     border-color: $gray-700;
   }
 
-  // Flip the style guide header bar
   .main__header {
     background: $gray-800;
     border-bottom-color: $gray-700;
@@ -400,7 +380,6 @@ code {
     }
   }
 
-  // Flip go-header (component has theme="dark" but style guide doesn't pass it)
   go-header .go-header {
     background: $gray-800 !important;
     box-shadow: $global-box-shadow--dark-popup !important;
@@ -411,7 +390,6 @@ code {
     color: $gray-300 !important;
   }
 
-  // Flip accordion
   .go-accordion-panel {
     background: $theme-dark-bg;
     border-color: $theme-dark-border;
@@ -458,17 +436,14 @@ code {
     color: $theme-dark-color;
   }
 
-  // Flip badge border
   .go-badge {
     border-color: $theme-dark-bg;
   }
 
-  // Flip hints
   .go-hint {
     color: $theme-dark-color;
   }
 
-  // Flip toasts
   .go-toast {
     background: $theme-dark-bg;
 
@@ -481,7 +456,6 @@ code {
     background-color: $theme-dark-border;
   }
 
-  // Flip tabs
   .go-tab {
     &__header {
       color: $theme-dark-color;
@@ -508,7 +482,6 @@ code {
     }
   }
 
-  // Flip switch toggle
   .go-form__switch-toggle .go-form__switch-toggle__toggle {
     background-color: $gray-800 !important;
     border-color: $gray-700 !important;
@@ -541,13 +514,11 @@ code {
     color: $base-dark-tertiary;
   }
 
-  // Flip modal
   .go-modal__container {
     background: $theme-dark-bg;
     color: $theme-dark-color;
   }
 
-  // Flip header bar
   .go-header-bar {
     background: $gray-800;
     box-shadow: $global-box-shadow--dark-popup;
@@ -558,7 +529,6 @@ code {
     }
   }
 
-  // Flip file upload
   .go-file-upload {
     background-color: $theme-dark-bg;
     border-color: $theme-dark-border;
@@ -570,7 +540,6 @@ code {
     }
   }
 
-  // Flip form inputs/selects/textareas
   .go-form__input,
   .go-form__select {
     background-color: $gray-900;
@@ -597,7 +566,6 @@ code {
     }
   }
 
-  // Flip loader
   .go-loader--light path {
     fill: $theme-dark-color;
   }
