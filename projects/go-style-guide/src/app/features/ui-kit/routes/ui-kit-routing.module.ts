@@ -65,6 +65,7 @@ import { ButtonGroupDocsComponent } from '../components/button-group-docs/button
 import { ProgressBarDocsComponent } from '../components/progress-bar-docs/progress-bar-docs.component';
 import { PositionedBadgeDocsComponent } from '../components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
 import { PillBadgeDocsComponent } from '../components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
+import { InputGroupDocsComponent } from '../components/input-group-docs/input-group-docs.component';
 
 const routes: Routes = [
   { path: 'ui-kit', component: UiKitComponent },
@@ -101,6 +102,7 @@ const routes: Routes = [
     { path: 'timepicker', component: TimepickerDocsComponent }
   ]},
   { path: 'ui-kit/icon-button', component: IconButtonDocsComponent },
+  { path: 'ui-kit/input-group', component: InputGroupDocsComponent },
   { path: 'ui-kit/layout', component: LayoutDocsComponent, children: [
     { path: '', component: LayoutOverviewComponent },
     { path: 'app-drawer', component: LayoutAppDrawerComponent },

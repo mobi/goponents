@@ -97,6 +97,12 @@ export * from './lib/components/go-icon-button/go-icon-button.module';
 export * from './lib/components/go-input/go-input.component';
 export * from './lib/components/go-input/go-input.module';
 
+// Input Group
+export * from './lib/components/go-input-group/go-input-group.component';
+export * from './lib/components/go-input-group/go-input-group.module';
+export * from './lib/components/go-input-group/go-input-group-prepend.directive';
+export * from './lib/components/go-input-group/go-input-group-append.directive';
+
 // Layout
 export * from './lib/components/go-layout/go-layout.component';
 export * from './lib/components/go-layout/go-layout.module';

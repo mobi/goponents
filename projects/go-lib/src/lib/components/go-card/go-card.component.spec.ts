@@ -23,10 +23,29 @@ describe('GoCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('shadow input', () => {
+    it('applies shadow class by default', () => {
+      const goCardTemplate: HTMLElement = fixture.nativeElement;
+      const cardElement: HTMLElement = goCardTemplate.querySelector('.card')!;
+
+      expect(cardElement.classList).not.toContain('card--no-shadow');
+    });
+
+    it('removes shadow when shadow is false', () => {
+      component.shadow = false;
+      fixture.detectChanges();
+
+      const goCardTemplate: HTMLElement = fixture.nativeElement;
+      const cardElement: HTMLElement = goCardTemplate.querySelector('.card')!;
+
+      expect(cardElement.classList).toContain('card--no-shadow');
+    });
+  });
+
   describe('the template', () => {
     it('renders the header by default', () => {
       const goCardTemplate: HTMLElement = fixture.nativeElement;
-      const headerElement: HTMLElement = goCardTemplate.querySelector('header');
+      const headerElement: HTMLElement = goCardTemplate.querySelector('header')!;
 
       expect(headerElement).not.toBeNull();
     });
@@ -36,7 +55,7 @@ describe('GoCardComponent', () => {
       fixture.detectChanges();
 
       const goCardTemplate: HTMLElement = fixture.nativeElement;
-      const headerElement: HTMLElement = goCardTemplate.querySelector('header');
+      const headerElement: HTMLElement | null = goCardTemplate.querySelector('header');
 
       expect(headerElement).toBeNull();
     });

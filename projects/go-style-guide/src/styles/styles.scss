@@ -570,3 +570,17 @@ code {
     fill: $theme-dark-color;
   }
 }
+
+.go-page-content {
+  background-color: $theme-light-app-bg;
+  border-radius: $global-radius;
+  padding: 1rem;
+}
+
+.go-example {
+  background-color: $theme-light-app-bg;
+  border-radius: $global-radius;
+  margin-bottom: $column-gutter;
+  margin-top: $column-gutter--half;
+  padding: $column-gutter;
+}

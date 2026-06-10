@@ -1,0 +1,251 @@
+﻿<header class="go-page-title">
+  <h1 class="go-heading-1">Input Group</h1>
+  <a
+    [href]="linkToSource"
+    target="_blank">
+    <go-button buttonVariant="neutral">
+      View on GitHub
+    </go-button>
+  </a>
+</header>
+
+<div class="go-container">
+
+  <!-- Usage -->
+  <go-card
+    class="go-column go-column--100"
+    id="usage">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
+      <go-copy cardId="usage" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          The <code class="code-block--inline">go-input-group</code> component extends form controls
+          by adding text, buttons, or selects on either side. Use
+          <code class="code-block--inline">goInputGroupPrepend</code> to add content before the input
+          and <code class="code-block--inline">goInputGroupAppend</code> to add content after.
+          Labels should be placed on the <code class="code-block--inline">go-input-group</code>, not on the inner <code class="code-block--inline">go-input</code>.
+          For button addons, place the directive directly on <code class="code-block--inline">go-button</code> ΓÇö do not wrap in a span.
+        </p>
+      </div>
+
+    </div>
+  </go-card>
+
+  <!-- Prepend Addon -->
+  <go-card
+    class="go-column go-column--100"
+    id="prepend-addon">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Prepend Addon</h2>
+      <go-copy cardId="prepend-addon" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group label="Username">
+              <span goInputGroupPrepend>@</span>
+              <go-input [control]="usernameControl"></go-input>
+            </go-input-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="basicExample"></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <!-- Append Addon -->
+  <go-card
+    class="go-column go-column--100"
+    id="append-addon">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Append Addon</h2>
+      <go-copy cardId="append-addon" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group label="Amount">
+              <go-input [control]="priceControl"></go-input>
+              <span goInputGroupAppend>.00</span>
+            </go-input-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="appendExample"></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <!-- Both Prepend and Append -->
+  <go-card
+    class="go-column go-column--100"
+    id="both-addons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Prepend & Append</h2>
+      <go-copy cardId="both-addons" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group label="Website">
+              <span goInputGroupPrepend>https://</span>
+              <go-input [control]="websiteControl"></go-input>
+              <span goInputGroupAppend>.com</span>
+            </go-input-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="bothExample"></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+  <!-- Button Addons -->
+  <go-card
+    class="go-column go-column--100"
+    id="button-addons">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Button Addons</h2>
+      <go-copy cardId="button-addons" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group>
+              <go-input [control]="searchControl" placeholder="Search..."></go-input>
+              <go-button goInputGroupAppend buttonVariant="primary">Go</go-button>
+            </go-input-group>
+          </div>
+
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group label="Email">
+              <go-button goInputGroupPrepend buttonVariant="secondary">Search</go-button>
+              <go-input [control]="emailControl"></go-input>
+            </go-input-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="buttonExample"></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+
+  <!-- Advanced Grouping -->
+  <go-card
+    class="go-column go-column--100"
+    id="advanced-grouping">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Advanced Grouping</h2>
+      <go-copy cardId="advanced-grouping" goCopyCardLink></go-copy>
+    </ng-container>
+    <div
+      class="go-container"
+      go-card-content>
+
+      <div class="go-column go-column--100">
+        <p class="go-body-copy go-body-copy--no-margin">
+          Mix a <code class="code-block--inline">go-select</code> with multiple
+          <code class="code-block--inline">go-button</code> icon addons for richer toolbar-style groups.
+          Place <code class="code-block--inline">goInputGroupAppend</code> on each button ΓÇö border radius
+          is managed automatically based on position.
+        </p>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">View</h3>
+          </div>
+          <div class="go-column go-column--100 go-column--no-padding">
+            <go-input-group label="Department">
+              <go-select [control]="deptControl" [items]="deptItems" bindLabel="name" bindValue="id"></go-select>
+              <go-button goInputGroupAppend buttonVariant="primary" buttonIcon="save"></go-button>
+              <go-button goInputGroupAppend buttonVariant="primary" buttonIcon="delete"></go-button>
+              <go-button goInputGroupAppend buttonVariant="primary" buttonIcon="filter_list"></go-button>
+            </go-input-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="go-column go-column--50 go-column--no-padding">
+        <div class="go-container">
+          <div class="go-column go-column--100 go-column--no-padding">
+            <h3 class="go-heading-3">Code</h3>
+            <code [highlight]="advancedExample"></code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </go-card>
+
+</div>

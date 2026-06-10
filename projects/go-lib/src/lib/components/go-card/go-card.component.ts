@@ -11,11 +11,13 @@ export class GoCardComponent {
 
   @Input() showHeader: boolean = true;
   @Input() theme: 'light' | 'dark' = 'light';
+  @Input() shadow: boolean = true;
 
   get cardClasses(): { [k: string]: boolean } {
     return {
       'card': true,
-      'card--dark': this.theme === 'dark'
+      'card--dark': this.theme === 'dark',
+      'card--no-shadow': !this.shadow
     };
   }
 
