@@ -12,24 +12,50 @@ $accordion-btn-active-color: $blue-700;
 $accordion-body-padding: 1rem 1.25rem;
 $accordion-header-padding: 1rem 1.25rem;
 $accordion-border-width: 1px;
+$accordion-border-radius: $global-radius;
 
-$accordion-dark-border-color: $gray-800;
-$accordion-dark-bg: $theme-dark-bg;
-$accordion-dark-btn-bg: $theme-dark-bg;
+$accordion-dark-border-color: $gray-700;
+$accordion-dark-bg: $gray-900;
+$accordion-dark-btn-bg: $gray-900;
 $accordion-dark-btn-active-bg: $blue-900;
 $accordion-dark-btn-hover-bg: lighten($theme-dark-bg, 3%);
-$accordion-dark-btn-color: $theme-dark-color;
+$accordion-dark-btn-color: $gray-300;
 $accordion-dark-btn-active-color: $blue-300;
 
+// Default: BS5 accordion-item style — each panel has full border
 .go-accordion-panel {
   background: $accordion-bg;
-  border-bottom: $accordion-border-width solid $accordion-border-color;
+  border: $accordion-border-width solid $accordion-border-color;
   color: $accordion-btn-color;
   overflow: visible;
   position: relative;
 
+  // Not first — remove top border to avoid doubles (BS5 approach)
+  &:not(.go-accordion-panel--first) {
+    border-top: 0;
+  }
+
+  // First panel — rounded top corners
   &--first {
-    border-top: $accordion-border-width solid $accordion-border-color;
+    border-top-left-radius: $accordion-border-radius;
+    border-top-right-radius: $accordion-border-radius;
+
+    .go-accordion-panel__header {
+      border-top-left-radius: $accordion-border-radius;
+      border-top-right-radius: $accordion-border-radius;
+    }
+  }
+
+  // Last panel — rounded bottom corners, clip content
+  &--last {
+    border-bottom-left-radius: $accordion-border-radius;
+    border-bottom-right-radius: $accordion-border-radius;
+    overflow: hidden;
+
+    .go-accordion-panel__content {
+      border-bottom-left-radius: $accordion-border-radius;
+      border-bottom-right-radius: $accordion-border-radius;
+    }
   }
 
   &--active {
@@ -52,8 +78,25 @@ $accordion-dark-btn-active-color: $blue-300;
     }
   }
 
+  // Borderless: flush style — no border, no radius
   &--borderless {
     border: 0;
+    border-radius: 0;
+    border-bottom: $accordion-border-width solid $accordion-border-color;
+
+    &.go-accordion-panel--first {
+      border-radius: 0;
+    }
+
+    &.go-accordion-panel--last {
+      border-bottom: 0;
+      border-radius: 0;
+    }
+
+    .go-accordion-panel__header,
+    .go-accordion-panel__content {
+      border-radius: 0;
+    }
   }
 
   &--box-shadow {
@@ -64,6 +107,14 @@ $accordion-dark-btn-active-color: $blue-300;
     background: $accordion-dark-bg;
     border-color: $accordion-dark-border-color;
     color: $accordion-dark-btn-color;
+
+    .go-accordion-panel__control {
+      color: $accordion-dark-btn-color;
+
+      &--active {
+        color: $accordion-dark-btn-active-color;
+      }
+    }
   }
 
   &__header {
@@ -162,15 +213,10 @@ $accordion-dark-btn-active-color: $blue-300;
 // ----- Dark Theme Classes
 .go-accordion--theme-dark {
   background: $accordion-dark-bg;
-  border: 1px solid $accordion-dark-border-color;
   color: $accordion-dark-btn-color;
   font-weight: $weight-light;
 
   .go-accordion-panel {
-    &--border-top &__header {
-      border-top: 1px solid $accordion-dark-border-color;
-    }
-
     &--active &__header {
       background: $accordion-dark-btn-active-bg;
       color: $accordion-dark-btn-active-color;
@@ -178,10 +224,6 @@ $accordion-dark-btn-active-color: $blue-300;
 
     &--inactive &__header {
       background: $accordion-dark-bg;
-    }
-
-    &__header:hover {
-      background: $accordion-dark-btn-hover-bg;
     }
 
     &__control {

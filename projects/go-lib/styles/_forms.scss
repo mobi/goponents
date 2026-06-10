@@ -29,10 +29,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &--dark &__fieldset,
   &__fieldset--dark {
-    border-color: $theme-dark-border;
+    border-color: $gray-700;
 
     &:disabled {
-      background: $theme-dark-border;
+      background: $gray-800;
     }
   }
 
@@ -43,11 +43,9 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
   &--dark &__legend,
   &__legend--dark {
-    color: $theme-dark-color;
+    color: $gray-300;
   }
 
-  // Labels
-  // ----------------------------------------------
   &__label {
     color: $theme-light-color;
     display: block;
@@ -76,8 +74,6 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     color: $theme-dark-color;
   }
 
-  // Inputs
-  // ----------------------------------------------
   &__input {
     @include transition(all);
     @include regular-input;
@@ -97,14 +93,10 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // TextArea
-  // ----------------------------------------------
   &__textarea {
     min-height: 70px;
   }
 
-  // Selects
-  // ----------------------------------------------
   &__select {
     @include transition(all);
     @include regular-input;
@@ -116,15 +108,54 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
   }
 
-  // Checkboxes
-  // ----------------------------------------------
   &__checkbox {
-    margin-bottom: $column-gutter--three-quarters;
-    margin-right: $column-gutter--three-quarters;
-    width: auto;
+    appearance: none;
+    background-color: $base-light;
+    border: 1px solid $base-light-secondary;
+    border-radius: .25em;
+    cursor: pointer;
+    flex-shrink: 0;
+    height: 1em;
+    margin-top: .25em;
+    margin-right: $column-gutter--quarter;
+    print-color-adjust: exact;
+    vertical-align: top;
+    width: 1em;
+    @include transition(all);
+
+    &:checked {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &:indeterminate {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &:focus {
+      border-color: transparentize($ui-color-primary, .5);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
+      outline: 0;
+    }
+
+    &:hover {
+      box-shadow: $form-shadow-hover;
+    }
 
     &:disabled {
       cursor: not-allowed;
+      filter: none;
+      opacity: .5;
+      pointer-events: none;
     }
 
     &--hidden {
@@ -137,79 +168,96 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   }
 
   &__custom-checkbox {
+    appearance: none;
     background-color: $base-light;
     border: 1px solid $base-light-secondary;
-    border-radius: $checkbox-radius; // Checkbox-specific: design standard is 4px, not $global-radius (6px)
+    border-radius: .25em;
+    cursor: pointer;
     display: inline-block;
-    height: .875rem;
+    height: 1em;
     left: 0;
     position: absolute;
-    top: .1rem;
-    width: .875rem;
-
-    &::after {
-      border: solid $base-light;
-      border-width: 0 1px 1px 0;
-      content: '';
-      display: none;
-      height: 7px;
-      left: 3.8px;
-      position: absolute;
-      top: 1px;
-      transform: rotate(45deg);
-      width: 3px;
-    }
+    top: .2rem;
+    width: 1em;
+    @include transition(all);
   }
 
-  &__checkbox:hover ~ &__custom-checkbox {
+  &__checkbox--hidden:hover ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
     box-shadow: $form-shadow-hover;
   }
 
-  &__checkbox:checked ~ &__custom-checkbox {
+  &__checkbox--hidden:checked ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
     background-color: $ui-color-primary;
     border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 
-  &__checkbox:checked:hover ~ &__custom-checkbox {
-    box-shadow: $form-shadow-active;
+  &__checkbox--hidden:focus ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
+    border-color: transparentize($ui-color-primary, .5);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
   }
 
-  &__checkbox:disabled ~ &__custom-checkbox {
-    background-color: $theme-light-app-bg;
+  &__checkbox--hidden:disabled ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
     cursor: not-allowed;
+    filter: none;
+    opacity: .5;
+    pointer-events: none;
   }
 
-  &__checkbox:disabled:hover ~ &__custom-checkbox {
-    box-shadow: none;
+  &__checkbox--hidden:indeterminate ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 
-  &__checkbox:indeterminate ~ &__custom-checkbox {
-    background-color: $theme-light-app-bg;
+  &__checkbox--hidden:disabled:checked ~ &__custom-checkbox:not(.go-form__custom-checkbox--dark) {
+    opacity: .5;
   }
 
-  &__checkbox:disabled:checked ~ &__custom-checkbox {
-    background-color: lighten($base-light-secondary, 13.5%);
-    border: 1px solid lighten($base-light-secondary, 13.5%);
+  &__checkbox--dark.go-form__checkbox--hidden:hover ~ &__custom-checkbox--dark {
+    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+  }
+
+  &__checkbox--dark.go-form__checkbox--hidden:checked ~ &__custom-checkbox--dark {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__checkbox--dark.go-form__checkbox--hidden:focus ~ &__custom-checkbox--dark {
+    border-color: lighten($ui-color-primary, 15%);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+  }
+
+  &__checkbox--dark.go-form__checkbox--hidden:disabled ~ &__custom-checkbox--dark {
     cursor: not-allowed;
+    filter: none;
+    opacity: .5;
+    pointer-events: none;
   }
 
-  &__checkbox:indeterminate ~ &__custom-checkbox::after {
-    border: 1px solid $theme-light-border;
-    content: '';
-    display: block;
-    height: 0;
-    left: 3px;
-    top: 5px;
-    transform: none;
-    width: 4px;
+  &__checkbox--dark.go-form__checkbox--hidden:indeterminate ~ &__custom-checkbox--dark {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
   }
 
-  &__checkbox:checked ~ &__custom-checkbox::after {
-    display: block;
+  &__checkbox--dark.go-form__checkbox--hidden:disabled:checked ~ &__custom-checkbox--dark {
+    opacity: .5;
   }
 
-  // Dark Overrides
-  // ----------------------------------------------
   &--dark {
     color: $theme-dark-color;
   }
@@ -218,75 +266,97 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
   &--dark &__select,
   &__input--dark,
   &__select--dark {
-    background-color: $base-dark-secondary;
-    border-color: $base-dark-tertiary;
-    color: $base-light-secondary;
+    background-color: $gray-900;
+    border-color: $gray-700;
+    color: $gray-300;
 
     option {
-      color: $base-dark-secondary;
+      color: $gray-900;
     }
 
     &:hover {
-      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+      box-shadow: 0 0 0 .25rem transparentize($gray-700, .6);
+    }
+
+    &:focus {
+      border-color: lighten($ui-color-primary, 15%);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
     }
 
     &::placeholder {
-      color: rgba($base-light-secondary, .75);
+      color: $gray-500;
       font-weight: $weight-light;
     }
 
     &:-ms-input-placeholder {
-      color: rgba($base-light-secondary, .75);
+      color: $gray-500;
       font-weight: $weight-light;
     }
 
     &:disabled {
-      background-color: $base-dark;
-      border-color: $theme-dark-border;
-      color: $theme-light-border;
+      background-color: $gray-800;
+      border-color: $gray-700;
+      color: $gray-300;
     }
   }
 
-  // Checkbox Dark Overrides
-  &--dark &__custom-checkbox,
-  &__custom-checkbox--dark {
-    background-color: $base-dark-secondary;
-    border-color: $theme-dark-border;
+  &--dark &__checkbox,
+  &__checkbox--dark {
+    background-color: $gray-900;
+    border-color: $gray-700;
   }
 
-  &--dark &__checkbox:hover ~ &__custom-checkbox,
-  &__checkbox--dark:hover ~ &__custom-checkbox--dark {
-    box-shadow: $form-shadow-hover;
+  &--dark &__checkbox:hover,
+  &__checkbox--dark:hover {
+    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
   }
 
-  &--dark &__checkbox:checked ~ &__custom-checkbox,
-  &__checkbox--dark:checked ~ &__custom-checkbox--dark {
+  &--dark &__checkbox:checked,
+  &__checkbox--dark:checked {
     background-color: $ui-color-primary;
     border-color: $ui-color-primary;
   }
 
-  &--dark &__checkbox:disabled ~ &__custom-checkbox,
-  &__checkbox--dark:disabled ~ &__custom-checkbox--dark {
-    background-color: $base-dark;
-    cursor: not-allowed;
+  &--dark &__checkbox:focus,
+  &__checkbox--dark:focus {
+    border-color: lighten($ui-color-primary, 15%);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
   }
 
-  &--dark &__checkbox:disabled:checked ~ &__custom-checkbox,
+  &--dark &__checkbox:disabled,
+  &__checkbox--dark:disabled {
+    opacity: .5;
+  }
+
+  &--dark &__checkbox:disabled:checked,
+  &__checkbox--dark:disabled:checked {
+    background-color: $base-dark-tertiary;
+    border-color: $base-dark-tertiary;
+  }
+
+  &--dark &__custom-checkbox,
+  &__custom-checkbox--dark {
+    background-color: $gray-900;
+    border-color: $gray-700;
+  }
+
+  &--dark &__checkbox--hidden:disabled ~ &__custom-checkbox,
+  &__checkbox--dark:disabled ~ &__custom-checkbox--dark {
+    opacity: .5;
+  }
+
+  &--dark &__checkbox--hidden:disabled:checked ~ &__custom-checkbox,
   &__checkbox--dark:disabled:checked ~ &__custom-checkbox--dark {
     background-color: $base-dark-tertiary;
     border-color: $base-dark-tertiary;
   }
 
-  // Margin Overrides
-  // ----------------------------------------------
   &__select--no-margin,
   &__input--no-margin,
   &__fieldset--no-margin {
     @extend %element--no-margin;
   }
 
-  // Error Overrides
-  // ----------------------------------------------
   &__select--error,
   &__input--error {
     border-color: $ui-color-negative;
