@@ -1,8 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
+import { DemoImportsModule } from 'projects/go-style-guide/src/app/shared/demo-imports.module';
 
 @Component({
+  imports: [DemoImportsModule],
   selector: 'app-input-group-docs',
   templateUrl: './input-group-docs.component.html'
 })

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Highlight } from 'ngx-highlightjs';
 
 import {
   GoAccordionModule,
@@ -89,6 +90,7 @@ const GO_LIB_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    Highlight,
     SharedModule,
     ...GO_LIB_MODULES,
   ],
@@ -97,6 +99,7 @@ const GO_LIB_MODULES = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    Highlight,
     SharedModule,
     ...GO_LIB_MODULES,
   ],
