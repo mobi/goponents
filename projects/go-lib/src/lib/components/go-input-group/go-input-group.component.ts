@@ -1,7 +1,6 @@
-﻿import { Component, Input, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 
 @Component({
-  encapsulation: ViewEncapsulation.None,
   selector: 'go-input-group',
   templateUrl: './go-input-group.component.html',
   styleUrls: ['./go-input-group.component.scss']
