@@ -6,13 +6,11 @@ import { GoInputGroupPrependDirective } from './go-input-group-prepend.directive
 import { GoInputGroupAppendDirective } from './go-input-group-append.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     GoInputGroupComponent,
     GoInputGroupPrependDirective,
     GoInputGroupAppendDirective
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     GoInputGroupComponent,
