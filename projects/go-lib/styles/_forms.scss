@@ -365,4 +365,147 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       @include error-input;
     }
   }
+
+  // Input Group
+  &__input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+
+    // Flex children fill available space
+    > .go-form__input,
+    > .go-input-container {
+      position: relative;
+      flex: 1 1 auto;
+      width: 1%;
+      min-width: 0;
+    }
+
+    // go-input-container inside group - flatten to pass-through
+    > .go-input-container {
+      display: flex;
+      margin-bottom: 0;
+
+      > .go-form__label {
+        display: none;
+      }
+
+      > .go-form__input {
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+      }
+    }
+
+    // All children need a stacking context so z-index comparisons are consistent
+    > .go-form__input-group-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    // Bring focused control to the top
+    > .go-input-container:focus-within {
+      z-index: 5;
+    }
+
+    // Buttons inside the group sit above inputs
+    .go-button-container {
+      position: relative;
+      z-index: 1;
+
+      &:focus-within {
+        z-index: 5;
+      }
+    }
+
+    // Border radius: not-last-child loses right radius
+    &:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+    &.has-validation > :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu) {
+      .go-form__input,
+      .ng-select-container,
+      .go-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    // Border radius: not-first-child loses left radius + negative margin to overlap borders
+    > :not(:first-child) {
+      margin-left: -1px;
+
+      .go-form__input,
+      .ng-select-container,
+      .go-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    // --- Button addons (direct children, not wrapped in addon-text) ---
+    > .go-button-container,
+    > .go-form__input-group-btn--prepend,
+    > .go-form__input-group-btn--append {
+      position: relative;
+      z-index: 1;
+
+      &:focus-within {
+        z-index: 5;
+      }
+    }
+
+    // Prepend button - rounded left only
+    > .go-form__input-group-btn--prepend .go-button {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    // Append button - rounded right only
+    > .go-form__input-group-btn--append .go-button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    // --- Dark theme ---
+    &--dark {
+      > .go-form__input-group-text {
+        color: $theme-dark-color;
+        background-color: $theme-dark-border;
+        border-color: $theme-dark-border;
+      }
+    }
+  }
+
+  // Addon text
+  &__input-group-text {
+    display: flex;
+    align-items: center;
+    padding: $column-gutter--half 0.75rem;
+    font-size: .875rem;
+    font-weight: $weight-medium;
+    line-height: 1.3;
+    color: $theme-light-color;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #f1f3f5;
+    border: 1px solid $theme-light-border;
+    border-radius: $global-radius;
+
+    // Prepend addon - rounded left only
+    &--prepend {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $global-radius;
+      border-bottom-left-radius: $global-radius;
+    }
+
+    // Append addon - rounded right only
+    &--append {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: $global-radius;
+      border-bottom-right-radius: $global-radius;
+    }
+  }
 }

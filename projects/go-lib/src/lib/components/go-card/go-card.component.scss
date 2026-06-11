@@ -37,4 +37,8 @@
     box-shadow: $global-box-shadow--dark-popup;
     color: $theme-dark-color;
   }
+
+  &--no-shadow {
+    box-shadow: none;
+  }
 }
