@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LayoutHeaderComponent } from './layout-header.component';
 
@@ -6,7 +6,7 @@ describe('LayoutHeaderComponent', () => {
   let component: LayoutHeaderComponent;
   let fixture: ComponentFixture<LayoutHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LayoutHeaderComponent ]
     })
