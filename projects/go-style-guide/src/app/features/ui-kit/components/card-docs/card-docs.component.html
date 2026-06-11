@@ -7,7 +7,8 @@
   </a>
 </header>
 
-<section class="go-container">
+<section class="go-page-content">
+  <div class="go-container">
   <go-card class="go-column go-column--100" id="usage">
     <ng-container go-card-header>
       <h2 class="go-heading-2 go-heading--no-wrap">Usage</h2>
@@ -33,6 +34,15 @@
           <code class="code-block--inline">showHeader</code>
           by default is true, but if set to false it will hide the header
           of the card even if one is passed.
+        </p>
+      </div>
+
+      <div class="go-column go-column--100 go-column--no-padding">
+        <h4 class="go-heading-4">shadow</h4>
+        <p class="go-body-copy">
+          <code class="code-block--inline">shadow</code>
+          by default is true. Set it to false to remove the box-shadow from the card,
+          which is useful when embedding cards within other cards.
         </p>
       </div>
 
@@ -84,5 +94,39 @@
       <app-code-block [content]="hrAllowPaddingExample" language="html" codeClass="code-block"></app-code-block>
     </ng-container>
   </go-card>
+
+  <go-card class="go-column go-column--100" id="nested-cards">
+    <ng-container go-card-header>
+      <h2 class="go-heading-2 go-heading--no-wrap">Nested Cards</h2>
+      <go-copy cardId="nested-cards" goCopyCardLink></go-copy>
+    </ng-container>
+    <ng-container go-card-content>
+      <p class="go-body-copy">
+        Use <code class="code-block--inline">[shadow]="false"</code> on a nested card to remove
+        its box-shadow, avoiding the double-shadow effect when embedding cards within other cards.
+      </p>
+      <div class="go-example">
+        <go-card>
+          <ng-container go-card-header>
+            <h3 class="go-heading-3">Outer Card</h3>
+          </ng-container>
+          <ng-container go-card-content>
+            <go-card [shadow]="false">
+              <ng-container go-card-header>
+                <h4 class="go-heading-4">Nested Card (no shadow)</h4>
+              </ng-container>
+              <ng-container go-card-content>
+                <!-- Nested Content -->
+              </ng-container>
+            </go-card>
+          </ng-container>
+        </go-card>
+      </div>
+      <h3 class="go-heading-3">Code</h3>
+      <code [highlight]="nestedCardExample"></code>
+    </ng-container>
+  </go-card>
+
+</div>
 </section>
 

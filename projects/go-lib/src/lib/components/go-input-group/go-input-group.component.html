@@ -1,0 +1,6 @@
+﻿<label *ngIf="label" class="go-form__label">{{ label }}</label>
+<div class="go-form__input-group">
+  <ng-content select="[goInputGroupPrepend]"></ng-content>
+  <ng-content></ng-content>
+  <ng-content select="[goInputGroupAppend]"></ng-content>
+</div>

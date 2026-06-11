@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -25,6 +25,7 @@ export class GoHeaderComponent implements OnDestroy {
 
   brandColor: string;
   fontColor: string = ThemeColors.dark;
+  @Input() theme: 'light' | 'dark' = 'light';
   logoConfig: Partial<LogoConfig>;
   menuBgHoverValue: string;
   menuBgHover: string;

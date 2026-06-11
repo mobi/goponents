@@ -82,6 +82,18 @@
       background: $theme-light-bg-hover;
     }
 
+    &--dark {
+      &:hover,
+      &:active,
+      &:focus {
+        background: $theme-dark-bg-hover;
+      }
+
+      &.go-calendar__cell--focused {
+        background: $theme-dark-bg-hover;
+      }
+    }
+
     &--selected {
       background-color: $ui-color-primary;
       color: $theme-dark-color;

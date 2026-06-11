@@ -12,6 +12,7 @@ export class CardDocsComponent {
 
   componentBindings: string = `
   @Input() showHeader: boolean = true;
+  @Input() shadow: boolean = true;
   `;
 
   defaultExample: string = `
@@ -32,6 +33,24 @@ export class CardDocsComponent {
     </ng-container>
     <ng-container go-card-content>
       <!-- Card Content -->
+    </ng-container>
+  </go-card>
+  `;
+
+  nestedCardExample: string = `
+  <go-card>
+    <ng-container go-card-header>
+      <h2 class="go-heading-2">Outer Card</h2>
+    </ng-container>
+    <ng-container go-card-content>
+      <go-card [shadow]="false">
+        <ng-container go-card-header>
+          <h3 class="go-heading-3">Nested Card (no shadow)</h3>
+        </ng-container>
+        <ng-container go-card-content>
+          <!-- Nested Content -->
+        </ng-container>
+      </go-card>
     </ng-container>
   </go-card>
   `;

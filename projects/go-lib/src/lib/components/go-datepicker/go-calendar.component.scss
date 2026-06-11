@@ -28,4 +28,10 @@
   &__close-calendar-content {
     flex-grow: 1;
   }
+
+  &--dark {
+    background: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    color: $theme-dark-color;
+  }
 }

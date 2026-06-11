@@ -115,6 +115,7 @@ import { ButtonGroupDocsComponent } from './components/button-group-docs/button-
 import { ProgressBarDocsComponent } from './components/progress-bar-docs/progress-bar-docs.component';
 import { PillBadgeDocsComponent } from './components/badge-docs/components/pill-badge-docs/pill-badge-docs.component';
 import { PositionedBadgeDocsComponent } from './components/badge-docs/components/positioned-badge-docs/positioned-badge-docs.component';
+import { InputGroupDocsComponent } from './components/input-group-docs/input-group-docs.component';
 
 @NgModule({
   imports: [
@@ -221,6 +222,7 @@ import { PositionedBadgeDocsComponent } from './components/badge-docs/components
     TreeDocsComponent,
     UiKitComponent,
     VirtualScrollComponent,
+    InputGroupDocsComponent,
   ],
   providers: [
     DatePipe,

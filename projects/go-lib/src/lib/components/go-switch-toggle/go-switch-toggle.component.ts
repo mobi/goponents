@@ -15,6 +15,7 @@ import { GoFormErrorsModule } from '../go-form-errors/go-form-errors.module';
 export class GoSwitchToggleComponent extends GoFormBaseComponent {
 
   @Input() labelPosition: 'before' | 'after' = 'after';
+  @Input() theme: 'light' | 'dark' = 'light';
 
   toggle(): void {
     if (!this.control.disabled) {

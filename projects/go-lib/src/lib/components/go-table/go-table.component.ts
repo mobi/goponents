@@ -76,6 +76,7 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
   @Input() stickyHeader: boolean = false;
   @Input() tableConfig: GoTableConfig;
   @Input() tableTitle: string;
+  @Input() theme: 'light' | 'dark' = 'light';
   @Input() wrapContent: boolean = true;
 
   /**

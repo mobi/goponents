@@ -2,6 +2,7 @@ import {
   AfterContentInit,
   Component,
   ContentChildren,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -14,8 +15,9 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 import { GoIconModule } from '../go-icon/go-icon.module';
 @Component({
-    selector: 'go-accordion',
-    template: '<ng-content></ng-content>',
+  selector: 'go-accordion',
+  template: '<ng-content></ng-content>',
+  styleUrls: ['./go-accordion.component.scss'],
   imports: [CommonModule, GoIconModule],
 })
 export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy {
@@ -27,6 +29,14 @@ export class GoAccordionComponent implements OnInit, AfterContentInit, OnDestroy
   @Input() showIcons: boolean = false;
   @Input() slim: boolean = false;
   @Input() theme: 'light' | 'dark' = 'light';
+
+  @HostBinding('class.go-accordion--borderless') get isBorderless(): boolean {
+    return this.borderless;
+  }
+
+  @HostBinding('class.go-accordion--theme-dark') get isDarkTheme(): boolean {
+    return this.theme === 'dark';
+  }
 
   @ContentChildren(GoAccordionPanelComponent, { descendants: true }) panels: QueryList<GoAccordionPanelComponent>;
 

@@ -24,7 +24,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
       @include transition(all);
 
       background-color: $theme-light-app-bg;
-      border: 1px solid $base-light-tertiary;
+      border: 1px solid $base-light-secondary;
       border-radius: 1.125rem;
       bottom: 0;
       cursor: pointer;
@@ -48,7 +48,7 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
 
       &--disabled {
         background-color: $base-light-tertiary;
-        border: 1px solid $base-light-tertiary;
+        border: 1px solid $base-light-secondary;
         cursor: default;
       }
     }
@@ -110,5 +110,55 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
     &--disabled {
       color: $base-light-secondary;
     }
+
+    &--dark {
+      color: $theme-dark-color;
+
+      &.go-form__label--disabled {
+        color: $base-dark-tertiary;
+      }
+    }
   }
+}
+
+// Dark Theme
+.go-form__switch-toggle--dark {
+  .go-form__switch-toggle__toggle {
+    background-color: $gray-800;
+    border-color: $gray-700;
+
+    &::before {
+      background-color: $gray-600;
+      box-shadow: none;
+    }
+
+    &--disabled {
+      background-color: $gray-900;
+      border-color: $gray-800;
+
+      &::before {
+        background-color: $gray-700;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+
+    &::before {
+      background-color: $base-light;
+      box-shadow: none;
+    }
+  }
+}
+
+// Dark hover — matches other form elements
+.go-form__switch-toggle--dark:hover .go-form__switch-toggle__toggle {
+  box-shadow: 0 0 0 .25rem transparentize($gray-700, .6);
+}
+
+.go-form__switch-toggle--dark:hover .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+  box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
 }

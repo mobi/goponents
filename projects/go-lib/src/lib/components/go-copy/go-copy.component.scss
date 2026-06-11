@@ -32,5 +32,13 @@
     &--clicked {
       color: $ui-color-positive;
     }
+
+    &--dark {
+      color: $theme-dark-color;
+
+      &.go-copy__icon--clicked {
+        color: $ui-color-positive;
+      }
+    }
   }
 }

@@ -81,6 +81,16 @@
       left: 0;
     }
   }
+
+  &--dark {
+    .go-progress-bar__determinate--track {
+      background-color: $base-dark-tertiary;
+    }
+
+    .go-progress-bar__indeterminate--track {
+      background-color: $base-dark-tertiary;
+    }
+  }
 }
 
 @keyframes primary-indeterminate-translate {
