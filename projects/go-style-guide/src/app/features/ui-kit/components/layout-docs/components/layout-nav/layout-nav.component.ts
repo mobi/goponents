@@ -87,7 +87,7 @@ export class LayoutNavComponent {
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
     { route: 'standards', routeIcon: 'gavel', routeTitle: 'Standards', subRoutes: [
       { route: 'standards/colors', routeTitle: 'Colors' },
-      { route: 'standards/forms', routeTitle: 'Forms' }
+      { route: 'ui-kit/forms', routeTitle: 'Forms' }
     ]},
     { route: 'ui-kit', routeIcon: 'widgets', routeTitle: 'Components', subRoutes: [
       { route: 'ui-kit/accordion', routeTitle: 'Accordion' },
