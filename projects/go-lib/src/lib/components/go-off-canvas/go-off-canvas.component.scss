@@ -101,13 +101,12 @@
   /* stylelint-disable selector-pseudo-element-no-unknown */
   ::ng-deep {
 
-    // Label spacing: 16px above (top spacing) and 16px below (label → input gap)
     .go-form__label {
-      padding-bottom: $column-gutter; // 16px — label to input
-      padding-top: $column-gutter;    // 16px — top spacing above each label
+      padding-bottom: .25rem;
+      padding-top: .75rem;
 
       &:first-child {
-        padding-top: 1 rem; // suppress extra top gap for the first label in a group
+        padding-top: 0;
       }
     }
 

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
@@ -74,7 +75,7 @@ $as-before-box-diag-width: 21.21px;
     }
 
     &--shift-left {
-      margin-left: (($as-before-box-diag-width + $as-before-box-half-width) / 2) + $as-before-borders;
+      margin-left: math.div($as-before-box-diag-width + $as-before-box-half-width, 2) + $as-before-borders;
       transform: translateX(-100%);
 
       &::before {
