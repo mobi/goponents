@@ -64,6 +64,15 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
       user-select: none;
     }
 
+    &--radio-container {
+      cursor: pointer;
+      line-height: 1.5;
+      margin-right: 1rem;
+      padding-left: 1.25rem;
+      position: relative;
+      user-select: none;
+    }
+
     &--inline {
       display: inline-block;
     }
