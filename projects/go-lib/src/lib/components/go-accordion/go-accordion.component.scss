@@ -1,0 +1,28 @@
+@import '../../../../styles/variables';
+
+// Accordion wrapper — Default matches BS5 accordion (bordered, rounded)
+// Borderless matches BS5 accordion-flush (no border, no radius)
+
+$accordion-border-color: $theme-light-border;
+$accordion-bg: $theme-light-bg;
+$accordion-border-radius: $global-radius;
+
+$accordion-dark-border-color: $gray-700;
+$accordion-dark-bg: $theme-dark-bg;
+
+// Default: BS5 accordion style — wrapper just provides background, no overflow clip
+:host {
+  background: $accordion-bg;
+  border-radius: $accordion-border-radius;
+  display: block;
+}
+
+// Borderless: BS5 accordion-flush style
+:host(.go-accordion--borderless) {
+  border-radius: 0;
+}
+
+// Dark theme
+:host(.go-accordion--theme-dark) {
+  background: $accordion-dark-bg;
+}

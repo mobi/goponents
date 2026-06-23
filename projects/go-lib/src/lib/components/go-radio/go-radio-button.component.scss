@@ -1,56 +1,89 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .go-radio {
   &__input {
-    display: none;
-
-    &:enabled:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: $form-shadow-hover;
-      }
-    }
-
-    &:enabled:checked + .go-radio {
-      &__custom-radio {
-        background-color: $base-light;
-        border: 4px solid $ui-color-primary;
-      }
-    }
-
-    &:enabled:checked:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: $form-shadow-active;
-      }
-    }
-
-    &:disabled + .go-radio {
-      &__custom-radio {
-        background-color: $theme-light-app-bg;
-        cursor: not-allowed;
-      }
-    }
-
-    &:disabled:checked + .go-radio {
-      &__custom-radio {
-        border: 4px solid lighten($base-light-secondary, 13.5%);
-      }
-    }
-
-    &:disabled:hover + .go-radio {
-      &__custom-radio {
-        box-shadow: none;
-      }
-    }
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
   }
 
-  &__custom-radio {
+  &__custom-indicator {
+    appearance: none;
     background-color: $base-light;
-    border: 1px solid $base-light-tertiary;
-    border-radius: 100%;
+    border: 1px solid $base-light-secondary;
+    border-radius: 50%;
     cursor: pointer;
     display: inline-block;
-    height: .75rem;
-    margin: 3px 3px 0 5px;
-    width: .75rem;
+    height: 1em;
+    left: 0;
+    position: absolute;
+    top: .2rem;
+    width: 1em;
+    @include transition(all);
+  }
+
+  &__input:checked ~ &__custom-indicator:not(.go-radio__custom-indicator--dark) {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__input:hover ~ &__custom-indicator:not(.go-radio__custom-indicator--dark) {
+    box-shadow: $form-shadow-hover;
+  }
+
+  &__input:focus ~ &__custom-indicator:not(.go-radio__custom-indicator--dark) {
+    border-color: transparentize($ui-color-primary, .5);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .75);
+  }
+
+  &__input:disabled ~ &__custom-indicator:not(.go-radio__custom-indicator--dark) {
+    cursor: not-allowed;
+    filter: none;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &__input:disabled:checked ~ &__custom-indicator:not(.go-radio__custom-indicator--dark) {
+    background-color: lighten($base-light-secondary, 13.5%);
+    border-color: lighten($base-light-secondary, 13.5%);
+  }
+
+  &__custom-indicator--dark {
+    background-color: $gray-900;
+    border-color: $gray-700;
+  }
+
+  &__input:hover ~ &__custom-indicator--dark {
+    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+  }
+
+  &__input:checked ~ &__custom-indicator--dark {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__input:focus ~ &__custom-indicator--dark {
+    border-color: lighten($ui-color-primary, 15%);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+  }
+
+  &__input:disabled ~ &__custom-indicator--dark {
+    opacity: .5;
+  }
+
+  &__input:disabled:checked ~ &__custom-indicator--dark {
+    background-color: $base-dark-tertiary;
+    border-color: $base-dark-tertiary;
   }
 }

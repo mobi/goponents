@@ -25,7 +25,7 @@ export class LayoutAppDrawerComponent {
   `;
 
   basicExample_ts: string = `
-  import { NavAppDrawer } from '@tangoe/goponents';
+  import { NavAppDrawer } from 'goponents';
 
   navAppDrawer: NavAppDrawer = {
     currentAppIcon: 'power_settings_new',

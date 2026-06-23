@@ -3,6 +3,7 @@
 
   <div
     class="go-form__switch-toggle"
+    [ngClass]="{ 'go-form__switch-toggle--dark': theme === 'dark' }"
     (click)="toggle()">
     <input
       [id]="_id"

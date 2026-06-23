@@ -18,12 +18,12 @@ import {
 })
 export class AppComponent {
   date: Date = new Date();
+  isDarkTheme: boolean = false;
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
     { route: 'standards', routeIcon: 'gavel', routeTitle: 'Standards', subRoutes: [
       { route: 'standards/colors', routeTitle: 'Colors' },
-      { route: 'standards/forms', routeTitle: 'Forms' },
       { route: 'standards/grid', routeTitle: 'Grid System' },
       { route: 'standards/typography', routeTitle: 'Typography' }
     ]},
@@ -40,6 +40,7 @@ export class AppComponent {
       { route: 'ui-kit/header-bar', routeTitle: 'Header Bar' },
       { route: 'ui-kit/icon', routeTitle: 'Icon' },
       { route: 'ui-kit/icon-button', routeTitle: 'Icon Button' },
+      { route: 'ui-kit/input-group', routeTitle: 'Input Group' },
       { route: 'ui-kit/layout', routeTitle: 'Layout' },
       { route: 'ui-kit/loader', routeTitle: 'Loader' },
       { route: 'ui-kit/modal', routeTitle: 'Modal' },
@@ -95,5 +96,10 @@ export class AppComponent {
         baseUrl: '/assets/tinymce'
       }
     });
+  }
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    document.body.classList.toggle('go-dark-theme', this.isDarkTheme);
   }
 }

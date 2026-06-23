@@ -10,7 +10,7 @@ export class ColorsComponent {
   baseColors: string = `
   $base-primary: #20A65F;
   $base-light: #FFFFFF;
-  $base-light-secondary: $gray-500;
+  $base-light-secondary: #DEE2E6; // $gray-300
   $base-dark: #313536;
   $base-dark-secondary: $gray-900;
   `;
@@ -64,7 +64,7 @@ export class ColorsComponent {
 
   horizonRed: string = `
   // Use this to apply the negative (error) state color
-  $ui-color-negative: #DB3939;
+  $ui-color-negative: #DC3545;
 
   // Used when the ui color needs a hover state
   $ui-color-negative-hover: darken($ui-color-negative, 3.5%);
@@ -90,5 +90,17 @@ export class ColorsComponent {
   // Use this to apply the brand color as a gradient.
   // Should only be used as a small accent
   $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
+  `;
+
+  neutralScale: string = `
+  $gray-100: #F8F9FA;
+  $gray-200: #E9ECEF;
+  $gray-300: #DEE2E6;
+  $gray-400: #CED4DA;
+  $gray-500: #ADB5BD;
+  $gray-600: #6C757D;
+  $gray-700: #495057;
+  $gray-800: #343A40;
+  $gray-900: #212529;
   `;
 }

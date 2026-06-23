@@ -21,7 +21,7 @@ export class LayoutExampleComponent {
     GoLayoutModule,
     GoSearchModule,
     GoSideNavModule
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   @NgModule({
     declarations: [
@@ -62,7 +62,7 @@ export class LayoutExampleComponent {
   import {
     NavGroup,
     NavItem
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   date: Date = new Date();
   logo: string = 'url-to-your-logo/go-design.png';
@@ -90,7 +90,7 @@ export class LayoutExampleComponent {
   `;
 
   example_search_ts: string = `
-  import { GoSearchService } from '@tangoe/goponents';
+  import { GoSearchService } from 'goponents';
   import { YourService } from './your.service';
 
   @Component({

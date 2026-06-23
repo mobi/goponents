@@ -119,7 +119,7 @@ npm run publish
 
 The `projects/go-lib/src/public_api.ts` file exposes files to the root of the node module. This allows for importing like:
 
-`import { GoTableConfig } from '@tangoe/goponents';`
+`import { GoTableConfig } from 'goponents';`
 
 To do this properly, you must export each individual file within the `public_api.ts` file.
 

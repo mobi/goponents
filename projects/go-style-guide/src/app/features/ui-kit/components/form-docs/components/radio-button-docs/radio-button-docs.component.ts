@@ -17,7 +17,7 @@ export class RadioButtonDocsComponent {
   hints: Array<string> = ['this is a hint for the radio group'];
 
   radioSetup: string = `
-  import { GoRadioModule } from '@tangoe/goponents';
+  import { GoRadioModule } from 'goponents';
 
   @NgModule({
     imports: [

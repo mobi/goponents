@@ -113,7 +113,7 @@ export class TableSelectionComponent {
     GoTableComponent,
     GoTableConfig,
     SelectionState
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   eleRefTableConfig = new GoTableConfig({
     selectBy: 'id',
@@ -149,7 +149,7 @@ export class TableSelectionComponent {
     GoTableConfig,
     RowSelectionEvent,
     SelectionState
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   rowEventTableConfig = new GoTableConfig({
     selectBy: 'id',
@@ -179,7 +179,7 @@ export class TableSelectionComponent {
   preselectedTable_ts: string = `
   import {
     GoTableConfig
-  } from '@tangoe/goponents';
+  } from 'goponents';
 
   preselectedTableConfig: GoTableConfig = new GoTableConfig({
     preselected: true,

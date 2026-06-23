@@ -8,7 +8,6 @@ import { GoSharedModule } from '../../../../../go-lib/src/public_api';
 
 // Module Components
 import { ColorsComponent } from './components/colors/colors.component';
-import { FormsComponent } from './components/forms/forms.component';
 import { GridComponent } from './components/grid/grid.component';
 import { StandardsComponent } from './components/standards/standards.component';
 import { TypographyComponent } from './components/typography/typography.component';
@@ -26,7 +25,6 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   declarations: [
     ColorsComponent,
-    FormsComponent,
     GridComponent,
     StandardsComponent,
     TypographyComponent
