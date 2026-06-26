@@ -24,7 +24,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/go-lib/src/test.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "projects/go-lib/tsconfig.spec.json",
             "karmaConfig": "projects/go-lib/karma.conf.js"
           }

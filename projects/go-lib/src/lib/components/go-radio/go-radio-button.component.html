@@ -1,5 +1,5 @@
 <label
-  class="go-form__label go-form__label--inline"
+  class="go-form__label go-form__label--inline go-form__label--radio-container"
   [attr.for]="_id"
   [ngClass]="{'go-form__label--dark': theme == 'dark'}"
   *ngIf="control"
@@ -11,6 +11,9 @@
          [value]="formValue"
          [name]="name"
   >
-  <span class="go-radio__custom-radio"></span>
+  <span
+    class="go-radio__custom-indicator"
+    [ngClass]="{'go-radio__custom-indicator--dark': theme == 'dark'}"
+  ></span>
   {{ label }}
 </label>

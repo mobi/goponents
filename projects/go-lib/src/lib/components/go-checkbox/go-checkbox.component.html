@@ -9,12 +9,15 @@
     <input
       [id]="_id"
       class="go-form__checkbox go-form__checkbox--hidden"
-      [ngClass]="inputClasses"
+      [ngClass]="{ 'go-form__checkbox--dark': theme === 'dark' }"
       type="checkbox"
       [formControl]="control"
       #hiddenInputRef
     />
-    <span class="go-form__custom-checkbox"></span>
+    <span
+      class="go-form__custom-checkbox"
+      [ngClass]="{ 'go-form__custom-checkbox--dark': theme === 'dark' }"
+    ></span>
   </label>
 
   <go-hint

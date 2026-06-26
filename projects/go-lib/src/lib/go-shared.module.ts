@@ -19,6 +19,7 @@ import { GoHeaderModule } from './components/go-header/go-header.module';
 import { GoHintModule } from './components/go-hint/go-hint.module';
 import { GoIconButtonModule } from './components/go-icon-button/go-icon-button.module';
 import { GoIconModule } from './components/go-icon/go-icon.module';
+import { GoInputGroupModule } from './components/go-input-group/go-input-group.module';
 import { GoInputModule } from './components/go-input/go-input.module';
 import { GoLayoutModule } from './components/go-layout/go-layout.module';
 import { GoLoaderModule } from './components/go-loader/go-loader.module';
@@ -59,6 +60,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoHintModule,
     GoIconButtonModule,
     GoIconModule,
+    GoInputGroupModule,
     GoInputModule,
     GoLayoutModule,
     GoLoaderModule,
@@ -97,6 +99,7 @@ import { GoCopyCardLinkModule } from './directives/go-copy-card-link/go-copy-car
     GoHintModule,
     GoIconButtonModule,
     GoIconModule,
+    GoInputGroupModule,
     GoInputModule,
     GoLayoutModule,
     GoLoaderModule,

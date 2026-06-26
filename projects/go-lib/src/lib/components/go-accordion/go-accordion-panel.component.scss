@@ -1,35 +1,66 @@
 @import '../../../../styles/variables';
 @import '../../../../styles/mixins';
 
+// Accordion Variables
+$accordion-border-color: $theme-light-border;
+$accordion-bg: $theme-light-bg;
+$accordion-btn-bg: $theme-light-bg;
+$accordion-btn-active-bg: $blue-100;
+$accordion-btn-hover-bg: $gray-100;
+$accordion-btn-color: $theme-light-color;
+$accordion-btn-active-color: $blue-700;
+$accordion-body-padding: 1rem 1.25rem;
+$accordion-header-padding: 1rem 1.25rem;
+$accordion-border-width: 1px;
+$accordion-border-radius: $global-radius;
+
+$accordion-dark-border-color: $gray-700;
+$accordion-dark-bg: $gray-900;
+$accordion-dark-btn-bg: $gray-900;
+$accordion-dark-btn-active-bg: $blue-900;
+$accordion-dark-btn-hover-bg: lighten($theme-dark-bg, 3%);
+$accordion-dark-btn-color: $gray-300;
+$accordion-dark-btn-active-color: $blue-300;
+
+// Default: BS5 accordion-item style — each panel has full border
 .go-accordion-panel {
-  background: $theme-light-bg;
-  border: 1px solid $theme-light-border;
-  border-bottom-width: 0;
-  color: $theme-light-color;
+  background: $accordion-bg;
+  border: $accordion-border-width solid $accordion-border-color;
+  color: $accordion-btn-color;
   overflow: visible;
   position: relative;
 
-  &--first {
-    border-top-left-radius: $global-radius;
-    border-top-right-radius: $global-radius;
+  // Not first — remove top border to avoid doubles (BS5 approach)
+  &:not(.go-accordion-panel--first) {
+    border-top: 0;
   }
 
+  // First panel — rounded top corners
+  &--first {
+    border-top-left-radius: $accordion-border-radius;
+    border-top-right-radius: $accordion-border-radius;
+
+    .go-accordion-panel__header {
+      border-top-left-radius: $accordion-border-radius;
+      border-top-right-radius: $accordion-border-radius;
+    }
+  }
+
+  // Last panel — rounded bottom corners, clip content
   &--last {
-    border-bottom-left-radius: $global-radius;
-    border-bottom-right-radius: $global-radius;
-    border-bottom-width: 1px;
+    border-bottom-left-radius: $accordion-border-radius;
+    border-bottom-right-radius: $accordion-border-radius;
+    overflow: hidden;
+
+    .go-accordion-panel__content {
+      border-bottom-left-radius: $accordion-border-radius;
+      border-bottom-right-radius: $accordion-border-radius;
+    }
   }
 
   &--active {
     .go-accordion-panel--selected {
-      @include z-index(1);
-
-      content: ' ';
-      height: 100%;
-      left: 0;
-      position: absolute;
-      transition: all .25s ease-in;
-      width: 4px;
+      display: none;
     }
   }
 
@@ -47,9 +78,25 @@
     }
   }
 
+  // Borderless: flush style — no border, no radius
   &--borderless {
     border: 0;
     border-radius: 0;
+    border-bottom: $accordion-border-width solid $accordion-border-color;
+
+    &.go-accordion-panel--first {
+      border-radius: 0;
+    }
+
+    &.go-accordion-panel--last {
+      border-bottom: 0;
+      border-radius: 0;
+    }
+
+    .go-accordion-panel__header,
+    .go-accordion-panel__content {
+      border-radius: 0;
+    }
   }
 
   &--box-shadow {
@@ -57,9 +104,17 @@
   }
 
   &--dark {
-    background: $theme-dark-bg;
-    border-color: $theme-dark-border;
-    color: $theme-dark-color;
+    background: $accordion-dark-bg;
+    border-color: $accordion-dark-border-color;
+    color: $accordion-dark-btn-color;
+
+    .go-accordion-panel__control {
+      color: $accordion-dark-btn-color;
+
+      &--active {
+        color: $accordion-dark-btn-active-color;
+      }
+    }
   }
 
   &__header {
@@ -68,31 +123,34 @@
     cursor: pointer;
     display: flex;
     font-size: 1.125rem;
-    padding: 1.2rem 1rem;
+    padding: $accordion-header-padding;
     position: relative;
+    background-color: $accordion-btn-bg;
 
     &:hover {
-      background-color: darken($base-light, 7%);
+      background-color: $accordion-btn-hover-bg;
     }
 
     &--dark {
-      background-color: $base-dark;
+      background-color: $accordion-dark-btn-bg;
 
       &:hover {
-        background-color: darken($base-dark, 3.5%);
+        background-color: $accordion-dark-btn-hover-bg;
       }
     }
 
     &--active {
-      background-color: darken($base-light, 3.5%);
+      background-color: $accordion-btn-active-bg;
+      color: $accordion-btn-active-color;
 
       // scss-lint:disable SelectorFormat
       &.go-accordion-panel__header--dark {
-        background-color: darken($base-dark-secondary, 3.5%);
+        background-color: $accordion-dark-btn-active-bg;
+        color: $accordion-dark-btn-active-color;
       }
 
       &.go-accordion-panel__header--dark:hover {
-        background-color: darken($base-dark-secondary, 7%);
+        background-color: darken($accordion-dark-btn-active-bg, 2%);
       }
     }
 
@@ -129,53 +187,55 @@
     justify-content: center;
     margin-left: 1rem;
     text-align: center;
+    color: $accordion-btn-color;
 
     &--active {
       transform: rotate(180deg);
+      color: $accordion-btn-active-color;
     }
   }
 
   &__content {
     font-size: 0.875rem;
-    padding: 1rem;
+    padding: $accordion-body-padding;
 
     &--slim {
       font-size: 0.875rem;
-      padding: 1rem;
+      padding: $accordion-body-padding;
     }
 
     &--no-padding {
-      padding: 0 0 0 4px; // 4px accounts for the selected bar to the left
+      padding: 0;
     }
   }
 }
 
 // ----- Dark Theme Classes
 .go-accordion--theme-dark {
-  background: $theme-dark-bg;
-  border: 1px solid $theme-dark-border;
-  color: $theme-dark-color;
+  background: $accordion-dark-bg;
+  color: $accordion-dark-btn-color;
   font-weight: $weight-light;
 
   .go-accordion-panel {
-    &--border-top &__header {
-      border-top: 1px solid $theme-dark-border;
-    }
-
     &--active &__header {
-      background: $theme-dark-bg-active;
+      background: $accordion-dark-btn-active-bg;
+      color: $accordion-dark-btn-active-color;
     }
 
     &--inactive &__header {
-      background: $theme-dark-bg;
+      background: $accordion-dark-bg;
     }
 
-    &__header:hover {
-      background: $theme-dark-bg-hover;
+    &__control {
+      color: $accordion-dark-btn-color;
+
+      &--active {
+        color: $accordion-dark-btn-active-color;
+      }
     }
 
     &__content {
-      color: $theme-dark-color;
+      color: $accordion-dark-btn-color;
       font-weight: $weight-light;
     }
   }

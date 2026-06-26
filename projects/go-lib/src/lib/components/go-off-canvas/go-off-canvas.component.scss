@@ -17,6 +17,7 @@
   @include z-index(off-canvas);
 
   background-color: $theme-dark-bg;
+  border-left: 1px solid $theme-dark-border;
   bottom: 0;
   color: $base-light;
   display: flex;
@@ -24,7 +25,7 @@
   left: 100%;
   position: fixed;
   top: 0;
-  width: 350px;
+  width: 400px;
 
   @media (max-width: $breakpoint-mobile) {
     width: 100vw;
@@ -35,9 +36,10 @@
     align-self: flex-start;
     display: flex;
     flex: 0 0 auto;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: $column-gutter;
     width: 100%;
+    box-sizing: border-box;
   }
 
   &__title {
@@ -50,6 +52,16 @@
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  &__footer {
+    border-top: 1px solid $theme-dark-border;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: .625rem;
+    padding: 1rem $column-gutter;
+    width: 100%;
   }
 
   &--large {
@@ -72,6 +84,46 @@
       &__content {
         padding: 1rem;
       }
+
+      &__footer {
+        background-color: $theme-light-bg;
+        border-top-color: $theme-light-border;
+      }
     }
   }
+
+  // -------------------------------------------------------------------------
+  // Scoped form field overrides — applies only inside the off-canvas panel.
+  // ::ng-deep is required because form content is projected via ng-template
+  // from child components and lives outside this component's shadow boundary.
+  // The parent selector `.go-off-canvas` keeps the scope contained.
+  // -------------------------------------------------------------------------
+  /* stylelint-disable selector-pseudo-element-no-unknown */
+  ::ng-deep {
+
+    .go-form__label {
+      padding-bottom: .25rem;
+      padding-top: .75rem;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    // Border colour override — dark theme only: #495057
+    // Targets inputs/selects rendered with dark-theme modifier classes.
+    // Light-theme form fields are intentionally left unchanged.
+    .go-form--dark .go-form__input,
+    .go-form--dark .go-form__select,
+    .go-form__input--dark,
+    .go-form__select--dark {
+      border-color: $base-dark-tertiary; // #495057
+    }
+
+    // ng-select dark variant border override: #495057
+    .ng-select.go-select--dark .ng-select-container {
+      border-color: $base-dark-tertiary; // #495057
+    }
+  }
+  /* stylelint-enable selector-pseudo-element-no-unknown */
 }

@@ -13,7 +13,7 @@
           All of the available sass variables for theming, branding, & other
           UI states are available via the goponents package. 
           These can be imported in a scss file with: 
-          <code class="code-block--inline">@import '~@tangoe/goponents/styles/variables';</code>
+          <code class="code-block--inline">@import '~goponents/styles/variables';</code>
         </p>
       </ng-container>
     </go-card>
@@ -36,7 +36,7 @@
                 <span class="overline">#FFFFFF</span>
               </div>
               <div id="go-color-light-secondary" class="go-color-items__item go-color-items__item--dark">
-                <span class="overline">#B1B1B1</span>
+                <span class="overline">#DEE2E6</span>
               </div>
               <div id="go-color-dark" class="go-color-items__item">
                 <span class="overline">#313536</span>
@@ -145,7 +145,7 @@
             </p>
             <div class="go-color-items">
               <div class="go-color-items__item">
-                <span class="overline">#DB3939</span>
+                <span class="overline">#DC3545</span>
               </div>
               <div class="go-color-items__item">
                 <span class="overline">#d92637</span>
@@ -196,6 +196,57 @@
           </div>
           <div class="go-column go-column--50">
             <code [highlight]="nebulaPurple"></code>
+          </div>
+        </section>
+      </ng-container>
+    </go-card>
+  </section>
+
+  <section id="go-color-gray-scale" class="go-column go-column--100">
+    <go-card>
+      <ng-container go-card-header>
+        <h2 class="go-heading-2 go-heading--no-wrap">Neutral Scale</h2>
+        <go-copy cardId="go-color-gray-scale" goCopyCardLink></go-copy>
+      </ng-container>
+      <ng-container go-card-content>
+        <section class="go-container">
+          <div class="go-column go-column--50">
+            <p class="go-body-copy">
+              The neutral scale provides a consistent gray palette for backgrounds, borders, disabled states, and structural elements throughout the UI.<br/>
+              <caption>Base SASS variables: $gray-100 through $gray-900</caption>
+            </p>
+            <div class="go-color-items go-color-items--compact">
+              <div class="go-color-items__item go-color-items__item--dark go-color-items__item--third">
+                <span class="overline">$gray-100</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--dark go-color-items__item--third">
+                <span class="overline">$gray-200</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--dark go-color-items__item--third">
+                <span class="overline">$gray-300</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--dark go-color-items__item--third">
+                <span class="overline">$gray-400</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--dark go-color-items__item--third">
+                <span class="overline">$gray-500</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--third">
+                <span class="overline">$gray-600</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--third">
+                <span class="overline">$gray-700</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--third">
+                <span class="overline">$gray-800</span>
+              </div>
+              <div class="go-color-items__item go-color-items__item--third">
+                <span class="overline">$gray-900</span>
+              </div>
+            </div>
+          </div>
+          <div class="go-column go-column--50">
+            <code [highlight]="neutralScale"></code>
           </div>
         </section>
       </ng-container>

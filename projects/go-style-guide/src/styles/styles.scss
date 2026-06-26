@@ -5,7 +5,6 @@
 @import 'typography';
 @import 'highlight.js/styles/github.css';
 
-// Base Styling
 code {
   border-radius: $global-radius;
   font-family: $roboto-code;
@@ -70,4 +69,518 @@ code {
   @media (max-width: $breakpoint_tablet) {
     padding: 0;
   }
+}
+
+// ============================================================================
+// Global Dark Theme Toggle
+// Applied via .go-dark-theme class on <body> by the header toggle
+// Must live in global stylesheet to avoid Angular view encapsulation scoping
+// ============================================================================
+
+.go-dark-theme {
+  background: $theme-dark-bg;
+  color: $theme-dark-color;
+
+  go-card .card {
+    background: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    box-shadow: $global-box-shadow--dark-popup;
+    color: $theme-dark-color;
+  }
+
+  .go-table-container {
+    background: $theme-dark-bg;
+    box-shadow: $global-box-shadow--dark-popup;
+  }
+
+  .go-table__table {
+    color: $theme-dark-color;
+  }
+
+  .go-table__head-column {
+    box-shadow: inset 0 -2px 0 $theme-dark-border;
+    color: $theme-dark-color;
+
+    &--sticky {
+      background: $theme-dark-bg;
+    }
+  }
+
+  .go-table__head--sortable:hover {
+    background: $theme-dark-bg-hover;
+  }
+
+  .go-table__body-column {
+    border-bottom-color: $theme-dark-border;
+  }
+
+  .go-table__body-row {
+    &:nth-child(even) {
+      background: rgba($theme-dark-bg-hover, .5);
+    }
+
+    &--active-parent {
+      background-color: $theme-dark-bg-hover;
+      border-top-color: $theme-dark-border;
+    }
+  }
+
+  .go-table-toolbar {
+    border-top-color: $theme-dark-border;
+    color: $theme-dark-color;
+
+    &__page-numbers {
+      color: $theme-dark-color;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background: $theme-dark-bg-hover;
+      }
+    }
+  }
+
+  .go-table-placeholder td {
+    border-top-color: $theme-dark-border;
+    color: $theme-dark-color;
+  }
+
+  .go-table-loader {
+    background: transparentize($theme-dark-bg-hover, .3);
+  }
+
+  .go-pill {
+    background-color: $ui-color-primary-hover;
+    color: $theme-dark-color;
+  }
+
+  .go-pill-badge--info {
+    border-color: lighten($ui-color-neutral, 20%);
+    color: lighten($ui-color-neutral, 20%);
+  }
+
+  .go-pill-badge--success {
+    border-color: lighten($ui-color-positive, 20%);
+    color: lighten($ui-color-positive, 20%);
+  }
+
+  .go-pill-badge--error {
+    border-color: lighten($ui-color-negative, 20%);
+    color: lighten($ui-color-negative, 20%);
+  }
+
+  .go-progress-bar__determinate--track,
+  .go-progress-bar__indeterminate--track {
+    background-color: $base-dark-tertiary;
+  }
+
+  .go-icon-button {
+    color: $theme-dark-color;
+
+    &:hover,
+    &:focus {
+      background: transparentize($base-dark-tertiary, .7);
+    }
+
+    &--disabled {
+      color: $base-dark-tertiary;
+    }
+  }
+
+  .go-footer {
+    color: $theme-dark-color;
+  }
+
+  .go-calendar {
+    background: $gray-900;
+    border-color: $gray-700;
+    color: $gray-300;
+
+    &__body--header-border {
+      border-bottom-color: $gray-700;
+    }
+
+    &__cell:hover,
+    &__cell:active,
+    &__cell:focus {
+      background: $gray-800;
+    }
+
+    &__cell--focused {
+      background: $gray-800;
+    }
+
+    &__table {
+      color: $gray-300;
+    }
+
+    &__header {
+      color: $gray-300;
+    }
+  }
+
+  .go-side-nav {
+    background: darken($theme-dark-bg, 2%);
+  }
+
+  .go-link {
+    color: $theme-dark-color;
+
+    &:active,
+    &:visited {
+      color: $theme-dark-color;
+    }
+
+    &:focus,
+    &:hover {
+      color: lighten($ui-color-neutral, 20%);
+    }
+  }
+
+  .go-layout {
+    background: $theme-dark-bg;
+  }
+
+  .go-layout__section--content {
+    background: $theme-dark-bg;
+    color: $theme-dark-color;
+  }
+
+  .go-page-title {
+    background: $theme-dark-bg;
+    border-bottom-color: $theme-dark-border;
+  }
+
+  .code-block {
+    background: $base-dark;
+    color: $theme-dark-color;
+  }
+
+  .go-body-copy {
+    color: $theme-dark-color;
+  }
+
+  .go-heading-1,
+  .go-heading-2,
+  .go-heading-3,
+  .go-heading-4,
+  .go-heading-5,
+  .go-heading-6 {
+    color: $theme-dark-color;
+  }
+
+  .go-hr {
+    border-color: $theme-dark-border;
+  }
+
+  .go-table__search-container {
+    background: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    color: $theme-dark-color;
+
+    &:hover {
+      background: $theme-dark-bg-hover;
+    }
+  }
+
+  .go-table__search-input {
+    color: $theme-dark-color;
+  }
+
+  .go-form__label {
+    color: $theme-dark-color;
+  }
+
+  .go-form__fieldset {
+    border-color: $gray-700;
+  }
+
+  .go-form__legend {
+    color: $gray-300;
+  }
+
+  .go-form__checkbox {
+    background-color: $gray-900;
+    border-color: $gray-700;
+
+    &:checked {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+    }
+
+    &:focus {
+      border-color: lighten($ui-color-primary, 15%);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+    }
+  }
+
+  .go-form__custom-checkbox {
+    background-color: $gray-900;
+    border-color: $gray-700;
+  }
+
+  .go-form__checkbox--hidden:checked ~ .go-form__custom-checkbox,
+  .go-form__checkbox--dark.go-form__checkbox--hidden:checked ~ .go-form__custom-checkbox--dark {
+    background-color: $ui-color-primary;
+    border-color: $ui-color-primary;
+  }
+
+  .go-form__checkbox--hidden:hover ~ .go-form__custom-checkbox {
+    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+  }
+
+  .go-form__checkbox--hidden:focus ~ .go-form__custom-checkbox {
+    border-color: lighten($ui-color-primary, 15%);
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+  }
+
+  .go-radio__input {
+    background-color: $gray-900;
+    border-color: $gray-700;
+
+    &:checked {
+      background-color: $ui-color-primary;
+      border-color: $ui-color-primary;
+    }
+
+    &:focus {
+      border-color: lighten($ui-color-primary, 15%);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+    }
+
+    &:hover {
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+    }
+  }
+
+  .go-radio__custom-radio {
+    background-color: $gray-900;
+    border-color: $gray-700;
+  }
+
+  .main__header {
+    background: $gray-800;
+    border-bottom-color: $gray-700;
+  }
+
+  .header__search {
+    background: $gray-900;
+    color: $gray-300;
+  }
+
+  .header__theme-switcher {
+    color: $gray-300;
+
+    &:hover {
+      background: $gray-700;
+    }
+  }
+
+  go-header .go-header {
+    background: $gray-800 !important;
+    box-shadow: $global-box-shadow--dark-popup !important;
+    color: $gray-300 !important;
+  }
+
+  go-header .go-header__left {
+    color: $gray-300 !important;
+  }
+
+  .go-accordion-panel {
+    background: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    color: $theme-dark-color;
+
+    &--dark {
+      background: $theme-dark-bg;
+      border-color: $theme-dark-border;
+      color: $theme-dark-color;
+    }
+
+    &--borderless {
+      border-bottom-color: $theme-dark-border;
+    }
+  }
+
+  .go-accordion-panel__header {
+    background-color: $theme-dark-bg;
+
+    &--dark {
+      background-color: $theme-dark-bg;
+    }
+
+    &--active {
+      background-color: $blue-900;
+      color: $blue-300;
+
+      &.go-accordion-panel__header--dark {
+        background-color: $blue-900;
+        color: $blue-300;
+      }
+    }
+  }
+
+  .go-accordion-panel__control {
+    color: $theme-dark-color;
+
+    &--active {
+      color: $blue-300;
+    }
+  }
+
+  .go-accordion-panel__content {
+    color: $theme-dark-color;
+  }
+
+  .go-badge {
+    border-color: $theme-dark-bg;
+  }
+
+  .go-hint {
+    color: $theme-dark-color;
+  }
+
+  .go-toast {
+    background: $theme-dark-bg;
+
+    .go-toast-content {
+      color: $theme-dark-color;
+    }
+  }
+
+  .go-toast-strip {
+    background-color: $theme-dark-border;
+  }
+
+  .go-tab {
+    &__header {
+      color: $theme-dark-color;
+
+      &:hover {
+        background-color: $theme-dark-bg-hover;
+      }
+
+      &--active {
+        background: $theme-dark-bg;
+        border-color: $theme-dark-border;
+        color: $theme-dark-color;
+      }
+    }
+
+    &__card {
+      background: $theme-dark-bg;
+      color: $theme-dark-color;
+    }
+
+    &__card-wrapper {
+      background: $theme-dark-bg;
+      border-color: $theme-dark-border;
+    }
+  }
+
+  .go-form__switch-toggle .go-form__switch-toggle__toggle {
+    background-color: $gray-800 !important;
+    border-color: $gray-700 !important;
+
+    &::before {
+      background-color: $gray-600 !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .go-form__switch-toggle:hover .go-form__switch-toggle__toggle {
+    box-shadow: 0 0 0 .25rem transparentize($gray-700, .6) !important;
+  }
+
+  .go-form__switch-toggle:hover .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65) !important;
+  }
+
+  .go-form__switch-toggle .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+    background-color: $ui-color-primary !important;
+    border-color: $ui-color-primary !important;
+
+    &::before {
+      background-color: $base-light !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .go-form__label--disabled {
+    color: $base-dark-tertiary;
+  }
+
+  .go-modal__container {
+    background: $theme-dark-bg;
+    color: $theme-dark-color;
+  }
+
+  .go-header-bar {
+    background: $gray-800;
+    box-shadow: $global-box-shadow--dark-popup;
+
+    &__back-arrow {
+      border-color: $gray-700;
+      color: $gray-300;
+    }
+  }
+
+  .go-file-upload {
+    background-color: $theme-dark-bg;
+    border-color: $theme-dark-border;
+    color: $theme-dark-color;
+
+    &:hover {
+      background-color: $theme-dark-bg-hover;
+      color: $theme-dark-color-hover;
+    }
+  }
+
+  .go-form__input,
+  .go-form__select {
+    background-color: $gray-900;
+    border-color: $gray-700;
+    color: $gray-300;
+
+    &:hover {
+      box-shadow: 0 0 0 .25rem transparentize($gray-700, .6);
+    }
+
+    &:focus {
+      border-color: lighten($ui-color-primary, 15%);
+      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+    }
+
+    &::placeholder {
+      color: $gray-500;
+    }
+
+    &:disabled {
+      background-color: $gray-800;
+      border-color: $gray-700;
+      color: $gray-300;
+    }
+  }
+
+  .go-loader--light path {
+    fill: $theme-dark-color;
+  }
+}
+
+.go-page-content {
+  background-color: $theme-light-app-bg;
+  border-radius: $global-radius;
+  padding: 1rem;
+}
+
+.go-example {
+  background-color: $theme-light-app-bg;
+  border-radius: $global-radius;
+  margin-bottom: $column-gutter;
+  margin-top: $column-gutter--half;
+  padding: $column-gutter;
 }

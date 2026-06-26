@@ -86,15 +86,16 @@ export class DatepickerDocsComponent implements OnInit {
   `;
 
   basicErrorsTemplate: string = `
-  this.dob.setErrors([
-    {
+  this.dob.setErrors({
+    invalid: {
       message: 'This date is invalid'
     },
-    {
+    required: {
       type: 'Required',
       message: 'This is a required input.'
     }
-  ]);
+  });
+  this.dob.markAsTouched();
   `;
 
   basicDisabledExample: string = `
@@ -193,15 +194,21 @@ export class DatepickerDocsComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout((): void => {
-      this.dob5.setErrors([
-        {
+      const dob5Errors = {
+        invalid: {
           message: 'This date is invalid'
         },
-        {
+        required: {
           type: 'Required',
           message: 'This is a required input.'
         }
-      ]);
+      };
+      this.dob5.setErrors(dob5Errors);
+      this.dob5.markAsTouched();
+      this.dob5.valueChanges.subscribe(() => {
+        this.dob5.setErrors(dob5Errors);
+        this.dob5.markAsTouched();
+      });
 
       this.dob7.disable();
     }, 500);

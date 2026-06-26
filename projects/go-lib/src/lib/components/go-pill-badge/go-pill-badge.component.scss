@@ -27,4 +27,21 @@
     border: 1px solid $ui-color-negative;
     color: $ui-color-negative;
   }
+
+  &--dark {
+    &.go-pill-badge--info {
+      border-color: lighten($ui-color-neutral, 20%);
+      color: lighten($ui-color-neutral, 20%);
+    }
+
+    &.go-pill-badge--success {
+      border-color: lighten($ui-color-positive, 20%);
+      color: lighten($ui-color-positive, 20%);
+    }
+
+    &.go-pill-badge--error {
+      border-color: lighten($ui-color-negative, 20%);
+      color: lighten($ui-color-negative, 20%);
+    }
+  }
 }

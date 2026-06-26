@@ -39,4 +39,17 @@ $go-icon-button-hover-bg: #dcdcdc;
       background: none;
     }
   }
+
+  &--dark {
+    color: $theme-dark-color;
+
+    &:hover,
+    &:focus {
+      background: transparentize($base-dark-tertiary, .7);
+    }
+
+    &.go-icon-button--disabled {
+      color: $base-dark-tertiary;
+    }
+  }
 }

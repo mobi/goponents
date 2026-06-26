@@ -1,0 +1,50 @@
+name: Scheduled Workflow
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Trivy Security Scan every Monday at 6:00 AM UTC
+
+  workflow_dispatch:
+    inputs:
+      scheduled_action:
+        type: choice
+        description: Choose scheduled action
+        options:
+          - trivy_security_scan
+        default: 'trivy_security_scan'
+
+jobs:
+  trivySecurityScan:
+    if: ${{ (github.event.schedule == '0 6 * * 1') || (github.event_name == 'workflow_dispatch' && (inputs.scheduled_action == 'trivy_security_scan')) }}
+    runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: library-npm-${{ hashFiles('package-lock.json') }}
+
+      - name: Read .nvmrc
+        run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NVMRC }}
+
+      - name: Install npm Packages
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Trivy Security Scan
+        uses: ./.github/actions/trivy_security_scan
+        with:
+          services_dashboard_url: ${{ vars.SERVICES_DASHBOARD_URL }}
+          vuln_fail_severities: ${{ vars.TRIVY_VULN_FAIL_SEVERITIES }}
+          license_fail_severities: ${{ vars.TRIVY_LICENSE_FAIL_SEVERITIES }}

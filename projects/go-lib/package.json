@@ -1,6 +1,6 @@
 {
-  "name": "@tangoe/goponents",
-  "version": "1.18.3",
+  "name": "goponents",
+  "version": "15.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mobi/goponents.git"
