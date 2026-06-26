@@ -32,7 +32,11 @@ jobs:
 
       - name: Install npm Packages
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          npm ci || {
+            echo "npm ci failed, falling back to npm install"
+            npm install
+          }
 
       - name: Trivy Security Scan
         uses: ./.github/actions/trivy_security_scan

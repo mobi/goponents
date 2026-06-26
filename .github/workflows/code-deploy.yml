@@ -91,7 +91,11 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          npm ci || {
+            echo "npm ci failed, falling back to npm install"
+            npm install
+          }
 
       - name: Build Style Guide
         run: |
