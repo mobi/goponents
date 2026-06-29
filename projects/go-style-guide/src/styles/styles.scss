@@ -3,7 +3,7 @@
 
 @import 'settings';
 @import 'typography';
-@import 'highlight.js/styles/github.css';
+@import 'highlight.js/styles/default.css';
 
 code {
   border-radius: $global-radius;
@@ -14,7 +14,10 @@ code {
   white-space: pre;
 
   &.hljs {
+    background: $gray-100;
     border: 1px solid $theme-light-border;
+    color: $theme-light-color;
+    display: block;
     padding: 1rem;
   }
 
@@ -23,6 +26,96 @@ code {
   .hljs-strong {
     font-weight: normal;
   }
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: $secondary-weight-medium;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: teal;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #dd1144;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: $secondary-weight-medium;
+}
+
+.hljs-subst {
+  font-weight: $weight-regular;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: $secondary-weight-medium;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: navy;
+  font-weight: $weight-regular;
+}
+
+.hljs-tag .hljs-name {
+  color: navy;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: 700;
+}
+
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-property,
+.hljs-params,
+.hljs-symbol,
+.hljs-selector-class,
+.hljs-selector-pseudo {
+  color: $theme-light-color;
+  font-weight: $weight-light;
+}
+
+.hljs-variable.language_ {
+  color: $theme-light-color;
+  font-weight: $secondary-weight-medium;
 }
 
 .code-block--inline {
