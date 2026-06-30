@@ -48,7 +48,7 @@ code {
 .hljs-selector-tag,
 .hljs-subst {
   color: $theme-light-color;
-  font-weight: $secondary-weight-medium;
+  font-weight: $weight-bold;
 }
 
 .hljs-number,
@@ -68,7 +68,7 @@ code {
 .hljs-section,
 .hljs-selector-id {
   color: $syntax-title;
-  font-weight: $secondary-weight-medium;
+  font-weight: $weight-bold;
 }
 
 .hljs-subst {
@@ -78,7 +78,7 @@ code {
 .hljs-type,
 .hljs-class .hljs-title {
   color: $syntax-type;
-  font-weight: $secondary-weight-medium;
+  font-weight: $weight-bold;
 }
 
 .hljs-tag,
@@ -130,7 +130,7 @@ code {
 
 .hljs-variable.language_ {
   color: $theme-light-color;
-  font-weight: $secondary-weight-medium;
+  font-weight: $weight-bold;
 }
 
 .hljs-punctuation,
