@@ -8,16 +8,16 @@ import {
 } from '@angular/core';
 import {
   ActivatedRoute,
+  Event,
   NavigationCancel,
   NavigationEnd,
   NavigationError,
   NavigationStart,
   Router,
-  RouterEvent,
   RouterOutlet
 } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { fadeAnimation, fadeTemplateAnimation } from '../../animations/fade.animation';
 import { routerAnimation } from '../../animations/route.animation';
 import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
@@ -46,7 +46,15 @@ export class GoLayoutComponent implements OnInit, OnDestroy {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event: RouterEvent) => {
+    this.router.events.pipe(
+      filter((event: Event): event is NavigationStart | NavigationEnd | NavigationCancel | NavigationError =>
+        event instanceof NavigationStart ||
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ),
+      takeUntil(this.destroy$)
+    ).subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.routeLoader = true;
 

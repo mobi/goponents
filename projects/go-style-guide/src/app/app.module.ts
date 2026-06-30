@@ -19,20 +19,8 @@ import {
 import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 
-import { HighlightModule } from 'ngx-highlightjs';
-import bash from 'highlight.js/lib/languages/bash';
-import typescript from 'highlight.js/lib/languages/typescript';
-import scss from 'highlight.js/lib/languages/scss';
-import xml from 'highlight.js/lib/languages/xml';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
-export function hljsLanguages(): any[] {
-  return [
-    { name: 'bash', func: bash },
-    { name: 'scss', func: scss },
-    { name: 'typescript', func: typescript },
-    { name: 'xml', func: xml }
-  ];
-}
 
 @NgModule({
   declarations: [
@@ -52,9 +40,22 @@ export function hljsLanguages(): any[] {
     GoOffCanvasModule,
     GoSideNavModule,
     GoToasterModule,
-    HighlightModule.forRoot({ languages: hljsLanguages }),
+    HighlightModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          bash: () => import('highlight.js/lib/languages/bash'),
+          scss: () => import('highlight.js/lib/languages/scss'),
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          xml: () => import('highlight.js/lib/languages/xml'),
+        }
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
