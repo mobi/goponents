@@ -10,7 +10,6 @@ import {
   NavigationError,
   NavigationStart,
   Router,
-  RouterEvent,
   Event
 } from '@angular/router';
 import { GoLoaderModule } from '../go-loader/go-loader.module';

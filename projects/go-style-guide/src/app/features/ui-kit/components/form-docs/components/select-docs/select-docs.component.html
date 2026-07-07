@@ -10,7 +10,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          As with most of the form components, the only <code class="code-block--inline">@Input</code>
+          As with most of the form components, the only <code class="code-block--inline">&#64;Input</code>
           required of the text area component is a <code class="code-block--inline">FormControl</code>.
           The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
           attribute on the &lt;go-text-area&gt; component.
@@ -45,7 +45,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          All form components include an <code class="code-block--inline">&#64;Input() label: string;</code>
           that can be used to add a label to the select components.
           In addition to displaying an HTML label, the text passed
           in via the <code class="code-block--inline">[label]</code>
@@ -88,7 +88,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           As stated above the label attribute is used to generate a
           unique ID to associate the label with the select. As this might
-          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute of the select directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the select and
@@ -142,7 +142,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the
-          selects they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          selects they are attached to. The <code class="code-block--inline">&#64;Input() key: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to the select component.
         </p>
       </div>
@@ -315,10 +315,10 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          Selects are pretty useless without options to choose from. The <code class="code-block--inline">@Input() items: any[];</code>
+          Selects are pretty useless without options to choose from. The <code class="code-block--inline">&#64;Input() items: any[];</code>
           binding allows an array of options to be passed in. This array can either be an array of strings or objects. If it's
-          an array of objects you will also need to pass both a <code class="code-block--inline">@Input() bindLabel: string</code> and a
-          <code class="code-block--inline">@Input() bindValue: string</code> attribute. The <code class="code-block--inline">bindLabel</code> attribute
+          an array of objects you will also need to pass both a <code class="code-block--inline">&#64;Input() bindLabel: string</code> and a
+          <code class="code-block--inline">&#64;Input() bindValue: string</code> attribute. The <code class="code-block--inline">bindLabel</code> attribute
           is used to tell the select what we should show for each option while the <code class="code-block--inline">bindValue</code> attribute
           is used to tell the select what value we want to save for each option. Both should reference a key on each object in the item array.
         </p>
@@ -363,7 +363,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Sometimes we may want to be able to select multiple things. We can achieve this through the
-          <code class="code-block--inline">@Input() multiple: boolean = false;</code> binding. Setting <code class="code-block--inline">multiple</code>
+          <code class="code-block--inline">&#64;Input() multiple: boolean = false;</code> binding. Setting <code class="code-block--inline">multiple</code>
           to true will turn the select into a multi select and will save an array of values instead of a single value.
         </p>
       </div>
@@ -395,7 +395,7 @@
         <div class="go-container">
           <div class="go-column go-column--100">
             If need be, you can also remove the "Select All" button using the
-            <code class="code-block--inline">@Input() showSelectAll: boolean = false;</code> binding.
+            <code class="code-block--inline">&#64;Input() showSelectAll: boolean = false;</code> binding.
           </div>
           <div class="go-column go-column--50">
             <h4 class="go-heading-4 go-heading--underlined">View</h4>
@@ -432,7 +432,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Sometimes we may want to be able to add a placeholder for the select box. We can achieve this through the
-          <code class="code-block--inline">@Input() placeholder: string;</code> binding. Setting
+          <code class="code-block--inline">&#64;Input() placeholder: string;</code> binding. Setting
           <code class="code-block--inline">placeholder</code> to a string will display that string by default in the
           select box. When you select an option in the select box, it will replace the placeholder with the selected item.
         </p>
@@ -475,7 +475,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Sometimes we may want to indicate that the items for our select have not yet been retrieved. We can achieve this through the
-          <code class="code-block--inline">@Input() loading: boolean = false;</code> binding. Setting <code class="code-block--inline">loading</code>
+          <code class="code-block--inline">&#64;Input() loading: boolean = false;</code> binding. Setting <code class="code-block--inline">loading</code>
           to true will display a loading spinner within the select to indicate that the items are not yet available,
           while setting <code class="code-block--inline">loading</code> to false will remove the spinner and allow the select to function normally.
         </p>
@@ -521,7 +521,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() appendTo: string;</code> binding is useful when implementing a
+          The <code class="code-block--inline">&#64;Input() appendTo: string;</code> binding is useful when implementing a
           <code class="code-block--inline">go-select</code> within a <code class="code-block--inline">go-modal</code>.
           Setting <code class="code-block--inline">appendTo</code> to <code class="code-block--inline">'body'</code> will prevent
           the modal from closing automatically upon selecting an item from the select dropdown.
@@ -557,7 +557,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Sometimes we may want to use typeahead functionality in order to get the results from the server based
-          on a users input. The <code class="code-block--inline">@Input() typeahead?: Subject&lt;string&gt;;</code> binding.
+          on a users input. The <code class="code-block--inline">&#64;Input() typeahead?: Subject&lt;string&gt;;</code> binding.
           can be used to pass a typeahead string through to do server side searching using an observable with rxjs.
         </p>
       </div>
@@ -604,7 +604,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           By default, the component has search functionality, allowing for local typeahead on items already loaded into
-          the dropdown. The <code class="code-block--inline">@Input() searchable?: boolean;</code> binding
+          the dropdown. The <code class="code-block--inline">&#64;Input() searchable?: boolean;</code> binding
           can be used to disable this feature, allowing the component to act as a regular dropdown.
         </p>
       </div>
@@ -642,7 +642,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() groupBy: string;</code> binding is useful when implementing a
+          The <code class="code-block--inline">&#64;Input() groupBy: string;</code> binding is useful when implementing a
           <code class="code-block--inline">go-select</code> that has categories for the items being rendered in the dropdown.
           The value should be a string of the key to group by on each item.
         </p>
@@ -687,7 +687,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() clearable: boolean = true;</code> binding is useful when implementing a
+          The <code class="code-block--inline">&#64;Input() clearable: boolean = true;</code> binding is useful when implementing a
           <code class="code-block--inline">go-select</code> that should always have a value from the drop down assigned.
           This binding removes the "x" button on the right end of the input so that the value cannot be cleared.
         </p>
@@ -732,7 +732,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          The <code class="code-block--inline">@Input() hideDropDownArrow: boolean = false;</code> binding can be used
+          The <code class="code-block--inline">&#64;Input() hideDropDownArrow: boolean = false;</code> binding can be used
           to forcefully hide the drown down arrow in the select.
         </p>
       </div>

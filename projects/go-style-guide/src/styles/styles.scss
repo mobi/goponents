@@ -4,16 +4,6 @@
 @import 'settings';
 @import 'typography';
 
-// NOTE: We intentionally do NOT import 'highlight.js/styles/default.css'.
-// That file ships with the highlight.js package, so its contents (base
-// colors + tokenized classes) change between library versions. The v9 -> v11
-// upgrade silently altered the baseline (.hljs color/background) and added
-// new token classes (e.g. .hljs-punctuation, .hljs-operator, .hljs-code,
-// .hljs-addition), which our overrides below did not cover. That produced the
-// font color/weight inconsistencies between environments running different
-// builds. The block below is a complete, version-independent code theme so
-// highlighting renders identically regardless of the installed highlight.js
-// version. Keep all additions scoped to .hljs* selectors (code blocks only).
 
 code {
   border-radius: $global-radius;
