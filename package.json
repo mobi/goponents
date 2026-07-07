@@ -49,7 +49,7 @@
     "@angular/platform-browser": "17.3.12",
     "@angular/platform-browser-dynamic": "17.3.12",
     "@angular/router": "17.3.12",
-    "@ng-select/ng-select": "11.0.0",
+    "@ng-select/ng-select": "^12.0.7",
     "@tinymce/tinymce-angular": "7.0.0",
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.4",
