@@ -3,7 +3,17 @@
 
 @import 'settings';
 @import 'typography';
-@import 'highlight.js/styles/github.css';
+
+// NOTE: We intentionally do NOT import 'highlight.js/styles/default.css'.
+// That file ships with the highlight.js package, so its contents (base
+// colors + tokenized classes) change between library versions. The v9 -> v11
+// upgrade silently altered the baseline (.hljs color/background) and added
+// new token classes (e.g. .hljs-punctuation, .hljs-operator, .hljs-code,
+// .hljs-addition), which our overrides below did not cover. That produced the
+// font color/weight inconsistencies between environments running different
+// builds. The block below is a complete, version-independent code theme so
+// highlighting renders identically regardless of the installed highlight.js
+// version. Keep all additions scoped to .hljs* selectors (code blocks only).
 
 code {
   border-radius: $global-radius;
@@ -14,15 +24,132 @@ code {
   white-space: pre;
 
   &.hljs {
+    background: $gray-100;
     border: 1px solid $theme-light-border;
+    color: $theme-light-color;
+    display: block;
     padding: 1rem;
   }
 
   .hljs-section,
   .hljs-name,
   .hljs-strong {
-    font-weight: normal;
+    font-weight: $weight-regular;
   }
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: $syntax-comment;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: $theme-light-color;
+  font-weight: $weight-bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: $syntax-variable;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: $syntax-string;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: $syntax-title;
+  font-weight: $weight-bold;
+}
+
+.hljs-subst {
+  font-weight: $weight-regular;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: $syntax-type;
+  font-weight: $weight-bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: $syntax-tag;
+  font-weight: $weight-regular;
+}
+
+.hljs-tag .hljs-name {
+  color: $syntax-tag;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: $syntax-regexp;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: $syntax-symbol;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: $syntax-built-in;
+}
+
+.code-block--scss .hljs-built_in,
+.code-block--scss .hljs-builtin-name {
+  color: $theme-light-color;
+}
+
+.hljs-meta {
+  color: $syntax-meta;
+  font-weight: $weight-bold;
+}
+
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-property,
+.hljs-params,
+.hljs-symbol,
+.hljs-selector-class,
+.hljs-selector-pseudo {
+  color: $theme-light-color;
+  font-weight: $weight-light;
+}
+
+.hljs-variable.language_ {
+  color: $theme-light-color;
+  font-weight: $weight-bold;
+}
+
+.hljs-punctuation,
+.hljs-operator,
+.hljs-code {
+  color: $theme-light-color;
+  font-weight: $weight-regular;
+}
+
+.hljs-addition {
+  color: $syntax-regexp;
+}
+
+.hljs-deletion {
+  color: $syntax-string;
+}
+
+.hljs-emphasis {
+  font-style: italic;
 }
 
 .code-block--inline {

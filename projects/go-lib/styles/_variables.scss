@@ -59,6 +59,7 @@ $base-letter-spacing: .08pt;
 
 $secondary-weight-light: 300;
 $secondary-weight-medium: 600;
+$weight-bold: 700;
 
 $heading-margin-bottom: 1rem;
 $heading-sizes: (
@@ -181,3 +182,14 @@ $gray-900: #212529;
 
 //App launch
 $app-launch-color-secondary: #6c757d;
+
+$syntax-comment: #998;
+$syntax-string: #dd1144;
+$syntax-variable: teal;
+$syntax-title: #900;
+$syntax-type: #458;
+$syntax-tag: navy;
+$syntax-regexp: #009926;
+$syntax-symbol: #990073;
+$syntax-built-in: #0086b3;
+$syntax-meta: #999;
