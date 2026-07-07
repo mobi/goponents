@@ -1,32 +1,38 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "downlevelIteration": true,
+    "baseUrl": ".",
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
+    "module": "es2022",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "target": "es2015",
+    "target": "es2022",
+    "useDefineForClassFields": false,
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2018",
+      "es2022",
       "dom"
     ],
     "paths": {
       "go-lib": [
-        "dist/go-lib"
+        "./dist/go-lib"
       ],
       "go-lib/*": [
-        "dist/go-lib/*"
+        "./dist/go-lib/*"
+      ],
+      "projects/go-lib/src/public_api": [
+        "./projects/go-lib/src/public_api"
+      ],
+      "projects/go-style-guide/src/*": [
+        "./projects/go-style-guide/src/*"
       ]
     }
   }
