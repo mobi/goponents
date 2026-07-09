@@ -1,9 +1,8 @@
-@import 'reset';
-@import '../../../go-lib/styles/styles';
+@import "reset";
+@import "../../../go-lib/styles/styles";
 
-@import 'settings';
-@import 'typography';
-
+@import "settings";
+@import "typography";
 
 code {
   border-radius: $global-radius;
@@ -147,7 +146,7 @@ code {
   border: 1px solid $theme-light-border;
   display: inline-block;
   margin: 0 0 -1px;
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
   vertical-align: text-bottom;
 }
 
@@ -233,7 +232,7 @@ code {
 
   .go-table__body-row {
     &:nth-child(even) {
-      background: rgba($theme-dark-bg-hover, .5);
+      background: rgba($theme-dark-bg-hover, 0.5);
     }
 
     &--active-parent {
@@ -263,7 +262,7 @@ code {
   }
 
   .go-table-loader {
-    background: transparentize($theme-dark-bg-hover, .3);
+    background: transparentize($theme-dark-bg-hover, 0.3);
   }
 
   .go-pill {
@@ -296,7 +295,7 @@ code {
 
     &:hover,
     &:focus {
-      background: transparentize($base-dark-tertiary, .7);
+      background: transparentize($base-dark-tertiary, 0.7);
     }
 
     &--disabled {
@@ -427,11 +426,11 @@ code {
 
     &:focus {
       border-color: lighten($ui-color-primary, 15%);
-      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+      box-shadow: 0 0 0 0.25rem transparentize($ui-color-primary, 0.65);
     }
 
     &:hover {
-      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, 0.2);
     }
   }
 
@@ -441,18 +440,19 @@ code {
   }
 
   .go-form__checkbox--hidden:checked ~ .go-form__custom-checkbox,
-  .go-form__checkbox--dark.go-form__checkbox--hidden:checked ~ .go-form__custom-checkbox--dark {
+  .go-form__checkbox--dark.go-form__checkbox--hidden:checked
+    ~ .go-form__custom-checkbox--dark {
     background-color: $ui-color-primary;
     border-color: $ui-color-primary;
   }
 
   .go-form__checkbox--hidden:hover ~ .go-form__custom-checkbox {
-    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+    box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, 0.2);
   }
 
   .go-form__checkbox--hidden:focus ~ .go-form__custom-checkbox {
     border-color: lighten($ui-color-primary, 15%);
-    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+    box-shadow: 0 0 0 0.25rem transparentize($ui-color-primary, 0.65);
   }
 
   .go-radio__input {
@@ -466,11 +466,11 @@ code {
 
     &:focus {
       border-color: lighten($ui-color-primary, 15%);
-      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+      box-shadow: 0 0 0 0.25rem transparentize($ui-color-primary, 0.65);
     }
 
     &:hover {
-      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, .2);
+      box-shadow: 0 0 0 4px transparentize($base-dark-tertiary, 0.2);
     }
   }
 
@@ -610,14 +610,18 @@ code {
   }
 
   .go-form__switch-toggle:hover .go-form__switch-toggle__toggle {
-    box-shadow: 0 0 0 .25rem transparentize($gray-700, .6) !important;
+    box-shadow: 0 0 0 0.25rem transparentize($gray-700, 0.6) !important;
   }
 
-  .go-form__switch-toggle:hover .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
-    box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65) !important;
+  .go-form__switch-toggle:hover
+    .go-form__switch-toggle__input:checked
+    + .go-form__switch-toggle__toggle {
+    box-shadow: 0 0 0 0.25rem transparentize($ui-color-primary, 0.65) !important;
   }
 
-  .go-form__switch-toggle .go-form__switch-toggle__input:checked + .go-form__switch-toggle__toggle {
+  .go-form__switch-toggle
+    .go-form__switch-toggle__input:checked
+    + .go-form__switch-toggle__toggle {
     background-color: $ui-color-primary !important;
     border-color: $ui-color-primary !important;
 
@@ -664,12 +668,12 @@ code {
     color: $gray-300;
 
     &:hover {
-      box-shadow: 0 0 0 .25rem transparentize($gray-700, .6);
+      box-shadow: 0 0 0 0.25rem transparentize($gray-700, 0.6);
     }
 
     &:focus {
       border-color: lighten($ui-color-primary, 15%);
-      box-shadow: 0 0 0 .25rem transparentize($ui-color-primary, .65);
+      box-shadow: 0 0 0 0.25rem transparentize($ui-color-primary, 0.65);
     }
 
     &::placeholder {
