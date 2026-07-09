@@ -58,12 +58,14 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/go-tester",
             "index": "projects/go-tester/src/index.html",
-            "main": "projects/go-tester/src/main.ts",
-            "polyfills": "projects/go-tester/src/polyfills.ts",
+            "browser": "projects/go-tester/src/main.ts",
+            "polyfills": [
+              "projects/go-tester/src/polyfills.ts"
+            ],
             "tsConfig": "projects/go-tester/tsconfig.app.json",
             "assets": [
               "projects/go-tester/src/favicon.ico",
@@ -76,12 +78,8 @@
               "projects/go-tester/src/styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -94,10 +92,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -116,18 +111,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "go-tester:build"
+            "buildTarget": "go-tester:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "go-tester:build:production"
+              "buildTarget": "go-tester:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "go-tester:build"
+            "buildTarget": "go-tester:build"
           }
         },
         "test": {
@@ -201,12 +196,14 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/go-style-guide",
             "index": "projects/go-style-guide/src/index.html",
-            "main": "projects/go-style-guide/src/main.ts",
-            "polyfills": "projects/go-style-guide/src/polyfills.ts",
+            "browser": "projects/go-style-guide/src/main.ts",
+            "polyfills": [
+              "projects/go-style-guide/src/polyfills.ts"
+            ],
             "tsConfig": "projects/go-style-guide/tsconfig.app.json",
             "assets": [
               "projects/go-style-guide/src/favicon.ico",
@@ -225,12 +222,8 @@
                 "projects/go-style-guide/src/styles"
               ]
             },
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -243,10 +236,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -265,18 +255,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "go-style-guide:build"
+            "buildTarget": "go-style-guide:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "go-style-guide:build:production"
+              "buildTarget": "go-style-guide:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "go-style-guide:build"
+            "buildTarget": "go-style-guide:build"
           }
         },
         "test": {

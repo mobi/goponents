@@ -10,7 +10,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          As with most of the form components, the only <code class="code-block--inline">@Input</code>
+          As with most of the form components, the only <code class="code-block--inline">&#64;Input</code>
           required of the datepicker component is a <code class="code-block--inline">FormControl</code>.
           The FormControl can be passed in via the <code class="code-block--inline">[control]</code>
           attribute on the &lt;go-datepicker&gt; component. A date can be initialized into the datepicker
@@ -52,7 +52,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          All form components include an <code class="code-block--inline">@Input() label: string;</code>
+          All form components include an <code class="code-block--inline">&#64;Input() label: string;</code>
           that can be used to add a label to the input components.
           In addition to displaying an HTML label, the text passed
           in via the <code class="code-block--inline">[label]</code>
@@ -95,7 +95,7 @@
         <p class="go-body-copy go-body-copy--no-margin">
           As stated above the label attribute is used to generate a
           unique ID to associate the label with the datepicker. As this might
-          not be desired, the <code class="code-block--inline">@Input() key: string;</code>
+          not be desired, the <code class="code-block--inline">&#64;Input() key: string;</code>
           can be used to configure the ID attribute of the datepicker directly.
           Anything passed into the component via the <code class="code-block--inline">[key]</code>
           attribute will be used to both assign the ID to the datepicker and
@@ -149,7 +149,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           Form hints exist to help give more information about the
-          inputs they are attached to. The <code class="code-block--inline">@Input() key: Array&lt;string&gt;</code>
+          inputs they are attached to. The <code class="code-block--inline">&#64;Input() key: Array&lt;string&gt;</code>
           can be used to pass in an array of hints to the datepicker component.
         </p>
       </div>
@@ -287,7 +287,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy">
           The datepicker components placeholder attribute can be set via
-          <code class="code-block--inline">@Input() placeholder: string;</code>
+          <code class="code-block--inline">&#64;Input() placeholder: string;</code>
           and the <code class="code-block--inline">[placeholder]</code> attribute.
         </p>
       </div>
@@ -325,7 +325,7 @@
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
           The locale can be set via the
-          <code class="code-block--inline">@Input() locale: string;</code>
+          <code class="code-block--inline">&#64;Input() locale: string;</code>
           and the <code class="code-block--inline">[locale]</code> attribute.
           By default this is set to 'en-US', but it should be used to reflect the locale
           of the user logged in. This is important because the locale is how we decide what format
@@ -369,7 +369,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          A max date can be set via the <code class="code-block--inline">@Input() maxDate: Date | string;</code>
+          A max date can be set via the <code class="code-block--inline">&#64;Input() maxDate: Date | string;</code>
           and the <code class="code-block--inline">[maxDate]</code> attribute. The max date attribute can be 
           used to restrict the date that a user can pick to a date before the max date. The date
           can be passed in as a Date object or in the 'en-US' format which is 
@@ -409,7 +409,7 @@
 
       <div class="go-column go-column--100">
         <p class="go-body-copy go-body-copy--no-margin">
-          A min date can be set via the <code class="code-block--inline">@Input() minDate: Date | string;</code>
+          A min date can be set via the <code class="code-block--inline">&#64;Input() minDate: Date | string;</code>
           and the <code class="code-block--inline">[minDate]</code> attribute. The min date attribute can be 
           used to restrict the date that a user can pick to a date after the min date. The date
           can be passed in as a Date object or in the 'en-US' format which is 
