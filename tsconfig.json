@@ -1,8 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "downlevelIteration": true,
+    "baseUrl": ".",
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -15,20 +14,11 @@
     "esModuleInterop": true,
     "target": "es2022",
     "useDefineForClassFields": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2022",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2022", "dom"],
     "paths": {
-      "go-lib": [
-        "dist/go-lib"
-      ],
-      "go-lib/*": [
-        "dist/go-lib/*"
-      ],
+      "go-lib": ["./dist/go-lib"],
+      "go-lib/*": ["dist/go-lib/*"]
     }
   }
 }
