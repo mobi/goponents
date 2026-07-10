@@ -9,6 +9,6 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "projects/go-style-guide/src/**/*.d.ts"
   ]
 }
