@@ -58,14 +58,12 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/go-tester",
             "index": "projects/go-tester/src/index.html",
-            "browser": "projects/go-tester/src/main.ts",
-            "polyfills": [
-              "projects/go-tester/src/polyfills.ts"
-            ],
+            "main": "projects/go-tester/src/main.ts",
+            "polyfills": "projects/go-tester/src/polyfills.ts",
             "tsConfig": "projects/go-tester/tsconfig.app.json",
             "assets": [
               "projects/go-tester/src/favicon.ico",
@@ -78,8 +76,12 @@
               "projects/go-tester/src/styles.scss"
             ],
             "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
             "sourceMap": true,
-            "optimization": false
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -92,7 +94,10 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "namedChunks": false,
               "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -111,18 +116,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "go-tester:build"
+            "browserTarget": "go-tester:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "go-tester:build:production"
+              "browserTarget": "go-tester:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "go-tester:build"
+            "browserTarget": "go-tester:build"
           }
         },
         "test": {
