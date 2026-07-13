@@ -87,7 +87,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NVMRC }}
+          node-version-file: .nvmrc
 
       - name: Install Dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
@@ -121,7 +121,11 @@ jobs:
           $SSH_CMD $SERVER "rm -rf ${TEMP_PATH} && mkdir -p ${TEMP_PATH}"
 
           # Transfer built files to temp directory
-          tar -czf - -C dist/go-style-guide . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+          mkdir -p .tmp-deploy
+          cp -R dist/go-style-guide/browser/. .tmp-deploy/
+          if [ -f dist/go-style-guide/3rdpartylicenses.txt ]; then cp dist/go-style-guide/3rdpartylicenses.txt .tmp-deploy/; fi
+          tar -czf - -C .tmp-deploy . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+          rm -rf .tmp-deploy
 
           # Atomic swap: remove old, rename new
           $SSH_CMD $SERVER "rm -rf ${DEPLOY_PATH} && mv ${TEMP_PATH} ${DEPLOY_PATH}"
@@ -144,7 +148,11 @@ jobs:
           $SSH_CMD $SERVER "rm -rf ${TEMP_PATH} && mkdir -p ${TEMP_PATH}"
 
           # Transfer built files to temp directory
-          tar -czf - -C dist/go-style-guide . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+          mkdir -p .tmp-deploy
+          cp -R dist/go-style-guide/browser/. .tmp-deploy/
+          if [ -f dist/go-style-guide/3rdpartylicenses.txt ]; then cp dist/go-style-guide/3rdpartylicenses.txt .tmp-deploy/; fi
+          tar -czf - -C .tmp-deploy . | $SSH_CMD $SERVER "tar -xzf - -C ${TEMP_PATH}"
+          rm -rf .tmp-deploy
 
           # Atomic swap: remove old, rename new
           $SSH_CMD $SERVER "rm -rf ${VERSION_PATH} && mv ${TEMP_PATH} ${VERSION_PATH}"

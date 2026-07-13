@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
-import { HighlightModule } from 'ngx-highlightjs';
-
-import { GoSharedModule } from 'projects/go-lib/src/public_api';
 
 @Component({
- templateUrl: './colors.component.html',
- styleUrls: ['./colors.component.scss'],
- standalone: true,
- imports: [GoSharedModule, HighlightModule]
+  templateUrl: './colors.component.html',
+  styleUrls: ['./colors.component.scss']
 })
 export class ColorsComponent {
- pageTitle: string = 'Colors';
+  pageTitle: string = 'Colors';
 
- baseColors: string = `
+  baseColors: string = `
   $base-primary: #20A65F;
   $base-light: #FFFFFF;
   $base-light-secondary: #DEE2E6; // $gray-300
@@ -20,7 +15,7 @@ export class ColorsComponent {
   $base-dark-secondary: $gray-900;
   `;
 
- lightTheme: string = `
+  lightTheme: string = `
   // Use as the app background
   $theme-light-app-bg: $gray-100;
   // Used as the base background for all components
@@ -37,7 +32,7 @@ export class ColorsComponent {
   $theme-light-border: $base-light-secondary;
   `;
 
- earthGreen: string = `
+  earthGreen: string = `
   // Use this to apply the positive (success) state color
   $ui-color-positive: #198754;
 
@@ -52,7 +47,7 @@ export class ColorsComponent {
   $ui-color-positive-gradient: linear-gradient(to bottom, $ui-color-positive, $ui-color-positive-hover);
   `;
 
- galaxyBlue: string = `
+  galaxyBlue: string = `
   // Use this to apply the primary state color
   $ui-color-primary: #157DB9;
 
@@ -67,7 +62,7 @@ export class ColorsComponent {
   $ui-color-primary-gradient: linear-gradient(to bottom, $ui-color-primary, $ui-color-primary-hover);
   `;
 
- horizonRed: string = `
+  horizonRed: string = `
   // Use this to apply the negative (error) state color
   $ui-color-negative: #DC3545;
 
@@ -82,7 +77,7 @@ export class ColorsComponent {
   $ui-color-negative-gradient: linear-gradient(to bottom, $ui-color-negative, $ui-color-negative-hover);
   `;
 
- nebulaPurple: string = `
+  nebulaPurple: string = `
   // Use this to apply the neutral (info) state color
   $ui-color-neutral: #6633CA;
 
@@ -97,7 +92,7 @@ export class ColorsComponent {
   $ui-color-neutral-gradient: linear-gradient(to bottom, $ui-color-neutral, $ui-color-neutral-hover);
   `;
 
- neutralScale: string = `
+  neutralScale: string = `
   $gray-100: #F8F9FA;
   $gray-200: #E9ECEF;
   $gray-300: #DEE2E6;
