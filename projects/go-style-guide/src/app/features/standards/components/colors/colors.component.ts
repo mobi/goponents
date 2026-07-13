@@ -1,14 +1,11 @@
-import { Component } from "@angular/core";
-import { HighlightModule } from "ngx-highlightjs";
-
-import { GoSharedModule } from "projects/go-lib/src/public_api";
+import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: "./colors.component.html",
-  styleUrls: ["./colors.component.scss"],
+  templateUrl: './colors.component.html',
+  styleUrls: ['./colors.component.scss']
 })
 export class ColorsComponent {
-  pageTitle: string = "Colors";
+  pageTitle: string = 'Colors';
 
   baseColors: string = `
   $base-primary: #20A65F;
