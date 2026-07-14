@@ -1,12 +1,12 @@
 {
   "name": "goponents",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mobi/goponents.git"
   },
   "author": "Tangoe Mobile",
-  "description": "A library of UI components for Angular v8+.",
+  "description": "A library of UI components for Angular v18+.",
   "license": "MIT",
   "peerDependencies": {
     "@ng-select/ng-select": ">=11.0.0",
@@ -14,7 +14,7 @@
     "tinymce": "5.8.0"
   },
   "devDependencies": {
-    "@angular/common": ">=8.2.14",
-    "@angular/core": ">=8.2.14"
+    "@angular/common": ">=18.0.0",
+    "@angular/core": ">=18.0.0"
   }
 }
