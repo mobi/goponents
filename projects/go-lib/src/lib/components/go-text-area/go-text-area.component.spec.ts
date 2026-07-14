@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GoTextAreaComponent } from "./go-text-area.component";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -11,7 +11,7 @@ describe("GoTextAreaComponent", () => {
   let component: GoTextAreaComponent;
   let fixture: ComponentFixture<GoTextAreaComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoTextAreaComponent],
       imports: [

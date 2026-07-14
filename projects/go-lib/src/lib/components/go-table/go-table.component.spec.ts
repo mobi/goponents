@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoIconButtonModule } from '../go-icon-button/go-icon-button.module';
@@ -52,7 +52,7 @@ describe('GoTableComponent', () => {
     { id: 3, value: 'c', animal: 'koala bear' }
   ];
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoTableComponent, GoTableColumnComponent, GoTestTableComponent ],
       imports: [

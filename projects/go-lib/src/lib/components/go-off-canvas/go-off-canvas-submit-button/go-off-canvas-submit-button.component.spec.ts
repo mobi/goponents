@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoOffCanvasSubmitButtonComponent } from './go-off-canvas-submit-button.component';
 
@@ -6,7 +6,7 @@ describe('GoOffCanvasSubmitButtonComponent', () => {
   let component: GoOffCanvasSubmitButtonComponent;
   let fixture: ComponentFixture<GoOffCanvasSubmitButtonComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoOffCanvasSubmitButtonComponent ]
     })

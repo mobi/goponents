@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GoHeaderBarModule } from '../go-header-bar/go-header-bar.module';
@@ -32,14 +32,14 @@ describe('GoLayoutComponent', () => {
   let routerEvents$: Subject<Event>;
   let mockRouter: Partial<Router>;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync(() => {
     routerEvents$ = new Subject<Event>();
     mockRouter = {
       events: routerEvents$.asObservable(),
       url: '/initial'
     };
 
-    await TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
       declarations: [GoLayoutComponent],
       imports: [
         BrowserAnimationsModule,
@@ -57,7 +57,9 @@ describe('GoLayoutComponent', () => {
         { provide: Router, useValue: mockRouter }
       ]
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(GoLayoutComponent);
     component = fixture.componentInstance;
     component.headerBar = new MockHeaderBar() as any;

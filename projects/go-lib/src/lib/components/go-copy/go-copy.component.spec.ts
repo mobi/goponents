@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoCopyComponent } from './go-copy.component';
@@ -7,7 +7,7 @@ describe('goCopyComponent', () => {
   let component: GoCopyComponent;
   let fixture: ComponentFixture<GoCopyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoCopyComponent ],
       imports: [
