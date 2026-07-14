@@ -20,26 +20,11 @@
       "node"
     ],
     "useDefineForClassFields": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2022",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2022", "dom"],
     "paths": {
-      "go-lib": [
-        "./dist/go-lib"
-      ],
-      "go-lib/*": [
-        "./dist/go-lib/*"
-      ],
-      "projects/go-lib/src/public_api": [
-        "./projects/go-lib/src/public_api"
-      ],
-      "projects/go-style-guide/src/*": [
-        "./projects/go-style-guide/src/*"
-      ]
+      "go-lib": ["./dist/go-lib"],
+      "go-lib/*": ["dist/go-lib/*"]
     }
   }
 }
