@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GoFileUploadComponent } from "./go-file-upload.component";
 import { CommonModule } from "@angular/common";
@@ -22,7 +22,7 @@ describe("GoFileUploadComponent", () => {
   let component: GoFileUploadComponent;
   let fixture: ComponentFixture<GoFileUploadComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoFileUploadComponent],
       imports: [

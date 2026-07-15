@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoFooterComponent } from './go-footer.component';
 
@@ -6,7 +6,7 @@ describe('GoFooterComponent', () => {
   let component: GoFooterComponent;
   let fixture: ComponentFixture<GoFooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoFooterComponent ]
     })

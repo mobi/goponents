@@ -1,0 +1,37 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "dist/**/*",
+    "out-tsc/**/*"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "projects/go-lib/tsconfig.lib.json",
+          "projects/go-lib/tsconfig.spec.json",
+          "projects/go-tester/tsconfig.app.json",
+          "projects/go-tester/tsconfig.spec.json",
+          "projects/go-style-guide/tsconfig.app.json",
+          "projects/go-style-guide/tsconfig.spec.json",
+          "projects/go-tester-e2e/tsconfig.e2e.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

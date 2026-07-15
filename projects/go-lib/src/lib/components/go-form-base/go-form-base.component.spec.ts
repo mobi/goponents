@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoFormBaseComponent } from './go-form-base.component';
@@ -7,7 +7,7 @@ describe('GoFormBaseComponent', () => {
   let component: GoFormBaseComponent;
   let fixture: ComponentFixture<GoFormBaseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoFormBaseComponent ],
       imports: [

@@ -33,14 +33,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-lib/tsconfig.lib.json",
-              "projects/go-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/go-lib/**/*.ts",
+              "projects/go-lib/**/*.html"
             ]
           }
         }
@@ -133,7 +130,7 @@
             "tsConfig": "projects/go-tester/tsconfig.spec.json",
             "karmaConfig": "projects/go-tester/karma.conf.js",
             "styles": [
-              "projects/go-tester/src/styles.css"
+              "projects/go-tester/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -143,14 +140,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-tester/tsconfig.app.json",
-              "projects/go-tester/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/go-tester/**/*.ts",
+              "projects/go-tester/**/*.html"
             ]
           }
         }
@@ -174,11 +168,10 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": "projects/go-tester-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/go-tester-e2e/**/*.ts"
             ]
           }
         }
@@ -287,14 +280,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/go-style-guide/tsconfig.app.json",
-              "projects/go-style-guide/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/go-style-guide/**/*.ts",
+              "projects/go-style-guide/**/*.html"
             ]
           }
         }

@@ -1,5 +1,5 @@
 import { ElementRef, QueryList } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoButtonComponent } from '../go-button/go-button.component';
 import { GoButtonGroupComponent } from './go-button-group.component';
 
@@ -7,7 +7,7 @@ describe('GoButtonGroupComponent', () => {
   let component: GoButtonGroupComponent;
   let fixture: ComponentFixture<GoButtonGroupComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoButtonGroupComponent ]
     })

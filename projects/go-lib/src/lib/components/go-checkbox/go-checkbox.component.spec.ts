@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { GoFormErrorsModule } from "../go-form-errors/go-form-errors.module";
 import { GoHintModule } from "../go-hint/go-hint.module";
@@ -10,7 +10,7 @@ describe("GoCheckboxComponent", () => {
   let component: GoCheckboxComponent;
   let fixture: ComponentFixture<GoCheckboxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoCheckboxComponent],
       imports: [

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GoDatepickerComponent } from "./go-datepicker.component";
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -17,7 +17,7 @@ describe("GoDatepickerComponent", () => {
   let fixture: ComponentFixture<GoDatepickerComponent>;
   let inputElement: HTMLInputElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoCalendarComponent,

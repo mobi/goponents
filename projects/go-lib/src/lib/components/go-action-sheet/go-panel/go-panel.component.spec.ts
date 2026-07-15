@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ElementRef } from '@angular/core';
 
 import { GoPanelComponent } from './go-panel.component';
@@ -13,7 +13,7 @@ describe('GoPanelComponent', () => {
   let fixture: ComponentFixture<GoPanelComponent>;
   let parentComponent: GoActionSheetComponent;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoPanelComponent ],
       providers: [

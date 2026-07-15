@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoRequiredTextComponent } from './go-required-text.component';
 import { FormControl, Validators } from '@angular/forms';
@@ -7,7 +7,7 @@ describe('GoRequiredTextComponent', () => {
   let component: GoRequiredTextComponent;
   let fixture: ComponentFixture<GoRequiredTextComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoRequiredTextComponent ]
     })
