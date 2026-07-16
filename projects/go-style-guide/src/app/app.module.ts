@@ -46,6 +46,9 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
+        config: {
+          languages: ['xml', 'typescript', 'javascript', 'scss', 'css', 'bash', 'json', 'plaintext']
+        },
         fullLibraryLoader: () => import('highlight.js')
       }
     }
