@@ -71,7 +71,7 @@ export class AppComponent {
       {
         displayName: 'Go Design',
         icon: 'power_settings_new',
-        url: 'https://tangoe.design/getting-started'
+        url: 'https://dc2devgopolib01.corp.tangoe.com/getting-started'
       },
       {
         displayName: 'Google',
