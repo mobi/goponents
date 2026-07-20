@@ -2,6 +2,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { fadeTemplateAnimation } from '../../animations/fade.animation';
 
 @Component({
+  standalone: false,
   selector: 'go-loader',
   templateUrl: './go-loader.component.html',
   styleUrls: ['./go-loader.component.scss'],

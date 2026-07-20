@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, Qu
 import { GoTabComponent } from './go-tab.component';
 
 @Component({
+  standalone: false,
   selector: 'go-tab-group',
   styleUrls: ['./go-tab-group.component.scss'],
   templateUrl: './go-tab-group.component.html'

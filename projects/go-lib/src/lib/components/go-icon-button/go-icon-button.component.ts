@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-icon-button',
   templateUrl: './go-icon-button.component.html',
   styleUrls: ['./go-icon-button.component.scss']

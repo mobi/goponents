@@ -5,6 +5,7 @@ import { GoTableConfig, GoTablePageConfig } from 'projects/go-lib/src/public_api
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   templateUrl: './table-pagination.component.html'
 })
 export class TablePaginationComponent {

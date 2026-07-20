@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavGroup } from 'projects/go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   selector: 'app-action-sheet-docs',
   templateUrl: './action-sheet-docs.component.html'
 })

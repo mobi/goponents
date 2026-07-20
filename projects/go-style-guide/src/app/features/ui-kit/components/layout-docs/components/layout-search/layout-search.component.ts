@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   selector: 'app-layout-search',
   templateUrl: './layout-search.component.html'
 })
@@ -49,6 +50,7 @@ export class LayoutSearchComponent {
   import { YourService } from './your.service';
 
   @Component({
+    standalone: false,
     selector: 'app-search-test',
     templateUrl: './search-test.component.html'
   })

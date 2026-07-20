@@ -5,6 +5,7 @@ import { FakeData, TableDocsService } from '../../table-docs.service';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   templateUrl: './table-overview.component.html'
 })
 export class TableOverviewComponent {

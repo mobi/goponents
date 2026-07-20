@@ -3,6 +3,7 @@ import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { GoFormService } from '../../services/form.service';
 
 @Component({
+  standalone: false,
   selector: 'go-radio-button',
   styleUrls: ['./go-radio-button.component.scss'],
   templateUrl: './go-radio-button.component.html'

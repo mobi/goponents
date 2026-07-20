@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operato
 import { concat, Observable, of, Subject } from 'rxjs';
 
 @Component({
+  standalone: false,
   templateUrl: './select-docs.component.html'
 })
 export class SelectDocsComponent implements OnInit {

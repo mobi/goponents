@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
+  standalone: false,
   template: `
     <div class="starship">
       <ng-container goPortalTarget="enterprise"></ng-container>
@@ -13,6 +14,7 @@ class TestPortalTargetComponent { }
 
 // tslint:disable-next-line:max-classes-per-file
 @Component({
+  standalone: false,
   template: `
     <span *goPortalAttachTo="'enterprise'" id="kirk">Beam me up, Scotty!</span>
   `

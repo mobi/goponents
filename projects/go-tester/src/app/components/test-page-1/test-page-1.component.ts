@@ -11,6 +11,7 @@ import {
 import { AppService } from '../../app.service';
 
 @Component({
+  standalone: false,
   selector: 'app-test-page-1',
   templateUrl: './test-page-1.component.html'
 })

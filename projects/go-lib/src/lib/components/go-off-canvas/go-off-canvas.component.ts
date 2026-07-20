@@ -19,6 +19,7 @@ import { GoOffCanvasItem } from './go-off-canvas.interface';
 import { GoOffCanvasService } from './go-off-canvas.service';
 
 @Component({
+  standalone: false,
   selector: 'go-off-canvas',
   templateUrl: './go-off-canvas.component.html',
   styleUrls: [

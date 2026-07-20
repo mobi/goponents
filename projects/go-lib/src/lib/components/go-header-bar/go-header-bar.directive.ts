@@ -10,6 +10,7 @@ import {
 import { GoHeaderBarService } from './go-header-bar.service';
 
 @Directive({
+  standalone: false,
   selector: '[goHeaderBar]'
 })
 export class GoHeaderBarDirective implements OnChanges {

@@ -2,6 +2,7 @@ import { animate, group, keyframes, state, style, transition, trigger } from '@a
 import { Component, ElementRef, HostBinding, Input, ViewChild } from '@angular/core';
 
 @Component({
+  standalone: false,
   animations: [
     trigger('checkMarkFadeInOut', [
       state('content_copy', style({

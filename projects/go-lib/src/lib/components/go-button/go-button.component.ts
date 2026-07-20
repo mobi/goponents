@@ -12,6 +12,7 @@ import { fadeTemplateAnimation } from '../../animations/fade.animation';
 import { SplitButtonOption } from './go-split-button-option.model';
 
 @Component({
+  standalone: false,
   animations: [fadeTemplateAnimation],
   selector: 'go-button',
   templateUrl: './go-button.component.html',

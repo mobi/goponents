@@ -12,6 +12,7 @@ import {
 import goLibPackage from '../../../go-lib/package.json';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

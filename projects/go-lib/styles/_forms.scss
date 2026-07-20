@@ -1,5 +1,6 @@
-@import './variables';
-@import './mixins';
+@use './variables' as *;
+@use './mixins' as *;
+@use './placeholders' as *;
 
 $input--disabled-background: rgba($base-dark-secondary, .4);
 

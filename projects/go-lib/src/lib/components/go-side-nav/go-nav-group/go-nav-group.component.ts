@@ -19,6 +19,7 @@ import { NavGroup } from '../nav-group.model';
 import { NavItem } from '../nav-item.model';
 
 @Component({
+  standalone: false,
   selector: 'go-nav-group',
   templateUrl: './go-nav-group.component.html',
   styleUrls: ['./go-nav-group.component.scss'],

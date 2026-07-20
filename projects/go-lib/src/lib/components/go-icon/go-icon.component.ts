@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-icon',
   templateUrl: 'go-icon.component.html',
   styleUrls: ['go-icon.component.scss']

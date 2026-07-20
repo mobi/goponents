@@ -17,6 +17,7 @@ import { GoModalItem } from './go-modal.item';
 import { GoModalService } from './go-modal.service';
 
 @Component({
+  standalone: false,
   selector: 'go-modal',
   templateUrl: './go-modal.component.html',
   styleUrls: ['./go-modal.component.scss']

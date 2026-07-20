@@ -6,6 +6,7 @@ import { GoTabComponent } from './go-tab.component';
 import { GoTabGroupComponent } from './go-tab-group.component';
 
 @Component({
+  standalone: false,
   selector: 'go-test',
   template: `
     <go-tab-group>

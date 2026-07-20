@@ -1,3 +1,5 @@
+@use "../../../go-lib/styles/variables" as *;
+
 strong {
   font-weight: $weight-medium;
 }

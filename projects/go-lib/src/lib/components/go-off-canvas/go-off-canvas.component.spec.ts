@@ -144,6 +144,7 @@ describe('GoOffCanvasComponent', () => {
 });
 
 @Component({
+  standalone: false,
   selector: 'go-test',
   template: '<ng-template go-off-canvas-host></ng-template>'
 })

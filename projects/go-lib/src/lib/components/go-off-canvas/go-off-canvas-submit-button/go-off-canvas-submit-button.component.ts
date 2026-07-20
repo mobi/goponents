@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-off-canvas-submit-button',
   templateUrl: './go-off-canvas-submit-button.component.html',
   styleUrls: ['./go-off-canvas-submit-button.component.scss']

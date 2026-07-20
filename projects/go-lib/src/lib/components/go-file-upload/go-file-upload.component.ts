@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-file-upload',
   templateUrl: './go-file-upload.component.html',
   styleUrls: ['./go-file-upload.component.scss']

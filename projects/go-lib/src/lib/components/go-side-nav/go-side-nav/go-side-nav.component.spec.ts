@@ -12,6 +12,7 @@ import { NavGroup } from '../nav-group.model';
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: ''
 })
 export class FakeComponent {

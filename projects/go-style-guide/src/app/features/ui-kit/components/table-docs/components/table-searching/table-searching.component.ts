@@ -7,6 +7,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { GoTableSearchConfig } from 'projects/go-lib/src/lib/components/go-table/go-table-search-config.model';
 
 @Component({
+  standalone: false,
   selector: 'app-table-searching',
   templateUrl: './table-searching.component.html'
 })

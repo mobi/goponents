@@ -10,6 +10,7 @@ import {
 } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   selector: 'app-configuration-docs',
   templateUrl: './configuration-docs.component.html'
 })

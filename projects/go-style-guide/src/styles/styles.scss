@@ -1,8 +1,8 @@
-@import "reset";
-@import "../../../go-lib/styles/styles";
-
-@import "settings";
-@import "typography";
+@use "reset" as *;
+@use "../../../go-lib/styles/styles" as *;
+@use "../../../go-lib/styles/variables" as *;
+@use "settings" as *;
+@use "typography" as *;
 
 code {
   border-radius: $global-radius;

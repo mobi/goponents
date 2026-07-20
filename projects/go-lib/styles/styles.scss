@@ -1,9 +1,9 @@
-@import './reset';
-@import './variables';
-@import './mixins';
-@import './globals';
-@import './grid';
-@import './typography';
-@import './forms';
-@import './hints';
-@import './placeholders';
+@use './reset' as *;
+@use './variables' as *;
+@use './mixins' as *;
+@use './globals' as *;
+@use './grid' as *;
+@use './typography' as *;
+@use './forms' as *;
+@use './hints' as *;
+@use './placeholders' as *;

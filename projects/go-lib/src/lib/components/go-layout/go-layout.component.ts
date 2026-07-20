@@ -23,6 +23,7 @@ import { routerAnimation } from '../../animations/route.animation';
 import { GoHeaderBarComponent } from '../go-header-bar/go-header-bar.component';
 
 @Component({
+  standalone: false,
   selector: 'go-layout',
   templateUrl: './go-layout.component.html',
   styleUrls: ['./go-layout.component.scss'],

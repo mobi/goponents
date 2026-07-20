@@ -15,6 +15,7 @@ import { searchLoaderAnim, searchResultsAnim } from '../../animations/search.ani
 import { GoSearchService } from './go-search.service';
 
 @Component({
+  standalone: false,
   selector: 'go-search',
   templateUrl: './go-search.component.html',
   styleUrls: ['./go-search.component.scss'],

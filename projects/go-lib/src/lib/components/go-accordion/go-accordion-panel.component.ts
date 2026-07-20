@@ -17,6 +17,7 @@ import { GoConfigInterface } from '../../go-config.model';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
+  standalone: false,
   selector: 'go-accordion-panel',
   templateUrl: './go-accordion-panel.component.html',
   styleUrls: ['./go-accordion-panel.component.scss'],

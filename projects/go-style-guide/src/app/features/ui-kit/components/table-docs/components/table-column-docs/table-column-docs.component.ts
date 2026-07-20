@@ -4,6 +4,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { TableDocsService } from '../../table-docs.service';
 
 @Component({
+  standalone: false,
   selector: 'app-table-column-docs',
   templateUrl: './table-column-docs.component.html'
 })

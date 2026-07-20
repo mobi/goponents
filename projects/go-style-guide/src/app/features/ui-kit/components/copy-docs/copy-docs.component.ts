@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-copy-docs',
   styleUrls: ['./copy-docs.component.scss'],
   templateUrl: './copy-docs.component.html'

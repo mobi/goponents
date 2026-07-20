@@ -27,6 +27,7 @@ import { GoConfigInterface } from '../../go-config.model';
 export const TINYMCE_SCRIPT_SRC: InjectionToken<string> = new InjectionToken<string>('TINYMCE_SCRIPT_SRC');
 
 @Component({
+  standalone: false,
   selector: 'go-editor',
   templateUrl: './go-editor.component.html',
   providers: [{
@@ -65,7 +66,7 @@ export class GoEditorComponent extends EditorComponent implements OnInit, OnDest
     ngZone: NgZone,
     viewContainerRef: ViewContainerRef,
     goConfigService: GoConfigService,
-    @Inject(PLATFORM_ID) platformId: Object,
+    @Inject(PLATFORM_ID) platformId: object,
     @Optional() @Inject(TINYMCE_SCRIPT_SRC) tinymceScriptSrc?: string
   ) {
     super(elementRef, ngZone, platformId, tinymceScriptSrc);

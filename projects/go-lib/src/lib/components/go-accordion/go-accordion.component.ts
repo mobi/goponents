@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 
 @Component({
+  standalone: false,
   selector: 'go-accordion',
   template: '<ng-content></ng-content>',
   styleUrls: ['./go-accordion.component.scss']

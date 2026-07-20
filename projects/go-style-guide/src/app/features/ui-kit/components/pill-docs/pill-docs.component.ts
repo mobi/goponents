@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-pill-docs',
   templateUrl: './pill-docs.component.html',
 })

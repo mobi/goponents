@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavGroup } from '../../../../../../../go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   selector: 'app-badge-docs',
   templateUrl: './badge-docs.component.html'
 })

@@ -16,6 +16,7 @@ import { GoSideNavService } from '../go-side-nav/go-side-nav.service';
 import { NavItem } from '../nav-item.model';
 
 @Component({
+  standalone: false,
   selector: 'go-nav-item',
   templateUrl: './go-nav-item.component.html',
   styleUrls: ['./go-nav-item.component.scss']

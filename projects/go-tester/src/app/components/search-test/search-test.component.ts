@@ -5,6 +5,7 @@ import { GoSearchService } from '../../../../../go-lib/src/public_api';
 import { AppService } from '../../app.service';
 
 @Component({
+  standalone: false,
   selector: 'app-search-test',
   templateUrl: './search-test.component.html'
 })

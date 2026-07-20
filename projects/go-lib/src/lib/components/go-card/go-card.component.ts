@@ -1,6 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
+ standalone: false,
  encapsulation: ViewEncapsulation.None,
  selector: 'go-card',
  styleUrls: ['./go-card.component.scss'],
