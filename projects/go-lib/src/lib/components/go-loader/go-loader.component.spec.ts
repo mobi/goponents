@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoLoaderComponent } from './go-loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,7 +7,7 @@ describe('GoLoaderComponent', () => {
   let component: GoLoaderComponent;
   let fixture: ComponentFixture<GoLoaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoLoaderComponent ],
       imports: [ BrowserAnimationsModule ]

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoActionSheetComponent } from './go-action-sheet.component';
 
@@ -6,7 +6,7 @@ describe('GoActionSheetComponent', () => {
   let component: GoActionSheetComponent;
   let fixture: ComponentFixture<GoActionSheetComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoActionSheetComponent ]
     })

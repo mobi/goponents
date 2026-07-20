@@ -110,3 +110,10 @@ code {
     font-family: $secondary-font-stack !important;
   }
 }
+
+.app-header-version {
+  color: $theme-light-color;
+  font-size: .95rem;
+  margin-right: .75rem;
+  opacity: .8;
+}

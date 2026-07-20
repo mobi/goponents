@@ -385,11 +385,18 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
 
     // Flex children fill available space
     > .go-form__input,
-    > .go-input-container {
+    > .go-input-container,
+    > go-input,
+    > go-select {
       position: relative;
       flex: 1 1 auto;
       width: 1%;
       min-width: 0;
+    }
+
+    > go-input,
+    > go-select {
+      display: block;
     }
 
     // go-input-container inside group - flatten to pass-through
@@ -415,7 +422,9 @@ $input--disabled-background: rgba($base-dark-secondary, .4);
     }
 
     // Bring focused control to the top
-    > .go-input-container:focus-within {
+    > .go-input-container:focus-within,
+    > go-input:focus-within,
+    > go-select:focus-within {
       z-index: 5;
     }
 

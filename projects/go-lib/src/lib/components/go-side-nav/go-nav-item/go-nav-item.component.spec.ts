@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoNavItemComponent } from './go-nav-item.component';
 import { GoIconModule } from '../../go-icon/go-icon.module';
@@ -11,7 +11,7 @@ describe('GoNavItemComponent', () => {
   let configService: GoConfigService;
   let fixture: ComponentFixture<GoNavItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         GoNavItemComponent

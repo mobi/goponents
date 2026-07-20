@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './config/routes/app-routing.module';
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./config/routes/app-routing.module";
 
 import {
   GoActionSheetModule,
@@ -13,19 +13,16 @@ import {
   GoModalModule,
   GoOffCanvasModule,
   GoSideNavModule,
-  GoToasterModule
-} from '../../../go-lib/src/public_api';
+  GoToasterModule,
+} from "../../../go-lib/src/public_api";
 
-import { CoreModule } from './core/core.module';
-import { FeaturesModule } from './features/features.module';
+import { CoreModule } from "./core/core.module";
+import { FeaturesModule } from "./features/features.module";
 
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-
+import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     CoreModule,
@@ -46,10 +43,22 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
-        fullLibraryLoader: () => import('highlight.js')
-      }
-    }
+        config: {
+          languages: [
+            "xml",
+            "typescript",
+            "javascript",
+            "scss",
+            "css",
+            "bash",
+            "json",
+            "plaintext",
+          ],
+        },
+        fullLibraryLoader: () => import("highlight.js"),
+      },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

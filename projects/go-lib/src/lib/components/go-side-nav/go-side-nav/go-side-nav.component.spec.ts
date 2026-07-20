@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoActionSheetModule } from '../../go-action-sheet/go-action-sheet.module';
 import { GoSideNavComponent } from './go-side-nav.component';
@@ -21,7 +21,7 @@ describe('GoSideNavComponent', () => {
   let component: GoSideNavComponent;
   let fixture: ComponentFixture<GoSideNavComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         FakeComponent,

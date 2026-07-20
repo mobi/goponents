@@ -26,8 +26,8 @@ import { GoConfigService } from '../../go-config.service';
 })
 export class GoAccordionPanelComponent implements OnInit, OnChanges, OnDestroy {
   _expanded: boolean = false; // Note: Use _expanded in the template
-  containerClasses: object = {};
-  headerClasses: object = {};
+  containerClasses: { [key: string]: boolean } = {};
+  headerClasses: { [key: string]: boolean } = {};
   brandColor: string;
   loaded: boolean = false;
 

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { waitForAsync, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { GoPillBadgeComponent } from "./go-pill-badge.component";
 
@@ -6,7 +6,7 @@ describe("GoPillBadgeComponent", () => {
   let component: GoPillBadgeComponent;
   let fixture: ComponentFixture<GoPillBadgeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoPillBadgeComponent],
     }).compileComponents();

@@ -9,6 +9,7 @@ import {
   NavGroup,
   NavItem
 } from '../../../go-lib/src/public_api';
+import goLibPackage from '../../../go-lib/package.json';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import {
 export class AppComponent {
   date: Date = new Date();
   isDarkTheme: boolean = false;
+  goLibraryVersion: string = goLibPackage.version;
 
   menuItems: Array<NavGroup | NavItem> = [
     { route: 'getting-started', routeIcon: 'power_settings_new', routeTitle: 'Getting Started' },
@@ -69,7 +71,7 @@ export class AppComponent {
       {
         displayName: 'Go Design',
         icon: 'power_settings_new',
-        url: 'https://tangoe.design/getting-started'
+        url: 'https://dc2devgopolib01.corp.tangoe.com/getting-started'
       },
       {
         displayName: 'Google',

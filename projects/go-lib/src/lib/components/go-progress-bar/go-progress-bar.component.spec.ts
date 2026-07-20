@@ -1,6 +1,6 @@
 import { SimpleChange, SimpleChanges } from "@angular/core";
 import {
-  async,
+  waitForAsync,
   ComponentFixture,
   fakeAsync,
   TestBed,
@@ -13,7 +13,7 @@ describe("GoProgressBarComponent", () => {
   let component: GoProgressBarComponent;
   let fixture: ComponentFixture<GoProgressBarComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GoProgressBarComponent],
     }).compileComponents();

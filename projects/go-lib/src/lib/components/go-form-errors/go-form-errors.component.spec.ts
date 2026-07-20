@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 
 import { GoFormErrorsComponent } from './go-form-errors.component';
@@ -7,7 +7,7 @@ describe('GoFormErrorsComponent', () => {
   let component: GoFormErrorsComponent;
   let fixture: ComponentFixture<GoFormErrorsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoFormErrorsComponent ],
       imports: [
