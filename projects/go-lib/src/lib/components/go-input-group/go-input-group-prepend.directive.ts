@@ -1,6 +1,7 @@
 ﻿import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: '[goInputGroupPrepend]'
 })
 export class GoInputGroupPrependDirective implements AfterViewInit {

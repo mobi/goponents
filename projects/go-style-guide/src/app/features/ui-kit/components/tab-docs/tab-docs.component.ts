@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   templateUrl: './tab-docs.component.html'
 })
 export class TabDocsComponent {

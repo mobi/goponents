@@ -16,6 +16,7 @@ import { DateAdapter } from './date-adapter';
 import { CalendarCell } from './calendar-cell.model';
 
 @Component({
+  standalone: false,
   selector: 'go-calendar',
   styleUrls: ['./go-calendar.component.scss'],
   templateUrl: './go-calendar.component.html',

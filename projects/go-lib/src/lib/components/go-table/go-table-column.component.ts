@@ -2,6 +2,7 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 import { GoTableChildColumnComponent } from './go-table-child-column.component';
 
 @Component({
+  standalone: false,
   selector: 'go-table-column',
   template: ''
 })

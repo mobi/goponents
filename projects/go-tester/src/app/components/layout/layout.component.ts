@@ -14,6 +14,7 @@ import { FormControl } from '@angular/forms';
 import { OffCanvasTestComponent } from '../off-canvas-test/off-canvas-test.component';
 
 @Component({
+  standalone: false,
   selector: 'app-layout',
   templateUrl: './layout.component.html'
 })

@@ -4,6 +4,7 @@ import { SubNavService } from 'projects/go-style-guide/src/app/shared/components
 import { GoDatepickerComponent, GoModalService } from '../../../../../../../../../go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   templateUrl: './datepicker-docs.component.html'
 })
 export class DatepickerDocsComponent implements OnInit {
@@ -31,6 +32,7 @@ export class DatepickerDocsComponent implements OnInit {
   import { FormControl } from '@angular/forms';
 
   @Component({
+    standalone: false,
     selector: 'app-name-editor',
     templateUrl: './name-editor.component.html',
     styleUrls: ['./name-editor.component.css']

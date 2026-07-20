@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BrandingMode, GoConfigService, ThemeColors } from '../../../go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

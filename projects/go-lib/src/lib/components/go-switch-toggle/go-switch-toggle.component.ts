@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-switch-toggle',
   templateUrl: './go-switch-toggle.component.html',
   styleUrls: ['./go-switch-toggle.component.scss']

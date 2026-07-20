@@ -1,4 +1,4 @@
-@import '../../../../../../../../../go-lib/styles/variables';
+@use '../../../../../../../../../go-lib/styles/variables' as *;
 
 .stacked-header__type {
   color: $base-dark;

@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 import { GoFormService } from '../../services/form.service';
 
 @Component({
+  standalone: false,
   selector: 'go-form-errors',
   templateUrl: './go-form-errors.component.html'
 })

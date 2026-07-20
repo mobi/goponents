@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-portal-docs',
   templateUrl: './portal-docs.component.html'
 })

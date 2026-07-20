@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   selector: 'app-positioned-badge-docs',
   templateUrl: './positioned-badge-docs.component.html',
 })

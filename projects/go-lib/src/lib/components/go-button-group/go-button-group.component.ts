@@ -2,6 +2,7 @@ import { AfterContentInit, Component, ContentChildren, Input, OnChanges, QueryLi
 import { GoButtonComponent } from '../go-button/go-button.component';
 
 @Component({
+  standalone: false,
   selector: 'go-button-group',
   templateUrl: './go-button-group.component.html'
 })

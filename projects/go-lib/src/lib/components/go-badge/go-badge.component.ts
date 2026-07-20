@@ -2,6 +2,7 @@ import { Component, ContentChild, HostBinding, Input, OnChanges } from '@angular
 import { GoIconButtonComponent } from '../go-icon-button/go-icon-button.component';
 
 @Component({
+  standalone: false,
   selector: 'go-badge',
   templateUrl: './go-badge.component.html',
   styleUrls: ['./go-badge.component.scss']

@@ -5,6 +5,7 @@ import { GoFormService } from '../../services/form.service';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-datepicker',
   styleUrls: ['./go-datepicker.component.scss'],
   templateUrl: './go-datepicker.component.html'

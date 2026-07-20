@@ -9,6 +9,7 @@ import { NavItem } from '../nav-item.model';
 import { GoSideNavService } from './go-side-nav.service';
 
 @Component({
+  standalone: false,
   selector: 'go-side-nav',
   templateUrl: './go-side-nav.component.html',
   styleUrls: ['./go-side-nav.component.scss'],

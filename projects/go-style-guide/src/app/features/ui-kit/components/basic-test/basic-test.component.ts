@@ -4,6 +4,7 @@ import { GoButtonComponent, GoOffCanvasService } from '../../../../../../../go-l
 import { FormControl } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-basic-test',
   templateUrl: './basic-test.component.html',
   styleUrls: ['./basic-test.component.scss']

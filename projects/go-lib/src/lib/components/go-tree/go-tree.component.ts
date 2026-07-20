@@ -4,6 +4,7 @@ import { GoTreeNodeConfig } from './go-tree-node-config.model';
 import { treeAnimation } from '../../animations/tree.animation';
 
 @Component({
+  standalone: false,
   animations: [ treeAnimation ],
   selector: 'go-tree',
   templateUrl: './go-tree.component.html',

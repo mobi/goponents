@@ -8,6 +8,7 @@ import { GoHeaderBarItem } from './go-header-bar.interface';
 import { Subscription } from 'rxjs';
 
 @Component({
+  standalone: false,
   selector: 'go-header-bar',
   templateUrl: './go-header-bar.component.html',
   styleUrls: ['./go-header-bar.component.scss']

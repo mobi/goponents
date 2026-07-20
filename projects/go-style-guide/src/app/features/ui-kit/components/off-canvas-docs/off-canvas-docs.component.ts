@@ -5,6 +5,7 @@ import { BasicTestSubmitButtonComponent } from '../basic-test-submit-button/basi
 import { BasicTestComponent } from '../basic-test/basic-test.component';
 
 @Component({
+  standalone: false,
   selector: 'app-off-canvas-docs',
   templateUrl: './off-canvas-docs.component.html'
 })

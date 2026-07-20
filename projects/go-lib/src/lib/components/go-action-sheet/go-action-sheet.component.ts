@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-action-sheet',
   templateUrl: './go-action-sheet.component.html',
   styleUrls: ['./go-action-sheet.component.scss']

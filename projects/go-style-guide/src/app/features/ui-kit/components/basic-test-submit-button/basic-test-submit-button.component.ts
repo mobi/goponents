@@ -4,6 +4,7 @@ import { GoButtonComponent, GoOffCanvasService } from '../../../../../../../go-l
 import { FormControl } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-basic-test-submit-button',
   templateUrl: './basic-test-submit-button.component.html'
 })

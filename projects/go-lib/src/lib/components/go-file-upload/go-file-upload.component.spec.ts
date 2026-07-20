@@ -144,7 +144,7 @@ describe("GoFileUploadComponent", () => {
   });
 
   describe("onFilePicked", () => {
-    const files: Object[] = [
+    const files: object[] = [
       {
         id: 1,
         name: "file",

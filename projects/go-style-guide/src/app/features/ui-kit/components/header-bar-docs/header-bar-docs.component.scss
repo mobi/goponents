@@ -1,4 +1,4 @@
-@import '../../../go-lib/styles/variables';
+@use '../../../go-lib/styles/variables' as *;
 .show-arrow-input {
   margin-top: $column-gutter;
 }

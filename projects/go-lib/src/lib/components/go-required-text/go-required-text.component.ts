@@ -3,6 +3,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { GoFormService } from '../../services/form.service';
 
 @Component({
+  standalone: false,
   selector: 'go-required-text',
   templateUrl: './go-required-text.component.html',
   styleUrls: ['./go-required-text.component.scss']

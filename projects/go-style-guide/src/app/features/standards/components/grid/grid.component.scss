@@ -1,4 +1,4 @@
-@import '../../../../../../../go-lib/styles/variables';
+@use '../../../../../../../go-lib/styles/variables' as *;
 
 .example-grid__column {
   border: 1px dashed $base-light-secondary;

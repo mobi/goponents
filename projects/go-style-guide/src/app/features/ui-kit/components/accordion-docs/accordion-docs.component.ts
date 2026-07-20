@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavGroup } from 'projects/go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   templateUrl: './accordion-docs.component.html'
 })
 export class AccordionDocsComponent {

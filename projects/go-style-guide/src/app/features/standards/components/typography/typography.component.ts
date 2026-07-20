@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   templateUrl: './typography.component.html'
 })
 export class TypographyComponent implements OnInit {
-  pageTitle: String;
+  pageTitle: string;
 
   basicExample: string = `
   <h1 class="go-heading-1">Heading 1</h1>

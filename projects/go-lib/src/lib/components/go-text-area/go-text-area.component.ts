@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-text-area',
   templateUrl: './go-text-area.component.html'
 })

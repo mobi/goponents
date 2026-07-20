@@ -8,6 +8,7 @@ import { TableDocsService } from '../../table-docs.service';
 import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   selector: 'app-table-title',
   templateUrl: './table-title-template.component.html'
 })

@@ -4,6 +4,7 @@ import { SubNavService } from '../../../../../../shared/components/sub-nav/sub-n
 import { TableDocsService } from '../../table-docs.service';
 
 @Component({
+  standalone: false,
   selector: 'app-table-filters',
   templateUrl: './table-filters.component.html'
 })
