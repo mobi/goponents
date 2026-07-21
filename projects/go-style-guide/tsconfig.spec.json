@@ -5,7 +5,11 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "go-lib": ["../../go-lib/src/public_api"],
+      "go-lib/*": ["../../go-lib/src/*"]
+    }
   },
   "files": [
     "src/test.ts",

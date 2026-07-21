@@ -7,7 +7,7 @@
     "sourceMap": true,
     "declaration": false,
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
@@ -20,11 +20,20 @@
       "node"
     ],
     "useDefineForClassFields": false,
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2022", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "paths": {
-      "go-lib": ["./dist/go-lib"],
-      "go-lib/*": ["dist/go-lib/*"]
+      "go-lib": [
+        "./dist/go-lib"
+      ],
+      "go-lib/*": [
+        "dist/go-lib/*"
+      ]
     }
   }
 }

@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../../go-lib/styles/styles" as *;
+@use "../../go-lib/styles/variables" as *;
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,600');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -54,7 +56,6 @@ table {
 * {
 	box-sizing: border-box;
 }
-@use "../../go-lib/styles/styles" as *;
 
 body {
   background: $theme-light-app-bg;

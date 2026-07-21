@@ -83,7 +83,6 @@ describe("GoSelectComponent", () => {
         { id: 2, label: "apple" },
         { id: 3, label: "green apple" },
       ];
-      component.ngSelect.searchTerm = "apple";
       component.handleInput({ items: filteredItems, term: "apple" });
       component.onSelectAll();
       expect(component.control.value).toEqual([2, 3]);
@@ -102,7 +101,6 @@ describe("GoSelectComponent", () => {
         { id: 2, label: "apple" },
         { id: 3, label: "green apple" },
       ];
-      component.ngSelect.searchTerm = "apple";
       component.handleInput({ items: filteredItems, term: "apple" });
       component.onSelectAll();
       expect(component.control.value.length).toEqual(3);
