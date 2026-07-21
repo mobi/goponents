@@ -38,7 +38,7 @@
   "private": true,
   "engines": {
     "npm": ">=9.0.0",
-    "node": ">=18.13.0 <21"
+    "node": ">=20.19.0 <21"
   },
   "dependencies": {
     "@angular/animations": "20.3.26",
