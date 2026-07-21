@@ -3,6 +3,7 @@ import { DateAdapter } from '../date-adapter';
 import { CalendarCell } from '../calendar-cell.model';
 
 @Component({
+  standalone: false,
   selector: 'go-calendar-month-view',
   styleUrls: ['../calendar-views.scss'],
   templateUrl: './go-calendar-month-view.component.html',

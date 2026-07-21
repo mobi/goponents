@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   templateUrl: './colors.component.html',
   styleUrls: ['./colors.component.scss']
 })

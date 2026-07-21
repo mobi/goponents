@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-toast',
   templateUrl: './go-toast.component.html',
   styleUrls: ['./go-toast.component.scss']

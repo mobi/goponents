@@ -8,6 +8,7 @@ import { GoAccordionPanelComponent } from './go-accordion-panel.component';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
+  standalone: false,
   selector: 'go-test',
   template: `
     <go-accordion [showIcons]="true">

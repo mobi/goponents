@@ -7,6 +7,7 @@ import {
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   selector: 'app-table-child-rows',
   templateUrl: './table-child-rows.component.html'
 })

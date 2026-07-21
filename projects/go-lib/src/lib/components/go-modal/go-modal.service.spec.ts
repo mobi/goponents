@@ -76,6 +76,7 @@ describe('GoModalService', () => {
 });
 
 @Component({
+  standalone: false,
   selector: 'go-test',
   template: '<div>This is a test modal component</div>'
 })

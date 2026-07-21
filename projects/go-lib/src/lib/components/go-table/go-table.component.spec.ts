@@ -19,6 +19,7 @@ import { GoSelectModule } from '../go-select/go-select.module';
 import { GoConfigService } from '../../go-config.service';
 
 @Component({
+  standalone: false,
   selector: 'go-table-test',
   template: `
     <go-table [tableConfig]="tableConfig">

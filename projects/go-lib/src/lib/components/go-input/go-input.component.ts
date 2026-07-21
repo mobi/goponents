@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-input',
   templateUrl: './go-input.component.html',
   styleUrls: ['./go-input.component.scss']

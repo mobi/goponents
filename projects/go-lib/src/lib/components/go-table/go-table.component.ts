@@ -45,6 +45,7 @@ import {
 } from './index';
 
 @Component({
+  standalone: false,
   animations: [
     tableRowBorderAnim,
     fadeTemplateAnimation

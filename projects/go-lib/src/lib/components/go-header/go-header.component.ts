@@ -12,6 +12,7 @@ import {
 } from '../../go-config.model';
 
 @Component({
+  standalone: false,
   selector: 'go-header',
   templateUrl: './go-header.component.html',
   styleUrls: ['./go-header.component.scss']

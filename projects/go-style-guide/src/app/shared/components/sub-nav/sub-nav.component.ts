@@ -10,6 +10,7 @@ import { NavGroup } from '../../../../../../go-lib/src/public_api';
 import { SubNavService } from './sub-nav.service';
 
 @Component({
+  standalone: false,
   animations: [routerAnimation],
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
@@ -24,8 +25,8 @@ export class SubNavComponent {
 
   constructor(public subNavService: SubNavService) { }
 
-  getRouteAnimation(outlet: any): void {
-    return outlet.isActivated ? outlet.activatedRoute : '';
+  getRouteAnimation(outlet: any): any {
+    return outlet.isActivated ? outlet.activatedRoute : null;
   }
 
   toggleSubmenu(): void {

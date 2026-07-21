@@ -3,6 +3,7 @@ import { GoToasterService } from './go-toaster.service';
 import { toastAnimation } from '../../animations/toasts';
 
 @Component({
+  standalone: false,
   animations: [toastAnimation],
   selector: 'go-toaster',
   templateUrl: './go-toaster.component.html',

@@ -5,6 +5,7 @@ import { GoModalService } from '../../../../../../../go-lib/src/public_api';
 import { ModalTestComponent } from '../modal-test/modal-test.component';
 
 @Component({
+  standalone: false,
   selector: 'app-modal-docs',
   templateUrl: './modal-docs.component.html'
 })

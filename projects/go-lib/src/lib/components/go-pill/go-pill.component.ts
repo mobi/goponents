@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-pill',
   templateUrl: './go-pill.component.html',
   styleUrls: ['./go-pill.component.scss'],

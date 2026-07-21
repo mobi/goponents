@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'off-canvas-test',
   templateUrl: './off-canvas-test.component.html'
 })

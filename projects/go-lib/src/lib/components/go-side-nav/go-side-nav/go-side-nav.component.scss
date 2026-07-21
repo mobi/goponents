@@ -1,6 +1,6 @@
-@import '../../../../../styles/variables';
-@import '../../../../../styles/mixins';
-@import '../variables';
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+@use '../variables' as *;
 
 .go-side-nav {
   @include z-index(navigation);

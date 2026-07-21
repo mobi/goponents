@@ -1,5 +1,5 @@
-@import '../../../../../../go-lib/styles/variables';
-@import '../../../../../../go-lib/styles/mixins';
+@use '../../../../../../go-lib/styles/variables' as *;
+@use '../../../../../../go-lib/styles/mixins' as *;
 
 .sub-nav-container {
   align-items: flex-start;

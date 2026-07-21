@@ -1,3 +1,5 @@
+@use './variables' as *;
+
 @mixin grid-column-modifiers {
   &--no-padding {
     padding-bottom: 0;

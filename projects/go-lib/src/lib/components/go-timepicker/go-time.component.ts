@@ -13,6 +13,7 @@ import { fadeAnimation } from '../../animations/fade.animation';
 import { GoTimeFormat } from './go-time-format.model';
 
 @Component({
+  standalone: false,
   selector: 'go-time',
   styleUrls: ['./go-time.component.scss'],
   templateUrl: './go-time.component.html',

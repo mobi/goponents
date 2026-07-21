@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-loader-docs',
   templateUrl: './loader-docs.component.html'
 })

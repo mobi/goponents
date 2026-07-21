@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-progress-bar',
   templateUrl: './go-progress-bar.component.html',
   styleUrls: ['./go-progress-bar.component.scss'],

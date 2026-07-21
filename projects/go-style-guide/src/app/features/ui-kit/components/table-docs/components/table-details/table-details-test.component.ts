@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-table-details-test',
   templateUrl: './table-details-test.component.html'
 })

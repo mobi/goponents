@@ -54,9 +54,7 @@ table {
 * {
 	box-sizing: border-box;
 }
-
-
-@import "../../go-lib/styles/styles";
+@use "../../go-lib/styles/styles" as *;
 
 body {
   background: $theme-light-app-bg;

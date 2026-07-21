@@ -8,6 +8,7 @@ import {
 import { FormControl } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-test-page-2',
   templateUrl: './test-page-2.component.html'
 })

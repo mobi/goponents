@@ -3,6 +3,7 @@ import { GoCheckboxComponent } from './go-checkbox.component';
 import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 
 @Component({
+  standalone: false,
   selector: 'go-checkbox-group',
   templateUrl: './go-checkbox-group.component.html'
 })

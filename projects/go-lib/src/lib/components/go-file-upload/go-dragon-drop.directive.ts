@@ -1,6 +1,7 @@
 import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: '[goDragonDrop]'
 })
 export class DragonDropDirective {

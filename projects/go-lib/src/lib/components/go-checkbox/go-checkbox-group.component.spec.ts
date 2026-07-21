@@ -15,6 +15,7 @@ import { GoFormErrorsModule } from "../go-form-errors/go-form-errors.module";
 import { By } from "@angular/platform-browser";
 
 @Component({
+  standalone: false,
   selector: "go-test",
   template: `
     <go-checkbox-group label="Options" [control]="checkboxForm">

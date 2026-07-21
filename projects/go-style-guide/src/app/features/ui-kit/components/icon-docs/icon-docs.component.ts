@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-icon-docs',
   templateUrl: './icon-docs.component.html',
   styleUrls: ['./icon-docs.component.scss']

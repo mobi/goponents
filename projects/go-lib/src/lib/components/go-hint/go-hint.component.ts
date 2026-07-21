@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-hint',
   styleUrls: ['./go-hint.component.scss'],
   templateUrl: './go-hint.component.html',

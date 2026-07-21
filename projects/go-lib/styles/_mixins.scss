@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as *;
 
 @mixin transition($prop) {
   // scss-lint:disable VendorPrefix

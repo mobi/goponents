@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-tab',
   templateUrl: './go-tab.component.html'
 })

@@ -3,6 +3,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { GoFormService } from '../../services/form.service';
 
 @Component({
+  standalone: false,
   template: '',
 })
 export class GoFormBaseComponent {

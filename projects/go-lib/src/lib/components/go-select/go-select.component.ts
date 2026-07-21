@@ -15,6 +15,7 @@ import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
+  standalone: false,
   encapsulation: ViewEncapsulation.None,
   selector: 'go-select',
   templateUrl: './go-select.component.html',

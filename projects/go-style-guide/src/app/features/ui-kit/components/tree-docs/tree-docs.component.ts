@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { GoTreeNodeConfig } from 'projects/go-lib/src/public_api';
 
 @Component({
+  standalone: false,
   templateUrl: './tree-docs.component.html'
 })
 export class TreeDocsComponent {

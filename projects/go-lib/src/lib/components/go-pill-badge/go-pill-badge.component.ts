@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'go-pill-badge',
   templateUrl: './go-pill-badge.component.html',
   styleUrls: ['./go-pill-badge.component.scss'],

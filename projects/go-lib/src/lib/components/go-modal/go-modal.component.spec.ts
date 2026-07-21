@@ -292,6 +292,7 @@ describe('GoModalComponent', () => {
 });
 
 @Component({
+  standalone: false,
   selector: 'go-test',
   template: '<ng-template go-modal-host></ng-template>'
 })

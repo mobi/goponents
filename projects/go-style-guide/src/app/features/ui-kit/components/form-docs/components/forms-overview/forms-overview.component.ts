@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SubNavService } from 'projects/go-style-guide/src/app/shared/components/sub-nav/sub-nav.service';
 
 @Component({
+  standalone: false,
   templateUrl: './forms-overview.component.html'
 })
 export class FormsOverviewComponent {
