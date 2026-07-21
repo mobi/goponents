@@ -1,9 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "dist/**/*",
-    "out-tsc/**/*"
-  ],
+  "ignorePatterns": ["dist/**/*", "out-tsc/**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
