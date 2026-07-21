@@ -1,4 +1,4 @@
-import { EmbeddedViewRef, EventEmitter } from '@angular/core';
+import { EmbeddedViewRef, EventEmitter, TemplateRef } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GoIconModule } from '../go-icon/go-icon.module';
 import { GoHeaderBarComponent } from './go-header-bar.component';
@@ -42,7 +42,7 @@ describe('GoHeaderBarComponent', () => {
           createEmbeddedView(context: any): EmbeddedViewRef<any> {
             return undefined;
           }
-        },
+        } as unknown as TemplateRef<any>,
         title: 'Some Title',
         backButtonFn: new EventEmitter<any>(),
         showBackArrow: true
@@ -86,7 +86,7 @@ describe('GoHeaderBarComponent', () => {
           createEmbeddedView(context: any): EmbeddedViewRef<any> {
             return undefined;
           }
-        },
+        } as unknown as TemplateRef<any>,
         title: 'Some Title',
         backButtonFn: new EventEmitter<any>(),
         showBackArrow: true

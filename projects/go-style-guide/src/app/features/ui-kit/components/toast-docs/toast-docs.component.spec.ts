@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToastDocsComponent } from './toast-docs.component';
 
@@ -6,9 +7,10 @@ describe('ToastDocsComponent', () => {
   let component: ToastDocsComponent;
   let fixture: ComponentFixture<ToastDocsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToastDocsComponent ]
+      declarations: [ ToastDocsComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

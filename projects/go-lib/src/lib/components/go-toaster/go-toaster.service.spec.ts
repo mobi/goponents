@@ -10,7 +10,7 @@ describe('GoToasterService', () => {
       providers: [GoToasterService]
     });
 
-    service = TestBed.get(GoToasterService);
+    service = TestBed.inject(GoToasterService);
   });
 
   it('should create', () => {

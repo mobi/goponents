@@ -43,8 +43,8 @@ describe('GoHeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoHeaderComponent);
     component = fixture.componentInstance;
-    configService = TestBed.get(GoConfigService);
-    sideNavService = TestBed.get(GoSideNavService);
+    configService = TestBed.inject(GoConfigService);
+    sideNavService = TestBed.inject(GoSideNavService);
     fixture.detectChanges();
   });
 

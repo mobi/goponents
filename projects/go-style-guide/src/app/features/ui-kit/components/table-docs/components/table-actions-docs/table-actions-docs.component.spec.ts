@@ -1,4 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableActionsDocsComponent } from './table-actions-docs.component';
 
@@ -6,9 +8,11 @@ describe('TableActionsDocsComponent', () => {
   let component: TableActionsDocsComponent;
   let fixture: ComponentFixture<TableActionsDocsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableActionsDocsComponent ]
+      declarations: [ TableActionsDocsComponent ],
+      providers: [ DatePipe ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

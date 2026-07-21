@@ -29,7 +29,7 @@ describe('GoNavItemComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GoNavItemComponent);
-    configService = TestBed.get(GoConfigService);
+    configService = TestBed.inject(GoConfigService);
     component = fixture.componentInstance;
     component.navItem = {
       route: '/help',
