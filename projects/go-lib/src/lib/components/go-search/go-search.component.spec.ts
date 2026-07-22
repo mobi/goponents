@@ -29,7 +29,7 @@ describe('GoSearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GoSearchComponent);
     component = fixture.componentInstance;
-    goSearchService = TestBed.get(GoSearchService);
+    goSearchService = TestBed.inject(GoSearchService);
     fixture.detectChanges();
   });
 

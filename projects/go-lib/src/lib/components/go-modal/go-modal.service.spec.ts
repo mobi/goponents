@@ -14,7 +14,7 @@ describe('GoModalService', () => {
       providers: [GoModalService]
     });
 
-    service = TestBed.get(GoModalService);
+    service = TestBed.inject(GoModalService);
   });
 
   it('should create', () => {

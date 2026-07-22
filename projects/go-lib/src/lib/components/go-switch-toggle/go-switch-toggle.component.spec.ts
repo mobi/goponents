@@ -34,9 +34,6 @@ describe('GoCheckboxComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
-  });
-
   describe('toggle', () => {
     it('should toggle the value of control if control is not disabled', () => {
       const toggleControl: FormControl = new FormControl({ value: false, disabled: false });

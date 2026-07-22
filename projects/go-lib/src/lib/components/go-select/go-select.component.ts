@@ -56,6 +56,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
   // store refined items after search
   refinedItems: any[] = [];
+  private currentSearchTerm: string = "";
   // stores previous selected items when typeahead is enabled only in case of selectAll.
   private previousSelectedItems: any[] = [];
   private controlSubscription: Subscription;
@@ -76,11 +77,12 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
       return;
     }
 
-    const items: any[] = this.ngSelect.searchTerm ? this.refinedItems : this.items;
+    const items: any[] = this.currentSearchTerm ? this.refinedItems : this.items;
     this.processSelectAll(items);
   }
 
   handleInput(search: { term: string; items: any[] }): void {
+    this.currentSearchTerm = search?.term || "";
     if (this.multiple) {
       this.refinedItems = search.items;
     }
@@ -163,7 +165,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   }
 
   private emptyRefinedItems(): void {
-    if (!this.ngSelect.searchTerm) {
+    if (!this.currentSearchTerm) {
       this.refinedItems = [];
     }
   }
@@ -176,8 +178,8 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
     const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
     this.control.patchValue(uniq);
-    this.ngSelect.searchTerm = '';
-    this.ngSelect.itemsList.resetFilteredItems();
+    this.currentSearchTerm = "";
+    this.ngSelect.filter("");
   }
 
   private shouldHandleControlInitialValue(): boolean {
