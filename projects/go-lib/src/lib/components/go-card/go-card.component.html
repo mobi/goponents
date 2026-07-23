@@ -1,7 +1,9 @@
 <div [ngClass]="cardClasses">
-  <header class="card__header" *ngIf="showHeader">
-    <ng-content select="[go-card-header]"></ng-content>
-  </header>
+  @if (showHeader) {
+    <header class="card__header">
+      <ng-content select="[go-card-header]"></ng-content>
+    </header>
+  }
   <div class="card_content">
     <ng-content select="[go-card-content]"></ng-content>
   </div>

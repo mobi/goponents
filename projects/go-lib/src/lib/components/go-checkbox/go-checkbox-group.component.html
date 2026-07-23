@@ -2,22 +2,25 @@
   class="go-form__fieldset go-form__fieldset--no-margin"
   [disabled]="control.disabled"
   [ngClass]="fieldsetClasses"
->
+  >
   <legend
     class="go-form__legend"
     [ngClass]="{ 'go-form__legend--dark': theme === 'dark' }"
-  >
+    >
     {{ legend }}
   </legend>
 
   <ng-content></ng-content>
 
-  <go-hint
-    *ngFor="let hint of hints"
-    [message]="hint"
-    [theme]="theme"
-  ></go-hint>
-  <div *ngIf="!hideFieldError">
-    <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
-  </div>
+  @for (hint of hints; track hint) {
+    <go-hint
+      [message]="hint"
+      [theme]="theme"
+    ></go-hint>
+  }
+  @if (!hideFieldError) {
+    <div>
+      <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+    </div>
+  }
 </fieldset>

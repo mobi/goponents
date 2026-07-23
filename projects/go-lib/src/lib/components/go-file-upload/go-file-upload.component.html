@@ -1,19 +1,20 @@
-<label
-  *ngIf="label"
-  class="go-form__label"
-  [attr.for]="_id"
-  [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
->
-  {{ label }}
-  <go-required-text [control]="control"></go-required-text>
-</label>
+@if (label) {
+  <label
+    class="go-form__label"
+    [attr.for]="_id"
+    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+    >
+    {{ label }}
+    <go-required-text [control]="control"></go-required-text>
+  </label>
+}
 <div
   [ngClass]="{
     'go-file-upload--disabled': this.state === 'selected' || isLoading,
     'go-file-upload--dark': theme === 'dark'
   }"
->
-  <ng-container *ngIf="!isLoading; else loading">
+  >
+  @if (!isLoading) {
     <div
       goDragonDrop
       class="go-file-upload go-file-upload__container"
@@ -22,25 +23,26 @@
       (dropped)="onFilePicked($event)"
       (dragonDropOver)="onDragOver()"
       (dragonDropleave)="onDragLeave()"
-    >
-      <div *ngIf="state === 'selecting'" class="go-file-upload__container">
-        <go-icon icon="publish" iconModifier="large"> </go-icon>
-        Drag and Drop File or Click to Browse
-      </div>
-
-      <div
-        *ngIf="state === 'selected'"
-        class="go-file-upload__container go-file-upload__container--selected"
       >
-        <go-icon
-          icon="check"
-          class="go-file-upload__selected-checkmark"
-          iconClass="go-icon--large"
-        >
-        </go-icon>
-        File Selected
-      </div>
-
+      @if (state === 'selecting') {
+        <div class="go-file-upload__container">
+          <go-icon icon="publish" iconModifier="large"> </go-icon>
+          Drag and Drop File or Click to Browse
+        </div>
+      }
+      @if (state === 'selected') {
+        <div
+          class="go-file-upload__container go-file-upload__container--selected"
+          >
+          <go-icon
+            icon="check"
+            class="go-file-upload__selected-checkmark"
+            iconClass="go-icon--large"
+            >
+          </go-icon>
+          File Selected
+        </div>
+      }
       <input
         type="file"
         [id]="_id"
@@ -48,52 +50,62 @@
         class="go-file-upload__input"
         (change)="onFilePicked($event)"
         [attr.multiple]="multiple ? true : null"
-      />
-    </div>
-  </ng-container>
+        />
+      </div>
+    } @else {
+      <div
+        class="go-file-upload go-file-upload__container go-file-upload__container--loading"
+        >
+        @if (isLoading) {
+          <go-loader loaderSize="small"> </go-loader>
+        }
+        <span class="go-file-upload__container--loading-text">
+          Uploading File...
+        </span>
+      </div>
+    }
 
-  <ng-template #loading>
-    <div
-      class="go-file-upload go-file-upload__container go-file-upload__container--loading"
-    >
-      <go-loader *ngIf="isLoading" loaderSize="small"> </go-loader>
-      <span class="go-file-upload__container--loading-text">
-        Uploading File...
-      </span>
-    </div>
-  </ng-template>
-</div>
+  </div>
 
-<div *ngIf="filePreview.length" class="go-file-upload__file-name">
-  <label
-    class="go-form__label go-file-upload__file-name__label"
-    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
-    *ngIf="multiple"
-    >Files</label
-  >
-  <label
-    class="go-form__label go-file-upload__file-name__label"
-    [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
-    *ngIf="!multiple"
-    >File Name</label
-  >
-  <p
-    *ngFor="let file of filePreview; let i = index"
-    class="go-file-upload__file-list"
-  >
-    <span
-      class="go-file-upload__file-name"
-      [ngClass]="{ 'go-file-upload__file-name--dark': theme === 'dark' }"
-      >{{ file }}</span
-    >
-    <go-icon-button
-      buttonIcon="close"
-      (handleClick)="removeFile(i)"
-    ></go-icon-button>
-  </p>
-</div>
+  @if (filePreview.length) {
+    <div class="go-file-upload__file-name">
+      @if (multiple) {
+        <label
+          class="go-form__label go-file-upload__file-name__label"
+          [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+          >Files</label
+          >
+      }
+      @if (!multiple) {
+        <label
+          class="go-form__label go-file-upload__file-name__label"
+          [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
+          >File Name</label
+          >
+        }
+        @for (file of filePreview; track file; let i = $index) {
+          <p
+            class="go-file-upload__file-list"
+            >
+            <span
+              class="go-file-upload__file-name"
+              [ngClass]="{ 'go-file-upload__file-name--dark': theme === 'dark' }"
+              >{{ file }}</span
+              >
+              <go-icon-button
+                buttonIcon="close"
+                (handleClick)="removeFile(i)"
+              ></go-icon-button>
+            </p>
+          }
+        </div>
+      }
 
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"> </go-hint>
-<div *ngIf="!hideFieldError">
-  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
-</div>
+      @for (hint of hints; track hint) {
+        <go-hint [message]="hint" [theme]="theme"> </go-hint>
+      }
+      @if (!hideFieldError) {
+        <div>
+          <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+        </div>
+      }
