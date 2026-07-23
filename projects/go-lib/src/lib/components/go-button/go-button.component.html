@@ -6,23 +6,26 @@
     [ngClass]="classObject"
     [class.go-button--icon-only]="buttonContent.childNodes.length == 0"
     [type]="buttonType">
-    <span
-      class="go-button__loader"
-      *ngIf="isProcessing"
-      [ngClass]="loaderClassObject"
-      @fadeTemplate>
-      <go-loader
-        [loaderType]="loaderType"
-        loaderSize="xsmall"
-        class="go-button__loader-container">
-      </go-loader>
-    </span>
-    <go-icon
-      [icon]="buttonIcon"
-      class="go-button__icon"
-      [disabled]="buttonDisabled || isProcessing"
-      *ngIf="buttonIcon">
-    </go-icon>
+    @if (isProcessing) {
+      <span
+        class="go-button__loader"
+        [ngClass]="loaderClassObject"
+        @fadeTemplate>
+        <go-loader
+          [loaderType]="loaderType"
+          loaderSize="xsmall"
+          class="go-button__loader-container">
+        </go-loader>
+      </span>
+    }
+    @if (buttonIcon) {
+      <go-icon
+        [icon]="buttonIcon"
+        class="go-button__icon"
+        [disabled]="buttonDisabled || isProcessing"
+        >
+      </go-icon>
+    }
     <span
       class="go-button__text"
       #buttonContent>
@@ -30,7 +33,7 @@
     </span>
   </button>
 
-  <ng-container *ngIf="isSplitButton()">
+  @if (isSplitButton()) {
     <button
       class="split-button"
       (click)="toggleSplitButtonMenu()"
@@ -42,17 +45,17 @@
         [disabled]="buttonDisabled || isProcessing">
       </go-icon>
     </button>
-
     <div
       class="split-button__menu"
       [ngClass]="{'split-button__menu--active': showSplitButtonMenu}"
       [attr.aria-expanded]="showSplitButtonMenu">
-      <div
-        class="split-button__menu-option"
-        *ngFor="let option of splitButtonOptions"
-        (click)="splitButtonOptionSelected(option.action)">
-        {{ option.label }}
-      </div>
+      @for (option of splitButtonOptions; track option) {
+        <div
+          class="split-button__menu-option"
+          (click)="splitButtonOptionSelected(option.action)">
+          {{ option.label }}
+        </div>
+      }
     </div>
-  </ng-container>
+  }
 </div>

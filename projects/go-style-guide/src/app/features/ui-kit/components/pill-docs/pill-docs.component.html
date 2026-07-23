@@ -1,8 +1,8 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">{{ pageTitle }}</h1>
   <a
-  [href]="linkToSource"
-  target="_blank">
+    [href]="linkToSource"
+    target="_blank">
     <go-button buttonVariant="neutral"> View on GitHub </go-button>
   </a>
 </header>
@@ -76,7 +76,9 @@
       <code [highlight]="dismiss_html"></code>
       <h4 class="go-heading-4">component.ts</h4>
       <code [highlight]="dismiss_ts"></code>
-      <go-pill *ngIf="showPill" (removed)="removed()">With remove icon</go-pill>
+      @if (showPill) {
+        <go-pill (removed)="removed()">With remove icon</go-pill>
+      }
     </ng-container>
   </go-card>
 </div>

@@ -1,10 +1,10 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">{{ subNavService.pageTitle }}</h1>
   <a
-  [href]="subNavService.linkToSource"
-  target="_blank">
-  <go-button buttonVariant="neutral">View on GitHub</go-button>
-</a>
+    [href]="subNavService.linkToSource"
+    target="_blank">
+    <go-button buttonVariant="neutral">View on GitHub</go-button>
+  </a>
 </header>
 <div class="sub-nav-container">
   <div class="sub-nav-outlet" [@routerAnimation]="getRouteAnimation(o)">
@@ -12,17 +12,21 @@
   </div>
   <div class="sub-nav-submenu" [ngClass]="{ 'sub-nav-submenu--mobile-show': mobileSubmenuShown }" (click)="closeMobileMenu()">
 
-    <ng-container *ngFor="let item of menuItems">
+    @for (item of menuItems; track item) {
       <h3 class="go-heading-3 sub-nav-submenu__title">{{ item.routeTitle }}</h3>
-      <ul *ngIf="item.subRoutes" class="sub-nav-submenu__ul">
-        <li *ngFor="let subRoute of item.subRoutes">
-          <a class="go-link sub-nav-submenu__a"
-              [routerLinkActive]="['sub-nav-submenu__a--active']"
-              [routerLinkActiveOptions]="{exact:true}"
+      @if (item.subRoutes) {
+        <ul class="sub-nav-submenu__ul">
+          @for (subRoute of item.subRoutes; track subRoute) {
+            <li>
+              <a class="go-link sub-nav-submenu__a"
+                [routerLinkActive]="['sub-nav-submenu__a--active']"
+                [routerLinkActiveOptions]="{exact:true}"
               [routerLink]="subRoute.route">{{ subRoute.routeTitle }}</a>
-        </li>
-      </ul>
-    </ng-container>
+            </li>
+          }
+        </ul>
+      }
+    }
 
   </div>
   <div class="sub-nav-submenu-mobile-toggle" (click)="toggleSubmenu()" [ngClass]="{ 'sub-nav-submenu-mobile-toggle--expand': mobileSubmenuShown }">

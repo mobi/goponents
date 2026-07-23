@@ -16,31 +16,31 @@
       class="go-header__logo-container"
       [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
       [ngStyle]="{ 'background': getLogoBackground() }">
-      <ng-container *ngIf="logoConfig">
-        <a
-          *ngIf="!logoConfig.useHref; else logoNotRouterLink"
-          [routerLink]="[logoConfig.logoLink]"
-          class="go-header__logo">
-          <img
-            alt="{{ logoConfig.altText }}"
-            [src]="getLogo()"/>
-        </a>
-        <ng-template #logoNotRouterLink>
-          <a 
-            [href]="logoConfig.logoLink"
+      @if (logoConfig) {
+        @if (!logoConfig.useHref) {
+          <a
+            [routerLink]="[logoConfig.logoLink]"
             class="go-header__logo">
             <img
               alt="{{ logoConfig.altText }}"
-              [src]="getLogo()"/> 
-          </a>
-        </ng-template>
-      </ng-container>
-    </div>
-  </div>
-  <div class="go-header__middle">
-    <ng-content select="[go-header-middle]"></ng-content>
-  </div>
-  <div class="go-header__right">
-    <ng-content select="[go-header-right]"></ng-content>
-  </div>
-</header>
+              [src]="getLogo()"/>
+            </a>
+          } @else {
+            <a
+              [href]="logoConfig.logoLink"
+              class="go-header__logo">
+              <img
+                alt="{{ logoConfig.altText }}"
+                [src]="getLogo()"/>
+              </a>
+            }
+          }
+        </div>
+      </div>
+      <div class="go-header__middle">
+        <ng-content select="[go-header-middle]"></ng-content>
+      </div>
+      <div class="go-header__right">
+        <ng-content select="[go-header-right]"></ng-content>
+      </div>
+    </header>

@@ -1,55 +1,63 @@
 <div #sideNavRef
-     class="go-side-nav"
-     [ngClass]="{ 'go-side-nav--show-mobile' : navService.navOpen, 'go-side-nav--collapsed' : !navService.navOpen }">
+  class="go-side-nav"
+  [ngClass]="{ 'go-side-nav--show-mobile' : navService.navOpen, 'go-side-nav--collapsed' : !navService.navOpen }">
   <div class="go-side-nav__nav-items">
-    <go-nav-group *ngFor="let item of menuItems; let i = index"
-      [index]="i"
-      [navItem]="item"
-      (closeNavs)="closeNavs($event)"
-      [level]="0">
-    </go-nav-group>
+    @for (item of menuItems; track item; let i = $index) {
+      <go-nav-group
+        [index]="i"
+        [navItem]="item"
+        (closeNavs)="closeNavs($event)"
+        [level]="0">
+      </go-nav-group>
+    }
   </div>
 
-  <div class="go-side-nav__app" *ngIf="navAppDrawer">
-    <go-icon
-      class="go-side-nav__app-icon"
-      [icon]="navAppDrawer.currentAppIcon"
-      *ngIf="navService.navOpen || !navAppDrawer?.appDrawerConfig">
-    </go-icon>
-    <span
-      class="go-side-nav__app-name"
-      *ngIf="navService.navOpen">
-      {{ navAppDrawer.currentAppDisplayName }}
-    </span>
-
-    <go-action-sheet
-      placement="right"
-      class="go-side-nav__app-drawer"
-      *ngIf="navAppDrawer?.appDrawerConfig"
-      #appDrawerActionSheet>
-      <ng-container go-action-sheet__button>
-        <go-icon-button 
-          [buttonSize]="navService.navOpen ? 'medium' : 'large'"
-          class="go-side-nav__app-drawer--icon"
-          [ngClass]="{'go-side-nav__app-drawer--icon-collapsed': !navService.navOpen}"
-          [buttonIcon]="navService.navOpen ? 'more_vert' : navAppDrawer.currentAppIcon">
-        </go-icon-button>
-      </ng-container>
-      <ng-container go-action-sheet-content>
-        <go-panel [showHeader]="true">
-          <p class="go-side-nav__app-drawer--launch">{{ appDrawerHeader }}</p>
-        </go-panel>
-        <go-panel
-          class="go-side-nav__app-drawer--items"
-          *ngFor="let appDrawerItem of (navAppDrawer?.appDrawerConfig || [])"
-          [icon]="appDrawerItem.icon"
-          [panelContent]="appDrawerItem.displayName"
-          [externalLink]="appDrawerItem.url"
-          [target]="appDrawerItem.target"
-          (click)="appDrawerActionSheet.triggerAS()">
-        </go-panel>
-      </ng-container>
-    </go-action-sheet>
-
-  </div>
+  @if (navAppDrawer) {
+    <div class="go-side-nav__app">
+      @if (navService.navOpen || !navAppDrawer?.appDrawerConfig) {
+        <go-icon
+          class="go-side-nav__app-icon"
+          [icon]="navAppDrawer.currentAppIcon"
+          >
+        </go-icon>
+      }
+      @if (navService.navOpen) {
+        <span
+          class="go-side-nav__app-name"
+          >
+          {{ navAppDrawer.currentAppDisplayName }}
+        </span>
+      }
+      @if (navAppDrawer?.appDrawerConfig) {
+        <go-action-sheet
+          placement="right"
+          class="go-side-nav__app-drawer"
+          #appDrawerActionSheet>
+          <ng-container go-action-sheet__button>
+            <go-icon-button
+              [buttonSize]="navService.navOpen ? 'medium' : 'large'"
+              class="go-side-nav__app-drawer--icon"
+              [ngClass]="{'go-side-nav__app-drawer--icon-collapsed': !navService.navOpen}"
+              [buttonIcon]="navService.navOpen ? 'more_vert' : navAppDrawer.currentAppIcon">
+            </go-icon-button>
+          </ng-container>
+          <ng-container go-action-sheet-content>
+            <go-panel [showHeader]="true">
+              <p class="go-side-nav__app-drawer--launch">{{ appDrawerHeader }}</p>
+            </go-panel>
+            @for (appDrawerItem of (navAppDrawer?.appDrawerConfig || []); track appDrawerItem) {
+              <go-panel
+                class="go-side-nav__app-drawer--items"
+                [icon]="appDrawerItem.icon"
+                [panelContent]="appDrawerItem.displayName"
+                [externalLink]="appDrawerItem.url"
+                [target]="appDrawerItem.target"
+                (click)="appDrawerActionSheet.triggerAS()">
+              </go-panel>
+            }
+          </ng-container>
+        </go-action-sheet>
+      }
+    </div>
+  }
 </div>

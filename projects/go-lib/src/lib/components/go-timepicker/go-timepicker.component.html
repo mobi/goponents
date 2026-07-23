@@ -2,7 +2,7 @@
   [attr.for]="_id"
   class="go-form__label"
   [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
->
+  >
   {{ label }}
   <go-required-text [control]="control"></go-required-text>
 </label>
@@ -17,26 +17,31 @@
     [disabled]="control.disabled"
     (click)="toggleTimepicker($event)"
     readonly
-  />
-  <go-icon-button
-    class="go-timepicker__toggle"
-    [buttonDisabled]="control.disabled"
-    buttonIcon="schedule"
-    (click)="toggleTimepicker($event)"
-  ></go-icon-button>
-  <go-time
-    *ngIf="timeOpen"
-    [appendToContent]="appendToContent"
-    [displayFromRight]="displayFromRight"
-    [displayAbove]="displayAbove"
-    [selectedTime]="openTimeValue"
-    (timePicked)="timePicked($event)"
-    (closeTime)="closeTime()"
-    [theme]="theme"
-  >
-  </go-time>
-</div>
-<go-hint *ngFor="let hint of hints" [message]="hint" [theme]="theme"></go-hint>
-<div *ngIf="!hideFieldError">
-  <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
-</div>
+    />
+    <go-icon-button
+      class="go-timepicker__toggle"
+      [buttonDisabled]="control.disabled"
+      buttonIcon="schedule"
+      (click)="toggleTimepicker($event)"
+    ></go-icon-button>
+    @if (timeOpen) {
+      <go-time
+        [appendToContent]="appendToContent"
+        [displayFromRight]="displayFromRight"
+        [displayAbove]="displayAbove"
+        [selectedTime]="openTimeValue"
+        (timePicked)="timePicked($event)"
+        (closeTime)="closeTime()"
+        [theme]="theme"
+        >
+      </go-time>
+    }
+  </div>
+  @for (hint of hints; track hint) {
+    <go-hint [message]="hint" [theme]="theme"></go-hint>
+  }
+  @if (!hideFieldError) {
+    <div>
+      <go-form-errors [control]="control" [theme]="theme"></go-form-errors>
+    </div>
+  }
