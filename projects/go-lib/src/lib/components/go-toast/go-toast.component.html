@@ -13,39 +13,43 @@
     <div
       class="go-toast-content"
       [ngClass]="{ 'go-toast-content--no-title': !header }">
-      <h4
-        class="go-heading-4 go-toast-content__title"
-        *ngIf="header || headerContent">
-        <ng-container *ngIf="headerContent; else headerContentElse">
-          <ng-container *ngTemplateOutlet="headerContent"></ng-container>
-        </ng-container>
-        <ng-template #headerContentElse>
-          {{ header }}
-        </ng-template>
-      </h4>
-  
-      <ng-container *ngIf="messageContent; else messageContentElse">
+      @if (header || headerContent) {
+        <h4
+          class="go-heading-4 go-toast-content__title"
+          >
+          @if (headerContent) {
+            <ng-container *ngTemplateOutlet="headerContent"></ng-container>
+          } @else {
+            {{ header }}
+          }
+        </h4>
+      }
+
+      @if (messageContent) {
         <p class="go-toast-content__message">
-         <ng-container *ngTemplateOutlet="messageContent"></ng-container>
+          <ng-container *ngTemplateOutlet="messageContent"></ng-container>
         </p>
-      </ng-container>
-      <ng-template #messageContentElse>
+      } @else {
         <p
           class="go-toast-content__message"
           [innerHTML]="message">
         </p>
-      </ng-template>
+      }
     </div>
-    <div
-      class="go-toast-dismiss"
-      *ngIf="dismissable">
-      <go-icon-button
-        buttonIcon="close"
-        (handleClick)="dismiss()">
-      </go-icon-button>
-    </div>
-    <div class="go-toast__actions" *ngIf="showToastActions">
-      <ng-content select="[go-toast-action]"></ng-content>
-    </div>
+    @if (dismissable) {
+      <div
+        class="go-toast-dismiss"
+        >
+        <go-icon-button
+          buttonIcon="close"
+          (handleClick)="dismiss()">
+        </go-icon-button>
+      </div>
+    }
+    @if (showToastActions) {
+      <div class="go-toast__actions">
+        <ng-content select="[go-toast-action]"></ng-content>
+      </div>
+    }
   </div>
 </div>

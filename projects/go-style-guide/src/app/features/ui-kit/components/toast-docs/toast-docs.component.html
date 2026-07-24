@@ -143,14 +143,15 @@
     </ng-container>
   </go-card>
 
-  <go-toast
-    *ngIf="showDismissToast"
-    class="go-column go-column--100"
-    header="Heads Up!"
-    message="We use cookies and stuff, so watch out. You can dismiss me."
-    [dismissable]="true"
-    (handleDismiss)="dismissed()">
-  </go-toast>
+  @if (showDismissToast) {
+    <go-toast
+      class="go-column go-column--100"
+      header="Heads Up!"
+      message="We use cookies and stuff, so watch out. You can dismiss me."
+      [dismissable]="true"
+      (handleDismiss)="dismissed()">
+    </go-toast>
+  }
 
   <go-card class="go-column go-column--100" id="toaster-example">
     <ng-container go-card-header>

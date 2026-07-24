@@ -1,9 +1,10 @@
 <span class="go-pill">
   <ng-content></ng-content>
-  <go-icon
-    *ngIf="removable"
-    (click)="onClick()"
-    icon="close"
-    class="go-pill__remove-icon"
-  ></go-icon>
+  @if (removable) {
+    <go-icon
+      (click)="onClick()"
+      icon="close"
+      class="go-pill__remove-icon"
+    ></go-icon>
+  }
 </span>

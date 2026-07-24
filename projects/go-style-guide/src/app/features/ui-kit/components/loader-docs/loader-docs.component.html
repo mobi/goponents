@@ -1,8 +1,8 @@
 <header class="go-page-title">
   <h1 class="go-heading-1">{{ pageTitle }}</h1>
   <a
-  [href]="linkToSource"
-  target="_blank">
+    [href]="linkToSource"
+    target="_blank">
     <go-button buttonVariant="neutral"> View on GitHub </go-button>
   </a>
 </header>
@@ -109,7 +109,9 @@
             <go-button (handleClick)="toggleLoader()">Toggle Me</go-button>
           </div>
           <div class="go-column">
-            <go-loader *ngIf="showLoader"></go-loader>
+            @if (showLoader) {
+              <go-loader></go-loader>
+            }
           </div>
         </div>
       </div>
@@ -118,4 +120,4 @@
   </go-card>
 
 </div>
-  
+

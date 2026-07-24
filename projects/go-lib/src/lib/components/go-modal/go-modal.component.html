@@ -8,12 +8,13 @@
     [ngClass]="{'go-modal__container--lg': modalSize === 'lg', 'go-modal__container--xl': modalSize === 'xl'}">
     <div class="go-modal__header">
       <h3 class="go-heading-3">{{ modalTitle }}</h3>
-      <go-icon-button
-        buttonIcon="close"
-        class="go-modal__close"
-        *ngIf="showCloseIcon"
-        (handleClick)="closeModal()">
-      </go-icon-button>
+      @if (showCloseIcon) {
+        <go-icon-button
+          buttonIcon="close"
+          class="go-modal__close"
+          (handleClick)="closeModal()">
+        </go-icon-button>
+      }
     </div>
     <div
       class="go-modal__content"

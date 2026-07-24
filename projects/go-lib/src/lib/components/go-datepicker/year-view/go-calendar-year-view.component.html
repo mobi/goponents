@@ -22,18 +22,22 @@
   </span>
   <div class="go-calendar__body">
     <table class="go-calendar__table">
-      <tr *ngFor="let row of years" class="go-calendar__row">
-        <td *ngFor="let col of row" class="go-calendar__date go-calendar__date--tall">
-          <button
-            class="go-calendar__cell"
-            [disabled]="col.disabled"
-            [ngClass]="{'go-calendar__cell--selected': col.selected, 'go-calendar__cell--focused': col.focused}"
-            (click)="pickYear(col.value)"
-          >
-            {{col.translated}}
-          </button>
-        </td>
-      </tr>
+      @for (row of years; track row) {
+        <tr class="go-calendar__row">
+          @for (col of row; track col) {
+            <td class="go-calendar__date go-calendar__date--tall">
+              <button
+                class="go-calendar__cell"
+                [disabled]="col.disabled"
+                [ngClass]="{'go-calendar__cell--selected': col.selected, 'go-calendar__cell--focused': col.focused}"
+                (click)="pickYear(col.value)"
+                >
+                {{col.translated}}
+              </button>
+            </td>
+          }
+        </tr>
+      }
     </table>
   </div>
 </div>

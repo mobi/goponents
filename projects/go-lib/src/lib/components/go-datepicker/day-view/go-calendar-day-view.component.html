@@ -31,26 +31,37 @@
 <div class="go-calendar__body">
   <table class="go-calendar__table">
     <tr class="go-calendar__row">
-      <th class="go-calendar__body--header go-calendar__body--header-border" *ngFor="let weekDay of dateAdapter.daysOfWeek">
-        {{weekDay}}
-      </th>
+      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+        <th class="go-calendar__body--header go-calendar__body--header-border">
+          {{weekDay}}
+        </th>
+      }
     </tr>
     <tr class="go-calendar__row">
-      <td *ngFor="let weekDay of dateAdapter.daysOfWeek" class="go-calendar__body--padding"></td>
+      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+        <td class="go-calendar__body--padding"></td>
+      }
     </tr>
-    <tr *ngFor="let week of weeks" class="go-calendar__row">
-      <td *ngFor="let day of week" class="go-calendar__date">
-        <span *ngIf="!day.translated"></span>
-        <button
-          class="go-calendar__cell go-calendar__cell--date"
-          [disabled]="day.disabled"
-          [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
-          *ngIf="day.translated"
-          (click)="pickDay(day.value)"
-        >
-          {{day.translated}}
-        </button>
-      </td>
-    </tr>
+    @for (week of weeks; track week) {
+      <tr class="go-calendar__row">
+        @for (day of week; track day) {
+          <td class="go-calendar__date">
+            @if (!day.translated) {
+              <span></span>
+            }
+            @if (day.translated) {
+              <button
+                class="go-calendar__cell go-calendar__cell--date"
+                [disabled]="day.disabled"
+                [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
+                (click)="pickDay(day.value)"
+                >
+                {{day.translated}}
+              </button>
+            }
+          </td>
+        }
+      </tr>
+    }
   </table>
 </div>

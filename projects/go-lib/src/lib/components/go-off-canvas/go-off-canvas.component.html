@@ -12,15 +12,21 @@
   role="dialog">
 
   <div class="go-off-canvas__header">
-    <h3 *ngIf="header" class="go-heading-3 go-heading--no-margin go-off-canvas__title">
-      {{ header }}
-    </h3>
-    <ng-container [ngSwitch]="size">
-      <go-icon-button *ngSwitchCase="'small'" buttonSize="medium" buttonIcon="close"
-                      (handleClick)="closeOffCanvas()">
-      </go-icon-button>
-      <ng-container *ngSwitchCase="'large'" goPortalTarget="offCanvasHeader"></ng-container>
-    </ng-container>
+    @if (header) {
+      <h3 class="go-heading-3 go-heading--no-margin go-off-canvas__title">
+        {{ header }}
+      </h3>
+    }
+    @switch (size) {
+      @case ('small') {
+        <go-icon-button buttonSize="medium" buttonIcon="close"
+          (handleClick)="closeOffCanvas()">
+        </go-icon-button>
+      }
+      @case ('large') {
+        <ng-container goPortalTarget="offCanvasHeader"></ng-container>
+      }
+    }
   </div>
 
   <div class="go-off-canvas__content">

@@ -1,37 +1,47 @@
 <div #navItemRef
-     class="go-nav-item"
-     [attr.title]="navItem.description"
-     [ngClass]="{ 'go-nav-item--collapsed': !navService.navOpen }">
-  <a class="go-nav-item__link"
-     *ngIf="!navItem.isExternalLink"
-     [routerLinkActive]="['go-nav-item__link--active']"
-     [routerLink]="[navItem.route]">
-     <span class="go-nav-item--selected"
-           [ngStyle]="{ 'background': brandColor }"
-           *ngIf="level === 0 && navItem.routeActive"></span>
-    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
-  </a>
+  class="go-nav-item"
+  [attr.title]="navItem.description"
+  [ngClass]="{ 'go-nav-item--collapsed': !navService.navOpen }">
+  @if (!navItem.isExternalLink) {
+    <a class="go-nav-item__link"
+      [routerLinkActive]="['go-nav-item__link--active']"
+      [routerLink]="[navItem.route]">
+      @if (level === 0 && navItem.routeActive) {
+        <span class="go-nav-item--selected"
+          [ngStyle]="{ 'background': brandColor }"
+        ></span>
+      }
+      <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
+    </a>
+  }
 
-  <a class="go-nav-item__link"
-     *ngIf="navItem.isExternalLink"
-     [href]="navItem.route"
-     [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'">
-    <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
-    <go-icon *ngIf="(!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank') && navService.navOpen"
-             icon="launch"
-             class="go-nav-group__icon go-nav-group__icon--external">
-    </go-icon>
-  </a>
+  @if (navItem.isExternalLink) {
+    <a class="go-nav-item__link"
+      [href]="navItem.route"
+      [target]="navItem.externalLinkTarget ? navItem.externalLinkTarget : '_blank'">
+      <ng-container *ngTemplateOutlet="navItemInner"></ng-container>
+      @if ((!navItem.externalLinkTarget || navItem.externalLinkTarget === '_blank') && navService.navOpen) {
+        <go-icon
+          icon="launch"
+          class="go-nav-group__icon go-nav-group__icon--external">
+        </go-icon>
+      }
+    </a>
+  }
 </div>
 
 <ng-template #navItemInner>
-  <go-icon [icon]="navItem.routeIcon"
-           class="go-nav-group__icon"
-           *ngIf="navItem.routeIcon">
-  </go-icon>
-  <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon, 'go-nav-item__title--level-2' : level >= 2 }"
-        class="go-nav-item__title"
-        *ngIf="navService.navOpen">
-    {{navItem.routeTitle}}
-  </span>
+  @if (navItem.routeIcon) {
+    <go-icon [icon]="navItem.routeIcon"
+      class="go-nav-group__icon"
+      >
+    </go-icon>
+  }
+  @if (navService.navOpen) {
+    <span [ngClass]="{ 'go-nav-item__title--with-icon': navItem.routeIcon, 'go-nav-item__title--level-2' : level >= 2 }"
+      class="go-nav-item__title"
+      >
+      {{navItem.routeTitle}}
+    </span>
+  }
 </ng-template>

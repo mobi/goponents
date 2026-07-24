@@ -3,7 +3,7 @@
     [for]="_id"
     class="go-form__label go-form__label--inline go-form__label--checkbox-container"
     [ngClass]="{ 'go-form__label--dark': theme === 'dark' }"
-  >
+    >
     {{ label }}
     <go-required-text [control]="control"></go-required-text>
     <input
@@ -13,19 +13,22 @@
       type="checkbox"
       [formControl]="control"
       #hiddenInputRef
-    />
-    <span
-      class="go-form__custom-checkbox"
-      [ngClass]="{ 'go-form__custom-checkbox--dark': theme === 'dark' }"
-    ></span>
-  </label>
+      />
+      <span
+        class="go-form__custom-checkbox"
+        [ngClass]="{ 'go-form__custom-checkbox--dark': theme === 'dark' }"
+      ></span>
+    </label>
 
-  <go-hint
-    *ngFor="let hint of hints"
-    [message]="hint"
-    [theme]="theme"
-  ></go-hint>
-  <div *ngIf="!hideFieldError">
-    <go-form-errors [control]="control"></go-form-errors>
+    @for (hint of hints; track hint) {
+      <go-hint
+        [message]="hint"
+        [theme]="theme"
+      ></go-hint>
+    }
+    @if (!hideFieldError) {
+      <div>
+        <go-form-errors [control]="control"></go-form-errors>
+      </div>
+    }
   </div>
-</div>

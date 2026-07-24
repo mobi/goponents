@@ -1,10 +1,13 @@
-<p class="go-hint" [ngClass]="hintClasses" *ngIf="message">
-  <strong
-    class="go-hint__label"
-    [ngClass]="{ 'go-hint__label--negative': type === 'negative' }"
-    *ngIf="label"
-  >
-    {{ label }}
-  </strong>
-  {{ message }}
-</p>
+@if (message) {
+  <p class="go-hint" [ngClass]="hintClasses">
+    @if (label) {
+      <strong
+        class="go-hint__label"
+        [ngClass]="{ 'go-hint__label--negative': type === 'negative' }"
+        >
+        {{ label }}
+      </strong>
+    }
+    {{ message }}
+  </p>
+}

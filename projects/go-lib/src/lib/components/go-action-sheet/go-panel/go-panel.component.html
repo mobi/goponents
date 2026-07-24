@@ -1,37 +1,43 @@
 <!-- External Link -->
-<a
-  class="go-panel"
-  [target]="target ? target : '_blank'"
-  [rel]="target ? target : 'noreferrer'"
-  [ngClass]="panelClasses()"
-  [attr.href]="externalLink"
-  *ngIf="externalLink; else noLink"
-  (click)="panelClicked()">
-  <span class="go-panel__title">
-    <span *ngIf="icon" class="go-panel__icon material-icons">{{icon}}</span>
-    <span class="go-panel__title-text" [innerHtml]="panelContent"></span>
-  </span>
-</a>
-
-<!-- No External Link -->
-<ng-template #noLink>
+@if (externalLink) {
+  <a
+    class="go-panel"
+    [target]="target ? target : '_blank'"
+    [rel]="target ? target : 'noreferrer'"
+    [ngClass]="panelClasses()"
+    [attr.href]="externalLink"
+    (click)="panelClicked()">
+    <span class="go-panel__title">
+      @if (icon) {
+        <span class="go-panel__icon material-icons">{{icon}}</span>
+      }
+      <span class="go-panel__title-text" [innerHtml]="panelContent"></span>
+    </span>
+  </a>
+} @else {
   <button
     class="go-panel"
     [disabled]="disablePanel"
     [ngClass]="panelClasses()"
     (click)="handleAction()">
     <span class="go-panel__title">
-      <span
-        *ngIf="icon"
-        class="go-panel__icon material-icons">
-        {{icon}}
-      </span>
-      <span
-        *ngIf="panelContent"
-        class="go-panel__title-text"
-        [innerHtml]="panelContent">
-      </span>
-      <ng-content *ngIf="!panelContent"></ng-content>
+      @if (icon) {
+        <span
+          class="go-panel__icon material-icons">
+          {{icon}}
+        </span>
+      }
+      @if (panelContent) {
+        <span
+          class="go-panel__title-text"
+          [innerHtml]="panelContent">
+        </span>
+      }
+      @if (!panelContent) {
+        <ng-content></ng-content>
+      }
     </span>
   </button>
-</ng-template>
+}
+
+<!-- No External Link -->

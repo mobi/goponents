@@ -1,7 +1,7 @@
 <section
   class="go-accordion-panel"
   [ngClass]="containerClasses"
->
+  >
   <span
     class="go-accordion-panel--selected"
     [ngStyle]="{'background': brandColor}"
@@ -11,16 +11,17 @@
     class="go-accordion-panel__header"
     [ngClass]="headerClasses"
     (click)="toggle.emit()"
-  >
+    >
     <div class="go-accordion-panel__title">
-      <go-icon
-        *ngIf="icon"
-        [icon]="icon"
-        class="go-accordion-panel__title-icon"
-      ></go-icon>
+      @if (icon) {
+        <go-icon
+          [icon]="icon"
+          class="go-accordion-panel__title-icon"
+        ></go-icon>
+      }
       <span class="go-accordion-panel__title-text">{{ heading }}</span>
     </div>
-    
+
     <div class="go-accordion-panel__projection">
       <ng-container *ngTemplateOutlet="headerContent"></ng-container>
     </div>
@@ -39,11 +40,13 @@
         'go-accordion-panel__content--slim': slim,
         'go-accordion-panel__content--no-padding': removeContentPadding
       }"
-    >
-      <ng-container *ngIf="panelContent && loaded">
+      >
+      @if (panelContent && loaded) {
         <ng-container *ngTemplateOutlet="panelContent"></ng-container>
-      </ng-container>
-      <ng-content *ngIf="!panelContent"></ng-content>
+      }
+      @if (!panelContent) {
+        <ng-content></ng-content>
+      }
     </div>
   </div>
 </section>

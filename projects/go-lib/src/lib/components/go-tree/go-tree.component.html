@@ -3,21 +3,23 @@
   let-node="node"
   let-isChildNode="isChildNode">
   <div [ngClass]="{ 'go-tree-node-item__child-offset': isChildNode }">
-    <go-icon
-      class="go-tree-node-item__expander"
-      [icon]="node.expanded ? 'expand_more' : 'expand_less'"
-      (click)="node.expanded = !node.expanded"
-      *ngIf="node?.children">
-    </go-icon>
+    @if (node?.children) {
+      <go-icon
+        class="go-tree-node-item__expander"
+        [icon]="node.expanded ? 'expand_more' : 'expand_less'"
+        (click)="node.expanded = !node.expanded"
+        >
+      </go-icon>
+    }
     {{ node.name }}
     <div [@treeAnimation]="node.expanded ? 'open' : 'close'">
-      <ng-container *ngFor="let node of node?.children">
+      @for (node of node?.children; track node) {
         <ng-container *ngTemplateOutlet="nodeTemplate; context:{ node: node, isChildNode: true }"></ng-container>
-      </ng-container>
+      }
     </div>
   </div>
 </ng-template>
 
-<ng-container *ngFor="let node of nodeConfig">
+@for (node of nodeConfig; track node) {
   <ng-container *ngTemplateOutlet="nodeTemplate; context:{ node: node }"></ng-container>
-</ng-container>
+}
