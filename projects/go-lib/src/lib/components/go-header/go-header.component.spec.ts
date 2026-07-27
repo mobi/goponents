@@ -55,7 +55,7 @@ describe('GoHeaderComponent', () => {
   describe('setupConfig', () => {
     it('updates brandColor, logoConfig, menuBgHoverValue, and fontColor on events from configService.config', () => {
       expect(component.brandColor).toBe('#20A65F');
-      expect(component.logoConfig).toBe(undefined);
+      expect(component.logoConfig).toEqual({});
 
       configService.config.pipe(skip(1)).subscribe(() => {
         expect(component.brandColor).toBe('#ffffff');

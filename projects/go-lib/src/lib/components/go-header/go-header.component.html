@@ -16,23 +16,29 @@
       class="go-header__logo-container"
       [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
       [ngStyle]="{ 'background': getLogoBackground() }">
-      @if (logoConfig) {
-        @if (!logoConfig.useHref) {
+      @if (logoConfig?.logo) {
+        @if (hasInternalLogoLink()) {
           <a
-            [routerLink]="[logoConfig.logoLink]"
+            [routerLink]="logoConfig.logoLink"
             class="go-header__logo">
             <img
-              alt="{{ logoConfig.altText }}"
+              [alt]="logoAltText()"
               [src]="getLogo()"/>
             </a>
-          } @else {
+          } @else if (hasExternalLogoLink()) {
             <a
               [href]="logoConfig.logoLink"
               class="go-header__logo">
               <img
-                alt="{{ logoConfig.altText }}"
+                [alt]="logoAltText()"
                 [src]="getLogo()"/>
               </a>
+            } @else {
+              <div class="go-header__logo">
+                <img
+                  [alt]="logoAltText()"
+                  [src]="getLogo()"/>
+              </div>
             }
           }
         </div>

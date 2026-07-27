@@ -201,6 +201,8 @@ export class GoTableComponent implements OnInit, OnChanges, OnDestroy, AfterView
     } else if (this.sortClasses(columnField, SortDirection.descending)) {
       return 'arrow_downward';
     }
+
+    return 'swap_vert';
   }
 
   showPaging(): boolean {

@@ -23,11 +23,15 @@ export class GoSideNavService {
   }
 
   setMenuItems(val: (NavGroup | NavItem)[]): void {
-    this.menuItems = val;
+    this.menuItems = Array.isArray(val) ? val : [];
     this.createNavMap();
   }
 
   setAttributes(attributes: CustomNavAttribute[], elemRef: ElementRef, renderer: Renderer2): void {
+    if (!Array.isArray(attributes) || !elemRef || !renderer) {
+      return;
+    }
+
     attributes.forEach((attr: CustomNavAttribute) => {
       renderer.setAttribute(elemRef.nativeElement, attr.name, attr.value);
     });
@@ -61,6 +65,10 @@ export class GoSideNavService {
   }
 
   private extractNested(group: NavGroup, base: NavGroup): void {
+    if (!Array.isArray(group?.subRoutes)) {
+      return;
+    }
+
     for (const route of group.subRoutes) {
       if (this.isNavGroup(route)) {
         this.extractNested(route, base);
@@ -71,11 +79,19 @@ export class GoSideNavService {
   }
 
   private createNavMap(): void {
+    this._menuItems.clear();
+
+    if (!Array.isArray(this.menuItems) || this.menuItems.length === 0) {
+      return;
+    }
+
     let baseItem: NavGroup | NavItem;
     for (let i: number = 0; i < this.menuItems.length; i++) {
       baseItem = this.menuItems[i];
       if (!this.isNavGroup(baseItem)) {
-        this._menuItems.set(this.formatUrl(baseItem.route), baseItem);
+        if (baseItem.route) {
+          this._menuItems.set(this.formatUrl(baseItem.route), baseItem);
+        }
       } else {
         this.extractNested(baseItem, baseItem);
       }
@@ -83,6 +99,10 @@ export class GoSideNavService {
   }
 
   private formatUrl(route: string): string {
+    if (!route) {
+      return '/';
+    }
+
     return route[0] !== '/' ? '/' + route : route;
   }
 }
