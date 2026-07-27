@@ -2,51 +2,44 @@
   <div class="go-header__left">
     <div
       class="go-header__menu-container"
-      [ngStyle]="{ 'background': brandColor, 'color': fontColor }">
+      [ngStyle]="{ background: brandColor, color: fontColor }"
+    >
       <go-icon
         (click)="sideNavService.toggleNav()"
         (mouseenter)="enableMenuHover()"
         (mouseleave)="disableMenuHover()"
-        [ngStyle]="{ 'background': menuBgHover }"
+        [ngStyle]="{ background: menuBgHover }"
         class="go-header__menu"
-        icon="menu">
+        icon="menu"
+      >
       </go-icon>
     </div>
     <div
       class="go-header__logo-container"
       [ngClass]="{ 'go-header__logo-container--collapsed': isNavCollapsed() }"
-      [ngStyle]="{ 'background': getLogoBackground() }">
+      [ngStyle]="{ background: getLogoBackground() }"
+    >
       @if (logoConfig?.logo) {
         @if (hasInternalLogoLink()) {
-          <a
-            [routerLink]="logoConfig.logoLink"
-            class="go-header__logo">
-            <img
-              [alt]="logoAltText()"
-              [src]="getLogo()"/>
-            </a>
-          } @else if (hasExternalLogoLink()) {
-            <a
-              [href]="logoConfig.logoLink"
-              class="go-header__logo">
-              <img
-                [alt]="logoAltText()"
-                [src]="getLogo()"/>
-              </a>
-            } @else {
-              <div class="go-header__logo">
-                <img
-                  [alt]="logoAltText()"
-                  [src]="getLogo()"/>
-              </div>
-            }
-          }
-        </div>
-      </div>
-      <div class="go-header__middle">
-        <ng-content select="[go-header-middle]"></ng-content>
-      </div>
-      <div class="go-header__right">
-        <ng-content select="[go-header-right]"></ng-content>
-      </div>
-    </header>
+          <a [routerLink]="logoConfig.logoLink" class="go-header__logo">
+            <img [alt]="logoAltText()" [src]="getLogo()" />
+          </a>
+        } @else if (hasExternalLogoLink()) {
+          <a [href]="logoConfig.logoLink" class="go-header__logo">
+            <img [alt]="logoAltText()" [src]="getLogo()" />
+          </a>
+        } @else {
+          <div class="go-header__logo">
+            <img [alt]="logoAltText()" [src]="getLogo()" />
+          </div>
+        }
+      }
+    </div>
+  </div>
+  <div class="go-header__middle">
+    <ng-content select="[go-header-middle]"></ng-content>
+  </div>
+  <div class="go-header__right">
+    <ng-content select="[go-header-right]"></ng-content>
+  </div>
+</header>
