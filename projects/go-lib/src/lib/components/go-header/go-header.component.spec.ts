@@ -141,6 +141,7 @@ describe('GoHeaderComponent', () => {
     it('returns brand color if side nav is expanded', () => {
       sideNavService.navOpen = true;
       component.brandColor = '#abc123';
+      spyOnProperty(window, 'innerWidth').and.returnValue(800);
 
       expect(component.getLogoBackground()).toBe('#abc123');
     });
