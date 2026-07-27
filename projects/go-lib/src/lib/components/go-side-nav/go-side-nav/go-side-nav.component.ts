@@ -17,7 +17,7 @@ import { GoSideNavService } from './go-side-nav.service';
   encapsulation: ViewEncapsulation.None
 })
 export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
-  @Input() menuItems: Array<NavGroup | NavItem>;
+  @Input() menuItems: Array<NavGroup | NavItem> = [];
   @Input() navAppDrawer: NavAppDrawer;
   @Input() appDrawerHeader: string = 'Launch';
   @Input() attributes: CustomNavAttribute[];
@@ -33,6 +33,8 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.menuItems = Array.isArray(this.menuItems) ? this.menuItems : [];
+
     this.generateIds(this.menuItems);
 
     this.navService.setMenuItems(this.menuItems);
@@ -61,6 +63,10 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   closeNavs(navGroup: NavGroup): void {
+    if (!Array.isArray(this.menuItems) || !navGroup) {
+      return;
+    }
+
     this.menuItems.forEach((group: (NavGroup | NavItem)) => {
       const g: NavGroup = group as NavGroup;
       g.expanded = this.openAccordion(g, navGroup);
@@ -72,6 +78,10 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   // This recursively adds ids to all NavGroups. We need these ids below within openAccordion()
   // when checking which accordions should be closed upon clicking a NavGroup.
   private generateIds(items: (NavGroup | NavItem)[]): void {
+    if (!Array.isArray(items)) {
+      return;
+    }
+
     items.forEach((item: (NavGroup | NavItem)) => {
       if ('subRoutes' in item) {
         item.id = `${item.routeTitle}-${Math.round(Math.random() * 1000000)}`;
@@ -81,6 +91,10 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   private configureExpanded(url: string): void {
+    if (!Array.isArray(this.menuItems)) {
+      return;
+    }
+
     this.menuItems.forEach((item: (NavGroup | NavItem)) => {
       (item as NavGroup).expanded = this.setExpanded(item, url);
     });
@@ -90,12 +104,13 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
     if ((item as NavGroup).subRoutes) {
       return this.navGroupExpansion(item as NavGroup, url);
     } else {
-      return url.includes((item as NavItem).route);
+      return Boolean((item as NavItem).route) && url.includes((item as NavItem).route);
     }
   }
 
   private navGroupExpansion(group: NavGroup, url: string): boolean {
-    group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
+    const routes: (NavGroup | NavItem)[] = Array.isArray(group.subRoutes) ? group.subRoutes : [];
+    group.expanded = routes.some((subRoute: (NavGroup | NavItem)) => {
       return this.setExpanded(subRoute, url);
     });
     return group.expanded;
@@ -110,7 +125,7 @@ export class GoSideNavComponent implements AfterViewInit, OnInit, OnDestroy {
    * @param item this is the group that we are searching for that was clicked on and needs opened.
    */
   private openAccordion(group: NavGroup, item: NavGroup): boolean {
-    if (group.subRoutes) {
+    if (group && Array.isArray(group.subRoutes)) {
       if (group.id !== item.id) {
         group.expanded = group.subRoutes.some((subRoute: (NavGroup | NavItem)) => {
           return this.openAccordion((subRoute as NavGroup), item);

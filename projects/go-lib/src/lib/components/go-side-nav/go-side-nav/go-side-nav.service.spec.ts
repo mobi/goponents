@@ -52,6 +52,12 @@ describe('GoSideNavService', () => {
 
       expect(spy).toHaveBeenCalled();
     });
+
+    it('defaults to an empty array for invalid menu values', () => {
+      service.setMenuItems(undefined as any);
+
+      expect(service.menuItems).toEqual([]);
+    });
   });
 
   describe('setAttributes', () => {
@@ -67,6 +73,13 @@ describe('GoSideNavService', () => {
 
       expect(renderer2Mock.setAttribute).toHaveBeenCalledWith(elementRefMock.nativeElement, 'attribute1', 'value1');
       expect(renderer2Mock.setAttribute).toHaveBeenCalledTimes(2);
+    });
+
+    it('returns early for invalid attribute inputs', () => {
+      const renderer2Mock: Renderer2 = jasmine.createSpyObj('renderer2Mock', ['setAttribute']);
+
+      expect(() => service.setAttributes(undefined as any, undefined as any, renderer2Mock)).not.toThrow();
+      expect(renderer2Mock.setAttribute).not.toHaveBeenCalled();
     });
   });
 

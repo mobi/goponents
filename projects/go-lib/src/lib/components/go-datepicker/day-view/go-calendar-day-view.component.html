@@ -31,14 +31,14 @@
 <div class="go-calendar__body">
   <table class="go-calendar__table">
     <tr class="go-calendar__row">
-      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+      @for (weekDay of dateAdapter.daysOfWeek; track $index) {
         <th class="go-calendar__body--header go-calendar__body--header-border">
           {{weekDay}}
         </th>
       }
     </tr>
     <tr class="go-calendar__row">
-      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+      @for (weekDay of dateAdapter.daysOfWeek; track $index) {
         <td class="go-calendar__body--padding"></td>
       }
     </tr>

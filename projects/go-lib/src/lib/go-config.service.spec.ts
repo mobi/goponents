@@ -86,6 +86,28 @@ describe('GoConfigService', () => {
 
       service.setConfig(configMock);
     });
+
+    it('merges partial config with existing values', () => {
+      service.setConfig({
+        brandColor: '#111111',
+        brandingMode: BrandingMode.company,
+        logoConfig: { logo: 'first-logo.png' }
+      });
+
+      service.setConfig({ logoConfig: { logo: 'next-logo.png' } });
+
+      const config: GoConfigInterface = service.getConfig();
+      expect(config.brandColor).toBe('#111111');
+      expect(config.brandingMode).toBe(BrandingMode.company);
+      expect(config.logoConfig.logo).toBe('next-logo.png');
+    });
+
+    it('does not throw when setConfig is called without args', () => {
+      service.setConfig(configMock);
+
+      expect(() => service.setConfig()).not.toThrow();
+      expect(service.getConfig()).toEqual(configMock);
+    });
   });
 
   describe('getConfig', () => {
