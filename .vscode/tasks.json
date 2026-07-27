@@ -280,6 +280,501 @@
 			"label": "check-style-guide-total-v10",
 			"type": "shell",
 			"command": "Select-String -Path 'C:\\Users\\Jagadish.Chaudhari\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e77845f872654bd2ad885c07ee7c89b3\\GitHub.copilot-chat\\chat-session-resources\\88956e19-652d-4228-a98d-2e65f510a018\\call_kGK7efDYKsGg99hdUCqQ9EEs__vscode-1784533447159\\content.txt' -Pattern 'TOTAL:' | Select-Object -Last 2"
+		},
+		{
+			"label": "git-remote-and-branch-info",
+			"type": "shell",
+			"command": "git remote -v; git branch --show-current; git status --short"
+		},
+		{
+			"label": "fetch-pr-1040-head",
+			"type": "shell",
+			"command": "git fetch origin pull/1040/head:pr-1040-head"
+		},
+		{
+			"label": "fetch-pr-1040-merge-ref",
+			"type": "shell",
+			"command": "git fetch origin pull/1040/merge:pr-1040-merge"
+		},
+		{
+			"label": "fetch-dev-and-pr",
+			"type": "shell",
+			"command": "git fetch origin dev; git fetch origin Angular-upgradation-from-V19-to-V20-New"
+		},
+		{
+			"label": "create-pr1040-worktree",
+			"type": "shell",
+			"command": "git worktree add ..\\goponents-pr1040-resolve pr-1040-head"
+		},
+		{
+			"label": "merge-dev-into-pr1040",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve merge origin/dev"
+		},
+		{
+			"label": "pr1040-merge-status",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve status --short"
+		},
+		{
+			"label": "pr1040-regenerate-lockfile",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve install --package-lock-only"
+		},
+		{
+			"label": "pr1040-regenerate-lockfile-legacy",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve install --package-lock-only --legacy-peer-deps"
+		},
+		{
+			"label": "pr1040-clean-status-before-commit",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve restore .vscode/tasks.json; git -C ..\\goponents-pr1040-resolve add package-lock.json; git -C ..\\goponents-pr1040-resolve status --short"
+		},
+		{
+			"label": "pr1040-commit-merge",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve commit -m \"Merge branch 'dev' into Angular-upgradation-from-V19-to-V20-New\""
+		},
+		{
+			"label": "pr1040-inspect-packagejson-diff",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve diff -- package.json"
+		},
+		{
+			"label": "pr1040-inspect-packagejson-diff-full",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve diff -- package.json | Out-String"
+		},
+		{
+			"label": "pr1040-restore-packagejson-and-commit",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve restore package.json; git -C ..\\goponents-pr1040-resolve add package-lock.json .eslintrc.json package.json; git -C ..\\goponents-pr1040-resolve status --short; git -C ..\\goponents-pr1040-resolve commit -m \"Merge branch 'dev' into Angular-upgradation-from-V19-to-V20-New\""
+		},
+		{
+			"label": "pr1040-full-status",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve status"
+		},
+		{
+			"label": "pr1040-unmerged-index",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve ls-files -u"
+		},
+		{
+			"label": "pr1040-commit-merge-fixed-quoting",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve commit -m 'Merge branch dev into Angular-upgradation-from-V19-to-V20-New'"
+		},
+		{
+			"label": "push-merge-resolution-to-pr-branch",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve push origin pr-1040-head:Angular-upgradation-from-V19-to-V20-New"
+		},
+		{
+			"label": "verify-pr-1040-mergeable-ref",
+			"type": "shell",
+			"command": "git fetch origin pull/1040/merge:pr-1040-merge && git log --oneline -1 pr-1040-merge"
+		},
+		{
+			"label": "verify-pr-1040-mergeable-ref-fixed",
+			"type": "shell",
+			"command": "git fetch origin pull/1040/merge:pr-1040-merge; git log --oneline -1 pr-1040-merge"
+		},
+		{
+			"label": "pr1040-check-head-status",
+			"type": "shell",
+			"command": "git -C ..\\goponents-pr1040-resolve rev-parse --abbrev-ref HEAD; git -C ..\\goponents-pr1040-resolve log --oneline -1; git -C ..\\goponents-pr1040-resolve status --short"
+		},
+		{
+			"label": "pr1040-npm-ci",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve ci"
+		},
+		{
+			"label": "check-ng-select-latest",
+			"type": "shell",
+			"command": "npm.cmd view @ng-select/ng-select version peerDependencies --json"
+		},
+		{
+			"label": "find-ng-select-for-angular20",
+			"type": "shell",
+			"command": "$versions = npm.cmd view @ng-select/ng-select versions --json | ConvertFrom-Json; $match = @(); foreach ($v in $versions) { $peer = npm.cmd view @ng-select/ng-select@$v peerDependencies --json 2>$null; if ($peer) { $obj = $peer | ConvertFrom-Json; if ($obj.'@angular/core' -like '^20*' -or $obj.'@angular/core' -like '>=20*' -or $obj.'@angular/core' -like '*20*') { $match += [PSCustomObject]@{version=$v; core=$obj.'@angular/core'; common=$obj.'@angular/common'; forms=$obj.'@angular/forms'} } } }; $match | Select-Object -Last 10 | Format-Table -AutoSize | Out-String"
+		},
+		{
+			"label": "ng-select-major-peer-check",
+			"type": "shell",
+			"command": "$majors = 14..23; foreach ($m in $majors) { $v = npm.cmd view @ng-select/ng-select@$m version 2>$null; if ($LASTEXITCODE -eq 0 -and $v) { $p = npm.cmd view @ng-select/ng-select@$m peerDependencies --json 2>$null; Write-Output \"major $m => version $v\"; Write-Output $p } }"
+		},
+		{
+			"label": "pr1040-npm-install-lock",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve install --package-lock-only --legacy-peer-deps"
+		},
+		{
+			"label": "pr1040-npm-ci-rerun",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve ci"
+		},
+		{
+			"label": "pr1040-lint",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run lint"
+		},
+		{
+			"label": "pr1040-test-lib-ci",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run test_lib:ci"
+		},
+		{
+			"label": "pr1040-build-lib",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run build_lib"
+		},
+		{
+			"label": "pr1040-test-lib-ci-rerun",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run test_lib:ci"
+		},
+		{
+			"label": "pr1040-lint-rerun",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run lint"
+		},
+		{
+			"label": "pr1040-build-lib-rerun",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run build_lib"
+		},
+		{
+			"label": "pr1040-test-lib-ci-rerun2",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run test_lib:ci"
+		},
+		{
+			"label": "pr1040-test-lib-ci-rerun3",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run test_lib:ci"
+		},
+		{
+			"label": "pr1040-build-lib",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run build_lib"
+		},
+		{
+			"label": "pr1040-lint",
+			"type": "shell",
+			"command": "npm.cmd --prefix ..\\goponents-pr1040-resolve run lint"
+		},
+		{
+			"label": "ng-update-21-allow-dirty",
+			"type": "shell",
+			"command": "npm.cmd run ng -- update @angular/core@21 @angular/cli@21 --allow-dirty"
+		},
+		{
+			"label": "npm-install-refresh-lock",
+			"type": "shell",
+			"command": "npm.cmd install"
+		},
+		{
+			"label": "ng-update-21-retry",
+			"type": "shell",
+			"command": "npm.cmd run ng -- update @angular/core@21 @angular/cli@21 --allow-dirty"
+		},
+		{
+			"label": "git-status-short-now",
+			"type": "shell",
+			"command": "git status --short"
+		},
+		{
+			"label": "ng-version-check-21",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "ng-update-21-post",
+			"type": "shell",
+			"command": "npm.cmd run ng -- update @angular/core@21 @angular/cli@21 --allow-dirty"
+		},
+		{
+			"label": "npm-install-after-21-bump",
+			"type": "shell",
+			"command": "npm.cmd install"
+		},
+		{
+			"label": "clean-reinstall-angular21",
+			"type": "shell",
+			"command": "if (Test-Path node_modules) { Remove-Item -Recurse -Force node_modules }; if (Test-Path package-lock.json) { Remove-Item -Force package-lock.json }; npm.cmd install"
+		},
+		{
+			"label": "check-ng-select-latest-for-21",
+			"type": "shell",
+			"command": "npm.cmd view @ng-select/ng-select@latest version peerDependencies --json"
+		},
+		{
+			"label": "check-ng-select-v22-peer",
+			"type": "shell",
+			"command": "npm.cmd view @ng-select/ng-select@22 version peerDependencies --json"
+		},
+		{
+			"label": "check-ng-select-v21-peer",
+			"type": "shell",
+			"command": "npm.cmd view @ng-select/ng-select@21 version peerDependencies --json"
+		},
+		{
+			"label": "npm-install-after-ng-select21",
+			"type": "shell",
+			"command": "npm.cmd install"
+		},
+		{
+			"label": "clear-less-and-install",
+			"type": "shell",
+			"command": "if (Test-Path node_modules/less) { Remove-Item -Recurse -Force node_modules/less }; npm.cmd install"
+		},
+		{
+			"label": "unlock-node-modules-processes",
+			"type": "shell",
+			"command": "taskkill /F /IM node.exe; taskkill /F /IM esbuild.exe"
+		},
+		{
+			"label": "npm-install-after-unlock",
+			"type": "shell",
+			"command": "npm.cmd install"
+		},
+		{
+			"label": "ng-update-21-run-migrations",
+			"type": "shell",
+			"command": "npm.cmd run ng -- update @angular/core@21 @angular/cli@21 --allow-dirty"
+		},
+		{
+			"label": "full-clean-reinstall-now",
+			"type": "shell",
+			"command": "if (Test-Path node_modules) { cmd /c rmdir /s /q node_modules }; npm.cmd install"
+		},
+		{
+			"label": "post-reinstall-check",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "npm-install-force-fresh",
+			"type": "shell",
+			"command": "npm.cmd install --force"
+		},
+		{
+			"label": "ng-version-after-fix",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "reinstall-angular-cli-package",
+			"type": "shell",
+			"command": "if (Test-Path node_modules/@angular/cli) { Remove-Item -Recurse -Force node_modules/@angular/cli }; npm.cmd install --force"
+		},
+		{
+			"label": "ng-version-after-cli-reinstall",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "ng-version-check-current",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "npm-install-finalize",
+			"type": "shell",
+			"command": "npm.cmd install"
+		},
+		{
+			"label": "ng-version-verify-final",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "npm-config-production-check",
+			"type": "shell",
+			"command": "npm.cmd config get production; npm.cmd config get omit; npm.cmd ls listr2 --depth=2"
+		},
+		{
+			"label": "check-npm-lock-config",
+			"type": "shell",
+			"command": "npm.cmd config get package-lock; npm.cmd config list -l | findstr /I \"package-lock omit include\""
+		},
+		{
+			"label": "explicit-install-angular-cli-21",
+			"type": "shell",
+			"command": "npm.cmd install --save-dev @angular/cli@21.2.19 --force"
+		},
+		{
+			"label": "kill-node-processes-again",
+			"type": "shell",
+			"command": "taskkill /F /IM node.exe"
+		},
+		{
+			"label": "remove-known-locked-folders",
+			"type": "shell",
+			"command": "if (Test-Path node_modules/ext/string_) { Remove-Item -Recurse -Force node_modules/ext/string_ }; if (Test-Path node_modules/eslint) { Remove-Item -Recurse -Force node_modules/eslint }; if (Test-Path node_modules/argparse) { Remove-Item -Recurse -Force node_modules/argparse }; if (Test-Path node_modules/@angular/cli/node_modules/semver) { Remove-Item -Recurse -Force node_modules/@angular/cli/node_modules/semver }"
+		},
+		{
+			"label": "npm-install-force-repair",
+			"type": "shell",
+			"command": "npm.cmd install --force"
+		},
+		{
+			"label": "ng-version-post-repair",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "repair-ajv-stack",
+			"type": "shell",
+			"command": "npm.cmd install ajv@8 ajv-formats@3 json-schema-traverse@1 uri-js@4 --save-dev --force"
+		},
+		{
+			"label": "ng-version-after-ajv-repair",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "repair-fast-uri",
+			"type": "shell",
+			"command": "npm.cmd install fast-uri@3 --save-dev --force"
+		},
+		{
+			"label": "ng-version-after-fast-uri",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "reinstall-fast-uri-clean",
+			"type": "shell",
+			"command": "if (Test-Path node_modules/fast-uri) { Remove-Item -Recurse -Force node_modules/fast-uri }; npm.cmd install fast-uri@3.1.4 --save-dev --force"
+		},
+		{
+			"label": "ng-version-after-fast-uri-clean",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "full-reset-reinstall-powershell-only",
+			"type": "shell",
+			"command": "if (Test-Path node_modules) { Remove-Item -Recurse -Force node_modules }; if (Test-Path node_modules) { Write-Output \"NODE_MODULES_STILL_EXISTS\" } else { Write-Output \"NODE_MODULES_REMOVED\" }; if (Test-Path package-lock.json) { Remove-Item -Force package-lock.json }; npm.cmd cache clean --force; npm.cmd install --force --cache .npm-cache-temp"
+		},
+		{
+			"label": "ng-version-after-full-reset",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "clean-install-from-empty",
+			"type": "shell",
+			"command": "npm.cmd install --force --cache .npm-cache-temp"
+		},
+		{
+			"label": "ng-version-after-clean-install",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "tail-npm-log",
+			"type": "shell",
+			"command": "Get-Content .npm-cache-temp/_logs/2026-07-22T13_29_36_226Z-debug-0.log -Tail 120"
+		},
+		{
+			"label": "ng-version-final-check",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "ng-version-task-check-2",
+			"type": "shell",
+			"command": "npm.cmd run ng -- version"
+		},
+		{
+			"label": "verify-ng-cli-installed",
+			"type": "shell",
+			"command": "Test-Path node_modules/@angular/cli/bin/ng.js; if (Test-Path node_modules/@angular/cli/bin/ng.js) { npm.cmd run ng -- version }"
+		},
+		{
+			"label": "recovery-single-pass-install-verify",
+			"type": "shell",
+			"command": "npm.cmd install --force --cache .npm-cache-temp; npm.cmd ls rxjs --depth=0; npm.cmd run ng -- version"
+		},
+		{
+			"label": "run-angular21-migrations-now",
+			"type": "shell",
+			"command": "npm.cmd run ng -- update @angular/core@21 @angular/cli@21 --allow-dirty"
+		},
+		{
+			"label": "build-lib-angular21",
+			"type": "shell",
+			"command": "npm.cmd run build_lib"
+		},
+		{
+			"label": "tail-build-lib-result",
+			"type": "shell",
+			"command": "Get-Content \"c:\\Users\\Jagadish.Chaudhari\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e77845f872654bd2ad885c07ee7c89b3\\GitHub.copilot-chat\\chat-session-resources\\14a76386-a725-4ea3-a7a5-00067ee3bf7a\\call_VcSxpqanefM5I0ERzC75ePDn__vscode-1784533447369\\content.txt\" -Tail 80"
+		},
+		{
+			"label": "migrate-control-flow-syntax",
+			"type": "shell",
+			"command": "npm.cmd run ng -- generate @angular/core:control-flow --path=projects"
+		},
+		{
+			"label": "migrate-control-flow-syntax-noninteractive",
+			"type": "shell",
+			"command": "npm.cmd run ng -- generate @angular/core:control-flow --path=projects --format --defaults --interactive=false"
+		},
+		{
+			"label": "build-lib-post-control-flow",
+			"type": "shell",
+			"command": "npm.cmd run build_lib"
+		},
+		{
+			"label": "lint-post-control-flow",
+			"type": "shell",
+			"command": "npm.cmd run lint"
+		},
+		{
+			"label": "tail-build-lib-post-control-flow",
+			"type": "shell",
+			"command": "Get-Content \"c:\\Users\\Jagadish.Chaudhari\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e77845f872654bd2ad885c07ee7c89b3\\GitHub.copilot-chat\\chat-session-resources\\14a76386-a725-4ea3-a7a5-00067ee3bf7a\\call_tGBJdO1KXuQ44cgFkYv0vJ4Y__vscode-1784533447376\\content.txt\" -Tail 100"
+		},
+		{
+			"label": "tail-final-build-lib",
+			"type": "shell",
+			"command": "Get-Content \"c:\\Users\\Jagadish.Chaudhari\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e77845f872654bd2ad885c07ee7c89b3\\GitHub.copilot-chat\\chat-session-resources\\14a76386-a725-4ea3-a7a5-00067ee3bf7a\\call_j1iSZdnxzXlJl11E6IG0jngJ__vscode-1784533447382\\content.txt\" -Tail 80"
+		},
+		{
+			"label": "git-pre-sync-check",
+			"type": "shell",
+			"command": "git --version; git branch --show-current; git status --short"
+		},
+		{
+			"label": "sync-branch-with-dev-safe",
+			"type": "shell",
+			"command": "git remote -v; git fetch origin dev; git stash push -u -m \"copilot-temp-sync-with-dev\"; git merge --no-edit origin/dev; git stash pop"
+		},
+		{
+			"label": "sync-output-tail",
+			"type": "shell",
+			"command": "Get-Content \"c:\\Users\\Jagadish.Chaudhari\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e77845f872654bd2ad885c07ee7c89b3\\GitHub.copilot-chat\\chat-session-resources\\14a76386-a725-4ea3-a7a5-00067ee3bf7a\\call_wmZ5z9B3X66MoUVyQ6IxcmXR__vscode-1784533447396\\content.txt\" -Tail 80"
+		},
+		{
+			"label": "verify-dev-sync-history",
+			"type": "shell",
+			"command": "git log --oneline --decorate -n 8"
+		},
+		{
+			"label": "verify-sync-status",
+			"type": "shell",
+			"command": "git branch -vv; git status --short"
+		},
+		{
+			"label": "verify-current-branch-sync",
+			"type": "shell",
+			"command": "git rev-parse --abbrev-ref HEAD; git rev-parse HEAD; git rev-parse origin/dev; git rev-list --left-right --count HEAD...origin/dev; git status --short"
 		}
 	]
 }
