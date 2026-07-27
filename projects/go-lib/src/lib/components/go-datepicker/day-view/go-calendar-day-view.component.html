@@ -9,7 +9,7 @@
       ></go-icon-button>
     </div>
     <div class="go-calendar__header--center go-calendar__header--center-offset">
-      {{dateAdapter.monthNames[month]}} {{year.translated}}
+      {{ dateAdapter.monthNames[month] }} {{ year.translated }}
       <div class="go-calendar__header-dropdown">
         <go-icon-button
           class="go-calendar__icon"
@@ -31,14 +31,14 @@
 <div class="go-calendar__body">
   <table class="go-calendar__table">
     <tr class="go-calendar__row">
-      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+      @for (weekDay of dateAdapter.daysOfWeek; track $index) {
         <th class="go-calendar__body--header go-calendar__body--header-border">
-          {{weekDay}}
+          {{ weekDay }}
         </th>
       }
     </tr>
     <tr class="go-calendar__row">
-      @for (weekDay of dateAdapter.daysOfWeek; track weekDay) {
+      @for (weekDay of dateAdapter.daysOfWeek; track $index) {
         <td class="go-calendar__body--padding"></td>
       }
     </tr>
@@ -53,10 +53,13 @@
               <button
                 class="go-calendar__cell go-calendar__cell--date"
                 [disabled]="day.disabled"
-                [ngClass]="{'go-calendar__cell--selected': day.selected, 'go-calendar__cell--focused': day.focused}"
+                [ngClass]="{
+                  'go-calendar__cell--selected': day.selected,
+                  'go-calendar__cell--focused': day.focused,
+                }"
                 (click)="pickDay(day.value)"
-                >
-                {{day.translated}}
+              >
+                {{ day.translated }}
               </button>
             }
           </td>

@@ -22,7 +22,7 @@ export class GoHeaderComponent implements OnDestroy {
   brandColor: string;
   fontColor: string = ThemeColors.dark;
   @Input() theme: 'light' | 'dark' = 'light';
-  logoConfig: Partial<LogoConfig>;
+  logoConfig: Partial<LogoConfig> = { };
   menuBgHoverValue: string;
   menuBgHover: string;
 
@@ -43,11 +43,14 @@ export class GoHeaderComponent implements OnDestroy {
   setupConfig(): void {
     this.configSubscription = this.configService.config
       .subscribe((value: GoConfigInterface) => {
-        this.brandColor = value.brandColor;
-        this.logoConfig = value.logoConfig;
+        const config: GoConfigInterface = value || this.configService.getConfig();
+        const brandColor: string = config?.brandColor || ThemeColors.brand;
 
-        if (value.brandingMode === BrandingMode.company) {
-          this.menuBgHoverValue = shadeHex(value.brandColor, -10);
+        this.brandColor = brandColor;
+        this.logoConfig = config?.logoConfig || { };
+
+        if (config?.brandingMode === BrandingMode.company) {
+          this.menuBgHoverValue = shadeHex(brandColor, -10);
           this.fontColor = ThemeColors.light;
         } else {
           this.brandColor = ThemeColors.light;
@@ -80,9 +83,25 @@ export class GoHeaderComponent implements OnDestroy {
   }
 
   getLogo(): string {
+    if (!this.logoConfig?.logo) {
+      return '';
+    }
+
     return this.isNavCollapsed() ?
       this.logoConfig.logoCollapsed || this.logoConfig.logo :
       this.logoConfig.logo;
+  }
+
+  hasInternalLogoLink(): boolean {
+    return Boolean(this.logoConfig?.logoLink) && !this.logoConfig?.useHref;
+  }
+
+  hasExternalLogoLink(): boolean {
+    return Boolean(this.logoConfig?.logoLink) && Boolean(this.logoConfig?.useHref);
+  }
+
+  logoAltText(): string {
+    return this.logoConfig?.altText || 'Application logo';
   }
 
   enableMenuHover(): void {

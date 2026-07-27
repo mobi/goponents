@@ -63,10 +63,14 @@ export class GoConfigService {
    * current configuraiton.
    * @param config New config to be used
    */
-  public setConfig(config: Partial<GoConfigInterface>): void {
-    if (!config.brandColor) { config.brandColor = this._config.brandColor; }
-    if (!config.brandingMode) { config.brandingMode = this._config.brandingMode; }
-    this._config = JSON.parse(JSON.stringify(config));
+  public setConfig(config?: Partial<GoConfigInterface>): void {
+    const safeConfig: Partial<GoConfigInterface> = config || { };
+    const nextConfig: GoConfigInterface = {
+      ...this._config,
+      ...safeConfig
+    };
+
+    this._config = JSON.parse(JSON.stringify(nextConfig));
     this.config.next(this._config);
   }
 

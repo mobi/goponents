@@ -792,10 +792,10 @@ describe('GoTableComponent', () => {
       expect(sortIcon).toEqual('arrow_downward');
     });
 
-    it('returns undefined if not sorting by that column', () => {
+    it('returns swap_vert if not sorting by that column', () => {
       sortIcon = component.sortIcons('animal');
 
-      expect(sortIcon).toEqual(undefined);
+      expect(sortIcon).toEqual('swap_vert');
     });
   });
 

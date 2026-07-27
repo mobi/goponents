@@ -26,6 +26,20 @@
   min-height: auto;
 }
 
+.ng-select .ng-select-container .ng-clear-wrapper {
+  @include z-index(2);
+
+  align-self: center;
+  padding-right: .5rem;
+
+  .ng-clear {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-width: 1rem;
+  }
+}
+
 .ng-select.ng-select-disabled>.ng-select-container {
   background-color: $theme-light-app-bg;
 }
@@ -34,6 +48,10 @@
 .ng-select.ng-select-single .ng-select-container .ng-value-container {
   align-items: flex-start;
   padding: 0;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container {
+  padding-right: 2rem;
 }
 
 // overrides position of input element
@@ -72,6 +90,14 @@
   top: 0;
 }
 
+// ng-select v21+ defaults fixedPlaceholder to true, keeping the placeholder element
+// in the DOM even when a value is selected. Explicitly hide it via the ng-has-value
+// class so the selected value is not obscured by the placeholder (especially on
+// transparent backgrounds where .ng-value has no background-color).
+.ng-select .ng-select-container.ng-has-value .ng-value-container .ng-placeholder {
+  display: none;
+}
+
 .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
   @include z-index(1);
 
@@ -79,7 +105,11 @@
   padding: .5rem;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: calc(100% - 2rem);
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-placeholder {
+  width: calc(100% - 2rem);
 }
 
 .ng-value-container {
@@ -159,6 +189,11 @@
   }
 }
 
+.ng-dropdown-panel {
+  background: $theme-light-bg;
+  border: 1px solid $theme-light-border;
+}
+
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked{
   background: $theme-light-app-bg;
 }
@@ -179,6 +214,7 @@ body > .ng-dropdown-panel {
 // overrides ng-select styles when theme is dark
 .ng-select.go-select--dark {
   .ng-dropdown-panel {
+    background-color: $base-dark;
     box-shadow: $global-box-shadow--dark-popup;
 
     &.ng-select-bottom {

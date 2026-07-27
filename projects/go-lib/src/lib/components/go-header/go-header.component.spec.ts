@@ -23,6 +23,17 @@ describe('GoHeaderComponent', () => {
     }
   };
 
+  const clientConfigMock: GoConfigInterface = {
+    brandColor: '#123456',
+    brandingMode: BrandingMode.client,
+    logoConfig: {
+      logo: 'client.jpg',
+      logoLink: '/home',
+      useHref: false,
+      altText: 'Client Logo'
+    }
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GoHeaderComponent ],
@@ -55,7 +66,7 @@ describe('GoHeaderComponent', () => {
   describe('setupConfig', () => {
     it('updates brandColor, logoConfig, menuBgHoverValue, and fontColor on events from configService.config', () => {
       expect(component.brandColor).toBe('#20A65F');
-      expect(component.logoConfig).toBe(undefined);
+      expect(component.logoConfig).toEqual({});
 
       configService.config.pipe(skip(1)).subscribe(() => {
         expect(component.brandColor).toBe('#ffffff');
@@ -65,6 +76,14 @@ describe('GoHeaderComponent', () => {
       });
 
       configService.setConfig(configMock);
+    });
+
+    it('sets light header theme values when branding mode is client', () => {
+      configService.setConfig(clientConfigMock);
+
+      expect(component.brandColor).toBe('#ffffff');
+      expect(component.fontColor).toBe('#202626');
+      expect(component.menuBgHoverValue).toBe('#e6e6e6');
     });
   });
 
@@ -117,6 +136,52 @@ describe('GoHeaderComponent', () => {
     it('returns null if side nav is collapsed', () => {
       sideNavService.navOpen = false;
       expect(component.getLogoBackground()).toBe(null);
+    });
+
+    it('returns brand color if side nav is expanded', () => {
+      sideNavService.navOpen = true;
+      component.brandColor = '#abc123';
+      spyOnProperty(window, 'innerWidth').and.returnValue(800);
+
+      expect(component.getLogoBackground()).toBe('#abc123');
+    });
+  });
+
+  describe('getLogo', () => {
+    it('returns empty string if logo config does not include logo', () => {
+      component.logoConfig = { };
+
+      expect(component.getLogo()).toBe('');
+    });
+
+    it('returns collapsed logo when nav is collapsed and a collapsed logo exists', () => {
+      sideNavService.navOpen = false;
+      component.logoConfig = { logo: 'main-logo.png', logoCollapsed: 'collapsed-logo.png' };
+      spyOnProperty(window, 'innerWidth').and.returnValue(800);
+
+      expect(component.getLogo()).toBe('collapsed-logo.png');
+    });
+  });
+
+  describe('logo links and alt text', () => {
+    it('returns true for internal logo link only', () => {
+      component.logoConfig = { logoLink: '/home', useHref: false };
+
+      expect(component.hasInternalLogoLink()).toBe(true);
+      expect(component.hasExternalLogoLink()).toBe(false);
+    });
+
+    it('returns true for external logo link only', () => {
+      component.logoConfig = { logoLink: 'https://example.com', useHref: true };
+
+      expect(component.hasExternalLogoLink()).toBe(true);
+      expect(component.hasInternalLogoLink()).toBe(false);
+    });
+
+    it('returns default alt text if altText is not provided', () => {
+      component.logoConfig = { logo: 'logo.png' };
+
+      expect(component.logoAltText()).toBe('Application logo');
     });
   });
 
