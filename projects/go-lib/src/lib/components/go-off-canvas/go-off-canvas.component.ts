@@ -57,6 +57,10 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
     this.goOffCanvasService.activeOffCanvasComponent
       .pipe(takeUntil(this.destroy$))
       .subscribe((goOffCanvasItem: GoOffCanvasItem<any>) => {
+        if (!goOffCanvasItem || !goOffCanvasItem.component) {
+          return;
+        }
+
         this.currentOffCanvasItem = goOffCanvasItem;
         this.loadComponent();
       });
@@ -99,8 +103,9 @@ export class GoOffCanvasComponent extends GoOffCanvasOptions implements OnInit, 
     viewContainerRef.clear();
     const componentRef: ComponentRef<any> = viewContainerRef.createComponent(componentFactory);
 
-    Object.keys(this.currentOffCanvasItem.bindings).forEach((key: string) => {
-      componentRef.instance[key] = this.currentOffCanvasItem.bindings[key];
+    const bindings: Record<string, any> = this.currentOffCanvasItem.bindings || {};
+    Object.keys(bindings).forEach((key: string) => {
+      componentRef.instance[key] = bindings[key];
     });
 
     this.setOffCanvasProperties();

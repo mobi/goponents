@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { GoOffCanvasItem } from './go-off-canvas.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoOffCanvasService {
-  activeOffCanvasComponent: Subject<GoOffCanvasItem<any>> = new Subject<GoOffCanvasItem<any>>();
-  offCanvasOpen: Subject<boolean> = new Subject<boolean>();
+  // Replay the latest open request for subscribers that initialize slightly later.
+  activeOffCanvasComponent: ReplaySubject<GoOffCanvasItem<any>> = new ReplaySubject<GoOffCanvasItem<any>>(1);
+  offCanvasOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() {
-    this.setOffCanvasStatus(false);
-  }
+  constructor() {}
 
   /**
    * Opens an instance of the GoOffCanvas

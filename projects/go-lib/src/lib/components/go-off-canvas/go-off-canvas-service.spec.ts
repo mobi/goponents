@@ -40,25 +40,29 @@ describe('GoOffCanvasService', () => {
     });
 
     it('emits true from offCanvasOpen', () => {
-      service.closeOffCanvas();
-
+      const emissions: boolean[] = [];
       service.offCanvasOpen.subscribe((isOpen: boolean) => {
-        expect(isOpen).toBe(true);
+        emissions.push(isOpen);
       });
 
       service.openOffCanvas(offCanvasItemMock);
+
+      expect(emissions[emissions.length - 1]).toBe(true);
     });
   });
 
   describe('closeOffCanvas', () => {
     it('emits false from offCanvasOpen', () => {
-      service.openOffCanvas(offCanvasItemMock);
-
+      const emissions: boolean[] = [];
       service.offCanvasOpen.subscribe((isOpen: boolean) => {
-        expect(isOpen).toBe(false);
+        emissions.push(isOpen);
       });
 
+      service.openOffCanvas(offCanvasItemMock);
+
       service.closeOffCanvas();
+
+      expect(emissions[emissions.length - 1]).toBe(false);
     });
   });
 });

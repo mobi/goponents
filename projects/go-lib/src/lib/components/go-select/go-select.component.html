@@ -26,9 +26,8 @@
   [multiple]="multiple"
   [ngClass]="{
     'go-select--dark': theme === 'dark',
-    'go-select--hide-arrow':
-      hideDropDownArrow || (typeahead && items?.length === 0),
-    'go-select--hide-dropdown': searchable && items?.length === 0
+    'go-select--hide-arrow': hideDropDownArrow,
+    'go-select--hide-dropdown': searchable && items?.length === 0 && !typeahead
   }"
   [placeholder]="placeholder"
   [searchable]="searchable"
