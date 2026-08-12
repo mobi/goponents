@@ -9,7 +9,7 @@ export interface GoOffCanvasItem<T> {
   /**
    * The bindings for the Component being rendered.
    */
-  bindings: Partial<T>;
+  bindings?: Partial<T>;
   /**
    * @deprecated use offCanvasOptions instead
    */

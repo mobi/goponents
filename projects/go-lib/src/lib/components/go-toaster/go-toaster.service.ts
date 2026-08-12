@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
+export { ToastInterface } from './go-toaster.model';
 import { ToastInterface } from './go-toaster.model';
 import { GoToastComponent } from '../go-toast/go-toast.component';
 
