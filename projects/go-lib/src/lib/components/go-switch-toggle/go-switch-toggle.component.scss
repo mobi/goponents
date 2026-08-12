@@ -96,6 +96,8 @@ $go-switch-toggle-focus-shadow: 3px 0 5px -1px rgba(0, 0, 0, .3);
   }
 
   &__label {
+    align-items: center;
+    display: flex;
     flex: 1;
     line-height: 1.125rem;
     padding-bottom: 0;

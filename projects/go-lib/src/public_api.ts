@@ -193,6 +193,7 @@ export * from './lib/components/go-toast/go-toast.module';
 export * from './lib/components/go-toaster/go-toaster.component';
 export * from './lib/components/go-toaster/go-toaster.module';
 export * from './lib/components/go-toaster/go-toaster.service';
+export * from './lib/components/go-toaster/go-toaster.model';
 
 // Tree
 export * from './lib/components/go-tree/go-tree.component';
