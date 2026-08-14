@@ -79,7 +79,9 @@
                       } @else {
                         <ng-container *ngTemplateOutlet="col.goTableHead"></ng-container>
                       }
-                      <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
+                      @if (col.sortable !== undefined ? col.sortable : localTableConfig.sortable) {
+                        <go-icon class="go-table__sort-icon" icon="{{ sortIcons(col.field) }}"></go-icon>
+                      }
                     </div>
                   </th>
                 }

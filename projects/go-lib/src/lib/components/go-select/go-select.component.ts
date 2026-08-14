@@ -79,12 +79,10 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
     const items: any[] = this.currentSearchTerm ? this.refinedItems : this.items;
     this.processSelectAll(items);
-    // Close dropdown after select all when not in multiple mode or when closeOnSelect is true
+    // Close dropdown after select all - should always close
     setTimeout(() => {
-      if (!this.multiple || this.closeOnSelect) {
-        this.ngSelect.close();
-      }
-    }, 0);
+      this.ngSelect.close();
+    }, 50);
   }
 
   handleInput(search: { term: string; items: any[] }): void {

@@ -7,3 +7,6 @@
 @use './forms' as *;
 @use './hints' as *;
 @use './placeholders' as *;
+
+// Import ng-select default theme styles
+@import '@ng-select/ng-select/themes/default.theme.css';
