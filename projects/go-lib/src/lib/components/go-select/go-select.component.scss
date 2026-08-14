@@ -1,6 +1,6 @@
-@use "../../../../styles/variables" as *;
-@use "../../../../styles/mixins" as *;
-
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+@import '@ng-select/ng-select/themes/default.theme.css';
 // scss-lint:disable SelectorDepth
 .ng-select .ng-select-container {
   @include regular-input;
