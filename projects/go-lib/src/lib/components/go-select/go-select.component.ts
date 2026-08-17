@@ -8,20 +8,23 @@ import {
   Output,
   TemplateRef,
   ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { GoFormBaseComponent } from '../go-form-base/go-form-base.component';
-import { NgSelectComponent } from '@ng-select/ng-select';
+  ViewEncapsulation,
+} from "@angular/core";
+import { Subject, Subscription } from "rxjs";
+import { GoFormBaseComponent } from "../go-form-base/go-form-base.component";
+import { NgSelectComponent } from "@ng-select/ng-select";
 
 @Component({
   standalone: false,
   encapsulation: ViewEncapsulation.None,
-  selector: 'go-select',
-  templateUrl: './go-select.component.html',
-  styleUrls: ['./go-select.component.scss']
+  selector: "go-select",
+  templateUrl: "./go-select.component.html",
+  styleUrls: ["./go-select.component.scss"],
 })
-export class GoSelectComponent extends GoFormBaseComponent implements OnInit, OnDestroy {
+export class GoSelectComponent
+  extends GoFormBaseComponent
+  implements OnInit, OnDestroy
+{
   @ViewChild(NgSelectComponent) ngSelect: NgSelectComponent;
 
   @Input() appendTo: string;
@@ -44,15 +47,17 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   @Input() searchable: boolean = true;
   @Input() showSelectAll: boolean = true;
   @Input() typeahead?: Subject<string>;
-  @Input() typeToSearchText: string = 'Type to Search';
+  @Input() typeToSearchText: string = "Type to Search";
   @Input() virtualScroll: boolean = false;
 
   @Output() scrollToEnd: EventEmitter<any> = new EventEmitter<any>();
-  @Output() scroll: EventEmitter<{ start: number, end: number }> = new EventEmitter<{ start: number, end: number }>();
+  @Output() scroll: EventEmitter<{ start: number; end: number }> =
+    new EventEmitter<{ start: number; end: number }>();
 
-  @ContentChild('goSelectOption') goSelectOption: TemplateRef<any>;
-  @ContentChild('goSelectOptionGroup') goSelectOptionGroup: TemplateRef<any>;
-  @ContentChild('goSelectSelectedOption') goSelectSelectedOption: TemplateRef<any>;
+  @ContentChild("goSelectOption") goSelectOption: TemplateRef<any>;
+  @ContentChild("goSelectOptionGroup") goSelectOptionGroup: TemplateRef<any>;
+  @ContentChild("goSelectSelectedOption")
+  goSelectSelectedOption: TemplateRef<any>;
 
   // store refined items after search
   refinedItems: any[] = [];
@@ -77,7 +82,9 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
       return;
     }
 
-    const items: any[] = this.currentSearchTerm ? this.refinedItems : this.items;
+    const items: any[] = this.currentSearchTerm
+      ? this.refinedItems
+      : this.items;
     this.processSelectAll(items);
     // Close dropdown after select all - should always close
     setTimeout(() => {
@@ -121,19 +128,23 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
   // remove item from previous selected items incase of multiple and typeahead.
   handleItemRemove(item: any): void {
-    if (!this.multiple || !this.typeahead ) {
+    if (!this.multiple || !this.typeahead) {
       return;
     }
 
-    const index: number = this.previousSelectedItems.findIndex((prev: any) => prev[this.bindValue] === item.value[this.bindValue]);
+    const index: number = this.previousSelectedItems.findIndex(
+      (prev: any) => prev[this.bindValue] === item.value[this.bindValue],
+    );
     this.previousSelectedItems.splice(index, 1);
   }
 
   private subscribeToControlChanges(): void {
     if (this.multiple && this.showSelectAll) {
-      this.controlSubscription = this.control.valueChanges.subscribe((value: any) => {
-        this.handleMultipleControlChanges(value);
-      });
+      this.controlSubscription = this.control.valueChanges.subscribe(
+        (value: any) => {
+          this.handleMultipleControlChanges(value);
+        },
+      );
     }
   }
 
@@ -149,7 +160,7 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
     const items: any[] = JSON.parse(JSON.stringify(this.items));
     for (const previousItem of this.previousSelectedItems) {
       const exists: boolean = items.some(
-        (item: any) => item[this.bindValue] === previousItem[this.bindValue]
+        (item: any) => item[this.bindValue] === previousItem[this.bindValue],
       );
       if (!exists) {
         items.unshift(previousItem);
@@ -176,10 +187,12 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
 
   private processSelectAll(items: any[]): void {
     const refinedArr: any[] = items.map((item: any) =>
-      this.bindValue ? item[this.bindValue] : item
+      this.bindValue ? item[this.bindValue] : item,
     );
 
-    const existing: any[] = Array.isArray(this.control.value) ? this.control.value : [];
+    const existing: any[] = Array.isArray(this.control.value)
+      ? this.control.value
+      : [];
     const uniq: any[] = Array.from(new Set(existing.concat(refinedArr)));
     this.control.patchValue(uniq);
     this.currentSearchTerm = "";
@@ -187,7 +200,9 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
   }
 
   private shouldHandleControlInitialValue(): boolean {
-    return (this.typeahead || this.multiple) && Array.isArray(this.control.value);
+    return (
+      (this.typeahead || this.multiple) && Array.isArray(this.control.value)
+    );
   }
 
   private findItemByValue(value: any): any {
@@ -208,5 +223,4 @@ export class GoSelectComponent extends GoFormBaseComponent implements OnInit, On
       }
     }
   }
-
 }
