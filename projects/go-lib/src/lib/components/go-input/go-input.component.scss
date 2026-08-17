@@ -1,4 +1,8 @@
-@use '../../../../styles/variables' as *;
+@use "../../../../styles/variables" as *;
+
+:host {
+  display: block;
+}
 
 .go-input-container {
   display: flex;
@@ -7,7 +11,7 @@
 
 .go-form__input {
   background-color: $theme-light-bg;
-  
+
   &:focus {
     background-color: $theme-light-bg;
   }
