@@ -13,13 +13,14 @@
   background-color: $theme-light-bg;
 
   &:focus {
-    background-color: $theme-light-bg;
+    background-color: transparent;
   }
-}
 
-// Ensure consistent background in dark theme
-.go-input-container[theme="dark"] {
-  .go-form__input {
+  &.go-form__input--dark {
     background-color: $base-dark;
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 }

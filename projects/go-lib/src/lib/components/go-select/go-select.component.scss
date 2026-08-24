@@ -7,6 +7,7 @@
   @include transition(all);
 
   .ng-value-container .ng-input > input {
+    background-color: transparent;
     font-family: $primary-font-stack;
     font-size: 0.875rem;
     font-weight: $weight-light;
@@ -52,12 +53,7 @@
 .ng-select.ng-select-single:not(.ng-select-disabled):not(.go-select--dark)
   > .ng-select-container
   .ng-value-container
-  .ng-value,
-.ng-select.ng-select-single:not(.ng-select-disabled):not(.go-select--dark)
-  > .ng-select-container
-  .ng-value-container
-  .ng-input
-  > input {
+  .ng-value {
   background-color: $theme-light-bg;
 }
 
@@ -151,7 +147,7 @@
 }
 
 // overrides for multiselect selected options
-.ng-select.ng-select-multiple
+.ng-select.ng-select.ng-select-multiple
   .ng-select-container
   .ng-value-container
   .ng-value {
@@ -212,7 +208,7 @@
   }
 }
 
-.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+.ng-dropdown-panel.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
   color: $theme-light-color;
   font-size: 0.875rem;
   padding: 0.5rem;
@@ -258,7 +254,7 @@
   border: 1px solid $theme-light-border;
 }
 
-.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+.ng-dropdown-panel.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
   background: $theme-light-app-bg;
 }
 
@@ -312,8 +308,15 @@ body > .ng-dropdown-panel {
     border: 1px solid $base-dark-secondary;
     color: $theme-dark-color;
 
-    .ng-value-container .ng-input > input {
-      color: $theme-dark-color;
+    .ng-value-container {
+      .ng-placeholder {
+        color: rgba($theme-dark-color, 0.75);
+      }
+
+      .ng-input > input {
+        background-color: transparent;
+        color: $theme-dark-color;
+      }
     }
   }
 }
