@@ -25,7 +25,6 @@ import {
   GoModalModule,
   GoModalService,
   GoOffCanvasModule,
-  GoOffCanvasService,
   GoPillModule,
   GoProgressBarModule,
   GoRadioModule,
@@ -35,7 +34,6 @@ import {
   GoTabModule,
   GoTextAreaModule,
   GoTimepickerModule,
-  GoToasterService,
   GoToastModule,
   GoTreeModule,
   TINYMCE_SCRIPT_SRC
@@ -232,8 +230,6 @@ import { InputGroupDocsComponent } from './components/input-group-docs/input-gro
     DatePipe,
     GoConfigService,
     GoModalService,
-    GoOffCanvasService,
-    GoToasterService,
     TitleCasePipe,
     { provide: TINYMCE_SCRIPT_SRC, useValue: 'assets/tinymce/tinymce.min.js' }
   ]

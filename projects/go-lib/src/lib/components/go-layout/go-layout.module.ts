@@ -10,8 +10,6 @@ import { GoToasterModule } from '../go-toaster/go-toaster.module';
 import { GoHeaderBarModule } from '../go-header-bar/go-header-bar.module';
 
 import { GoModalService } from '../go-modal/go-modal.service';
-import { GoOffCanvasService } from '../go-off-canvas/go-off-canvas.service';
-import { GoToasterService } from '../go-toaster/go-toaster.service';
 
 import { GoLayoutComponent } from './go-layout.component';
 
@@ -34,10 +32,9 @@ import { GoLayoutComponent } from './go-layout.component';
   exports: [
     GoLayoutComponent
   ],
+  // GoOffCanvasService and GoToasterService are providedIn: 'root'; only GoModalService needs explicit provision here
   providers: [
-    GoModalService,
-    GoOffCanvasService,
-    GoToasterService
+    GoModalService
   ]
 })
 
