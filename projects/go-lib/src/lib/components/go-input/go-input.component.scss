@@ -10,13 +10,16 @@
 }
 
 .go-form__input {
-  background-color: $theme-light-bg;
+  // :not(:disabled) keeps specificity below the shared disabled-input mixin so the disabled background wins
+  &:not(:disabled) {
+    background-color: $theme-light-bg;
 
-  &:focus {
-    background-color: transparent;
+    &:focus {
+      background-color: transparent;
+    }
   }
 
-  &.go-form__input--dark {
+  &.go-form__input--dark:not(:disabled) {
     background-color: $base-dark;
 
     &:focus {
