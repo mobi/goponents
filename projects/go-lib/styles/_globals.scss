@@ -3,7 +3,7 @@
 * {
   box-sizing: border-box;
   // scss-lint:disable PropertySpelling
-  scrollbar-color: $base-light-secondary transparent;
+  scrollbar-color: $gray-500 transparent;
   scrollbar-width: thin;
 }
 
@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $base-light-secondary;
+  background-color: $gray-500;
   border-radius: 4px;
 }
 

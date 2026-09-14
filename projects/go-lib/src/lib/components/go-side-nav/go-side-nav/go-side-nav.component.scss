@@ -47,7 +47,7 @@
 
   &__app {
     align-items: center;
-    background: $base-dark-tertiary;
+    background: $gray-700;
     color: $theme-dark-color;
     display: flex;
     font-size: 1.25rem;
@@ -77,7 +77,7 @@
 
     .go-icon-button {
       &:hover {
-        background: darken($base-dark-tertiary, 10%);
+      background: darken($gray-700, 10%);
       }
 
       &:active,
