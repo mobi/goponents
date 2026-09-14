@@ -283,8 +283,28 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   }
 
   &__select {
-    min-width: 4.25rem;
-  }
+      display: block;
+      flex: 0 0 4.25rem;
+      width: 4.25rem;
+
+    ::ng-deep .ng-select-single .ng-select-container .ng-value-container {
+      padding-right: .5rem;
+
+        .ng-value {
+          align-items: center;
+          display: flex;
+          height: 100%;
+          padding: 0 .5rem;
+          width: 100%;
+        }
+      }
+
+      ::ng-deep .ng-select-single .ng-select-container .ng-value-container .ng-value-label {
+        display: block !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+    }
 
   &__label {
     display: inline-block;
