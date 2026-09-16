@@ -223,6 +223,17 @@ describe("GoSelectComponent", () => {
     });
   });
 
+  describe("onClear", () => {
+    it("closes the ng-select dropdown panel", () => {
+      component.ngSelect.open();
+      expect(component.ngSelect.isOpen()).toBe(true);
+
+      component.onClear();
+
+      expect(component.ngSelect.isOpen()).toBe(false);
+    });
+  });
+
   it("component should not render go-form-errors if hideFieldError property is true ", () => {
     component.hideFieldError = true;
     fixture.detectChanges();

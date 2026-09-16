@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-$go-table-cell-vertical-padding: .875rem;
+$go-table-cell-vertical-padding: 0.875rem;
 $go-table-cell-horizontal-padding: 1.25rem;
 $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
@@ -26,7 +26,8 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   display: flex;
 
   &__title {
-    padding: $go-table-cell-vertical-padding 0 $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
+    padding: $go-table-cell-vertical-padding 0 $go-table-cell-vertical-padding
+      $go-table-cell-horizontal-padding;
   }
 
   &__actions {
@@ -67,9 +68,9 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
     box-shadow: inset 0 -2px 0 $theme-light-app-bg;
     color: $theme-light-color;
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-weight: $weight-medium;
-    letter-spacing: .08px;
+    letter-spacing: 0.08px;
     padding: 1rem $go-table-cell-horizontal-padding;
     position: relative;
     text-align: left;
@@ -99,7 +100,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   &__select-all-checkbox {
     display: inline-block;
     position: relative;
-    top: -.4rem;
+    top: -0.4rem;
     width: $go-table-cell-vertical-padding;
   }
 
@@ -124,14 +125,14 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
   &__sort-icon {
     display: inline-block;
-    height: .75rem;
+    height: 0.75rem;
     margin-top: -1px;
-    padding-left: .25rem;
+    padding-left: 0.25rem;
   }
 
   &__body-column {
     border-bottom: 1px solid $theme-light-app-bg;
-    font-size: .875rem;
+    font-size: 0.875rem;
     padding: $go-table-cell-vertical-padding $go-table-cell-horizontal-padding;
     position: relative;
 
@@ -167,7 +168,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
   &__body-row {
     &:nth-child(even) {
-      background: rgba($theme-light-app-bg, .5);
+      background: rgba($theme-light-app-bg, 0.5);
     }
 
     &.go-table {
@@ -217,7 +218,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
   &__search-container {
     display: flex;
-    margin: .25rem $go-table-cell-horizontal-padding 1rem;
+    margin: 0.25rem $go-table-cell-horizontal-padding 1rem;
     position: relative;
   }
 
@@ -257,7 +258,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   align-items: center;
   border-top: 2px solid $theme-light-app-bg;
   display: flex;
-  font-size: .875rem;
+  font-size: 0.875rem;
   justify-content: space-between;
   padding: 1rem $go-table-cell-horizontal-padding;
 
@@ -283,33 +284,33 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   }
 
   &__select {
-      display: block;
-      flex: 0 0 4.25rem;
-      width: 4.25rem;
+    display: block;
+    flex: 0 0 4.25rem;
+    width: 4.25rem;
 
     ::ng-deep .ng-select-single .ng-select-container .ng-value-container {
-      padding-right: .5rem;
+      padding-right: 0.5rem;
 
-        .ng-value {
-          align-items: center;
-          display: flex;
-          height: 100%;
-          padding: 0 .5rem;
-          width: 100%;
-        }
-      }
-
-      ::ng-deep .ng-select-single .ng-select-container .ng-value-container .ng-value-label {
-        display: block !important;
-        text-align: center !important;
-        width: 100% !important;
+      .ng-value {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        padding: 0 0.5rem;
+        width: 100%;
       }
     }
+
+    ::ng-deep .ng-select-single .ng-select-container .ng-value-container .ng-value-label {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+  }
 
   &__label {
     display: inline-block;
     font-weight: normal;
-    padding: 0 .75rem;
+    padding: 0 0.75rem;
   }
 
   &__page-numbers {
@@ -318,14 +319,14 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
     align-items: center;
     background: transparent;
     border: 0;
-    border-radius: .875rem;
+    border-radius: 0.875rem;
     cursor: pointer;
     display: flex;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1rem;
-    margin: 0 .125rem;
+    margin: 0 0.125rem;
     outline: none;
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
     user-select: none;
 
     &:active,
@@ -352,7 +353,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   @include z-index(2);
 
   align-items: center;
-  background: transparentize($theme-light-bg-hover, .3);
+  background: transparentize($theme-light-bg-hover, 0.3);
   border-radius: $global-radius;
   display: flex;
   height: 100%;
@@ -402,7 +403,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
 
     &__body-row {
       &:nth-child(even) {
-        background: rgba($theme-dark-bg-hover, .5);
+        background: rgba($theme-dark-bg-hover, 0.5);
       }
 
       &--active-parent {
@@ -417,7 +418,7 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
       color: $base-light-secondary;
 
       &::placeholder {
-        color: rgba($base-light-secondary, .75);
+        color: rgba($base-light-secondary, 0.75);
       }
     }
   }
@@ -442,6 +443,6 @@ $go-table-body-row-expanded-border: rgba(248, 249, 250, 0);
   }
 
   .go-table-loader {
-    background: transparentize($theme-dark-bg-hover, .3);
+    background: transparentize($theme-dark-bg-hover, 0.3);
   }
 }
