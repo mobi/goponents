@@ -97,6 +97,10 @@ export class GoSelectComponent
     if (this.multiple) {
       this.refinedItems = search.items;
     }
+    // panel can otherwise fail to open/render on the very first keystroke
+    if (search?.term && !this.ngSelect.isOpen()) {
+      this.ngSelect.open();
+    }
   }
 
   onRemoveAll(): void {
@@ -116,6 +120,11 @@ export class GoSelectComponent
 
   onClose(): void {
     this.emptyRefinedItems();
+  }
+
+  // ng-select doesn't close the dropdown panel itself when the clear icon is clicked.
+  onClear(): void {
+    this.ngSelect.close();
   }
 
   // store previous selected items incase of multiple and typeahead.
