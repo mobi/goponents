@@ -11,11 +11,12 @@ jobs:
     name: Library Build & Tests
     runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
       - name: Cache Node Modules
         id: cache-node-modules
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-node-modules
         with:
@@ -26,7 +27,7 @@ jobs:
         run: echo NVMRC=`cat .nvmrc` >> $GITHUB_ENV
 
       - name: Install Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: ${{ env.NVMRC }}
 
