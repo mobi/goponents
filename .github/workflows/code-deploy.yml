@@ -22,7 +22,7 @@ env:
 jobs:
   deploy:
     name: Deploy Branch/PR Preview
-    runs-on: gomobilesharedstagedeploy
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     steps:
       - name: Print current date
@@ -196,7 +196,7 @@ jobs:
 
   cleanup-preview:
     name: Cleanup PR Preview
-    runs-on: gomobilesharedstagedeploy
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     steps:
       - name: Get PR Number

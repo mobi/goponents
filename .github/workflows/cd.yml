@@ -34,7 +34,7 @@ jobs:
 
   publishPackage:
     name: Publish New Package
-    runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     needs: createRelease
     env:
       NPM_TOKEN: ${{ secrets.NPM_PWD }}
