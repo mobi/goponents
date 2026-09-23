@@ -9,7 +9,7 @@ concurrency:
 jobs:
   library:
     name: Library Build & Tests
-    runs-on: [self-hosted, oracle9, gomobilesharedstagedeploy]
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     steps:
       - uses: actions/checkout@v4
 
