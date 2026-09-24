@@ -5,8 +5,6 @@ import { RouterModule } from '@angular/router';
 import { GoIconModule} from '../go-icon/go-icon.module';
 import { GoSideNavModule } from '../go-side-nav/go-side-nav.module';
 
-import { GoSideNavService } from '../go-side-nav/go-side-nav/go-side-nav.service';
-
 import { GoHeaderComponent } from './go-header.component';
 
 @NgModule({
@@ -21,9 +19,6 @@ import { GoHeaderComponent } from './go-header.component';
   ],
   exports: [
     GoHeaderComponent
-  ],
-  providers: [
-    GoSideNavService
   ]
 })
 

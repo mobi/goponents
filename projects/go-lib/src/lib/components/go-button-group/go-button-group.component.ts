@@ -22,7 +22,7 @@ export class GoButtonGroupComponent implements OnChanges, AfterContentInit {
   }
 
   private processButtons(): void {
-    if (this.buttons) {
+    if (this.buttons && this.buttons.length > 0) {
       this.buttons.forEach((btn: GoButtonComponent, i: number) => {
         btn.groupPosition = this.determinePosition(i);
         btn.buttonDisabled = this.buttonDisabled;
