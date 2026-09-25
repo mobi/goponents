@@ -22,7 +22,7 @@ env:
 jobs:
   deploy:
     name: Deploy Branch/PR Preview
-    runs-on: gomobilesharedstagedeploy
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     steps:
       - name: Print current date
@@ -62,8 +62,8 @@ jobs:
             echo "deploy_label=PR #${PR_NUMBER}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Checkout code
-        uses: actions/checkout@v6
+      - name: Checkout Repo
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
       - name: Get Package Version
         id: package-version
@@ -196,7 +196,7 @@ jobs:
 
   cleanup-preview:
     name: Cleanup PR Preview
-    runs-on: gomobilesharedstagedeploy
+    runs-on: [self-hosted, autoscaling, oracle9, ruby3.0.6, gomobilesharedstagedeploy]
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     steps:
       - name: Get PR Number
