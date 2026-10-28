@@ -1,0 +1,14 @@
+title = "goponents gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "global allow lists"
+paths = [
+    '''(?:^|/)node_modules(?:/.*)?$''',
+    '''(?:^|/)dist(?:/.*)?$''',
+    '''(?:^|/)coverage(?:/.*)?$''',
+    '''(?:^|/)package-lock\.json$''',
+    '''(?:^|/)certs/.*\.crt$''',
+]
