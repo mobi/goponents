@@ -155,18 +155,6 @@
       "projectType": "application",
       "prefix": "",
       "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/go-tester-e2e/protractor.conf.js",
-            "devServerTarget": "go-tester:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "go-tester:serve:production"
-            }
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
