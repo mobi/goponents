@@ -1,14 +1,9 @@
-import { AppPage } from './app.po';
+import { expect, test } from '@playwright/test';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+test('renders the tester application layout', async ({ page }) => {
+  await page.goto('/');
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to go-tester!');
-  });
+  await expect(page.locator('go-layout')).toBeVisible();
+  await expect(page.locator('go-side-nav')).toBeVisible();
+  await expect(page.locator('go-footer')).toHaveText('Footer Works');
 });
