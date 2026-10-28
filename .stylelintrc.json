@@ -1,0 +1,10 @@
+{
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "color-no-invalid-hex": true,
+    "font-family-no-duplicate-names": true,
+    "keyframe-declaration-no-important": true,
+    "string-no-newline": true,
+    "unit-no-unknown": true
+  }
+}
