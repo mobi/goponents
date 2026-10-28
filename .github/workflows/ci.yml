@@ -39,6 +39,22 @@ jobs:
             npm install
           }
 
+      - name: Gitleaks Secrets Scan
+        run: |
+          # gitleaks image pinned by digest -> v8.30.1 (supply-chain hardening)
+          docker run --rm \
+              -v ${{ github.workspace }}:/workspace \
+              -w /workspace \
+              zricethezav/gitleaks@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f \
+              detect \
+              --source /workspace \
+              --no-git \
+              --config /workspace/.gitleaks.toml \
+              --report-format table \
+              --redact \
+              --exit-code ${{ vars.GITLEAKS_EXIT_CODE || '0' }} \
+              --verbose
+
       - name: Trivy Security Scan
         uses: ./.github/actions/trivy_security_scan
         with:
@@ -60,3 +76,21 @@ jobs:
 
       - name: Run Tests
         run: npm run test_lib:ci
+
+      - name: Run SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@713881670b6b3676cda39549040e2d88c70d582e # v8.2.0
+        with:
+          args: >
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.verbose=false
+            -Dsonar.working.directory=.scannerwork
+
+      - name: SonarQube Quality Gate check
+        uses: sonarsource/sonarqube-quality-gate-action@cf038b0e0cdecfa9e56c198bbb7d21d751d62c3b # v1.2.0
+        with:
+          scanMetadataReportFile: '.scannerwork/report-task.txt'
+        timeout-minutes: 7
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
